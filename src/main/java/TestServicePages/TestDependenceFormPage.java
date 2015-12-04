@@ -137,7 +137,7 @@ public class TestDependenceFormPage extends ApplicationManager {
 	}
 
 	public void setReferenceNumber(String referenceNumber) {
-		SubsidyPage.referenceNumber = referenceNumber;
+		TestDependenceFormPage.referenceNumber = referenceNumber;
 	}
     
 

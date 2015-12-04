@@ -116,7 +116,7 @@ public class TestFieldsBankidPage extends ApplicationManager {
 	}
 
 	public void setReferenceNumber(String referenceNumber) {
-		SubsidyPage.referenceNumber = referenceNumber;
+		TestFieldsBankidPage.referenceNumber = referenceNumber;
 	}
     
 }

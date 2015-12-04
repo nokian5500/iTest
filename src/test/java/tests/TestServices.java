@@ -107,14 +107,45 @@ public class TestServices extends TestBase {
                .verifyStatus(status);
     }
 
-    //@Test
+    @Test
     public void test_liqpay() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VersionSERVER;
         String service = Constants.TestService.TEST_LIQPAY;
+        String serviceName = "_test_liqpay";
+        String region = Constants.Settings.Region.Dnipropetrovska;
+        String city = Constants.Settings.City.Dnipropetrovsk;
+        String bankIdAddressField = Constants.Settings.Data.BirthLocal;
+        String vin = "12345678912345678";
+        String brand = "brand";
+        String model = "model";
+        String number = "number";
+        String invoiceNumber = "invoiceNumber";
+        String phone = "380931234567";
+        String email = Constants.Settings.Data.E_MAIL;
+        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server,service);
+        authorizationPage.privatBankAuthorization();
+        Assert.assertEquals(testLiqpayPage.serviceName.getText(), serviceName);
+        testLiqpayPage
+                            .typeInBankIdAddressField(bankIdAddressField)
+                            .typeInVinField(vin)
+                            .typeInBrandField(brand)
+                            .typeInModelField(model)
+                            .typeInNumberField(number)
+                            .typeInInvoiceNumberField(invoiceNumber)
+                            .selectDate()
+                            .typeInPhoneField(phone)
+                            .typeInEmailField(email)
+                            .clickConfirmButton()
+                            .verifyServiceSuccessCreated()
+                            .saveReferenceNumber(); 
+     mainPage.goToStatus();
+     statusPage.inputReferenceNumberForTest_liqpay()
+               .clickViewStatusButton()
+               .verifyStatus(status);
     }
 
     //@Test
