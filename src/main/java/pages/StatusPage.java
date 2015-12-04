@@ -13,6 +13,8 @@ import ServicePages.CriminalRecordPage;
 import ServicePages.InternationalPassportPage;
 import ServicePages.SubsidyPage;
 import TestServicePages.TestDependenceFormPage;
+import TestServicePages.TestFieldsBankidPage;
+import TestServicePages.TestLiqpayPage;
 
 
 public class StatusPage extends ApplicationManager {
@@ -51,8 +53,17 @@ public class StatusPage extends ApplicationManager {
 		refIdField.sendKeys(InternationalPassportPage.referenceNumber);
 		return this;
 	}
+
 	public StatusPage inputReferenceNumberForTest_dependence_form() {
 		refIdField.sendKeys(TestDependenceFormPage.referenceNumber);
+		return this;
+	}
+	public StatusPage inputReferenceNumberForTest_fields_bankid() {
+		refIdField.sendKeys(TestFieldsBankidPage.referenceNumber);
+		return this;
+	}
+	public StatusPage inputReferenceNumberForTest_liqpay() {
+		refIdField.sendKeys(TestLiqpayPage.referenceNumber);
 		return this;
 	}
 
@@ -67,6 +78,7 @@ public class StatusPage extends ApplicationManager {
 	driver.findElement(By.xpath("//td[contains(.,'"+status+"')]")).isDisplayed();
 		
 	}
+
 
 
 

@@ -9,6 +9,8 @@ import ServicePages.CriminalRecordPage;
 import ServicePages.InternationalPassportPage;
 import ServicePages.SubsidyPage;
 import TestServicePages.TestDependenceFormPage;
+import TestServicePages.TestFieldsBankidPage;
+import TestServicePages.TestLiqpayPage;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -39,6 +41,8 @@ public class TestBase {
     public CriminalRecordPage criminalRecordPage;
     public InternationalPassportPage internationalPassportPage;
     public TestDependenceFormPage testDependenceFormPage;
+    public TestFieldsBankidPage testFieldsBankidPage;
+    public TestLiqpayPage testLiqpayPage;
 
 
 
@@ -61,6 +65,8 @@ public class TestBase {
         criminalRecordPage = new CriminalRecordPage(driver);
         internationalPassportPage = new InternationalPassportPage(driver);
         testDependenceFormPage = new TestDependenceFormPage(driver);
+        testFieldsBankidPage = new TestFieldsBankidPage(driver);
+        testLiqpayPage = new TestLiqpayPage(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
 
