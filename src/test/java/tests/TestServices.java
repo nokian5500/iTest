@@ -15,7 +15,7 @@ public class TestServices extends TestBase {
 
     //TODO https://github.com/e-government-ua/iTest/issues/1
 
-    @Test
+    //@Test
      public void test_dependence_form1() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.TestSERVER;
@@ -44,7 +44,7 @@ public class TestServices extends TestBase {
                   .clickViewStatusButton()
                   .verifyStatus(status);
     }
-   @Test
+   //@Test
     public void test_dependence_form2() throws AWTException {
        // ------------------- Тестовые данные -------------------//
        String server = Constants.Server.VersionSERVER;
@@ -74,11 +74,12 @@ public class TestServices extends TestBase {
                  .verifyStatus(status);
    }
 
-    @Test
+    //@Test
     public void test_fields_bankid() throws AWTException {
        // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VersionSERVER;
         String service = Constants.TestService.TEST_FIELDS_BANKID;
+        String serviceName = "_test_fields_bankid";
         String region = Constants.Settings.Region.Dnipropetrovska;
         String city = Constants.Settings.City.Dnipropetrovsk;
         String country = "country";
@@ -92,7 +93,7 @@ public class TestServices extends TestBase {
         selectAreaPage.selectRegion(region);
         selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testFieldsBankidPage.serviceName.getText(), service);
+        Assert.assertEquals(testFieldsBankidPage.serviceName.getText(), serviceName);
         testFieldsBankidPage
                             .typeInCountryField(country)
                             .typeInAddressField(address)
