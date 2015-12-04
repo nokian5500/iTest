@@ -44,7 +44,7 @@ public class TestServices extends TestBase {
                   .clickViewStatusButton()
                   .verifyStatus(status);
     }
-   //@Test
+   @Test
     public void test_dependence_form2() throws AWTException {
        // ------------------- Тестовые данные -------------------//
        String server = Constants.Server.VersionSERVER;
@@ -107,7 +107,7 @@ public class TestServices extends TestBase {
                .verifyStatus(status);
     }
 
-    @Test
+    //@Test
     public void test_liqpay() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VersionSERVER;

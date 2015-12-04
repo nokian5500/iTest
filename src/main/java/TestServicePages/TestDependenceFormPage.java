@@ -70,8 +70,8 @@ public class TestDependenceFormPage extends ApplicationManager {
     	 return this;
         }
     public TestDependenceFormPage typeInInfo2Field(String info){
-    	info1Field.clear();
-    	info1Field.sendKeys(info); // ввод информации
+    	info2Field.clear();
+    	info2Field.sendKeys(info); // ввод информации
     	 return this;
          }
 
