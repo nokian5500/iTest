@@ -20,13 +20,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.AboutPortalPage;
-import pages.BankIdAuthorizationPage;
-import pages.DocumentsPage;
-import pages.MainPage;
-import pages.MyJournalPage;
-import pages.SelectAreaPage;
-import pages.StatusPage;
+import pages.*;
 
 import java.io.File;
 import java.util.Calendar;
@@ -48,6 +42,7 @@ public class TestBase {
     public TestDependenceFormPage testDependenceFormPage;
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
+    public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
 
 
@@ -72,6 +67,7 @@ public class TestBase {
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
+        statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
