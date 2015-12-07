@@ -1,17 +1,16 @@
 package driverLogic;
 
 
-import appLogic.ApplicationManager;
-import appLogic.Constants;
-import com.google.common.io.Files;
-
 import ServicePages.CriminalRecordPage;
 import ServicePages.InternationalPassportPage;
 import ServicePages.SubsidyPage;
+import ServicePages.UnregisterFromLocationPage;
 import TestServicePages.TestDependenceFormPage;
 import TestServicePages.TestFieldsBankidPage;
 import TestServicePages.TestLiqpayPage;
-
+import appLogic.ApplicationManager;
+import appLogic.Constants;
+import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +20,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import pages.*;
+import pages.AboutPortalPage;
+import pages.BankIdAuthorizationPage;
+import pages.DocumentsPage;
+import pages.MainPage;
+import pages.MyJournalPage;
+import pages.SelectAreaPage;
+import pages.StatusPage;
 
 import java.io.File;
 import java.util.Calendar;
@@ -43,7 +48,7 @@ public class TestBase {
     public TestDependenceFormPage testDependenceFormPage;
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
-
+    public UnregisterFromLocationPage unregisterFromLocationPage;
 
 
     @BeforeClass()
@@ -67,6 +72,7 @@ public class TestBase {
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
+        unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
 
@@ -88,8 +94,7 @@ public class TestBase {
         //Create a directory; all non-existent ancestor directories are
         //automatically created
         boolean success = (new File("TestReport/html/Screens/")).mkdirs();
-        if (!success)
-        {
+        if (!success) {
             //Directory creation failed
             //System.out.println("Directory creation failed. Папка уже создана?");
         }
@@ -102,7 +107,7 @@ public class TestBase {
                         "(" +
                         calendar.get(Calendar.DATE) +
                         "." +
-                        (calendar.get(Calendar.MONTH)+1) +
+                        (calendar.get(Calendar.MONTH) + 1) +
                         "." +
                         calendar.get(Calendar.YEAR) +
                         " " +
@@ -131,19 +136,14 @@ public class TestBase {
                         calendar.get(Calendar.SECOND) +
                         ")";
 
-        try
-        {
-            if (!result.isSuccess())
-            {
-                File screenshot1 = new File("TestReport/html/Screens/" +result.getMethod().getMethodName() + ".png");
+        try {
+            if (!result.isSuccess()) {
+                File screenshot1 = new File("TestReport/html/Screens/" + result.getMethod().getMethodName() + ".png");
                 screenshot1.delete();
                 File screenshotTempFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-                try
-                {
+                try {
                     Files.copy(screenshotTempFile, screenshot1);
-                }
-                catch(Exception e)
-                {
+                } catch (Exception e) {
                     System.out.println(e);
                 }
                 Reporter.log(
@@ -159,17 +159,13 @@ public class TestBase {
                                 "\"></a></div><center><br><br>",
                         true);
                 System.out.println(ErrorLogMessage);
-            }
-            else
-            {
+            } else {
                 System.out.println(SuccsessLogMessage);
                 Reporter.log(SuccsessLogMessage);
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             new ApplicationManager().addErrorToTheReport("Connection with browser was lost.");
         }
     }
 
-	}
+}
