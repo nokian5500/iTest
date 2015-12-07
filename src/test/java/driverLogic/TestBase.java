@@ -72,6 +72,7 @@ public class TestBase {
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
+        unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
 
