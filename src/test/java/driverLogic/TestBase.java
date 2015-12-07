@@ -43,6 +43,7 @@ public class TestBase {
     public TestDependenceFormPage testDependenceFormPage;
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
+    public StatisticTab statisticTab;
 
 
 
@@ -67,6 +68,7 @@ public class TestBase {
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
+        statisticTab = new StatisticTab(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
 
