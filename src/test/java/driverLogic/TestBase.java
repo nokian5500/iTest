@@ -1,10 +1,6 @@
 package driverLogic;
 
 
-import appLogic.ApplicationManager;
-import appLogic.Constants;
-import com.google.common.io.Files;
-
 import ServicePages.CriminalRecordPage;
 import ServicePages.InternationalPassportPage;
 import ServicePages.SubsidyPage;
@@ -12,6 +8,7 @@ import ServicePages.UnregisterFromLocationPage;
 import TestServicePages.TestDependenceFormPage;
 import TestServicePages.TestFieldsBankidPage;
 import TestServicePages.TestLiqpayPage;
+import appLogic.ApplicationManager;
 import appLogic.Constants;
 import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
@@ -51,17 +48,12 @@ public class TestBase {
     public TestDependenceFormPage testDependenceFormPage;
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
-
+    public UnregisterFromLocationPage unregisterFromLocationPage;
 
 
     @BeforeClass()
     public static void setUp() {
         driver = ApplicationManager.startTestsIn(Constants.Settings.BROWSER);
-    }
-
-    @AfterClass()
-    public static void tearsDown() {
-        driver.quit();
     }
 
     @BeforeMethod()
