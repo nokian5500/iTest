@@ -9,14 +9,22 @@ import TestServicePages.TestFieldsBankidPage;
 import TestServicePages.TestLiqpayPage;
 import appLogic.ApplicationManager;
 import appLogic.Constants;
+import listener.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
-import pages.*;
+import pages.AboutPortalPage;
+import pages.BankIdAuthorizationPage;
+import pages.DocumentsPage;
+import pages.MainPage;
+import pages.MyJournalPage;
+import pages.SelectAreaPage;
+import pages.StatisticTab;
+import pages.StatusPage;
 
-@Listeners({appLogic.ScreenshotListener.class})
+@Listeners({ScreenshotListener.class})
 public class TestBase {
 
     private static WebDriver driver;
