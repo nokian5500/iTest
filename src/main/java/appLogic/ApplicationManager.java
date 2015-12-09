@@ -1,7 +1,11 @@
 package appLogic;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -9,29 +13,28 @@ import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.SimpleTimeZone;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
 public class ApplicationManager {
 
-    public WebDriver driver;
-    private static String baseUrl;
+    public static WebDriver driver;
     public WebDriverWait wait;
-    public ApplicationManager app;
 
-    public ApplicationManager (WebDriver driver) {
+    public ApplicationManager(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(driver, 40);
     }
@@ -39,6 +42,7 @@ public class ApplicationManager {
     public ApplicationManager() {
 
     }
+
     //    ------------------- Запуск браузеров  -----------------//
     public static WebDriver startTestsIn(String browser) {
         WebDriver driver = null;
@@ -57,7 +61,7 @@ public class ApplicationManager {
             System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
             driver = new ChromeDriver();
 
-        }else if (browser.equalsIgnoreCase("ie")) {
+        } else if (browser.equalsIgnoreCase("ie")) {
             System.setProperty("webdriver.ie.driver", "src\\main\\resources\\IEDriverServer.exe");
             driver = new InternetExplorerDriver();
 
@@ -76,7 +80,14 @@ public class ApplicationManager {
         return driver;
     }
 
+    public static void addErrorToTheReport(String testName) {
+        Reporter.log("<b><font color=\"red\" size=\"3\">" + testName + "</font></b><br>");
 
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
 
     //    ------------------- Методы работы с выпадающими списками  -----------------//
     public void selectValue(By locator, String value) {
@@ -90,7 +101,6 @@ public class ApplicationManager {
         Select select = new Select(selectElement);
         select.selectByVisibleText(value);
     }
-
 
     //    ------------------- Метод ввода данных  -----------------//
     public void typeValue(By locator, String value) {
@@ -133,8 +143,6 @@ public class ApplicationManager {
     public void waitElementInvisibility(By locator) {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
-
-
 
     //    ------------------- Методы проверок элементов/текста на странице  -----------------//
     public String verifyTextPresent(String text) {
@@ -209,14 +217,8 @@ public class ApplicationManager {
 
     }
 
-    public static void addErrorToTheReport(String testName) throws Exception
-    {
-        Reporter.log("<b><font color=\"red\" size=\"3\">" + testName + "</font></b><br>");
-
-    }
     //    ------------------- Методы для скринов -----------------//
-    public Calendar getCurrentCalendar()
-    {
+    public Calendar getCurrentCalendar() {
         // http://docs.oracle.com/javase/6/docs/api/java/util/GregorianCalendar.html
         // get the supported ids for GMT+02:00 ("Среднеевропейское (Центральноевропейское) летнее время")
 
@@ -242,11 +244,6 @@ public class ApplicationManager {
         // calendar.clear(Calendar.HOUR_OF_DAY); // so doesn't override
         // calendar.set(Calendar.HOUR, 3);
         return calendar;
-
-    }
-
-    public WebDriver getDriver() {
-        return driver;
     }
 }
 
