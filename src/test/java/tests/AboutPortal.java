@@ -1,6 +1,5 @@
 package tests;
 
-import driverLogic.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -3,19 +3,16 @@ package tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import appLogic.Constants;
-import driverLogic.TestBase;
-
 
 public class MainPage extends TestBase {
 
-	@Test
-	public void simpleSearchArchivalCertificates() throws Exception {
-	String service = "Видача архівних довідок, копій, витягів";
+    @Test
+    public void simpleSearchArchivalCertificates() throws Exception {
+        String service = "Видача архівних довідок, копій, витягів";
         mainPage.typeInSearchField(service);
         app.pause(4000);
         Assert.assertEquals(mainPage.services.getText(), service);
-	}
+    }
 
     @Test
     public void availabilityStatisticTab() throws Exception {
@@ -38,5 +35,5 @@ public class MainPage extends TestBase {
         Assert.assertEquals(statisticTab.numberOfServicesProvidedColumn.getText(), numberOfServicesProvidedColumn);
         Assert.assertEquals(statisticTab.regionRow.getText(), regionRow);
     }
-	
+
 }

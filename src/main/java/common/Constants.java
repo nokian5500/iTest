@@ -1,4 +1,4 @@
-package appLogic;
+package common;
 
 
 import java.util.Properties;

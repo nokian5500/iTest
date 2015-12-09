@@ -1,14 +1,7 @@
-package driverLogic;
+package tests;
 
-import ServicePages.CriminalRecordPage;
-import ServicePages.InternationalPassportPage;
-import ServicePages.SubsidyPage;
-import ServicePages.UnregisterFromLocationPage;
-import TestServicePages.TestDependenceFormPage;
-import TestServicePages.TestFieldsBankidPage;
-import TestServicePages.TestLiqpayPage;
-import appLogic.ApplicationManager;
-import appLogic.Constants;
+import common.ApplicationManager;
+import common.Constants;
 import listener.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
@@ -23,6 +16,13 @@ import pages.MyJournalPage;
 import pages.SelectAreaPage;
 import pages.StatisticTab;
 import pages.StatusPage;
+import pages.service.CriminalRecordPage;
+import pages.service.InternationalPassportPage;
+import pages.service.SubsidyPage;
+import pages.service.UnregisterFromLocationPage;
+import pages.service.test.TestDependenceFormPage;
+import pages.service.test.TestFieldsBankidPage;
+import pages.service.test.TestLiqpayPage;
 
 @Listeners({ScreenshotListener.class})
 public class TestBase {

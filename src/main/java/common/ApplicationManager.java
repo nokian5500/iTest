@@ -1,4 +1,4 @@
-package appLogic;
+package common;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,7 +31,7 @@ import static org.testng.Assert.fail;
 
 public class ApplicationManager {
 
-    public static WebDriver driver;
+    protected static WebDriver driver;
     public WebDriverWait wait;
 
     public ApplicationManager(WebDriver driver) {

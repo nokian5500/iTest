@@ -1,7 +1,6 @@
 package tests;
 
-import appLogic.Constants;
-import driverLogic.TestBase;
+import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

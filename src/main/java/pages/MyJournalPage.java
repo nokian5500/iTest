@@ -1,31 +1,18 @@
 package pages;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.testng.AssertJUnit.assertEquals;
-
-import appLogic.ApplicationManager;
-import org.openqa.selenium.By;
+import common.ApplicationManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class MyJournalPage extends ApplicationManager {
 
-    private WebDriver driver;
-
-
-    public MyJournalPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
     //  =================  кноки входа в ид банк===============//
-	@FindBy(linkText = "увійдіть через BankID")
+    @FindBy(linkText = "увійдіть через BankID")
     public WebElement bankIdAuthorizationButton;
-	
-	@FindBy(linkText = "електронно-цифровий підпис")
+
+    @FindBy(linkText = "електронно-цифровий підпис")
     public WebElement electronicDigitalSignatureButton;
 
     //  =================  форма входа в журнал ===============//
@@ -40,5 +27,9 @@ public class MyJournalPage extends ApplicationManager {
     @FindBy(xpath = "//h1[contains(.,'Мій журнал')]")
     public WebElement myLog;
 
+    public MyJournalPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
+}
 

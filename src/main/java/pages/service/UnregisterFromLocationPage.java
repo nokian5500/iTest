@@ -1,6 +1,5 @@
-package ServicePages;
+package pages.service;
 
-import appLogic.ApplicationManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,11 +10,9 @@ import org.openqa.selenium.support.ui.Select;
 /**
  * Page to describe service "Зняття з реєстрації місця проживання"
  */
-public class UnregisterFromLocationPage extends ApplicationManager {
+public class UnregisterFromLocationPage extends BaseServicePage {
+
     public static String referenceNumber;
-    private final WebDriver driver;
-    @FindBy(xpath = "//div[@class='service-name ng-binding']")
-    public WebElement serviceName; // название услуги
 
     @FindBy(name = "phone")
     private WebElement phoneField;// поле ввода телефона
@@ -64,9 +61,6 @@ public class UnregisterFromLocationPage extends ApplicationManager {
 
     @FindBy(xpath = "//select[@ng-model='selected.date']")
     private WebElement dayField; // поле выбора даты визита
-
-    @FindBy(xpath = "//button[@class='btn btn-info']")
-    private WebElement confirmButton; // кнопка подтверждения создания услуги
 
     public UnregisterFromLocationPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -154,8 +148,9 @@ public class UnregisterFromLocationPage extends ApplicationManager {
 
     //=================методы по работе с номером заявки=======================//
 
-    public UnregisterFromLocationPage clickConfirmButton() {
-        confirmButton.click(); //нажать конпку подтверждения создания услуги
+    @Override
+    protected UnregisterFromLocationPage clickConfirmButton() {
+        super.clickConfirmButton();
         return this;
     }
 

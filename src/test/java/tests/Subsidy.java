@@ -1,21 +1,13 @@
 package tests;
 
+import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import appLogic.Constants;
-import driverLogic.TestBase;
-import pages.StatusPage;
-
 public class Subsidy extends TestBase {
-	
-	
-	
-   
 
 
-
-	@Test
+    @Test
     public void DnipropetrovskSubsidyTest() {
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Settings.InteractionWithPublicAuthorities.Subsidy;
@@ -42,10 +34,8 @@ public class Subsidy extends TestBase {
         String otherPeople = "Ні";
         String infoAboutoOverload = "test";
         String status = "Заявка подана";
-        
-        
-        
-       
+
+
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
         app.pause(5000);
@@ -55,37 +45,36 @@ public class Subsidy extends TestBase {
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(subsidyPage.serviceName.getText(), service);
         subsidyPage
-                   .selectArea(area)
-                   .typeInPlaceOfLivingField(placeOfLiving)
-                   .typeInPhoneField(phone)
-                   .typeInEmailField(email)
-                   .selectSubsidyType(subsidyType)
-                   .selectElectricity(electricity)
-                   .selectHouseArea(houseArea)
-                   .selectGas(gas)
-                   .selectCoolWater(coolWater)
-                   .selectHotWater(hotWater)
-                   .selectWaterBack(waterBack)
-                   .selectWarming(warming)
-                   .selectGarbage(garbage)
-                   .selectPlaceType(placeType)
-                   .typeInFloorsField(floors)
-                   .typeInTotalPlaceField(totalPlace)
-                   .typeInWarmingPlaceField(warmingPlace)
-                   .typeInIncomeField(income)
-                   .typeInOrgNameField(orgName)
-                   .selectOtherPeople(otherPeople)
-                   .typeInInfoAboutoOverloa(infoAboutoOverload)
-                   .clickConfirmButton()
-                   .verifyServiceSuccessCreated()
-                   .saveReferenceNumber(); 
+                .selectArea(area)
+                .typeInPlaceOfLivingField(placeOfLiving)
+                .typeInPhoneField(phone)
+                .typeInEmailField(email)
+                .selectSubsidyType(subsidyType)
+                .selectElectricity(electricity)
+                .selectHouseArea(houseArea)
+                .selectGas(gas)
+                .selectCoolWater(coolWater)
+                .selectHotWater(hotWater)
+                .selectWaterBack(waterBack)
+                .selectWarming(warming)
+                .selectGarbage(garbage)
+                .selectPlaceType(placeType)
+                .typeInFloorsField(floors)
+                .typeInTotalPlaceField(totalPlace)
+                .typeInWarmingPlaceField(warmingPlace)
+                .typeInIncomeField(income)
+                .typeInOrgNameField(orgName)
+                .selectOtherPeople(otherPeople)
+                .typeInInfoAboutoOverloa(infoAboutoOverload)
+                .clickConfirmButton()
+                .verifyServiceSuccessCreated()
+                .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForSubsidy()
-                  .clickViewStatusButton()
-                  .verifyStatus(status);
-                
-        
-        
+                .clickViewStatusButton()
+                .verifyStatus(status);
+
+
     }
 }
 

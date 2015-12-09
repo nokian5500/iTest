@@ -2,13 +2,12 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import driverLogic.TestBase;
 
 public class MyJournal extends TestBase {
 
 
-	@Test
-	public void myJournalTest() throws Exception{
+    @Test
+    public void myJournalTest() throws Exception {
         mainPage.goToMyLog();
         Assert.assertEquals(journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
@@ -23,7 +22,7 @@ public class MyJournal extends TestBase {
                 "цифрового підпису");
 
 
-	}
+    }
 
-	
+
 }

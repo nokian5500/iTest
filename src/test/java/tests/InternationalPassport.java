@@ -1,16 +1,13 @@
 package tests;
 
+import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import appLogic.Constants;
-import driverLogic.TestBase;
-
 public class InternationalPassport extends TestBase {
-	
-	
-	
-	@Test
+
+
+    @Test
     public void DnipropetrovskInternationalPassportTest() {
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Settings.Identity.InternationalPassport;
@@ -21,10 +18,8 @@ public class InternationalPassport extends TestBase {
         String email = "test@gmail.com";
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
         String status = "Заявка подана";
-        
-        
-        
-       
+
+
         // --------------------- Тест-кейс----------------------//
 //        mainPage.typeInSearchField(service);
 //        app.pause(5000);
@@ -35,22 +30,21 @@ public class InternationalPassport extends TestBase {
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(internationalPassportPage.serviceName.getText(), service);
         internationalPassportPage
-                   .selectHavePassport(havePassport)
-                   .selectBiometrical(biometrical)
-                   .typeInPhoneField(phone)
-                   .typeInEmailField(email)
-                   .selectArea(area)
-                   .selectDay()
-                   .selectTime()
-                   .clickConfirmButton()
-                   .verifyServiceSuccessCreated()
-                   .saveReferenceNumber(); 
+                .selectHavePassport(havePassport)
+                .selectBiometrical(biometrical)
+                .typeInPhoneField(phone)
+                .typeInEmailField(email)
+                .selectArea(area)
+                .selectDay()
+                .selectTime()
+                .clickConfirmButton()
+                .verifyServiceSuccessCreated()
+                .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForInternationalPassport()
-                  .clickViewStatusButton()
-                  .verifyStatus(status);
-                
-        
-        
+                .clickViewStatusButton()
+                .verifyStatus(status);
+
+
     }
 }

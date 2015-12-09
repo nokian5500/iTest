@@ -1,17 +1,13 @@
 package tests;
 
+import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import appLogic.Constants;
-import driverLogic.TestBase;
+public class CriminalRecord extends TestBase {
 
-public class CriminalRecord extends TestBase  {
-	
-	
-	
-	
-	@Test
+
+    @Test
     public void DnipropetrovskCriminalRecord() {
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Settings.ServiceMVD.CriminalRecord;
@@ -34,23 +30,23 @@ public class CriminalRecord extends TestBase  {
         selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(criminalRecordPage.serviceName.getText(), service);
-		
-		criminalRecordPage.typeInBirthDateField(birthDate)
-                          .typeInBirthLocField(birthLoc)
-                          .selectСountry(country)
-                          .selectGoal(goal)
-                          .typeInPhoneField(phone)
-                          .selectResType(resType)
-                          .typeInEmailField(email)
-                          .clickConfirmButton()
-                          .verifyServiceSuccessCreated()
-                          .saveReferenceNumber();
-		mainPage.goToStatus();
+
+        criminalRecordPage.typeInBirthDateField(birthDate)
+                .typeInBirthLocField(birthLoc)
+                .selectСountry(country)
+                .selectGoal(goal)
+                .typeInPhoneField(phone)
+                .selectResType(resType)
+                .typeInEmailField(email)
+                .clickConfirmButton()
+                .verifyServiceSuccessCreated()
+                .saveReferenceNumber();
+        mainPage.goToStatus();
         statusPage.inputReferenceNumberForCriminalRecord()
-                  .clickViewStatusButton()
-                  .verifyStatus(status);
-                
-                          
+                .clickViewStatusButton()
+                .verifyStatus(status);
+
+
     }
 }
 

@@ -2,15 +2,13 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import driverLogic.TestBase;
-
 
 
 public class MyDocument extends TestBase {
 
 
     @Test
-    public void getAccessToDocumentTest()  {
+    public void getAccessToDocumentTest() {
         mainPage.goToDocuments();
         Assert.assertEquals(documentsPage.formSignInBankId.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
                 "Сертифікат електронно-\n" +
@@ -31,7 +29,7 @@ public class MyDocument extends TestBase {
     }
 
     @Test
-    public void getAccessToDocumentWithPhoneEmailTest()  {
+    public void getAccessToDocumentWithPhoneEmailTest() {
         mainPage.goToDocuments();
         Assert.assertEquals(documentsPage.formSignInBankId.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
                 "Сертифікат електронно-\n" +
@@ -57,9 +55,8 @@ public class MyDocument extends TestBase {
     }
 
 
-
     @Test
-    public void checkNotaryTabTest () {
+    public void checkNotaryTabTest() {
         mainPage.goToDocuments();
         documentsPage.goToNotaryTab();
         Assert.assertEquals(documentsPage.notaryInfoBlock.getText(), "Тут нотаріуси зможуть завантажувати документи із електронно-цифровим підписом. Таким чином, через нотаріусів будь-який документ можна буде переводити із паперового вигляду у цифровий.\n" +
@@ -67,4 +64,4 @@ public class MyDocument extends TestBase {
                 "(розділ у процесі розробки)");
     }
 
-    }
+}
