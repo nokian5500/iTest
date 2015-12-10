@@ -3,15 +3,15 @@
 <suite name="Suite">
   <test verbose="2" name="Test">
     <classes>
-      <class name="tests.AboutPortal"/>
-      <class name="tests.MyDocument"/>
-      <class name="tests.MyJournal"/>
-      <class name="tests.MainPage"/>
-      <class name="tests.Footer"/>
-      <class name="tests.CriminalRecord"/>
-      <class name="tests.Subsidy"/>
-      <class name="tests.InternationalPassport"/>
-      <class name="tests.TestServices"/>
+      <class name="AboutPortal"/>
+      <class name="MyDocument"/>
+      <class name="MyJournal"/>
+      <class name="MainPage"/>
+      <class name="Footer"/>
+      <class name="CriminalRecord"/>
+      <class name="test.portal.services.authorities.interaction.Subsidy"/>
+      <class name="InternationalPassport"/>
+      <class name="TestServices"/>
     </classes>
   </test> <!-- Test -->
   

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.service.BaseServicePage;
+import pages.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -28,9 +28,6 @@ public class TestFieldsBankidPage extends BaseServicePage {
 
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
-
-    @FindBy(xpath = "//div[@class='text-center ng-binding']")
-    private WebElement referenceNumberField; //поле референс заявки
 
     public TestFieldsBankidPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -94,18 +91,9 @@ public class TestFieldsBankidPage extends BaseServicePage {
     }
 //=================методы по работе с номером заявки=======================//
 
+    @Override
     public String saveReferenceNumber() {
-        String refField = referenceNumberField.getText();
-        setReferenceNumber(refField.substring(16, 23));
-        return getReferenceNumber();
-    }
-
-    private String getReferenceNumber() {
+        referenceNumber = super.saveReferenceNumber();
         return referenceNumber;
     }
-
-    private void setReferenceNumber(String referenceNumber) {
-        TestFieldsBankidPage.referenceNumber = referenceNumber;
-    }
-
 }
