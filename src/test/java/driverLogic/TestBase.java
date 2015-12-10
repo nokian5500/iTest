@@ -1,10 +1,7 @@
 package driverLogic;
 
 
-import ServicePages.CriminalRecordPage;
-import ServicePages.InternationalPassportPage;
-import ServicePages.SubsidyPage;
-import ServicePages.UnregisterFromLocationPage;
+import ServicePages.*;
 import TestServicePages.TestDependenceFormPage;
 import TestServicePages.TestFieldsBankidPage;
 import TestServicePages.TestLiqpayPage;
@@ -44,6 +41,7 @@ public class TestBase {
     public TestLiqpayPage testLiqpayPage;
     public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
+    public AssignSocialAssistanceForChildbirthPage assignSocialAssistanceForChildbirthPage;
 
 
     @BeforeClass()
@@ -69,12 +67,13 @@ public class TestBase {
         testLiqpayPage = new TestLiqpayPage(driver);
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
+        assignSocialAssistanceForChildbirthPage = new AssignSocialAssistanceForChildbirthPage(driver);
         driver.get(Constants.Server.VersionSERVER);
     }
 
     @AfterClass()
     public static void tearsDown() {
-        driver.quit();
+        //driver.quit();
     }
 
     @AfterMethod(alwaysRun = true)
