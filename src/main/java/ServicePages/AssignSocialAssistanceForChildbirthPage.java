@@ -1,20 +1,20 @@
-package pages.service.authorities.interaction;
+package ServicePages;
 
-
+import TestServicePages.TestFieldsBankidPage;
+import appLogic.ApplicationManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-public class AssignSocialAssistanceForChildbirthPage extends BaseServicePage {
+public class AssignSocialAssistanceForChildbirthPage extends ApplicationManager {
     private WebDriver driver;
 
     public AssignSocialAssistanceForChildbirthPage (WebDriver driver) {
@@ -53,21 +53,6 @@ public class AssignSocialAssistanceForChildbirthPage extends BaseServicePage {
 
     @FindBy(name = "post_office")
     public WebElement numberPostOfficeField; // № отделения почтовой связи (индекс)
-
-    @FindBy(name = "bank_name")
-    public WebElement bankNameField; //
-
-    @FindBy(name = "bank_mfo")
-    public WebElement bankMFOField; //
-
-    @FindBy(name = "bank_okpo")
-    public WebElement bankOKPOField; //
-
-    @FindBy(name = "bank_account")
-    public WebElement bankAccountField; //
-
-    @FindBy(xpath = "//form[@name='bankticket']/button")
-    public WebElement attachBankTicket;// поле аттача довідки з банку з реквізитами рахунку
 
     @FindBy(xpath = "//button[@class='btn btn-info']")
     public WebElement confirmButton; // кнопка подтверждения создания услуги
@@ -150,37 +135,12 @@ public class AssignSocialAssistanceForChildbirthPage extends BaseServicePage {
 
     public AssignSocialAssistanceForChildbirthPage typeInNumberPostOfficeField(String postCode){
         numberPostOfficeField.clear();
-        numberPostOfficeField.sendKeys(postCode);
+        numberPostOfficeField.sendKeys(postCode); // ввод эмейла
         return this;
     }
 
-    public AssignSocialAssistanceForChildbirthPage typeInBankNameField(String bankName){
-        bankNameField.clear();
-        bankNameField.sendKeys(bankName); // Назва банку
-        return this;
-    }
-
-    public AssignSocialAssistanceForChildbirthPage typeInBankMFOField(String bankMFO){
-        bankMFOField.clear();
-        bankMFOField.sendKeys(bankMFO); // МФО банку
-        return this;
-    }
-
-    public AssignSocialAssistanceForChildbirthPage typeInBankOKPOField(String bankOKPO){
-        bankOKPOField.clear();
-        bankOKPOField.sendKeys(bankOKPO); // ЄДРПОУ банку
-        return this;
-    }
-
-    public AssignSocialAssistanceForChildbirthPage typeInBankAccountField(String bankAccount){
-        bankAccountField.clear();
-        bankAccountField.sendKeys(bankAccount); // номер рахунку/картки в банку
-        return this;
-    }
-
-    @Override
-    public AssignSocialAssistanceForChildbirthPage clickConfirmButton() {
-        super.clickConfirmButton();
+    public AssignSocialAssistanceForChildbirthPage clickConfirmButton(){
+        confirmButton.click(); //нажать конпку подтверждения создания услуги
         return this;
     }
 
@@ -192,10 +152,18 @@ public class AssignSocialAssistanceForChildbirthPage extends BaseServicePage {
 
     //------------------- методы по работе с номером заявки -------------------//
 
-    @Override
-    public String saveReferenceNumber() {
-        referenceNumber = super.saveReferenceNumber();
+    public String saveReferenceNumber(){
+        String refField = referenceNumberField.getText();
+        setReferenceNumber(refField.substring(16,23));
+        return getReferenceNumber();
+    }
+
+    public String getReferenceNumber() {
         return referenceNumber;
+    }
+
+    public void setReferenceNumber(String referenceNumber) {
+        TestFieldsBankidPage.referenceNumber = referenceNumber;
     }
 
 }
