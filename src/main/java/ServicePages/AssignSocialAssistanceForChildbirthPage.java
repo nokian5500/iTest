@@ -54,6 +54,21 @@ public class AssignSocialAssistanceForChildbirthPage extends ApplicationManager 
     @FindBy(name = "post_office")
     public WebElement numberPostOfficeField; // № отделения почтовой связи (индекс)
 
+    @FindBy(name = "bank_name")
+    public WebElement bankNameField; //
+
+    @FindBy(name = "bank_mfo")
+    public WebElement bankMFOField; //
+
+    @FindBy(name = "bank_okpo")
+    public WebElement bankOKPOField; //
+
+    @FindBy(name = "bank_account")
+    public WebElement bankAccountField; //
+
+    @FindBy(xpath = "//form[@name='bankticket']/button")
+    public WebElement attachBankTicket;// поле аттача довідки з банку з реквізитами рахунку
+
     @FindBy(xpath = "//button[@class='btn btn-info']")
     public WebElement confirmButton; // кнопка подтверждения создания услуги
 
@@ -135,7 +150,31 @@ public class AssignSocialAssistanceForChildbirthPage extends ApplicationManager 
 
     public AssignSocialAssistanceForChildbirthPage typeInNumberPostOfficeField(String postCode){
         numberPostOfficeField.clear();
-        numberPostOfficeField.sendKeys(postCode); // ввод эмейла
+        numberPostOfficeField.sendKeys(postCode);
+        return this;
+    }
+
+    public AssignSocialAssistanceForChildbirthPage typeInBankNameField(String bankName){
+        bankNameField.clear();
+        bankNameField.sendKeys(bankName); // Назва банку
+        return this;
+    }
+
+    public AssignSocialAssistanceForChildbirthPage typeInBankMFOField(String bankMFO){
+        bankMFOField.clear();
+        bankMFOField.sendKeys(bankMFO); // МФО банку
+        return this;
+    }
+
+    public AssignSocialAssistanceForChildbirthPage typeInBankOKPOField(String bankOKPO){
+        bankOKPOField.clear();
+        bankOKPOField.sendKeys(bankOKPO); // ЄДРПОУ банку
+        return this;
+    }
+
+    public AssignSocialAssistanceForChildbirthPage typeInBankAccountField(String bankAccount){
+        bankAccountField.clear();
+        bankAccountField.sendKeys(bankAccount); // номер рахунку/картки в банку
         return this;
     }
 
