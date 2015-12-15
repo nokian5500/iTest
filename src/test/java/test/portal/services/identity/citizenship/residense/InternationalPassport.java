@@ -11,8 +11,8 @@ public class InternationalPassport extends TestBase {
     @Test
     public void DnipropetrovskInternationalPassportTest() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.Identity.InternationalPassport;
-        String region = Constants.Settings.Region.Dnipropetrovska;
+        String service = Constants.Settings.Identity.INTERNATIONAL_PASSPORT;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
         String havePassport = "ні, буду отримувати перший раз";
         String biometrical = "ні";
         String phone = "0931234567";

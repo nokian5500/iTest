@@ -257,7 +257,7 @@ private String accessCode;
 
     private void typePhone() {
         phoneField.clear();
-        phoneField.sendKeys("+" + Constants.Settings.Data.Phone);
+        phoneField.sendKeys("+" + Constants.Settings.Data.PHONE);
     }
 
     public void typeSMSCode() {

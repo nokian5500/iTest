@@ -27,52 +27,60 @@ public class Constants {
 
         //    ------------------- Регионы  ------------------------------//
         public static class Region {
-            public static final String Dnipropetrovska = "Дніпропетровська";
-            public static final String Poltavska = "Полтавська";
+            public static final String DNIPROPETROVSKA = "Дніпропетровська";
+            public static final String POLTAVSKA = "Полтавська";
         }
 
         //    ------------------- Города  ------------------------------//
         public static class City {
-            public static final String Dnipropetrovsk = "Дніпропетровськ";
-            public static final String Poltava = "Полтава";
+            public static final String DNIPROPETROVSK = "Дніпропетровськ";
+            public static final String POLTAVA = "Полтава";
         }
 
         //    ------------------- Услуги  -----------------//
         // Міліція та ДАІ
         public static class ServiceMVD {
-            public static final String CriminalRecord = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством";
+            public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством";
         }
 
         //Взаємодія з державними органами
         public static class InteractionWithPublicAuthorities {
-            public static final String Subsidy = "Отримання субсидії на оплату житлово-комунальних послуг";
+            public static final String SUBSIDY = "Отримання субсидії на оплату житлово-комунальних послуг";
             public static final String REGISTRATION = "Зняття з реєстрації місця проживання";
             public static final String ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH = "Призначення соціальної допомоги при народженні дитини";
         }
 
         //Посвідчення особи, Громадянство, Місце проживання
         public static class Identity {
-            public static final String InternationalPassport = "Видача/заміна паспорта громадянина для виїзду за кордон";
+            public static final String INTERNATIONAL_PASSPORT = "Видача/заміна паспорта громадянина для виїзду за кордон";
         }
 
         //    ------------------- Данные для подачи заявок  -----------------//
         public static class Data {
-            public static final String Phone = "380102030405";
+            public static final String PHONE = "380102030405";
             public static final String FIO_UA = "Дмитро Олександрович Дубілет";
             public static final String FIO_RUS = "Дубилет Дмитрий Александрович";
             public static final String E_MAIL = "vidokgulich@gmail.com";
-            public static final String BirthDay = "01.01.1970";
-            public static final String BirthLocal = "Україна,Дніпропетровська,Дніпропетровськ";
-            public static final String Resident = "Українське";
+            public static final String BIRTH_DAY = "01.01.1970";
+            public static final String BIRTH_LOCAL = "Україна,Дніпропетровська,Дніпропетровськ";
+            public static final String RESIDENT = "Українське";
         }
 
         //    ------------------- Данные для входа в Банк ИД ПриаптБанк  -----------------//
         public static class BankIDprivatBank {
-            public static final String Login = "+380102030405";   // номер телефона
-            public static final String Password = "value";   // пароль
+            public static final String LOGIN = "+380102030405";   // номер телефона
+            public static final String PASSWORD = "value";   // пароль
             public static final String OTP1 = "12";   // Одноразовый пароль
             public static final String OTP2 = "34";   // Одноразовый пароль
             public static final String OTP3 = "56";   // Одноразовый пароль
+        }
+
+        public static class TestBankDetails {
+            public static final String BANK_NAME = "ПриватБанк";
+            public static final String BANK_MFO = "305299";
+            public static final String BANK_OKPO = "14360570";
+            public static final String BANK_IPN = "143605704021";
+            public static final String BANK_ACCOUNT = "1234567890123456";
         }
 
 
@@ -91,8 +99,8 @@ public class Constants {
 
     //    ------------------- Сервера для запуска тестов  ------------------------------//
     public static class Server {
-        public static final String VersionSERVER = "https://test-version.igov.org.ua";
-        public static final String TestSERVER = "https://test.igov.org.ua/";
+        public static final String VERSION_SERVER = "https://test-version.igov.org.ua";
+        public static final String TEST_SERVER = "https://test.igov.org.ua/";
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
     }

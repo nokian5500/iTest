@@ -17,7 +17,7 @@ public class TestServices extends TestBase {
     //@Test
     public void test_dependence_form1() throws AWTException {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_DEPENDENCE_FORM;
         String serviceName = "_test_dependence_form";
         String client = "отримувач особисто";
@@ -47,7 +47,7 @@ public class TestServices extends TestBase {
     @Test
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_DEPENDENCE_FORM;
         String serviceName = "_test_dependence_form";
         String client = "представник отримувача";
@@ -77,11 +77,11 @@ public class TestServices extends TestBase {
     //@Test
     public void test_fields_bankid() throws AWTException {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_FIELDS_BANKID;
         String serviceName = "_test_fields_bankid";
-        String region = Constants.Settings.Region.Dnipropetrovska;
-        String city = Constants.Settings.City.Dnipropetrovsk;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String city = Constants.Settings.City.DNIPROPETROVSK;
         String country = "country";
         String address = "address";
         String document = "src/resources/test.jpg";
@@ -110,12 +110,12 @@ public class TestServices extends TestBase {
     //@Test
     public void test_liqpay() {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_LIQPAY;
         String serviceName = "_test_liqpay";
-        String region = Constants.Settings.Region.Dnipropetrovska;
-        String city = Constants.Settings.City.Dnipropetrovsk;
-        String bankIdAddressField = Constants.Settings.Data.BirthLocal;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String city = Constants.Settings.City.DNIPROPETROVSK;
+        String bankIdAddressField = Constants.Settings.Data.BIRTH_LOCAL;
         String vin = "12345678912345678";
         String brand = "brand";
         String model = "model";
@@ -151,7 +151,7 @@ public class TestServices extends TestBase {
     //@Test
     public void test_mailer() {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_MAILER;
 
         // --------------------- Тест-кейс----------------------//
@@ -161,7 +161,7 @@ public class TestServices extends TestBase {
     //@Test
     public void test_print_form() {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_PRINT_FORM;
 
         // --------------------- Тест-кейс----------------------//
@@ -171,7 +171,7 @@ public class TestServices extends TestBase {
     //@Test
     public void test_queue_cancel() {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_QUEUE_CANCEL;
 
         // --------------------- Тест-кейс----------------------//
@@ -181,7 +181,7 @@ public class TestServices extends TestBase {
     //@Test
     public void test_ZP_cnap_mailer() {
         // ------------------- Тестовые данные -------------------//
-        String server = Constants.Server.VersionSERVER;
+        String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_ZP_CNAP_MAILER;
 
         // --------------------- Тест-кейс----------------------//
