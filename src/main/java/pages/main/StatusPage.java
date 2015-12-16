@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.service.authorities.interaction.AssignSocialAssistanceForChildbbirthPage;
+import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
@@ -68,7 +68,7 @@ public class StatusPage extends ApplicationManager {
     }
 
     public StatusPage inputReferenceNumberForAssignSocialAssistanceForChildbirth() {
-        refIdField.sendKeys(AssignSocialAssistanceForChildbbirthPage.referenceNumber);
+        refIdField.sendKeys(AssignSocialAssistanceForChildBirthPage.referenceNumber);
         return this;
     }
 

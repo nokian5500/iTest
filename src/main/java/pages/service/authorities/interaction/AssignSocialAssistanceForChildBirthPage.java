@@ -14,11 +14,11 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-public class AssignSocialAssistanceForChildbbirthPage extends BaseServicePage {
+public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
 
     private WebDriver driver;
 
-    public AssignSocialAssistanceForChildbbirthPage(WebDriver driver) {
+    public AssignSocialAssistanceForChildBirthPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
@@ -84,25 +84,25 @@ public class AssignSocialAssistanceForChildbbirthPage extends BaseServicePage {
 
     //------------------- Методы ввода данных в поля -------------------//
 
-    public AssignSocialAssistanceForChildbbirthPage typeInAdress1Field(String adress1){
+    public AssignSocialAssistanceForChildBirthPage typeInAdress1Field(String adress1){
         adress1Field.clear();
         adress1Field.sendKeys(adress1); // ввод адреса регистрации
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInAdress2Field(String adress2){
+    public AssignSocialAssistanceForChildBirthPage typeInAdress2Field(String adress2){
         adress2Field.clear();
         adress2Field.sendKeys(adress2); // ввод адреса проживания
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInPhoneField(String phone){
+    public AssignSocialAssistanceForChildBirthPage typeInPhoneField(String phone){
         phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInEmailField(String email){
+    public AssignSocialAssistanceForChildBirthPage typeInEmailField(String email){
         emailField.clear();
         emailField.sendKeys(email); // ввод эмейла
         return this;
@@ -114,7 +114,7 @@ public class AssignSocialAssistanceForChildbbirthPage extends BaseServicePage {
                 .setContents(stringSelection, null);
     }
 
-    public AssignSocialAssistanceForChildbbirthPage attachDocument (WebElement locator, String document) throws AWTException {
+    public AssignSocialAssistanceForChildBirthPage attachDocument (WebElement locator, String document) throws AWTException {
         File file = new File(document);
         //
         locator.click();
@@ -139,53 +139,53 @@ public class AssignSocialAssistanceForChildbbirthPage extends BaseServicePage {
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage selectArea(String area){
+    public AssignSocialAssistanceForChildBirthPage selectArea(String area){
         new Select(areaField).selectByVisibleText(area);  // выбор раена обслуживания
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage selectTransferTypeField(String area){
+    public AssignSocialAssistanceForChildBirthPage selectTransferTypeField(String area){
         new Select(transferTypeField).selectByVisibleText(area);  // выбор перевода денег
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInNumberPostOfficeField(String postCode){
+    public AssignSocialAssistanceForChildBirthPage typeInNumberPostOfficeField(String postCode){
         numberPostOfficeField.clear();
         numberPostOfficeField.sendKeys(postCode);
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInBankNameField(String bankName){
+    public AssignSocialAssistanceForChildBirthPage typeInBankNameField(String bankName){
         bankNameField.clear();
         bankNameField.sendKeys(bankName); // Назва банку
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInBankMFOField(String bankMFO){
+    public AssignSocialAssistanceForChildBirthPage typeInBankMFOField(String bankMFO){
         bankMFOField.clear();
         bankMFOField.sendKeys(bankMFO); // МФО банку
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInBankOKPOField(String bankOKPO){
+    public AssignSocialAssistanceForChildBirthPage typeInBankOKPOField(String bankOKPO){
         bankOKPOField.clear();
         bankOKPOField.sendKeys(bankOKPO); // ЄДРПОУ банку
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage typeInBankAccountField(String bankAccount){
+    public AssignSocialAssistanceForChildBirthPage typeInBankAccountField(String bankAccount){
         bankAccountField.clear();
         bankAccountField.sendKeys(bankAccount); // номер рахунку/картки в банку
         return this;
     }
 
     @Override
-    public AssignSocialAssistanceForChildbbirthPage clickConfirmButton() {
+    public AssignSocialAssistanceForChildBirthPage clickConfirmButton() {
         super.clickConfirmButton();
         return this;
     }
 
-    public AssignSocialAssistanceForChildbbirthPage verifyServiceSuccessCreated(String email){
+    public AssignSocialAssistanceForChildBirthPage verifyServiceSuccessCreated(String email){
         Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email); // проверка успешного создания заявки
         return this;
     }

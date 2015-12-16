@@ -16,7 +16,7 @@ import pages.main.MyJournalPage;
 import pages.main.SelectAreaPage;
 import pages.main.StatisticTab;
 import pages.main.StatusPage;
-import pages.service.authorities.interaction.AssignSocialAssistanceForChildbbirthPage;
+import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
@@ -45,7 +45,7 @@ public class TestBase {
     public TestLiqpayPage testLiqpayPage;
     public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
-    public AssignSocialAssistanceForChildbbirthPage assignSocialAssistanceForChildBirthPage;
+    public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
 
     @BeforeClass()
     public static void setUp() {
@@ -75,7 +75,7 @@ public class TestBase {
         testLiqpayPage = new TestLiqpayPage(driver);
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
-        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildbbirthPage(driver);
+        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
         driver.get(Constants.Server.VERSION_SERVER);
     }
 }
