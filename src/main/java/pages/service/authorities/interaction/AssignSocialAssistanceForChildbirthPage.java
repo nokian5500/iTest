@@ -191,7 +191,7 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     }
 
 
-    //------------------- методы по работе с номером заявки -------------------//
+    //------------------- Методы по работе с номером заявки -------------------//
 
     @Override
     public String saveReferenceNumber() {

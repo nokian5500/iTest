@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштовогозв'язку")
+    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку")
     public void successMessagesServicesByPostOffice() throws AWTException {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
