@@ -7,13 +7,13 @@ import test.TestBase;
 
 import java.awt.*;
 
-public class AssignSocialAssistanceForChildbirth extends TestBase {
+public class AssignSocialAssistanceForChildBirth extends TestBase {
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштовогозв'язку")
     public void successMessagesServicesByPostOffice() throws AWTException {
         //------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.AssignSocialAssistanceForChildbirth;
-        String region = Constants.Settings.Region.Dnipropetrovska;
+        String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
@@ -32,14 +32,14 @@ public class AssignSocialAssistanceForChildbirth extends TestBase {
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(assignSocialAssistanceForChildbirthPage.serviceName.getText(), service);
-        assignSocialAssistanceForChildbirthPage
+        Assert.assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
                 .typeInPhoneField(phone)
-                .attachDocument(assignSocialAssistanceForChildbirthPage.attachInnScanDocument, innScanDocument)
-                .attachDocument(assignSocialAssistanceForChildbirthPage.attachBirthScanDocument, birthScanDocument)
+                .attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument)
+                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument)
                 .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInNumberPostOfficeField(numberPostOffice)
@@ -55,8 +55,8 @@ public class AssignSocialAssistanceForChildbirth extends TestBase {
     @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку")
     public void successMessagesServicesByAccountBank() throws AWTException {
         //------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.AssignSocialAssistanceForChildbirth;
-        String region = Constants.Settings.Region.Dnipropetrovska;
+        String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
@@ -65,11 +65,11 @@ public class AssignSocialAssistanceForChildbirth extends TestBase {
         String birthScanDocument = "src/resources/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "на рахунок у банку";
-        String bankName = "ПриватБанк";
-        String bankMFO = "305299";
-        String bankOKPO = "14360570";
-        String bankAccount = "1234567890123456";
-        String bankTicket = "/src/resources/test.jpg";
+        String bankName = Constants.Settings.TestBankDetails.BANK_NAME;
+        String bankMFO = Constants.Settings.TestBankDetails.BANK_MFO;
+        String bankOKPO = Constants.Settings.TestBankDetails.BANK_OKPO;
+        String bankAccount = Constants.Settings.TestBankDetails.BANK_ACCOUNT;
+        String bankTicket = "src/resources/test.jpg";
         String status = "Заявка подана";
 
         //------------------- Тест-кейс -------------------//
@@ -79,21 +79,21 @@ public class AssignSocialAssistanceForChildbirth extends TestBase {
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(assignSocialAssistanceForChildbirthPage.serviceName.getText(), service);
-        assignSocialAssistanceForChildbirthPage
+        Assert.assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
                 .typeInPhoneField(phone)
-                .attachDocument(assignSocialAssistanceForChildbirthPage.attachInnScanDocument, innScanDocument)
-                .attachDocument(assignSocialAssistanceForChildbirthPage.attachBirthScanDocument, birthScanDocument)
+                .attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument)
+                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument)
                 .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInBankNameField(bankName)
                 .typeInBankMFOField(bankMFO)
                 .typeInBankOKPOField(bankOKPO)
                 .typeInBankAccountField(bankAccount)
-                .attachDocument(assignSocialAssistanceForChildbirthPage.attachBankTicket, bankTicket)
+                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBankTicket, bankTicket)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();

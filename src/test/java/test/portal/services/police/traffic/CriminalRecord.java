@@ -11,10 +11,10 @@ public class CriminalRecord extends TestBase {
     @Test
     public void DnipropetrovskCriminalRecord() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.ServiceMVD.CriminalRecord;
-        String region = Constants.Settings.Region.Dnipropetrovska;
-        String city = Constants.Settings.City.Dnipropetrovsk;
-        String birthDate = Constants.Settings.Data.BirthDay;
+        String service = Constants.Settings.ServiceMVD.CRIMINAL_RECORD;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String city = Constants.Settings.City.DNIPROPETROVSK;
+        String birthDate = Constants.Settings.Data.BIRTH_DAY;
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";

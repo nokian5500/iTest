@@ -15,9 +15,9 @@ public class Registration extends TestBase {
     public void unregisterFromCurrentAddressTest() {
 
         String service = Constants.Settings.InteractionWithPublicAuthorities.REGISTRATION;
-        String region = Constants.Settings.Region.Dnipropetrovska;
-        String city = Constants.Settings.City.Dnipropetrovsk;
-        String birthDate = Constants.Settings.Data.BirthDay;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String city = Constants.Settings.City.DNIPROPETROVSK;
+        String birthDate = Constants.Settings.Data.BIRTH_DAY;
         String birthLocation = "Україна,Дніпропетровська,Дніпропетровськ";
         String nationality = "Україна";
         String district = "Амур-Нижньодніпровський";

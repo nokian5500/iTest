@@ -82,8 +82,8 @@ public class BankIdAuthorizationPage extends ApplicationManager {
     //    ------------------- Метод ввода логина пароля ------------------------------//
     public void typeLoginPassword() {
         phone.clear();
-        phone.sendKeys(Constants.Settings.BankIDprivatBank.Login);
-        password.sendKeys(Constants.Settings.BankIDprivatBank.Password);
+        phone.sendKeys(Constants.Settings.BankIDprivatBank.LOGIN);
+        password.sendKeys(Constants.Settings.BankIDprivatBank.PASSWORD);
         signIn.click();
     }
 
