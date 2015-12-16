@@ -1,6 +1,6 @@
 package listener;
 
-import appLogic.ApplicationManager;
+import common.ApplicationManager;
 import com.google.common.io.Files;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
