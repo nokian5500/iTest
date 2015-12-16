@@ -11,8 +11,8 @@ public class Subsidy extends TestBase {
     @Test
     public void DnipropetrovskSubsidyTest() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.Subsidy;
-        String region = Constants.Settings.Region.Dnipropetrovska;
+        String service = Constants.Settings.InteractionWithPublicAuthorities.SUBSIDY;
+        String region = Constants.Settings.Region.DNIPROPETROVSKA;
         String area = "Амур-Нижньодніпровський район, м.Дніпропетровськ";
         String placeOfLiving = "test";
         String phone = "0931234567";
