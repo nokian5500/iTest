@@ -7,7 +7,7 @@ import test.TestBase;
 
 import java.awt.*;
 
-public class AssignSocialAssistanceForChildBirth extends TestBase {
+public class AssignSocialAssistanceForChildbbirth extends TestBase {
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку")
     public void successMessagesServicesByPostOffice() throws AWTException {
