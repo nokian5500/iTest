@@ -184,12 +184,10 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @Override
     public AssignSocialAssistanceForChildBirthPage clickConfirmButton() {
         super.clickConfirmButton();
-        pause(2000); // временно
         return this;
     }
 
     public AssignSocialAssistanceForChildBirthPage verifyServiceSuccessCreated(String email){
-        pause(8000); // временно
         Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email); // проверка успешного создания заявки
         return this;
     }

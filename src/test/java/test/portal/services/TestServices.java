@@ -41,7 +41,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+   // @Test
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -146,13 +146,29 @@ public class TestServices extends TestBase {
     }
 
     //@Test
-    public void test_mailer() {
+    public void test_mailer() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_MAILER;
+        String serviceName = "_test_mailer";
+        String email = Constants.Settings.Data.E_MAIL;
+        String document = "src/test/resources/test.jpg";
+        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
+        authorizationPage.privatBankAuthorization();
+        Assert.assertEquals(testMailerPage.getServiceName(), serviceName);
+        testMailerPage
+                .typeInEmailField(email)
+                .attachDocument(document)
+                .clickConfirmButton()
+                .verifyServiceSuccessCreated()
+                .saveReferenceNumber();
+        mainPage.goToStatus();
+        statusPage.inputReferenceNumberForTest_mailer()
+                .clickViewStatusButton()
+                .verifyStatus(status);
     }
 
     //@Test

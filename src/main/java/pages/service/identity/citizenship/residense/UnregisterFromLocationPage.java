@@ -120,7 +120,6 @@ public class UnregisterFromLocationPage extends BaseServicePage {
 
     public UnregisterFromLocationPage selectMilitaryStatus(String militaryStatus) {
         new Select(militaryStatusField).selectByVisibleText(militaryStatus);
-        pause(2000); // временно
         return this;
     }
 
@@ -136,7 +135,6 @@ public class UnregisterFromLocationPage extends BaseServicePage {
 
     public UnregisterFromLocationPage selectTime() {
         new Select(timeField).selectByValue("0");
-        pause(1000);
         return this;
     }
 
@@ -154,9 +152,7 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     }
 
     public UnregisterFromLocationPage selectDay() {
-        pause(2000); // временно
         new Select(dayField).selectByValue("0");
-        pause(1000); // временно
         return this;
     }
 

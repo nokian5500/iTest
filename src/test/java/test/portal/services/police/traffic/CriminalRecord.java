@@ -23,12 +23,10 @@ public class CriminalRecord extends TestBase {
         String status = "Заявка подана";
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
-        app.pause(5000); // временно
         mainPage.clickService(service);
-        app.pause(7000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
-        selectAreaPage.selectCity(city);
+        //selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(criminalRecordPage.getServiceName(), service);
 

@@ -38,9 +38,7 @@ public class Subsidy extends TestBase {
 
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
-        app.pause(4000); // временно
         mainPage.clickService(service);
-        app.pause(6000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();

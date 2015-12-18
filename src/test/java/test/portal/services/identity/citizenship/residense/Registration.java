@@ -31,9 +31,7 @@ public class Registration extends TestBase {
 
 
         mainPage.typeInSearchField(service);
-        app.pause(5000); // временно
         mainPage.clickService(service);
-        app.pause(7000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         selectAreaPage.selectCity(city);

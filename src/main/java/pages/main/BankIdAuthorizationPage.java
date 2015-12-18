@@ -51,7 +51,6 @@ public class BankIdAuthorizationPage extends ApplicationManager {
     }
 
     public void logOut() {
-        pause(3000);
         logOutButton.click();
     }
 
@@ -71,16 +70,12 @@ public class BankIdAuthorizationPage extends ApplicationManager {
 
     //    ------------------- Вибор метода входа - ИД Банк  ------------------------------//
     public void selectMethodBankID() {
-        pause(3000); // временно
         BankID.click();
-        pause(3000); // временно
     }
 
     //    ------------------- Вибор Банка для входа  ------------------------------//
     public void selectPrivatBankBankID() {
-        pause(3000); // временно
         privatBank.click();
-        pause(3000); // временно
     }
 
     //    ------------------- Метод ввода логина пароля ------------------------------//
@@ -89,18 +84,14 @@ public class BankIdAuthorizationPage extends ApplicationManager {
         phone.sendKeys(Constants.Settings.BankIDprivatBank.LOGIN);
         password.sendKeys(Constants.Settings.BankIDprivatBank.PASSWORD);
         signIn.click();
-        pause(3000); // временно
+
     }
 
     public void privatBankAuthorization() {
         selectMethodBankID();
         selectPrivatBankBankID();
-        pause(2000); // временно
         typeLoginPassword();
-        pause(2000); // временно
         typeOTP();
-        pause(4000); // временно
         verifyFIO();
-        pause(5000); // временно
     }
 }

@@ -14,6 +14,7 @@ import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import pages.service.test.TestDependenceFormPage;
 import pages.service.test.TestFieldsBankidPage;
 import pages.service.test.TestLiqpayPage;
+import pages.service.test.TestMailerPage;
 
 public class StatusPage extends ApplicationManager {
 
@@ -62,6 +63,12 @@ public class StatusPage extends ApplicationManager {
         return this;
     }
 
+    public StatusPage inputReferenceNumberForTest_mailer() {
+        refIdField.sendKeys(TestMailerPage.referenceNumber);
+        return this;
+    }
+
+
     public StatusPage inputReferenceNumberForUnregisterFromLocation() {
         refIdField.sendKeys(UnregisterFromLocationPage.referenceNumber);
         return this;
@@ -78,7 +85,8 @@ public class StatusPage extends ApplicationManager {
     }
 
     public void verifyStatus(String status) {
-        pause(2000);
         driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
     }
 }
+
+

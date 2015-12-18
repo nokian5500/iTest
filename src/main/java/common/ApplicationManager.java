@@ -57,6 +57,7 @@ public class ApplicationManager {
         // Create browser (using given properties) & maximize it
         driver = WebDriverFactory.getInstance(gridHubUrl, browser, username, password);
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         // Create wait object
         wait = new WebDriverWait(driver, 20);

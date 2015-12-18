@@ -1,6 +1,7 @@
 package test;
 
 import common.ApplicationManager;
+import pages.service.test.TestMailerPage;
 import utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -39,6 +40,7 @@ public class TestBase {
     public TestDependenceFormPage testDependenceFormPage;
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
+    public TestMailerPage testMailerPage;
     public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
@@ -64,6 +66,7 @@ public class TestBase {
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
+        testMailerPage = new TestMailerPage(driver);
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
