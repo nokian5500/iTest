@@ -1,6 +1,5 @@
 package test.portal.services;
 
-
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,9 +7,7 @@ import test.TestBase;
 
 import java.awt.*;
 
-
 public class TestServices extends TestBase {
-
 
     //TODO https://github.com/e-government-ua/iTest/issues/1
 
@@ -22,7 +19,7 @@ public class TestServices extends TestBase {
         String serviceName = "_test_dependence_form";
         String client = "отримувач особисто";
         String info = "test";
-        String document = "src/resources/test.jpg";
+        String document = "src/test/resources/test.jpg";
         String email = "test@gmail.com";
         String status = "Заявка подана";
 
@@ -52,7 +49,7 @@ public class TestServices extends TestBase {
         String serviceName = "_test_dependence_form";
         String client = "представник отримувача";
         String info = "test";
-        String document = "src/resources/test.jpg";
+        String document = "src/test/resources/test.jpg";
         String email = "test@gmail.com";
         String status = "Заявка подана";
 
@@ -84,7 +81,7 @@ public class TestServices extends TestBase {
         String city = Constants.Settings.City.DNIPROPETROVSK;
         String country = "country";
         String address = "address";
-        String document = "src/resources/test.jpg";
+        String document = "src/test/resources/test.jpg";
         String status = "Заявка подана";
 
 

@@ -6,8 +6,7 @@ import test.TestBase;
 
 public class MyJournal extends TestBase {
 
-
-    @Test
+    @Test (priority = 1)
     public void myJournalTest() throws Exception {
         mainPage.goToMyLog();
         Assert.assertEquals(journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
@@ -24,6 +23,4 @@ public class MyJournal extends TestBase {
 
 
     }
-
-
 }

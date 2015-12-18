@@ -1,13 +1,9 @@
 package test;
 
 import common.ApplicationManager;
-import common.Constants;
-import listener.ScreenshotListener;
+import utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import pages.main.AboutPortalPage;
 import pages.main.BankIdAuthorizationPage;
 import pages.main.DocumentsPage;
@@ -29,7 +25,7 @@ import pages.service.test.TestLiqpayPage;
 public class TestBase {
 
     private static WebDriver driver;
-    public ApplicationManager app;
+    public static ApplicationManager app;
     public MainPage mainPage;
     public BankIdAuthorizationPage authorizationPage;
     public DocumentsPage documentsPage;
@@ -47,19 +43,14 @@ public class TestBase {
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
 
-    @BeforeClass()
-    public static void setUp() {
-        driver = ApplicationManager.startTestsIn(Constants.Settings.BROWSER);
+    @BeforeSuite
+    public void setUp() {
+        driver = ApplicationManager.initDriver();
     }
 
-    @AfterClass()
-    public static void tearsDown() {
-        driver.quit();
-    }
-
-    @BeforeMethod()
+    @BeforeMethod
     public void set() {
-        app = new ApplicationManager(driver);
+        app = new ApplicationManager();
         mainPage = new MainPage(driver);
         authorizationPage = new BankIdAuthorizationPage(driver);
         documentsPage = new DocumentsPage(driver);
@@ -76,6 +67,16 @@ public class TestBase {
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
-        driver.get(Constants.Server.VERSION_SERVER);
+        driver.get(app.getBaseUrl());
+    }
+
+    @AfterClass
+    public void clean() {
+        driver.manage().deleteAllCookies();
+    }
+
+    @AfterSuite()
+    public void tearsDown() {
+        driver.quit();
     }
 }

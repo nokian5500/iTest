@@ -4,11 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.TestBase;
 
-
 public class MyDocument extends TestBase {
 
-
-    @Test
+    @Test (priority = 1)
     public void getAccessToDocumentTest() {
         mainPage.goToDocuments();
         Assert.assertEquals(documentsPage.formSignInBankId.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
@@ -18,6 +16,7 @@ public class MyDocument extends TestBase {
         Assert.assertEquals(documentsPage.infoBlockDocument.getText(), "Тут знаходяться всі Ваші документи, які були раніше завантажені авторизованими організаціями. Ви можете їх скачати або надати доступ третім особам (в тому числі іншим державним або приватним організаціям).");
         documentsPage.getAccessCode("Test");
         documentsPage.isAccessCodeNotNull();
+        app.pause(2000); // временно
         Assert.assertEquals(documentsPage.alertInfoBlock.getText(), "Посилання, за яким користувач може отримати доступ");
         documentsPage.clickOkButton();
         authorizationPage.logOut();
@@ -29,7 +28,7 @@ public class MyDocument extends TestBase {
         documentsPage.isDocumentFound();
     }
 
-    @Test
+    @Test (priority = 2)
     public void getAccessToDocumentWithPhoneEmailTest() {
         mainPage.goToDocuments();
         Assert.assertEquals(documentsPage.formSignInBankId.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
@@ -39,7 +38,6 @@ public class MyDocument extends TestBase {
         Assert.assertEquals(documentsPage.infoBlockDocument.getText(), "Тут знаходяться всі Ваші документи, які були раніше завантажені авторизованими організаціями. Ви можете їх скачати або надати доступ третім особам (в тому числі іншим державним або приватним організаціям).");
         documentsPage.getAccessCodeWithPhoneEmail("Test");
         documentsPage.isAccessCodeNotNull();
-        app.pause(2000);
         Assert.assertEquals(documentsPage.alertInfoBlock.getText(), "Посилання, за яким користувач може отримати доступ");
         documentsPage.clickOkButton();
         authorizationPage.logOut();
@@ -55,8 +53,7 @@ public class MyDocument extends TestBase {
 
     }
 
-
-    @Test
+    @Test (priority = 3)
     public void checkNotaryTabTest() {
         mainPage.goToDocuments();
         documentsPage.goToNotaryTab();
@@ -64,5 +61,4 @@ public class MyDocument extends TestBase {
                 "Докладніше про розділ Документи на порталі iGov\n" +
                 "(розділ у процесі розробки)");
     }
-
 }

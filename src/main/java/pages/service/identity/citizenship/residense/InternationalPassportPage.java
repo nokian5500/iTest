@@ -66,23 +66,26 @@ public class InternationalPassportPage extends BaseServicePage {
 
     public InternationalPassportPage selectArea(String area) {
         new Select(areaField).selectByVisibleText(area);
+        pause(1000); // временно
         return this;
     }
 
     public InternationalPassportPage selectDay() {
         new Select(dayField).selectByValue("0");
+        pause(1000); // временно
         return this;
     }
 
     public InternationalPassportPage selectTime() {
         new Select(timeField).selectByValue("0");
-        pause(1000);
+        pause(1000); // временно
         return this;
     }
 
     @Override
     public InternationalPassportPage clickConfirmButton() {
         super.clickConfirmButton();
+        pause(1000); // временно
         return this;
     }
 

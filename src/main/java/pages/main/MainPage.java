@@ -59,6 +59,7 @@ public class MainPage extends ApplicationManager {
 
     //    ------------------- Метод выбора услуги  ------------------------------//
     public void clickService(String service) {
+        pause(2000); // временно
         driver.findElement(By.xpath("//a[contains(.,'" + service + "')]")).click();
 
     }
@@ -77,7 +78,9 @@ public class MainPage extends ApplicationManager {
 
     //    ------------------- Метод перехода в меню документов  ------------------------------//
     public void goToDocuments() {
+        pause(3000); // временно
         documentsLink.click();
+        pause(4000); // временно
     }
 
     //    ------------------- Метод перехода в меню статусы  ------------------------------//
@@ -92,6 +95,7 @@ public class MainPage extends ApplicationManager {
 
     //    ------------------- Метод перехода в меню про портал  ------------------------------//
     public void goToAboutPortal() {
+        pause(2000); // временно
         aboutPortalLink.click();
     }
 
@@ -102,12 +106,6 @@ public class MainPage extends ApplicationManager {
 
     public void goToService() {
         driver.get("https://test-version.igov.org.ua/service/176/general"); //временно из за бага поиска
+        pause(2000); // временно
     }
-
 }
-
-
-
-
-
-

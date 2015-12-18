@@ -7,8 +7,7 @@ import test.TestBase;
 
 public class Subsidy extends TestBase {
 
-
-    @Test
+    @Test (priority = 1)
     public void DnipropetrovskSubsidyTest() {
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Settings.InteractionWithPublicAuthorities.SUBSIDY;
@@ -39,8 +38,9 @@ public class Subsidy extends TestBase {
 
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
-        app.pause(5000);
+        app.pause(4000); // временно
         mainPage.clickService(service);
+        app.pause(6000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
@@ -78,5 +78,3 @@ public class Subsidy extends TestBase {
 
     }
 }
-
-

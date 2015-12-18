@@ -206,6 +206,7 @@ public class SubsidyPage extends BaseServicePage {
     @Override
     public SubsidyPage clickConfirmButton() {
         super.clickConfirmButton();
+        pause(7000); // временно
         return this;
     }
 

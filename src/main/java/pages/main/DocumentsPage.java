@@ -222,8 +222,10 @@ private String accessCode;
         clickShareDocumentLink();
         fillNameOfRecipientField(name);
         clickGetCodeButton();
+        pause(2000); // временно
         saveCodeToAVariable();
         clickOkButton();
+        pause(2000); // временно
     }
 
 
@@ -234,6 +236,7 @@ private String accessCode;
         typePhone();
         emailField.sendKeys(Constants.Settings.Data.E_MAIL);
         clickGetCodeButton();
+        pause(5000); // временно
         saveCodeToAVariable();
         clickOkButton();
     }
@@ -244,10 +247,11 @@ private String accessCode;
 
     public void searchDocumentWithCode() {
         clickSearchWithCodeLink();
+        pause(2000); // временно
         selectionOperator("iGov");
         inputCode();
         searchDocumentByCode();
-        pause(2000);
+        pause(2000); // временно
 
     }
 
@@ -263,10 +267,6 @@ private String accessCode;
     public void typeSMSCode() {
         inputSMSCodeField.sendKeys("11111");
         confirmDocumentButton.click();
-
+        pause(3000); // временно
     }
-
-
 }
-
-
