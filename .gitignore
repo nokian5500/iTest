@@ -1,5 +1,5 @@
-*.iml
-.idea/
+#*.iml
+#.idea/
 /target/*
 /test-output/*
 /TestReport/*
@@ -8,6 +8,6 @@
 .DS_Store
 .checkstyle
 .classpath
-.idea
+#.idea
 .project
 .settings
