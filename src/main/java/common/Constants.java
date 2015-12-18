@@ -1,61 +1,41 @@
 package common;
 
-
-import java.util.Properties;
-
 public class Constants {
 
     public static class Settings {
 
-        //    ------------------- Запуск в браузерах  ------------------------------//
-        public static final String BROWSER;
-
-        static {
-            Properties prop = new Properties();
-            try {
-
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-            if (System.getProperty("BROWSER") != null) {
-                BROWSER = System.getProperty("BROWSER");
-            } else {
-                BROWSER = "firefox";// = "chrome"; //firefox or proxy or myfirefox or chrome or ie or opera or htmlunit
-            }
-
-        }
-
-        //    ------------------- Регионы  ------------------------------//
+        //------------------- Регионы  -------------------//
         public static class Region {
             public static final String DNIPROPETROVSKA = "Дніпропетровська";
             public static final String POLTAVSKA = "Полтавська";
         }
 
-        //    ------------------- Города  ------------------------------//
+        //------------------- Города  --------------------//
         public static class City {
             public static final String DNIPROPETROVSK = "Дніпропетровськ";
             public static final String POLTAVA = "Полтава";
         }
 
-        //    ------------------- Услуги  -----------------//
+        //------------------- Услуги  --------------------//
+
         // Міліція та ДАІ
         public static class ServiceMVD {
-            public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством";
+            public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством (терміново)";
         }
 
-        //Взаємодія з державними органами
+        // Взаємодія з державними органами
         public static class InteractionWithPublicAuthorities {
             public static final String SUBSIDY = "Отримання субсидії на оплату житлово-комунальних послуг";
             public static final String REGISTRATION = "Зняття з реєстрації місця проживання";
             public static final String ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH = "Призначення соціальної допомоги при народженні дитини";
         }
 
-        //Посвідчення особи, Громадянство, Місце проживання
+        // Посвідчення особи, Громадянство, Місце проживання
         public static class Identity {
             public static final String INTERNATIONAL_PASSPORT = "Видача/заміна паспорта громадянина для виїзду за кордон";
         }
 
-        //    ------------------- Данные для подачи заявок  -----------------//
+        //------------------- Данные для подачи заявок  --------------//
         public static class Data {
             public static final String PHONE = "380102030405";
             public static final String FIO_UA = "Дмитро Олександрович Дубілет";
@@ -66,7 +46,8 @@ public class Constants {
             public static final String RESIDENT = "Українське";
         }
 
-        //    ------------------- Данные для входа в Банк ИД ПриаптБанк  -----------------//
+        //---------- Данные для входа в Банк ИД ПриаптБанк  ----------//
+
         public static class BankIDprivatBank {
             public static final String LOGIN = "+380102030405";   // номер телефона
             public static final String PASSWORD = "value";   // пароль
@@ -82,11 +63,9 @@ public class Constants {
             public static final String BANK_IPN = "143605704021";
             public static final String BANK_ACCOUNT = "1234567890123456";
         }
-
-
     }
 
-    //    ------------------- УРЛ для работы с тестовыми услугами  -----------------//
+    //------------------- УРЛ для работы с тестовыми услугами  ------------------//
     public static class TestService {
         public static final String TEST_DEPENDENCE_FORM = "/service/671/general";
         public static final String TEST_FIELDS_BANKID = "/service/720/general";
@@ -97,12 +76,11 @@ public class Constants {
         public static final String TEST_ZP_CNAP_MAILER = "/service/1426/general";
     }
 
-    //    ------------------- Сервера для запуска тестов  ------------------------------//
+    //--------------------- Сервера для запуска тестов  ---------------------------//
     public static class Server {
         public static final String VERSION_SERVER = "https://test-version.igov.org.ua";
         public static final String TEST_SERVER = "https://test.igov.org.ua/";
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
     }
-
 }

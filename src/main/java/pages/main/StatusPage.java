@@ -78,6 +78,7 @@ public class StatusPage extends ApplicationManager {
     }
 
     public void verifyStatus(String status) {
+        pause(2000);
         driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
     }
 }

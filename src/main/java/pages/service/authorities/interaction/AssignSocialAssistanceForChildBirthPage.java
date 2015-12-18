@@ -40,10 +40,10 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @FindBy(name = "email")
     public WebElement emailField; //поле эмейла
 
-    @FindBy(xpath = "//form[@name='inn_scan']/button")
+    @FindBy(xpath = "//p[@name='inn_scan']/button")
     public WebElement attachInnScanDocument;// поле аттача справки о присвоении ИНН
 
-    @FindBy(xpath = "//form[@name='birthdocument_scan']/button")
+    @FindBy(xpath = "//p[@name='birthdocument_scan']/button")
     public WebElement attachBirthScanDocument;// поле аттача свидетельства о рождении
 
     @FindBy(name = "area")
@@ -67,7 +67,7 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @FindBy(name = "bank_account")
     public WebElement bankAccountField; //
 
-    @FindBy(xpath = "//form[@name='bankticket']/button")
+    @FindBy(xpath = "//p[@name='bankticket']/button")
     public WebElement attachBankTicket;// поле аттача довідки з банку з реквізитами рахунку
 
     @FindBy(xpath = "//button[@class='btn btn-info']")
@@ -118,9 +118,11 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
         File file = new File(document);
         //
         locator.click();
+        pause(2000); // временно
         //
         setClipboardData(file.getAbsolutePath());
         //
+        pause(2000); // временно
         Robot robot = new Robot();
         robot.delay(1000);
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -182,10 +184,12 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @Override
     public AssignSocialAssistanceForChildBirthPage clickConfirmButton() {
         super.clickConfirmButton();
+        pause(2000); // временно
         return this;
     }
 
     public AssignSocialAssistanceForChildBirthPage verifyServiceSuccessCreated(String email){
+        pause(8000); // временно
         Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email); // проверка успешного создания заявки
         return this;
     }

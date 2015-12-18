@@ -101,6 +101,7 @@ public class TestDependenceFormPage extends BaseServicePage {
 
     @Override
     public TestDependenceFormPage clickConfirmButton() {
+        pause(2000);
         super.clickConfirmButton();
         return this;
     }

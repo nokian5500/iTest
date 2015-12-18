@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку")
+    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 1)
     public void successMessagesServicesByPostOffice() throws AWTException {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
@@ -18,8 +18,8 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
         String email = "test@gmail.com";
-        String innScanDocument = "src/resources/test.jpg";
-        String birthScanDocument = "src/resources/test.jpg";
+        String innScanDocument = "src/test/resources/test.jpg";
+        String birthScanDocument = "src/test/resources/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "через національного оператора поштового зв'язку";
         String numberPostOffice = "12345";
@@ -27,8 +27,9 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
 
         //------------------- Тест-кейс -------------------//
         mainPage.typeInSearchField(service);
-        app.pause(4000);
+        app.pause(6000); // временно
         mainPage.clickService(service);
+        app.pause(4000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
@@ -52,7 +53,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку")
+    @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 2)
     public void successMessagesServicesByAccountBank() throws AWTException {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
@@ -61,21 +62,22 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
         String email = "test@gmail.com";
-        String innScanDocument = "src/resources/test.jpg";
-        String birthScanDocument = "src/resources/test.jpg";
+        String innScanDocument = "src/test/resources/test.jpg";
+        String birthScanDocument = "src/test/resources/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "на рахунок у банку";
         String bankName = Constants.Settings.TestBankDetails.BANK_NAME;
         String bankMFO = Constants.Settings.TestBankDetails.BANK_MFO;
         String bankOKPO = Constants.Settings.TestBankDetails.BANK_OKPO;
         String bankAccount = Constants.Settings.TestBankDetails.BANK_ACCOUNT;
-        String bankTicket = "src/resources/test.jpg";
+        String bankTicket = "src/test/resources/test.jpg";
         String status = "Заявка подана";
 
         //------------------- Тест-кейс -------------------//
         mainPage.typeInSearchField(service);
-        app.pause(4000);
+        app.pause(3000); // временно
         mainPage.clickService(service);
+        app.pause(8000); // временно
         Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();

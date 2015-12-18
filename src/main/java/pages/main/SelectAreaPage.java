@@ -29,11 +29,13 @@ public class SelectAreaPage extends ApplicationManager {
     //    ------------------- Метод выбора региона  ------------------------------//
     public void selectRegion(String region) {
         regions.click();
+        pause(6000); // временно
         driver.findElement(By.xpath("//a[contains(text(),'" + region + "')]")).click();
     }
 
     //    ------------------- Метод выбора города  ------------------------------//
     public void selectCity(String city) {
+        pause(2000); // временно
         cities.click();
         driver.findElement(By.linkText(city)).click();
     }

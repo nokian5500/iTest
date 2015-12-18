@@ -1,22 +1,19 @@
 package common;
 
+import entities.Browser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
-import org.openqa.selenium.ie.InternetExplorerDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.internal.Streams;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import utils.PropertyLoader;
+import utils.WebDriverFactory;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,65 +28,56 @@ import static org.testng.Assert.fail;
 
 public class ApplicationManager {
 
-    protected static WebDriver driver;
-    public WebDriverWait wait;
+    // Variables
 
-    public ApplicationManager(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, 40);
-    }
+    private static Browser browser;
+    private static String username;
+    private static String password;
+    private static String gridHubUrl;
+    private static String baseUrl;
+    public static WebDriver driver;
+    public static WebDriverWait wait;
 
-    public ApplicationManager() {
+    // Methods
 
-    }
+    //------------------- Запуск браузеров  -----------------//
 
-    //    ------------------- Запуск браузеров  -----------------//
-    public static WebDriver startTestsIn(String browser) {
-        WebDriver driver = null;
-        if (browser.equalsIgnoreCase("firefox")) {
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("myfirefox")) {
-            ProfilesIni allProfiles = new ProfilesIni();
-            FirefoxProfile profile = allProfiles.getProfile("default");
-            driver = new FirefoxDriver(profile);
-        } else if (browser.equalsIgnoreCase("myfirefox")) {
-            ProfilesIni allProfiles = new ProfilesIni();
-            FirefoxProfile profile = allProfiles.getProfile("default");
-            driver = new FirefoxDriver(profile);
+    public static WebDriver initDriver() {
 
-        } else if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-            driver = new ChromeDriver();
+        // Get properties from resources/application.properties file
+        browser = new Browser();
+        browser.setName(PropertyLoader.loadProperty("browser.name"));
+        browser.setVersion(PropertyLoader.loadProperty("browser.version"));
+        browser.setPlatform(PropertyLoader.loadProperty("browser.platform"));
+        username = PropertyLoader.loadProperty("user.username");
+        password = PropertyLoader.loadProperty("user.password");
+        gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
+        baseUrl = PropertyLoader.loadProperty("base.url");
 
-        } else if (browser.equalsIgnoreCase("ie")) {
-            System.setProperty("webdriver.ie.driver", "src\\main\\resources\\IEDriverServer.exe");
-            driver = new InternetExplorerDriver();
-
-        } else if (browser.equalsIgnoreCase("proxy")) {
-            Proxy proxy = new Proxy();
-            proxy.setHttpProxy("partner.privatbank.ua:3128");
-            DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.setCapability(CapabilityType.PROXY, proxy);
-            driver = new FirefoxDriver(capabilities);
-        } else {
-            System.out.println("Unknown BROWSER for testing!");
-        }
-        assert driver != null;
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        // Create browser (using given properties) & maximize it
+        driver = WebDriverFactory.getInstance(gridHubUrl, browser, username, password);
         driver.manage().window().maximize();
+
+        // Create wait object
+        wait = new WebDriverWait(driver, 20);
+
         return driver;
-    }
-
-    public static void addErrorToTheReport(String testName) {
-        Reporter.log("<b><font color=\"red\" size=\"3\">" + testName + "</font></b><br>");
-
     }
 
     public static WebDriver getDriver() {
         return driver;
     }
 
-    //    ------------------- Методы работы с выпадающими списками  -----------------//
+    public String getBaseUrl() {
+        return baseUrl;
+    }
+
+    public static void addErrorToTheReport(String testName) {
+        Reporter.log("<b><font color=\"red\" size=\"3\">" + testName + "</font></b><br>");
+    }
+
+    //------------ Методы работы с выпадающими списками ---------------//
+
     public void selectValue(By locator, String value) {
         WebElement selectElement = driver.findElement(locator);
         Select select = new Select(selectElement);
@@ -102,13 +90,15 @@ public class ApplicationManager {
         select.selectByVisibleText(value);
     }
 
-    //    ------------------- Метод ввода данных  -----------------//
+    //--------------------- Метод ввода данных -----------------------//
+
     public void typeValue(By locator, String value) {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(value);
     }
 
-    //    ------------------- Методы работы c датами  -----------------//
+    //------------------- Методы работы c датами -------------------//
+
     public String getTodayDate() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
@@ -122,7 +112,8 @@ public class ApplicationManager {
         return formatter.format(calendar.getTime());
     }
 
-    //    ------------------- Методы ожидания   -----------------//
+    //--------------------- Методы ожидания -----------------------//
+
     public void pause(int timeout) {
         try {
             Thread.sleep(timeout);
@@ -144,7 +135,8 @@ public class ApplicationManager {
         wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
-    //    ------------------- Методы проверок элементов/текста на странице  -----------------//
+    //----------- Методы проверок элементов/текста на странице -----------//
+
     public String verifyTextPresent(String text) {
         if (driver.getPageSource().contains(text)) return "";
         else System.out.println("ERROR: NOT FOUND TEXT: \"" + text + "\"");
@@ -217,7 +209,8 @@ public class ApplicationManager {
 
     }
 
-    //    ------------------- Методы для скринов -----------------//
+    //------------------- Методы для скринов ---------------------//
+
     public Calendar getCurrentCalendar() {
         // http://docs.oracle.com/javase/6/docs/api/java/util/GregorianCalendar.html
         // get the supported ids for GMT+02:00 ("Среднеевропейское (Центральноевропейское) летнее время")
@@ -246,5 +239,3 @@ public class ApplicationManager {
         return calendar;
     }
 }
-
-

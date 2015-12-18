@@ -7,8 +7,7 @@ import test.TestBase;
 
 public class InternationalPassport extends TestBase {
 
-
-    @Test
+    @Test (priority = 1)
     public void DnipropetrovskInternationalPassportTest() {
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Settings.Identity.INTERNATIONAL_PASSPORT;
