@@ -1,5 +1,6 @@
 package test.portal.main;
 
+import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.TestBase;
@@ -17,7 +18,7 @@ public class MainPage extends TestBase {
     @Test (priority = 2)
     public void availabilityStatisticTab() throws Exception {
         // ------------------- Тестовые данные -------------------//
-        String service = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством (терміново)";
+        String service = Constants.Settings.ServiceMVD.CRIMINAL_RECORD;
         String serviceTab = "Статистика";
         String timingColumn = "Таймінг ?";
         String timingRow = "годин";

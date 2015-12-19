@@ -77,8 +77,8 @@ public class TestMailerPage extends BaseServicePage {
         return this;
     }
 
-    public TestMailerPage verifyServiceSuccessCreated() {
-        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail");// проверка успешного создания заявки
+    public TestMailerPage verifyServiceSuccessCreated(String email) {
+        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email);// проверка успешного создания заявки
         return this;
     }
 
