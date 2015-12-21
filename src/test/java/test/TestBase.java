@@ -1,7 +1,13 @@
 package test;
 
 import common.ApplicationManager;
+<<<<<<< f51278c80386b433edb10e7c44f3d8646e7ff6d7
 import pages.service.test.*;
+=======
+import pages.service.taxes.PersonalIncomeCertificatePage;
+import pages.service.test.TestMailerPage;
+import test.portal.services.taxes.PersonalIncomeCertificate;
+>>>>>>> Add Personal Income Certificate test
 import utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -42,6 +48,7 @@ public class TestBase {
     public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
+    public PersonalIncomeCertificatePage personalIncomeCertificatePage;
 
     @BeforeSuite
     public void setUp() {
@@ -69,6 +76,7 @@ public class TestBase {
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
+        personalIncomeCertificatePage = new PersonalIncomeCertificatePage(driver);
         driver.get(app.getBaseUrl());
     }
 
@@ -79,6 +87,6 @@ public class TestBase {
 
     @AfterSuite()
     public void tearsDown() {
-        driver.quit();
+//        driver.quit();
     }
 }

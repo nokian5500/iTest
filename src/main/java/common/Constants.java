@@ -48,10 +48,13 @@ public class Constants {
             public static final String PERSONAL_INCOME_CERTIFICATE = "Отримання довідки про доходи фізичних осіб";
         }
 
+<<<<<<< f51278c80386b433edb10e7c44f3d8646e7ff6d7
     }
 
     public static class TestData {
 
+=======
+>>>>>>> Add Personal Income Certificate test
         //------------------- Данные для подачи заявок  --------------//
         public static class PersonalInfo {
             public static final String PHONE = "380102030405";
