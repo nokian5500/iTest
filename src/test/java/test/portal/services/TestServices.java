@@ -11,7 +11,7 @@ public class TestServices extends TestBase {
 
     //TODO https://github.com/e-government-ua/iTest/issues/1
 
-    //@Test
+    @Test
     public void test_dependence_form1() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -33,7 +33,7 @@ public class TestServices extends TestBase {
                 .attachDocument(document)
                 .typeInEmailField(email)
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated()
+                .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_dependence_form()
@@ -41,7 +41,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-   // @Test
+   @Test
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -63,7 +63,7 @@ public class TestServices extends TestBase {
                 .attachDocument(document)
                 .typeInEmailField(email)
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated()
+                .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_dependence_form()
@@ -71,7 +71,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    //@Test
+    @Test
     public void test_fields_bankid() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -82,6 +82,7 @@ public class TestServices extends TestBase {
         String country = "country";
         String address = "address";
         String document = "src/test/resources/test.jpg";
+        String email = "test@gmail.com";
         String status = "Заявка подана";
 
 
@@ -96,7 +97,7 @@ public class TestServices extends TestBase {
                 .typeInAddressField(address)
                 .attachDocument(document)
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated()
+                .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_fields_bankid()
@@ -104,7 +105,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    //@Test
+    @Test
     public void test_liqpay() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -145,7 +146,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    //@Test
+    @Test
     public void test_mailer() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -163,7 +164,7 @@ public class TestServices extends TestBase {
                 .typeInEmailField(email)
                 .attachDocument(document)
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated()
+                .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_mailer()
@@ -171,7 +172,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    //@Test
+    @Test
     public void test_print_form() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -181,7 +182,7 @@ public class TestServices extends TestBase {
         mainPage.goToTestServices(server, service);
     }
 
-    //@Test
+    @Test
     public void test_queue_cancel() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -191,7 +192,7 @@ public class TestServices extends TestBase {
         mainPage.goToTestServices(server, service);
     }
 
-    //@Test
+    @Test
     public void test_ZP_cnap_mailer() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
