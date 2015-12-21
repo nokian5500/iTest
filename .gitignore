@@ -1,11 +1,13 @@
-target/
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
-
-#IDE
 *.iml
 .idea/
+/target/*
+/test-output/*
+/TestReport/*
+*.log
+*.orig
+.DS_Store
+.checkstyle
+.classpath
+.idea
+.project
+.settings
