@@ -4,6 +4,10 @@ public class Constants {
 
     public static class Settings {
 
+    }
+
+    public static class Areas {
+
         //------------------- Регионы  -------------------//
         public static class Region {
             public static final String DNIPROPETROVSKA = "Дніпропетровська";
@@ -16,10 +20,12 @@ public class Constants {
             public static final String POLTAVA = "Полтава";
         }
 
-        //------------------- Услуги  --------------------//
+    }
+
+    public static class Services {
 
         // Міліція та ДАІ
-        public static class ServiceMVD {
+        public static class MVD {
             public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством (терміново)";
         }
 
@@ -35,8 +41,17 @@ public class Constants {
             public static final String INTERNATIONAL_PASSPORT = "Видача/заміна паспорта громадянина для виїзду за кордон";
         }
 
+        // Податки
+        public static class Taxes {
+            public static final String PERSONAL_INCOME_CERTIFICATE = "Отримання довідки про доходи фізичних осіб";
+        }
+
+    }
+
+    public static class TestData {
+
         //------------------- Данные для подачи заявок  --------------//
-        public static class Data {
+        public static class PersonalInfo {
             public static final String PHONE = "380102030405";
             public static final String FIO_UA = "Дмитро Олександрович Дубілет";
             public static final String FIO_RUS = "Дубилет Дмитрий Александрович";
@@ -47,7 +62,6 @@ public class Constants {
         }
 
         //---------- Данные для входа в Банк ИД ПриаптБанк  ----------//
-
         public static class BankIDprivatBank {
             public static final String LOGIN = "+380102030405";   // номер телефона
             public static final String PASSWORD = "value";   // пароль
@@ -63,6 +77,7 @@ public class Constants {
             public static final String BANK_IPN = "143605704021";
             public static final String BANK_ACCOUNT = "1234567890123456";
         }
+
     }
 
     //------------------- УРЛ для работы с тестовыми услугами  ------------------//
@@ -83,4 +98,5 @@ public class Constants {
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
     }
+
 }
