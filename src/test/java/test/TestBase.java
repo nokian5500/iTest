@@ -87,6 +87,6 @@ public class TestBase {
 
     @AfterSuite()
     public void tearsDown() {
-//        driver.quit();
+        driver.quit();
     }
 }
