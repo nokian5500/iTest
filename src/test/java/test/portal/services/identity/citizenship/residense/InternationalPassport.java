@@ -7,11 +7,11 @@ import test.TestBase;
 
 public class InternationalPassport extends TestBase {
 
-    @Test (priority = 1)
+    @Test (priority = 10)
     public void DnipropetrovskInternationalPassportTest() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.Identity.INTERNATIONAL_PASSPORT;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String service = Constants.Services.Identity.INTERNATIONAL_PASSPORT;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String havePassport = "ні, буду отримувати перший раз";
         String biometrical = "ні";
         String phone = "0931234567";

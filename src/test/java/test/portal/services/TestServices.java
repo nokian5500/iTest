@@ -77,8 +77,8 @@ public class TestServices extends TestBase {
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_FIELDS_BANKID;
         String serviceName = "_test_fields_bankid";
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
-        String city = Constants.Settings.City.DNIPROPETROVSK;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String city = Constants.Areas.City.DNIPROPETROVSK;
         String country = "country";
         String address = "address";
         String document = "src/test/resources/test.jpg";
@@ -111,16 +111,16 @@ public class TestServices extends TestBase {
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_LIQPAY;
         String serviceName = "_test_liqpay";
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
-        String city = Constants.Settings.City.DNIPROPETROVSK;
-        String bankIdAddressField = Constants.Settings.Data.BIRTH_LOCAL;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String city = Constants.Areas.City.DNIPROPETROVSK;
+        String bankIdAddressField = Constants.TestData.PersonalInfo.BIRTH_LOCAL;
         String vin = "12345678912345678";
         String brand = "brand";
         String model = "model";
         String number = "number";
         String invoiceNumber = "invoiceNumber";
         String phone = "380931234567";
-        String email = Constants.Settings.Data.E_MAIL;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
@@ -152,7 +152,7 @@ public class TestServices extends TestBase {
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_MAILER;
         String serviceName = "_test_mailer";
-        String email = Constants.Settings.Data.E_MAIL;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String document = "src/test/resources/test.jpg";
         String status = "Заявка подана";
 

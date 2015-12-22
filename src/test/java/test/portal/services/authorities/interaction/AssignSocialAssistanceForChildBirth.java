@@ -9,11 +9,11 @@ import java.awt.*;
 
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 1)
+    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 10)
     public void successMessagesServicesByPostOffice() throws AWTException {
         //------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
@@ -51,11 +51,11 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 2)
+    @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
     public void successMessagesServicesByAccountBank() throws AWTException {
         //------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
@@ -64,10 +64,10 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String birthScanDocument = "src/test/resources/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "на рахунок у банку";
-        String bankName = Constants.Settings.TestBankDetails.BANK_NAME;
-        String bankMFO = Constants.Settings.TestBankDetails.BANK_MFO;
-        String bankOKPO = Constants.Settings.TestBankDetails.BANK_OKPO;
-        String bankAccount = Constants.Settings.TestBankDetails.BANK_ACCOUNT;
+        String bankName = Constants.TestData.TestBankDetails.BANK_NAME;
+        String bankMFO = Constants.TestData.TestBankDetails.BANK_MFO;
+        String bankOKPO = Constants.TestData.TestBankDetails.BANK_OKPO;
+        String bankAccount = Constants.TestData.TestBankDetails.BANK_ACCOUNT;
         String bankTicket = "src/test/resources/test.jpg";
         String status = "Заявка подана";
 

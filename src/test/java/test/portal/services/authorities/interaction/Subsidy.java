@@ -7,11 +7,11 @@ import test.TestBase;
 
 public class Subsidy extends TestBase {
 
-    @Test (priority = 1)
+    @Test (priority = 10)
     public void DnipropetrovskSubsidyTest() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.InteractionWithPublicAuthorities.SUBSIDY;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String service = Constants.Services.InteractionWithPublicAuthorities.SUBSIDY;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String area = "Амур-Нижньодніпровський район, м.Дніпропетровськ";
         String placeOfLiving = "test";
         String phone = "0931234567";
@@ -72,7 +72,6 @@ public class Subsidy extends TestBase {
         statusPage.inputReferenceNumberForSubsidy()
                 .clickViewStatusButton()
                 .verifyStatus(status);
-
 
     }
 }

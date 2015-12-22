@@ -7,13 +7,13 @@ import test.TestBase;
 
 public class CriminalRecord extends TestBase {
 
-    @Test (priority = 1)
+    @Test (priority = 10)
     public void DnipropetrovskCriminalRecord() {
         // ------------------- Тестовые данные -------------------//
-        String service = Constants.Settings.ServiceMVD.CRIMINAL_RECORD;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
-        String city = Constants.Settings.City.DNIPROPETROVSK;
-        String birthDate = Constants.Settings.Data.BIRTH_DAY;
+        String service = Constants.Services.MVD.CRIMINAL_RECORD;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String city = Constants.Areas.City.DNIPROPETROVSK;
+        String birthDate = Constants.TestData.PersonalInfo.BIRTH_DAY;
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";

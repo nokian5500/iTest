@@ -11,13 +11,13 @@ import test.TestBase;
  */
 public class Registration extends TestBase {
 
-    @Test (priority = 1)
+    @Test (priority = 10)
     public void unregisterFromCurrentAddressTest() {
 
-        String service = Constants.Settings.InteractionWithPublicAuthorities.REGISTRATION;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
-        String city = Constants.Settings.City.DNIPROPETROVSK;
-        String birthDate = Constants.Settings.Data.BIRTH_DAY;
+        String service = Constants.Services.InteractionWithPublicAuthorities.REGISTRATION;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String city = Constants.Areas.City.DNIPROPETROVSK;
+        String birthDate = Constants.TestData.PersonalInfo.BIRTH_DAY;
         String birthLocation = "Україна,Дніпропетровська,Дніпропетровськ";
         String nationality = "Україна";
         String district = "Амур-Нижньодніпровський";
