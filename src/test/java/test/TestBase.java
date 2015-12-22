@@ -1,7 +1,7 @@
 package test;
 
 import common.ApplicationManager;
-import pages.service.test.TestMailerPage;
+import pages.service.test.*;
 import utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -18,9 +18,6 @@ import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
-import pages.service.test.TestDependenceFormPage;
-import pages.service.test.TestFieldsBankidPage;
-import pages.service.test.TestLiqpayPage;
 
 @Listeners({ScreenshotListener.class})
 public class TestBase {
@@ -41,6 +38,7 @@ public class TestBase {
     public TestFieldsBankidPage testFieldsBankidPage;
     public TestLiqpayPage testLiqpayPage;
     public TestMailerPage testMailerPage;
+    public TestZPCnapMailerPage testZPCnapMailerPage;
     public StatisticTab statisticTab;
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
@@ -67,6 +65,7 @@ public class TestBase {
         testFieldsBankidPage = new TestFieldsBankidPage(driver);
         testLiqpayPage = new TestLiqpayPage(driver);
         testMailerPage = new TestMailerPage(driver);
+        testZPCnapMailerPage = new TestZPCnapMailerPage(driver);
         statisticTab = new StatisticTab(driver);
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);

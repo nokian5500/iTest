@@ -11,10 +11,7 @@ import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
-import pages.service.test.TestDependenceFormPage;
-import pages.service.test.TestFieldsBankidPage;
-import pages.service.test.TestLiqpayPage;
-import pages.service.test.TestMailerPage;
+import pages.service.test.*;
 
 public class StatusPage extends ApplicationManager {
 
@@ -65,6 +62,11 @@ public class StatusPage extends ApplicationManager {
 
     public StatusPage inputReferenceNumberForTest_mailer() {
         refIdField.sendKeys(TestMailerPage.referenceNumber);
+        return this;
+    }
+
+    public StatusPage inputReferenceNumberForTest_ZP_cnap_mailer() {
+        refIdField.sendKeys(TestZPCnapMailerPage.referenceNumber);
         return this;
     }
 

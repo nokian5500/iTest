@@ -41,7 +41,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-   @Test
+    @Test
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -193,12 +193,31 @@ public class TestServices extends TestBase {
     }
 
     @Test
-    public void test_ZP_cnap_mailer() {
-        // ------------------- Тестовые данные -------------------//
+    public void test_ZP_cnap_mailer() throws AWTException {
+// ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_ZP_CNAP_MAILER;
-
-        // --------------------- Тест-кейс----------------------//
+        String region = Constants.Areas.Region.ZAPORIZHSKA;
+        String serviceName = "_test_ZP_cnap_mailer";
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String document = "src/test/resources/test.jpg";
+        String status = "Заявка подана";
+// --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
+        selectAreaPage.selectRegion(region);
+        authorizationPage.privatBankAuthorization();
+        Assert.assertEquals(testZPCnapMailerPage.getServiceName(), serviceName);
+        testZPCnapMailerPage
+                .typeInPhoneField(phone)
+                .typeInEmailField(email)
+                .attachDocument(document)
+                .clickConfirmButton()
+                .verifyServiceSuccessCreated()
+                .saveReferenceNumber();
+        mainPage.goToStatus();
+        statusPage.inputReferenceNumberForTest_ZP_cnap_mailer()
+                .clickViewStatusButton()
+                .verifyStatus(status);
     }
 }
