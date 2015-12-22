@@ -41,7 +41,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-   @Test
+    @Test
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
