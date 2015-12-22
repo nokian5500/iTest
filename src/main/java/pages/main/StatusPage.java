@@ -11,15 +11,8 @@ import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
-<<<<<<< f51278c80386b433edb10e7c44f3d8646e7ff6d7
 import pages.service.test.*;
-=======
-import pages.service.taxes.PersonalIncomeCertificatePage;
-import pages.service.test.TestDependenceFormPage;
-import pages.service.test.TestFieldsBankidPage;
-import pages.service.test.TestLiqpayPage;
-import pages.service.test.TestMailerPage;
->>>>>>> Add Personal Income Certificate test
+import pages.service.taxes.*;
 
 public class StatusPage extends ApplicationManager {
 

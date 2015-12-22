@@ -10,8 +10,8 @@ public class PersonalIncomeCertificate extends TestBase {
     @Test(priority = 10)
     public void personalIncomeCertificateTest() {
         //------------------- Test Data -------------------//
-        String service = Constants.Settings.Taxes.PERSONAL_INCOME_CERTIFICATE;
-        String region = Constants.Settings.Region.DNIPROPETROVSKA;
+        String service = Constants.Services.Taxes.PERSONAL_INCOME_CERTIFICATE;
+        String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String startOfPeriod = ""; //TEMP, until interaction with Calendar dropdown will be implemented
         String endOfPeriod = ""; //TEMP, until interaction with Calendar dropdown will be implemented
         String fiscalBranch = "Дніпропетровськ - АНД (пров. Універсальний, 12)|0461";
