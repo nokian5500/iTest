@@ -12,12 +12,14 @@ public class Constants {
         public static class Region {
             public static final String DNIPROPETROVSKA = "Дніпропетровська";
             public static final String POLTAVSKA = "Полтавська";
+            public static final String ZAPORIZHSKA = "Запорізька";
         }
 
         //------------------- Города  --------------------//
         public static class City {
             public static final String DNIPROPETROVSK = "Дніпропетровськ";
             public static final String POLTAVA = "Полтава";
+
         }
 
     }
