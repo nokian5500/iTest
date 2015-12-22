@@ -1,13 +1,8 @@
 package test;
 
 import common.ApplicationManager;
-<<<<<<< f51278c80386b433edb10e7c44f3d8646e7ff6d7
 import pages.service.test.*;
-=======
-import pages.service.taxes.PersonalIncomeCertificatePage;
-import pages.service.test.TestMailerPage;
-import test.portal.services.taxes.PersonalIncomeCertificate;
->>>>>>> Add Personal Income Certificate test
+import pages.service.taxes.*;
 import utils.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
