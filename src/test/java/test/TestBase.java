@@ -1,6 +1,7 @@
 package test;
 
 import common.ApplicationManager;
+import pages.service.police.traffic.RegisterUsedCarPage;
 import pages.service.test.*;
 import pages.service.taxes.*;
 import utils.ScreenshotListener;
@@ -44,6 +45,7 @@ public class TestBase {
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
     public PersonalIncomeCertificatePage personalIncomeCertificatePage;
+    public RegisterUsedCarPage registerUsedCarPage;
 
     @BeforeSuite
     public void setUp() {
@@ -62,6 +64,7 @@ public class TestBase {
         statusPage = new StatusPage(driver);
         subsidyPage = new SubsidyPage(driver);
         criminalRecordPage = new CriminalRecordPage(driver);
+        registerUsedCarPage = new RegisterUsedCarPage(driver);
         internationalPassportPage = new InternationalPassportPage(driver);
         testDependenceFormPage = new TestDependenceFormPage(driver);
         testFieldsBankidPage = new TestFieldsBankidPage(driver);

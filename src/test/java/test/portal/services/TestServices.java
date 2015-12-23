@@ -172,7 +172,8 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+    //TODO: implement test
+    @Test(enabled = false)
     public void test_print_form() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -182,7 +183,8 @@ public class TestServices extends TestBase {
         mainPage.goToTestServices(server, service);
     }
 
-    @Test
+    //TODO: implement test
+    @Test(enabled = false)
     public void test_queue_cancel() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -192,7 +194,8 @@ public class TestServices extends TestBase {
         mainPage.goToTestServices(server, service);
     }
 
-    @Test
+    //TODO: implement test
+    @Test(enabled = false)
     public void test_ZP_cnap_mailer() throws AWTException {
 // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
