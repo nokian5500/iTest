@@ -29,6 +29,7 @@ public class Constants {
         // Міліція та ДАІ
         public static class MVD {
             public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством (терміново)";
+            public static final String REGISTER_USED_CAR = "Реєстрація авто з пробігом в МРЕВ";
         }
 
         // Взаємодія з державними органами

@@ -17,12 +17,6 @@ public class PersonalIncomeCertificatePage extends BaseServicePage {
     @FindBy(xpath = "//select[@name='area']")
     public WebElement fiscalBranchField; //fiscal branch
 
-    @FindBy(xpath = "//input[@name='phone']")
-    public WebElement phoneField; //phone number
-
-    @FindBy(xpath = "//input[@name='email']")
-    public WebElement emailField; //email
-
     @FindBy(xpath = "//input[@name='place_living']")
     public WebElement placeOfLivingField; //living address
 
