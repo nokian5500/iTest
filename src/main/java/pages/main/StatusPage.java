@@ -12,6 +12,7 @@ import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.authorities.interaction.SubsidyPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import pages.service.test.*;
+import pages.service.taxes.*;
 
 public class StatusPage extends ApplicationManager {
 
@@ -78,6 +79,11 @@ public class StatusPage extends ApplicationManager {
 
     public StatusPage inputReferenceNumberForAssignSocialAssistanceForChildbirth() {
         refIdField.sendKeys(AssignSocialAssistanceForChildBirthPage.referenceNumber);
+        return this;
+    }
+
+    public StatusPage inputReferenceNumberForPersonalIncomeCertificate() {
+        refIdField.sendKeys(PersonalIncomeCertificatePage.referenceNumber);
         return this;
     }
 
