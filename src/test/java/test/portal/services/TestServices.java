@@ -11,7 +11,7 @@ public class TestServices extends TestBase {
 
     //TODO https://github.com/e-government-ua/iTest/issues/1
 
-    @Test
+    @Test(priority = 10)
     public void test_dependence_form1() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -29,8 +29,9 @@ public class TestServices extends TestBase {
         Assert.assertEquals(testDependenceFormPage.getServiceName(), serviceName);
         testDependenceFormPage
                 .selectClient(client)
-                .typeInInfo1Field(info)
-                .attachDocument(document)
+                .typeInInfo1Field(info);
+        app.attachDocument(testDependenceFormPage.attachDocumentButton, document);
+        testDependenceFormPage
                 .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
@@ -41,7 +42,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+    @Test(priority = 20)
     public void test_dependence_form2() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -59,8 +60,9 @@ public class TestServices extends TestBase {
         Assert.assertEquals(testDependenceFormPage.getServiceName(), serviceName);
         testDependenceFormPage
                 .selectClient(client)
-                .typeInInfo2Field(info)
-                .attachDocument(document)
+                .typeInInfo2Field(info);
+        app.attachDocument(testDependenceFormPage.attachDocumentButton, document);
+        testDependenceFormPage
                 .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
@@ -71,7 +73,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+    @Test(priority = 30)
     public void test_fields_bankid() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -94,8 +96,9 @@ public class TestServices extends TestBase {
         Assert.assertEquals(testFieldsBankidPage.getServiceName(), serviceName);
         testFieldsBankidPage
                 .typeInCountryField(country)
-                .typeInAddressField(address)
-                .attachDocument(document)
+                .typeInAddressField(address);
+        app.attachDocument(testFieldsBankidPage.attachDocumentButton, document);
+        testFieldsBankidPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
@@ -105,7 +108,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+    @Test(priority = 40)
     public void test_liqpay() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -146,7 +149,7 @@ public class TestServices extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test
+    @Test(priority = 50)
     public void test_mailer() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -161,8 +164,9 @@ public class TestServices extends TestBase {
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(testMailerPage.getServiceName(), serviceName);
         testMailerPage
-                .typeInEmailField(email)
-                .attachDocument(document)
+                .typeInEmailField(email);
+        app.attachDocument(testMailerPage.attachDocumentButton, document);
+        testMailerPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
@@ -173,7 +177,7 @@ public class TestServices extends TestBase {
     }
 
     //TODO: implement test
-    @Test(enabled = false)
+    @Test(enabled = false, priority = 60)
     public void test_print_form() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -184,7 +188,7 @@ public class TestServices extends TestBase {
     }
 
     //TODO: implement test
-    @Test(enabled = false)
+    @Test(enabled = false, priority = 70)
     public void test_queue_cancel() {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
@@ -195,9 +199,9 @@ public class TestServices extends TestBase {
     }
 
     //TODO: implement test
-    @Test(enabled = false)
+    @Test(enabled = false, priority = 80)
     public void test_ZP_cnap_mailer() throws AWTException {
-// ------------------- Тестовые данные -------------------//
+        // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
         String service = Constants.TestService.TEST_ZP_CNAP_MAILER;
         String region = Constants.Areas.Region.ZAPORIZHSKA;
@@ -206,15 +210,17 @@ public class TestServices extends TestBase {
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String document = "src/test/resources/test.jpg";
         String status = "Заявка подана";
-// --------------------- Тест-кейс----------------------//
+
+        // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
         Assert.assertEquals(testZPCnapMailerPage.getServiceName(), serviceName);
         testZPCnapMailerPage
                 .typeInPhoneField(phone)
-                .typeInEmailField(email)
-                .attachDocument(document)
+                .typeInEmailField(email);
+        app.attachDocument(testZPCnapMailerPage.attachDocumentButton, document);
+        testZPCnapMailerPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();

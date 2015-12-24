@@ -1,6 +1,9 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import test.TestBase;
@@ -10,7 +13,7 @@ import java.awt.*;
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 10)
-    public void successMessagesServicesByPostOffice() throws AWTException {
+    public void successMessagesServicesByPostOffice() {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -36,9 +39,10 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
-                .typeInPhoneField(phone)
-                .attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument)
-                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument)
+                .typeInPhoneField(phone);
+        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
+        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
+        assignSocialAssistanceForChildBirthPage
                 .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInNumberPostOfficeField(numberPostOffice)
@@ -82,16 +86,18 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
-                .typeInPhoneField(phone)
-                .attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument)
-                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument)
-                .selectArea(area)
+                .typeInPhoneField(phone);
+        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
+        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
+        assignSocialAssistanceForChildBirthPage
+            .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInBankNameField(bankName)
                 .typeInBankMFOField(bankMFO)
                 .typeInBankOKPOField(bankOKPO)
-                .typeInBankAccountField(bankAccount)
-                .attachDocument(assignSocialAssistanceForChildBirthPage.attachBankTicket, bankTicket)
+                .typeInBankAccountField(bankAccount);
+        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBankTicket, bankTicket);
+        assignSocialAssistanceForChildBirthPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();

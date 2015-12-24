@@ -28,8 +28,8 @@ public class TestZPCnapMailerPage extends BaseServicePage {
     @FindBy(name = "email")
     private WebElement emailField; //поле эмейла
 
-    @FindBy(css = "button.btn.btn-success")
-    private WebElement attachDocumentButton;// поле аттача документа
+    @FindBy(xpath = "(//input[@type='file'])[1]")
+    public WebElement attachDocumentButton; // поле аттача
 
 
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
@@ -43,31 +43,6 @@ public class TestZPCnapMailerPage extends BaseServicePage {
         StringSelection stringSelection = new StringSelection(document);
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
-    }
-
-    public TestZPCnapMailerPage attachDocument(String document) throws AWTException {
-        File file = new File(document);
-        //
-        attachDocumentButton.click();
-        //
-        setClipboardData(file.getAbsolutePath());
-        //
-        Robot robot = new Robot();
-        robot.delay(1000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
-
-        return this;
     }
 
     public TestZPCnapMailerPage typeInPhoneField(String phone) {

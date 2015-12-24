@@ -22,8 +22,9 @@ public class TestMailerPage extends BaseServicePage {
     public static String referenceNumber;
 
     //---------------- Элементы страницы------------------//
-    @FindBy(css = "button.btn.btn-success")
-    private WebElement attachDocumentButton;// поле аттача документа
+
+    @FindBy(xpath = "(//input[@type='file'])[1]")
+    public WebElement attachDocumentButton; // поле аттача
 
     @FindBy(name = "mail")
     private WebElement emailField; //поле эмейла
@@ -41,30 +42,6 @@ public class TestMailerPage extends BaseServicePage {
                 .setContents(stringSelection, null);
     }
 
-    public TestMailerPage attachDocument(String document) throws AWTException {
-        File file = new File(document);
-        //
-        attachDocumentButton.click();
-        //
-        setClipboardData(file.getAbsolutePath());
-        //
-        Robot robot = new Robot();
-        robot.delay(1000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
-
-        return this;
-    }
     public TestMailerPage typeInEmailField(String email) {
         emailField.clear();
         emailField.sendKeys(email); // ввод емайла
