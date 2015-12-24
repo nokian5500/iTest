@@ -59,8 +59,8 @@ public class TestFieldsBankidPage extends BaseServicePage {
         return this;
     }
 
-    public TestFieldsBankidPage verifyServiceSuccessCreated(String email) {
-        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email);// проверка успешного создания заявки
+    public TestFieldsBankidPage verifyServiceSuccessCreated() {
+        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail");// проверка успешного создания заявки
         return this;
     }
 //=================методы по работе с номером заявки=======================//
