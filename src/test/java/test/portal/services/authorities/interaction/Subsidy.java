@@ -3,6 +3,7 @@ package test.portal.services.authorities.interaction;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.authorities.interaction.SubsidyPage;
 import test.TestBase;
 
 public class Subsidy extends TestBase {
@@ -33,8 +34,6 @@ public class Subsidy extends TestBase {
         String orgName = "test";
         String otherPeople = "Ні";
         String infoAboutoOverload = "test";
-        String status = "Заявка подана";
-
 
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
@@ -69,9 +68,9 @@ public class Subsidy extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForSubsidy()
+        statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
 
     }
 }

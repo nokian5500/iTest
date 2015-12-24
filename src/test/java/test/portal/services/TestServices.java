@@ -3,6 +3,7 @@ package test.portal.services;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.test.*;
 import test.TestBase;
 
 import java.awt.*;
@@ -21,7 +22,6 @@ public class TestServices extends TestBase {
         String info = "test";
         String document = "src/test/resources/test.jpg";
         String email = "test@gmail.com";
-        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
@@ -37,9 +37,9 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_dependence_form()
+        statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 20)
@@ -52,7 +52,6 @@ public class TestServices extends TestBase {
         String info = "test";
         String document = "src/test/resources/test.jpg";
         String email = "test@gmail.com";
-        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
@@ -68,9 +67,9 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_dependence_form()
+        statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 30)
@@ -84,7 +83,6 @@ public class TestServices extends TestBase {
         String country = "country";
         String address = "address";
         String document = "src/test/resources/test.jpg";
-        String status = "Заявка подана";
 
 
         // --------------------- Тест-кейс----------------------//
@@ -102,9 +100,9 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_fields_bankid()
+        statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 40)
@@ -123,7 +121,6 @@ public class TestServices extends TestBase {
         String invoiceNumber = "invoiceNumber";
         String phone = "380931234567";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
-        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
@@ -143,9 +140,9 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_liqpay()
+        statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 50)
@@ -156,7 +153,6 @@ public class TestServices extends TestBase {
         String serviceName = "_test_mailer";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String document = "src/test/resources/test.jpg";
-        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
@@ -170,9 +166,9 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_mailer()
+        statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     //TODO: implement test
@@ -207,7 +203,6 @@ public class TestServices extends TestBase {
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String document = "src/test/resources/test.jpg";
-        String status = "Заявка подана";
 
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
@@ -223,8 +218,8 @@ public class TestServices extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForTest_ZP_cnap_mailer()
+        statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 }

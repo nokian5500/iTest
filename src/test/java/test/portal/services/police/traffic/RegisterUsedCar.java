@@ -3,6 +3,7 @@ package test.portal.services.police.traffic;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.police.traffic.RegisterUsedCarPage;
 import test.TestBase;
 
 /**
@@ -26,9 +27,8 @@ public class RegisterUsedCar extends TestBase {
         String invoice = "АБВ123456";
         String invoiceDate = "01/02/2009";
         String mreoAddress = "узвіз Тольятті, 2";
-        String phone = "380102030405";
+        String phone = "0931234567";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
-        String status = "Заявка подана";
 
         mainPage.typeInSearchField(service);
         mainPage.clickExpandAllFoundServices();
@@ -61,8 +61,8 @@ public class RegisterUsedCar extends TestBase {
                 .saveReferenceNumber();
 
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForCriminalRecord()
+        statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 }

@@ -3,6 +3,7 @@ package test.portal.services.taxes;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.taxes.PersonalIncomeCertificatePage;
 import test.TestBase;
 
 public class PersonalIncomeCertificate extends TestBase {
@@ -19,7 +20,6 @@ public class PersonalIncomeCertificate extends TestBase {
         String email = "test@mail.com";
         String placeOfLiving = "Дніпропетровськ, вул. Поля, 1";
         String aim = "ТЕСТ для подання за вимогою";
-        String status = "Заявка подана";
 
         //------------------- Test Case -------------------//
         mainPage.typeInSearchField(service);
@@ -39,9 +39,9 @@ public class PersonalIncomeCertificate extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForPersonalIncomeCertificate()
+        statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
 
     }
 

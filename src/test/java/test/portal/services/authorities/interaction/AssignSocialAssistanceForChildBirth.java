@@ -1,11 +1,9 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import test.TestBase;
 
 import java.awt.*;
@@ -26,7 +24,6 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "через національного оператора поштового зв'язку";
         String numberPostOffice = "12345";
-        String status = "Заявка подана";
 
         //------------------- Тест-кейс -------------------//
         mainPage.typeInSearchField(service);
@@ -50,9 +47,9 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForAssignSocialAssistanceForChildbirth()
+        statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
@@ -102,8 +99,8 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForAssignSocialAssistanceForChildbirth()
+        statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 }

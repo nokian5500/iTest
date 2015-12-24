@@ -3,6 +3,7 @@ package test.portal.services.identity.citizenship.residense;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import test.TestBase;
 
 /**
@@ -24,7 +25,6 @@ public class Registration extends TestBase {
         String phone = "0931234567";
         String email = "test@gmail.com";
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
-        String status = "Заявка подана";
         String surnameChanged = "Ні";
         String militStatus = "Ні";
         String kids = "Ні";
@@ -57,8 +57,8 @@ public class Registration extends TestBase {
                 .saveReferenceNumber();
 
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForUnregisterFromLocation()
+        statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 }
