@@ -3,6 +3,7 @@ package test.portal.services.police.traffic;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.police.traffic.CriminalRecordPage;
 import test.TestBase;
 
 public class CriminalRecord extends TestBase {
@@ -20,7 +21,7 @@ public class CriminalRecord extends TestBase {
         String phone = "931234567";
         String resType = "Прошу надати довідку в паперовому вигляді";
         String email = "test@gmail.com";
-        String status = "Заявка подана";
+
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
@@ -41,9 +42,9 @@ public class CriminalRecord extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForCriminalRecord()
+        statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
 
 
     }

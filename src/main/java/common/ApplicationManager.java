@@ -244,7 +244,7 @@ public class ApplicationManager {
 
     //------------------- Attachment methods -------------------//
 
-    public ApplicationManager attachDocument (WebElement locator, String document) {
+    public ApplicationManager attachDocument(WebElement locator, String document) {
         unhide(locator);
         File file = new File(document);
         locator.sendKeys(file.getAbsolutePath());

@@ -37,6 +37,7 @@ public class Constants {
             public static final String SUBSIDY = "Отримання субсидії на оплату житлово-комунальних послуг";
             public static final String REGISTRATION = "Зняття з реєстрації місця проживання";
             public static final String ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH = "Призначення соціальної допомоги при народженні дитини";
+            public static final String CERTIFICATE_OF_LAND_SIZE = "Надання довідки про наявність та розмір земельної частки (паю)";
         }
 
         // Посвідчення особи, Громадянство, Місце проживання
@@ -100,6 +101,10 @@ public class Constants {
         public static final String TEST_SERVER = "https://test.igov.org.ua/";
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
+    }
+
+    public static class Status {
+        public static final String SUCCESS_STATUS= "Заявка подана";
     }
 
 }

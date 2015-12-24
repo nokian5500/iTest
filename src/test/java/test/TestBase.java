@@ -1,6 +1,7 @@
 package test;
 
 import common.ApplicationManager;
+import pages.service.authorities.interaction.LandSizeAndExistencePage;
 import pages.service.police.traffic.RegisterUsedCarPage;
 import pages.service.test.*;
 import pages.service.taxes.*;
@@ -46,6 +47,7 @@ public class TestBase {
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
     public PersonalIncomeCertificatePage personalIncomeCertificatePage;
     public RegisterUsedCarPage registerUsedCarPage;
+    public LandSizeAndExistencePage landSizeAndExistencePage;
 
     @BeforeSuite
     public void setUp() {
@@ -75,6 +77,7 @@ public class TestBase {
         unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
         personalIncomeCertificatePage = new PersonalIncomeCertificatePage(driver);
+        landSizeAndExistencePage = new LandSizeAndExistencePage(driver);
         driver.get(app.getBaseUrl());
     }
 

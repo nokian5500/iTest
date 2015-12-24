@@ -3,6 +3,7 @@ package test.portal.services.identity.citizenship.residense;
 import common.Constants;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import test.TestBase;
 
 public class InternationalPassport extends TestBase {
@@ -17,7 +18,6 @@ public class InternationalPassport extends TestBase {
         String phone = "0931234567";
         String email = "test@gmail.com";
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
-        String status = "Заявка подана";
 
 
         // --------------------- Тест-кейс----------------------//
@@ -41,9 +41,9 @@ public class InternationalPassport extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
-        statusPage.inputReferenceNumberForInternationalPassport()
+        statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
 
 
     }
