@@ -84,7 +84,6 @@ public class TestServices extends TestBase {
         String country = "country";
         String address = "address";
         String document = "src/test/resources/test.jpg";
-        String email = "test@gmail.com";
         String status = "Заявка подана";
 
 
@@ -100,7 +99,7 @@ public class TestServices extends TestBase {
         app.attachDocument(testFieldsBankidPage.attachDocumentButton, document);
         testFieldsBankidPage
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated(email)
+                .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_fields_bankid()
@@ -168,7 +167,7 @@ public class TestServices extends TestBase {
         app.attachDocument(testMailerPage.attachDocumentButton, document);
         testMailerPage
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated(email)
+                .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
         mainPage.goToStatus();
         statusPage.inputReferenceNumberForTest_mailer()
@@ -198,8 +197,7 @@ public class TestServices extends TestBase {
         mainPage.goToTestServices(server, service);
     }
 
-    //TODO: implement test
-    @Test(enabled = false, priority = 80)
+    @Test(priority = 80)
     public void test_ZP_cnap_mailer() throws AWTException {
         // ------------------- Тестовые данные -------------------//
         String server = Constants.Server.VERSION_SERVER;
