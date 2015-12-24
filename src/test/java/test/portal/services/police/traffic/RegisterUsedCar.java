@@ -11,7 +11,7 @@ import test.TestBase;
  */
 public class RegisterUsedCar extends TestBase {
 
-    @Test
+    @Test(priority = 10)
     public void registerUsedCarTest() {
 
         String service = Constants.Services.MVD.REGISTER_USED_CAR;
