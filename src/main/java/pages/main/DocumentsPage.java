@@ -19,6 +19,8 @@ public class DocumentsPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(xpath = "//a[@href='/documents/user']")
     public WebElement myDocumentsTab;                     // Таб мои документы
 

@@ -9,6 +9,7 @@ import pages.BaseServicePage;
 
 public class PersonalIncomeCertificatePage extends BaseServicePage {
 
+    public WebDriver driver;
 
     //------------------- Page elements -------------------//
 

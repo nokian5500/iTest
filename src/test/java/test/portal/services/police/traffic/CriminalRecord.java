@@ -25,15 +25,15 @@ public class CriminalRecord extends TestBase {
         String email = "test@gmail.com";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
         //selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(criminalRecordPage.getServiceName(), service);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.criminalRecordPage.getServiceName(), service);
 
-        criminalRecordPage.typeInBirthDateField(birthDate)
+        app.criminalRecordPage.typeInBirthDateField(birthDate)
                 .typeInBirthLocField(birthLoc)
                 .selectСountry(country)
                 .selectGoal(goal)
@@ -43,8 +43,8 @@ public class CriminalRecord extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

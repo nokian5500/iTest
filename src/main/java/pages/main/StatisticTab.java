@@ -10,6 +10,8 @@ public class StatisticTab extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]")
     public WebElement timingColumn;
 

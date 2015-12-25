@@ -12,6 +12,8 @@ public class BankIdAuthorizationPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(xpath = "//span[contains(.,'BankID')]")
     public WebElement BankID;          // button for authorization through BankID
 

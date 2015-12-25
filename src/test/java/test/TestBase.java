@@ -27,57 +27,16 @@ public class TestBase {
 
     private static WebDriver driver;
     public static ApplicationManager app;
-    public MainPage mainPage;
-    public BankIdAuthorizationPage authorizationPage;
-    public DocumentsPage documentsPage;
-    public MyJournalPage journalPage;
-    public AboutPortalPage aboutPortalPage;
-    public SelectAreaPage selectAreaPage;
-    public StatusPage statusPage;
-    public SubsidyPage subsidyPage;
-    public CriminalRecordPage criminalRecordPage;
-    public InternationalPassportPage internationalPassportPage;
-    public TestDependenceFormPage testDependenceFormPage;
-    public TestFieldsBankidPage testFieldsBankidPage;
-    public TestLiqpayPage testLiqpayPage;
-    public TestMailerPage testMailerPage;
-    public TestZPCnapMailerPage testZPCnapMailerPage;
-    public StatisticTab statisticTab;
-    public UnregisterFromLocationPage unregisterFromLocationPage;
-    public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
-    public PersonalIncomeCertificatePage personalIncomeCertificatePage;
-    public RegisterUsedCarPage registerUsedCarPage;
-    public LandSizeAndExistencePage landSizeAndExistencePage;
 
     @BeforeSuite
     public void setUp() {
-        driver = ApplicationManager.initDriver();
+        System.out.println("BeforeSuite");
+        app = new ApplicationManager();
+        driver = app.getDriver();
     }
 
     @BeforeMethod
     public void set() {
-        app = new ApplicationManager();
-        mainPage = new MainPage(driver);
-        authorizationPage = new BankIdAuthorizationPage(driver);
-        documentsPage = new DocumentsPage(driver);
-        journalPage = new MyJournalPage(driver);
-        aboutPortalPage = new AboutPortalPage(driver);
-        selectAreaPage = new SelectAreaPage(driver);
-        statusPage = new StatusPage(driver);
-        subsidyPage = new SubsidyPage(driver);
-        criminalRecordPage = new CriminalRecordPage(driver);
-        registerUsedCarPage = new RegisterUsedCarPage(driver);
-        internationalPassportPage = new InternationalPassportPage(driver);
-        testDependenceFormPage = new TestDependenceFormPage(driver);
-        testFieldsBankidPage = new TestFieldsBankidPage(driver);
-        testLiqpayPage = new TestLiqpayPage(driver);
-        testMailerPage = new TestMailerPage(driver);
-        testZPCnapMailerPage = new TestZPCnapMailerPage(driver);
-        statisticTab = new StatisticTab(driver);
-        unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
-        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
-        personalIncomeCertificatePage = new PersonalIncomeCertificatePage(driver);
-        landSizeAndExistencePage = new LandSizeAndExistencePage(driver);
         driver.get(app.getBaseUrl());
     }
 

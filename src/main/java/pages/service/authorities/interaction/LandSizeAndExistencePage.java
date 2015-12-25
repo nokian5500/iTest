@@ -12,6 +12,7 @@ import pages.BaseServicePage;
 public class LandSizeAndExistencePage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     @FindBy(name = "organ")
     private WebElement districtOrCityDropDown;

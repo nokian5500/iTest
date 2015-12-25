@@ -16,6 +16,7 @@ import java.io.File;
 public class TestDependenceFormPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
 //---------------- Элементы страницы------------------//   
     @FindBy(name = "client")

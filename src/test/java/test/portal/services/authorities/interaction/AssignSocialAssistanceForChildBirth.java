@@ -28,28 +28,28 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String numberPostOffice = "12345";
 
         //------------------- Тест-кейс -------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
-        assignSocialAssistanceForChildBirthPage
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        app.assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
                 .typeInPhoneField(phone);
-        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
-        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
-        assignSocialAssistanceForChildBirthPage
+        app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
+        app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
+        app.assignSocialAssistanceForChildBirthPage
                 .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInNumberPostOfficeField(numberPostOffice)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -76,33 +76,33 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String status = "Заявка подана";
 
         //------------------- Тест-кейс -------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
-        assignSocialAssistanceForChildBirthPage
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        app.assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
                 .typeInPhoneField(phone);
-        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
-        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
-        assignSocialAssistanceForChildBirthPage
+        app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
+        app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
+        app.assignSocialAssistanceForChildBirthPage
             .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInBankNameField(bankName)
                 .typeInBankMFOField(bankMFO)
                 .typeInBankOKPOField(bankOKPO)
                 .typeInBankAccountField(bankAccount);
-        app.attachDocument(assignSocialAssistanceForChildBirthPage.attachBankTicket, bankTicket);
-        assignSocialAssistanceForChildBirthPage
+        app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachBankTicket, bankTicket);
+        app.assignSocialAssistanceForChildBirthPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

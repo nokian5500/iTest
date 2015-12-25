@@ -24,12 +24,12 @@ public class PersonalIncomeCertificate extends TestBase {
         String aim = "ТЕСТ для подання за вимогою";
 
         //------------------- Test Case -------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        personalIncomeCertificatePage
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        app.personalIncomeCertificatePage
                 .selectFiscalBranchField(fiscalBranch)
                 .typeInPhoneField(phone)
                 .typeInEmailField(email)
@@ -40,8 +40,8 @@ public class PersonalIncomeCertificate extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

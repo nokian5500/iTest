@@ -10,6 +10,8 @@ public class AboutPortalPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(xpath = "//div/div/div/p[1]")
     public WebElement infoBlockOne;          // блок инфо1
 

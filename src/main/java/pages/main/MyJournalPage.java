@@ -10,6 +10,8 @@ public class MyJournalPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(linkText = "увійдіть через BankID")
     public WebElement bankIdAuthorizationButton; // кноки входа в BankID
 

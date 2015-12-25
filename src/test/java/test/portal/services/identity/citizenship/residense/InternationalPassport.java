@@ -25,12 +25,12 @@ public class InternationalPassport extends TestBase {
 //        mainPage.typeInSearchField(service);
 //        app.pause(5000);
 //        mainPage.clickService(service);
-        mainPage.goToService();
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(internationalPassportPage.getServiceName(), service);
-        internationalPassportPage
+        app.mainPage.goToService();
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.internationalPassportPage.getServiceName(), service);
+        app.internationalPassportPage
                 .selectHavePassport(havePassport)
                 .selectBiometrical(biometrical)
                 .typeInPhoneField(phone)
@@ -41,8 +41,8 @@ public class InternationalPassport extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

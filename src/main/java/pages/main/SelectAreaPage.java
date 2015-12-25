@@ -11,6 +11,8 @@ public class SelectAreaPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement serviceName;      // название услуги
 

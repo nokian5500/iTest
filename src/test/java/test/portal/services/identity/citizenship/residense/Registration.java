@@ -30,15 +30,15 @@ public class Registration extends TestBase {
         String militStatus = "Ні";
         String kids = "Ні";
 
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(unregisterFromLocationPage.getServiceName(), service);
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.selectAreaPage.selectCity(city);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.unregisterFromLocationPage.getServiceName(), service);
 
-        unregisterFromLocationPage
+        app.unregisterFromLocationPage
                 .typeInPhoneField(phone)
                 .typeInEmailField(email)
                 .selectSurnameChanged(surnameChanged)
@@ -56,8 +56,8 @@ public class Registration extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

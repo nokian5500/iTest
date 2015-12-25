@@ -8,31 +8,31 @@ public class Footer extends TestBase {
 
     @Test (priority = 10)
     public void electronDigitalSignatureLink() {
-        mainPage.goToServices();
-        assertEquals(mainPage.checkElectronDigitalSignatureLink.getText(), "Перевірити електронно-\n" + "цифровий підпис");
+        app.mainPage.goToServices();
+        assertEquals(app.mainPage.checkElectronDigitalSignatureLink.getText(), "Перевірити електронно-\n" + "цифровий підпис");
     }
 
     @Test (priority = 20)
     public void portalNewsOnFacebookLink() {
-        mainPage.goToServices();
-        assertEquals(mainPage.portalsNewsOnFacebookLink.getText(), "Новини порталу\n" + "на Facebook");
+        app.mainPage.goToServices();
+        assertEquals(app.mainPage.portalsNewsOnFacebookLink.getText(), "Новини порталу\n" + "на Facebook");
     }
 
     @Test (priority = 30)
     public void errorOrBugOnPortalLink() {
-        mainPage.goToServices();
-        assertEquals(mainPage.errorOrABugOnThePortalLink.getText(), "Помилка або баг\n" + "на Порталі?");
+        app.mainPage.goToServices();
+        assertEquals(app.mainPage.errorOrABugOnThePortalLink.getText(), "Помилка або баг\n" + "на Порталі?");
     }
 
     @Test (priority = 40)
     public void joinOnGitHubLink() {
-        mainPage.goToServices();
-        assertEquals(mainPage.joinOnGitHubLink.getText(), "Приєднатись\n" + "на GitHub!");
+        app.mainPage.goToServices();
+        assertEquals(app.mainPage.joinOnGitHubLink.getText(), "Приєднатись\n" + "на GitHub!");
     }
 
     @Test (priority = 50)
     public void becomeIgovVolunteerLink() {
-        mainPage.goToServices();
-        assertEquals(mainPage.volunteerIGov.getText(), "NEW Станьте\n" + "волонтером iGov!");
+        app.mainPage.goToServices();
+        assertEquals(app.mainPage.volunteerIGov.getText(), "NEW Станьте\n" + "волонтером iGov!");
     }
 }

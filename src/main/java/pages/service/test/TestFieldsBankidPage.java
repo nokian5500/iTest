@@ -15,6 +15,7 @@ import java.io.File;
 public class TestFieldsBankidPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     //---------------- Элементы страницы------------------// 
     @FindBy(name = "bankIdsID_Country")

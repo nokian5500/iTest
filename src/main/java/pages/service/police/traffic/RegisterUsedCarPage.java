@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 public class RegisterUsedCarPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     @FindBy(name = "bankIdaddress")
     private WebElement addressOfRegistrationField;

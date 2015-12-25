@@ -11,6 +11,7 @@ import pages.BaseServicePage;
 public class TestLiqpayPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     //---------------- Элементы страницы------------------//
 

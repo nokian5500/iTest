@@ -28,15 +28,15 @@ public class CertificateOfLandSize extends TestBase {
         String filePath = "src/test/resources/test.jpg";
         String landRegisterNumber = "1234567890:45:456:1234";
 
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
 
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
 
-        authorizationPage.privatBankAuthorization();
+        app.authorizationPage.privatBankAuthorization();
 
-        landSizeAndExistencePage
+        app.landSizeAndExistencePage
                 .selectDistrict(district)
                 .enterAddress(address)
                 .typeInPhoneField(phone)
@@ -49,8 +49,8 @@ public class CertificateOfLandSize extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

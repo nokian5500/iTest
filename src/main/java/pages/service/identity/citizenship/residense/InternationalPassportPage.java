@@ -10,6 +10,7 @@ import pages.BaseServicePage;
 public class InternationalPassportPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     //---------------- Элементы страницы------------------// 
     @FindBy(name = "have_passport")

@@ -8,16 +8,16 @@ public class MyJournal extends TestBase {
 
     @Test (priority = 10)
     public void myJournalTest() throws Exception {
-        mainPage.goToMyLog();
-        Assert.assertEquals(journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
+        app.mainPage.goToMyLog();
+        Assert.assertEquals(app.journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
                 "цифрового підпису");
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(journalPage.myLog.getText(), "Мій журнал");
-        Assert.assertEquals(journalPage.nextLink.getText(), "Показати ще");
-        authorizationPage.logOut();
-        mainPage.goToMyLog();
-        Assert.assertEquals(journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
+        app.authorizationPage.privatBankAuthorization();
+        Assert.assertEquals(app.journalPage.myLog.getText(), "Мій журнал");
+        Assert.assertEquals(app.journalPage.nextLink.getText(), "Показати ще");
+        app.authorizationPage.logOut();
+        app.mainPage.goToMyLog();
+        Assert.assertEquals(app.journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
                 "цифрового підпису");
     }

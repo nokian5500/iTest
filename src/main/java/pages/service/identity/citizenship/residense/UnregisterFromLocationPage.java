@@ -14,6 +14,7 @@ import pages.BaseServicePage;
 public class UnregisterFromLocationPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     @FindBy(name = "phone")
     private WebElement phoneField;// поле ввода телефона

@@ -11,9 +11,9 @@ public class MainPage extends TestBase {
     @Test (priority = 10)
     public void simpleSearchArchivalCertificates() throws Exception {
         String service = "Видача архівних довідок, копій, витягів";
-        mainPage.typeInSearchField(service);
+        app.mainPage.typeInSearchField(service);
         app.pause(5000);
-        assertEquals(mainPage.services.getText(), service);
+        assertEquals(app.mainPage.services.getText(), service);
     }
 
     @Test (priority = 20)
@@ -27,16 +27,16 @@ public class MainPage extends TestBase {
         String regionRow = "Дніпропетровська";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.typeInSearchField(service);
+        app.mainPage.typeInSearchField(service);
         app.pause(6000);
-        mainPage.clickService(service);
+        app.mainPage.clickService(service);
         app.pause(2000); // временно
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.clickServiceTab(serviceTab);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.clickServiceTab(serviceTab);
         app.pause(4000); // временно
-        assertEquals(statisticTab.timingColumn.getText(), timingColumn);
-        assertTrue(statisticTab.timingRow.getText().contains(timingRow));
-        assertEquals(statisticTab.numberOfServicesProvidedColumn.getText(), numberOfServicesProvidedColumn);
-        assertEquals(statisticTab.regionRow.getText(), regionRow);
+        assertEquals(app.statisticTab.timingColumn.getText(), timingColumn);
+        assertTrue(app.statisticTab.timingRow.getText().contains(timingRow));
+        assertEquals(app.statisticTab.numberOfServicesProvidedColumn.getText(), numberOfServicesProvidedColumn);
+        assertEquals(app.statisticTab.regionRow.getText(), regionRow);
     }
 }

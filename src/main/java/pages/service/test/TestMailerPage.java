@@ -14,6 +14,8 @@ import java.io.File;
 
 public class TestMailerPage extends BaseServicePage {
 
+    public WebDriver driver;
+
     public TestMailerPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;

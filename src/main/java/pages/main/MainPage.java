@@ -93,7 +93,7 @@ public class MainPage extends ApplicationManager {
     }
 
     // Method for opening About portal page
-    public void goToAboutPortal() {
+    public void clickOnAboutPortalLink() {
         aboutPortalLink.click();
     }
 

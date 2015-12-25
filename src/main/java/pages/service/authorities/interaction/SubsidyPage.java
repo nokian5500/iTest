@@ -11,6 +11,7 @@ import pages.BaseServicePage;
 public class SubsidyPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     //---------------- Элементы страницы------------------//   
     @FindBy(xpath = "(//button[@type='button'])[3]")

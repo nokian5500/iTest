@@ -38,13 +38,13 @@ public class Subsidy extends TestBase {
         String infoAboutoOverload = "test";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        assertEquals(subsidyPage.getServiceName(), service);
-        subsidyPage
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.subsidyPage.getServiceName(), service);
+        app.subsidyPage
                 .selectArea(area)
                 .typeInPlaceOfLivingField(placeOfLiving)
                 .typeInPhoneField(phone)
@@ -69,8 +69,8 @@ public class Subsidy extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

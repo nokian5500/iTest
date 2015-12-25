@@ -12,6 +12,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import pages.main.*;
+import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
+import pages.service.authorities.interaction.LandSizeAndExistencePage;
+import pages.service.authorities.interaction.SubsidyPage;
+import pages.service.identity.citizenship.residense.InternationalPassportPage;
+import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
+import pages.service.police.traffic.CriminalRecordPage;
+import pages.service.police.traffic.RegisterUsedCarPage;
+import pages.service.taxes.PersonalIncomeCertificatePage;
+import pages.service.test.*;
 import utils.PropertyLoader;
 import utils.WebDriverFactory;
 
@@ -31,18 +41,46 @@ public class ApplicationManager {
 
     // Variables
 
+    // Driver and wait
+    public static WebDriver driver;
+    public static WebDriverWait wait;
+
+    // Properties
     private static Browser browser;
     private static String username;
     private static String password;
     private static String gridHubUrl;
     private static String baseUrl;
-    public static WebDriver driver;
-    public static WebDriverWait wait;
+
+    // Pages
+    public MainPage mainPage;
+    public BankIdAuthorizationPage authorizationPage;
+    public DocumentsPage documentsPage;
+    public MyJournalPage journalPage;
+    public AboutPortalPage aboutPortalPage;
+    public SelectAreaPage selectAreaPage;
+    public StatusPage statusPage;
+    public SubsidyPage subsidyPage;
+    public CriminalRecordPage criminalRecordPage;
+    public InternationalPassportPage internationalPassportPage;
+    public TestDependenceFormPage testDependenceFormPage;
+    public TestFieldsBankidPage testFieldsBankidPage;
+    public TestLiqpayPage testLiqpayPage;
+    public TestMailerPage testMailerPage;
+    public TestZPCnapMailerPage testZPCnapMailerPage;
+    public StatisticTab statisticTab;
+    public UnregisterFromLocationPage unregisterFromLocationPage;
+    public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
+    public PersonalIncomeCertificatePage personalIncomeCertificatePage;
+    public RegisterUsedCarPage registerUsedCarPage;
+    public LandSizeAndExistencePage landSizeAndExistencePage;
 
 
     // Methods
 
-    public static WebDriver initDriver() {
+    public ApplicationManager() {
+
+        System.out.println("ApplicationManager start");
 
         // Get properties from application.properties file
         browser = new Browser();
@@ -58,21 +96,50 @@ public class ApplicationManager {
         driver = WebDriverFactory.getInstance(gridHubUrl, browser, username, password);
         driver.manage().window().maximize();
 
+        System.out.println("Browser created and maximize");
+
         // Setup implicit and explicit waits
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 20);
 
+        System.out.println("Waits setted");
+
+        // Create pages objects
+        System.out.println("Start creating mainPage object");
+        mainPage = new MainPage(driver);
+        authorizationPage = new BankIdAuthorizationPage(driver);
+        documentsPage = new DocumentsPage(driver);
+        journalPage = new MyJournalPage(driver);
+        aboutPortalPage = new AboutPortalPage(driver);
+        selectAreaPage = new SelectAreaPage(driver);
+        statusPage = new StatusPage(driver);
+        subsidyPage = new SubsidyPage(driver);
+        criminalRecordPage = new CriminalRecordPage(driver);
+        registerUsedCarPage = new RegisterUsedCarPage(driver);
+        internationalPassportPage = new InternationalPassportPage(driver);
+        testDependenceFormPage = new TestDependenceFormPage(driver);
+        testFieldsBankidPage = new TestFieldsBankidPage(driver);
+        testLiqpayPage = new TestLiqpayPage(driver);
+        testMailerPage = new TestMailerPage(driver);
+        testZPCnapMailerPage = new TestZPCnapMailerPage(driver);
+        statisticTab = new StatisticTab(driver);
+        unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
+        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
+        personalIncomeCertificatePage = new PersonalIncomeCertificatePage(driver);
+        landSizeAndExistencePage = new LandSizeAndExistencePage(driver);
+    }
+
+    // Method to get driver
+    public WebDriver getDriver() {
         return driver;
     }
 
-    public static WebDriver getDriver() {
-        return driver;
-    }
-
+    // Method to get BaseURL
     public String getBaseUrl() {
         return baseUrl;
     }
 
+    // Method for adding red test name to report
     public static void addErrorToTheReport(String testName) {
         Reporter.log("<b><font color=\"red\" size=\"3\">" + testName + "</font></b><br>");
     }

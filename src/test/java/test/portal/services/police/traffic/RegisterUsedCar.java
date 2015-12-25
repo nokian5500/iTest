@@ -31,17 +31,17 @@ public class RegisterUsedCar extends TestBase {
         String phone = "0931234567";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
 
-        mainPage.typeInSearchField(service);
-        mainPage.clickExpandAllFoundServices();
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickExpandAllFoundServices();
         //TODO: remove leading whitespace from clickService(" " + service);
-        mainPage.clickService(" " + service);
+        app.mainPage.clickService(" " + service);
 
-        assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.selectAreaPage.selectCity(city);
+        app.authorizationPage.privatBankAuthorization();
 
-        registerUsedCarPage
+        app.registerUsedCarPage
                 .typeInAddressField(address)
                 .typeInVinCarVinNumberField(carVinNumber)
                 .typeInCarBrand(carBrand)
@@ -60,8 +60,8 @@ public class RegisterUsedCar extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

@@ -1,12 +1,13 @@
 package test.portal.services;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.test.*;
 import test.TestBase;
 
 import java.awt.*;
+
+import static org.testng.Assert.assertEquals;
 
 public class TestServices extends TestBase {
 
@@ -24,20 +25,20 @@ public class TestServices extends TestBase {
         String email = "test@gmail.com";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testDependenceFormPage.getServiceName(), serviceName);
-        testDependenceFormPage
+        app.mainPage.goToTestServices(server, service);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testDependenceFormPage.getServiceName(), serviceName);
+        app.testDependenceFormPage
                 .selectClient(client)
                 .typeInInfo1Field(info);
-        app.attachDocument(testDependenceFormPage.attachDocumentButton, document);
-        testDependenceFormPage
+        app.attachDocument(app.testDependenceFormPage.attachDocumentButton, document);
+        app.testDependenceFormPage
                 .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -54,20 +55,20 @@ public class TestServices extends TestBase {
         String email = "test@gmail.com";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testDependenceFormPage.getServiceName(), serviceName);
-        testDependenceFormPage
+        app.mainPage.goToTestServices(server, service);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testDependenceFormPage.getServiceName(), serviceName);
+        app.testDependenceFormPage
                 .selectClient(client)
                 .typeInInfo2Field(info);
-        app.attachDocument(testDependenceFormPage.attachDocumentButton, document);
-        testDependenceFormPage
+        app.attachDocument(app.testDependenceFormPage.attachDocumentButton, document);
+        app.testDependenceFormPage
                 .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -85,21 +86,21 @@ public class TestServices extends TestBase {
         String document = "src/test/resources/test.jpg";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        selectAreaPage.selectRegion(region);
-        selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testFieldsBankidPage.getServiceName(), serviceName);
-        testFieldsBankidPage
+        app.mainPage.goToTestServices(server, service);
+        app.selectAreaPage.selectRegion(region);
+        app.selectAreaPage.selectCity(city);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testFieldsBankidPage.getServiceName(), serviceName);
+        app.testFieldsBankidPage
                 .typeInCountryField(country)
                 .typeInAddressField(address);
-        app.attachDocument(testFieldsBankidPage.attachDocumentButton, document);
-        testFieldsBankidPage
+        app.attachDocument(app.testFieldsBankidPage.attachDocumentButton, document);
+        app.testFieldsBankidPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -122,10 +123,10 @@ public class TestServices extends TestBase {
         String email = Constants.TestData.PersonalInfo.E_MAIL;
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testLiqpayPage.getServiceName(), serviceName);
-        testLiqpayPage
+        app.mainPage.goToTestServices(server, service);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testLiqpayPage.getServiceName(), serviceName);
+        app.testLiqpayPage
                 .typeInBankIdAddressField(bankIdAddressField)
                 .typeInVinField(vin)
                 .typeInBrandField(brand)
@@ -138,8 +139,8 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -154,18 +155,18 @@ public class TestServices extends TestBase {
         String document = "src/test/resources/test.jpg";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testMailerPage.getServiceName(), serviceName);
-        testMailerPage
+        app.mainPage.goToTestServices(server, service);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testMailerPage.getServiceName(), serviceName);
+        app.testMailerPage
                 .typeInEmailField(email);
-        app.attachDocument(testMailerPage.attachDocumentButton, document);
-        testMailerPage
+        app.attachDocument(app.testMailerPage.attachDocumentButton, document);
+        app.testMailerPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
@@ -178,7 +179,7 @@ public class TestServices extends TestBase {
         String service = Constants.TestService.TEST_PRINT_FORM;
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
+        app.mainPage.goToTestServices(server, service);
     }
 
     //TODO: implement test
@@ -189,7 +190,7 @@ public class TestServices extends TestBase {
         String service = Constants.TestService.TEST_QUEUE_CANCEL;
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
+        app.mainPage.goToTestServices(server, service);
     }
 
     @Test(priority = 80)
@@ -204,20 +205,20 @@ public class TestServices extends TestBase {
         String document = "src/test/resources/test.jpg";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.goToTestServices(server, service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(testZPCnapMailerPage.getServiceName(), serviceName);
-        testZPCnapMailerPage
+        app.mainPage.goToTestServices(server, service);
+        app.selectAreaPage.selectRegion(region);
+        app.authorizationPage.privatBankAuthorization();
+        assertEquals(app.testZPCnapMailerPage.getServiceName(), serviceName);
+        app.testZPCnapMailerPage
                 .typeInPhoneField(phone)
                 .typeInEmailField(email);
-        app.attachDocument(testZPCnapMailerPage.attachDocumentButton, document);
-        testZPCnapMailerPage
+        app.attachDocument(app.testZPCnapMailerPage.attachDocumentButton, document);
+        app.testZPCnapMailerPage
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
+        app.mainPage.goToStatus();
+        app.statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

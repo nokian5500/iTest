@@ -11,6 +11,8 @@ public class StatusPage extends ApplicationManager {
 
     // Variables
 
+    public WebDriver driver;
+
     @FindBy(id = "code")
     public WebElement refIdField;          // поле ввода реф
 

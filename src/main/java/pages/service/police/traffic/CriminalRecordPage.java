@@ -11,6 +11,7 @@ import pages.BaseServicePage;
 public class CriminalRecordPage extends BaseServicePage {
 
     public static String referenceNumber;
+    public WebDriver driver;
 
     //---------------- Элементы страницы------------------//
     @FindBy(name = "birthDate")

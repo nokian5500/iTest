@@ -14,6 +14,9 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 public class TestZPCnapMailerPage extends BaseServicePage {
+
+    public WebDriver driver;
+
     public TestZPCnapMailerPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
