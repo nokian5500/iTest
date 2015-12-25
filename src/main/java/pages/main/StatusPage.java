@@ -9,20 +9,21 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StatusPage extends ApplicationManager {
 
+    // Variables
+
     @FindBy(id = "code")
     public WebElement refIdField;          // поле ввода реф
 
     @FindBy(xpath = "//a[contains(.,'Переглянути')]")
     public WebElement viewStatusButton;    //кнопка просмотра статуса
 
-    //    ------------------- Элементы ID Bank------------------------------//
+
+    // Methods
 
     public StatusPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
-    // =============================================== МЕТОДЫ  =================================================//
 
     public StatusPage enterReferenceNumber(String number) {
         refIdField.sendKeys(number);
@@ -38,5 +39,3 @@ public class StatusPage extends ApplicationManager {
         driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
     }
 }
-
-

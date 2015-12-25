@@ -20,7 +20,5 @@ public class MyJournal extends TestBase {
         Assert.assertEquals(journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
                 "цифрового підпису");
-
-
     }
 }

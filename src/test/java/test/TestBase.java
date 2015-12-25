@@ -31,7 +31,7 @@ public class TestBase {
     public BankIdAuthorizationPage authorizationPage;
     public DocumentsPage documentsPage;
     public MyJournalPage journalPage;
-    public AboutPortalPage portalPage;
+    public AboutPortalPage aboutPortalPage;
     public SelectAreaPage selectAreaPage;
     public StatusPage statusPage;
     public SubsidyPage subsidyPage;
@@ -61,7 +61,7 @@ public class TestBase {
         authorizationPage = new BankIdAuthorizationPage(driver);
         documentsPage = new DocumentsPage(driver);
         journalPage = new MyJournalPage(driver);
-        portalPage = new AboutPortalPage(driver);
+        aboutPortalPage = new AboutPortalPage(driver);
         selectAreaPage = new SelectAreaPage(driver);
         statusPage = new StatusPage(driver);
         subsidyPage = new SubsidyPage(driver);

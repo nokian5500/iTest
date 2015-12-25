@@ -1,15 +1,17 @@
 package test.portal.services.police.traffic;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.police.traffic.CriminalRecordPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 public class CriminalRecord extends TestBase {
 
     @Test (priority = 10)
     public void DnipropetrovskCriminalRecord() {
+
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.MVD.CRIMINAL_RECORD;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -25,11 +27,11 @@ public class CriminalRecord extends TestBase {
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         //selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(criminalRecordPage.getServiceName(), service);
+        assertEquals(criminalRecordPage.getServiceName(), service);
 
         criminalRecordPage.typeInBirthDateField(birthDate)
                 .typeInBirthLocField(birthLoc)
@@ -45,7 +47,5 @@ public class CriminalRecord extends TestBase {
         statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
-
-
     }
 }

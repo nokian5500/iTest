@@ -84,7 +84,6 @@ public class TestServices extends TestBase {
         String address = "address";
         String document = "src/test/resources/test.jpg";
 
-
         // --------------------- Тест-кейс----------------------//
         mainPage.goToTestServices(server, service);
         selectAreaPage.selectRegion(region);

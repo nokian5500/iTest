@@ -1,10 +1,11 @@
 package test.portal.services.identity.citizenship.residense;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Покрытые в этом классе услуги:
@@ -29,14 +30,13 @@ public class Registration extends TestBase {
         String militStatus = "Ні";
         String kids = "Ні";
 
-
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(unregisterFromLocationPage.getServiceName(), service);
+        assertEquals(unregisterFromLocationPage.getServiceName(), service);
 
         unregisterFromLocationPage
                 .typeInPhoneField(phone)

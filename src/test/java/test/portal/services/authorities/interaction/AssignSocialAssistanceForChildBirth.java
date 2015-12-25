@@ -1,17 +1,19 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import test.TestBase;
 
 import java.awt.*;
 
+import static org.testng.Assert.assertEquals;
+
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 10)
     public void successMessagesServicesByPostOffice() {
+
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -28,10 +30,10 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         //------------------- Тест-кейс -------------------//
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
@@ -54,6 +56,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
     public void successMessagesServicesByAccountBank() throws AWTException {
+
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -75,10 +78,10 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         //------------------- Тест-кейс -------------------//
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
+        assertEquals(assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)

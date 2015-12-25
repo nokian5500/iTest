@@ -49,8 +49,6 @@ public class MyDocument extends TestBase {
         Assert.assertEquals(documentsPage.infoBlockSMS.getText(), "Введіть отриманий Вами SMS код на телефон +38010*****05");
         documentsPage.typeSMSCode();
         Assert.assertEquals(documentsPage.errorBlockSMS.getText(), "Неправильний код");
-
-
     }
 
     @Test (priority = 30)

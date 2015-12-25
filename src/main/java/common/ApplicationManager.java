@@ -39,13 +39,12 @@ public class ApplicationManager {
     public static WebDriver driver;
     public static WebDriverWait wait;
 
-    // Methods
 
-    //------------------- Запуск браузеров  -----------------//
+    // Methods
 
     public static WebDriver initDriver() {
 
-        // Get properties from resources/application.properties file
+        // Get properties from application.properties file
         browser = new Browser();
         browser.setName(PropertyLoader.loadProperty("browser.name"));
         browser.setVersion(PropertyLoader.loadProperty("browser.version"));
@@ -58,9 +57,9 @@ public class ApplicationManager {
         // Create browser (using given properties) & maximize it
         driver = WebDriverFactory.getInstance(gridHubUrl, browser, username, password);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-        // Create wait object
+        // Setup implicit and explicit waits
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 20);
 
         return driver;
@@ -269,7 +268,6 @@ public class ApplicationManager {
         }
     }
 
-
     //------------------- OLD Attachment methods -------------------//
 
 //        public ApplicationManager attachDocument (WebElement locator, String document) throws AWTException {
@@ -298,7 +296,4 @@ public class ApplicationManager {
 //
 //        return this;
 //    }
-
-
-
 }

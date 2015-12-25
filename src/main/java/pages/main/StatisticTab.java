@@ -8,19 +8,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public class StatisticTab extends ApplicationManager {
 
+    // Variables
+
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]")
     public WebElement timingColumn;
 
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//tr/td[3]")
     public WebElement timingRow;
 
-
-    //---------------- Элементы таба статистика ------------------//
+    // ----------------- Элементы таба статистика ------------------//
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[2]")
     public WebElement numberOfServicesProvidedColumn;
 
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//tr/td[1]")
     public WebElement regionRow;
+
+
+    // Methods
 
     public StatisticTab(WebDriver driver) {
         PageFactory.initElements(driver, this);

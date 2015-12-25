@@ -1,11 +1,11 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.LandSizeAndExistencePage;
-import pages.service.police.traffic.RegisterUsedCarPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Test for services in this class:
@@ -31,7 +31,7 @@ public class CertificateOfLandSize extends TestBase {
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
 
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
 
         authorizationPage.privatBankAuthorization();

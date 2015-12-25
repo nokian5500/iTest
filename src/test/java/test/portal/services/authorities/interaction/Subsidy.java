@@ -1,15 +1,17 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.SubsidyPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 public class Subsidy extends TestBase {
 
     @Test (priority = 10)
     public void DnipropetrovskSubsidyTest() {
+
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.SUBSIDY;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -38,10 +40,10 @@ public class Subsidy extends TestBase {
         // --------------------- Тест-кейс----------------------//
         mainPage.typeInSearchField(service);
         mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(subsidyPage.getServiceName(), service);
+        assertEquals(subsidyPage.getServiceName(), service);
         subsidyPage
                 .selectArea(area)
                 .typeInPlaceOfLivingField(placeOfLiving)
@@ -71,6 +73,5 @@ public class Subsidy extends TestBase {
         statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
-
     }
 }

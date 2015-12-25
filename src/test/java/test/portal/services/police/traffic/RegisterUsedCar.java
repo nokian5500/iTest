@@ -1,10 +1,11 @@
 package test.portal.services.police.traffic;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.police.traffic.RegisterUsedCarPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Test for services in this class:
@@ -35,11 +36,10 @@ public class RegisterUsedCar extends TestBase {
         //TODO: remove leading whitespace from clickService(" " + service);
         mainPage.clickService(" " + service);
 
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
+        assertEquals(selectAreaPage.serviceName.getText(), service);
         selectAreaPage.selectRegion(region);
         selectAreaPage.selectCity(city);
         authorizationPage.privatBankAuthorization();
-
 
         registerUsedCarPage
                 .typeInAddressField(address)
