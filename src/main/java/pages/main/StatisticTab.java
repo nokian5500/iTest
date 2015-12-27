@@ -5,22 +5,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class StatisticTab extends ApplicationManager {
+public class StatisticTab extends BasePage {
 
     // Variables
 
-    public WebDriver driver;
+    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[2]/center[text()='Кількість наданих послуг']")
+    public WebElement numberOfProvidedServicesColumn;
 
-    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]")
+    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]/center[contains(.,'Таймінг')]")
     public WebElement timingColumn;
 
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//tr/td[3]")
     public WebElement timingRow;
-
-    // ----------------- Элементы таба статистика ------------------//
-    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[2]")
-    public WebElement numberOfServicesProvidedColumn;
 
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//tr/td[1]")
     public WebElement regionRow;
@@ -28,8 +26,7 @@ public class StatisticTab extends ApplicationManager {
 
     // Methods
 
-    public StatisticTab(WebDriver driver) {
+    public StatisticTab() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 }

@@ -20,7 +20,7 @@ public class CriminalRecord extends TestBase {
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";
-        String phone = "931234567";
+        String phone = "0931234567";
         String resType = "Прошу надати довідку в паперовому вигляді";
         String email = "test@gmail.com";
 
@@ -30,7 +30,7 @@ public class CriminalRecord extends TestBase {
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
         //selectAreaPage.selectCity(city);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.criminalRecordPage.getServiceName(), service);
 
         app.criminalRecordPage.typeInBirthDateField(birthDate)
@@ -43,7 +43,7 @@ public class CriminalRecord extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

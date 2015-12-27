@@ -5,12 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class MyJournalPage extends ApplicationManager {
+public class MyJournalPage extends BasePage {
 
     // Variables
-
-    public WebDriver driver;
 
     @FindBy(linkText = "увійдіть через BankID")
     public WebElement bankIdAuthorizationButton; // кноки входа в BankID
@@ -30,8 +29,7 @@ public class MyJournalPage extends ApplicationManager {
 
     // Methods
 
-    public MyJournalPage(WebDriver driver) {
+    public MyJournalPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 }

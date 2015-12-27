@@ -39,7 +39,7 @@ public class RegisterUsedCar extends TestBase {
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
         app.selectAreaPage.selectCity(city);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
 
         app.registerUsedCarPage
                 .typeInAddressField(address)
@@ -60,7 +60,7 @@ public class RegisterUsedCar extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

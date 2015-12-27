@@ -35,7 +35,7 @@ public class Registration extends TestBase {
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
         app.selectAreaPage.selectCity(city);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.unregisterFromLocationPage.getServiceName(), service);
 
         app.unregisterFromLocationPage
@@ -56,7 +56,7 @@ public class Registration extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

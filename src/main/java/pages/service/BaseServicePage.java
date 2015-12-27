@@ -1,10 +1,10 @@
-package pages;
+package pages.service;
 
-import common.ApplicationManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.BasePage;
 
-public class BaseServicePage extends ApplicationManager {
+public class BaseServicePage extends BasePage {
 
     // Variables
 

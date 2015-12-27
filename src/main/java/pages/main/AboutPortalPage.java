@@ -5,12 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class AboutPortalPage extends ApplicationManager {
+public class AboutPortalPage extends BasePage {
 
     // Variables
-
-    public WebDriver driver;
 
     @FindBy(xpath = "//div/div/div/p[1]")
     public WebElement infoBlockOne;          // блок инфо1
@@ -26,8 +25,7 @@ public class AboutPortalPage extends ApplicationManager {
 
     // Methods
 
-    public AboutPortalPage(WebDriver driver) {
+    public AboutPortalPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 }

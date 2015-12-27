@@ -21,8 +21,8 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
         String email = "test@gmail.com";
-        String innScanDocument = "src/test/resources/test.jpg";
-        String birthScanDocument = "src/test/resources/test.jpg";
+        String innScanDocument = "src/test/resources/files/test.jpg";
+        String birthScanDocument = "src/test/resources/files/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "через національного оператора поштового зв'язку";
         String numberPostOffice = "12345";
@@ -32,7 +32,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.mainPage.clickService(service);
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         app.assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
@@ -48,7 +48,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
@@ -64,8 +64,8 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String address2 = "проспект карла маркса 22";
         String phone = "039 123 4567";
         String email = "test@gmail.com";
-        String innScanDocument = "src/test/resources/test.jpg";
-        String birthScanDocument = "src/test/resources/test.jpg";
+        String innScanDocument = "src/test/resources/files/test.jpg";
+        String birthScanDocument = "src/test/resources/files/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "на рахунок у банку";
         String bankName = Constants.TestData.TestBankDetails.BANK_NAME;
@@ -80,7 +80,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.mainPage.clickService(service);
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         app.assignSocialAssistanceForChildBirthPage
                 .typeInAdress1Field(address1)
@@ -101,7 +101,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

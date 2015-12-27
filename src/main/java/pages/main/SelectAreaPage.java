@@ -6,12 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class SelectAreaPage extends ApplicationManager {
+public class SelectAreaPage extends BasePage {
 
     // Variables
-
-    public WebDriver driver;
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement serviceName;      // название услуги
@@ -25,9 +24,8 @@ public class SelectAreaPage extends ApplicationManager {
 
     // Methods
 
-    public SelectAreaPage(WebDriver driver) {
+    public SelectAreaPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     // Method for selection of Region
@@ -45,5 +43,14 @@ public class SelectAreaPage extends ApplicationManager {
     // Method for selection of service tab
     public void clickServiceTab(String serviceTab) {
         driver.findElement(By.xpath("//a[contains(.,'" + serviceTab + "')]")).click();
+    }
+
+    // Method for opening Statistic tab
+    public void openStatisticTab() {
+        driver.findElement(By.xpath("//a[text()='Статистика']")).click();
+    }
+
+    public boolean isServiceName(String service) {
+        return serviceName.getText().contentEquals(service);
     }
 }

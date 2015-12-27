@@ -28,7 +28,7 @@ public class PersonalIncomeCertificate extends TestBase {
         app.mainPage.clickService(service);
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         app.personalIncomeCertificatePage
                 .selectFiscalBranchField(fiscalBranch)
                 .typeInPhoneField(phone)
@@ -40,7 +40,7 @@ public class PersonalIncomeCertificate extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

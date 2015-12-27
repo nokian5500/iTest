@@ -28,7 +28,7 @@ public class InternationalPassport extends TestBase {
         app.mainPage.goToService();
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.internationalPassportPage.getServiceName(), service);
         app.internationalPassportPage
                 .selectHavePassport(havePassport)
@@ -41,7 +41,7 @@ public class InternationalPassport extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

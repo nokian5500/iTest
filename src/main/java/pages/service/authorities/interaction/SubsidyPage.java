@@ -1,17 +1,15 @@
 package pages.service.authorities.interaction;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 public class SubsidyPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     //---------------- Элементы страницы------------------//   
     @FindBy(xpath = "(//button[@type='button'])[3]")
@@ -80,11 +78,9 @@ public class SubsidyPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public SubsidyPage(WebDriver driver) {
+    public SubsidyPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
-
 
     //---------------- Методы ввода данных в поля------------------//
 
@@ -207,7 +203,7 @@ public class SubsidyPage extends BaseServicePage {
     @Override
     public SubsidyPage clickConfirmButton() {
         super.clickConfirmButton();
-        pause(7000); // временно
+        app.pause(7000); // временно
         return this;
     }
 

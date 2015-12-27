@@ -1,27 +1,19 @@
 package pages.service.authorities.interaction;
 
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 
 public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
 
-    private WebDriver driver;
-
-    public AssignSocialAssistanceForChildBirthPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
-    //------------------- Элементы страницы -------------------//
+    // Variables
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement serviceName; // название услуги
@@ -80,7 +72,11 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     public static String referenceNumber;
 
 
-    //------------------- Методы ввода данных в поля -------------------//
+    // Methods
+
+    public AssignSocialAssistanceForChildBirthPage() {
+        PageFactory.initElements(driver, this);
+    }
 
     public AssignSocialAssistanceForChildBirthPage typeInAdress1Field(String adress1){
         adress1Field.clear();
@@ -111,7 +107,6 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
     }
-
 
     public AssignSocialAssistanceForChildBirthPage selectArea(String area){
         new Select(areaField).selectByVisibleText(area);  // выбор раена обслуживания
@@ -164,13 +159,10 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
         return this;
     }
 
-
-    //------------------- Методы по работе с номером заявки -------------------//
-
+    // Методы по работе с номером заявки
     @Override
     public String saveReferenceNumber() {
         referenceNumber = super.saveReferenceNumber();
         return referenceNumber;
     }
-
 }

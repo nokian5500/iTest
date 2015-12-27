@@ -1,13 +1,12 @@
 package pages.main;
 
-import common.ApplicationManager;
 import common.Constants;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import pages.BasePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
@@ -15,27 +14,29 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 
 
-public class DocumentsPage extends ApplicationManager {
+public class DocumentsPage extends BasePage {
 
     // Variables
 
-    public WebDriver driver;
+    // My documents tab
 
     @FindBy(xpath = "//a[@href='/documents/user']")
     public WebElement myDocumentsTab;                     // Таб мои документы
 
     @FindBy(xpath = "//div[@ng-hide='authProcess']")
-    public WebElement formSignInBankId;                   // форма входа в банк ИД
+    public WebElement loginForm;                          // форма входа
 
-    // --------------------- Элементы таба "Мои документы" ----------------------//
+    @FindBy(xpath = "//span[text()='Крок 1. Увійдіть в систему через']")
+    public WebElement firstStepLoginByText;               // текст "Крок 1. Увійдіть в систему через"
+
+    @FindBy(xpath = "//a[@ng-click='loginWithBankId()']/span[text()='BankID']")
+    public WebElement bankIdButton;                       // Кнопка ИД Банка
+
+    @FindBy(xpath = "//button[contains(@ng-click,'loginWithEds()')]/span[contains(.,'Сертифікат електронно-') and contains(.,'цифрового підпису')]")
+    public WebElement edsButton;                          // Кнопка ЕЦП
+
     @FindBy(xpath = "//p[@align='justify']")
     public WebElement infoBlockDocument;                  // форма входа в банк ИД
-
-    @FindBy(xpath = "//a[@ng-click='loginWithBankId()']")
-    public WebElement bankIdAuthorizationButton;          // Кнопка ИД Банка
-
-    @FindBy(xpath = "//button[contains(@ng-click,'loginWithEds()')]")
-    public WebElement edsAuthorizationButton;             // Кнопка ЕЦП
 
     @FindBy(xpath = "//button[contains(.,' Добавить документ ')]")
     private WebElement uploadNewDocumentButton;           // Кнопка "Добавить документ"
@@ -82,7 +83,8 @@ public class DocumentsPage extends ApplicationManager {
     @FindBy(id = "code")
     private WebElement inputCodeField;                    // Поле ввода  кода доступа
 
-    // --------------------- Элементы таба "Поиск за кодом" -------------------------//
+    // Searching the document by code tab
+
     @FindBy(id = "typeId")
     public WebElement typeDocumentSelector;               // Селектор выбора документа
 
@@ -118,9 +120,8 @@ public class DocumentsPage extends ApplicationManager {
 
     // Methods
 
-    public DocumentsPage(WebDriver driver) {
+    public DocumentsPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     private static void setClipboardData(String document) {
@@ -256,5 +257,12 @@ public class DocumentsPage extends ApplicationManager {
     public void typeSMSCode() {
         inputSMSCodeField.sendKeys("11111");
         confirmDocumentButton.click();
+    }
+
+    public boolean isLoginFormDisplayed() {
+        return loginForm.isDisplayed() &&
+                firstStepLoginByText.isDisplayed() &&
+                bankIdButton.isDisplayed() &&
+                edsButton.isDisplayed();
     }
 }

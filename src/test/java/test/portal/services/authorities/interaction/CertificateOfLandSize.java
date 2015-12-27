@@ -34,7 +34,7 @@ public class CertificateOfLandSize extends TestBase {
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
 
-        app.authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
 
         app.landSizeAndExistencePage
                 .selectDistrict(district)
@@ -49,7 +49,7 @@ public class CertificateOfLandSize extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        app.mainPage.goToStatus();
+        app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);

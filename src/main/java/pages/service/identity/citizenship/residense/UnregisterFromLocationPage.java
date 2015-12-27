@@ -1,12 +1,11 @@
 package pages.service.identity.citizenship.residense;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 /**
  * Page to describe service "Зняття з реєстрації місця проживання"
@@ -14,7 +13,6 @@ import pages.BaseServicePage;
 public class UnregisterFromLocationPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     @FindBy(name = "phone")
     private WebElement phoneField;// поле ввода телефона
@@ -61,9 +59,8 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     @FindBy(xpath = "//select[@ng-model='selected.date']")
     private WebElement dayField; // поле выбора даты визита
 
-    public UnregisterFromLocationPage(WebDriver driver) {
+    public UnregisterFromLocationPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//
@@ -75,6 +72,7 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     }
 
     public UnregisterFromLocationPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }

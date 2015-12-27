@@ -6,12 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class StatusPage extends ApplicationManager {
+public class StatusPage extends BasePage {
 
     // Variables
-
-    public WebDriver driver;
 
     @FindBy(id = "code")
     public WebElement refIdField;          // поле ввода реф
@@ -22,9 +21,8 @@ public class StatusPage extends ApplicationManager {
 
     // Methods
 
-    public StatusPage(WebDriver driver) {
+    public StatusPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public StatusPage enterReferenceNumber(String number) {

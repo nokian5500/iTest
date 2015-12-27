@@ -1,25 +1,15 @@
 package pages.service.test;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class TestMailerPage extends BaseServicePage {
-
-    public WebDriver driver;
-
-    public TestMailerPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
 
     public static String referenceNumber;
 
@@ -35,6 +25,9 @@ public class TestMailerPage extends BaseServicePage {
     private WebElement successText; //текст удачной создании заявки
 
 
+    public TestMailerPage() {
+        PageFactory.initElements(driver, this);
+    }
 
     //---------------- Методы ввода данных в поля------------------//
 

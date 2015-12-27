@@ -1,17 +1,15 @@
 package pages.service.test;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 public class TestLiqpayPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     //---------------- Элементы страницы------------------//
 
@@ -42,9 +40,8 @@ public class TestLiqpayPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public TestLiqpayPage(WebDriver driver) {
+    public TestLiqpayPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//

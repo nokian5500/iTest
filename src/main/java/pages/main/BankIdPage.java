@@ -1,18 +1,19 @@
 package pages.main;
 
-import common.ApplicationManager;
 import common.Constants;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import pages.BasePage;
 
-public class BankIdAuthorizationPage extends ApplicationManager {
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static org.testng.Assert.assertEquals;
+
+public class BankIdPage extends BasePage {
 
     // Variables
-
-    public WebDriver driver;
 
     @FindBy(xpath = "//span[contains(.,'BankID')]")
     public WebElement BankID;          // button for authorization through BankID
@@ -50,9 +51,8 @@ public class BankIdAuthorizationPage extends ApplicationManager {
 
     // Methods
 
-    public BankIdAuthorizationPage(WebDriver driver) {
+    public BankIdPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     // Method for logging out
@@ -62,7 +62,7 @@ public class BankIdAuthorizationPage extends ApplicationManager {
 
     // Method for FIO verification after login
     public void verifyFIO() {
-        Assert.assertEquals(fio.getText(), Constants.TestData.PersonalInfo.FIO_UA);
+        assertEquals(fio.getText(), Constants.TestData.PersonalInfo.FIO_UA);
     }
 
     // Method for entering ОТР
@@ -74,28 +74,31 @@ public class BankIdAuthorizationPage extends ApplicationManager {
     }
 
     // Method for selecting BankID authorization method
-    public void selectMethodBankID() {
+    public void clickOnBankIdButton() {
         BankID.click();
+        wait.until(visibilityOfElementLocated(By.xpath("//div[@id='IdLogo']/img")));
     }
 
     // Method for selecting PrivatBank
-    public void selectPrivatBankBankID() {
+    public void clickOnPrivatBank() {
         privatBank.click();
+        wait.until(visibilityOfElementLocated(By.id("loginLikePhone")));
     }
 
     // Method for entering login and password
-    public void typeLoginPassword() {
+    public void typeLoginAndPassword() {
         phone.clear();
         phone.sendKeys(Constants.TestData.BankIDprivatBank.LOGIN);
         password.sendKeys(Constants.TestData.BankIDprivatBank.PASSWORD);
         signIn.click();
+        wait.until(visibilityOfElementLocated(By.id("first-section")));
     }
 
     // Method for authorization through PrivatBank
-    public void privatBankAuthorization() {
-        selectMethodBankID();
-        selectPrivatBankBankID();
-        typeLoginPassword();
+    public void loginByPrivatBankBankID() {
+        clickOnBankIdButton();
+        clickOnPrivatBank();
+        typeLoginAndPassword();
         typeOTP();
         verifyFIO();
     }

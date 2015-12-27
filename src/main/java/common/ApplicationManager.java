@@ -1,17 +1,18 @@
 package common;
 
 import entities.Browser;
+import helpers.BaseHelper;
+import helpers.NavHelper;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.internal.Streams;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
+import pages.BasePage;
 import pages.main.*;
 import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import pages.service.authorities.interaction.LandSizeAndExistencePage;
@@ -24,7 +25,6 @@ import pages.service.taxes.PersonalIncomeCertificatePage;
 import pages.service.test.*;
 import utils.PropertyLoader;
 import utils.WebDriverFactory;
-
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -33,7 +33,6 @@ import java.util.GregorianCalendar;
 import java.util.SimpleTimeZone;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
@@ -41,24 +40,23 @@ public class ApplicationManager {
 
     // Variables
 
-    // Driver and wait
     public static WebDriver driver;
     public static WebDriverWait wait;
-
     // Properties
     private static Browser browser;
     private static String username;
     private static String password;
     private static String gridHubUrl;
     private static String baseUrl;
-
     // Pages
     public MainPage mainPage;
-    public BankIdAuthorizationPage authorizationPage;
+    public BankIdPage bankIdPage;
     public DocumentsPage documentsPage;
     public MyJournalPage journalPage;
     public AboutPortalPage aboutPortalPage;
     public SelectAreaPage selectAreaPage;
+    public Header header;
+    public Footer footer;
     public StatusPage statusPage;
     public SubsidyPage subsidyPage;
     public CriminalRecordPage criminalRecordPage;
@@ -74,15 +72,15 @@ public class ApplicationManager {
     public PersonalIncomeCertificatePage personalIncomeCertificatePage;
     public RegisterUsedCarPage registerUsedCarPage;
     public LandSizeAndExistencePage landSizeAndExistencePage;
+    // Helpers
+    public NavHelper navHelper;
 
 
     // Methods
 
     public ApplicationManager() {
 
-        System.out.println("ApplicationManager start");
-
-        // Get properties from application.properties file
+        // Get properties (from application.properties file)
         browser = new Browser();
         browser.setName(PropertyLoader.loadProperty("browser.name"));
         browser.setVersion(PropertyLoader.loadProperty("browser.version"));
@@ -92,46 +90,55 @@ public class ApplicationManager {
         gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
         baseUrl = PropertyLoader.loadProperty("base.url");
 
-        // Create browser (using given properties) & maximize it
+        // Create browser (using given properties) and maximize it
         driver = WebDriverFactory.getInstance(gridHubUrl, browser, username, password);
         driver.manage().window().maximize();
 
-        System.out.println("Browser created and maximize");
-
         // Setup implicit and explicit waits
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 20);
 
-        System.out.println("Waits setted");
+        // Setup links (to ApplicationManager, driver, wait) to BasePage and BaseHelper
+        BasePage.setUp(this);
+        BaseHelper.setUp(this);
 
         // Create pages objects
-        System.out.println("Start creating mainPage object");
-        mainPage = new MainPage(driver);
-        authorizationPage = new BankIdAuthorizationPage(driver);
-        documentsPage = new DocumentsPage(driver);
-        journalPage = new MyJournalPage(driver);
-        aboutPortalPage = new AboutPortalPage(driver);
-        selectAreaPage = new SelectAreaPage(driver);
-        statusPage = new StatusPage(driver);
-        subsidyPage = new SubsidyPage(driver);
-        criminalRecordPage = new CriminalRecordPage(driver);
-        registerUsedCarPage = new RegisterUsedCarPage(driver);
-        internationalPassportPage = new InternationalPassportPage(driver);
-        testDependenceFormPage = new TestDependenceFormPage(driver);
-        testFieldsBankidPage = new TestFieldsBankidPage(driver);
-        testLiqpayPage = new TestLiqpayPage(driver);
-        testMailerPage = new TestMailerPage(driver);
-        testZPCnapMailerPage = new TestZPCnapMailerPage(driver);
-        statisticTab = new StatisticTab(driver);
-        unregisterFromLocationPage = new UnregisterFromLocationPage(driver);
-        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage(driver);
-        personalIncomeCertificatePage = new PersonalIncomeCertificatePage(driver);
-        landSizeAndExistencePage = new LandSizeAndExistencePage(driver);
+        mainPage = new MainPage();
+        bankIdPage = new BankIdPage();
+        documentsPage = new DocumentsPage();
+        journalPage = new MyJournalPage();
+        aboutPortalPage = new AboutPortalPage();
+        selectAreaPage = new SelectAreaPage();
+        header = new Header();
+        footer = new Footer();
+        statusPage = new StatusPage();
+        subsidyPage = new SubsidyPage();
+        criminalRecordPage = new CriminalRecordPage();
+        registerUsedCarPage = new RegisterUsedCarPage();
+        internationalPassportPage = new InternationalPassportPage();
+        testDependenceFormPage = new TestDependenceFormPage();
+        testFieldsBankidPage = new TestFieldsBankidPage();
+        testLiqpayPage = new TestLiqpayPage();
+        testMailerPage = new TestMailerPage();
+        testZPCnapMailerPage = new TestZPCnapMailerPage();
+        statisticTab = new StatisticTab();
+        unregisterFromLocationPage = new UnregisterFromLocationPage();
+        assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage();
+        personalIncomeCertificatePage = new PersonalIncomeCertificatePage();
+        landSizeAndExistencePage = new LandSizeAndExistencePage();
+
+        // Create helpers objects
+        navHelper = new NavHelper();
     }
 
     // Method to get driver
     public WebDriver getDriver() {
         return driver;
+    }
+
+    // Method to get wait
+    public WebDriverWait getWait() {
+        return wait;
     }
 
     // Method to get BaseURL
@@ -145,7 +152,6 @@ public class ApplicationManager {
     }
 
     //------------ Методы работы с выпадающими списками ---------------//
-
     public void selectValue(By locator, String value) {
         WebElement selectElement = driver.findElement(locator);
         Select select = new Select(selectElement);
@@ -159,14 +165,12 @@ public class ApplicationManager {
     }
 
     //--------------------- Метод ввода данных -----------------------//
-
     public void typeValue(By locator, String value) {
         driver.findElement(locator).clear();
         driver.findElement(locator).sendKeys(value);
     }
 
     //------------------- Методы работы c датами -------------------//
-
     public String getTodayDate() {
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
@@ -181,7 +185,6 @@ public class ApplicationManager {
     }
 
     //--------------------- Методы ожидания -----------------------//
-
     public void pause(int timeout) {
         try {
             Thread.sleep(timeout);
@@ -204,7 +207,6 @@ public class ApplicationManager {
     }
 
     //----------- Методы проверок элементов/текста на странице -----------//
-
     public String verifyTextPresent(String text) {
         if (driver.getPageSource().contains(text)) return "";
         else System.out.println("ERROR: NOT FOUND TEXT: \"" + text + "\"");
@@ -278,7 +280,6 @@ public class ApplicationManager {
     }
 
     //------------------- Методы для скринов ---------------------//
-
     public Calendar getCurrentCalendar() {
         // http://docs.oracle.com/javase/6/docs/api/java/util/GregorianCalendar.html
         // get the supported ids for GMT+02:00 ("Среднеевропейское (Центральноевропейское) летнее время")
@@ -307,9 +308,7 @@ public class ApplicationManager {
         return calendar;
     }
 
-
     //------------------- Attachment methods -------------------//
-
     public ApplicationManager attachDocument(WebElement locator, String document) {
         unhide(locator);
         File file = new File(document);
@@ -336,7 +335,6 @@ public class ApplicationManager {
     }
 
     //------------------- OLD Attachment methods -------------------//
-
 //        public ApplicationManager attachDocument (WebElement locator, String document) throws AWTException {
 //        File file = new File(document);
 //        //

@@ -1,21 +1,17 @@
 package pages.service.test;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class TestFieldsBankidPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     //---------------- Элементы страницы------------------// 
     @FindBy(name = "bankIdsID_Country")
@@ -30,9 +26,8 @@ public class TestFieldsBankidPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public TestFieldsBankidPage(WebDriver driver) {
+    public TestFieldsBankidPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     private static void setClipboardData(String document) {

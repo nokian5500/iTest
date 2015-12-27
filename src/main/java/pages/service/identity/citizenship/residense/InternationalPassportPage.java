@@ -1,16 +1,14 @@
 package pages.service.identity.citizenship.residense;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 public class InternationalPassportPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     //---------------- Элементы страницы------------------// 
     @FindBy(name = "have_passport")
@@ -34,9 +32,8 @@ public class InternationalPassportPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public InternationalPassportPage(WebDriver driver) {
+    public InternationalPassportPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//
@@ -52,6 +49,7 @@ public class InternationalPassportPage extends BaseServicePage {
     }
 
     public InternationalPassportPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }

@@ -1,47 +1,17 @@
 package pages.main;
 
-import common.ApplicationManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class MainPage extends ApplicationManager {
+import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
+public class MainPage extends BasePage {
 
     // Variables
-
-    @FindBy(xpath = "//h4[contains(.,'Послуги')]")
-    public WebElement servicesLink;
-
-    @FindBy(xpath = "//h4[contains(.,'Документи')]")
-    public WebElement documentsLink;
-
-    // ---------------- Header ------------------//
-    @FindBy(xpath = "//h4[contains(.,'Статуси')]")
-    public WebElement statusesLink;
-
-    @FindBy(xpath = "//h4[contains(.,'Мій журнал')]")
-    public WebElement myJournalLink;
-
-    @FindBy(xpath = "//h4[contains(.,'Про портал')]")
-    public WebElement aboutPortalLink;
-
-    @FindBy(xpath = "//a[contains(@href,'https://igov.org.ua/ecp')]")
-    public WebElement checkElectronDigitalSignatureLink;
-
-    @FindBy(xpath = "//footer/div/div/div[3]")
-    public WebElement portalsNewsOnFacebookLink;
-
-    // ---------------- Footer ------------------//
-    @FindBy(xpath = "//a[contains(@href, 'https://docs.google.com/forms/d/1ueU6PQa-OSA2Tsisxx2RbRWRJ9rLsFlPBlHsr7W-4gE/viewform')]")
-    public WebElement errorOrABugOnThePortalLink;
-
-    @FindBy(xpath = "//a[contains(@href, 'https://github.com/e-government-ua/i/wiki/%D0%AF%D0%BA-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D1%83')]")
-    public WebElement joinOnGitHubLink;
-
-    @FindBy(xpath = "//a[contains(@href,'https://docs.google.com/forms/d/1w-BR01CSicvhWSXb36CiRjHCwvp-vyPuTHBaWw1iW4U/viewform')]")
-    public WebElement volunteerIGov;
 
     @FindBy(css = ".ng-scope>p")
     public WebElement services;            // name of services on the Main page
@@ -55,15 +25,14 @@ public class MainPage extends ApplicationManager {
 
     // Methods
 
-    public MainPage(WebDriver driver) {
+    public MainPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     // Method for service selection
     public void clickService(String service) {
-        pause(2000); // временно
         driver.findElement(By.xpath("//a[contains(.,'" + service + "')]")).click();
+        app.pause(2000);
     }
 
     // Method for searching the service
@@ -72,30 +41,37 @@ public class MainPage extends ApplicationManager {
         searchField.sendKeys(service);
     }
 
+    // Method for searching the service
+    public void search(String service) {
+        searchField.clear();
+        searchField.sendKeys(service);
+        app.pause(5000);
+    }
+
     // Method for click to service link
-    public void goToServices() {
-        servicesLink.click();
+    public void clickOnServicesLink() {
+        //servicesLink.click();
     }
 
     // Method for opening Documents page
-    public void goToDocuments() {
-        documentsLink.click();
-    }
+//    public void goToDocuments() {
+//        documentsLink.click();
+//    }
 
     // Method for opening Statuses page
-    public void goToStatus() {
-        statusesLink.click();
-    }
+//    public void goToStatus() {
+//        statusesLink.click();
+//    }
 
     // Method for opening My journal page
-    public void goToMyLog() {
-        myJournalLink.click();
-    }
+//    public void goToMyLog() {
+//        myJournalLink.click();
+//    }
 
     // Method for opening About portal page
-    public void clickOnAboutPortalLink() {
-        aboutPortalLink.click();
-    }
+//    public void clickOnAboutPortalLink() {
+//        aboutPortalLink.click();
+//    }
 
     // Method for switching to test service
     public void goToTestServices(String server, String service) {
@@ -109,5 +85,9 @@ public class MainPage extends ApplicationManager {
     // Method to expand the list of services
     public void clickExpandAllFoundServices() {
         expandMoreServices.click();
+    }
+
+    public boolean isSearchResultContains(String service) {
+        return services.getText().contentEquals(service);
     }
 }

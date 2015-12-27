@@ -1,12 +1,11 @@
 package pages.service.police.traffic;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +13,6 @@ import java.text.SimpleDateFormat;
 public class RegisterUsedCarPage extends BaseServicePage {
 
     public static String referenceNumber;
-    public WebDriver driver;
 
     @FindBy(name = "bankIdaddress")
     private WebElement addressOfRegistrationField;
@@ -52,9 +50,8 @@ public class RegisterUsedCarPage extends BaseServicePage {
     @FindBy(xpath = "//select[@ng-disabled='!selected.date || slotsLoading']")
     private WebElement timeField; // поле выбора времени визита
 
-    public RegisterUsedCarPage(WebDriver driver) {
+    public RegisterUsedCarPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public RegisterUsedCarPage typeInAddressField(String address) {
@@ -121,6 +118,7 @@ public class RegisterUsedCarPage extends BaseServicePage {
     }
 
     public RegisterUsedCarPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }
