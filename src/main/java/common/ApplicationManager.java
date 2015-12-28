@@ -148,7 +148,7 @@ public class ApplicationManager {
         }
     }
 
-    // Method for upload attachment
+    // Method for file attachment
     public ApplicationManager attachDocument(WebElement locator, String document) {
         String script = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(script, locator);
@@ -167,5 +167,4 @@ public class ApplicationManager {
         }
         return this;
     }
-
 }
