@@ -150,21 +150,14 @@ public class ApplicationManager {
 
     //------------------- Attachment methods -------------------//
     public ApplicationManager attachDocument(WebElement locator, String document) {
-        unhide(locator);
+        String script = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(script, locator);
+
         File file = new File(document);
         locator.sendKeys(file.getAbsolutePath());
-        waitAttachUpload(locator);
-        return this;
-    }
 
-    public void unhide(WebElement element) {
-        String script = "var element = arguments[0];"
-                + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(script, element);
-    }
-
-    public void waitAttachUpload(WebElement element) {
-        while (!element.isEnabled()) {
+        // Wait attach upload
+        while (!locator.isEnabled()) {
             try {
                 System.out.println("Wait, wait, wait..");
                 Thread.sleep(200);
@@ -172,5 +165,7 @@ public class ApplicationManager {
                 e.printStackTrace();
             }
         }
+        return this;
     }
+
 }
