@@ -60,6 +60,7 @@ public class RegisterUsedCar extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()

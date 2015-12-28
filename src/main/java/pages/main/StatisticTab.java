@@ -14,7 +14,10 @@ public class StatisticTab extends BasePage {
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[2]/center[text()='Кількість наданих послуг']")
     public WebElement numberOfProvidedServicesColumn;
 
-    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]/center[contains(.,'Таймінг')]")
+    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[3]/center[contains(.,'Середня оцінка')]")
+    public WebElement averageScoreColumn;
+
+    @FindBy(xpath = "//*[@class='table table-striped ng-scope']//th[4]/center[contains(.,'Таймінг')]")
     public WebElement timingColumn;
 
     @FindBy(xpath = "//*[@class='table table-striped ng-scope']//tr/td[3]")

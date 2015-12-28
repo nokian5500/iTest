@@ -48,6 +48,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
@@ -101,6 +102,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()

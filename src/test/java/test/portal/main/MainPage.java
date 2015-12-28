@@ -27,6 +27,7 @@ public class MainPage extends TestBase {
         assertTrue(app.selectAreaPage.isServiceName(service));
         app.selectAreaPage.openStatisticTab();
         assertTrue(app.statisticTab.numberOfProvidedServicesColumn.isDisplayed());
+        assertTrue(app.statisticTab.averageScoreColumn.isDisplayed());
         assertTrue(app.statisticTab.timingColumn.isDisplayed());
     }
 }

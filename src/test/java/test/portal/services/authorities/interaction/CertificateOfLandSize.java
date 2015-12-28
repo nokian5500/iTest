@@ -25,7 +25,7 @@ public class CertificateOfLandSize extends TestBase {
         String phone = "0931234567";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String applicant = "Особа, в інтересах якої встановлене обмеження";
-        String filePath = "src/test/resources/test.jpg";
+        String filePath = "src/test/resources/files/test.jpg";
         String landRegisterNumber = "1234567890:45:456:1234";
 
         app.mainPage.typeInSearchField(service);
@@ -48,7 +48,7 @@ public class CertificateOfLandSize extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
                 .clickViewStatusButton()

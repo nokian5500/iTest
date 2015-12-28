@@ -48,38 +48,9 @@ public class MainPage extends BasePage {
         app.pause(5000);
     }
 
-    // Method for click to service link
-    public void clickOnServicesLink() {
-        //servicesLink.click();
-    }
-
-    // Method for opening Documents page
-//    public void goToDocuments() {
-//        documentsLink.click();
-//    }
-
-    // Method for opening Statuses page
-//    public void goToStatus() {
-//        statusesLink.click();
-//    }
-
-    // Method for opening My journal page
-//    public void goToMyLog() {
-//        myJournalLink.click();
-//    }
-
-    // Method for opening About portal page
-//    public void clickOnAboutPortalLink() {
-//        aboutPortalLink.click();
-//    }
-
     // Method for switching to test service
     public void goToTestServices(String server, String service) {
         driver.get(server + service);
-    }
-
-    public void goToService() {
-        driver.get("https://test-version.igov.org.ua/service/176/general"); //временно из за бага поиска
     }
 
     // Method to expand the list of services

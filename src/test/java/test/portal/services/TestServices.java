@@ -37,6 +37,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
@@ -67,6 +68,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
@@ -99,6 +101,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
                 .clickViewStatusButton()
@@ -139,6 +142,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
                 .clickViewStatusButton()
@@ -165,6 +169,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
                 .clickViewStatusButton()
@@ -217,6 +222,7 @@ public class TestServices extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
                 .clickViewStatusButton()

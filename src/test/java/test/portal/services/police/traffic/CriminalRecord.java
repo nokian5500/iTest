@@ -43,6 +43,8 @@ public class CriminalRecord extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()

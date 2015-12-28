@@ -56,6 +56,7 @@ public class Registration extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()

@@ -22,10 +22,8 @@ public class InternationalPassport extends TestBase {
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
 
         // --------------------- Тест-кейс----------------------//
-//        mainPage.typeInSearchField(service);
-//        app.pause(5000);
-//        mainPage.clickService(service);
-        app.mainPage.goToService();
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
         app.bankIdPage.loginByPrivatBankBankID();
@@ -41,6 +39,7 @@ public class InternationalPassport extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
+        app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
