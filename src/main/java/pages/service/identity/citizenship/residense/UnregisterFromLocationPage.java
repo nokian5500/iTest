@@ -1,12 +1,14 @@
 package pages.service.identity.citizenship.residense;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import org.testng.Assert;
+import pages.service.BaseServicePage;
+
 
 /**
  * Page to describe service "Зняття з реєстрації місця проживання"
@@ -60,9 +62,8 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     @FindBy(xpath = "//select[@ng-model='selected.date']")
     private WebElement dayField; // поле выбора даты визита
 
-    public UnregisterFromLocationPage(WebDriver driver) {
+    public UnregisterFromLocationPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//
@@ -74,6 +75,7 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     }
 
     public UnregisterFromLocationPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }
@@ -133,8 +135,27 @@ public class UnregisterFromLocationPage extends BaseServicePage {
         return this;
     }
 
+    public UnregisterFromLocationPage selectDay() {
+        Boolean selected;
+        try {
+            new Select(dayField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
+        return this;
+    }
+
     public UnregisterFromLocationPage selectTime() {
-        new Select(timeField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(timeField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
@@ -148,11 +169,6 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     @Override
     public UnregisterFromLocationPage clickConfirmButton() {
         super.clickConfirmButton();
-        return this;
-    }
-
-    public UnregisterFromLocationPage selectDay() {
-        new Select(dayField).selectByValue("0");
         return this;
     }
 

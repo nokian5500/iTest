@@ -1,17 +1,14 @@
 package pages.service.test;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class TestDependenceFormPage extends BaseServicePage {
 
@@ -27,8 +24,8 @@ public class TestDependenceFormPage extends BaseServicePage {
     @FindBy(name = "info2")
     private WebElement info2Field; //поле ввода информации
 
-    @FindBy(css = "button.btn.btn-success")
-    private WebElement attachDocumentButton;// поле аттача документа
+    @FindBy(xpath = "(//input[@type='file'])[1]")
+    public WebElement attachDocumentButton; // поле аттача
 
     @FindBy(name = "email")
     private WebElement emailField; //поле эмейла
@@ -36,9 +33,8 @@ public class TestDependenceFormPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public TestDependenceFormPage(WebDriver driver) {
+    public TestDependenceFormPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//
@@ -60,36 +56,9 @@ public class TestDependenceFormPage extends BaseServicePage {
         return this;
     }
 
-// upload Document
-
     public TestDependenceFormPage typeInInfo2Field(String info) {
         info2Field.clear();
         info2Field.sendKeys(info); // ввод информации
-        return this;
-    }
-
-    public TestDependenceFormPage attachDocument(String document) throws AWTException {
-        File file = new File(document);
-        //
-        attachDocumentButton.click();
-        //
-        setClipboardData(file.getAbsolutePath());
-        //
-        Robot robot = new Robot();
-        robot.delay(1000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
-
         return this;
     }
 
@@ -110,7 +79,7 @@ public class TestDependenceFormPage extends BaseServicePage {
         return this;
     }
 
-//=================методы по работе с номером заявки=======================//
+    //---------------- Методы по работе с номером заявки ----------------//
 
     @Override
     public String saveReferenceNumber() {

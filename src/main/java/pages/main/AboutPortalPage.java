@@ -5,28 +5,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class AboutPortalPage extends ApplicationManager {
+public class AboutPortalPage extends BasePage {
 
-    @FindBy(xpath = "//div/div/div/p[1]")
+    // Variables
+
+    @FindBy(xpath = "//div[@class='col-md-12 ctrls-about']/p[1]")
     public WebElement infoBlockOne;          // блок инфо1
 
-    @FindBy(xpath = "//div/div/div/p[2]")
+    @FindBy(xpath = "//div[@class='col-md-12 ctrls-about']/p[2]")
     public WebElement infoBlockTwo;          // блок инфо2
 
-    //    ------------------- Элементы ID Bank------------------------------//
-    @FindBy(xpath = "//div/div/div/p[3]")
-    public WebElement infoBlockThree;          // блок инфо3
+    @FindBy(xpath = "//div[@class='col-md-12 ctrls-about']/p[3]")
+    public WebElement infoBlockThree;        // блок инфо3
 
-    @FindBy(xpath = "//div/div/div/p[4]")
-    public WebElement infoBlockFour;          // блок инфо4
+    @FindBy(xpath = "//div[@class='col-md-12 ctrls-about']/p[4]")
+    public WebElement infoBlockFour;         // блок инфо4
 
-    public AboutPortalPage(WebDriver driver) {
+    // Methods
+
+    public AboutPortalPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
-
-
-    // =============================================== МЕТОДЫ  =================================================//
-
 }

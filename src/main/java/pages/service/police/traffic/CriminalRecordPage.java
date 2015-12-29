@@ -1,12 +1,11 @@
 package pages.service.police.traffic;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 public class CriminalRecordPage extends BaseServicePage {
 
@@ -37,9 +36,8 @@ public class CriminalRecordPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public CriminalRecordPage(WebDriver driver) {
+    public CriminalRecordPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//   
@@ -68,6 +66,7 @@ public class CriminalRecordPage extends BaseServicePage {
     }
 
     public CriminalRecordPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }

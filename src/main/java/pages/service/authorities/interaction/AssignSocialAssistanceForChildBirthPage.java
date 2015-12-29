@@ -1,29 +1,19 @@
 package pages.service.authorities.interaction;
 
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
 
-    private WebDriver driver;
-
-    public AssignSocialAssistanceForChildBirthPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
-    //------------------- Элементы страницы -------------------//
+    // Variables
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement serviceName; // название услуги
@@ -40,10 +30,10 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @FindBy(name = "email")
     public WebElement emailField; //поле эмейла
 
-    @FindBy(xpath = "//p[@name='inn_scan']/button")
+    @FindBy(xpath = "(//input[@type='file'])[1]")
     public WebElement attachInnScanDocument;// поле аттача справки о присвоении ИНН
 
-    @FindBy(xpath = "//p[@name='birthdocument_scan']/button")
+    @FindBy(xpath = "(//input[@type='file'])[2]")
     public WebElement attachBirthScanDocument;// поле аттача свидетельства о рождении
 
     @FindBy(name = "area")
@@ -67,7 +57,7 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     @FindBy(name = "bank_account")
     public WebElement bankAccountField; //
 
-    @FindBy(xpath = "//p[@name='bankticket']/button")
+    @FindBy(xpath = "(//input[@type='file'])[3]")
     public WebElement attachBankTicket;// поле аттача довідки з банку з реквізитами рахунку
 
     @FindBy(xpath = "//button[@class='btn btn-info']")
@@ -82,7 +72,11 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
     public static String referenceNumber;
 
 
-    //------------------- Методы ввода данных в поля -------------------//
+    // Methods
+
+    public AssignSocialAssistanceForChildBirthPage() {
+        PageFactory.initElements(driver, this);
+    }
 
     public AssignSocialAssistanceForChildBirthPage typeInAdress1Field(String adress1){
         adress1Field.clear();
@@ -112,33 +106,6 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
         StringSelection stringSelection = new StringSelection(document);
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
-    }
-
-    public AssignSocialAssistanceForChildBirthPage attachDocument (WebElement locator, String document) throws AWTException {
-        File file = new File(document);
-        //
-        locator.click();
-        pause(2000); // временно
-        //
-        setClipboardData(file.getAbsolutePath());
-        //
-        pause(2000); // временно
-        Robot robot = new Robot();
-        robot.delay(1000);
-        robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
-
-        return this;
     }
 
     public AssignSocialAssistanceForChildBirthPage selectArea(String area){
@@ -192,13 +159,10 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
         return this;
     }
 
-
-    //------------------- Методы по работе с номером заявки -------------------//
-
+    // Методы по работе с номером заявки
     @Override
     public String saveReferenceNumber() {
         referenceNumber = super.saveReferenceNumber();
         return referenceNumber;
     }
-
 }

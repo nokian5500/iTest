@@ -5,21 +5,26 @@
         <parameter name="path" value="/"/>
         <classes>
             <!--MAIN-->
-            <class name="test.portal.main.AboutPortal"/>
+            <class name="test.portal.main.Header"/>
             <class name="test.portal.main.Footer"/>
             <class name="test.portal.main.MainPage"/>
             <class name="test.portal.main.MyDocument"/>
             <class name="test.portal.main.MyJournal"/>
+            <class name="test.portal.main.AboutPortal"/>
             <!--SERVICES-->
             <!--AUTHORITIES.INTERACTION-->
             <class name="test.portal.services.authorities.interaction.AssignSocialAssistanceForChildBirth"/>
+            <class name="test.portal.services.authorities.interaction.CertificateOfLandSize"/>
             <class name="test.portal.services.authorities.interaction.Subsidy"/>
             <!--IDENTITY.CITIZENSHIP.RESIDENSE-->
             <class name="test.portal.services.identity.citizenship.residense.InternationalPassport"/>
             <class name="test.portal.services.identity.citizenship.residense.Registration"/>
             <!--POLICE.TRAFFIC-->
             <class name="test.portal.services.police.traffic.CriminalRecord"/>
+            <class name="test.portal.services.police.traffic.RegisterUsedCar"/>
             <class name="test.portal.services.TestServices"/>
+            <!--TAXES-->
+            <class name="test.portal.services.taxes.PersonalIncomeCertificate"/>
         </classes>
     </test>
 </suite>

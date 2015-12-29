@@ -17,12 +17,12 @@ public class ScreenshotListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        saveScreenshot(result, ApplicationManager.getDriver());
+        saveScreenshot(result, ApplicationManager.driver);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        saveScreenshot(result, ApplicationManager.getDriver());
+        saveScreenshot(result, ApplicationManager.driver);
     }
 
     private void saveScreenshot(ITestResult result, WebDriver driver) {

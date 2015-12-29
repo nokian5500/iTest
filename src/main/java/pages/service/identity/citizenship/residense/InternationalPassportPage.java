@@ -1,11 +1,12 @@
 package pages.service.identity.citizenship.residense;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
+import org.testng.Assert;
 
 public class InternationalPassportPage extends BaseServicePage {
 
@@ -17,9 +18,6 @@ public class InternationalPassportPage extends BaseServicePage {
 
     @FindBy(name = "biometrical")
     private WebElement biometricalField; // поле "Ви бажаєте замовити біометричний паспорт?"
-
-    @FindBy(name = "phone")
-    private WebElement phoneField;// поле ввода телефона
 
     @FindBy(name = "email")
     private WebElement emailField; //поле эмейла
@@ -36,9 +34,8 @@ public class InternationalPassportPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public InternationalPassportPage(WebDriver driver) {
+    public InternationalPassportPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//
@@ -54,6 +51,7 @@ public class InternationalPassportPage extends BaseServicePage {
     }
 
     public InternationalPassportPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }
@@ -70,12 +68,26 @@ public class InternationalPassportPage extends BaseServicePage {
     }
 
     public InternationalPassportPage selectDay() {
-        new Select(dayField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(dayField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
     public InternationalPassportPage selectTime() {
-        new Select(timeField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(timeField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
