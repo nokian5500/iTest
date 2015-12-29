@@ -1,10 +1,11 @@
 package test.portal.services.identity.citizenship.residense;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Покрытые в этом классе услуги:
@@ -29,16 +30,15 @@ public class Registration extends TestBase {
         String militStatus = "Ні";
         String kids = "Ні";
 
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.selectAreaPage.selectCity(city);
+        app.bankIdPage.loginByPrivatBankBankID();
+        assertEquals(app.unregisterFromLocationPage.getServiceName(), service);
 
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(unregisterFromLocationPage.getServiceName(), service);
-
-        unregisterFromLocationPage
+        app.unregisterFromLocationPage
                 .typeInPhoneField(phone)
                 .typeInEmailField(email)
                 .selectSurnameChanged(surnameChanged)
@@ -56,8 +56,9 @@ public class Registration extends TestBase {
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
 
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
+        app.bankIdPage.logOut();
+        app.navHelper.openStatusesPage();
+        app.statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }

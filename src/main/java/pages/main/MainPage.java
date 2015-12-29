@@ -1,114 +1,64 @@
 package pages.main;
 
-import common.ApplicationManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class MainPage extends ApplicationManager {
+import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
-    @FindBy(xpath = "//h4[contains(.,'Послуги')]")
-    public WebElement servicesLink;
+public class MainPage extends BasePage {
 
-    @FindBy(xpath = "//h4[contains(.,'Документи')]")
-    public WebElement documentsLink;
-
-    //----------------  Верхние табы ------------------//
-    @FindBy(xpath = "//h4[contains(.,'Статуси')]")
-    public WebElement statusLink;
-
-    @FindBy(xpath = "//h4[contains(.,'Мій журнал')]")
-    public WebElement myLogLink;
-
-    @FindBy(xpath = "//h4[contains(.,'Про портал')]")
-    public WebElement aboutPortalLink;
-
-    @FindBy(xpath = "//a[contains(@href,'https://igov.org.ua/ecp')]")
-    public WebElement checkElectronDigitalSignatureLink;
-
-    @FindBy(xpath = "//footer/div/div/div[3]")
-    public WebElement portalsNewsOnFacebookLink;
-
-    //----------------  Футер ------------------//
-    @FindBy(xpath = "//a[contains(@href, 'https://docs.google.com/forms/d/1ueU6PQa-OSA2Tsisxx2RbRWRJ9rLsFlPBlHsr7W-4gE/viewform')]")
-    public WebElement errorOrABugOnThePortalLink;
-
-    @FindBy(xpath = "//a[contains(@href, 'https://github.com/e-government-ua/i/wiki/%D0%AF%D0%BA-%D0%BF%D0%BE%D1%87%D0%B0%D1%82%D0%B8-%D1%80%D0%BE%D0%B1%D0%BE%D1%82%D1%83')]")
-    public WebElement joinOnGitHubLink;
-
-    @FindBy(xpath = "//a[contains(@href,'https://docs.google.com/forms/d/1w-BR01CSicvhWSXb36CiRjHCwvp-vyPuTHBaWw1iW4U/viewform')]")
-    public WebElement volunteerIGov;
+    // Variables
 
     @FindBy(css = ".ng-scope>p")
-    public WebElement services;         // название сервисов на главной странице
+    public WebElement services;            // name of services on the Main page
 
     @FindBy(xpath = "//input[@ng-change='search()']")
-    public WebElement searchField;            // поле поиска
+    public WebElement searchField;         // search field
 
     @FindBy(xpath = "//a[contains(text(), 'Всі послуги')] ")
-    private WebElement expandMoreServices;       //to display all found services when more than 4 services are found
-
-    //---------------- Выбор сервиса по региону  ------------------//
+    private WebElement expandMoreServices; // to display all found services when more than 4 services are found
 
 
-    //---------------- Элементы поиска  ------------------//
+    // Methods
 
-    public MainPage(WebDriver driver) {
+    public MainPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
-    //    ------------------- Метод выбора услуги  ------------------------------//
+    // Method for service selection
     public void clickService(String service) {
-        pause(2000); // временно
         driver.findElement(By.xpath("//a[contains(.,'" + service + "')]")).click();
-
+        app.pause(2000);
     }
 
-    //    ------------------- Метод поиска услуги  ------------------------------//
-
+    // Method for searching the service
     public void typeInSearchField(String service) {
         searchField.clear();
         searchField.sendKeys(service);
     }
 
-    //    ------------------- Метод поиска услуги  ------------------------------//
-    public void goToServices() {
-        servicesLink.click();
+    // Method for searching the service
+    public void search(String service) {
+        searchField.clear();
+        searchField.sendKeys(service);
+        app.pause(5000);
     }
 
-    //    ------------------- Метод перехода в меню документов  ------------------------------//
-    public void goToDocuments() {
-        documentsLink.click();
-    }
-
-    //    ------------------- Метод перехода в меню статусы  ------------------------------//
-    public void goToStatus() {
-        statusLink.click();
-    }
-
-    //    ------------------- Метод перехода в меню жкрнал  ------------------------------//
-    public void goToMyLog() {
-        myLogLink.click();
-    }
-
-    //    ------------------- Метод перехода в меню про портал  ------------------------------//
-    public void goToAboutPortal() {
-        aboutPortalLink.click();
-    }
-
-    //    ------------------- Метод перехода в тестовой услуге  ------------------------------//
+    // Method for switching to test service
     public void goToTestServices(String server, String service) {
         driver.get(server + service);
     }
 
-    public void goToService() {
-        driver.get("https://test-version.igov.org.ua/service/176/general"); //временно из за бага поиска
-    }
-
+    // Method to expand the list of services
     public void clickExpandAllFoundServices() {
         expandMoreServices.click();
+    }
+
+    public boolean isSearchResultContains(String service) {
+        return services.getText().contentEquals(service);
     }
 }

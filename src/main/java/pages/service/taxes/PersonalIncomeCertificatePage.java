@@ -1,14 +1,12 @@
 package pages.service.taxes;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 public class PersonalIncomeCertificatePage extends BaseServicePage {
-
 
     //------------------- Page elements -------------------//
 
@@ -32,9 +30,8 @@ public class PersonalIncomeCertificatePage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText;
 
-    public PersonalIncomeCertificatePage(WebDriver driver) {
+    public PersonalIncomeCertificatePage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
 

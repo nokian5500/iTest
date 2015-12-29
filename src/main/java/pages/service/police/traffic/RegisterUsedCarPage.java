@@ -1,12 +1,13 @@
 package pages.service.police.traffic;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import pages.BaseServicePage;
+import org.testng.Assert;
+import pages.service.BaseServicePage;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -51,9 +52,8 @@ public class RegisterUsedCarPage extends BaseServicePage {
     @FindBy(xpath = "//select[@ng-disabled='!selected.date || slotsLoading']")
     private WebElement timeField; // поле выбора времени визита
 
-    public RegisterUsedCarPage(WebDriver driver) {
+    public RegisterUsedCarPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     public RegisterUsedCarPage typeInAddressField(String address) {
@@ -120,6 +120,7 @@ public class RegisterUsedCarPage extends BaseServicePage {
     }
 
     public RegisterUsedCarPage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }
@@ -135,12 +136,26 @@ public class RegisterUsedCarPage extends BaseServicePage {
     }
 
     public RegisterUsedCarPage selectDay() {
-        new Select(dayField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(dayField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
     public RegisterUsedCarPage selectTime() {
-        new Select(timeField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(timeField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 

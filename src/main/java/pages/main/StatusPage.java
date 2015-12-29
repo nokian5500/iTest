@@ -6,8 +6,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class StatusPage extends ApplicationManager {
+public class StatusPage extends BasePage {
+
+    // Variables
 
     @FindBy(id = "code")
     public WebElement refIdField;          // поле ввода реф
@@ -15,14 +18,12 @@ public class StatusPage extends ApplicationManager {
     @FindBy(xpath = "//a[contains(.,'Переглянути')]")
     public WebElement viewStatusButton;    //кнопка просмотра статуса
 
-    //    ------------------- Элементы ID Bank------------------------------//
 
-    public StatusPage(WebDriver driver) {
+    // Methods
+
+    public StatusPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
-
-    // =============================================== МЕТОДЫ  =================================================//
 
     public StatusPage enterReferenceNumber(String number) {
         refIdField.sendKeys(number);
@@ -38,5 +39,3 @@ public class StatusPage extends ApplicationManager {
         driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
     }
 }
-
-

@@ -5,31 +5,31 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class MyJournalPage extends ApplicationManager {
+public class MyJournalPage extends BasePage {
 
-    //  =================  кноки входа в ид банк===============//
+    // Variables
+
     @FindBy(linkText = "увійдіть через BankID")
-    public WebElement bankIdAuthorizationButton;
+    public WebElement bankIdAuthorizationButton; // кноки входа в BankID
 
     @FindBy(linkText = "електронно-цифровий підпис")
     public WebElement electronicDigitalSignatureButton;
 
-    //  =================  форма входа в журнал ===============//
     @FindBy(xpath = "//h4[@class='form-signin-bankid-heading_']")
-    public WebElement formSignInBankId;
+    public WebElement formSignInBankId;  // форма входа в журнал
 
-    //  ================= ссылка на заявки  ===============//
     @FindBy(xpath = "//a[@ng-click='limit = limit +10']")
-    public WebElement nextLink;
+    public WebElement nextLink;          // ссылка на заявки
 
-    //  ================= ссылка на заявки  ===============//
     @FindBy(xpath = "//h1[contains(.,'Мій журнал')]")
-    public WebElement myLog;
+    public WebElement myLog;             // ссылка на заявки
 
-    public MyJournalPage(WebDriver driver) {
+
+    // Methods
+
+    public MyJournalPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 }
-

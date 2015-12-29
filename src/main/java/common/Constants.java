@@ -2,9 +2,7 @@ package common;
 
 public class Constants {
 
-    public static class Settings {
-
-    }
+    public static class Settings {}
 
     public static class Areas {
 
@@ -19,16 +17,14 @@ public class Constants {
         public static class City {
             public static final String DNIPROPETROVSK = "Дніпропетровськ";
             public static final String POLTAVA = "Полтава";
-
         }
-
     }
 
     public static class Services {
 
         // Міліція та ДАІ
         public static class MVD {
-            public static final String CRIMINAL_RECORD = "Надання довідки про відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством (терміново)";
+            public static final String CRIMINAL_RECORD = "Надання довідки про притягнення до кримінальної відповідальності, відсутність (наявність) судимості або обмежень, передбачених кримінально-процесуальним законодавством України";
             public static final String REGISTER_USED_CAR = "Реєстрація авто з пробігом в МРЕВ";
         }
 
@@ -49,7 +45,6 @@ public class Constants {
         public static class Taxes {
             public static final String PERSONAL_INCOME_CERTIFICATE = "Отримання довідки про доходи фізичних осіб";
         }
-
     }
 
     public static class TestData {
@@ -81,7 +76,6 @@ public class Constants {
             public static final String BANK_IPN = "143605704021";
             public static final String BANK_ACCOUNT = "1234567890123456";
         }
-
     }
 
     //------------------- УРЛ для работы с тестовыми услугами  ------------------//
@@ -106,5 +100,4 @@ public class Constants {
     public static class Status {
         public static final String SUCCESS_STATUS= "Заявка подана";
     }
-
 }

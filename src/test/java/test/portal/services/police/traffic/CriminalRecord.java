@@ -1,15 +1,17 @@
 package test.portal.services.police.traffic;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.police.traffic.CriminalRecordPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 public class CriminalRecord extends TestBase {
 
     @Test (priority = 10)
     public void DnipropetrovskCriminalRecord() {
+
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.MVD.CRIMINAL_RECORD;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -18,20 +20,20 @@ public class CriminalRecord extends TestBase {
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";
-        String phone = "931234567";
+        String phone = "380931234567";
         String resType = "Прошу надати довідку в паперовому вигляді";
         String email = "test@gmail.com";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        //selectAreaPage.selectCity(city);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(criminalRecordPage.getServiceName(), service);
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.selectAreaPage.selectCity(city);
+        app.bankIdPage.loginByPrivatBankBankID();
+        assertEquals(app.criminalRecordPage.getServiceName(), service);
 
-        criminalRecordPage.typeInBirthDateField(birthDate)
+        app.criminalRecordPage.typeInBirthDateField(birthDate)
                 .typeInBirthLocField(birthLoc)
                 .selectСountry(country)
                 .selectGoal(goal)
@@ -41,11 +43,11 @@ public class CriminalRecord extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
+
+        app.bankIdPage.logOut();
+        app.navHelper.openStatusesPage();
+        app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
-
-
     }
 }

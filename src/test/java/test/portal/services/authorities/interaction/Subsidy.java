@@ -1,15 +1,17 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.SubsidyPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 public class Subsidy extends TestBase {
 
     @Test (priority = 10)
     public void DnipropetrovskSubsidyTest() {
+
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.SUBSIDY;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
@@ -36,13 +38,13 @@ public class Subsidy extends TestBase {
         String infoAboutoOverload = "test";
 
         // --------------------- Тест-кейс----------------------//
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
-        authorizationPage.privatBankAuthorization();
-        Assert.assertEquals(subsidyPage.getServiceName(), service);
-        subsidyPage
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
+        app.bankIdPage.loginByPrivatBankBankID();
+        assertEquals(app.subsidyPage.getServiceName(), service);
+        app.subsidyPage
                 .selectArea(area)
                 .typeInPlaceOfLivingField(placeOfLiving)
                 .typeInPhoneField(phone)
@@ -67,10 +69,10 @@ public class Subsidy extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
+        app.bankIdPage.logOut();
+        app.navHelper.openStatusesPage();
+        app.statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
-
     }
 }

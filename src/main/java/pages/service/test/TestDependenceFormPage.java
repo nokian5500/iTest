@@ -1,17 +1,14 @@
 package pages.service.test;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import pages.BaseServicePage;
+import pages.service.BaseServicePage;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-import java.io.File;
 
 public class TestDependenceFormPage extends BaseServicePage {
 
@@ -36,9 +33,8 @@ public class TestDependenceFormPage extends BaseServicePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
-    public TestDependenceFormPage(WebDriver driver) {
+    public TestDependenceFormPage() {
         PageFactory.initElements(driver, this);
-        this.driver = driver;
     }
 
     //---------------- Методы ввода данных в поля------------------//

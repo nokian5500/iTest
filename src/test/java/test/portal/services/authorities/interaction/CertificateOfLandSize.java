@@ -1,11 +1,11 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.LandSizeAndExistencePage;
-import pages.service.police.traffic.RegisterUsedCarPage;
 import test.TestBase;
+
+import static org.testng.Assert.assertEquals;
 
 /**
  * Test for services in this class:
@@ -25,18 +25,18 @@ public class CertificateOfLandSize extends TestBase {
         String phone = "0931234567";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String applicant = "Особа, в інтересах якої встановлене обмеження";
-        String filePath = "src/test/resources/test.jpg";
+        String filePath = "src/test/resources/files/test.jpg";
         String landRegisterNumber = "1234567890:45:456:1234";
 
-        mainPage.typeInSearchField(service);
-        mainPage.clickService(service);
+        app.mainPage.typeInSearchField(service);
+        app.mainPage.clickService(service);
 
-        Assert.assertEquals(selectAreaPage.serviceName.getText(), service);
-        selectAreaPage.selectRegion(region);
+        assertEquals(app.selectAreaPage.serviceName.getText(), service);
+        app.selectAreaPage.selectRegion(region);
 
-        authorizationPage.privatBankAuthorization();
+        app.bankIdPage.loginByPrivatBankBankID();
 
-        landSizeAndExistencePage
+        app.landSizeAndExistencePage
                 .selectDistrict(district)
                 .enterAddress(address)
                 .typeInPhoneField(phone)
@@ -48,9 +48,9 @@ public class CertificateOfLandSize extends TestBase {
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
-
-        mainPage.goToStatus();
-        statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
+        app.bankIdPage.logOut();
+        app.navHelper.openStatusesPage();
+        app.statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
                 .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
