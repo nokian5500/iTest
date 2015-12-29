@@ -20,7 +20,7 @@ public class CriminalRecord extends TestBase {
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";
-        String phone = "0931234567";
+        String phone = "380931234567";
         String resType = "Прошу надати довідку в паперовому вигляді";
         String email = "test@gmail.com";
 
