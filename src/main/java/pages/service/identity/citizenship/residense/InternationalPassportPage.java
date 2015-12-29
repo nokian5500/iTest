@@ -1,10 +1,12 @@
 package pages.service.identity.citizenship.residense;
 
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import pages.service.BaseServicePage;
+import org.testng.Assert;
 
 public class InternationalPassportPage extends BaseServicePage {
 
@@ -66,12 +68,26 @@ public class InternationalPassportPage extends BaseServicePage {
     }
 
     public InternationalPassportPage selectDay() {
-        new Select(dayField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(dayField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
     public InternationalPassportPage selectTime() {
-        new Select(timeField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(timeField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 

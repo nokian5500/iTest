@@ -1,10 +1,12 @@
 package pages.service.police.traffic;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import pages.service.BaseServicePage;
 
 import java.text.ParseException;
@@ -134,12 +136,26 @@ public class RegisterUsedCarPage extends BaseServicePage {
     }
 
     public RegisterUsedCarPage selectDay() {
-        new Select(dayField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(dayField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
     public RegisterUsedCarPage selectTime() {
-        new Select(timeField).selectByValue("0");
+        Boolean selected;
+        try {
+            new Select(timeField).selectByValue("0");
+            selected = true;
+        } catch (NoSuchElementException e) {
+            selected = false;
+        }
+        Assert.assertTrue(selected, "NO AVAILABLE SLOTS!, NO AVAILABLE SLOTS !, NO AVAILABLE SLOTS!");
         return this;
     }
 
