@@ -29,7 +29,7 @@ public class CriminalRecord extends TestBase {
         app.mainPage.clickService(service);
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-        //selectAreaPage.selectCity(city);
+        app.selectAreaPage.selectCity(city);
         app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.criminalRecordPage.getServiceName(), service);
 
