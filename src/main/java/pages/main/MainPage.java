@@ -4,20 +4,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.stalenessOf;
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class MainPage extends BasePage {
 
     // Variables
 
     @FindBy(css = ".ng-scope>p")
-    public WebElement services;            // name of services on the Main page
+    private WebElement services;            // name of services on the Main page
 
     @FindBy(xpath = "//input[@ng-change='search()']")
-    public WebElement searchField;         // search field
+    private WebElement searchField;         // search field
 
     @FindBy(xpath = "//a[contains(text(), 'Всі послуги')] ")
     private WebElement expandMoreServices; // to display all found services when more than 4 services are found
@@ -31,8 +30,8 @@ public class MainPage extends BasePage {
 
     // Method for service selection
     public void clickService(String service) {
-        driver.findElement(By.xpath("//a[contains(.,'" + service + "')]")).click();
-        app.pause(2000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'" + service + "')]"))).click();
     }
 
     // Method for searching the service

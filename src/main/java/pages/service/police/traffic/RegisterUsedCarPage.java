@@ -101,12 +101,7 @@ public class RegisterUsedCarPage extends BaseServicePage {
 
     public RegisterUsedCarPage typeInInvoiceDateField(String invoiceDate) {
 
-        SimpleDateFormat date = new SimpleDateFormat(DATE_FORMAT);
-        try {
-            date.parse(invoiceDate);
-        } catch (ParseException e) {
-            System.out.println("Check if " + invoiceDate + " complies to expected date format " + DATE_FORMAT);
-        }
+        checkDateFormat(invoiceDate);
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("angular.element(document.getElementsByName('invoiceDate')[0]).context.value = '"

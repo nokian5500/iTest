@@ -17,24 +17,26 @@ import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.police.traffic.RegisterUsedCarPage;
+import pages.service.taxes.PensionAmountCertificatePage;
 import pages.service.taxes.PersonalIncomeCertificatePage;
 import pages.service.test.*;
 import utils.PropertyLoader;
 import utils.WebDriverFactory;
+
 import java.io.File;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ApplicationManager {
 
     // Variables
 
+    protected static final Logger log = LogManager.getLogger(ApplicationManager.class);
+
     public static WebDriver driver;
-    public static WebDriverWait wait;
-    // Properties
-    private static Browser browser;
-    private static String username;
-    private static String password;
-    private static String gridHubUrl;
+    private static WebDriverWait wait;
     private static String baseUrl;
     // Pages
     public MainPage mainPage;
@@ -58,6 +60,7 @@ public class ApplicationManager {
     public UnregisterFromLocationPage unregisterFromLocationPage;
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
     public PersonalIncomeCertificatePage personalIncomeCertificatePage;
+    public PensionAmountCertificatePage pensionAmountCertificatePage;
     public RegisterUsedCarPage registerUsedCarPage;
     public LandSizeAndExistencePage landSizeAndExistencePage;
     // Helpers
@@ -69,13 +72,14 @@ public class ApplicationManager {
     public ApplicationManager() {
 
         // Get properties (from application.properties file)
-        browser = new Browser();
+        Browser browser = new Browser();
         browser.setName(PropertyLoader.loadProperty("browser.name"));
         browser.setVersion(PropertyLoader.loadProperty("browser.version"));
         browser.setPlatform(PropertyLoader.loadProperty("browser.platform"));
-        username = PropertyLoader.loadProperty("user.username");
-        password = PropertyLoader.loadProperty("user.password");
-        gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
+
+        String username = PropertyLoader.loadProperty("user.username");
+        String password = PropertyLoader.loadProperty("user.password");
+        String gridHubUrl = PropertyLoader.loadProperty("grid2.hub");
         baseUrl = PropertyLoader.loadProperty("base.url");
 
         // Create browser (using given properties) and maximize it
@@ -114,6 +118,7 @@ public class ApplicationManager {
         assignSocialAssistanceForChildBirthPage = new AssignSocialAssistanceForChildBirthPage();
         personalIncomeCertificatePage = new PersonalIncomeCertificatePage();
         landSizeAndExistencePage = new LandSizeAndExistencePage();
+        pensionAmountCertificatePage = new PensionAmountCertificatePage();
 
         // Create helpers objects
         navHelper = new NavHelper();
@@ -157,10 +162,11 @@ public class ApplicationManager {
         locator.sendKeys(file.getAbsolutePath());
 
         // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
         while (!locator.isEnabled()) {
             try {
-                System.out.println("Wait, wait, wait..");
-                Thread.sleep(200);
+                log.info("Wait for file uploaded..");
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
