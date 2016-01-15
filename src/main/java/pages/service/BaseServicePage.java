@@ -4,18 +4,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.BasePage;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class BaseServicePage extends BasePage {
 
     // Variables
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
-    protected WebElement serviceName; // название услуги
+    private WebElement serviceName; // название услуги
 
     @FindBy(xpath = "//button[@class='btn btn-info']")
-    protected WebElement confirmButton; // кнопка подтверждения создания услуги
+    private WebElement confirmButton; // кнопка подтверждения создания услуги
 
     @FindBy(xpath = "//div[@class='text-center ng-binding']")
-    protected WebElement referenceNumberField; //поле референс заявки
+    private WebElement referenceNumberField; //поле референс заявки
 
     @FindBy(name = "phone")
     protected WebElement phoneField; // поле ввода телефона
@@ -26,9 +29,9 @@ public class BaseServicePage extends BasePage {
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     protected WebElement successText;
 
-    protected static final String DATE_FORMAT = "dd/MM/yyyy";
-    
-    public String referenceNumber;
+    private static final String DATE_FORMAT = "dd/MM/yyyy";
+
+    private String referenceNumber;
 
 
     // Methods
@@ -46,5 +49,14 @@ public class BaseServicePage extends BasePage {
         String refField = referenceNumberField.getText();
         this.referenceNumber = refField.substring(16, 23);
         return referenceNumber;
+    }
+
+    protected void checkDateFormat(String dateToPArse) {
+        SimpleDateFormat date = new SimpleDateFormat(DATE_FORMAT);
+        try {
+            date.parse(dateToPArse);
+        } catch (ParseException e) {
+            log.info("Check if " + dateToPArse + " complies to expected date format " + DATE_FORMAT);
+        }
     }
 }
