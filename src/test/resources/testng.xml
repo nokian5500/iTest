@@ -25,6 +25,7 @@
             <class name="test.portal.services.TestServices"/>
             <!--TAXES-->
             <class name="test.portal.services.taxes.PersonalIncomeCertificate"/>
+            <class name="test.portal.services.taxes.PensionAmountCertificate"/>
         </classes>
     </test>
 </suite>
