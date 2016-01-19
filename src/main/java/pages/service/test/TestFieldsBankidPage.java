@@ -23,6 +23,9 @@ public class TestFieldsBankidPage extends BaseServicePage {
     @FindBy(xpath = "(//input[@type='file'])[1]")
     public WebElement attachDocumentButton; // поле аттача
 
+    @FindBy(name = "email")
+    public WebElement emailField;
+
     @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
     private WebElement successText; //текст удачной создании заявки
 
@@ -49,14 +52,20 @@ public class TestFieldsBankidPage extends BaseServicePage {
         return this;
     }
 
+    public TestFieldsBankidPage typeInEmailField(String email){
+        emailField.clear();
+        emailField.sendKeys(email);
+        return this;
+    }
+
     @Override
     public TestFieldsBankidPage clickConfirmButton() {
         super.clickConfirmButton();
         return this;
     }
 
-    public TestFieldsBankidPage verifyServiceSuccessCreated() {
-        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail");// проверка успешного создания заявки
+    public TestFieldsBankidPage verifyServiceSuccessCreated(String email) {
+        Assert.assertEquals(successText.getText(), "Результати будуть спрямовані на Ваш e-mail " + email);// проверка успешного создания заявки
         return this;
     }
 //=================методы по работе с номером заявки=======================//

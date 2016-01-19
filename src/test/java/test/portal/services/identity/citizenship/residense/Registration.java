@@ -23,12 +23,13 @@ public class Registration extends TestBase {
         String birthLocation = "Україна,Дніпропетровська,Дніпропетровськ";
         String nationality = "Україна";
         String district = "Амур-Нижньодніпровський";
-        String phone = "0931234567";
-        String email = "test@gmail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
         String surnameChanged = "Ні";
         String militStatus = "Ні";
         String kids = "Ні";
+        String status = "";
 
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickService(service);
@@ -60,6 +61,6 @@ public class Registration extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(UnregisterFromLocationPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

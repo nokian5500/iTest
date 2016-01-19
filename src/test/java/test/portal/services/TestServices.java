@@ -22,7 +22,8 @@ public class TestServices extends TestBase {
         String client = "отримувач особисто";
         String info = "test";
         String document = "src/test/resources/files/test.jpg";
-        String email = "test@gmail.com";
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
+
 
         // --------------------- Тест-кейс----------------------//
         app.mainPage.goToTestServices(server, service);
@@ -41,7 +42,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("test_dependence_form");
     }
 
     @Test(priority = 20)
@@ -53,7 +54,7 @@ public class TestServices extends TestBase {
         String client = "представник отримувача";
         String info = "test";
         String document = "src/test/resources/files/test.jpg";
-        String email = "test@gmail.com";
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
 
         // --------------------- Тест-кейс----------------------//
         app.mainPage.goToTestServices(server, service);
@@ -72,7 +73,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("test_dependence_form");
     }
 
     @Test(priority = 30)
@@ -85,6 +86,7 @@ public class TestServices extends TestBase {
         String city = Constants.Areas.City.DNIPROPETROVSK;
         String country = "country";
         String address = "address";
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String document = "src/test/resources/files/test.jpg";
 
         // --------------------- Тест-кейс----------------------//
@@ -95,17 +97,18 @@ public class TestServices extends TestBase {
         assertEquals(app.testFieldsBankidPage.getServiceName(), serviceName);
         app.testFieldsBankidPage
                 .typeInCountryField(country)
-                .typeInAddressField(address);
+                .typeInAddressField(address)
+                .typeInEmailField(email);
         app.attachDocument(app.testFieldsBankidPage.attachDocumentButton, document);
         app.testFieldsBankidPage
                 .clickConfirmButton()
-                .verifyServiceSuccessCreated()
+                .verifyServiceSuccessCreated(email)
                 .saveReferenceNumber();
         app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("тестирование новых полей bankId");
     }
 
     @Test(priority = 40)
@@ -122,7 +125,7 @@ public class TestServices extends TestBase {
         String model = "model";
         String number = "number";
         String invoiceNumber = "invoiceNumber";
-        String phone = "380931234567";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
 
         // --------------------- Тест-кейс----------------------//
@@ -146,7 +149,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("test_liqpay");
     }
 
     @Test(priority = 50)
@@ -173,7 +176,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("test_mailer");
     }
 
     //TODO: implement test
@@ -226,6 +229,6 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus("Запорізький ЦНАП-Декларація про початок виконання підготовчих робіт");
     }
 }

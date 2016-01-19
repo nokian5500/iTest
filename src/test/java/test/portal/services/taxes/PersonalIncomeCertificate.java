@@ -22,6 +22,7 @@ public class PersonalIncomeCertificate extends TestBase {
         String email = "test@mail.com";
         String placeOfLiving = "Дніпропетровськ, вул. Поля, 1";
         String aim = "ТЕСТ для подання за вимогою";
+        String status = "Дніпропетровськ - Отримання довідки про доходи фіз. осіб";
 
         //------------------- Test Case -------------------//
         app.mainPage.typeInSearchField(service);
@@ -43,6 +44,6 @@ public class PersonalIncomeCertificate extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

@@ -29,6 +29,7 @@ public class PensionAmountCertificate extends TestBase {
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String filePath = "src/test/resources/files/test.jpg";
 
+
         //------------------- Test Case -------------------//
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickService(service);
@@ -50,6 +51,6 @@ public class PensionAmountCertificate extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(PensionAmountCertificatePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(service);
     }
 }
