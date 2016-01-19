@@ -98,7 +98,7 @@ public class SubsidyPage extends BaseServicePage {
     }
 
     public SubsidyPage typeInPhoneField(String phone) {
-
+        phoneField.clear();
         phoneField.sendKeys(phone); // ввод телефона
         return this;
     }

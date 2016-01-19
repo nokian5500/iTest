@@ -19,13 +19,14 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
-        String phone = "039 123 4567";
-        String email = "test@gmail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String innScanDocument = "src/test/resources/files/test.jpg";
         String birthScanDocument = "src/test/resources/files/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
         String transferType = "через національного оператора поштового зв'язку";
         String numberPostOffice = "12345";
+        String status = "Заявка подана";
 
         //------------------- Тест-кейс -------------------//
         app.mainPage.typeInSearchField(service);
@@ -42,7 +43,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
         app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
         app.assignSocialAssistanceForChildBirthPage
-                .selectArea(area)
+               // .selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInNumberPostOfficeField(numberPostOffice)
                 .clickConfirmButton()
@@ -52,7 +53,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 
     @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
@@ -63,8 +64,8 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
-        String phone = "039 123 4567";
-        String email = "test@gmail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String innScanDocument = "src/test/resources/files/test.jpg";
         String birthScanDocument = "src/test/resources/files/test.jpg";
         String area = "Самарський, м.Дніпропетровськ";
@@ -91,7 +92,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachInnScanDocument, innScanDocument);
         app.attachDocument(app.assignSocialAssistanceForChildBirthPage.attachBirthScanDocument, birthScanDocument);
         app.assignSocialAssistanceForChildBirthPage
-            .selectArea(area)
+                //.selectArea(area)
                 .selectTransferTypeField(transferType)
                 .typeInBankNameField(bankName)
                 .typeInBankMFOField(bankMFO)
@@ -106,6 +107,6 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(AssignSocialAssistanceForChildBirthPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

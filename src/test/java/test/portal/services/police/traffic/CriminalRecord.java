@@ -20,10 +20,10 @@ public class CriminalRecord extends TestBase {
         String birthLoc = "Украина";
         String country = "Україна";
         String goal = "Оформлення візи для виїзду за кордон.";
-        String phone = "380931234567";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
         String resType = "Прошу надати довідку в паперовому вигляді";
-        String email = "test@gmail.com";
-
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
+        String status = "Днепропетровск - Надання довідки про відсутність або наявніcть судимості";
         // --------------------- Тест-кейс----------------------//
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickService(service);
@@ -48,6 +48,6 @@ public class CriminalRecord extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

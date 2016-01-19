@@ -22,11 +22,12 @@ public class CertificateOfLandSize extends TestBase {
         String district = "ЦНАП Вільногірської міськради";
         String address = "Дніпропетровськ (Центральний), вул. Поля, 1";
         String landAddress = "Вільногірськ, вул. Вільногірська, 1";
-        String phone = "0931234567";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String applicant = "Особа, в інтересах якої встановлене обмеження";
         String filePath = "src/test/resources/files/test.jpg";
         String landRegisterNumber = "1234567890:45:456:1234";
+        String status = "";
 
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickService(service);
@@ -52,6 +53,6 @@ public class CertificateOfLandSize extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(LandSizeAndExistencePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

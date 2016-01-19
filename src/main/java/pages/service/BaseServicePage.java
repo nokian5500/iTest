@@ -47,7 +47,7 @@ public class BaseServicePage extends BasePage {
 
     public String saveReferenceNumber() {
         String refField = referenceNumberField.getText();
-        this.referenceNumber = refField.substring(16, 23);
+        this.referenceNumber = refField.substring(16, 25);
         return referenceNumber;
     }
 

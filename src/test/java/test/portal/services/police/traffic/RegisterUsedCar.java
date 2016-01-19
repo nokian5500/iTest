@@ -26,10 +26,11 @@ public class RegisterUsedCar extends TestBase {
         String number = "AH4568EE";
         String transitNumber = "AВ7845EE";
         String invoice = "АБВ123456";
-        String invoiceDate = "01/02/2009";
+        String invoiceDate = "19/01/2016";
         String mreoAddress = "узвіз Тольятті, 2";
-        String phone = "0931234567";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
+        String status = "Днепропетровск - Реєстрація авто з пробігом в МРЕВ";
 
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickExpandAllFoundServices();
@@ -52,10 +53,10 @@ public class RegisterUsedCar extends TestBase {
                 .typeInInvoiceField(invoice)
                 .typeInInvoiceDateField(invoiceDate)
                 .selectMreo(mreoAddress)
-                .typeInPhoneField(phone)
-                .typeInEmailField(email)
                 .selectDay()
                 .selectTime()
+                .typeInPhoneField(phone)
+                .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
@@ -64,6 +65,6 @@ public class RegisterUsedCar extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

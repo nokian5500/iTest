@@ -52,7 +52,7 @@ public class Constants {
 
         //------------------- Данные для подачи заявок  --------------//
         public static class PersonalInfo {
-            public static final String PHONE = "380102030405";
+            public static final String PHONE = "380932030405";
             public static final String FIO_UA = "Дмитро Олександрович Дубілет";
             public static final String FIO_RUS = "Дубилет Дмитрий Александрович";
             public static final String E_MAIL = "vidokgulich@gmail.com";
@@ -96,9 +96,5 @@ public class Constants {
         public static final String TEST_SERVER = "https://test.igov.org.ua/";
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
-    }
-
-    public static class Status {
-        public static final String SUCCESS_STATUS= "Заявка подана";
     }
 }
