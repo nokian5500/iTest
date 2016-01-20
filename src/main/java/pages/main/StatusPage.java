@@ -36,6 +36,7 @@ public class StatusPage extends BasePage {
     }
 
     public void verifyStatus(String status) {
-        driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
+        driver.findElement(By.xpath("//td[contains(.,' - " + status + "')]")).isDisplayed();
+
     }
 }

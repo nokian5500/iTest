@@ -45,6 +45,7 @@ public class LandSizeAndExistencePage extends BaseServicePage {
     }
 
     public LandSizeAndExistencePage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone);
         return this;
     }

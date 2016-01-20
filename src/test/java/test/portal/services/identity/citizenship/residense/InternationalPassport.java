@@ -17,9 +17,10 @@ public class InternationalPassport extends TestBase {
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String havePassport = "ні, буду отримувати перший раз";
         String biometrical = "ні";
-        String phone = "0931234567";
-        String email = "test@gmail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
+        String status = "Отримання паспорта громадянина України для виїзда за кордон";
 
         // --------------------- Тест-кейс----------------------//
         app.mainPage.typeInSearchField(service);
@@ -31,11 +32,11 @@ public class InternationalPassport extends TestBase {
         app.internationalPassportPage
                 .selectHavePassport(havePassport)
                 .selectBiometrical(biometrical)
-                .typeInPhoneField(phone)
-                .typeInEmailField(email)
                 .selectArea(area)
                 .selectDay()
                 .selectTime()
+                .typeInPhoneField(phone)
+                .typeInEmailField(email)
                 .clickConfirmButton()
                 .verifyServiceSuccessCreated()
                 .saveReferenceNumber();
@@ -43,6 +44,6 @@ public class InternationalPassport extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(status);
     }
 }

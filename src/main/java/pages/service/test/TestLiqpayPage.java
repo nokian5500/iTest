@@ -37,7 +37,7 @@ public class TestLiqpayPage extends BaseServicePage {
     @FindBy(name = "email")
     private WebElement emailField; //поле эмейла
 
-    @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
+    @FindBy(xpath = "//strong[contains(.,'Дякуємо, що скористались нашим сервісом!')]")
     private WebElement successText; //текст удачной создании заявки
 
     public TestLiqpayPage() {
@@ -107,7 +107,7 @@ public class TestLiqpayPage extends BaseServicePage {
     }
 
     public TestLiqpayPage verifyServiceSuccessCreated() {
-        Assert.assertEquals(successText.getText(), "Дякуемо, що скористались нашим сервісом!");// проверка успешного создания заявки
+        Assert.assertEquals(successText.getText(), "Дякуємо, що скористались нашим сервісом!");// проверка успешного создания заявки
         return this;
     }
 //=================методы по работе с номером заявки=======================//

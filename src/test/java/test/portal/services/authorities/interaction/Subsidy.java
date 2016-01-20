@@ -17,8 +17,8 @@ public class Subsidy extends TestBase {
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String area = "Амур-Нижньодніпровський район, м.Дніпропетровськ";
         String placeOfLiving = "test";
-        String phone = "0931234567";
-        String email = "test@gmail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String subsidyType = "Оплата житлово-комунальних послуг";
         String electricity = "Не користуюсь";
         String houseArea = "Не користуюсь";
@@ -73,6 +73,6 @@ public class Subsidy extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(Constants.Status.SUCCESS_STATUS);
+                .verifyStatus(service);
     }
 }

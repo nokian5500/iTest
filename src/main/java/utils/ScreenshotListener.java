@@ -2,6 +2,8 @@ package utils;
 
 import common.ApplicationManager;
 import com.google.common.io.Files;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +16,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ScreenshotListener extends TestListenerAdapter {
+
+    protected static final Logger log = LogManager.getLogger(ScreenshotListener.class);
 
     @Override
     public void onTestFailure(ITestResult result) {
@@ -38,7 +42,7 @@ public class ScreenshotListener extends TestListenerAdapter {
         boolean success = (new File("TestReport/html/Screens/")).mkdirs();
         if (!success) {
             //Directory creation failed
-            System.out.println("Directory creation failed. Папка уже создана?");
+            log.info("Directory creation failed. Папка уже создана?");
         }
 
         SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
@@ -53,7 +57,7 @@ public class ScreenshotListener extends TestListenerAdapter {
                 try {
                     Files.copy(screenshotTempFile, screenshot);
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
+                    log.error(e.getMessage());
                 }
                 Reporter.log(
                         "<center>Скриншот снят при падении теста " +
@@ -67,9 +71,9 @@ public class ScreenshotListener extends TestListenerAdapter {
                                 ".png" +
                                 "\"></a></div><center><br><br>",
                         true);
-                System.out.println(ErrorLogMessage);
+                log.error(ErrorLogMessage);
             } else {
-                System.out.println(successLogMessage);
+                log.info(successLogMessage);
                 Reporter.log(successLogMessage);
             }
         } catch (Exception e) {
