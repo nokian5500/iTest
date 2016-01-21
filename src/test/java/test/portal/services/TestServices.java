@@ -42,7 +42,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("test_dependence_form");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 20)
@@ -73,7 +73,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("test_dependence_form");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 30)
@@ -108,7 +108,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestFieldsBankidPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("тестирование новых полей bankId");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS1);
     }
 
     @Test(priority = 40)
@@ -149,7 +149,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestLiqpayPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("test_liqpay");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     @Test(priority = 50)
@@ -176,7 +176,7 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("test_mailer");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
     //TODO: implement test
@@ -215,6 +215,7 @@ public class TestServices extends TestBase {
         // --------------------- Тест-кейс----------------------//
         app.mainPage.goToTestServices(server, service);
         app.selectAreaPage.selectRegion(region);
+        app.pause(6000);
         app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.testZPCnapMailerPage.getServiceName(), serviceName);
         app.testZPCnapMailerPage
@@ -229,6 +230,6 @@ public class TestServices extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestZPCnapMailerPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus("Запорізький ЦНАП-Декларація про початок виконання підготовчих робіт");
+                .verifyStatus(Constants.Status.SUCCESS_STATUS2);
     }
 }

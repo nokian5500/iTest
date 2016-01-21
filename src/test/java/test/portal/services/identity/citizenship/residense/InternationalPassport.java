@@ -8,7 +8,6 @@ import test.TestBase;
 import static org.testng.Assert.assertEquals;
 
 public class InternationalPassport extends TestBase {
-
     @Test (priority = 10)
     public void DnipropetrovskInternationalPassportTest() {
 
@@ -20,7 +19,6 @@ public class InternationalPassport extends TestBase {
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
-        String status = "Отримання паспорта громадянина України для виїзда за кордон";
 
         // --------------------- Тест-кейс----------------------//
         app.mainPage.typeInSearchField(service);
@@ -44,6 +42,6 @@ public class InternationalPassport extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(InternationalPassportPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS6);
     }
 }

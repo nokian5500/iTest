@@ -43,6 +43,7 @@ public class PersonalIncomeCertificatePage extends BaseServicePage {
     }
 
     public PersonalIncomeCertificatePage typeInPhoneField (String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone); //phone number
         return this;
     }

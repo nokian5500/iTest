@@ -35,7 +35,7 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     @FindBy(name = "country")
     private WebElement countryField; // поле гражданства
 
-    @FindBy(name = "district")
+    @FindBy(xpath = "(//button[@type='button'])[4]")
     private WebElement districtField; // поле района
 
     @FindBy(name = "RegistrationAddress")
@@ -104,7 +104,8 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     }
 
     public UnregisterFromLocationPage selectDistrict(String disrict) {
-        new Select(districtField).selectByVisibleText(disrict);
+        districtField.click();
+        driver.findElement(By.linkText(disrict)).click();
         return this;
     }
 
@@ -126,6 +127,7 @@ public class UnregisterFromLocationPage extends BaseServicePage {
     }
 
     public UnregisterFromLocationPage selectNationality(String nationality) {
+        nationalityField.clear();
         nationalityField.sendKeys(nationality);
         return this;
     }
