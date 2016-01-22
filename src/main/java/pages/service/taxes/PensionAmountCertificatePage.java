@@ -28,6 +28,7 @@ public class PensionAmountCertificatePage extends BaseServicePage {
     private WebElement endOfPeriodField;
 
     public PensionAmountCertificatePage typeInPhoneField(String phone) {
+        phoneField.clear();
         phoneField.sendKeys(phone);
         return this;
     }

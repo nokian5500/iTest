@@ -19,6 +19,7 @@ public class CertificateOfLandSize extends TestBase {
 
         String service = Constants.Services.InteractionWithPublicAuthorities.CERTIFICATE_OF_LAND_SIZE;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String city = Constants.Areas.City.DNIPRODZERGINSK;
         String district = "ЦНАП Вільногірської міськради";
         String address = "Дніпропетровськ (Центральний), вул. Поля, 1";
         String landAddress = "Вільногірськ, вул. Вільногірська, 1";
@@ -34,7 +35,7 @@ public class CertificateOfLandSize extends TestBase {
 
         assertEquals(app.selectAreaPage.serviceName.getText(), service);
         app.selectAreaPage.selectRegion(region);
-
+        app.selectAreaPage.selectCity(city);
         app.bankIdPage.loginByPrivatBankBankID();
 
         app.landSizeAndExistencePage

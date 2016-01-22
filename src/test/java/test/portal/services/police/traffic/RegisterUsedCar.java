@@ -15,7 +15,7 @@ public class RegisterUsedCar extends TestBase {
 
     @Test(priority = 10)
     public void registerUsedCarTest() {
-
+        //------------------- Test Data -------------------//
         String service = Constants.Services.MVD.REGISTER_USED_CAR;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
         String city = Constants.Areas.City.DNIPROPETROVSK;
@@ -30,8 +30,7 @@ public class RegisterUsedCar extends TestBase {
         String mreoAddress = "узвіз Тольятті, 2";
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
-        String status = "Днепропетровск - Реєстрація авто з пробігом в МРЕВ";
-
+        //------------------- Test Case -------------------//
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickExpandAllFoundServices();
         //TODO: remove leading whitespace from clickService(" " + service);
@@ -65,6 +64,6 @@ public class RegisterUsedCar extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(RegisterUsedCarPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS4);
     }
 }

@@ -22,7 +22,7 @@ public class Registration extends TestBase {
         String birthDate = Constants.TestData.PersonalInfo.BIRTH_DAY;
         String birthLocation = "Україна,Дніпропетровська,Дніпропетровськ";
         String nationality = "Україна";
-        String district = "Амур-Нижньодніпровський";
+        String district = "Амур-Нижньодніпровський РВ у м.Дніпропетровську";
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String area = "Дніпропетровськ (Центральний), вул. Поля, 1";
@@ -40,17 +40,17 @@ public class Registration extends TestBase {
         assertEquals(app.unregisterFromLocationPage.getServiceName(), service);
 
         app.unregisterFromLocationPage
+                .selectDistrict(district)
                 .typeInPhoneField(phone)
                 .typeInEmailField(email)
                 .selectSurnameChanged(surnameChanged)
                 .typeInBirthDateField(birthDate)
                 .typeInBirthLocField(birthLocation)
                 .selectNationality(nationality)
-                .selectDistrict(district)
-                .typeInCurrentAddress(birthLocation + district)
+                .typeInCurrentAddress(birthLocation)
                 .typeInNewAddress(area)
-                .selectIfKidsUnderFourteen(kids)
                 .selectMilitaryStatus(militStatus)
+                .selectIfKidsUnderFourteen(kids)
                 .selectDay()
                 .selectTime()
                 .clickConfirmButton()

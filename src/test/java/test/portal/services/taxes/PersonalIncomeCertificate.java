@@ -18,11 +18,10 @@ public class PersonalIncomeCertificate extends TestBase {
         String startOfPeriod = ""; //TEMP, until interaction with Calendar dropdown will be implemented
         String endOfPeriod = ""; //TEMP, until interaction with Calendar dropdown will be implemented
         String fiscalBranch = "Дніпропетровськ - АНД (пров. Універсальний, 12)|0461";
-        String phone = "0931234567";
-        String email = "test@mail.com";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
+        String email = Constants.TestData.PersonalInfo.E_MAIL;
         String placeOfLiving = "Дніпропетровськ, вул. Поля, 1";
         String aim = "ТЕСТ для подання за вимогою";
-        String status = "Дніпропетровськ - Отримання довідки про доходи фіз. осіб";
 
         //------------------- Test Case -------------------//
         app.mainPage.typeInSearchField(service);
@@ -44,6 +43,6 @@ public class PersonalIncomeCertificate extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(PersonalIncomeCertificatePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS3);
     }
 }

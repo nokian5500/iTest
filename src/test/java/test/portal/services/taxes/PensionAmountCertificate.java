@@ -25,7 +25,7 @@ public class PensionAmountCertificate extends TestBase {
         String endOfPeriod = "01/02/2012";
         String address = "Дніпропетровськ - Соборний (вул. перемоги, 12)";
         String fiscalBranch = "Бабушкінський, вул. Героїв Сталінграда, 116-а";
-        String phone = "0931234567";
+        String phone = Constants.TestData.PersonalInfo.PHONE;
         String email = Constants.TestData.PersonalInfo.E_MAIL;
         String filePath = "src/test/resources/files/test.jpg";
 
@@ -51,6 +51,6 @@ public class PensionAmountCertificate extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(PensionAmountCertificatePage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(service);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS3);
     }
 }

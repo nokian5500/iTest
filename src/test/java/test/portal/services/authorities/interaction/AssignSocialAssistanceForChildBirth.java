@@ -17,6 +17,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String district = "Амур-Нижньодніпровський район, м.Дніпропетровськ";
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = Constants.TestData.PersonalInfo.PHONE;
@@ -36,6 +37,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         app.assignSocialAssistanceForChildBirthPage
+                .selectDistrict(district)
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)
@@ -62,6 +64,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
         String region = Constants.Areas.Region.DNIPROPETROVSKA;
+        String district = "Амур-Нижньодніпровський район, м.Дніпропетровськ";
         String address1 = "проспект карла маркса 22";
         String address2 = "проспект карла маркса 22";
         String phone = Constants.TestData.PersonalInfo.PHONE;
@@ -85,6 +88,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
         app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.assignSocialAssistanceForChildBirthPage.serviceName.getText(), service);
         app.assignSocialAssistanceForChildBirthPage
+                .selectDistrict(district)
                 .typeInAdress1Field(address1)
                 .typeInAdress2Field(address2)
                 .typeInEmailField(email)

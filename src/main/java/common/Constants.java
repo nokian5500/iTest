@@ -17,6 +17,7 @@ public class Constants {
         public static class City {
             public static final String DNIPROPETROVSK = "Дніпропетровськ";
             public static final String POLTAVA = "Полтава";
+            public static final String DNIPRODZERGINSK = "Дніпродзержинськ";
         }
     }
 
@@ -96,5 +97,17 @@ public class Constants {
         public static final String TEST_SERVER = "https://test.igov.org.ua/";
         // https://test-version.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
+
+
+    }
+    public static class Status {
+        public static final String SUCCESS_STATUS = "Заявка подана - рассмотрение и загрузка" ;
+        public static final String SUCCESS_STATUS1 = "Заявка подана - обробка заявки";
+        public static final String SUCCESS_STATUS2 = "Заявка подана - Формування додатків документів для відправлення держ.службовцям на email";
+        public static final String SUCCESS_STATUS3 = "Заявка подана - Обробка";
+        public static final String SUCCESS_STATUS4 = "Заявка подана - Перевірка наявності обтяжень";
+        public static final String SUCCESS_STATUS5 = "Заявка подана - Надання послуги";
+        public static final String SUCCESS_STATUS6 = "Заявка подана - обробка дмс";
+        public static final String SUCCESS_STATUS7 = "Заявка подана - Взяти в роботу";
     }
 }
