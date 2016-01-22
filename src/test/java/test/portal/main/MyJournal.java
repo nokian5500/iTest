@@ -13,7 +13,7 @@ public class MyJournal extends TestBase {
         app.navHelper.openMyJournalPage();
         assertEquals(app.journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
-                "цифрового підпису");
+                "цифрового підпису\n" + "Email");
         app.bankIdPage.loginByPrivatBankBankID();
         assertEquals(app.journalPage.myLog.getText(), "Мій журнал");
         assertEquals(app.journalPage.nextLink.getText(), "Показати ще");
@@ -21,6 +21,6 @@ public class MyJournal extends TestBase {
         app.navHelper.openMyJournalPage();
         assertEquals(app.journalPage.formSignInBankId.getText(), "Щоб почати користуватись сервісом “Мій журнал”, увійдіть через BankID\n" +
                 "Сертифікат електронно-\n" +
-                "цифрового підпису");
+                "цифрового підпису\n" + "Email");
     }
 }

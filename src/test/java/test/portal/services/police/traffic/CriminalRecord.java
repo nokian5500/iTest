@@ -23,7 +23,6 @@ public class CriminalRecord extends TestBase {
         String phone = Constants.TestData.PersonalInfo.PHONE;
         String resType = "Прошу надати довідку в паперовому вигляді";
         String email = Constants.TestData.PersonalInfo.E_MAIL;
-        String status = "Днепропетровск - Надання довідки про відсутність або наявніcть судимості";
         // --------------------- Тест-кейс----------------------//
         app.mainPage.typeInSearchField(service);
         app.mainPage.clickService(service);
@@ -48,6 +47,6 @@ public class CriminalRecord extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(CriminalRecordPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(status);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS5);
     }
 }

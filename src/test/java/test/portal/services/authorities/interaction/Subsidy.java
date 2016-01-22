@@ -73,6 +73,6 @@ public class Subsidy extends TestBase {
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(SubsidyPage.referenceNumber)
                 .clickViewStatusButton()
-                .verifyStatus(service);
+                .verifyStatus(Constants.Status.SUCCESS_STATUS7);
     }
 }

@@ -1,6 +1,7 @@
 package pages.service.authorities.interaction;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,9 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement serviceName; // название услуги
+
+    @FindBy(xpath = "(//button[@type='button'])[3]")
+    public WebElement districtField;
 
     @FindBy(name = "adress1")
     public WebElement adress1Field; // адрес регистрации
@@ -76,6 +80,12 @@ public class AssignSocialAssistanceForChildBirthPage extends BaseServicePage {
 
     public AssignSocialAssistanceForChildBirthPage() {
         PageFactory.initElements(driver, this);
+    }
+
+    public AssignSocialAssistanceForChildBirthPage selectDistrict(String district) {
+        districtField.click();
+        driver.findElement(By.linkText(district)).click();
+        return this;
     }
 
     public AssignSocialAssistanceForChildBirthPage typeInAdress1Field(String adress1){
