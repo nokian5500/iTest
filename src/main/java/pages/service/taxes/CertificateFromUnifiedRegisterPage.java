@@ -10,7 +10,7 @@ import pages.service.BaseServicePage;
 import static org.testng.Assert.assertTrue;
 
 public class CertificateFromUnifiedRegisterPage extends BaseServicePage {
-    CertificateFromUnifiedRegisterPage() {
+    public CertificateFromUnifiedRegisterPage() {
         PageFactory.initElements(driver, this);
     }
 
