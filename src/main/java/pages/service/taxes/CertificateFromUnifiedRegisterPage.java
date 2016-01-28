@@ -10,7 +10,7 @@ import pages.service.BaseServicePage;
 import static org.testng.Assert.assertTrue;
 
 public class CertificateFromUnifiedRegisterPage extends BaseServicePage {
-    public CertificateFromUnifiedRegisterPage() {
+    CertificateFromUnifiedRegisterPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -54,7 +54,7 @@ public class CertificateFromUnifiedRegisterPage extends BaseServicePage {
 
 
     public CertificateFromUnifiedRegisterPage typeInEmailField(String email) {
-        emailField.sendKeys(email); //email
+        emailField.sendKeys(email);
         return this;
     }
 
