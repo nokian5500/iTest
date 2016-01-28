@@ -110,5 +110,6 @@ public class Constants {
         public static final String SUCCESS_STATUS5 = "Заявка подана - Надання послуги";
         public static final String SUCCESS_STATUS6 = "Заявка подана - обробка дмс";
         public static final String SUCCESS_STATUS7 = "Заявка подана - Взяти в роботу";
+        public static final String SUCCESS_STATUS8 = "Заявка подана";
     }
 }

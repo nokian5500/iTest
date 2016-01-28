@@ -9,8 +9,8 @@ import pages.service.BaseServicePage;
 
 import static org.testng.Assert.assertTrue;
 
-public class CertificateFromUnifiedRegisterByReferentPage extends BaseServicePage {
-    public CertificateFromUnifiedRegisterByReferentPage() {
+public class CertificateFromUnifiedRegisterPage extends BaseServicePage {
+    public CertificateFromUnifiedRegisterPage() {
         PageFactory.initElements(driver, this);
     }
 
@@ -53,86 +53,86 @@ public class CertificateFromUnifiedRegisterByReferentPage extends BaseServicePag
 
 
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInEmailField(String email) {
+    public CertificateFromUnifiedRegisterPage typeInEmailField(String email) {
         emailField.sendKeys(email); //email
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage selectFiscalBranchField(String fiscalBranch) {
+    public CertificateFromUnifiedRegisterPage selectFiscalBranchField(String fiscalBranch) {
         new Select(fiscalBranchDropDown).selectByVisibleText(fiscalBranch);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInFirstNameField(String firstName) {
+    public CertificateFromUnifiedRegisterPage typeInFirstNameField(String firstName) {
         referentFirstNameField.clear();
         referentFirstNameField.sendKeys(firstName);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInLastNameField(String lastName) {
+    public CertificateFromUnifiedRegisterPage typeInLastNameField(String lastName) {
         referentLastNameField.clear();
         referentLastNameField.sendKeys(lastName);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInMiddleNameField(String middleName) {
+    public CertificateFromUnifiedRegisterPage typeInMiddleNameField(String middleName) {
         referentMiddleNameField.clear();
         referentMiddleNameField.sendKeys(middleName);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInPassportField(String passport) {
+    public CertificateFromUnifiedRegisterPage typeInPassportField(String passport) {
         referentPassportField.clear();
         referentPassportField.sendKeys(passport);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInIPNField(String ipnCode) {
+    public CertificateFromUnifiedRegisterPage typeInIPNField(String ipnCode) {
         referentIPNCodeField.clear();
         referentIPNCodeField.sendKeys(ipnCode);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInPhoneField(String phone) {
+    public CertificateFromUnifiedRegisterPage typeInPhoneField(String phone) {
         phoneField.clear();
         phoneField.sendKeys(phone);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInEdrpouORIpnField(String edrpouOrIpn) {
+    public CertificateFromUnifiedRegisterPage typeInEdrpouORIpnField(String edrpouOrIpn) {
         edrpouORIpnField.clear();
         edrpouORIpnField.sendKeys(edrpouOrIpn);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInCompanyNameField(String companyName) {
+    public CertificateFromUnifiedRegisterPage typeInCompanyNameField(String companyName) {
         companyNameField.clear();
         companyNameField.sendKeys(companyName);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage clickOnFillByReferentField(){
+    public CertificateFromUnifiedRegisterPage clickOnFillByReferentField(){
         fillByReferentLabel.click();
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage selectCertificateSubject(String certificateSubject) {
+    public CertificateFromUnifiedRegisterPage selectCertificateSubject(String certificateSubject) {
         new Select(subjectCertificateDropDown).selectByVisibleText(certificateSubject);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage typeInReasonForCertificateField(String reasonForCertificate) {
+    public CertificateFromUnifiedRegisterPage typeInReasonForCertificateField(String reasonForCertificate) {
         reasonForCertificateField.clear();
         reasonForCertificateField.sendKeys(reasonForCertificate);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage attachFile(ApplicationManager app, String filePath) {
+    public CertificateFromUnifiedRegisterPage attachFile(ApplicationManager app, String filePath) {
         app.attachDocument(attachDocumentButton, filePath);
         return this;
     }
 
-    public CertificateFromUnifiedRegisterByReferentPage verifyServiceSuccessCreated() {
+    public CertificateFromUnifiedRegisterPage verifyServiceSuccessCreated() {
         assertTrue(successText.isDisplayed(), "Success text is not present");
         return this;
     }
@@ -143,7 +143,7 @@ public class CertificateFromUnifiedRegisterByReferentPage extends BaseServicePag
     }
 
     @Override
-    public CertificateFromUnifiedRegisterByReferentPage clickConfirmButton() {
+    public CertificateFromUnifiedRegisterPage clickConfirmButton() {
         super.clickConfirmButton();
         return this;
     }

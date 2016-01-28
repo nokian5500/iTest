@@ -26,7 +26,7 @@
             <!--TAXES-->
             <class name="test.portal.services.taxes.PersonalIncomeCertificate"/>
             <class name="test.portal.services.taxes.PensionAmountCertificate"/>
-            <class name="test.portal.services.taxes.CertificateFromUnifiedRegisterByReferent"/>
+            <class name="test.portal.services.taxes.CertificateFromUnifiedRegister"/>
         </classes>
     </test>
 </suite>

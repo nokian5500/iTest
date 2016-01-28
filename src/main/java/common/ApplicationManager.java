@@ -17,7 +17,7 @@ import pages.service.identity.citizenship.residense.InternationalPassportPage;
 import pages.service.identity.citizenship.residense.UnregisterFromLocationPage;
 import pages.service.police.traffic.CriminalRecordPage;
 import pages.service.police.traffic.RegisterUsedCarPage;
-import pages.service.taxes.CertificateFromUnifiedRegisterByReferentPage;
+import pages.service.taxes.CertificateFromUnifiedRegisterPage;
 import pages.service.taxes.PensionAmountCertificatePage;
 import pages.service.taxes.PersonalIncomeCertificatePage;
 import pages.service.test.*;
@@ -62,7 +62,7 @@ public class ApplicationManager {
     public AssignSocialAssistanceForChildBirthPage assignSocialAssistanceForChildBirthPage;
     public PersonalIncomeCertificatePage personalIncomeCertificatePage;
     public PensionAmountCertificatePage pensionAmountCertificatePage;
-    public CertificateFromUnifiedRegisterByReferentPage certificateFromUnifiedRegisterPage;
+    public CertificateFromUnifiedRegisterPage certificateFromUnifiedRegisterPage;
     public RegisterUsedCarPage registerUsedCarPage;
     public LandSizeAndExistencePage landSizeAndExistencePage;
     // Helpers
@@ -121,7 +121,7 @@ public class ApplicationManager {
         personalIncomeCertificatePage = new PersonalIncomeCertificatePage();
         landSizeAndExistencePage = new LandSizeAndExistencePage();
         pensionAmountCertificatePage = new PensionAmountCertificatePage();
-        certificateFromUnifiedRegisterPage = new CertificateFromUnifiedRegisterByReferentPage();
+        certificateFromUnifiedRegisterPage = new CertificateFromUnifiedRegisterPage();
 
         // Create helpers objects
         navHelper = new NavHelper();
