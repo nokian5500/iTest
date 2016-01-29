@@ -46,6 +46,7 @@ public class Constants {
         public static class Taxes {
             public static final String PERSONAL_INCOME_CERTIFICATE = "Отримання довідки про доходи фізичних осіб";
             public static final String PENSION_AOUNT_CERTIFICATE = "Видача довідки про доходи (розмір пенсії)";
+            public static final String CERTIFICATE_FROM_UNIFIED_REGISTER = "Надання витягу з реєстру платників єдиного податку";
         }
     }
 
@@ -109,5 +110,6 @@ public class Constants {
         public static final String SUCCESS_STATUS5 = "Заявка подана - Надання послуги";
         public static final String SUCCESS_STATUS6 = "Заявка подана - обробка дмс";
         public static final String SUCCESS_STATUS7 = "Заявка подана - Взяти в роботу";
+        public static final String SUCCESS_STATUS8 = "Заявка подана";
     }
 }
