@@ -65,6 +65,7 @@ public class ApplicationManager {
     public CertificateFromUnifiedRegisterPage certificateFromUnifiedRegisterPage;
     public RegisterUsedCarPage registerUsedCarPage;
     public LandSizeAndExistencePage landSizeAndExistencePage;
+    public ModalDialog modalDialog;
     // Helpers
     public NavHelper navHelper;
 
@@ -122,6 +123,7 @@ public class ApplicationManager {
         landSizeAndExistencePage = new LandSizeAndExistencePage();
         pensionAmountCertificatePage = new PensionAmountCertificatePage();
         certificateFromUnifiedRegisterPage = new CertificateFromUnifiedRegisterPage();
+        modalDialog = new ModalDialog();
 
         // Create helpers objects
         navHelper = new NavHelper();
