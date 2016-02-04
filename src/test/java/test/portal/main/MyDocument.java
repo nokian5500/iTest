@@ -8,7 +8,7 @@ import static org.testng.Assert.assertTrue;
 public class MyDocument extends TestBase {
 
     @Test (priority = 10)
-    public void getAccessToDocumentTest() {
+    public void getAccessToDocumentWithoutSMSTest() {
         app.navHelper.openDocumentsPage();
         assertTrue(app.documentsPage.isLoginFormDisplayed());
         app.bankIdPage.loginByPrivatBankBankID();
@@ -16,19 +16,17 @@ public class MyDocument extends TestBase {
         app.documentsPage.getAccessCode("Test");
         app.documentsPage.isAccessCodeNotNull();
         app.pause(2000); // временно
-        assertEquals(app.documentsPage.alertInfoBlock.getText(), "Посилання, за яким користувач може отримати доступ");
-        app.documentsPage.clickOkButton();
         app.bankIdPage.logOut();
         app.navHelper.openDocumentsPage();
         assertEquals(app.documentsPage.loginForm.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
                 "Сертифікат електронно-\n" +
-                "цифрового підпису");
+                "цифрового підпису\n" + "Email");
         app.documentsPage.searchDocumentWithCode();
         app.documentsPage.isDocumentFound();
     }
 
     @Test (priority = 20)
-    public void getAccessToDocumentWithPhoneEmailTest() {
+    public void getAccessToDocumentWithSMSTest() {
         app.navHelper.openDocumentsPage();
         assertEquals(app.documentsPage.loginForm.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
                 "Сертифікат електронно-\n" +

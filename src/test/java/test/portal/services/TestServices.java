@@ -41,7 +41,7 @@ public class TestServices extends TestBase {
         app.bankIdPage.logOut();
         app.navHelper.openStatusesPage();
         app.statusPage.enterReferenceNumber(TestDependenceFormPage.referenceNumber)
-                .clickViewStatusButton()
+               .clickViewStatusButton()
                 .verifyStatus(Constants.Status.SUCCESS_STATUS);
     }
 
