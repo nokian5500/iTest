@@ -42,7 +42,7 @@ public class BankIdPage extends BasePage {
     @FindBy(id = "signInButton")
     public WebElement signIn;         //  sign in button after entering ОТР
 
-    @FindBy(xpath = "//span[contains(.,'Дмитро Олександрович Дубілет')]")
+    @FindBy(xpath = "//span[contains(.,'Володимир Володимирович Білявцев')]")
     public WebElement fio;            //  full name of client after login
 
     @FindBy(xpath = "//span[contains(.,'Вийти')]")

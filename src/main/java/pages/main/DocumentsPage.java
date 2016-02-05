@@ -62,7 +62,7 @@ public class DocumentsPage extends BasePage {
     @FindBy(id = "link")
     private WebElement codeField;                         // Поле с отображением кода
 
-    @FindBy(xpath = "//button[contains(@ng-click,'close()')]")
+    @FindBy(xpath = "//button[contains(.,'OK\n')]")
     private WebElement okButton;                          // Кнопка ОК форме отображения кода
 
     @FindBy(xpath = "//label[@for='link']")
@@ -71,7 +71,7 @@ public class DocumentsPage extends BasePage {
     @FindBy(xpath = "//input[@id='phone']")
     private WebElement phoneField;                        // поле ввода телефона
 
-    @FindBy(xpath = "//tbody[1]/tr[2]/td/div/center/div//form/div[5]/div/input")
+    @FindBy(name = "email")
     private WebElement emailField;                        // поле ввода почты
 
     @FindBy(xpath = "//tbody[1]/tr[2]/td/div/center/div//form/div[3]/label[2]")
@@ -112,7 +112,7 @@ public class DocumentsPage extends BasePage {
     @FindBy(xpath = "//a[@href='/documents/notary']")
     private WebElement notaryTab;                         // Таб "Нотариусам"
 
-    @FindBy(xpath = "//div[2]/div[2]/div/div/div/div")
+    @FindBy(xpath = "//p[contains(.,'Тут нотаріуси зможуть завантажувати документи із електронно-цифровим підписом. Таким чином, через нотаріусів будь-який документ можна буде переводити із паперового вигляду у цифровий.')]")
     public WebElement notaryInfoBlock;                    // Инфо блок
 
     private String accessCode;
@@ -153,6 +153,11 @@ public class DocumentsPage extends BasePage {
     private void fillNameOfRecipientField(String name) {
         nameOfRecipientField.clear();
         nameOfRecipientField.sendKeys(name);
+    }
+
+    private void fillEmailField(String email){
+        emailField.clear();
+        emailField.sendKeys(email);
     }
 
     private void clickGetCodeButton() {
@@ -218,6 +223,7 @@ public class DocumentsPage extends BasePage {
     public void getAccessCode(String name) {
         clickShareDocumentLink();
         fillNameOfRecipientField(name);
+        emailField.sendKeys(Constants.TestData.PersonalInfo.E_MAIL);
         clickGetCodeButton();
         saveCodeToAVariable();
         clickOkButton();

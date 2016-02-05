@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.BasePage;
+import static org.testng.Assert.assertTrue;
 
 public class StatusPage extends BasePage {
 
@@ -36,7 +37,7 @@ public class StatusPage extends BasePage {
     }
 
     public void verifyStatus(String status) {
-        driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed();
-
+        assertTrue(driver.findElement(By.xpath("//td[contains(.,'" + status + "')]")).isDisplayed(),
+                "Status: ".concat(status).concat(" has not displayed on the page"));
     }
 }

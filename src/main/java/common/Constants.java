@@ -11,6 +11,7 @@ public class Constants {
             public static final String DNIPROPETROVSKA = "Дніпропетровська";
             public static final String POLTAVSKA = "Полтавська";
             public static final String ZAPORIZHSKA = "Запорізька";
+            public static final String KYIVSKA = "Київська";
         }
 
         //------------------- Города  --------------------//
@@ -18,6 +19,7 @@ public class Constants {
             public static final String DNIPROPETROVSK = "Дніпропетровськ";
             public static final String POLTAVA = "Полтава";
             public static final String DNIPRODZERGINSK = "Дніпродзержинськ";
+            public static final String BUCHA = "Буча";
         }
     }
 
@@ -46,6 +48,7 @@ public class Constants {
         public static class Taxes {
             public static final String PERSONAL_INCOME_CERTIFICATE = "Отримання довідки про доходи фізичних осіб";
             public static final String PENSION_AOUNT_CERTIFICATE = "Видача довідки про доходи (розмір пенсії)";
+            public static final String CERTIFICATE_FROM_UNIFIED_REGISTER = "Надання витягу з реєстру платників єдиного податку";
         }
     }
 
@@ -54,7 +57,7 @@ public class Constants {
         //------------------- Данные для подачи заявок  --------------//
         public static class PersonalInfo {
             public static final String PHONE = "380932030405";
-            public static final String FIO_UA = "Дмитро Олександрович Дубілет";
+            public static final String FIO_UA = "Володимир Володимирович Білявцев";
             public static final String FIO_RUS = "Дубилет Дмитрий Александрович";
             public static final String E_MAIL = "vidokgulich@gmail.com";
             public static final String BIRTH_DAY = "01.01.1970";
@@ -109,5 +112,12 @@ public class Constants {
         public static final String SUCCESS_STATUS5 = "Заявка подана - Надання послуги";
         public static final String SUCCESS_STATUS6 = "Заявка подана - обробка дмс";
         public static final String SUCCESS_STATUS7 = "Заявка подана - Взяти в роботу";
+        public static final String SUCCESS_STATUS8 = "Заявка подана";
+    }
+
+    public static class AlertMessages {
+        public static class SuccessfulMessages {
+            public static final String INFORMED_SERVICE_AVAILABLE_VIA_INTERNET = "Дякуємо! Ви будете проінформовані, коли ця послуга буде доступна через Інтернет.";
+        }
     }
 }

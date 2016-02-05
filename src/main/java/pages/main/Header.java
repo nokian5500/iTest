@@ -9,19 +9,19 @@ public class Header extends BasePage {
 
     // Variables
 
-    @FindBy(xpath = "//a[@href='/']/h4[text()='Послуги']")
+    @FindBy(xpath = "//a[contains(.,'Послуги')]")
     public WebElement servicesLink;
 
-    @FindBy(xpath = "//a[@href='/documents']/h4[text()='Документи']")
+    @FindBy(xpath = "//a[contains(.,'Документи')]")
     public WebElement documentsLink;
 
-    @FindBy(xpath = "//a[@href='/order/search']/h4[text()='Статуси']")
+    @FindBy(xpath = "//a[contains(.,'Статуси')]")
     public WebElement statusesLink;
 
-    @FindBy(xpath = "//a[@href='/journal/bankid']/h4[text()='Мій журнал']")
+    @FindBy(xpath = "//a[contains(.,'Мій журнал')]")
     public WebElement myJournalLink;
 
-    @FindBy(xpath = "//a[@href='/about']/h4[text()='Про портал']")
+    @FindBy(xpath = "//a[contains(.,'Про портал')]")
     public WebElement aboutPortalLink;
 
 

@@ -22,6 +22,18 @@ public class MainPage extends BasePage {
     private WebElement expandMoreServices; // to display all found services when more than 4 services are found
 
 
+    // Webelements: Service page elements
+
+    @FindBy(xpath = "//button[contains(.,'Змінити')]")
+    public WebElement changeRegionButton;
+
+    @FindBy(xpath = "//input[@name='email']")
+    public WebElement inputEmailAbsentMessageField;
+
+    @FindBy(xpath = "//button[contains(.,'Зберегти')]")
+    public WebElement sendAbsentMessageButton;
+
+
     // Methods
 
     public MainPage() {
@@ -60,4 +72,16 @@ public class MainPage extends BasePage {
     public boolean isSearchResultContains(String service) {
         return services.getText().contentEquals(service);
     }
+
+    // Interaction with service page elements methods
+
+    public void typeInEmailField(String email) {
+        inputEmailAbsentMessageField.clear();
+        inputEmailAbsentMessageField.sendKeys(email);
+    }
+
+    public void clickSendAbsentMessageButton() {
+        sendAbsentMessageButton.click();
+    }
+
 }
