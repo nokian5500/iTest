@@ -24,6 +24,9 @@ public class Footer extends BasePage {
     @FindBy(xpath = "//a[@href='https://docs.google.com/forms/d/1w-BR01CSicvhWSXb36CiRjHCwvp-vyPuTHBaWw1iW4U/viewform'][text()[contains(.,'Станьте')] and text()[contains(.,'волонтером iGov!')]]")
     public WebElement volunteerIGov;
 
+    @FindBy(xpath = "//a[contains(.,'Додати свою послугу')]")
+    public WebElement addYourServiceLink;
+
 
     // Methods
 
