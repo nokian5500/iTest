@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class CertificateOfLandSize extends TestBase {
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void certificateOfLandSizeTest() {
 
         String service = Constants.Services.InteractionWithPublicAuthorities.CERTIFICATE_OF_LAND_SIZE;

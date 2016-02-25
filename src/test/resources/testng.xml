@@ -1,32 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" verbose="5">
-    <test name="Test" verbose="5">
-        <parameter name="path" value="/"/>
+<suite name="Test suite" parallel="tests" thread-count="2" verbose="1">
+    <test name="Auth" enabled="true" preserve-order="true">
+        <groups>
+            <run>
+                <include name="authInteraction"/>
+            </run>
+        </groups>
         <classes>
-            <!--MAIN-->
-            <class name="test.portal.main.Header"/>
-            <class name="test.portal.main.Footer"/>
-            <class name="test.portal.main.MainPage"/>
-            <class name="test.portal.main.MyDocument"/>
-            <class name="test.portal.main.MyJournal"/>
-            <class name="test.portal.main.AboutPortal"/>
-            <!--SERVICES-->
-            <!--AUTHORITIES.INTERACTION-->
-            <class name="test.portal.services.authorities.interaction.AssignSocialAssistanceForChildBirth"/>
-            <class name="test.portal.services.authorities.interaction.CertificateOfLandSize"/>
-            <class name="test.portal.services.authorities.interaction.Subsidy"/>
-            <!--IDENTITY.CITIZENSHIP.RESIDENSE-->
-            <class name="test.portal.services.identity.citizenship.residense.InternationalPassport"/>
-            <class name="test.portal.services.identity.citizenship.residense.Registration"/>
-            <!--POLICE.TRAFFIC-->
-            <class name="test.portal.services.police.traffic.CriminalRecord"/>
-            <class name="test.portal.services.police.traffic.RegisterUsedCar"/>
-            <class name="test.portal.services.TestServices"/>
-            <!--TAXES-->
-            <class name="test.portal.services.taxes.PersonalIncomeCertificate"/>
-            <class name="test.portal.services.taxes.PensionAmountCertificate"/>
-            <class name="test.portal.services.taxes.CertificateFromUnifiedRegister"/>
+            <class name="test.portal.TestSuite"/>
+        </classes>
+    </test>
+
+    <test name="Ident" enabled="true" preserve-order="true">
+        <groups>
+            <run>
+                <include name="identity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.portal.TestSuite"/>
+        </classes>
+    </test>
+
+    <test name="Police" enabled="true" preserve-order="true">
+        <groups>
+            <run>
+                <include name="police"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.portal.TestSuite"/>
+        </classes>
+    </test>
+
+    <test name="taxes" enabled="true" preserve-order="true">
+        <groups>
+            <run>
+                <include name="identity"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.portal.TestSuite"/>
         </classes>
     </test>
 </suite>

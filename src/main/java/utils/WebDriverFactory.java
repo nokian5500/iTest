@@ -6,12 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -122,11 +124,13 @@ public class WebDriverFactory {
             webDriver = new InternetExplorerDriver();
 
         } else if (FIREFOX.equals(browser)) {
-            FirefoxProfile ffProfile = new FirefoxProfile();
+//            FirefoxProfile ffProfile = new FirefoxProfile();
+            ProfilesIni allProfiles = new ProfilesIni();
+            FirefoxProfile ffProfile = allProfiles.getProfile("default");
             // Authentication Hack for Firefox
-            if (username != null && password != null) {
-                ffProfile.setPreference("network.http.phishy-userpass-length", 255);
-            }
+//            if (username != null && password != null) {
+//                ffProfile.setPreference("network.http.phishy-userpass-length", 255);
+//            }
             webDriver = new FirefoxDriver(ffProfile);
 
         }

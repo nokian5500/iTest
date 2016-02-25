@@ -8,8 +8,8 @@ import test.TestBase;
 import static org.testng.Assert.assertEquals;
 
 public class InternationalPassport extends TestBase {
-    @Test (priority = 10)
-    public void DnipropetrovskInternationalPassportTest() {
+    //@Test (priority = 10)
+    public void dnipropetrovskInternationalPassportTest() {
 
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.Identity.INTERNATIONAL_PASSPORT;

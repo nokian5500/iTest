@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class RegisterUsedCar extends TestBase {
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void registerUsedCarTest() {
         //------------------- Test Data -------------------//
         String service = Constants.Services.MVD.REGISTER_USED_CAR;

@@ -18,7 +18,7 @@ public class TestBase {
 
     // Methods
 
-    @BeforeSuite
+    @BeforeTest(alwaysRun = true)
     public void setUp() {
         app = new ApplicationManager();
         driver = app.getDriver();
@@ -26,17 +26,17 @@ public class TestBase {
         wait = app.getWait();
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void set() {
         driver.get(baseUrl);
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void clean() {
         driver.manage().deleteAllCookies();
     }
 
-    @AfterSuite()
+    @AfterTest(alwaysRun = true)
     public void tearsDown() {
         driver.quit();
     }

@@ -13,7 +13,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class Registration extends TestBase {
 
-    @Test (priority = 10)
+    //@Test (priority = 10)
     public void unregisterFromCurrentAddressTest() {
 
         String service = Constants.Services.InteractionWithPublicAuthorities.REGISTRATION;

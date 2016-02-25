@@ -9,8 +9,8 @@ import static org.testng.Assert.assertEquals;
 
 public class CriminalRecord extends TestBase {
 
-    @Test (priority = 10)
-    public void DnipropetrovskCriminalRecord() {
+    //@Test (priority = 10)
+    public void dnipropetrovskCriminalRecord() {
 
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.MVD.CRIMINAL_RECORD;

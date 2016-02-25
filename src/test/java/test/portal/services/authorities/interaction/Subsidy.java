@@ -9,8 +9,8 @@ import static org.testng.Assert.assertEquals;
 
 public class Subsidy extends TestBase {
 
-    @Test (priority = 10)
-    public void DnipropetrovskSubsidyTest() {
+    //@Test (priority = 10)
+    public void dnipropetrovskSubsidyTest() {
 
         // ------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.SUBSIDY;
