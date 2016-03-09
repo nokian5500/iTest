@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -122,7 +123,9 @@ public class WebDriverFactory {
             webDriver = new InternetExplorerDriver();
 
         } else if (FIREFOX.equals(browser)) {
-            FirefoxProfile ffProfile = new FirefoxProfile();
+            //FirefoxProfile ffProfile = new FirefoxProfile();
+            File profileDir = new File("C:/Users/Slame/AppData/Roaming/Mozilla/Firefox/Profiles/wpgo0ncs.AutotestUser/");
+            FirefoxProfile ffProfile = new FirefoxProfile(profileDir);
             // Authentication Hack for Firefox
             if (username != null && password != null) {
                 ffProfile.setPreference("network.http.phishy-userpass-length", 255);

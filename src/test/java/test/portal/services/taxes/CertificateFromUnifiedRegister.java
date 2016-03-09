@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
  */
 public class CertificateFromUnifiedRegister extends TestBase {
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void certificateFromURSelf(){
         //------------------- Test Data -------------------//
         String service = Constants.Services.Taxes.CERTIFICATE_FROM_UNIFIED_REGISTER;
@@ -47,7 +47,7 @@ public class CertificateFromUnifiedRegister extends TestBase {
                 .verifyStatus(Constants.Status.SUCCESS_STATUS8);
     }
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void certificateFromURByOtherCompany(){
         //------------------- Test Data -------------------//
         String service = Constants.Services.Taxes.CERTIFICATE_FROM_UNIFIED_REGISTER;

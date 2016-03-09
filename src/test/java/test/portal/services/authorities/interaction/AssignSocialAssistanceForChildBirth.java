@@ -1,6 +1,7 @@
 package test.portal.services.authorities.interaction;
 
 import common.Constants;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import pages.service.authorities.interaction.AssignSocialAssistanceForChildBirthPage;
 import test.TestBase;
@@ -11,8 +12,8 @@ import static org.testng.Assert.assertEquals;
 
 public class AssignSocialAssistanceForChildBirth extends TestBase {
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 10)
-    public void successMessagesServicesByPostOffice() {
+    //@Test(description = "Призначення соціальної допомоги при народженні дитини через національного оператора поштового зв'язку", priority = 10)
+    public void successMessagesServicesByPostOffice(WebDriver driver) {
 
         //------------------- Тестовые данные -------------------//
         String service = Constants.Services.InteractionWithPublicAuthorities.ASSIGN_SOCIAL_ASSISTANCE_FOR_CHILD_BIRTH;
@@ -58,7 +59,7 @@ public class AssignSocialAssistanceForChildBirth extends TestBase {
                 .verifyStatus(status);
     }
 
-    @Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
+    //@Test(description = "Призначення соціальної допомоги при народженні дитини на рахунок у банку", priority = 20)
     public void successMessagesServicesByAccountBank() throws AWTException {
 
         //------------------- Тестовые данные -------------------//

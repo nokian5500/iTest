@@ -9,7 +9,7 @@ import static org.testng.Assert.assertEquals;
 
 public class PersonalIncomeCertificate extends TestBase {
 
-    @Test(priority = 10)
+    //@Test(priority = 10)
     public void personalIncomeCertificateTest() {
 
         //------------------- Test Data -------------------//
