@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import static org.testng.Assert.assertEquals;
+
 public class PregnancyPage extends BaseServicePage {
     WebDriver driver;
     ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
@@ -56,15 +58,18 @@ public class PregnancyPage extends BaseServicePage {
     // счет для перечисления средств
     private WebElement transfer_type;
 
-    @FindBy(xpath = "//p[@class='ng-scope ng-invalid ng-invalid-required']/button")
+    @FindBy(xpath = "(//input[@type='file'])[3]")
     // кнопка загрузки справки о беременности
     private WebElement btnPregnancyDoc;
 
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     private WebElement serviceName; // название услуги
 
-    @FindBy(xpath = "//div[@class='text-center ng-binding ng-scope']")
+    @FindBy(xpath = "//div[@class='text-center']")
     private WebElement successText;
+
+    @FindBy(xpath = "//a[@class='ng-binding']")
+    private WebElement resortLink;
 
     public PregnancyPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
@@ -157,14 +162,13 @@ public class PregnancyPage extends BaseServicePage {
         return this;
     }
 
-    /*public boolean checkAcceptPregnancy(String text) {
-        if (this.infoSuccess.getTagName().contains((CharSequence) text)) {
-            return true;
-        } else return false;
-    }*/
 
     public PregnancyPage verifyServiceSuccessCreated() {
+        String text = successText.getText().substring(26,successText.getText().length());
+        assertEquals(text,"успішно зареєстровано");
+        referenceNumber = successText.getText().substring(15,25);
         successText.isDisplayed();// проверка успешного создания заявки
+
         return this;
     }
 
@@ -175,11 +179,16 @@ public class PregnancyPage extends BaseServicePage {
     }
 
 
+
 //=================методы по работе с номером заявки=======================//
 
     @Override
     public String saveReferenceNumber() {
         referenceNumber = super.saveReferenceNumber();
         return referenceNumber;
+    }
+    public PregnancyPage clickLinkResort() {
+        resortLink.click();
+        return this;
     }
 }

@@ -20,7 +20,7 @@ public class MyJournalPage {
 	@FindBy(linkText = "електронно-цифровий підпис")
 	public WebElement electronicDigitalSignatureButton;
 
-	@FindBy(xpath = "//h4[@class='form-signin-bankid-heading_']")
+	@FindBy(xpath = "//div[@class='row']/div[@class='text-center']/p")
 	public WebElement formSignInBankId;  // форма входа в журнал
 
 	@FindBy(xpath = "//a[@ng-click='limit = limit +10']")

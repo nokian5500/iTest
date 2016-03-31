@@ -14,9 +14,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 
-/**
- * Created by Slame on 24.02.16.
- */
 public class DocumentsPage {
     WebDriver driver;
     ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
@@ -107,10 +104,10 @@ public class DocumentsPage {
     @FindBy(xpath = "//button[@ng-disabled='!smsPass']")
     private WebElement confirmDocumentButton;             // Ссылка загрузки найденного документа по смс
 
-    @FindBy(xpath = "//label[@for='smsPass']")
+    @FindBy(xpath = "//label[contains(@for,'smsPass')]")
     public WebElement infoBlockSMS;                       // Блок sms инфо
 
-    @FindBy(xpath = " //div[@role='alert']")
+    @FindBy(css = "b > p.text-warning")
     public WebElement errorBlockSMS;                      // Блок sms erorr
 
     @FindBy(xpath = "//a[@href='/documents/notary']")
@@ -133,6 +130,9 @@ public class DocumentsPage {
         StringSelection stringSelection = new StringSelection(document);
         Toolkit.getDefaultToolkit().getSystemClipboard()
                 .setContents(stringSelection, null);
+    }
+    private void selectDocument(String document){
+        new Select(driver.findElement(By.xpath("//select[@id='typeId']"))).selectByVisibleText(document);
     }
 
     private void selectionOperator(String goal) {
@@ -253,6 +253,7 @@ public class DocumentsPage {
 
     public void searchDocumentWithCode(String accessCode) {
         clickSearchWithCodeLink();
+        selectDocument("Громадянський паспорт");
         selectionOperator("iGov");
         inputCode(accessCode);
         searchDocumentByCode();
