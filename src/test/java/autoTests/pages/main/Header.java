@@ -20,7 +20,7 @@ public class Header {
     @FindBy(xpath = "//a[@href='/order/search'][text()='Статуси']")
     public WebElement statusesLink;
 
-    @FindBy(xpath = "//a[@href='/journal/auth'][text()='Мій журнал']")
+    @FindBy(xpath = "//a[@href='/journal'][text()='Мій журнал']")
     public WebElement myJournalLink;
 
     @FindBy(xpath = "//a[@href='/about'][text()='Про портал']")
