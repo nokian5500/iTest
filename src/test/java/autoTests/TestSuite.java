@@ -105,7 +105,7 @@ public class TestSuite extends CustomMethods {
 		// Test
 		mainPage.search(service);
 		mainPage.clickService(service);
-		assertTrue(selectAreaPage.isServiceName(service));
+		assertTrue(selectAreaPage.getServiceName().equals(service));
 		selectAreaPage.openStatisticTab();
 		assertTrue(statisticTab.numberOfProvidedServicesColumn.isDisplayed());
 		assertTrue(statisticTab.averageScoreColumn.isDisplayed());
