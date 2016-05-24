@@ -1,16 +1,19 @@
 package autoTests.pages.main;
 
 import autoTests.ConfigurationVariables;
+import autoTests.CustomMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Slame on 24.02.16.
  */
-public class SelectAreaPage {
+public class SelectAreaPage extends CustomMethods {
     WebDriver driver;
     ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
     // Variables
@@ -51,10 +54,13 @@ public class SelectAreaPage {
 
     // Method for opening Statistic tab
     public void openStatisticTab() {
+
         driver.findElement(By.xpath("//a[text()='Статистика']")).click();
     }
 
-    public boolean isServiceName(String service) {
-        return serviceName.getText().contentEquals(service);
+    public String getServiceName() throws Exception {
+        waitForElementPresent(driver,serviceName,configVariables.implicitTimeWait,1);
+        return serviceName.getText();
+
     }
 }
