@@ -51,7 +51,7 @@ public class MainPage {
     // Method for service selection
     public void clickService(String service) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'" + service + "')]"))).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(.,'"  + service + "')]"))).click();
     }
 
     // Method for searching the service
