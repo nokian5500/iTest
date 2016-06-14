@@ -71,7 +71,11 @@ public class BankIdPage extends CustomMethods {
     // Method for FIO verification after login
     public void verifyFIO() throws Exception {
         waitForElementPresent(driver,fio,configVariables.implicitTimeWait,1);
+<<<<<<< HEAD:src/test/java/autoTests/pages/main/BankIdPage.java
         assertEquals(fio.getText(), Constants.TestData.PersonalInfo.FIO_UA);
+=======
+        assertEquals(fio.getText(), Constants.TestData.PersonalInfo.FIO_UA_BILYAVCEV);
+>>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de:src/test/java/autoTests/pages/main/BankIdPage.java
     }
 
     // Method for entering ОТР

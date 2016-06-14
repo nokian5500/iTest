@@ -64,7 +64,11 @@ public class Constants {
         //------------------- Данные для подачи заявок  --------------//
         public static class PersonalInfo {
             public static final String PHONE = "380932030405";
+<<<<<<< HEAD:src/test/java/autoTests/Constants.java
             public static final String FIO_UA = "Володимир Володимирович Білявцев";
+=======
+            public static final String FIO_UA_BILYAVCEV = "Володимир Володимирович Білявцев";
+>>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de:src/test/java/autoTests/Constants.java
             public static final String FIO_UA_DUBILET = "Дмитро Олександрович Дубілет";
             public static final String FIO_RUS = "Дубилет Дмитрий Александрович";
             public static final String E_MAIL = "vidokgulich@gmail.com";
