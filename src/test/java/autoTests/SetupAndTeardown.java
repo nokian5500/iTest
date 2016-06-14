@@ -48,11 +48,7 @@ public class SetupAndTeardown {
                 FirefoxProfile ffProfile = allProfiles.getProfile("default");*/
                 //задать профиль в конфигурации при необходимости
                 //FirefoxProfile firefoxProfile = new FirefoxProfile();
-<<<<<<< HEAD
-                FirefoxProfile firefoxProfile = new FirefoxProfile();
-=======
                 FirefoxProfile firefoxProfile = new FirefoxProfile(profileDir);
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
                 firefoxProfile.setEnableNativeEvents(false);
                 firefoxProfile.setAcceptUntrustedCertificates(true);
                 firefoxProfile.setAssumeUntrustedCertificateIssuer(true);

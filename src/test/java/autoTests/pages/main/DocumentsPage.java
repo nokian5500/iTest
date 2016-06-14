@@ -2,10 +2,7 @@ package autoTests.pages.main;
 
 import autoTests.ConfigurationVariables;
 import autoTests.Constants;
-<<<<<<< HEAD:src/test/java/autoTests/pages/main/DocumentsPage.java
 import autoTests.CustomMethods;
-=======
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de:src/test/java/autoTests/pages/main/DocumentsPage.java
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -255,13 +252,9 @@ public class DocumentsPage {
         verifyCodePresent(accessCode);
     }
 
-<<<<<<< HEAD:src/test/java/autoTests/pages/main/DocumentsPage.java
     public void searchDocumentWithCode(String accessCode) throws Exception {
         CustomMethods customMethods = new CustomMethods();
         customMethods.waitForElementPresent(driver,searchWithCodeTab,configVariables.implicitTimeWait,1);
-=======
-    public void searchDocumentWithCode(String accessCode) {
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de:src/test/java/autoTests/pages/main/DocumentsPage.java
         clickSearchWithCodeLink();
         selectDocument("Громадянський паспорт");
         selectionOperator("iGov");

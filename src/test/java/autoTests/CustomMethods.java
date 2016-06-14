@@ -126,21 +126,6 @@ public class CustomMethods
 		Calendar calendar = new GregorianCalendar(GMT);
 		Date trialTime = new Date();
 		calendar.setTime(trialTime);
-<<<<<<< HEAD
-=======
-		//// print out a bunch of interesting things
-		// System.out.println("YEAR: " + calendar.get(Calendar.YEAR));
-		// System.out.println("MONTH: " + calendar.get(Calendar.MONTH));
-		// System.out.println("DATE: " + calendar.get(Calendar.DATE));
-		// System.out.println("HOUR_OF_DAY: " + calendar.get(Calendar.HOUR_OF_DAY));
-		// System.out.println("MINUTE: " + calendar.get(Calendar.MINUTE));
-		// System.out.println("SECOND: " + calendar.get(Calendar.SECOND));
-		// System.out.println("MILLISECOND: " + calendar.get(Calendar.MILLISECOND));
-		//
-		// System.out.println("Current Time, with hour reset to 3");
-		// calendar.clear(Calendar.HOUR_OF_DAY); // so doesn't override
-		// calendar.set(Calendar.HOUR, 3);
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
 		return calendar;
 
 	}

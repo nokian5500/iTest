@@ -105,14 +105,10 @@ public class TestSuite extends CustomMethods {
 		// Test
 		mainPage.search(service);
 		mainPage.clickService(service);
-<<<<<<< HEAD
 		waitForElementPresent(driver,selectAreaPage.region,configVariables.implicitTimeWait,1);
 		waitForElementPresent(driver,selectAreaPage.serviceName,configVariables.implicitTimeWait,1);
 		assertTrue(selectAreaPage.serviceName.getText().equals(service));
 
-=======
-		assertTrue(selectAreaPage.getServiceName().equals(service));
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
 		selectAreaPage.openStatisticTab();
 		assertTrue(statisticTab.numberOfProvidedServicesColumn.isDisplayed());
 		assertTrue(statisticTab.averageScoreColumn.isDisplayed());
@@ -141,10 +137,7 @@ public class TestSuite extends CustomMethods {
 		// Test
 		mainPage.typeInSearchField(service);
 		mainPage.clickService(service);
-<<<<<<< HEAD
 		waitForElementPresent(driver,selectAreaPage.region,configVariables.implicitTimeWait,1);
-=======
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
 		assertEquals(selectAreaPage.serviceName.getText(), service);
 		selectAreaPage.selectRegion(regions);
 		selectAreaPage.selectCity(cities);
@@ -183,13 +176,8 @@ public class TestSuite extends CustomMethods {
 		assertEquals(documentsPage.loginForm.getText(), "Крок 1. Увійдіть в систему через BankID\n" +
 				"Сертифікат електронно-\n" +
 				"цифрового підпису\n" + "IDcard");
-<<<<<<< HEAD
 		/*documentsPage.searchDocumentWithCode(accessCode);
 		documentsPage.isDocumentFound();*/
-=======
-		documentsPage.searchDocumentWithCode(accessCode);
-		documentsPage.isDocumentFound();
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
 
 	}
 
@@ -219,17 +207,10 @@ public class TestSuite extends CustomMethods {
 				"Сертифікат електронно-\n" +
 				"цифрового підпису\n" +
 				"IDcard");
-<<<<<<< HEAD
 		/*documentsPage.searchDocumentWithCode(accessCode);
 		assertEquals(documentsPage.infoBlockSMS.getText(), "Введіть отриманий Вами SMS код на телефон +38093*****05");
 		documentsPage.typeSMSCode();
 		assertEquals(documentsPage.errorBlockSMS.getText(), "Невірний код");*/
-=======
-		documentsPage.searchDocumentWithCode(accessCode);
-		assertEquals(documentsPage.infoBlockSMS.getText(), "Введіть отриманий Вами SMS код на телефон +38093*****05");
-		documentsPage.typeSMSCode();
-		assertEquals(documentsPage.errorBlockSMS.getText(), "Невірний код");
->>>>>>> a0842c03cedcdfc454b404a57cc6e7d377a770de
 	}
 
 	//</editor-fold>
