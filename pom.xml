@@ -8,7 +8,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<suiteFile>testng.xml</suiteFile>
 		<!--seleniumVersion>2.52.0</seleniumVersion-->
-		<seleniumVersion>2.48.0</seleniumVersion>
+		<seleniumVersion>2.46.0</seleniumVersion>
 	</properties>
 
 	<dependencies>
