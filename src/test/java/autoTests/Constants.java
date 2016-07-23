@@ -100,20 +100,20 @@ public class Constants {
         public static final String TEST_PRINT_FORM = "/service/673/general";
         public static final String TEST_QUEUE_CANCEL = "/service/756/general";
         public static final String TEST_ZP_CNAP_MAILER = "/service/1426/general";
-        public static final String TEST_DASHBOARD_LOGIN_IN = "https://test-version.region.igov.org.ua/";
+        public static final String TEST_DASHBOARD_LOGIN_IN = "https://beta.test.region.igov.org.ua/";
     }
 
     //--------------------- Сервера для запуска тестов  ---------------------------//
     public static class Server {
-        public static final String VERSION_SERVER = "https://test-version.igov.org.ua";
-        public static final String TEST_SERVER = "https://test.igov.org.ua/";
-        // https://test-version.igov.org.ua/   - для регреса
+        public static final String VERSION_SERVER = "https://beta.test.igov.org.ua";
+        public static final String TEST_SERVER = "https://alpha.test.igov.org.ua/";
+        // https://beta.test.igov.org.ua/   - для регреса
         // https://test.igov.org.ua/   - тестовый
     }
 
     //------------------- Тестовые данные для входа Дашбоард  ------------------//
     public static class Dashboard{
-        public static final String URL_DASHBOARD = "https://test-version.region.igov.org.ua/";
+        public static final String URL_DASHBOARD = "https://beta.test.region.igov.org.ua/";
         public static final String LOGIN_PASSWORD_DASHBOARD = "kermit";
     }
 
