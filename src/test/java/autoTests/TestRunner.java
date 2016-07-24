@@ -1,7 +1,7 @@
 package autoTests;
 
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.WebDriver;
 
 public class TestRunner extends SetupAndTeardown
 {
