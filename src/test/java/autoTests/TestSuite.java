@@ -14,6 +14,7 @@ import autoTests.pages.service.taxes.PensionAmountCertificatePage;
 import autoTests.pages.service.taxes.PersonalIncomeCertificatePage;
 import autoTests.pages.service.test.*;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
