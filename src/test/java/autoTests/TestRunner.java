@@ -8,7 +8,7 @@ public class TestRunner extends SetupAndTeardown
 
 	TestSuite testSuite = new TestSuite();
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 1)
 	public void A1() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
@@ -18,7 +18,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A1_AboutPortal(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 2)
 	public void A2() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
@@ -28,7 +28,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A2_Footer(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 3)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 3)
 	public void A3() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
@@ -68,7 +68,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A6_AvailabilityOfIssuanceAndReplacementPassportForTravelAbroad(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 7)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 7)
 	public void A7() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
@@ -78,7 +78,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A7_AccessToDocumentWithoutSMS(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 8)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 8)
 	public void A8() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
@@ -88,7 +88,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A8_AccessToDocumentWithSMS(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 9)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 9)
 	public void A9() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
