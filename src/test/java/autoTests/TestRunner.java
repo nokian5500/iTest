@@ -98,7 +98,7 @@ public class TestRunner extends SetupAndTeardown
 		testSuite.A9_СheckNotaryTabTest(driver);
 	}
 
-	@Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 10)
+	@Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 10)
 	public void A10() throws Exception
 	{
 		CustomMethods.addTestNameToTheReport(
