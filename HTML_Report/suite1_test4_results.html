@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="" lang="">
+<head>
+  <title>Test Results Report - identity</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+  <meta name="description" content="TestNG unit test results." />
+  <link href="reportng.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="reportng.js"></script>
+</head>
+<body>
+<h1>identity</h1>
+<p>
+  Test duration: 0.005s
+</p>
+
+  <table class="resultsTable configTable">
+    <tr><th colspan="3" class="header failedConfig">Failed Configuration</th></tr>
+              <tr class="group">
+        <td colspan="3">autoTests.TestRunner</td>
+      </tr>
+            
+<tr>
+  <td class="method">
+                  SetUp
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleElement('exception-0', 'block')" title="Click to expand/collapse"><b>org.openqa.selenium.firefox.UnableToCreateProfileException: Given model profile directory does not exist: C:/Users/Roman/AppData/Roaming/Mozilla/Firefox/Profiles/1ijsokfq.proxy<br/>
+Build info: version: &apos;2.53.0&apos;, revision: &apos;35ae25b1534ae328c771e0856c93e187490ca824&apos;, time: &apos;2016-03-15 10:43:46&apos;<br/>
+System info: host: &apos;iGov-AWS-Tech&apos;, ip: &apos;10.60.64.20&apos;, os.name: &apos;Linux&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;3.14.35-28.38.amzn1.x86_64&apos;, java.version: &apos;1.8.0_73&apos;<br/>
+Driver info: driver.version: unknown</b></a><br />
+    <div class="stackTrace" id="exception-0">
+              org.openqa.selenium.firefox.FirefoxProfile.verifyModel(FirefoxProfile.java:180)<br />
+              org.openqa.selenium.firefox.FirefoxProfile.&lt;init&gt;(FirefoxProfile.java:91)<br />
+              org.openqa.selenium.firefox.FirefoxProfile.&lt;init&gt;(FirefoxProfile.java:78)<br />
+              autoTests.SetupAndTeardown.SetUp(SetupAndTeardown.java:51)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+              java.lang.reflect.Method.invoke(Method.java:497)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
+              org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:510)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:211)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:138)<br />
+              org.testng.TestRunner.beforeRun(TestRunner.java:647)<br />
+              org.testng.TestRunner.run(TestRunner.java:615)<br />
+              org.testng.SuiteRunner.runTest(SuiteRunner.java:357)<br />
+              org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br />
+              org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:391)<br />
+              org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)<br />
+              java.util.concurrent.FutureTask.run(FutureTask.java:266)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)<br />
+              java.lang.Thread.run(Thread.java:745)<br />
+                </div>
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  doLogin
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleElement('exception-1', 'block')" title="Click to expand/collapse"><b>java.lang.NullPointerException</b></a><br />
+    <div class="stackTrace" id="exception-1">
+              ru.stqa.selenium.factory.WebDriverFactoryInternal.createKey(WebDriverFactoryInternal.java:53)<br />
+              ru.stqa.selenium.factory.ThreadLocalSingletonStorage.getDriver(ThreadLocalSingletonStorage.java:34)<br />
+              ru.stqa.selenium.factory.WebDriverFactoryInternal.getDriver(WebDriverFactoryInternal.java:49)<br />
+              ru.stqa.selenium.factory.WebDriverFactory.getDriver(WebDriverFactory.java:39)<br />
+              autoTests.SetupAndTeardown.doLogin(SetupAndTeardown.java:93)<br />
+              sun.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+              java.lang.reflect.Method.invoke(Method.java:497)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
+              org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:510)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:211)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:585)<br />
+              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)<br />
+              org.testng.TestRunner.privateRun(TestRunner.java:773)<br />
+              org.testng.TestRunner.run(TestRunner.java:623)<br />
+              org.testng.SuiteRunner.runTest(SuiteRunner.java:357)<br />
+              org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br />
+              org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:391)<br />
+              org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)<br />
+              java.util.concurrent.FutureTask.run(FutureTask.java:266)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)<br />
+              java.lang.Thread.run(Thread.java:745)<br />
+                </div>
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  doLogin
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+        
+    
+        
+
+        <a href="javascript:toggleElement('exception-2', 'block')" title="Click to expand/collapse"><b>java.lang.NullPointerException</b></a><br />
+    <div class="stackTrace" id="exception-2">
+              ru.stqa.selenium.factory.WebDriverFactoryInternal.createKey(WebDriverFactoryInternal.java:53)<br />
+              ru.stqa.selenium.factory.ThreadLocalSingletonStorage.getDriver(ThreadLocalSingletonStorage.java:34)<br />
+              ru.stqa.selenium.factory.WebDriverFactoryInternal.getDriver(WebDriverFactoryInternal.java:49)<br />
+              ru.stqa.selenium.factory.WebDriverFactory.getDriver(WebDriverFactory.java:39)<br />
+              autoTests.SetupAndTeardown.doLogin(SetupAndTeardown.java:93)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)<br />
+              sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)<br />
+              sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)<br />
+              java.lang.reflect.Method.invoke(Method.java:497)<br />
+              org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)<br />
+              org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:510)<br />
+              org.testng.internal.Invoker.invokeConfigurations(Invoker.java:211)<br />
+              org.testng.internal.Invoker.invokeMethod(Invoker.java:585)<br />
+              org.testng.internal.Invoker.invokeTestMethod(Invoker.java:821)<br />
+              org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1131)<br />
+              org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:124)<br />
+              org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)<br />
+              org.testng.TestRunner.privateRun(TestRunner.java:773)<br />
+              org.testng.TestRunner.run(TestRunner.java:623)<br />
+              org.testng.SuiteRunner.runTest(SuiteRunner.java:357)<br />
+              org.testng.SuiteRunner.access$000(SuiteRunner.java:39)<br />
+              org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:391)<br />
+              org.testng.internal.thread.ThreadUtil$2.call(ThreadUtil.java:64)<br />
+              java.util.concurrent.FutureTask.run(FutureTask.java:266)<br />
+              java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)<br />
+              java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)<br />
+              java.lang.Thread.run(Thread.java:745)<br />
+                </div>
+      </td>
+</tr>
+    
+      </table>
+
+
+
+  <table class="resultsTable" width="100%">
+    <tr><th colspan="3" class="header skipped">Skipped Tests</th></tr>
+          <tr>
+        <td colspan="3" class="group">autoTests.TestRunner</td>
+      </tr>
+            
+<tr>
+  <td class="method">
+                  C1
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+                               
+    
+            <div class="testOutput">
+                        <b><font color="red" size="3">Connection with browser was lost.</font></b><br>
+                  </div>
+    
+
+      </td>
+</tr>
+<tr>
+  <td class="method">
+                  C2
+      </td>
+  <td class="duration">
+    0.000s
+  </td>
+  <td class="result">
+                               
+    
+            <div class="testOutput">
+                        <b><font color="red" size="3">Connection with browser was lost.</font></b><br>
+                  </div>
+    
+
+      </td>
+</tr>
+      </table>
+
+  
+</body>
+</html>
