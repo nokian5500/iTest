@@ -22,10 +22,8 @@ public class TestSuite extends CustomMethods {
 		assertThis(driver, tp.usluga, "_test_fields_bankid");
 
 		addStepToTheReport("3. Выбор области/города");
-		click(driver, tp.openOblList);
-        clickXpath(driver, "//*[contains(text(),'Дніпропетровська')]");
-        click(driver, tp.openCityList);
-        clickXpath(driver, "//*[contains(text(),'Дніпро (Дніпропетровськ)')]");
+		tp.selectRegion("Дніпропетровська");
+        tp.selectCity("Дніпро (Дніпропетровськ");
 
         addStepToTheReport("4. Авторизация Off AuthMock/BankID");
         tp.mokAuthorization();
@@ -38,12 +36,8 @@ public class TestSuite extends CustomMethods {
         click(driver, tp.buttonSendingForm);
 
         addStepToTheReport("7. Проверка сообщения о успешной отправке");
-        String textForAssert = getText(driver, tp.resultMsgText.get(0));
-        String firstPart = textForAssert.substring(0, 46);
-        String secondPart = textForAssert.substring(58, textForAssert.length());
-        Assert.assertEquals(firstPart, "Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення");
-        Assert.assertEquals(secondPart, "успішно зареєстровано\n" +
+        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
@@ -76,12 +70,8 @@ public class TestSuite extends CustomMethods {
         click(driver, tp.buttonSendingForm);
 
         addStepToTheReport("6. Проверка сообщения о успешной отправке");
-        String textForAssert = getText(driver, tp.resultMsgText.get(0));
-        String firstPart = textForAssert.substring(0, 46);
-        String secondPart = textForAssert.substring(58, textForAssert.length());
-        Assert.assertEquals(firstPart, "Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення");
-        Assert.assertEquals(secondPart, "успішно зареєстровано");
+        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+                "Ваше звернення х-хххххххх успішно зареєстровано");
 
         addStepToTheReport("7. Нажать кнопку Выйти ");
         click(driver, tp.buttonLogOut);
@@ -103,10 +93,8 @@ public class TestSuite extends CustomMethods {
         assertThis(driver, tp.usluga, "_test_sID_UA");
 
         addStepToTheReport("3. Выбор области/города");
-        click(driver, tp.openOblList);
-        clickXpath(driver, "//*[contains(text(),'Дніпропетровська')]");
-        click(driver, tp.openCityList);
-        clickXpath(driver, "//*[contains(text(),'Дніпро (Дніпропетровськ)')]");
+        tp.selectRegion("Дніпропетровська");
+        tp.selectCity("Дніпро (Дніпропетровськ");
 
         addStepToTheReport("3. Авторизация Off AuthMock/BankID");
         tp.mokAuthorization();
@@ -115,18 +103,14 @@ public class TestSuite extends CustomMethods {
         fillInField(driver, sn, "sID_Place_UA", "test");
         fillInField(driver, sn, "sID_UA", "test");
         fillInField(driver, sn, "email", "v-i-d-k@mail.ru");
-        selectByVisibleText(driver,sn + "client","нет");
+        selectByVisibleText(driver,sn,"client","нет");
 
         addStepToTheReport("5. Отправка формы");
         click(driver, tp.buttonSendingForm);
 
-        addStepToTheReport("7. Проверка сообщения о успешной отправке");
-        String textForAssert = getText(driver, tp.resultMsgText.get(0));
-        String firstPart = textForAssert.substring(0, 46);
-        String secondPart = textForAssert.substring(58, textForAssert.length());
-        Assert.assertEquals(firstPart, "Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення");
-        Assert.assertEquals(secondPart, "успішно зареєстровано\n" +
+        addStepToTheReport("6. Проверка сообщения о успешной отправке");
+        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 

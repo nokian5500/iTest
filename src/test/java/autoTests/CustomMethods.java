@@ -286,8 +286,8 @@ public class CustomMethods
 		webElement.click();
 	}
 
-	public void click(WebDriver driver, String cssSelector){
-		WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+	public void click(WebDriver driver, String serviceName,String cssSelector){
+		WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
 		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
 		webElement.click();
 	}
@@ -297,6 +297,7 @@ public class CustomMethods
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
+
 
 	public void openURLservice(WebDriver driver, String url){
 		driver.get(url);
@@ -326,14 +327,14 @@ public class CustomMethods
         return answer;
     }
 
-    public void selectByVisibleText(WebDriver driver, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+    public void selectByVisibleText(WebDriver driver,String serviceName, String cssSelector, String text) {
+        WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }
 
-    public void selectByValue(WebDriver driver, String cssSelector, String value) {
-        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+    public void selectByValue(WebDriver driver,String serviceName, String cssSelector, String value) {
+        WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
         Select select = new Select(webElement);
         select.selectByValue(value);
     }

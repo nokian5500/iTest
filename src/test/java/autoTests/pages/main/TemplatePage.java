@@ -3,36 +3,41 @@ package autoTests.pages.main;
 
 import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
 public class TemplatePage {
-	WebDriver driver;
+    WebDriver driver;
 
-	public TemplatePage(WebDriver driver) {
-		PageFactory.initElements(driver, this);
-		this.driver = driver;
-	}
+    public TemplatePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
+    }
+
     CustomMethods cm = new CustomMethods();
 
-	/****************************************
-	 * Locators
-	 ****************************************************************/
+    /**
+     * *************************************
+     * Locators
+     * **************************************************************
+     */
 
-	@FindBy(xpath = "//div[@class='service-name ng-binding']")
-	public WebElement usluga;
+    @FindBy(xpath = "//div[@class='service-name ng-binding']")
+    public WebElement usluga;
 
     @FindBy(xpath = "//div[@class='row no-margin-bottom']//div[@class='text-center ng-scope']")
-	public List<WebElement> resultMsgText;
+    public List<WebElement> resultMsgText;
 
     @FindBy(xpath = ".//*[@id='region']")
-	public WebElement openOblList;
+    public WebElement openOblList;
 
     @FindBy(xpath = ".//*[@id='city']")
     public WebElement openCityList;
@@ -55,13 +60,36 @@ public class TemplatePage {
     @FindBy(xpath = "(//input[@type='file'])")
     public WebElement attachDocumentButton;
 
-    /************************* Метод авторизации **************************/
-    public void mokAuthorization(){
+    /**
+     * ********************** Метод авторизации *************************
+     */
+    public void mokAuthorization() {
         //выбираем Off AuthMock/BankID
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
             cm.click(driver, buttonAuthMock);
         }
         cm.click(driver, buttonBankID);
     }
+
+    // Method for selection of Region
+    public void selectRegion(String region) {
+        openOblList.click();
+        cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
+    }
+
+    // Method for selection of City
+    public void selectCity(String city) {
+        openCityList.click();
+        cm.clickXpath(driver, "//a[contains(text(),'" + city + "')]");
+    }
+
+    public void checkMessageSuccess(String message) throws Exception {
+    String textForAssert = cm.getText(driver, resultMsgText.get(0));
+    String firstPart = textForAssert.substring(0, 46);
+    String secondPart = textForAssert.substring(58, textForAssert.length());
+    Assert.assertEquals(firstPart,message.substring(0, 46));
+    Assert.assertEquals(secondPart,message.substring(58, message.length()));
+}
+
 }
 
