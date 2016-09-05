@@ -12,8 +12,10 @@ public class TestSuite extends CustomMethods {
 	public void A1_Test_Example_Fill_Field(WebDriver driver) throws Exception {
 		/*****************************************объявляем элементы страниц*******************************************/
 		TemplatePage tp = new TemplatePage(driver);
+        //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
+        String serviceName = "._test_fields_bankid_--_";
 
-		addStepToTheReport("1. Вход по прямому URL на услугу");
+        addStepToTheReport("1. Вход по прямому URL на услугу");
 		openURLservice(driver, CV.baseUrl + "/service/720/general");
 
 		addStepToTheReport("2. Проверить, что открылась нужная услуга");
@@ -29,8 +31,8 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("5. Заполняем форму услуги");
-        fillInField(driver, "._test_fields_bankid_--_tooltiptext", "test");
-        fillInField(driver, "._test_fields_bankid_--_email", "v-i-d-k@mail.ru");
+        fillInField(driver, serviceName + "tooltiptext", "test");
+        fillInField(driver, serviceName + "email", "v-i-d-k@mail.ru");
 
         addStepToTheReport("6. Отправка формы");
         click(driver, tp.buttonSendingForm);
@@ -54,6 +56,8 @@ public class TestSuite extends CustomMethods {
     public void A2_Test_Example_Attach(WebDriver driver) throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
+        //  Вносим в переменные название услуги начиная с точки ._test_mailer_--_ и до начала названия поля
+        String serviceName = "._test_mailer_--_";
 
         addStepToTheReport("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/755/general");
@@ -65,7 +69,7 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("4. Заполняем форму услуги");
-        fillInField(driver, "._test_mailer_--_mail", "v-i-d-k@mail.ru");
+        fillInField(driver, serviceName + "mail", "v-i-d-k@mail.ru");
         attachDocument(tp.attachDocumentButton, "src/test/resources/files/test.jpg", driver);
 
         addStepToTheReport("5. Отправка формы");
@@ -89,6 +93,8 @@ public class TestSuite extends CustomMethods {
     public void A3_Test_Example_Select(WebDriver driver) throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
+        //  Вносим в переменные название услуги начиная с точки ._test_sID_UA_--_ и до начала названия поля
+        String serviceName = "._test_sID_UA_--_";
 
         addStepToTheReport("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/785/general");
@@ -106,10 +112,10 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("4. Заполняем форму услуги");
-        fillInField(driver, "._test_sID_UA_--_sID_Place_UA", "test");
-        fillInField(driver, "._test_sID_UA_--_sID_UA", "test");
-        fillInField(driver, "._test_sID_UA_--_email", "v-i-d-k@mail.ru");
-        selectByVisibleText(driver,"._test_sID_UA_--_client","нет");
+        fillInField(driver, serviceName + "sID_Place_UA", "test");
+        fillInField(driver, serviceName + "sID_UA", "test");
+        fillInField(driver, serviceName + "email", "v-i-d-k@mail.ru");
+        selectByVisibleText(driver,serviceName + "client","нет");
 
         addStepToTheReport("5. Отправка формы");
         click(driver, tp.buttonSendingForm);
@@ -123,7 +129,6 @@ public class TestSuite extends CustomMethods {
         Assert.assertEquals(secondPart, "успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
-
 
         addStepToTheReport("7. Нажать кнопку Выйти ");
         click(driver, tp.buttonLogOut);
