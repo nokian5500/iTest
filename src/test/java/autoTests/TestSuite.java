@@ -13,7 +13,7 @@ public class TestSuite extends CustomMethods {
 		/*****************************************объявляем элементы страниц*******************************************/
 		TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
-        String serviceName = "._test_fields_bankid_--_";
+        String sn = "._test_fields_bankid_--_";
 
         addStepToTheReport("1. Вход по прямому URL на услугу");
 		openURLservice(driver, CV.baseUrl + "/service/720/general");
@@ -31,8 +31,8 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("5. Заполняем форму услуги");
-        fillInField(driver, serviceName + "tooltiptext", "test");
-        fillInField(driver, serviceName + "email", "v-i-d-k@mail.ru");
+        fillInField(driver, sn, "tooltiptext", "test");
+        fillInField(driver, sn, "email", "v-i-d-k@mail.ru");
 
         addStepToTheReport("6. Отправка формы");
         click(driver, tp.buttonSendingForm);
@@ -57,7 +57,7 @@ public class TestSuite extends CustomMethods {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_mailer_--_ и до начала названия поля
-        String serviceName = "._test_mailer_--_";
+        String sn = "._test_mailer_--_";
 
         addStepToTheReport("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/755/general");
@@ -69,7 +69,7 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("4. Заполняем форму услуги");
-        fillInField(driver, serviceName + "mail", "v-i-d-k@mail.ru");
+        fillInField(driver, sn, "mail", "v-i-d-k@mail.ru");
         attachDocument(tp.attachDocumentButton, "src/test/resources/files/test.jpg", driver);
 
         addStepToTheReport("5. Отправка формы");
@@ -94,7 +94,7 @@ public class TestSuite extends CustomMethods {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_sID_UA_--_ и до начала названия поля
-        String serviceName = "._test_sID_UA_--_";
+        String sn = "._test_sID_UA_--_";
 
         addStepToTheReport("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/785/general");
@@ -112,10 +112,10 @@ public class TestSuite extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("4. Заполняем форму услуги");
-        fillInField(driver, serviceName + "sID_Place_UA", "test");
-        fillInField(driver, serviceName + "sID_UA", "test");
-        fillInField(driver, serviceName + "email", "v-i-d-k@mail.ru");
-        selectByVisibleText(driver,serviceName + "client","нет");
+        fillInField(driver, sn, "sID_Place_UA", "test");
+        fillInField(driver, sn, "sID_UA", "test");
+        fillInField(driver, sn, "email", "v-i-d-k@mail.ru");
+        selectByVisibleText(driver,sn + "client","нет");
 
         addStepToTheReport("5. Отправка формы");
         click(driver, tp.buttonSendingForm);

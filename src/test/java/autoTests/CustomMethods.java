@@ -307,8 +307,8 @@ public class CustomMethods
 		Assert.assertEquals(webElement.getText(), textAssert);
 	}
 
-    public void fillInField(WebDriver driver, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+    public void fillInField(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector(serviceName+cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
