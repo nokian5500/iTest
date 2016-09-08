@@ -11,7 +11,7 @@ public class TestSuite extends CustomMethods {
 
 	//<editor-fold desc="Тестовый пример заполнение полей">
         @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
-	public void A1_Test_Example_Fill_Field(WebDriver driver) throws Exception {
+	public void A1_Test_Example_Fill_Field() throws Exception {
 		/*****************************************объявляем элементы страниц*******************************************/
 		TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
@@ -50,7 +50,7 @@ public class TestSuite extends CustomMethods {
 
     //<editor-fold desc="Тестовый пример загрузки файла">
         @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
-    public void A2_Test_Example_Attach(WebDriver driver) throws Exception {
+    public void A2_Test_Example_Attach() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_mailer_--_ и до начала названия поля
@@ -84,7 +84,7 @@ public class TestSuite extends CustomMethods {
 
     //<editor-fold desc="Тестовый пример выпадающее листы">
      @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 3)
-    public void A3_Test_Example_Select(WebDriver driver) throws Exception {
+    public void A3_Test_Example_Select() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_sID_UA_--_ и до начала названия поля
