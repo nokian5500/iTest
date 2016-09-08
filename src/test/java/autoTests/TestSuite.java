@@ -3,12 +3,14 @@ package autoTests;
 import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class TestSuite extends CustomMethods {
 	ConfigurationVariables CV = ConfigurationVariables.getInstance();
 
 
 	//<editor-fold desc="Тестовый пример заполнение полей">
+        @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
 	public void A1_Test_Example_Fill_Field(WebDriver driver) throws Exception {
 		/*****************************************объявляем элементы страниц*******************************************/
 		TemplatePage tp = new TemplatePage(driver);
@@ -47,6 +49,7 @@ public class TestSuite extends CustomMethods {
     //</editor-fold>
 
     //<editor-fold desc="Тестовый пример загрузки файла">
+        @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
     public void A2_Test_Example_Attach(WebDriver driver) throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);
@@ -80,6 +83,7 @@ public class TestSuite extends CustomMethods {
     //</editor-fold>
 
     //<editor-fold desc="Тестовый пример выпадающее листы">
+     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 3)
     public void A3_Test_Example_Select(WebDriver driver) throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage tp = new TemplatePage(driver);

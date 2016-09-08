@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 
-public class CustomMethods
+public class CustomMethods extends SetupAndTeardown
 {
 
 	ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
