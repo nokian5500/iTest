@@ -94,7 +94,8 @@ public class dnepr_cnap_39 extends CustomMethods {
         fillInField(driver, sn, "edrpou_inn", "12345678");
         fillInField(driver, sn, "sRukov", "П.І.Б. керівника юридичної особи");
         fillInField(driver, sn, "sOrgAdress", "Місцезнаходження юридичної особи");
-        selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
+        fillInField(driver, sn, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
+        //selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
 
         addStepToTheReport("6. Отправка формы");
         click(driver, tp.buttonSendingForm);
