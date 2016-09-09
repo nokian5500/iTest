@@ -67,38 +67,38 @@ public class Test_Example_Fill_Field  extends CustomMethods {
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
     public void Test_Example_Fill_Field() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
-        TemplatePage tp = new TemplatePage(driver);
+        TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
-        String sn = "._test_fields_bankid_--_";
+        String sBP = "_test_fields_bankid";
 
-        addStepToTheReport("1. Вход по прямому URL на услугу");
+        _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/720/general");
 
-        addStepToTheReport("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, tp.usluga, "_test_fields_bankid");
+        _step("2. Проверить, что открылась нужная услуга");
+        assertThis(driver, o.usluga, "_test_fields_bankid");
 
-        addStepToTheReport("3. Выбор области/города");
-        tp.selectRegion("Дніпропетровська");
-        tp.selectCity("Дніпро (Дніпропетровськ");
+        _step("3. Выбор области/города");
+        o.selectRegion("Дніпропетровська");
+        o.selectCity("Дніпро (Дніпропетровськ");
 
-        addStepToTheReport("4. Авторизация Off AuthMock/BankID");
-        tp.mokAuthorization();
+        _step("4. Авторизация Off AuthMock/BankID");
+        o.mokAuthorization();
 
-        addStepToTheReport("5. Заполняем форму услуги");
-        fillInField(driver, sn, "tooltiptext", "test");
-        fillInField(driver, sn, "email", "v-i-d-k@mail.ru");
+        _step("5. Заполняем форму услуги");
+        setFieldValue(driver, sBP, "tooltiptext", "test");
+        setFieldValue(driver, sBP, "email", "v-i-d-k@mail.ru");
 
-        addStepToTheReport("6. Отправка формы");
-        click(driver, tp.buttonSendingForm);
+        _step("6. Отправка формы");
+        click(driver, o.buttonSendingForm);
 
-        addStepToTheReport("7. Проверка сообщения о успешной отправке");
-        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+        _step("7. Проверка сообщения о успешной отправке");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
-        addStepToTheReport("8. Нажать кнопку Выйти");
-        click(driver, tp.buttonLogOut);
+        _step("8. Нажать кнопку Выйти");
+        click(driver, o.buttonLogOut);
     }
     //</editor-fold>
 }

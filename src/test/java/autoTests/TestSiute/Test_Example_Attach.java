@@ -68,32 +68,33 @@ public class Test_Example_Attach  extends CustomMethods {
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
     public void Test_Example_Attach() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
-        TemplatePage tp = new TemplatePage(driver);
+        TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_mailer_--_ и до начала названия поля
-        String sn = "._test_mailer_--_";
+        String sBP = "_test_mailer";
 
-        addStepToTheReport("1. Вход по прямому URL на услугу");
+        _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/755/general");
 
-        addStepToTheReport("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, tp.usluga, "_test_mailer");
+        _step("2. Проверить, что открылась нужная услуга");
+        assertThis(driver, o.usluga, "_test_mailer");
 
-        addStepToTheReport("3. Авторизация Off AuthMock/BankID");
-        tp.mokAuthorization();
+        _step("3. Авторизация Off AuthMock/BankID");
+        o.mokAuthorization();
 
-        addStepToTheReport("4. Заполняем форму услуги");
-        fillInField(driver, sn, "mail", "v-i-d-k@mail.ru");
-        attachDocument(tp.attachDocumentButton, "src/test/resources/files/test.jpg", driver);
+        _step("4. Заполняем форму услуги");
+        setFieldValue(driver, sBP, "mail", "v-i-d-k@mail.ru");
+        setFieldFile(driver, sBP, "nFileOne", "src/test/resources/files/test.jpg");
+        //attachDocument(tp.attachDocumentButton, "src/test/resources/files/test.jpg", driver);
 
-        addStepToTheReport("5. Отправка формы");
-        click(driver, tp.buttonSendingForm);
+        _step("5. Отправка формы");
+        click(driver, o.buttonSendingForm);
 
-        addStepToTheReport("6. Проверка сообщения о успешной отправке");
-        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+        _step("6. Проверка сообщения о успешной отправке");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано");
 
-        addStepToTheReport("7. Нажать кнопку Выйти ");
-        click(driver, tp.buttonLogOut);
+        _step("7. Нажать кнопку Выйти ");
+        click(driver, o.buttonLogOut);
 
     }
     //</editor-fold>

@@ -213,7 +213,7 @@ public class CustomMethods extends SetupAndTeardown
 		Assert.assertEquals(true, element.isEnabled());
 	}
 
-	public void addStepToTheReport(String stepName) throws Exception
+	public void _step(String stepName) throws Exception
 	{
 		Reporter.log("<b>" + stepName + "</b><br>");
 	}
@@ -308,13 +308,33 @@ public class CustomMethods extends SetupAndTeardown
 		Assert.assertEquals(webElement.getText(), textAssert);
 	}
 
-    public void fillInField(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.cssSelector(serviceName+cssSelector));
+    public void setFieldValue(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
+    public void setFieldFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector+" input"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathFile);
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        }        
+    }
+    //public void attachDocument(WebElement locator, String document, WebDriver driver) {
+    //}    
 
     public String getText(WebDriver driver, WebElement webElement) throws Exception {
         new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(webElement));
@@ -327,8 +347,8 @@ public class CustomMethods extends SetupAndTeardown
         return answer;
     }
 
-    public void selectByVisibleText(WebDriver driver,String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
+    public void setFieldSelectByText(WebDriver driver,String serviceName, String cssSelector, String text) {
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }

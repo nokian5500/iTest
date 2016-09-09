@@ -67,47 +67,47 @@ public class dnepr_cnap_39 extends CustomMethods {
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
     public void dnepr_cnap_39() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
-        TemplatePage tp = new TemplatePage(driver);
+        TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
-        String sn = ".dnepr_cnap_39_--_";
+        String sBP = "dnepr_cnap_39";
 
-        addStepToTheReport("1. Вход по прямому URL на услугу");
+        _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/139/general");
 
-        addStepToTheReport("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, tp.usluga, "Копії рішень міської (селищної) ради про надання дозволу на розроблення проекту відведення земельної ділянки");
+        _step("2. Проверить, что открылась нужная услуга");
+        assertThis(driver, o.usluga, "Копії рішень міської (селищної) ради про надання дозволу на розроблення проекту відведення земельної ділянки");
 
-        addStepToTheReport("3. Выбор области/города");
-        tp.selectRegion("Київська");
-        tp.selectCity("Ірпінь");
+        _step("3. Выбор области/города");
+        o.selectRegion("Київська");
+        o.selectCity("Ірпінь");
 
-        addStepToTheReport("4. Авторизация Off AuthMock/BankID");
-        tp.mokAuthorization();
+        _step("4. Авторизация Off AuthMock/BankID");
+        o.mokAuthorization();
 
-        addStepToTheReport("5. Заполняем форму услуги");
-        fillInField(driver, sn, "phone", "+380623155533");
-        fillInField(driver, sn, "email", "smoktii.igov@gmail.com");
-        fillInField(driver, sn, "sObjName", "номер, дату та назву рішення ради");
-        fillInField(driver, sn, "sObjAdress", "Місцезнаходження (адреса) об’єкта");
-        fillInField(driver, sn, "sDavName", "повне найменування юридичної особи");
-        fillInField(driver, sn, "kved", "11.11");
-        fillInField(driver, sn, "edrpou_inn", "12345678");
-        fillInField(driver, sn, "sRukov", "П.І.Б. керівника юридичної особи");
-        fillInField(driver, sn, "sOrgAdress", "Місцезнаходження юридичної особи");
-        fillInField(driver, sn, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
+        _step("5. Заполняем форму услуги");
+        setFieldValue(driver, sBP, "phone", "+380623155533");
+        setFieldValue(driver, sBP, "email", "smoktii.igov@gmail.com");
+        setFieldValue(driver, sBP, "sObjName", "номер, дату та назву рішення ради");
+        setFieldValue(driver, sBP, "sObjAdress", "Місцезнаходження (адреса) об’єкта");
+        setFieldValue(driver, sBP, "sDavName", "повне найменування юридичної особи");
+        setFieldValue(driver, sBP, "kved", "11.11");
+        setFieldValue(driver, sBP, "edrpou_inn", "12345678");
+        setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
+        setFieldValue(driver, sBP, "sOrgAdress", "Місцезнаходження юридичної особи");
+        setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
         //selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
 
-        addStepToTheReport("6. Отправка формы");
-        click(driver, tp.buttonSendingForm);
+        _step("6. Отправка формы");
+        click(driver, o.buttonSendingForm);
 
-        addStepToTheReport("7. Проверка сообщения о успешной отправке");
-        tp.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
+        _step("7. Проверка сообщения о успешной отправке");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
-        addStepToTheReport("8. Нажать кнопку Выйти");
-        click(driver, tp.buttonLogOut);
+        _step("8. Нажать кнопку Выйти");
+        click(driver, o.buttonLogOut);
     }
     //</editor-fold>
 }
