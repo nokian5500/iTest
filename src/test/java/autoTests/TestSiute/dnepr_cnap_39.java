@@ -65,7 +65,7 @@ public class dnepr_cnap_39 extends CustomMethods {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
-    public void dnepr_cnap_39() throws Exception {
+    public void default_test() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
@@ -94,8 +94,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         setFieldValue(driver, sBP, "edrpou_inn", "12345678");
         setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
         setFieldValue(driver, sBP, "sOrgAdress", "Місцезнаходження юридичної особи");
-        setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
-        //selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
+        // setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
 
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
