@@ -353,8 +353,8 @@ public class CustomMethods extends SetupAndTeardown
         select.selectByVisibleText(text);
     }
 
-    public void selectByValue(WebDriver driver,String serviceName, String cssSelector, String value) {
-        WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
+    public void setFieldSelectByValue(WebDriver driver,String serviceName, String cssSelector, String value) {
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
         Select select = new Select(webElement);
         select.selectByValue(value);
     }
