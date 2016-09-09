@@ -85,7 +85,6 @@ public class dnepr_cnap_39 extends CustomMethods {
         tp.mokAuthorization();
 
         addStepToTheReport("5. Заполняем форму услуги");
-        selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
         fillInField(driver, sn, "phone", "+380623155533");
         fillInField(driver, sn, "email", "smoktii.igov@gmail.com");
         fillInField(driver, sn, "sObjName", "номер, дату та назву рішення ради");
@@ -95,6 +94,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         fillInField(driver, sn, "edrpou_inn", "12345678");
         fillInField(driver, sn, "sRukov", "П.І.Б. керівника юридичної особи");
         fillInField(driver, sn, "sOrgAdress", "Місцезнаходження юридичної особи");
+        selectByVisibleText(driver,sn,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
 
         addStepToTheReport("6. Отправка формы");
         click(driver, tp.buttonSendingForm);
