@@ -23,21 +23,20 @@ public class Test_Example_Attach  extends CustomMethods {
 
     ConfigurationVariables CV = ConfigurationVariables.getInstance();
     public WebDriver driver;
-    static ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+
     DesiredCapabilities capabilities;
 
     /**************************************************************/
     @BeforeTest(alwaysRun = true)
     public void SetUp() throws IOException {
-
         /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-        /*FirefoxProfile profile = new FirefoxProfile();
-       profile.setEnableNativeEvents(false);
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
-*/
+
         /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-        ProfilesIni allProfiles = new ProfilesIni();
-        FirefoxProfile profile = allProfiles.getProfile("default");
+//        ProfilesIni allProfiles = new ProfilesIni();
+//        FirefoxProfile profile = allProfiles.getProfile("default");
 
         profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
@@ -53,7 +52,7 @@ public class Test_Example_Attach  extends CustomMethods {
 
 
         driver = WebDriverFactory.getDriver(capabilities);
-        this.driver.manage().timeouts().implicitlyWait(configVariables.implicitTimeWait, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
         this.driver.manage().window().maximize();
         this.driver.manage().deleteAllCookies();
 
@@ -69,7 +68,7 @@ public class Test_Example_Attach  extends CustomMethods {
     public void Test_Example_Attach() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
-        //  Вносим в переменные название услуги начиная с точки ._test_mailer_--_ и до начала названия поля
+        //  Вносим в переменные название услуги и почту
         String sBP = "_test_mailer";
 
         _step("1. Вход по прямому URL на услугу");

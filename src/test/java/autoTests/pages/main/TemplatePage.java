@@ -91,5 +91,11 @@ public class TemplatePage {
     Assert.assertEquals(secondPart,message.substring(58, message.length()));
 }
 
+    // Method for selection of City
+    public void selectAutocomplete(String name, String value) {
+        driver.findElement(By.name(name)).click();
+        driver.findElement(By.name(name)).sendKeys(value);
+        driver.findElement(By.linkText(value)).click();
+    }
 }
 

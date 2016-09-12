@@ -3,11 +3,16 @@ package autoTests;
 
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
+import ru.stqa.selenium.factory.WebDriverFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,6 +27,13 @@ public class CustomMethods extends SetupAndTeardown
 {
 
 	ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+
+
+
+
+
+
+
 
 	//Открыть новую вкладку
 	public void openNewTab(WebDriver driver)
@@ -304,7 +316,7 @@ public class CustomMethods extends SetupAndTeardown
 	}
 
 	public void assertThis(WebDriver driver, WebElement webElement, String textAssert){
-		new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(webElement));
+		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(webElement));
 		Assert.assertEquals(webElement.getText(), textAssert);
 	}
 
@@ -357,6 +369,12 @@ public class CustomMethods extends SetupAndTeardown
         WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
         Select select = new Select(webElement);
         select.selectByValue(value);
+    }
+
+    public void selectAutocomplete(String name, String value) {
+        driver.findElement(By.name(name)).click();
+        driver.findElement(By.name(name)).sendKeys(value);
+        driver.findElement(By.linkText(value)).click();
     }
 
 }

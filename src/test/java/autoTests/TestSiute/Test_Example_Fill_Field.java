@@ -20,23 +20,22 @@ import java.util.concurrent.TimeUnit;
  * Created by Privat24 on 09.09.2016.
  */
 public class Test_Example_Fill_Field  extends CustomMethods {
-
     ConfigurationVariables CV = ConfigurationVariables.getInstance();
     public WebDriver driver;
-    static ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+
     DesiredCapabilities capabilities;
 
+    /**************************************************************/
     @BeforeTest(alwaysRun = true)
     public void SetUp() throws IOException {
-
         /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-        /*FirefoxProfile profile = new FirefoxProfile();
-       profile.setEnableNativeEvents(false);
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
-*/
+
         /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-        ProfilesIni allProfiles = new ProfilesIni();
-        FirefoxProfile profile = allProfiles.getProfile("default");
+//        ProfilesIni allProfiles = new ProfilesIni();
+//        FirefoxProfile profile = allProfiles.getProfile("default");
 
         profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
@@ -52,7 +51,7 @@ public class Test_Example_Fill_Field  extends CustomMethods {
 
 
         driver = WebDriverFactory.getDriver(capabilities);
-        this.driver.manage().timeouts().implicitlyWait(configVariables.implicitTimeWait, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
         this.driver.manage().window().maximize();
         this.driver.manage().deleteAllCookies();
 
@@ -68,8 +67,9 @@ public class Test_Example_Fill_Field  extends CustomMethods {
     public void Test_Example_Fill_Field() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
-        //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
+        //  Вносим в переменные название услуги и почту
         String sBP = "_test_fields_bankid";
+        String email = "v-i-d-o-k@mail.ru";
 
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/720/general");
@@ -86,7 +86,7 @@ public class Test_Example_Fill_Field  extends CustomMethods {
 
         _step("5. Заполняем форму услуги");
         setFieldValue(driver, sBP, "tooltiptext", "test");
-        setFieldValue(driver, sBP, "email", "v-i-d-k@mail.ru");
+        setFieldValue(driver, sBP, "email", email);
 
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
@@ -94,7 +94,7 @@ public class Test_Example_Fill_Field  extends CustomMethods {
         _step("7. Проверка сообщения о успешной отправке");
         o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
+                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
         _step("8. Нажать кнопку Выйти");

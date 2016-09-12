@@ -23,20 +23,20 @@ public class dnepr_cnap_39 extends CustomMethods {
 
     ConfigurationVariables CV = ConfigurationVariables.getInstance();
     public WebDriver driver;
-    static ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+
     DesiredCapabilities capabilities;
 
+    /**************************************************************/
     @BeforeTest(alwaysRun = true)
     public void SetUp() throws IOException {
-
         /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-        /*FirefoxProfile profile = new FirefoxProfile();
-       profile.setEnableNativeEvents(false);
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
-*/
+
         /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-        ProfilesIni allProfiles = new ProfilesIni();
-        FirefoxProfile profile = allProfiles.getProfile("default");
+//        ProfilesIni allProfiles = new ProfilesIni();
+//        FirefoxProfile profile = allProfiles.getProfile("default");
 
         profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
@@ -52,7 +52,7 @@ public class dnepr_cnap_39 extends CustomMethods {
 
 
         driver = WebDriverFactory.getDriver(capabilities);
-        this.driver.manage().timeouts().implicitlyWait(configVariables.implicitTimeWait, TimeUnit.SECONDS);
+        this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
         this.driver.manage().window().maximize();
         this.driver.manage().deleteAllCookies();
 
@@ -65,11 +65,12 @@ public class dnepr_cnap_39 extends CustomMethods {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
-    public void default_test() throws Exception {
+    public void dnepr_cnap_39_() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
         String sBP = "dnepr_cnap_39";
+        String email = "smoktii.igov@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/139/general");
@@ -86,11 +87,11 @@ public class dnepr_cnap_39 extends CustomMethods {
 
         _step("5. Заполняем форму услуги");
         setFieldValue(driver, sBP, "phone", "+380623155533");
-        setFieldValue(driver, sBP, "email", "smoktii.igov@gmail.com");
+        setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sObjName", "номер, дату та назву рішення ради");
         setFieldValue(driver, sBP, "sObjAdress", "Місцезнаходження (адреса) об’єкта");
         setFieldValue(driver, sBP, "sDavName", "повне найменування юридичної особи");
-        setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "kiev_irpenT");
+        selectAutocomplete("sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
         setFieldValue(driver, sBP, "kved", "11.11");
         setFieldValue(driver, sBP, "edrpou_inn", "12345678");
         setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
@@ -103,7 +104,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         _step("7. Проверка сообщения о успешной отправке");
         o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail v-i-d-k@mail.ru) Результати будуть спрямовані також на email.\n" +
+                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
         _step("8. Нажать кнопку Выйти");

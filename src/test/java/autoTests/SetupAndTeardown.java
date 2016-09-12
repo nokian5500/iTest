@@ -22,6 +22,12 @@ import java.util.concurrent.TimeUnit;
 public class SetupAndTeardown {
 
     public WebDriver driver;
+    DesiredCapabilities capabilities;
+
+    @BeforeMethod(alwaysRun = true)
+    public void doLogin() throws Exception {
+        driver = WebDriverFactory.getDriver(capabilities);
+    }
 
     @AfterMethod(alwaysRun = true)
     public void takeScreenshot(ITestResult result) throws Exception {
