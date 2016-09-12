@@ -93,7 +93,7 @@ public class spend_meeting_404 extends CustomMethods {
         setFieldSelectByText(driver,sBP,"eFormaZahodu","мітинг");
         setFieldValue(driver, sBP, "sMistoZahodu", "Місце проведення заходу або маршрути руху");
         setFieldFile(driver, sBP, "fMapViewMarshrut", "src/test/resources/files/test.jpg");
-        setFieldValue(driver, sBP, "dDate_Beg", "2016-01-01");
+        setFieldValue(driver, sBP, "dDate_Beg", "2003/01/01");
         setFieldSelectByText(driver,sBP,"eTime_Beg","12:00");
         setFieldValue(driver, sBP, "dDate_End", "01.01.2016");
         setFieldSelectByText(driver,sBP,"eTime_End","19:00");
