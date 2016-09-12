@@ -91,7 +91,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         setFieldValue(driver, sBP, "sObjName", "номер, дату та назву рішення ради");
         setFieldValue(driver, sBP, "sObjAdress", "Місцезнаходження (адреса) об’єкта");
         setFieldValue(driver, sBP, "sDavName", "повне найменування юридичної особи");
-        selectAutocomplete("sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
+        selectAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
         setFieldValue(driver, sBP, "kved", "11.11");
         setFieldValue(driver, sBP, "edrpou_inn", "12345678");
         setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
