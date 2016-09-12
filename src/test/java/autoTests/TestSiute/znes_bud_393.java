@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Privat24 on 09.09.2016.
  */
-public class dnepr_cnap_39 extends CustomMethods {
+public class znes_bud_393 extends CustomMethods {
 
     ConfigurationVariables CV = ConfigurationVariables.getInstance();
     public WebDriver driver;
@@ -69,33 +69,28 @@ public class dnepr_cnap_39 extends CustomMethods {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
-        String sBP = "dnepr_cnap_39";
+        String sBP = "znes_bud_393";
         String email = "smoktii.igov@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
-        openURLservice(driver, CV.baseUrl + "/service/139/general");
+        openURLservice(driver, CV.baseUrl + "/service/788/general");
 
         _step("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, o.usluga, "Копії рішень міської (селищної) ради про надання дозволу на розроблення проекту відведення земельної ділянки");
+        assertThis(driver, o.usluga, "Надання дозволу на знесення аварійних будівель");
 
         _step("3. Выбор области/города");
         o.selectRegion("Київська");
-        o.selectCity("Ірпінь");
+        o.selectCity("Колонщина");
 
         _step("4. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
 
         _step("5. Заполняем форму услуги");
-        selectAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП м. Ірпінь");
-        setFieldValue(driver, sBP, "phone", "+380623155533");
+        selectAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
+        setFieldValue(driver, sBP, "sAdressBuilding", "Адреса будівлі");
+        setFieldFile(driver, sBP, "fSvidoztvoNaPravoSobstvennosti", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "email", email);
-        setFieldValue(driver, sBP, "sObjName", "номер, дату та назву рішення ради");
-        setFieldValue(driver, sBP, "sObjAdress", "Місцезнаходження (адреса) об’єкта");
-        setFieldValue(driver, sBP, "sDavName", "повне найменування юридичної особи");
-        setFieldValue(driver, sBP, "kved", "11.11");
-        setFieldValue(driver, sBP, "edrpou_inn", "12345678");
-        setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
-        setFieldValue(driver, sBP, "sOrgAdress", "Місцезнаходження юридичної особи");
+        setFieldValue(driver, sBP, "phone", "+380623155533");
         //setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
 
         _step("6. Отправка формы");
