@@ -371,7 +371,7 @@ public class CustomMethods extends SetupAndTeardown
         select.selectByValue(value);
     }
 
-    public void selectAutocomplete( WebDriver driver,String name, String value) {
+    public void setFieldAutocomplete( WebDriver driver,String name, String value) {
         driver.findElement(By.name(name)).click();
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();

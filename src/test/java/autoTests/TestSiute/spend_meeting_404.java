@@ -86,7 +86,7 @@ public class spend_meeting_404 extends CustomMethods {
         o.mokAuthorization();
 
         _step("5. Заполняем форму услуги");
-        selectAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
+        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sMetaZahodu", "Мета заходу");

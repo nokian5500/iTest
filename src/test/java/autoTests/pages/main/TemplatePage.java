@@ -13,6 +13,7 @@ import org.testng.Assert;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
 
 public class TemplatePage {
     WebDriver driver;

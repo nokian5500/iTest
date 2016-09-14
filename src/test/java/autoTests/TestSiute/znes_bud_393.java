@@ -86,7 +86,7 @@ public class znes_bud_393 extends CustomMethods {
         o.mokAuthorization();
 
         _step("5. Заполняем форму услуги");
-        selectAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
+        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
         setFieldValue(driver, sBP, "sAdressBuilding", "Адреса будівлі");
         setFieldFile(driver, sBP, "fSvidoztvoNaPravoSobstvennosti", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "email", email);
