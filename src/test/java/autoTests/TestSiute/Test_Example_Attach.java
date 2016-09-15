@@ -1,12 +1,13 @@
 package autoTests.TestSiute;
 
+import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
 /**
  * Created by Privat24 on 09.09.2016.
  */
-public class Test_Example_Attach extends BaseTest {
+public class Test_Example_Attach extends SetupAndTeardown {
 
     //<editor-fold desc="Тестовый пример загрузки файла">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)

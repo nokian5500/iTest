@@ -1,18 +1,11 @@
 package autoTests;
 
-
-
 import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
-import ru.stqa.selenium.factory.WebDriverFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,20 +13,10 @@ import java.net.URLEncoder;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
-
-
-public class CustomMethods extends SetupAndTeardown
+public class CustomMethods
 {
 
 	ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
-
-
-
-
-
-
-
 
 	//Открыть новую вкладку
 	public void openNewTab(WebDriver driver)

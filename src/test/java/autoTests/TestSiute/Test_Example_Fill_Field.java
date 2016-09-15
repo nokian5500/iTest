@@ -1,12 +1,13 @@
 package autoTests.TestSiute;
 
+import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
 /**
  * Created by Privat24 on 09.09.2016.
  */
-public class Test_Example_Fill_Field extends BaseTest {
+public class Test_Example_Fill_Field extends SetupAndTeardown {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)

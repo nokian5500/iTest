@@ -1,5 +1,6 @@
 package autoTests.TestSiute;
 
+import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
@@ -7,7 +8,7 @@ import org.testng.annotations.Test;
 /**
  * Created by Privat24 on 09.09.2016.
  */
-public class spend_meeting_404 extends BaseTest {
+public class spend_meeting_404 extends SetupAndTeardown {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)

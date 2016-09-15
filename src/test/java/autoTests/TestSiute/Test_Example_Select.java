@@ -1,10 +1,11 @@
 package autoTests.TestSiute;
 
 import autoTests.CustomMethods;
+import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
-public class Test_Example_Select extends BaseTest {
+public class Test_Example_Select extends SetupAndTeardown {
 
     //<editor-fold desc="Тестовый пример выпадающее листы">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 3)
