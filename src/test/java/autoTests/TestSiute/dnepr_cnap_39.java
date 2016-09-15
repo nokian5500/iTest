@@ -98,6 +98,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         setFieldValue(driver, sBP, "edrpou_inn", "12345678");
         setFieldValue(driver, sBP, "sRukov", "П.І.Б. керівника юридичної особи");
         setFieldValue(driver, sBP, "sOrgAdress", "Місцезнаходження юридичної особи");
+        setFieldValue(driver, sBP, "sMailClerk", email);
         //setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
 
         _step("6. Отправка формы");

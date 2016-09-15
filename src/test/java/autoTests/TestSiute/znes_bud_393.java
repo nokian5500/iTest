@@ -93,6 +93,7 @@ public class znes_bud_393 extends CustomMethods {
         setFieldFile(driver, sBP, "fSvidoztvoNaPravoSobstvennosti", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "phone", "+380623155533");
+        setFieldValue(driver, sBP, "sMailClerk", email);
         //setFieldValue(driver, sBP, "sID_Public_SubjectOrganJoin", "ЦНАП м. Ірпінь");
 
         _step("6. Отправка формы");
