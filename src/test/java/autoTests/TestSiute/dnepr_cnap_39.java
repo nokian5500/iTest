@@ -3,6 +3,8 @@ package autoTests.TestSiute;
 import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
+import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 
 /**
  * Created by Privat24 on 09.09.2016.
@@ -10,6 +12,8 @@ import org.testng.annotations.Test;
 public class dnepr_cnap_39 extends SetupAndTeardown {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
+    @TestCaseId("DEMO-1")
+    @Features("Проверка 'dnepr_cnap_39' ")
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
     public void default_test() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
