@@ -33,7 +33,7 @@ public class Test_Example_Attach  extends CustomMethods {
         FirefoxProfile profile = new FirefoxProfile();
         profile.setEnableNativeEvents(false);
         profile.setAcceptUntrustedCertificates(true);
-        profile.setPreference("WebDriver.load.strategy", "unstable")
+        profile.setPreference("WebDriver.load.strategy", "unstable");
 
 
         /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
