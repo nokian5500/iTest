@@ -4,7 +4,6 @@ import autoTests.SetupAndTeardown;
 import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
-
 /**
  * Created by Privat24 on 09.09.2016.
  */
