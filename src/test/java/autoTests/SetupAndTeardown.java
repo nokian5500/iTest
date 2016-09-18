@@ -93,7 +93,7 @@ public class SetupAndTeardown {
                         true
                 );
                 System.out.println(ErrorLogMessage);
-                driver.quit();
+                
 
             } else {
                 System.out.println(SuccsessLogMessage);
