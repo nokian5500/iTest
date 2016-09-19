@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test suite" parallel="tests" thread-count="1">
-    <test name="Test" enabled="true" preserve-order="true">
+<suite name="Test suite">
+<test name="Global group of tests" enabled="true" preserve-order="true">
+<!--suite name="Test suite" parallel="tests" thread-count="1">
+    <test name="Test" enabled="true" preserve-order="true"-->
         <parameter name="path" value="/"/>
         <!--<classes>-->
             <!--<class name="autoTests.TestSiute.Test_Example_Attach"/>-->
