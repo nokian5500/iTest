@@ -55,7 +55,7 @@ public class spend_meeting_404 extends CustomMethods {
         setFieldFile(driver, sBP, "fMapViewMarshrut", "src/test/resources/files/test.jpg");
 
         setFieldSelectByText(driver,sBP,"eTime_Beg","12:00");
-        setFieldValue(driver, sBP, "dDate_End", "01.01.2016");
+        setFieldCalendar(driver, sBP, "dDate_End", "2003/01/01");
         setFieldSelectByText(driver,sBP,"eTime_End","19:00");
         setFieldValue(driver, sBP, "lCountPeople", "100");
         setFieldFile(driver, sBP, "fPovidomlennyaProZahid", "src/test/resources/files/test.jpg");
