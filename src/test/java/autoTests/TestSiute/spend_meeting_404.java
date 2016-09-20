@@ -29,7 +29,7 @@ public class spend_meeting_404 extends CustomMethods {
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
         String sBP = "spend_meeting_404";
-        String email = "smoktii.igov@gmail.com";
+        String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/40/general");
@@ -85,7 +85,7 @@ public class spend_meeting_404 extends CustomMethods {
     public void my_test2() throws Exception {
         TemplatePage o = new TemplatePage(driver);
         String sBP = "spend_meeting_404";
-        String email = "smoktii.igov@gmail.com";
+        String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/40/general");

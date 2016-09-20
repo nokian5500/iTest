@@ -29,7 +29,7 @@ public class dnepr_cnap_39 extends CustomMethods {
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
         String sBP = "dnepr_cnap_39";
-        String email = "smoktii.igov@gmail.com";
+        String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/139/general");
