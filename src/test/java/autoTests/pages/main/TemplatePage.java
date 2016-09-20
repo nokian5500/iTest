@@ -4,10 +4,13 @@ package autoTests.pages.main;
 import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
@@ -74,12 +77,14 @@ public class TemplatePage {
 
     // Method for selection of Region
     public void selectRegion(String region) {
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(openOblList));
         openOblList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
     }
 
     // Method for selection of City
     public void selectCity(String city) {
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(openCityList));
         openCityList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + city + "')]");
     }
@@ -92,11 +97,16 @@ public class TemplatePage {
     Assert.assertEquals(secondPart,message.substring(58, message.length()));
 }
 
-    // Method for selection of City
+    // Method
     public void selectAutocomplete(String name, String value) {
         driver.findElement(By.name(name)).click();
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();
     }
+
+
+
+
+
 }
 

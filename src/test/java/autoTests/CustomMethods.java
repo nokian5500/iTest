@@ -316,7 +316,7 @@ public class CustomMethods extends SetupAndTeardown
 	}
 
 	public void assertThis(WebDriver driver, WebElement webElement, String textAssert){
-		new WebDriverWait(driver, 20).until(ExpectedConditions.visibilityOf(webElement));
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(webElement));
 		Assert.assertEquals(webElement.getText(), textAssert);
 	}
 
@@ -375,6 +375,17 @@ public class CustomMethods extends SetupAndTeardown
         driver.findElement(By.name(name)).click();
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();
+    }
+
+    public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
+
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('"+cssSelector+"')[0]).removeAttr('readonly');");
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(data);
+
     }
 
 }

@@ -21,49 +21,6 @@ import java.util.concurrent.TimeUnit;
  */
 public class spend_meeting_404 extends CustomMethods {
 
-    ConfigurationVariables CV = ConfigurationVariables.getInstance();
-    public WebDriver driver;
-
-    DesiredCapabilities capabilities;
-
-    /**************************************************************/
-    @BeforeTest(alwaysRun = true)
-    public void SetUp() throws IOException {
-        /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-        FirefoxProfile profile = new FirefoxProfile();
-        profile.setEnableNativeEvents(false);
-        profile.setAcceptUntrustedCertificates(true);
-        profile.setPreference("WebDriver.load.strategy", "unstable");
-
-
-        /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-//        ProfilesIni allProfiles = new ProfilesIni();
-//        FirefoxProfile profile = allProfiles.getProfile("default");
-
-        profile.setEnableNativeEvents(false);
-        profile.setAcceptUntrustedCertificates(true);
-        profile.setAssumeUntrustedCertificateIssuer(true);
-        profile.setPreference("javascript.enabled", true);
-        profile.setPreference("geo.enabled", false);
-
-        capabilities = DesiredCapabilities.firefox();
-        capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-        capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
-
-        System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
-
-
-        driver = WebDriverFactory.getDriver(capabilities);
-        this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
-        this.driver.manage().window().maximize();
-        this.driver.manage().deleteAllCookies();
-
-    }
-
-    @BeforeMethod(alwaysRun = true)
-    public void doLogin() throws Exception {
-        driver = WebDriverFactory.getDriver(capabilities);
-    }
 
     //<editor-fold desc="Тестовый пример заполнение полей">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
@@ -88,6 +45,7 @@ public class spend_meeting_404 extends CustomMethods {
         o.mokAuthorization();
 
         _step("5. Заполняем форму услуги");
+        setFieldCalendar(driver, sBP, "dDate_Beg", "2003/01/01");
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","ЦНАП Колонщинської сільради");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
@@ -95,7 +53,7 @@ public class spend_meeting_404 extends CustomMethods {
         setFieldSelectByText(driver,sBP,"eFormaZahodu","мітинг");
         setFieldValue(driver, sBP, "sMistoZahodu", "Місце проведення заходу або маршрути руху");
         setFieldFile(driver, sBP, "fMapViewMarshrut", "src/test/resources/files/test.jpg");
-        setFieldValue(driver, sBP, "dDate_Beg", "2003/01/01");
+
         setFieldSelectByText(driver,sBP,"eTime_Beg","12:00");
         setFieldValue(driver, sBP, "dDate_End", "01.01.2016");
         setFieldSelectByText(driver,sBP,"eTime_End","19:00");
