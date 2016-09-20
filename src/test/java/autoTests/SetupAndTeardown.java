@@ -31,13 +31,13 @@ public class SetupAndTeardown {
     public void SetUp() throws IOException {
         if (null == driver) {
             /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-//        FirefoxProfile profile = new FirefoxProfile();
-//        profile.setEnableNativeEvents(false);
-//        profile.setAcceptUntrustedCertificates(true);
+          FirefoxProfile profile = new FirefoxProfile();
+          profile.setEnableNativeEvents(false);
+          profile.setAcceptUntrustedCertificates(true);
 
             /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-            ProfilesIni allProfiles = new ProfilesIni();
-            FirefoxProfile profile = allProfiles.getProfile("default");
+ //           ProfilesIni allProfiles = new ProfilesIni();
+//            FirefoxProfile profile = allProfiles.getProfile("default");
 
             profile.setEnableNativeEvents(false);
             profile.setAcceptUntrustedCertificates(true);
