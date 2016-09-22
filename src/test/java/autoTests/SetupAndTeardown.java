@@ -148,6 +148,7 @@ public class SetupAndTeardown {
 
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
+        driver.quit();
     }
 
 }
