@@ -55,6 +55,7 @@ public class SetupAndTeardown {
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
+            Thread.sleep(500);
         }
     }
 
