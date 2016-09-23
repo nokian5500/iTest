@@ -99,7 +99,7 @@
 					</suiteXmlFiles>
 					<reportsDirectory>TestReport</reportsDirectory>
 					<properties>
-						<testFailureIgnore>true</testFailureIgnore>
+						<testFailureIgnore>false</testFailureIgnore>
 						<project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
 						<project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
 						<property>
