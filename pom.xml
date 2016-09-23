@@ -96,9 +96,9 @@
 				<version>2.19.1</version>
 				<inherited>true</inherited>
 				<configuration>
-					 <parallel>methods</parallel>
+					 <parallel>classes</parallel>
                                          <threadCount>5</threadCount>
-				<argLine>-Dfile.encoding=UTF-8</argLine>
+				<argLine>-Dfile.encoding=UTF-8 -Xmx1024m -XX:MaxPermSize=256m</argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
