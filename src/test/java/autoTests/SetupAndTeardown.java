@@ -55,7 +55,7 @@ public class SetupAndTeardown {
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
-            Thread.sleep(500);
+    
         }
     }
 
@@ -149,7 +149,6 @@ public class SetupAndTeardown {
 
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
-        driver.quit();
-    }
+        }
 
 }
