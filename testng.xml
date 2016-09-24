@@ -8,8 +8,8 @@
             <!--<class name="autoTests.TestSiute.Test_Example_Fill_Field"/>-->
             <!--<class name="autoTests.TestSiute.Test_Example_Select"/>-->
         </classes>
-        <packages>
+        <!--<packages>
             <package name="autoTests.TestSiute"/>
-        </packages>
+        </packages>-->
     </test>
 </suite>
