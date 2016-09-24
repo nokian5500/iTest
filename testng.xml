@@ -7,7 +7,7 @@
             <class name="autoTests.TestSiute.Test_Example_Attach"/>
             <!--<class name="autoTests.TestSiute.Test_Example_Fill_Field"/>-->
             <!--<class name="autoTests.TestSiute.Test_Example_Select"/>-->
-        <!--</classes>-->
+        </classes>
         <packages>
             <package name="autoTests.TestSiute"/>
         </packages>
