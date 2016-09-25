@@ -6,7 +6,7 @@
 	<!-- Для проверки версий библиотек http://mvnrepository.com/search.html -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<suiteFile>testng_simple.xml</suiteFile>
+		<suiteFile>testng.xml</suiteFile>
 		<seleniumVersion>2.53.1</seleniumVersion>
 		<!--seleniumVersion>2.48.0</seleniumVersion-->
 	</properties>
