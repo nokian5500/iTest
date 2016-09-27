@@ -99,7 +99,7 @@
 					 <parallel>classes</parallel>
                                          <threadCount>20</threadCount>
 					
-				<argLine>-Dfile.encoding=UTF-8 -Xmx2048m</argLine>
+				<argLine>-Dfile.encoding=UTF-8 -Xmx2048m -Xms1000m</argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
