@@ -98,7 +98,7 @@
 				<configuration>
 					 <parallel>classes</parallel>
                                          <threadCount>20</threadCount>
-					 <redirectTestOutputToFile>true</redirectTestOutputToFile>
+					
 				<argLine>-Dfile.encoding=UTF-8 -Xmx1024m -XX:MaxPermSize=256m</argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
