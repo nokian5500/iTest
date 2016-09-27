@@ -98,7 +98,7 @@
 				<configuration>
 					 <parallel>classes</parallel>
                                          <threadCount>5</threadCount>
-				<argLine>-Dfile.encoding=UTF-8 -Xmx1024m -XX:MaxPermSize=256m</argLine>
+				<argLine>-Dfile.encoding=UTF-8 -Xmx1024m -XX:MaxPermSize=256m  -maxInstances=10</argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
