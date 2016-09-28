@@ -4,7 +4,7 @@
     <test name="Test" enabled="true" preserve-order="true">
         <parameter name="path" value="/"/>
         <classes>
-            <class name="autoTests.TestSiute.Test_Example_Attach"/>
+            <class name="autoTests.estSiute.test_Example_Attach"/>
             <class name="autoTests.TestSiute.Test_Example_Fill_Field"/>
             <class name="autoTests.TestSiute.Test_Example_Select"/>
         </classes>
