@@ -42,11 +42,11 @@ public class SetupAndTeardown {
  //           ProfilesIni allProfiles = new ProfilesIni();
 //            FirefoxProfile profile = allProfiles.getProfile("default");
 
-            profile.setEnableNativeEvents(false);
-            profile.setAcceptUntrustedCertificates(true);
-            profile.setAssumeUntrustedCertificateIssuer(true);
-            profile.setPreference("javascript.enabled", true);
-            profile.setPreference("geo.enabled", false);
+          //  profile.setEnableNativeEvents(false);
+            //profile.setAcceptUntrustedCertificates(true);
+          //  profile.setAssumeUntrustedCertificateIssuer(true);
+           // profile.setPreference("javascript.enabled", true);
+            //profile.setPreference("geo.enabled", false);
 
             capabilities = DesiredCapabilities.firefox();
             capabilities.setCapability(FirefoxDriver.PROFILE, profile);
