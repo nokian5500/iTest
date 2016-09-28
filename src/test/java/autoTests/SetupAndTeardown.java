@@ -64,7 +64,7 @@ public class SetupAndTeardown {
         //Для того чтобы передавать html теги и спец-символы в reporter.log
         //Или можно передать параметр в командную строку при выполнении TestNG:
         //-Dorg.uncommons.reportng.escape-output=false
-        System.setProperty("org.uncommons.reportng.escape-output", "false");
+        //System.setProperty("org.uncommons.reportng.escape-output", "false");
 
         Reporter.setCurrentTestResult(result);
         boolean success = (new File("TestReport/html/Screens/")).mkdirs();
