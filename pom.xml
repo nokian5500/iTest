@@ -116,7 +116,7 @@
 					 <parallel>classes</parallel>
                                          <threadCount>20</threadCount>
 					
-				<argLine>-Dfile.encoding=UTF-8 -DseleniumGridURL=http://ci-jenkins.tech.igov.org.ua:4444/wd/hub -Dbrowser=firefox -Dmaven.test.failure.ignore=true</argLine>
+				<argLine>-Dfile.encoding=UTF-8</argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
