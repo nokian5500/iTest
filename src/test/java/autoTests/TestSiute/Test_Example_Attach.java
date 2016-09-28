@@ -35,6 +35,7 @@ public class Test_Example_Attach  extends CustomMethods {
 
         _step("2. Проверить, что открылась нужная услуга");
         assertThis(driver, o.usluga, "_test_mailer");
+       
 
         _step("3. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
