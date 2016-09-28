@@ -56,7 +56,7 @@ public class SetupAndTeardown {
             capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
 
             System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
-            driver = WebDriverFactory.getDriver(new URL("http://jenkins.igov.org.ua:4444/wd/hub"), capabilities);
+            driver = WebDriverFactory.getDriver(capabilities);
 
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
