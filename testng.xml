@@ -3,13 +3,13 @@
 <suite name="Test suite" parallel="tests" thread-count="5">
     <test name="Test" enabled="true" preserve-order="true">
         <parameter name="path" value="/"/>
-        <classes>
-            <class name="autoTests.estSiute.test_Example_Attach"/>
+        <!--classes>
+            <class name="autoTests.estSiute.Test_Example_Attach"/>
             <class name="autoTests.TestSiute.Test_Example_Fill_Field"/>
             <class name="autoTests.TestSiute.Test_Example_Select"/>
-        </classes>
-        <!--packages>
+        </classes-->
+        <packages>
             <package name="autoTests.TestSiute"/>
-        </packages-->
+        </packages>
     </test>
 </suite>
