@@ -11,13 +11,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
-//import ru.stqa.selenium.factory.WebDriverFactory;
+import ru.stqa.selenium.factory.WebDriverFactory;
+import java.net.MalformedURLException;
+import java.net.URL;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-
 import java.io.File;
-import java.net.URL;
-import java.net.URLConnection;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -25,8 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SetupAndTeardown {
 
-//    public WebDriver driver;
-       public RemoteWebDriver driver;
+    public WebDriver driver;
     DesiredCapabilities capabilities;
     public ConfigurationVariables CV = ConfigurationVariables.getInstance();
 
@@ -36,13 +34,13 @@ public class SetupAndTeardown {
     public void SetUp() throws IOException {
         if (null == driver) {
             /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-    //      FirefoxProfile profile = new FirefoxProfile();
-    //      profile.setEnableNativeEvents(false);
-    //      profile.setAcceptUntrustedCertificates(true);
+          FirefoxProfile profile = new FirefoxProfile();
+          profile.setEnableNativeEvents(false);
+          profile.setAcceptUntrustedCertificates(true);
 
             /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
-            ProfilesIni allProfiles = new ProfilesIni();
-            FirefoxProfile profile = allProfiles.getProfile("default");
+ //           ProfilesIni allProfiles = new ProfilesIni();
+//            FirefoxProfile profile = allProfiles.getProfile("default");
 
             profile.setEnableNativeEvents(false);
             profile.setAcceptUntrustedCertificates(true);
@@ -55,7 +53,7 @@ public class SetupAndTeardown {
             capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
 
             System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
-            driver = new RemoteWebDriver.getDriver(new URL("http://jenkins.igov.org.ua:4444/wd/hub"), capabilities);
+            driver = WebDriverFactory.getDriver(new URL("http://jenkins.igov.org.ua:4444/wd/hub"), capabilities);
 
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
@@ -146,7 +144,7 @@ public class SetupAndTeardown {
 
     @AfterSuite(alwaysRun = true)
     public void deleteFiles() throws Exception {
-        if (! RemoteWebDriver.isEmpty())  RemoteWebDriver.dismissAll();
+        if (!WebDriverFactory.isEmpty()) WebDriverFactory.dismissAll();
 
         //Удаляем временные папки и файлы...
         File directory = new File("target");
@@ -156,4 +154,4 @@ public class SetupAndTeardown {
         CustomMethods.deleteFileOrDirectory(directory);
         
          }
-    }
+}
