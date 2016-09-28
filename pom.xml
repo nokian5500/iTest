@@ -32,6 +32,7 @@
 			<artifactId>testng</artifactId>
 			<version>6.9.6</version>
 		</dependency>
+
                <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-library</artifactId>
@@ -78,11 +79,11 @@
     <artifactId>selenium-remote-driver</artifactId>
     <version>2.53.1</version>
 </dependency>
-		<dependency>
-			<groupId>ru.stqa.selenium</groupId>
-			<artifactId>webdriver-factory</artifactId>
-			<version>1.1.47</version >
-			</dependency >
+		<!--<dependency>
+			<--<groupId>ru.stqa.selenium</groupId>
+			<--<artifactId>webdriver-factory</artifactId>
+			<--<version>1.1.47</version >
+			<--</dependency -->
          	</dependencies>
 	
 	<build>
