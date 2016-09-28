@@ -16,6 +16,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 
 import java.io.File;
+import java.io.URL;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -34,19 +35,19 @@ public class SetupAndTeardown {
     public void SetUp() throws IOException {
         if (null == driver) {
             /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-  //        FirefoxProfile profile = new FirefoxProfile();
+    //      FirefoxProfile profile = new FirefoxProfile();
     //      profile.setEnableNativeEvents(false);
-      //    profile.setAcceptUntrustedCertificates(true);
+    //      profile.setAcceptUntrustedCertificates(true);
 
             /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
- //           ProfilesIni allProfiles = new ProfilesIni();
-//            FirefoxProfile profile = allProfiles.getProfile("default");
+            ProfilesIni allProfiles = new ProfilesIni();
+            FirefoxProfile profile = allProfiles.getProfile("default");
 
-          //  profile.setEnableNativeEvents(false);
-            //profile.setAcceptUntrustedCertificates(true);
-          //  profile.setAssumeUntrustedCertificateIssuer(true);
-           // profile.setPreference("javascript.enabled", true);
-            //profile.setPreference("geo.enabled", false);
+            profile.setEnableNativeEvents(false);
+            profile.setAcceptUntrustedCertificates(true);
+            profile.setAssumeUntrustedCertificateIssuer(true);
+            profile.setPreference("javascript.enabled", true);
+            profile.setPreference("geo.enabled", false);
 
             capabilities = DesiredCapabilities.firefox();
             capabilities.setCapability(FirefoxDriver.PROFILE, profile);
