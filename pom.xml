@@ -99,7 +99,7 @@
 					 <parallel>classes</parallel>
                                          <threadCount>20</threadCount>
 					
-				<argLine>-Dfile.encoding=UTF-8 -Xmx9216m -Djava.awt.headless=true -Dhudson.model.User.SECURITY_243_FULL_DEFENSE=false -Dhudson.model.ParametersAction.keepUndefinedParameters=true</argLine>
+				<argLine>-Dfile.encoding=UTF-8 </argLine>
 					<suiteXmlFiles>
 						<suiteXmlFile>${suiteFile}</suiteXmlFile>
 					</suiteXmlFiles>
