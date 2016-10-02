@@ -91,9 +91,7 @@
 				<version>2.19.1</version>
 				<inherited>true</inherited>
 				<configuration>
-					<useSystemClassLoader>true</useSystemClassLoader>
-                                    
-					  <forkCount>1.5C</forkCount>
+					 <trimStackTrace>true</trimStackTrace>
                                          <reuseForks>true</reuseForks>
 					 <parallel>classes</parallel>
                                          <threadCount>10</threadCount>
