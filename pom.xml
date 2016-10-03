@@ -108,7 +108,7 @@
 						</property>
 					</properties>
 					<systemPropertyVariables>
-						<org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
+						<org.uncommons.reportng.escape-output>true</org.uncommons.reportng.escape-output>
 					</systemPropertyVariables>
 				</configuration>
 			</plugin>
