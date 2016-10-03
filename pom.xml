@@ -92,7 +92,7 @@
 				<inherited>true</inherited>
 				<configuration>
 					 <parallel>methods</parallel>
-                                         <threadCount>10</threadCount>
+                                         <threadCount>2</threadCount>
 					
 				<argLine>-Dfile.encoding=UTF-8</argLine>
 					<suiteXmlFiles>
