@@ -77,14 +77,14 @@ public class TemplatePage {
 
     // Method for selection of Region
     public void selectRegion(String region) {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(openOblList));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openOblList));
         openOblList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
     }
 
     // Method for selection of City
     public void selectCity(String city) {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(openCityList));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openCityList));
         openCityList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + city + "')]");
     }
