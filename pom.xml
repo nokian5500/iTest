@@ -86,8 +86,8 @@
 				<version>2.19.1</version>
 				<inherited>true</inherited>
 				<configuration>
-					 <parallel>methods</parallel>
-                                         <threadCount>2</threadCount>
+					 <!--parallel>methods</parallel>
+                                         <threadCount>2</threadCount-->
 					
 				<argLine>-Dfile.encoding=UTF-8</argLine>
 					<suiteXmlFiles>
