@@ -92,9 +92,9 @@ public class TemplatePage {
     public void checkMessageSuccess(String message) throws Exception {
     String textForAssert = cm.getText(driver, resultMsgText.get(0));
     String firstPart = textForAssert.substring(0, 46);
-    String secondPart = textForAssert.substring([58,59], textForAssert.length());
+    String secondPart = textForAssert.substring(59 textForAssert.length());
     Assert.assertEquals(firstPart,message.substring(0, 46));
-    Assert.assertEquals(secondPart,message.substring([58,59], message.length()));
+    Assert.assertEquals(secondPart,message.substring(59 message.length()));
 }
 
     // Method
