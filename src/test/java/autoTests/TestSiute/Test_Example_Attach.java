@@ -50,7 +50,7 @@ public class Test_Example_Attach  extends CustomMethods {
 
         _step("6. Проверка сообщения о успешной отправке");
         o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення х-хххххххх успішно зареєстровано");
+                "Ваше звернення х-хххххххх+ успішно зареєстровано");
 
         _step("7. Нажать кнопку Выйти ");
         click(driver, o.buttonLogOut);
