@@ -24,5 +24,4 @@ while read sLine; do
  action  $sLine
  done < $sSource
 rm /tmp/BPMN.txt
-rm /tmp/$sHost.txt
 exit 0
