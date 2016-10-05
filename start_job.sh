@@ -1,6 +1,6 @@
 #!/bin/bash
 sParam=$(echo "baseurl = ")
-sUrl=$(cat /tmp/sHost.txt)
+sUrl=$(cat /tmp/$sHost.txt)
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
 sSource=/tmp/BPMN.txt
 if [ ! -f $sSource ]; then 
@@ -24,5 +24,5 @@ while read sLine; do
  action  $sLine
  done < $sSource
 rm /tmp/BPMN.txt
-rm /tmp/sHost.txt
+rm /tmp/$sHost.txt
 exit 0
