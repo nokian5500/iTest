@@ -93,12 +93,13 @@ public class TemplatePage {
     	String textForAssert = cm.getText(driver, resultMsgText.get(0));
     	String firstPart = textForAssert.substring(0, 46);
     	String secondPart;
-    	if (textForAssert.substring(57, 57)!= " ") {
+    	if (textForAssert.substring(57, 58)!= " ") {
     		secondPart = textForAssert.substring(58, textForAssert.length());
     	}
     	else {
     		secondPart = textForAssert.substring(57, textForAssert.length());
     	}
+		//secondPart = textForAssert.substring(57, 58);
     	Assert.assertEquals(firstPart,message.substring(0, 46));
        	Assert.assertEquals(secondPart,message.substring(58, message.length()));
     }
