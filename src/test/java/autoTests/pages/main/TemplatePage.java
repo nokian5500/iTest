@@ -92,14 +92,15 @@ public class TemplatePage {
     public void checkMessageSuccess(String message) throws Exception {
     	String textForAssert = cm.getText(driver, resultMsgText.get(0));
     	String firstPart = textForAssert.substring(0, 46);
-    	if (textForAssert.substring(58, 58)!= " ") {
-    		String secondPart = textForAssert.substring(59, textForAssert.length());
+    	String secondPart;
+    	if (textForAssert.substring(57, 57)!= " ") {
+    		secondPart = textForAssert.substring(58, textForAssert.length());
     	}
     	else {
-    		String secondPart = textForAssert.substring(58, textForAssert.length());
+    		secondPart = textForAssert.substring(57, textForAssert.length());
     	}
     	Assert.assertEquals(firstPart,message.substring(0, 46));
-    	Assert.assertEquals(secondPart,message.substring(58, message.length()));
+       	Assert.assertEquals(secondPart,message.substring(58, message.length()));
     }
 
     // Method
