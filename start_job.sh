@@ -5,7 +5,7 @@ sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/
 sSource=/tmp/BPMN.txt
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
-#sed "11 a <--!package name=\"autoTests.TestSiute\"/-->" testng_simple.xml > testng_new.xml
+sed "11 a <--!package name=\"autoTests.TestSiute\"/-->" testng_simple.xml > testng_new.xml
 mv testng_new.xml testng.xml
 else
 action () {
