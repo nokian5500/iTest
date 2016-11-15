@@ -66,7 +66,7 @@ public class DeleteTask {
                 Url ="https://alpha.test.region.igov.org.ua";
                 break;
 
-            case "https://alpha.test.region.igov.org.ua":
+            case "https://beta.test.igov.org.ua":
                 Url ="https://beta.test.region.igov.org.ua";
                 break;
 
