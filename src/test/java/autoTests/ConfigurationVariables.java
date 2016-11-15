@@ -2,6 +2,8 @@ package autoTests;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class ConfigurationVariables
@@ -42,6 +44,7 @@ public class ConfigurationVariables
 	public int waitPageForLoad;
 	public int longPause;
 	public String baseUrl;
+    public List<String> orderId = new ArrayList<>();
 
 	static
 	{

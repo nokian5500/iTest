@@ -1,5 +1,7 @@
 package autoTests;
 
+import autoTests.API.DeleteTask;
+import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -30,7 +32,7 @@ public class SetupAndTeardown {
     public WebDriver driver;
     DesiredCapabilities capabilities;
     public ConfigurationVariables CV = ConfigurationVariables.getInstance();
-
+    DeleteTask delete = new DeleteTask();
 
 
     @BeforeMethod(alwaysRun = true)
@@ -155,6 +157,7 @@ public class SetupAndTeardown {
 
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
+        delete.deleteAllOrderId();
         
-         }
+      }
 }

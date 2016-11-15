@@ -25,7 +25,7 @@ public class TemplatePage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-
+    ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
     CustomMethods cm = new CustomMethods();
 
     /**
@@ -64,6 +64,12 @@ public class TemplatePage {
     @FindBy(xpath = "(//input[@type='file'])")
     public WebElement attachDocumentButton;
 
+    @FindBy(xpath = "//a[@class='ng-binding']")
+    public WebElement orderID;
+
+
+
+
     /**
      * ********************** Метод авторизации *************************
      */
@@ -90,6 +96,9 @@ public class TemplatePage {
     }
 
     public void checkMessageSuccess(String message) throws Exception {
+        configVariables.orderId.add(orderID.getText().substring(2,orderID.getText().length()));
+        System.out.println(configVariables.orderId);
+
     	String textForAssert = cm.getText(driver, resultMsgText.get(0));
     	String firstPart = textForAssert.substring(0, 46);
     	String secondPart;
