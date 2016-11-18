@@ -33,33 +33,52 @@ public class SetupAndTeardown {
     DesiredCapabilities capabilities;
     public ConfigurationVariables CV = ConfigurationVariables.getInstance();
     DeleteTask delete = new DeleteTask();
-
+    ChromeOptions options;
 
     @BeforeMethod(alwaysRun = true)
     public void SetUp() throws IOException {
         if (null == driver) {
-            /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
-          FirefoxProfile profile = new FirefoxProfile();
-          profile.setEnableNativeEvents(false);
-          profile.setAcceptUntrustedCertificates(true);
 
-            /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
- //           ProfilesIni allProfiles = new ProfilesIni();
-//            FirefoxProfile profile = allProfiles.getProfile("default");
+            /********* Для локального тестирования  установить  switch ("chrome")  для jenkins switch ("firefox") ***********/
+            switch ("firefox") {
 
-            profile.setEnableNativeEvents(false);
-            profile.setAcceptUntrustedCertificates(true);
-            profile.setAssumeUntrustedCertificateIssuer(true);
-            profile.setPreference("javascript.enabled", true);
-            profile.setPreference("geo.enabled", false);
+                case "firefox":
+                    /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
+                    FirefoxProfile profile = new FirefoxProfile();
+                    profile.setEnableNativeEvents(false);
+                    profile.setAcceptUntrustedCertificates(true);
 
-            capabilities = DesiredCapabilities.firefox();
-            capabilities.setCapability(FirefoxDriver.PROFILE, profile);
-            capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
+                    /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
+                    //   ProfilesIni allProfiles = new ProfilesIni();
+                    //   FirefoxProfile profile = allProfiles.getProfile("default");
 
-            System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
+                    profile.setEnableNativeEvents(false);
+                    profile.setAcceptUntrustedCertificates(true);
+                    profile.setAssumeUntrustedCertificateIssuer(true);
+                    profile.setPreference("javascript.enabled", true);
+                    profile.setPreference("geo.enabled", false);
+
+                    capabilities = DesiredCapabilities.firefox();
+                    capabilities.setCapability(FirefoxDriver.PROFILE, profile);
+                    capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
+
+                    System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
+                    driver = WebDriverFactory.getDriver(capabilities);
+
+                   /********* Для локального тестирования ***********/
+                  case "chrome":
+                    System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\files\\chromedriver.exe");
+                    capabilities = DesiredCapabilities.chrome();
+                    options = new ChromeOptions();
+                    System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
+
+                    break;
+                default:
+                    this.driver = new FirefoxDriver();
+                    System.out.println("Tests will be run (or rerun) in Firefox...");
+                    break;
+            }
             driver = WebDriverFactory.getDriver(capabilities);
-
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
