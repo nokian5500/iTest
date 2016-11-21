@@ -66,14 +66,14 @@ public class SetupAndTeardown {
                     driver = WebDriverFactory.getDriver(capabilities);
 
                    /********* Для локального тестирования ***********/
-                  case "chrome":
-                    System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\files\\chromedriver.exe");
-                    capabilities = DesiredCapabilities.chrome();
-                    options = new ChromeOptions();
-                    System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
+//                  case "chrome":
+//                    System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\files\\chromedriver.exe");
+  //                  capabilities = DesiredCapabilities.chrome();
+    //                options = new ChromeOptions();
+      //              System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
 
-                    break;
-                default:
+        //            break;
+          //      default:
                     this.driver = new FirefoxDriver();
                     System.out.println("Tests will be run (or rerun) in Firefox...");
                     break;
