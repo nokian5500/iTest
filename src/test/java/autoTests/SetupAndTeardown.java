@@ -35,7 +35,7 @@ public class SetupAndTeardown {
     DeleteTask delete = new DeleteTask();
     ChromeOptions options;
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void SetUp() throws IOException {
         if (null == driver) {
 
