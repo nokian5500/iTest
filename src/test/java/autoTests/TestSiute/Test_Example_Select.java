@@ -31,8 +31,10 @@ public class Test_Example_Select extends CustomMethods {
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/785/general");
 
-        _step("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, o.usluga, "_test_sID_UA");
+        // 2016-11-23 Убираем проверку на открытие нужной услуги.
+        // Считаем, что мы ее правильно по прямому пути выше 
+        // _step("2. Проверить, что открылась нужная услуга");
+        // assertThis(driver, o.usluga, "_test_sID_UA");
 
         _step("3. Выбор области/города");
         o.selectRegion("Дніпропетровська");

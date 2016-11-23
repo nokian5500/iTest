@@ -33,9 +33,10 @@ public class Test_Example_Attach  extends CustomMethods {
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/755/general");
 
-        _step("2. Проверить, что открылась нужная услуга");
-        assertThis(driver, o.usluga, "_test_mailer");
-       
+        // 2016-11-23 Убираем проверку на открытие нужной услуги.
+        // Считаем, что мы ее правильно по прямому пути выше 
+        // _step("2. Проверить, что открылась нужная услуга");
+        // assertThis(driver, o.usluga, "_test_mailer");
 
         _step("3. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
