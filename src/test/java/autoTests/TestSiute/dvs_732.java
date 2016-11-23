@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class dvs_732 extends CustomMethods {
 
     ConfigurationVariables CV = ConfigurationVariables.getInstance();
-    public WebDriver driver;
+    
 
 
      //<editor-fold desc="Тестовый пример заполнение полей">
