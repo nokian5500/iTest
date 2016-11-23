@@ -74,6 +74,7 @@ public class TemplatePage {
      * ********************** Метод авторизации *************************
      */
     public void mokAuthorization() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         //выбираем Off AuthMock/BankID
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
             cm.click(driver, buttonAuthMock);
