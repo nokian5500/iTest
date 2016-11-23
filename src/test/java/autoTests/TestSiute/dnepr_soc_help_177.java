@@ -53,7 +53,7 @@ public class dnepr_soc_help_177 extends CustomMethods {
         setFieldValue(driver, sBP, "email", "autotestbeta@gmail.com");
         setFieldSelectByText(driver, sBP, "subekt", "особисто");
         setFieldSelectByText(driver, sBP, "content", "призначення допомоги на дітей одиноким матерям");
-        setFieldValue(driver, sBP, "sMailClerk", "autotestbeta@gmail.com");
+//         setFieldValue(driver, sBP, "sMailClerk", "autotestbeta@gmail.com");
         
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
