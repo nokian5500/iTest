@@ -46,10 +46,10 @@ public class TemplatePage {
     @FindBy(xpath = ".//*[@id='city']")
     public WebElement openCityList;
 
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/div[1]/div[4]/div/div[2]/button-create-cookie/div/label")
+    @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
     public WebElement buttonAuthMock;
 
-    @FindBy(xpath = "html/body/div[1]/div[2]/div/div[1]/div[4]/div/div[2]/button-create-cookie/div/label/span")
+    @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
     public WebElement spanAuthMock;
 
     @FindBy(xpath = "//a[contains(.,' BankID')]")
