@@ -95,7 +95,7 @@ public class DeleteTask {
             httpDelete.addHeader("Content-Type", "application/json");
             httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
 
-            HttpResponse response = client.execute(httpDelete);
+            response = client.execute(httpDelete);
         }catch(Exception oException){
             System.out.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
             throw oException;
