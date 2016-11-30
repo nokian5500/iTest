@@ -60,7 +60,7 @@ public class Test_Example_Attach  extends CustomMethods {
     }
     //</editor-fold>
     
-    @Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 2)
+    @Test
     public void testDeleteMethodForDEBUG() throws Exception {
         DeleteTask delete = new DeleteTask();
 
