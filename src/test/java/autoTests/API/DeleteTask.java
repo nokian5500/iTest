@@ -87,13 +87,17 @@ public class DeleteTask {
         String IdOrder = ID;
         String urlDelete = Url+patch+IdOrder;
 
-        HttpClient client = createHttpClient_AcceptsUntrustedCerts();
-        HttpDelete httpDelete = new HttpDelete(urlDelete);
+        try{
+            HttpClient client = createHttpClient_AcceptsUntrustedCerts();
+            HttpDelete httpDelete = new HttpDelete(urlDelete);
 
-        httpDelete.addHeader("Content-Type", "application/json");
-        httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
+            httpDelete.addHeader("Content-Type", "application/json");
+            httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
 
-        HttpResponse response = client.execute(httpDelete);
+            HttpResponse response = client.execute(httpDelete);
+        }catch(Exception oException){
+            System.out.println("\nSending 'delete' request to (urlDelete=" + urlDelete+"):"+oException.getMessage());
+        }
 //        HttpResponse response = Request.Post(url).stringBody("request_body","content_type").execute().returnResponse();
 //        JSONObject jsonResponse = new JSONObject(IOUtils.toString(response.getEntity().getContent()));
 //        JSONArray jsonResponse = new JSONArray(IOUtils.toString(response.getEntity().getContent()));
@@ -104,6 +108,7 @@ public class DeleteTask {
 //
 //        System.out.print("RESP Body :"+ jsonResponse);
 
+        
         System.out.println("\nSending 'delete' request to URL : " + urlDelete);
 
         System.out.println("Response Code : " +
