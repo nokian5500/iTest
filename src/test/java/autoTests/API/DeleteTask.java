@@ -97,7 +97,7 @@ public class DeleteTask {
 
             response = client.execute(httpDelete);
         }catch(Exception oException){
-            System.out.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
+            System.err.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
             throw oException;
         }
 //        HttpResponse response = Request.Post(url).stringBody("request_body","content_type").execute().returnResponse();
