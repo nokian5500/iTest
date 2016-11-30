@@ -110,7 +110,8 @@ public class DeleteTask {
             response = client.execute(httpDelete);
         }catch(Exception oException){
             System.err.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
-            throw oException;
+            throw new Exception("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
+            //throw oException;
         }
 //        HttpResponse response = Request.Post(url).stringBody("request_body","content_type").execute().returnResponse();
 //        JSONObject jsonResponse = new JSONObject(IOUtils.toString(response.getEntity().getContent()));
