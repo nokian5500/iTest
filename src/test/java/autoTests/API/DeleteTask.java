@@ -86,7 +86,8 @@ public class DeleteTask {
         String patch = "/wf/service/action/task/delete-process?nID_Order=";
         String IdOrder = ID;
         String urlDelete = Url+patch+IdOrder;
-
+        HttpResponse response=null;
+                
         try{
             HttpClient client = createHttpClient_AcceptsUntrustedCerts();
             HttpDelete httpDelete = new HttpDelete(urlDelete);
@@ -96,7 +97,8 @@ public class DeleteTask {
 
             HttpResponse response = client.execute(httpDelete);
         }catch(Exception oException){
-            System.out.println("\nSending 'delete' request to (urlDelete=" + urlDelete+"):"+oException.getMessage());
+            System.out.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
+            throw oException;
         }
 //        HttpResponse response = Request.Post(url).stringBody("request_body","content_type").execute().returnResponse();
 //        JSONObject jsonResponse = new JSONObject(IOUtils.toString(response.getEntity().getContent()));
