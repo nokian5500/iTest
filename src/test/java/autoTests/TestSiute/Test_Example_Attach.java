@@ -58,4 +58,15 @@ public class Test_Example_Attach  extends CustomMethods {
 
     }
     //</editor-fold>
+    
+    @Test
+    public void testDeleteForDEBUG() throws Exception {
+        DeleteTask delete = new DeleteTask();
+
+        ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+        configVariables.orderId.add("1111");
+//        delete.deleteAllOrderId();
+        delete.deleteAllOrderId();
+      
+    }
 }
