@@ -60,12 +60,12 @@ public class Test_Example_Attach  extends CustomMethods {
     }
     //</editor-fold>
     
-    @Test
-    public void testDeleteForDEBUG() throws Exception {
+    @Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 2)
+    public void testDeleteMethodForDEBUG() throws Exception {
         DeleteTask delete = new DeleteTask();
 
         ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
-        configVariables.orderId.add("1111");
+        configVariables.orderId.add("");
 //        delete.deleteAllOrderId();
         delete.deleteAllOrderId();
       
