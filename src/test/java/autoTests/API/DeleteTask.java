@@ -61,6 +61,18 @@ public class DeleteTask {
 
     public void  methodDelete( String ID) throws Exception {
 
+        if(configVariables.baseUrl.contains("alpha.test.igov.org.ua")){
+            Url ="https://alpha.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("beta.test.igov.org.ua")){
+            Url ="https://beta.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("beta-old.test.igov.org.ua")){
+            Url ="https://beta-old.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("delta.test.igov.org.ua")){
+            Url ="https://delta.test.region.igov.org.ua";
+        }else{
+            throw new Exception("ERROR URL ");
+        }
+        /*
         switch (configVariables.baseUrl) {
             case "https://alpha.test.igov.org.ua":
                 Url ="https://alpha.test.region.igov.org.ua";
@@ -81,7 +93,7 @@ public class DeleteTask {
             default:
                 throw new Exception("ERROR URL ");
     }
-
+        */
 
         String patch = "/wf/service/action/task/delete-process?nID_Order=";
         String IdOrder = ID;
