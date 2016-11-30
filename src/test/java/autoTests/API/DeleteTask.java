@@ -98,6 +98,10 @@ public class DeleteTask {
         String patch = "/wf/service/action/task/delete-process?nID_Order=";
         String IdOrder = ID;
         String urlDelete = Url+patch+IdOrder;
+        
+        System.out.println("\nSending 'delete' request to URL : " + urlDelete);
+        
+        
         HttpResponse response=null;
                 
         try{
