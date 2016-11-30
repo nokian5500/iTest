@@ -1,5 +1,6 @@
 package autoTests.TestSiute;
 
+import autoTests.API.DeleteTask;
 import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
