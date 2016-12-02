@@ -61,6 +61,18 @@ public class DeleteTask {
 
     public void  methodDelete( String ID) throws Exception {
 
+        if(configVariables.baseUrl.contains("alpha.test.igov.org.ua")){
+            Url ="https://alpha.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("beta.test.igov.org.ua")){
+            Url ="https://beta.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("beta-old.test.igov.org.ua")){
+            Url ="https://beta-old.test.region.igov.org.ua";
+        }else if(configVariables.baseUrl.contains("delta.test.igov.org.ua")){
+            Url ="https://delta.test.region.igov.org.ua";
+        }else{
+            throw new Exception("ERROR URL ");
+        }
+        /*
         switch (configVariables.baseUrl) {
             case "https://alpha.test.igov.org.ua":
                 Url ="https://alpha.test.region.igov.org.ua";
@@ -81,19 +93,30 @@ public class DeleteTask {
             default:
                 throw new Exception("ERROR URL ");
     }
-
+        */
 
         String patch = "/wf/service/action/task/delete-process?nID_Order=";
         String IdOrder = ID;
         String urlDelete = Url+patch+IdOrder;
+        
+        System.out.println("\nSending 'delete' request to URL : " + urlDelete);
+        
+        
+        HttpResponse response=null;
+                
+        try{
+            HttpClient client = createHttpClient_AcceptsUntrustedCerts();
+            HttpDelete httpDelete = new HttpDelete(urlDelete);
 
-        HttpClient client = createHttpClient_AcceptsUntrustedCerts();
-        HttpDelete httpDelete = new HttpDelete(urlDelete);
+            httpDelete.addHeader("Content-Type", "application/json");
+            httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
 
-        httpDelete.addHeader("Content-Type", "application/json");
-        httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
-
-        HttpResponse response = client.execute(httpDelete);
+            response = client.execute(httpDelete);
+        }catch(Exception oException){
+            System.err.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
+            throw new Exception("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
+            //throw oException;
+        }
 //        HttpResponse response = Request.Post(url).stringBody("request_body","content_type").execute().returnResponse();
 //        JSONObject jsonResponse = new JSONObject(IOUtils.toString(response.getEntity().getContent()));
 //        JSONArray jsonResponse = new JSONArray(IOUtils.toString(response.getEntity().getContent()));
@@ -104,6 +127,7 @@ public class DeleteTask {
 //
 //        System.out.print("RESP Body :"+ jsonResponse);
 
+        
         System.out.println("\nSending 'delete' request to URL : " + urlDelete);
 
         System.out.println("Response Code : " +

@@ -49,7 +49,7 @@ public class dnepr_soc_help_177 extends CustomMethods {
         
         setFieldValue(driver, sBP, "adress1", "Дніпро");
         setFieldValue(driver, sBP, "adress2", "Дніпро");
-        setFieldValue(driver, sBP, "phone", "+380102030405");
+        setFieldValue(driver, sBP, "phone", "+380622030405");
         setFieldValue(driver, sBP, "email", "autotestbeta@gmail.com");
         setFieldSelectByText(driver, sBP, "subekt", "особисто");
         setFieldSelectByText(driver, sBP, "content", "призначення допомоги на дітей одиноким матерям");

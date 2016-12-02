@@ -168,6 +168,9 @@ public class SetupAndTeardown {
 
     @AfterSuite(alwaysRun = true)
     public void deleteFiles() throws Exception {
+        //Удаляем заявки
+        delete.deleteAllOrderId();
+        //Убиваем драйвер
         if (!WebDriverFactory.isEmpty()) WebDriverFactory.dismissAll();
 
         //Удаляем временные папки и файлы...
@@ -176,7 +179,7 @@ public class SetupAndTeardown {
 
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
-        delete.deleteAllOrderId();
+        
         
       }
 }

@@ -1,5 +1,6 @@
 package autoTests.TestSiute;
 
+import autoTests.API.DeleteTask;
 import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
@@ -58,4 +59,15 @@ public class Test_Example_Attach  extends CustomMethods {
 
     }
     //</editor-fold>
+    
+     @Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 2)
+    public void testDeleteMethodForDEBUG() throws Exception {
+        DeleteTask delete = new DeleteTask();
+
+        ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
+        configVariables.orderId.add("");
+//        delete.deleteAllOrderId();
+        delete.deleteAllOrderId();
+      
+    }
 }
