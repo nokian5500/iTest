@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class dnepr_soc_help_177 extends CustomMethods {
 
     //<editor-fold desc="Тестовый пример заполнение полей">
-    @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
+    @Test(enabled = false, groups = {"Main", "Критический функционал"}, priority = 1)
     public void default_test() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
