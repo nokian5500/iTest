@@ -3,9 +3,11 @@ sParam=$(echo "baseurl = ")
 sUrl=$(cat /tmp/$sHost.txt)
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
 sSource=/tmp/BPMN.txt
+
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
-cp testng_simple.xml testng.xml
+sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
+cp testng_new.xml testng.xml
 else
 action () {
 BPMN=$1
@@ -15,10 +17,7 @@ sed "6 a <class name=\"autoTests.TestSiute.${BPMN%.*}\"/>" testng_simple.xml > t
 mv testng_new.xml testng_simple.xml
 cp testng_simple.xml testng.xml
 else 
-
-sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
 mv testng_new.xml testng.xml
-
 fi
 }
 fi
