@@ -9,7 +9,7 @@ echo "NOT FILE"
 sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
 cp testng_new.xml testng.xml
 else
-mv testng_simple.xml testng.xml
+echo "Add tests"
 action () {
 BPMN=$1
 if [ -e ./src/test/java/autoTests/TestSiute/${BPMN%.*}.java ]; then
