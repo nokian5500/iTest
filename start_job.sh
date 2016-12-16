@@ -27,5 +27,5 @@ fi
 while read sLine; do
  action  $sLine
  done < $sSource
-rm /tmp/BPMN.txt
+#rm /tmp/BPMN.txt
 exit 0
