@@ -24,6 +24,18 @@ fi
 fi
 
 
+@echo off
+set file_for_testing=/tmp/BPMN.txt
+for %%i in ("%file_for_testing%") do (
+  if %%~zi==0 (
+   goto:end
+   )
+)
+mv testng_simple.xml testng.xml
+pause>nul
+:end
+
+
 while read sLine; do
  action  $sLine
  done < $sSource
