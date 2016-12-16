@@ -6,7 +6,7 @@ sSource=/tmp/BPMN.txt
 
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
-sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
+sed "11 a <!--package name=\"autoTests.TestSiute\"/>--" testng_simple.xml > testng_new.xml
 echo "sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml"
 mv testng_new.xml testng.xml
 echo "mv testng_new.xml testng.xml WITH NO FILE"
