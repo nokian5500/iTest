@@ -18,7 +18,7 @@ sed "6 a <class name=\"autoTests.TestSiute.${BPMN%.*}\"/>" testng_simple.xml > t
 mv testng_new.xml testng_simple.xml
 cp testng_simple.xml testng.xml
 else 
-mv testng_simple.xml testng.xml
+cp testng_simple.xml testng.xml
 fi
 }
 fi
