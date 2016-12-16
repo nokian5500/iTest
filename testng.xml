@@ -9,7 +9,7 @@
             <class name="autoTests.TestSiute.Test_Example_Select"/>
         </classes-->
         <packages>
-            <package name="autoTests.TestSiute"/>
+            <!--package name="autoTests.TestSiute"/-->
         </packages>
     </test>
 </suite>
