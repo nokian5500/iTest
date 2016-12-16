@@ -7,7 +7,7 @@ sSource=/tmp/BPMN.txt
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
 sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
-cp testng_new.xml testng.xml
+mv testng_new.xml testng.xml
 else
 echo "Add tests"
 action () {
@@ -23,17 +23,6 @@ fi
 }
 fi
 
-
-@echo off
-set file_for_testing=/tmp/BPMN.txt
-for %%i in ("%file_for_testing%") do (
-  if %%~zi==0 (
-   goto:end
-   )
-)
-mv testng_simple.xml testng.xml
-pause>nul
-:end
 
 
 while read sLine; do
