@@ -22,7 +22,7 @@ echo "mv testng_new.xml testng_simple.xml"
 cp testng_simple.xml testng.xml
 echo "cp testng_simple.xml testng.xml"
 else 
-mv testng_simple.xml testng.xml
+cp testng_simple.xml testng.xml
 echo "mv testng_simple.xml testng.xml JUST"
 fi
 }
