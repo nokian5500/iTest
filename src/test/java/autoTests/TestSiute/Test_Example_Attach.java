@@ -41,7 +41,8 @@ public class Test_Example_Attach  extends CustomMethods {
 
         _step("3. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
-
+//        o.selectBank("Приватбанк");
+        
         _step("4. Заполняем форму услуги");
         setFieldValue(driver, sBP, "mail", "v-i-d-k@mail.ru");
         setFieldFile(driver, sBP, "nFileOne", "src/test/resources/files/test.jpg");
