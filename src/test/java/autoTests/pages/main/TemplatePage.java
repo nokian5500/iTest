@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
+import org.openqa.selenium.support.ui.Select;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertEquals;
@@ -45,6 +46,9 @@ public class TemplatePage {
 
     @FindBy(xpath = ".//*[@id='city']")
     public WebElement openCityList;
+    
+    @FindBy(xpath = ".//*[@id='bank']")
+    public WebElement openBankList;
 
     @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
     public WebElement buttonAuthMock;
@@ -52,9 +56,12 @@ public class TemplatePage {
     @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
     public WebElement spanAuthMock;
 
-    @FindBy(xpath = "//a[contains(.,' BankID')]")
+    @FindBy(xpath = "//button[@ng-click='bankIdClick()']")
     public WebElement buttonBankID;
-
+    
+    @FindBy(xpath = "//a[@class='ng-binding']")
+    public WebElement bankid_bank_pb;
+    
     @FindBy(xpath = "//a[@ng-click='logout()']")
     public WebElement buttonLogOut;
 
@@ -79,13 +86,20 @@ public class TemplatePage {
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
             cm.click(driver, buttonAuthMock);
         }
-        cm.click(driver, buttonBankID);
+            cm.click(driver, buttonBankID);
+            cm.clickXpath(driver, "/html/body/div/div[2]/div/div[1]/div[4]/div/div[2]/span[2]/ul/li[1]/a");
+           
     }
-
+//     Method for selection of Bankid_bank
+    public void selectBank(String bank) { 
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openBankList));
+        openBankList.click();
+        cm.clickXpath(driver, "//a[contains(text(),'" + bank + "')]");
+    }
     // Method for selection of Region
     public void selectRegion(String region) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openOblList));
-        openOblList.click();
+        openOblList.click(); 
         cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
     }
 
@@ -119,10 +133,7 @@ public class TemplatePage {
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();
     }
-
-
-
-
-
+    
+    
 }
 
