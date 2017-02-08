@@ -87,7 +87,7 @@ public class TemplatePage {
             cm.click(driver, buttonAuthMock);
         }
             cm.click(driver, buttonBankID);
-            cm.clickXpath(driver, "/html/body/div/div[2]/div/div[1]/div[4]/div/div[2]/span[2]/ul/li[1]/a");
+            cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
            
     }
 //     Method for selection of Bankid_bank
@@ -134,6 +134,37 @@ public class TemplatePage {
         driver.findElement(By.linkText(value)).click();
     }
     
+    // TODO Как будет нормальный локатор для выбора времени  Пример: ._test_all_case_--_visitDate переделать метод и перенести в кастом
+    public void setFieldSelectSlotDate() {
+        Boolean status;
+        try {
+            WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='selected.date']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+            Select select = new Select(webElement);
+            select.selectByValue("0");
+            status= true;
+        } catch (NoSuchElementException e) {
+            status= false;
+        }
+        Assert.assertTrue(status, "NO AVAILABLE SLOTS DATE!, NO AVAILABLE SLOTS DATE =!, NO AVAILABLE SLOTS DATE!");
+
+    }
+
+    // TODO Как будет нормальный локатор для выбора времени  Пример: ._test_all_case_--_visitTime переделать метод и перенести в кастом
+    public void setFieldSelectSlotTime() {
+        Boolean status;
+        try {
+            WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='selected.slot']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+            Select select = new Select(webElement);
+            select.selectByValue("0");
+            status= true;
+        } catch (NoSuchElementException e) {
+            status= false;
+        }
+        Assert.assertTrue(status, "NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!");
+
+    }
     
 }
 
