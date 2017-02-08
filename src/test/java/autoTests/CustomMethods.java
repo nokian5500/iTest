@@ -387,5 +387,11 @@ public class CustomMethods extends SetupAndTeardown
         webElement.sendKeys(data);
 
     }
+    
+     public void setFieldCheckBox(WebDriver driver, String cssSelector) {
+        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+    }
 
 }
