@@ -9,7 +9,6 @@ import autoTests.API.DeleteTask;
 import autoTests.ConfigurationVariables;
 import autoTests.pages.main.TemplatePage;
 import autoTests.CustomMethods;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 /**
@@ -27,11 +26,11 @@ public class dvs_745 extends CustomMethods{
         String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
-        openURLservice(driver, CV.baseUrl + "/service/745/general");
+        openURLservice(driver, CV.baseUrl + "/service/1557/general");
 
          _step("3. Выбор области/города");
-        o.selectRegion("Вінницька");
-        o.selectCity("Вінниця");
+        o.selectRegion("Львівська");
+//        o.selectCity("Вінниця");
 
         _step("3. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
@@ -43,12 +42,11 @@ public class dvs_745 extends CustomMethods{
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sFileDescription", "Пояснення");
         setFieldFile(driver, sBP, "nFile0", "src/test/resources/files/test.jpg");
-        o.setFieldSelectSlotDate(driver, sBP, "bpID -- fieldID -- visitDay");
-        o.setFieldSelectSlotTime(driver, sBP, "bpID -- fieldID -- visitTime");
-        o.setFieldSelectSlotTime(driver, sBP, "bpID -- fieldID -- visitTime");
-        o.setFieldCheckBox(driver, sBP, "новый локатор");
+        setFieldSelectSlotDate(driver, sBP, email);
+        setFieldSelectSlotTime(driver, sBP, email);
         
-        pause (1000000);
+        
+        pause(1000000);
        
 
     }

@@ -59,7 +59,7 @@ public class DeleteTask {
     }
 
 
-    public void  methodDelete( String ID) throws Exception {
+    public void  methodDelete(String ID) throws Exception {
 
         if(configVariables.baseUrl.contains("alpha.test.igov.org.ua")){
             Url ="https://alpha.test.region.igov.org.ua";
@@ -112,6 +112,7 @@ public class DeleteTask {
             httpDelete.addHeader("Authorization","Basic a2VybWl0Omtlcm1pdA==");
 
             response = client.execute(httpDelete);
+            System.out.println("response: " + response);
         }catch(Exception oException){
             System.err.println("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
             throw new Exception("Cant 'delete' " + urlDelete+"):"+oException.getMessage());
@@ -135,19 +136,23 @@ public class DeleteTask {
 
         BufferedReader rd = new BufferedReader(
                 new InputStreamReader(response.getEntity().getContent()));
+        System.out.println("rd: " + rd);
 
         StringBuffer result = new StringBuffer();
+        System.out.println("result: " + result);
         String line = "";
         while ((line = rd.readLine()) != null) {
+            System.out.println("line = rd.readLine(): " + rd.readLine());
             result.append(line);
+            System.out.println("result.append(line): " + result.append(line));
         }
-        System.out.println(result.toString());
+        System.out.println("result.toString(): " + result.toString());
     }
 
     public void  deleteAllOrderId() throws Exception {
         for (String object: configVariables.orderId) {
             methodDelete(object);
-            System.out.println(object);
+            System.out.println("object: " + object);
         }
     }
 
