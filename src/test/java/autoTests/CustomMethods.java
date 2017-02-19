@@ -389,7 +389,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
      public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
-        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //cssSelector
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
