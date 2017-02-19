@@ -388,10 +388,49 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-     public void setFieldCheckBox(WebDriver driver, String cssSelector) {
+     public void setFieldCheckBox(WebDriver driver,String serviceName, String cssSelector) {
         WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
+     
+     // TODO Как будет нормальный локатор для выбора времени  Пример: ._test_all_case_--_visitDate переделать метод и перенести в кастом
+    public void setFieldSelectSlotDate(WebDriver driver,String serviceName, String cssSelector) {
+        Boolean status;
+        try {
+            WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //By.xpath("//select[@ng-model='selected.date']")
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+            Select select = new Select(webElement);
+            select.selectByValue("0");
+            status= true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            status= false;
+        }
+        Assert.assertTrue(status, "NO AVAILABLE SLOTS DATE!, NO AVAILABLE SLOTS DATE =!, NO AVAILABLE SLOTS DATE!");
+
+    }
+
+    // TODO Как будет нормальный локатор для выбора времени  Пример: ._test_all_case_--_visitTime переделать метод и перенести в кастом
+    public void setFieldSelectSlotTime(WebDriver driver,String serviceName, String cssSelector) {
+        Boolean status;
+        try {
+            WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //By.xpath("//select[@ng-model='selected.slot']")
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+            Select select = new Select(webElement);
+            select.selectByValue("0");
+            status= true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            status= false;
+        }
+        Assert.assertTrue(status, "NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!");
+
+    }
+     
+//    // Method for filling the table
+//    public void setFillTable(WebDriver driver,String serviceName, String cssSelector, String value) {
+//        WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='item.default']"));
+//        Select select = new Select(webElement);
+//        select.selectByValue(value);
+//        }
 
 }
