@@ -33,5 +33,7 @@ public class Test_checkbox extends CustomMethods{
         _step("5. Заполняем форму услуги");
         
         setFieldCheckBox(driver, sBP, "."+sBP+"_--_"+"#bFavorite11"); // #bFavorite11
+        
+        pause(1000);
     }
 }
