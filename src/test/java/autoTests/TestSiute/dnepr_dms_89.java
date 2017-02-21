@@ -15,6 +15,7 @@ import ru.stqa.selenium.factory.WebDriverFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+import org.apache.tools.ant.taskdefs.Sleep;
 
 /**
  * Created by Privat24 on 09.09.2016.
@@ -62,10 +63,11 @@ public class dnepr_dms_89 extends CustomMethods {
         setFieldSelectByText(driver,sBP,"asMilitStatus","Ні");
         setFieldSelectByText(driver,sBP,"asRegistr","Ні");
         setFieldValue(driver, sBP, "sWhenCome", "2016-11-28");   
-        //setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
-        //setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
-        setFieldSelectSlotDate(driver, sBP, "visitDay"); 
-        setFieldSelectSlotTime(driver, sBP, "visitDay");
+        setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
+        setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
+//        setFieldSelectSlotDate(driver, sBP, "visitDay"); 
+//        setFieldSelectSlotTime(driver, sBP, "visitDay");
+        pause(1000000);
         setFieldFile(driver, sBP, "nOrder", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "nForma3", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "sMailClerk", email);
