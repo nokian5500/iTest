@@ -11,7 +11,7 @@ cp testng_new.xml testng.xml
 else
 echo "Add tests"
 action () {
-BPMN=${1//\_\,\-\/}
+BPMN=${1//-/_}
 if [ -e ./src/test/java/autoTests/TestSiute/${BPMN%.*}.java ]; then
 echo $BPMN
 sed "6 a <class name=\"autoTests.TestSiute.${BPMN%.*}\"/>" testng_simple.xml > testng_new.xml
