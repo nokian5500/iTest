@@ -67,7 +67,7 @@ public class dnepr_dms_89 extends CustomMethods {
         setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
 //        setFieldSelectSlotDate(driver, sBP, "visitDay"); 
 //        setFieldSelectSlotTime(driver, sBP, "visitDay");
-        pause(1000000);
+//        pause(1000000);
         setFieldFile(driver, sBP, "nOrder", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "nForma3", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "sMailClerk", email);

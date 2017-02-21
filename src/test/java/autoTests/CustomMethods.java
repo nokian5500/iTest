@@ -389,7 +389,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
      public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
-        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //cssSelector
+        WebElement webElement = driver.findElement(By.cssSelector(cssSelector)); //cssSelector
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -398,7 +398,7 @@ public class CustomMethods extends SetupAndTeardown
     public void setFieldSelectSlotDate(WebDriver driver, String serviceName, String cssSelector) {
         Boolean status;
         try {
-            WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //By.xpath("//select[@ng-model='selected.date']")
+            WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='selected.date']")); //By.xpath("//select[@ng-model='selected.date']")
             new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
             Select select = new Select(webElement);
             select.selectByValue("0");
@@ -414,7 +414,7 @@ public class CustomMethods extends SetupAndTeardown
     public void setFieldSelectSlotTime(WebDriver driver, String serviceName, String cssSelector) {
         Boolean status;
         try {
-            WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector)); //By.xpath("//select[@ng-model='selected.slot']")
+            WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='selected.slot']")); //By.xpath("//select[@ng-model='selected.slot']")
             new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
             Select select = new Select(webElement);
             select.selectByValue("0");
@@ -426,11 +426,11 @@ public class CustomMethods extends SetupAndTeardown
 
     }
      
-//    // Method for filling the table
-//    public void setFillTable(WebDriver driver,String serviceName, String cssSelector, String value) {
-//        WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='item.default']"));
-//        Select select = new Select(webElement);
-//        select.selectByValue(value);
-//        }
+    // Method for filling the table
+    public void setFillTable(WebDriver driver,String serviceName, String cssSelector, String value) {
+        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
+        Select select = new Select(webElement);
+        select.selectByValue(value);
+        }
 
 }
