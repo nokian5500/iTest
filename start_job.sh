@@ -3,6 +3,7 @@ sParam=$(echo "baseurl = ")
 sUrl=$(cat /tmp/$sHost.txt)
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
 sSource=/tmp/BPMN.txt
+chmod 777 /tmp/BPMN.txt
 
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
