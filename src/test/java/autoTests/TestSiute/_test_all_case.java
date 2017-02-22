@@ -52,9 +52,11 @@ public class _test_all_case extends CustomMethods {
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","_test_all_case");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
+        setFieldCheckBox(driver, sBP, "#bMailWithSMS");
         setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
         setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
-        setFieldCheckBox(driver, sBP, "."+sBP+"_--_"+"#bMailWithSMS"); // #bMailWithSMS
+        
+        
 
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
