@@ -13,7 +13,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
 import ru.stqa.selenium.factory.WebDriverFactory;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -388,8 +387,8 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-     public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
-        WebElement webElement = driver.findElement(By.xpath("//*[@id='bFavorite11']")); // //*[@id="bFavorite11"]
+    public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
+        WebElement webElement = driver.findElement(By.cssSelector(cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -427,10 +426,10 @@ public class CustomMethods extends SetupAndTeardown
     }
      
     // Method for filling the table
-    public void setFillTable(WebDriver driver,String serviceName, String cssSelector, String value) {
-        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
-        Select select = new Select(webElement);
-        select.selectByValue(value);
-        }
+    public WebElement fillingTheTable(String tableId) {
+            return null;
+         
+    }
 
+   
 }
