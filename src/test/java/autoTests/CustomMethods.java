@@ -458,16 +458,54 @@ public class CustomMethods extends SetupAndTeardown
         
     }
     
-    public void setTableCellsText(WebDriver driver,String serviceName, String cssSelector){
-        Boolean status;
-        try {
+    public void setTableCellsMultipleSelect(WebDriver driver, String serviceName, String cssSelector, String row) {
         WebElement td = driver.findElement(By.cssSelector(cssSelector));
-        Select div = new Select(td);
-            div.selectByValue("0");
-            status= true;
-            } catch (org.openqa.selenium.NoSuchElementException e) {
-            status= false;
-        }
-        Assert.assertTrue(status, "NO AVAILABLE TableCells!, NO AVAILABLE TableCells!, NO AVAILABLE TableCells!");
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+        td.click();
+        driver.findElement(By.cssSelector("#ui-select-choices-row" + row + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
+
     }
+    public void setFieldMultipleSelect(WebDriver driver, String serviceName, String cssSelector, String row) {
+        WebElement webElement = driver.findElement(By.cssSelector(cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        driver.findElement(By.cssSelector("#ui-select-choices-row" + row + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
+
+    }
+    
+    public void setTableCellsSelectDropDown(WebDriver driver, String serviceName, String cssSelector) {
+        WebElement td = driver.findElement(By.cssSelector(cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+//        td.click();
+        Select select = new Select(td);
+         
+        select.selectByValue("0");
+    }
+    public void setTableCellsSelectUp(WebDriver driver, String serviceName, String cssSelector) {
+        WebElement td = driver.findElement(By.cssSelector(cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+//        td.click();
+        Select select = new Select(td);
+        
+    }
+    public void setTableCellsCalendar(WebDriver driver,String serviceName, String cssSelector, String data) {
+
+        WebElement td = driver.findElement(By.cssSelector(cssSelector));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('"+cssSelector+"')[0]).removeAttr('readonly');");
+        td.click();
+        td.clear();
+        td.sendKeys(data);
+
+    }
+//    public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
+//
+//        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+//        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('"+cssSelector+"')[0]).removeAttr('readonly');");
+//        webElement.click();
+//        webElement.clear();
+//        webElement.sendKeys(data);
+//
+//    }
 }
