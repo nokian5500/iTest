@@ -500,7 +500,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void setTableCellsFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
-        WebElement td = driver.findElement(By.cssSelector(cssSelector+" input"));
+        WebElement td = driver.findElement(By.cssSelector(cssSelector+" > input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, td);
         
