@@ -426,10 +426,6 @@ public class CustomMethods extends SetupAndTeardown
     }
      
     // Methods for filling the table
-    public void getTable(WebDriver driver, String serviceName, String TableName) {
-        WebElement table = driver.findElement(By.xpath("//*[@id='" + TableName + "']"));
-        table.findElement(By.cssSelector("#field-sTable1 > div > table > tbody > tr > td:nth-child(1)")).sendKeys("ку-ку");
-    }
     
     public void setTableCellsString(WebDriver driver,String serviceName, String cssSelector, String text){
         WebElement td = driver.findElement(By.cssSelector(cssSelector));
@@ -439,24 +435,24 @@ public class CustomMethods extends SetupAndTeardown
        td.sendKeys(text);
     }
     
-    public void setTableCellsLong(WebDriver driver,String serviceName, String cssSelector){
-         Boolean status;
-        try {
-            WebElement td = driver.findElement(By.cssSelector(cssSelector)); //By.xpath("//select[@ng-model='selected.slot']")
-            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
-            Select select = new Select(td);
-            select.selectByValue("0");
-            status= true;
-        } catch (org.openqa.selenium.NoSuchElementException e) {
-            status= false;
-        }
-        Assert.assertTrue(status, "NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!");
-        
-        
-        
-        
-        
-    }
+//    public void setTableCellsLong(WebDriver driver,String serviceName, String cssSelector){
+//         Boolean status;
+//        try {
+//            WebElement td = driver.findElement(By.cssSelector(cssSelector)); //By.xpath("//select[@ng-model='selected.slot']")
+//            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+//            Select select = new Select(td);
+//            select.selectByValue("0");
+//            status= true;
+//        } catch (org.openqa.selenium.NoSuchElementException e) {
+//            status= false;
+//        }
+//        Assert.assertTrue(status, "NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!");
+//        
+//        
+//        
+//        
+//        
+//    }
     
     public void setTableCellsMultipleSelect(WebDriver driver, String serviceName, String cssSelector, String row) {
         WebElement td = driver.findElement(By.cssSelector(cssSelector));
