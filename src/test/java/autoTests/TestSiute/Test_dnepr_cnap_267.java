@@ -29,8 +29,8 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         _step("3. Выбор области/города");
         o.selectRegion("Дніпропетровська");
         
-        _step("4. Авторизация Off AuthMock/BankID");
-        o.mokAuthorization();
+            _step("4. Авторизация Off AuthMock/BankID");
+            o.mokAuthorization();
         
         _step("5. Заполняем форму услуги");
         setFieldValue(driver, sBP, "phone", "+380623155533");
@@ -98,8 +98,7 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldFile(driver, sBP, "appeal", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "visnovok", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "other_docs", "src/test/resources/files/test.jpg");
-        pause(10000);
-        _step("6. Отправка формы");
+         
         click(driver, o.buttonSendingForm);
 
         
