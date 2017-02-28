@@ -69,13 +69,12 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldValue(driver, sBP, "for_bank_adres", "PJSC “Deutsche Bank DBU” Lavrska street 20 01015 Kiev UKRAINE");
         
         setTableCellsMultipleSelect(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-0-1");
-//      setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(2) > div > div > input", "12345678901223456789");
+        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(4) > div > div > input", "2");
         setTableCellsSelectDropDown(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(3) > div > div > select");
         setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(5) > div > div > input", "12.02020");
         setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(6) > div > div > input", "12.02020");
         setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(7) > div > div > input", "12.02020");
-//        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(8) > div > div > input", "Сіль");
-        
+       
         setTableCellsSelectDropDown(driver, sBP, "#field-sTable4 > div > table > tbody > tr > td:nth-child(1) > div > div > select");
         setTableCellsString(driver, sBP, "#field-sTable4 > div > table > tbody > tr > td:nth-child(2) > div > div > input", "м. Дніпро");
         driver.findElement(By.cssSelector("#field-sTable4 > div > div > input")).click();
@@ -93,7 +92,7 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldCalendar(driver, sBP, "dogovor_date", "01/03/17"); // #field-dogovor_date > p > input
         setTableCellsString(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(1) > div > div > input", "Назва документу");
         setTableCellsString(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(2) > div > div > input", "1234657");
-//        setTableCellsCalendar(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(3)", "01/03/17"); //#field-sTable11 > div > table > tbody > tr > td:nth-child(3) > div > div > p > input
+        setTableCellsCalendar(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(3) > div > div > p > input","sDateDodatok0", "01/03/18"); //#field-sTable11 > div > table > tbody > tr > td:nth-child(3) > div > div > p > input
         setFieldValue(driver, sBP, "special", "№32145");
         setFieldFile(driver, sBP, "dogovor", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "appeal", "src/test/resources/files/test.jpg");
@@ -103,14 +102,7 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 
-        _step("7. Проверка сообщения о успешной отправке");
-        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
-                "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
-
-        _step("8. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
+        
         
         
     }

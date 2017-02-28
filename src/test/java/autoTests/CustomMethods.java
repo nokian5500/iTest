@@ -488,24 +488,23 @@ public class CustomMethods extends SetupAndTeardown
         Select select = new Select(td);
         
     }
-    public void setTableCellsCalendar(WebDriver driver,String serviceName, String cssSelector, String data) {
+    public void setTableCellsCalendar(WebDriver driver, String serviceName, String cssSelector, String ElementName, String data) {
 
         WebElement td = driver.findElement(By.cssSelector(cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
-        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('"+cssSelector+"')[0]).removeAttr('readonly');");
+        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + ElementName + "')[0]).removeAttr('readonly');");
         td.click();
         td.clear();
         td.sendKeys(data);
 
     }
-//    public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
-//
-//        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
-//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
-//        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('"+cssSelector+"')[0]).removeAttr('readonly');");
-//        webElement.click();
-//        webElement.clear();
-//        webElement.sendKeys(data);
-//
-//    }
+    
+    public void setTableCellsFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
+        WebElement td = driver.findElement(By.cssSelector(cssSelector+" input"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, td);
+        
+        File oFile = new File(sPathFile);
+        td.sendKeys(oFile.getAbsolutePath());
+    }
 }
