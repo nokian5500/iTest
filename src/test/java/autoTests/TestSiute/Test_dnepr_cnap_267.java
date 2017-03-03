@@ -41,25 +41,25 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldValue(driver, sBP, "fiz_adres", " Україна, Дніпропетровська область, м. Дніпро");
         setFieldValue(driver, sBP, "fiz_drfo", "1234567899123");
         
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > div > input", "12345678901223456789");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > div > div > input", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > input", "012345");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > div > div > input", "вул. Банкова, 11, м. Київ, 01220");
-        driver.findElement(By.cssSelector("#field-sTable1 > div > div > input")).click();
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > div > div > input", "12345678901223456789");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > div > div > input", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(2) > td:nth-child(3) > div > div > input", "012345");
-        setTableCellsString(driver, sBP, "#field-sTable1 > div > table > tbody > tr:nth-child(2) > td:nth-child(4) > div > div > input", "вул. Банкова, 11, м. Київ, 01220");
-        
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(1) > td:nth-child(1) > div > div > input", "12345678901223456789");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(1) > td:nth-child(2) > div > div > input", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(1) > td:nth-child(3) > div > div > input", "012345");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(1) > td:nth-child(4) > div > div > input", "вул. Банкова, 11, м. Київ, 01220");
-        driver.findElement(By.cssSelector("#field-sTable2 > div > div > input")).click();
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > div > div > input", "12345678901223456789");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > div > div > input", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(2) > td:nth-child(3) > div > div > input", "012345");
-        setTableCellsString(driver, sBP, "#field-sTable2 > div > table > tbody > tr:nth-child(2) > td:nth-child(4) > div > div > input", "вул. Банкова, 11, м. Київ, 01220");
+        setTableCellsString(driver, sBP, "sTable1", "sNumberAccountUah0", "12345678901223456789");
+        setTableCellsString(driver, sBP, "sTable1", "sBankNameUah0", "PRIVATBANK");
+        setTableCellsString(driver, sBP, "sTable1", "sBankMfoUah0", "012345");
+        setTableCellsString(driver, sBP, "sTable1", "sBankAdresUah0", "вул. Банкова, 11, м. Київ, 01220");
+        addTableRow(driver, sBP, "sTable1");
+        setTableCellsString(driver, sBP, "sTable1", "sNumberAccountUah1", "12345678901223456789");
+        setTableCellsString(driver, sBP, "sTable1", "sBankNameUah1", "PRIVATBANK");
+        setTableCellsString(driver, sBP, "sTable1", "sBankMfoUah1", "012345");
+        setTableCellsString(driver, sBP, "sTable1", "sBankAdresUah1", "вул. Банкова, 11, м. Київ, 01220");
+
+        setTableCellsString(driver, sBP, "sTable2", "sNumberAccountCurrency0", "12345678901223456789");
+        setTableCellsString(driver, sBP, "sTable2", "sBankNameCurrency0", "PRIVATBANK");
+        setTableCellsString(driver, sBP, "sTable2", "sBankMfoCurrency0", "012345");
+        setTableCellsString(driver, sBP, "sTable2", "sBankAdresCurrency0", "вул. Банкова, 11, м. Київ, 01220");
+        addTableRow(driver, sBP, "sTable2");
+        setTableCellsString(driver, sBP, "sTable2", "sNumberAccountCurrency1", "12345678901223456789");
+        setTableCellsString(driver, sBP, "sTable2", "sBankNameCurrency1", "PRIVATBANK");
+        setTableCellsString(driver, sBP, "sTable2", "sBankMfoCurrency1", "012345");
+        setTableCellsString(driver, sBP, "sTable2", "sBankAdresCurrency1", "вул. Банкова, 11, м. Київ, 01220");
         
         setFieldSelectByText(driver, sBP, "subekt_1", "юридична особа");
         setFieldValue(driver, sBP, "ur_name_1", "Deutsche Bank");
@@ -68,31 +68,32 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldValue(driver, sBP, "for_bank_name", "Deutsche Bank DBU");
         setFieldValue(driver, sBP, "for_bank_adres", "PJSC “Deutsche Bank DBU” Lavrska street 20 01015 Kiev UKRAINE");
         
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-0-1");
-        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(4) > div > div > input", "2");
-        setTableCellsSelectDropDown(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(3) > div > div > select");
-        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(5) > div > div > input", "12.02020");
-        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(6) > div > div > input", "12.02020");
-        setTableCellsString(driver, sBP, "#field-sTable3 > div > table > tbody > tr > td:nth-child(7) > div > div > input", "12.02020");
-       
-        setTableCellsSelectDropDown(driver, sBP, "#field-sTable4 > div > table > tbody > tr > td:nth-child(1) > div > div > select");
-        setTableCellsString(driver, sBP, "#field-sTable4 > div > table > tbody > tr > td:nth-child(2) > div > div > input", "м. Дніпро");
-        driver.findElement(By.cssSelector("#field-sTable4 > div > div > input")).click();
-        setTableCellsSelectDropDown(driver, sBP, "#field-sTable4 > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > div > div > select");
-        setTableCellsString(driver, sBP, "#field-sTable4 > div > table > tbody > tr:nth-child(2) > td:nth-child(2) > div > div > input", "м. Дніпро");
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable5 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-1-0");
-        driver.findElement(By.cssSelector("#field-sTable5 > div > div > input")).click();
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable5 > div > table > tbody > tr:nth-child(2) > td:nth-child(1) > div > div > div > div > span", "-7-1");
-        setFieldMultipleSelect(driver, sBP, "#field-sCountry_1 > div > div > div > span", "-6-2");
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable6 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-2-1");
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable7 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-3-1");
-        setTableCellsMultipleSelect(driver, sBP, "#field-sTable8 > div > table > tbody > tr > td:nth-child(1) > div > div > div > div > span", "-4-3");
-        setTableCellsSelectDropDown(driver, sBP, "#field-sTable10 > div > table > tbody > tr > td > div > div > select");            //#field-sTable10 > div > table > tbody > tr > td > div > div > select
+        setTableCellsMultipleSelect(driver, sBP, "sTable3","sObjectCustoms0", "-0-0");
+        setTableCellsString(driver, sBP, "sTable3", "nQuantity0", "2");
+        setTableCellsSelectDropDown(driver, sBP, "sTable3","sUnit0", "1");
+        setTableCellsString(driver, sBP, "sTable3", "sCostUsd0","12.02020");
+        setTableCellsString(driver, sBP, "sTable3", "sCostCurrency0","12.02020");
+        setTableCellsString(driver, sBP, "sTable3", "sAddNameProduct0","12.02020");
+        
+        setTableCellsSelectDropDown(driver, sBP, "sTable4","sBasis0","1");
+        setTableCellsString(driver, sBP, "sTable4", "sBasisName0","м. Дніпро");
+        addTableRow(driver, sBP, "sTable4");
+        setTableCellsSelectDropDown(driver, sBP, "sTable4","sBasis1","1");
+        setTableCellsString(driver, sBP, "sTable4", "sBasisName1","м. Дніпро");
+        
+        setTableCellsMultipleSelect(driver, sBP, "sTable5", "sCountry_00", "-1-0");
+        
+        
+        setFieldMultipleSelect(driver, sBP, "sCountry_1", "-6-2");
+        setTableCellsMultipleSelect(driver, sBP, "sTable6", "sCountry_20", "-2-1");
+        setTableCellsMultipleSelect(driver, sBP, "sTable7", "sCurrency0", "-3-1");
+        setTableCellsMultipleSelect(driver, sBP, "sTable8", "sCurrency_10", "-4-3");
+        setTableCellsSelectDropDown(driver, sBP, "sTable10", "SCharakterUgoda0", "1");    
         setFieldValue(driver, sBP, "dogovor_number", "№32145");
-        setFieldCalendar(driver, sBP, "dogovor_date", "01/03/17"); // #field-dogovor_date > p > input
-        setTableCellsString(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(1) > div > div > input", "Назва документу");
-        setTableCellsString(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(2) > div > div > input", "1234657");
-        setTableCellsCalendar(driver, sBP, "#field-sTable11 > div > table > tbody > tr > td:nth-child(3) > div > div > p > input","sDateDodatok0", "01/03/18"); //#field-sTable11 > div > table > tbody > tr > td:nth-child(3) > div > div > p > input
+        setFieldCalendar(driver, sBP, "dogovor_date", "01/03/17"); 
+        setTableCellsString(driver, sBP, "sTable11", "sNameDodatok0","Назва документу");
+        setTableCellsString(driver, sBP, "sTable11","sNumberDodatok0", "1234657");
+        setTableCellsCalendar(driver, sBP, "sTable11", "sDateDodatok0", "01/03/18"); 
         setFieldValue(driver, sBP, "special", "№32145");
         setFieldFile(driver, sBP, "dogovor", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "appeal", "src/test/resources/files/test.jpg");

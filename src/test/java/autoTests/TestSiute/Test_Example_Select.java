@@ -48,6 +48,8 @@ public class Test_Example_Select extends CustomMethods {
         setFieldValue(driver, sBP, "sID_UA", "test");
         setFieldValue(driver, sBP, "email", email);
         setFieldSelectByText(driver,sBP,"client","нет");
+        
+        
 
         _step("5. Отправка формы");
         click(driver, o.buttonSendingForm);
