@@ -41,25 +41,25 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldValue(driver, sBP, "fiz_adres", " Україна, Дніпропетровська область, м. Дніпро");
         setFieldValue(driver, sBP, "fiz_drfo", "1234567899123");
         
-        setTableCellsString(driver, sBP, "sTable1", "sNumberAccountUah0", "12345678901223456789");
-        setTableCellsString(driver, sBP, "sTable1", "sBankNameUah0", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "sTable1", "sBankMfoUah0", "012345");
-        setTableCellsString(driver, sBP, "sTable1", "sBankAdresUah0", "вул. Банкова, 11, м. Київ, 01220");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sNumberAccountUah0", "12345678901223456789");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankNameUah0", "PRIVATBANK");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankMfoUah0", "012345");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankAdresUah0", "вул. Банкова, 11, м. Київ, 01220");
         addTableRow(driver, sBP, "sTable1");
-        setTableCellsString(driver, sBP, "sTable1", "sNumberAccountUah1", "12345678901223456789");
-        setTableCellsString(driver, sBP, "sTable1", "sBankNameUah1", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "sTable1", "sBankMfoUah1", "012345");
-        setTableCellsString(driver, sBP, "sTable1", "sBankAdresUah1", "вул. Банкова, 11, м. Київ, 01220");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sNumberAccountUah1", "12345678901223456789");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankNameUah1", "PRIVATBANK");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankMfoUah1", "012345");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sBankAdresUah1", "вул. Банкова, 11, м. Київ, 01220");
 
-        setTableCellsString(driver, sBP, "sTable2", "sNumberAccountCurrency0", "12345678901223456789");
-        setTableCellsString(driver, sBP, "sTable2", "sBankNameCurrency0", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "sTable2", "sBankMfoCurrency0", "012345");
-        setTableCellsString(driver, sBP, "sTable2", "sBankAdresCurrency0", "вул. Банкова, 11, м. Київ, 01220");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sNumberAccountCurrency0", "12345678901223456789");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankNameCurrency0", "PRIVATBANK");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankMfoCurrency0", "012345");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankAdresCurrency0", "вул. Банкова, 11, м. Київ, 01220");
         addTableRow(driver, sBP, "sTable2");
-        setTableCellsString(driver, sBP, "sTable2", "sNumberAccountCurrency1", "12345678901223456789");
-        setTableCellsString(driver, sBP, "sTable2", "sBankNameCurrency1", "PRIVATBANK");
-        setTableCellsString(driver, sBP, "sTable2", "sBankMfoCurrency1", "012345");
-        setTableCellsString(driver, sBP, "sTable2", "sBankAdresCurrency1", "вул. Банкова, 11, м. Київ, 01220");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sNumberAccountCurrency1", "12345678901223456789");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankNameCurrency1", "PRIVATBANK");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankMfoCurrency1", "012345");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sBankAdresCurrency1", "вул. Банкова, 11, м. Київ, 01220");
         
         setFieldSelectByText(driver, sBP, "subekt_1", "юридична особа");
         setFieldValue(driver, sBP, "ur_name_1", "Deutsche Bank");
@@ -68,32 +68,32 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setFieldValue(driver, sBP, "for_bank_name", "Deutsche Bank DBU");
         setFieldValue(driver, sBP, "for_bank_adres", "PJSC “Deutsche Bank DBU” Lavrska street 20 01015 Kiev UKRAINE");
         
-        setTableCellsMultipleSelect(driver, sBP, "sTable3","sObjectCustoms0", "-0-0");
-        setTableCellsString(driver, sBP, "sTable3", "nQuantity0", "2");
-        setTableCellsSelectDropDown(driver, sBP, "sTable3","sUnit0", "1");
-        setTableCellsString(driver, sBP, "sTable3", "sCostUsd0","12.02020");
-        setTableCellsString(driver, sBP, "sTable3", "sCostCurrency0","12.02020");
-        setTableCellsString(driver, sBP, "sTable3", "sAddNameProduct0","12.02020");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable3","sObjectCustoms0", "-0-0");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "nQuantity0", "2");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sUnit0", "1");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sCostUsd0","12.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sCostCurrency0","12.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sAddNameProduct0","12.02020");
         
-        setTableCellsSelectDropDown(driver, sBP, "sTable4","sBasis0","1");
-        setTableCellsString(driver, sBP, "sTable4", "sBasisName0","м. Дніпро");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis0","1");
+        setTableCellsInputTypeString(driver, sBP, "sTable4", "sBasisName0","м. Дніпро");
         addTableRow(driver, sBP, "sTable4");
-        setTableCellsSelectDropDown(driver, sBP, "sTable4","sBasis1","1");
-        setTableCellsString(driver, sBP, "sTable4", "sBasisName1","м. Дніпро");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis1","1");
+        setTableCellsInputTypeString(driver, sBP, "sTable4", "sBasisName1","м. Дніпро");
         
-        setTableCellsMultipleSelect(driver, sBP, "sTable5", "sCountry_00", "-1-0");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable5", "sCountry_00", "-1-0");
         
         
-        setFieldMultipleSelect(driver, sBP, "sCountry_1", "-6-2");
-        setTableCellsMultipleSelect(driver, sBP, "sTable6", "sCountry_20", "-2-1");
-        setTableCellsMultipleSelect(driver, sBP, "sTable7", "sCurrency0", "-3-1");
-        setTableCellsMultipleSelect(driver, sBP, "sTable8", "sCurrency_10", "-4-3");
-        setTableCellsSelectDropDown(driver, sBP, "sTable10", "SCharakterUgoda0", "1");    
+        setFieldTypeSelect(driver, sBP, "sCountry_1", "-6-2");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable6", "sCountry_20", "-2-1");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable7", "sCurrency0", "-3-1");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable8", "sCurrency_10", "-4-3");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable10", "SCharakterUgoda0", "1");    
         setFieldValue(driver, sBP, "dogovor_number", "№32145");
         setFieldCalendar(driver, sBP, "dogovor_date", "01/03/17"); 
-        setTableCellsString(driver, sBP, "sTable11", "sNameDodatok0","Назва документу");
-        setTableCellsString(driver, sBP, "sTable11","sNumberDodatok0", "1234657");
-        setTableCellsCalendar(driver, sBP, "sTable11", "sDateDodatok0", "01/03/18"); 
+        setTableCellsInputTypeString(driver, sBP, "sTable11", "sNameDodatok0","Назва документу");
+        setTableCellsInputTypeString(driver, sBP, "sTable11","sNumberDodatok0", "1234657");
+        setTableCellsTypeCalendar(driver, sBP, "sTable11", "sDateDodatok0", "01/03/18"); 
         setFieldValue(driver, sBP, "special", "№32145");
         setFieldFile(driver, sBP, "dogovor", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "appeal", "src/test/resources/files/test.jpg");
