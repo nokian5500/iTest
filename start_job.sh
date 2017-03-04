@@ -1,7 +1,9 @@
 #!/bin/bash
-export LANG=en_US.UTF-8
 #This will cause the shell to exit immediately if a simple command exits with a nonzero exit value.
-set -e
+sParam=$(echo "baseurl = ")
+sUrl=$(cat /tmp/$sHost.txt)
+sSource=/tmp/BPMN.txt
+chmod 777 /tmp/BPMN.txt
 
 while [[ $# > 1 ]]
 do
@@ -22,13 +24,11 @@ do
 	esac
 shift
 done
-sParam=$(echo "baseurl = ")
-sUrl=$(cat /tmp/$sHost.txt)
+
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
 sed -i  '1d'  src/test/resources/config.properties && echo technicalPause=$technicalPause >> src/test/resources/config.properties
 sed -i  '2d'  src/test/resources/config.properties && echo implicitTimeWait=$implicitTimeWait >> src/test/resources/config.properties
-sSource=/tmp/BPMN.txt
-chmod 777 /tmp/BPMN.txt
+
 
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
