@@ -15,7 +15,7 @@ do
 			implicitTimeWait="$2"
 			shift
 			;;
-			*)
+		*)
 			echo "bad option"
 			exit 1
 			;;
