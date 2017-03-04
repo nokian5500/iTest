@@ -26,7 +26,7 @@ sParam=$(echo "baseurl = ")
 sUrl=$(cat /tmp/$sHost.txt)
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
 sed   '1d'  src/test/resources/config.properties && echo technicalPause=$technicalPause >> src/test/resources/config.properties
-sed   '1d'  src/test/resources/config.properties && echo implicitTimeWait=$implicitTimeWait >> src/test/resources/config.properties
+sed   '2d'  src/test/resources/config.properties && echo implicitTimeWait=$implicitTimeWait >> src/test/resources/config.properties
 sSource=/tmp/BPMN.txt
 chmod 777 /tmp/BPMN.txt
 
