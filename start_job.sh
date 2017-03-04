@@ -5,29 +5,29 @@ sUrl=$(cat /tmp/$sHost.txt)
 sSource=/tmp/BPMN.txt
 chmod 777 /tmp/BPMN.txt
 
-while [[ $# > 1 ]]
-do
-	sKey="$1"
-	case $sKey in
-		--technicalPause)
-			technicalPause="$2"
-			shift
-			;;
-		--implicitTimeWait)
-			implicitTimeWait="$2"
-			shift
-			;;
-		*)
-			echo "bad option"
-			exit 1
-			;;
-	esac
-shift
-done
+#while [[ $# > 1 ]]
+#do
+#	sKey="$1"
+#	case $sKey in
+#		--technicalPause)
+#			technicalPause="$2"
+#			shift
+#			;;
+#		--implicitTimeWait)
+#			implicitTimeWait="$2"
+#			shift
+#			;;
+#		*)
+#			echo "bad option"
+#			exit 1
+#			;;
+#	esac
+#shift
+#done
 
 sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/test/resources/config.properties
-sed -i  '1d'  src/test/resources/config.properties && echo technicalPause=$technicalPause >> src/test/resources/config.properties
-sed -i  '2d'  src/test/resources/config.properties && echo implicitTimeWait=$implicitTimeWait >> src/test/resources/config.properties
+#sed -i  '1d'  src/test/resources/config.properties && echo technicalPause=$technicalPause >> src/test/resources/config.properties
+#sed -i  '2d'  src/test/resources/config.properties && echo implicitTimeWait=$implicitTimeWait >> src/test/resources/config.properties
 
 
 if [ ! -f $sSource ]; then 
