@@ -44,7 +44,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldCalendar(driver, sBP, "sVarDate", "2003/01/01");
         setFieldFile(driver, sBP, "nVarFile", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
-        setFieldCheckBox(driver, sBP, "#asEnumTypeCheckbox");
+        // setFieldCheckBox(driver, sBP, "#asEnumTypeCheckbox");
         
         // setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
         // setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
