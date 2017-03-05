@@ -46,8 +46,8 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
         setFieldCheckBox(driver, sBP, "#asEnumTypeCheckbox");
         
-        setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
-        setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
+        // setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
+        // setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
         
         setTableCellsInputTypeSelect(driver, sBP, "sTable1","sTables1Field10", "Найменування товару 1");
         setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1Field20", "Код товару 1");
