@@ -388,7 +388,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
-        WebElement webElement = driver.findElement(By.cssSelector(cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
+        WebElement webElement = driver.findElement(By.cssSelector("#" + cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -427,8 +427,8 @@ public class CustomMethods extends SetupAndTeardown
      
     // Methods for filling the table
     
-    public void setTableCellsInputTypeString(WebDriver driver,String serviceName, String tableName, String cellName,String text){
-        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" + cellName + "]"));
+    public void setTableCellsInputTypeString(WebDriver driver,String serviceName, String tableName, String cellName, String NameRow, String text){
+        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         td.clear();
@@ -454,8 +454,8 @@ public class CustomMethods extends SetupAndTeardown
 //        
 //    }
     
-    public void setTableCellsInputTypeSelect(WebDriver driver, String serviceName, String tableName, String cellName, String row) {
-        WebElement td = driver.findElement(By.cssSelector("#field-"+tableName+" div[name="+cellName+"]"));
+    public void setTableCellsInputTypeSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String row) {
+        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " div[name=" + cellName + NameRow + "]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         driver.findElement(By.cssSelector("#ui-select-choices-row" + row + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
@@ -469,13 +469,13 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-    public void setTableCellsInputTypeEnum(WebDriver driver, String serviceName, String tableName, String cellName, String value) {
+    public void setTableCellsInputTypeEnum(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
 //        WebElement td = driver.findElement(By.cssSelector("#field-"+tableName+" option[value=\""+value+"\"]"));
-        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " select[name=" +cellName+ "]"));
+        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " select[name=" + cellName + NameRow + "]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         Select select = new Select(td);
-        select.selectByValue(value);
+        select.selectByVisibleText(text);
     }
     public void setTableCellsSelectUp(WebDriver driver, String serviceName, String cssSelector) {
         WebElement td = driver.findElement(By.cssSelector(cssSelector));
@@ -484,24 +484,25 @@ public class CustomMethods extends SetupAndTeardown
         Select select = new Select(td);
         
     }
-    public void setTableCellsTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String date) {
+    public void setTableCellsTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) {
 
-        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" +cellName+ "]"));
+        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
-        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + "')[0]).removeAttr('readonly');");
+        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
         td.click();
         td.clear();
         td.sendKeys(date);
 
     }
     
-    public void setTableCellsTypeFile(WebDriver driver,String serviceName, String tableName, String cellName, String sPathFile){
-        WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" + cellName + "]" + " > input"));
+    public void setTableCellsInputTypeFile(WebDriver driver,String serviceName, String tableName, String cellName, String NameRow, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.cssSelector("#field-" + tableName + " p[name=" + cellName + NameRow + "]"));
+        oWebElement.findElement(By.xpath(".//button[span[text()='Обрати файл']]"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(sScript, td);
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
         File oFile = new File(sPathFile);
-        td.sendKeys(oFile.getAbsolutePath());
+        oWebElement.sendKeys(oFile.getAbsolutePath());
     }
     
     public void addTableRow(WebDriver driver, String serviceName, String tableName){

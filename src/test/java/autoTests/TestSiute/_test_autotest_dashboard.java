@@ -44,34 +44,34 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldCalendar(driver, sBP, "sVarDate", "2003/01/01");
         setFieldFile(driver, sBP, "nVarFile", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
-        // setFieldCheckBox(driver, sBP, "#asEnumTypeCheckbox");
+        setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
         
         // setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
         // setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
         
-        setTableCellsInputTypeSelect(driver, sBP, "sTable1","sTables1FieldA0", "Найменування товару 1");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB0", "Код товару 1");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable1","sTables1FieldC0", "1");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD0","10");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE0","12.02020");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF0","Вартість товару 1");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldG0","Додаткове найменування 1");
+        setTableCellsInputTypeString(driver, sBP, "sTable1","sTables1FieldA","0", "Найменування товару 1");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB","0", "Код товару 1");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable1","sTables1FieldC","0", "кілограм|кг");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD","0","10");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE","0","12.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF","0","Вартість товару 1");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldG","0","Додаткове найменування 1");
         addTableRow(driver, sBP, "sTable1");
-        setTableCellsInputTypeSelect(driver, sBP, "sTable1","sTables1FieldA1", "Найменування товару 2");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB1", "Код товару 2");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable1","sTables1FieldC1", "2");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD1","20");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE1","22.02020");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF1","Вартість товару 2");
-        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldG1","Додаткове найменування 2");
+        setTableCellsInputTypeString(driver, sBP, "sTable1","sTables1FieldA","1", "Найменування товару 2");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB","1", "Код товару 2");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable1","sTables1FieldC","1", "кілограм|кг");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD","1","20");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE","1","22.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF","1","Вартість товару 2");
+        setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldG","1","Додаткове найменування 2");
 
-        setTableCellsInputTypeSelect(driver, sBP, "sTable2","sTables2FieldA0", "Найменування товару 1");
-        //  setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB0", "src/test/resources/files/test.jpg"); 
-        setTableCellsTypeCalendar(driver, sBP, "sTable2","sTables2FieldC0", "2017/03/05");
-        addTableRow(driver, sBP, "sTable1");
-        setTableCellsInputTypeSelect(driver, sBP, "sTable2","sTables2FieldA1", "Найменування товару 2");
-        //  setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB1", "src/test/resources/files/test.jpg");
-        setTableCellsTypeCalendar(driver, sBP, "sTable2","sTables2FieldC1", "2017/03/05");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA","0", "Найменування товару 1");
+//        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","0",, "src/test/resources/files/test.jpg");
+        setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","0", "2017/03/05");
+        addTableRow(driver, sBP, "sTable2");
+        setTableCellsInputTypeSelect(driver, sBP, "sTable2", "sTables2FieldA","1", "Найменування товару 2");
+//        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","1", "src/test/resources/files/test.jpg");
+        setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","1", "2017/03/05");
         
 
         _step("6. Отправка формы");
