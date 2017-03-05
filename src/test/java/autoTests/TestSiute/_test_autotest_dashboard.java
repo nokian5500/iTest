@@ -66,11 +66,11 @@ public class _test_autotest_dashboard extends CustomMethods {
         setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1Field71","Додаткове найменування 2");
 
         setTableCellsInputTypeSelect(driver, sBP, "sTable2","sTables2Field10", "Найменування товару 1");
-        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2Field20", "src/test/resources/files/test.jpg");
+        // setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2Field20", "src/test/resources/files/test.jpg");
         setTableCellsTypeCalendar(driver, sBP, "sTable2","sTables2Field30", "2017/03/05");
         addTableRow(driver, sBP, "sTable1");
         setTableCellsInputTypeSelect(driver, sBP, "sTable2","sTables2Field11", "Найменування товару 2");
-        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2Field21", "src/test/resources/files/test.jpg");
+        // setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2Field21", "src/test/resources/files/test.jpg");
         setTableCellsTypeCalendar(driver, sBP, "sTable2","sTables2Field31", "2017/03/05");
         
 
