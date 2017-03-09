@@ -44,6 +44,7 @@ public class ConfigurationVariables
 	public int waitPageForLoad;
 	public int longPause;
 	public String baseUrl;
+//	public String baseUrl_2;
     public List<String> orderId = new ArrayList<>();
 
 	static
@@ -61,6 +62,7 @@ public class ConfigurationVariables
 		longPause = Integer.parseInt(getProperty(configurationData, "longPause"));
 
 		baseUrl = getProperty(configurationData, "baseurl");
+//		baseUrl = getProperty(configurationData, "baseUrl_2");
 	}
 
 	//возвращаем инстанс объекта

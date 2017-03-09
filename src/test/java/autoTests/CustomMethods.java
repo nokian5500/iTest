@@ -313,6 +313,10 @@ public class CustomMethods extends SetupAndTeardown
 	public void openURLservice(WebDriver driver, String url){
 		driver.get(url);
 	}
+        
+        public void openURLdashboard(WebDriver driver, String url){
+		driver.get(url);
+	}
 
 	public void assertThis(WebDriver driver, WebElement webElement, String textAssert){
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(webElement));
@@ -496,19 +500,57 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void setTableCellsInputTypeFile(WebDriver driver,String serviceName, String tableName, String cellName, String NameRow, String sPathFile){
-        WebElement oWebElement = driver.findElement(By.cssSelector("#field-" + tableName + " p[name=" + cellName + NameRow + "]"));
-        oWebElement.findElement(By.xpath(".//button[span[text()='Обрати файл']]"));
+        WebElement oWebElement = driver.findElement(By.cssSelector("#field-" + tableName + " p[name=" + cellName + NameRow + "]" + " input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
         File oFile = new File(sPathFile);
         oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        } 
     }
+    /*
+     public void setFieldFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector+" input"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathFile);
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        }        
+    }
+    */
     
     public void addTableRow(WebDriver driver, String serviceName, String tableName){
     WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " a"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
+   }
     
+    public void dashboardAutorization(WebDriver driver, String login, String password){
+    WebElement elementLogin = driver.findElement(By.cssSelector("#form-group input[name="+login+"]"));
+    WebElement elementPassword = driver.findElement(By.cssSelector("#form-group input[name="+password+"]"));
+    
+        Select select = new Select(elementLogin);
+        select.selectByVisibleText(login);
+        Select s = new Select(elementPassword);
+        s.selectByVisibleText(password);
     }
 }

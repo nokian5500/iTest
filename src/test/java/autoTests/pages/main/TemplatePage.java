@@ -74,8 +74,12 @@ public class TemplatePage {
 
     @FindBy(xpath = "//a[@class='ng-binding']")
     public WebElement orderID;
-
-
+    
+//    @FindBy(xpath = "//div[@class='form-group']//input[@name='login']")
+//    public WebElement login;
+//    
+//    @FindBy(xpath = "//div[@class='form-group']//input[@name='password']")
+//    public WebElement password;
 
 
     /**
@@ -135,7 +139,7 @@ public class TemplatePage {
         driver.findElement(By.linkText(value)).click();
     }
     
-    
+  
     
  }
 
