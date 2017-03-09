@@ -40,7 +40,7 @@ action () {
 BPMN=${1/-/_}
 if [ -e ./src/test/java/autoTests/TestSiute/${BPMN%.*}.java ]; then
 echo $BPMN 
-sed "6 a <class name=\"autoTests.TestSiute.${BPMN%.*}\"/>" testng_simple.xml > testng_new.xml
+sed "6 a <class name=\"autoTests.TestSiute.${BPMN%.*}\"/>" testng_simple.xml >> testng_new.xml
 mv testng_new.xml testng_simple.xml
 cp testng_simple.xml testng.xml
 else 
