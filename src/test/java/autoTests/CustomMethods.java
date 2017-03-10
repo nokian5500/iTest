@@ -499,23 +499,23 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-    public void setTableCellsInputTypeFile(WebDriver driver,String serviceName, String tableName, String cellName, String NameRow, String sPathFile){
-        WebElement oWebElement = driver.findElement(By.cssSelector("#field-" + tableName + " p[name=" + cellName + NameRow + "]" + " input"));
+    public void setTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String index, String sPathFile) {
+        WebElement fileInput = driver.findElement(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name="+cellName+index+"] input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        ((JavascriptExecutor) driver).executeScript(sScript, fileInput);
         
         File oFile = new File(sPathFile);
-        oWebElement.sendKeys(oFile.getAbsolutePath());
+        fileInput.sendKeys(oFile.getAbsolutePath());
 
         // Wait attach upload
         //TODO: add counter condition to avoid infinite loop
-        while (!oWebElement.isEnabled()) {
-                try {
-                        Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
-        } 
+//        while (!fileInput.isEnabled()) {
+//                try {
+//                        Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//            }
+//        } 
     }
     /*
      public void setFieldFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){

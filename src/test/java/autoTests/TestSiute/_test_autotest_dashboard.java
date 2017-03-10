@@ -46,8 +46,8 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
         setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
         
-        // setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
-        // setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
+         setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
+         setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
         
         setTableCellsInputTypeString(driver, sBP, "sTable1","sTables1FieldA","0", "Найменування товару 1");
         setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB","0", "Код товару 1");
@@ -66,12 +66,12 @@ public class _test_autotest_dashboard extends CustomMethods {
         setTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldG","1","Додаткове найменування 2");
 
         setTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA","0", "Найменування товару 1");
-        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","0","src/test/resources/files/test.jpg");
+        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","0", "", "src/test/resources/files/test.jpg");
         setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","0", "2017/03/05");
-//        addTableRow(driver, sBP, "sTable2");
-//        setTableCellsInputTypeSelect(driver, sBP, "sTable2", "sTables2FieldA","1", "Найменування товару 2");
-//        setTableCellsInputTypeFile(driver, sBP, "sTable2","sTables2FieldB","1","src/test/resources/files/test.jpg");
-//        setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","1", "2017/03/05");
+        addTableRow(driver, sBP, "sTable2");
+        setTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA","1", "Найменування товару 2");
+        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","1", "_1", "src/test/resources/files/test.jpg");
+        setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","1", "2017/03/05");
         
 
         _step("6. Отправка формы");
