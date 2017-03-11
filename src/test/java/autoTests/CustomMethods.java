@@ -510,7 +510,7 @@ public class CustomMethods extends SetupAndTeardown
         } else {
             WebElement fileInput = driver.findElement(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name="+cellName+"_"+nameRow+"] input"));
             String sScript = "var element = arguments[0];" + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(sScript, fileInput);
+        ((JavascriptExecutor) driver).executeScript(sScript, fileInput); 
         
         File oFile = new File(sPathFile);
         fileInput.sendKeys(oFile.getAbsolutePath());
