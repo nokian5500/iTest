@@ -1,6 +1,6 @@
-tests=[dnepr_cnap_39', 'Test_dnepr_cnap_267', 'dnepr_dms_89', 'Test_Example_Attach', 'dnepr_soc_help_177', 'Test_Example_Fill_Field', 'dvs_732', 'Test_Example_Select', 'dvs_745', 'Test_ProcessingAppForDashboard', 'spend_meeting_404', 'TestSetTableCellFile', '_test_all_case', 'test_tables_other_types', 'test_autotest_dashboard',  'znes_bud_393', 'test]
+tests=["enabled":true,"owner":"shushu","testgroup":"A","testcase":"single"},{"enabled":false,"owner":"shushu","testgroup":"B","setuptype":"basic"}]
 enableField=enabled
-groupBy=testgroup
+groupBy=dnepr_cnap_39,Test_dnepr_cnap_267,dnepr_dms_89,Test_Example_Attach
 fieldSeparator=.
 showFields=testsuite,testcase
 multiplicityField=multiplicity
