@@ -499,13 +499,24 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-    public void setTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String index, String sPathFile) {
-        WebElement fileInput = driver.findElement(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name="+cellName+index+"] input"));
-        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+    public void setTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) {
+        if (nameRow.equals("0")) {
+            WebElement fileInput = driver.findElement(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name="+cellName+"] input"));
+            String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, fileInput);
         
         File oFile = new File(sPathFile);
         fileInput.sendKeys(oFile.getAbsolutePath());
+        } else {
+            WebElement fileInput = driver.findElement(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name="+cellName+"_"+nameRow+"] input"));
+            String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, fileInput);
+        
+        File oFile = new File(sPathFile);
+        fileInput.sendKeys(oFile.getAbsolutePath());
+        }
+        
+        
 
         // Wait attach upload
         //TODO: add counter condition to avoid infinite loop
