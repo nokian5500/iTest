@@ -1,6 +1,7 @@
 tests=[{"enabled":true,"owner":"shushu","testgroup":"A","testcase":"single"},{"enabled":false,"owner":"shushu","testgroup":"B","setuptype":"basic"}]
 enableField=enabled
-groupBy=dnepr_cnap_39,Test_dnepr_cnap_267,dnepr_dms_89,Test_Example_Attach
+groupBy=testgroup
 fieldSeparator=.
 showFields=testsuite,testcase
 multiplicityField=multiplicity
+A=dnepr_cnap_39,Test_dnepr_cnap_267,dnepr_dms_89
