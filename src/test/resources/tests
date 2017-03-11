@@ -1,12 +1,10 @@
-tests=[dnepr_cnap_39.java             Test_dnepr_cnap_267.java
-dnepr_dms_89.java              Test_Example_Attach.java
-dnepr_soc_help_177.java        Test_Example_Fill_Field.java
-dvs_732.java                   Test_Example_Select.java
-dvs_745.java                   Test_ProcessingAppForDashboard.java
-spend_meeting_404.java         TestSetTableCellFile.java
-_test_all_case.java            _test_tables_other_types.java
+tests=['dnepr_cnap_39.java,Test_dnepr_cnap_267.java dnepr_dms_89.java Test_Example_Attach.java dnepr_soc_help_177.java Test_Example_Fill_Field.java
+dvs_732.java Test_Example_Select.java
+dvs_745.java Test_ProcessingAppForDashboard.java
+spend_meeting_404.java TestSetTableCellFile.java
+_test_all_case.java _test_tables_other_types.java
 _test_autotest_dashboard.java  znes_bud_393.java
-Test_checkbox.java]
+Test_checkbox.java']
 enableField=enabled
 groupBy=testgroup
 fieldSeparator=.
