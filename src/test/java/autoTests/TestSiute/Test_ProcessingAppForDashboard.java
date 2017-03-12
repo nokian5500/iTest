@@ -29,7 +29,7 @@ public class Test_ProcessingAppForDashboard extends CustomMethods  {
         _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
 //        dashboardLogin(driver, sBP, "tester");
 //        dashboardPassword(driver, sBP, "tester");
-        authProcessDashboard(driver, sBP, "tester", "tester");
+//        authProcessDashboard(driver, sBP, "tester", "tester");
         pause(3000);
 }
 }

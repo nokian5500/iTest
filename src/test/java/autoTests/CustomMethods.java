@@ -536,16 +536,16 @@ public class CustomMethods extends SetupAndTeardown
    }
    
     public void authProcessDashboard(WebDriver driver, String serviceName, String loginName, String passwordName){
-    WebElement elementLogin = driver.findElement(By.name("login"));
-    WebElement elementPassword = driver.findElement(By.name("password"));
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
-    elementLogin.click();
-    elementLogin.clear();
-    elementLogin.sendKeys(loginName);
-    elementPassword.click();
-    elementPassword.clear();
-    elementPassword.sendKeys(passwordName);
+//    WebElement elementLogin = driver.findElement(By.name("login"));
+//    WebElement elementPassword = driver.findElement(By.name("password"));
+//    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
+//    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
+//    elementLogin.click();
+//    elementLogin.clear();
+//    elementLogin.sendKeys(loginName);
+//    elementPassword.click();
+//    elementPassword.clear();
+//    elementPassword.sendKeys(passwordName);
 //    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector(".btn btn-inverse btn-lg btn-login"));
 //    buttonSubmitDashboard.click();
 //    buttonSubmitDashboard.click();
