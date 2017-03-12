@@ -3,7 +3,6 @@ package autoTests;
 
 
 import org.openqa.selenium.*;
-import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
