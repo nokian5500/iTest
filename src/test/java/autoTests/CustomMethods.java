@@ -3,6 +3,7 @@ package autoTests;
 
 
 import org.openqa.selenium.*;
+import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
@@ -528,40 +529,31 @@ public class CustomMethods extends SetupAndTeardown
 //            }
 //        } 
     }
-    /*
-     public void setFieldFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
-        WebElement oWebElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector+" input"));
-        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
-        File oFile = new File(sPathFile);
-        oWebElement.sendKeys(oFile.getAbsolutePath());
-
-        // Wait attach upload
-        //TODO: add counter condition to avoid infinite loop
-        while (!oWebElement.isEnabled()) {
-                try {
-                        Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
-        }        
-    }
-    */
-    
     public void addTableRow(WebDriver driver, String serviceName, String tableName){
     WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " a"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
    }
+   
+    public void authProcessDashboard(WebDriver driver, String serviceName, String loginName, String passwordName){
+    WebElement elementLogin = driver.findElement(By.name("login"));
+    WebElement elementPassword = driver.findElement(By.name("password"));
+    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
+    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
+    elementLogin.click();
+    elementLogin.clear();
+    elementLogin.sendKeys(loginName);
+    elementPassword.click();
+    elementPassword.clear();
+    elementPassword.sendKeys(passwordName);
+    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector(".btn btn-inverse btn-lg btn-login"));
+    buttonSubmitDashboard.click();
+//    buttonSubmitDashboard.click();
+        
     
-    public void dashboardAutorization(WebDriver driver, String login, String password){
-    WebElement elementLogin = driver.findElement(By.cssSelector("#form-group input[name="+login+"]"));
-    WebElement elementPassword = driver.findElement(By.cssSelector("#form-group input[name="+password+"]"));
     
-        Select select = new Select(elementLogin);
-        select.selectByVisibleText(login);
-        Select s = new Select(elementPassword);
-        s.selectByVisibleText(password);
     }
+    
+    
 }

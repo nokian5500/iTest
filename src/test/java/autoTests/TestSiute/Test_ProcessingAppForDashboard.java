@@ -27,6 +27,9 @@ public class Test_ProcessingAppForDashboard extends CustomMethods  {
         openURLdashboard(driver, "https://delta.test.region.igov.org.ua");
         
         _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-        dashboardAutorization(driver, "tester", "tester");
+//        dashboardLogin(driver, sBP, "tester");
+//        dashboardPassword(driver, sBP, "tester");
+        authProcessDashboard(driver, sBP, "tester", "tester");
+        pause(3000);
 }
 }
