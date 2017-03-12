@@ -546,8 +546,8 @@ public class CustomMethods extends SetupAndTeardown
     elementPassword.click();
     elementPassword.clear();
     elementPassword.sendKeys(passwordName);
-    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector(".btn btn-inverse btn-lg btn-login"));
-    buttonSubmitDashboard.click();
+//    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector(".btn btn-inverse btn-lg btn-login"));
+//    buttonSubmitDashboard.click();
 //    buttonSubmitDashboard.click();
         
     
