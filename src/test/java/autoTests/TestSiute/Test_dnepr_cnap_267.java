@@ -70,15 +70,15 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         
         setTableCellsInputTypeSelect(driver, sBP, "sTable3","sObjectCustoms","0", "-0-0");
         setTableCellsInputTypeString(driver, sBP, "sTable3", "nQuantity","0", "2");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sUnit","0", "1");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sUnit","0", "кілограм|кг");
         setTableCellsInputTypeString(driver, sBP, "sTable3", "sCostUsd","0","12.02020");
         setTableCellsInputTypeString(driver, sBP, "sTable3", "sCostCurrency","0","12.02020");
         setTableCellsInputTypeString(driver, sBP, "sTable3", "sAddNameProduct","0","12.02020");
         
-        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis","0","1");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis","0","EXW - Франко-завод");
         setTableCellsInputTypeString(driver, sBP, "sTable4", "sBasisName","0","м. Дніпро");
         addTableRow(driver, sBP, "sTable4");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis","1","1");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable4","sBasis","1","EXW - Франко-завод");
         setTableCellsInputTypeString(driver, sBP, "sTable4", "sBasisName","1","м. Дніпро");
         
         setTableCellsInputTypeSelect(driver, sBP, "sTable5", "sCountry_","00", "-1-0");
@@ -88,7 +88,7 @@ public class Test_dnepr_cnap_267 extends CustomMethods {
         setTableCellsInputTypeSelect(driver, sBP, "sTable6", "sCountry_","20", "-2-1");
         setTableCellsInputTypeSelect(driver, sBP, "sTable7", "sCurrency","0", "-3-1");
         setTableCellsInputTypeSelect(driver, sBP, "sTable8", "sCurrency_","10", "-4-3");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable10", "SCharakterUgoda","0", "1");    
+        setTableCellsInputTypeEnum(driver, sBP, "sTable10", "SCharakterUgoda","0", "10 Переміщення товарів з розрахунками за товар у валюті України");    
         setFieldValue(driver, sBP, "dogovor_number", "№32145");
         setFieldCalendar(driver, sBP, "dogovor_date", "01/03/17"); 
         setTableCellsInputTypeString(driver, sBP, "sTable11", "sNameDodatok","0","Назва документу");
