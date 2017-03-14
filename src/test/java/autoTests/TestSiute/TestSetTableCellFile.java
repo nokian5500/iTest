@@ -50,7 +50,7 @@ public class TestSetTableCellFile extends CustomMethods {
         setFieldValue(driver, sBP, "fiz_name", "Іван Іванов Іванович");
         setFieldValue(driver, sBP, "fiz_adres", " Україна, Дніпропетровська область, м. Дніпро");
         setFieldValue(driver, sBP, "fiz_drfo", "1234567899123");
-        setTableCellsInputTypeEnum(driver, sBP, "sTableDoc", "sCategoryDoc", "0", "відзив");
-        setTableCellsInputTypeFile(driver, sBP, "sTableDoc","sTables2FieldB","0","src/test/resources/files/test.jpg");
+        setTableCellsInputTypeEnum(driver, sBP, "sTableDoc", "sCategoryDoc", "0", "заява про ознайомлення з матеріалами справи");
+        setTableCellsInputTypeFile(driver, sBP, "sTableDoc","sDoc","0","src/test/resources/files/test.jpg");
     }
 }
