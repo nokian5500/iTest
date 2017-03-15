@@ -32,8 +32,8 @@ sed -i  '$d'  src/test/resources/config.properties && echo $sParam $sUrl >> src/
 
 if [ ! -f $sSource ]; then 
 echo "NOT FILE"
-#sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
-#cp testng_new.xml testng.xml
+sed "11 a <package name=\"autoTests.TestSiute\"/>" testng_simple.xml > testng_new.xml
+cp testng_new.xml testng.xml
 else
 echo "Add tests"
 action () {
