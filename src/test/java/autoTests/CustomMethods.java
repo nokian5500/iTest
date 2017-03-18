@@ -551,12 +551,13 @@ public class CustomMethods extends SetupAndTeardown
     buttonSubmitDashboard.click();
     }
     public void setRegionFindOrder(String sID_Order){
-    WebElement element = driver.findElement(By.cssSelector(".find-field-tooltip input"));
-    element.click();
+    WebElement element = driver.findElement(By.cssSelector("input[placeholder='Пошук']"));
     new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
     element.click();
     element.clear();
     element.sendKeys(sID_Order);
+    
+   
     }
     
     
