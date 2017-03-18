@@ -539,20 +539,26 @@ public class CustomMethods extends SetupAndTeardown
     WebElement elementLogin = driver.findElement(By.name("login"));
     WebElement elementPassword = driver.findElement(By.name("password"));
     new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
     elementLogin.click();
     elementLogin.clear();
     elementLogin.sendKeys(loginName);
+    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
     elementPassword.click();
     elementPassword.clear();
     elementPassword.sendKeys(passwordName);
-    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector(".btn btn-inverse btn-lg btn-login"));
+    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector("button[type=\"submit\"]"));//findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonSubmitDashboard));
     buttonSubmitDashboard.click();
-    buttonSubmitDashboard.click();
-        
-    
-    
     }
+    public void setRegionFindOrder(String sID_Order){
+    WebElement element = driver.findElement(By.cssSelector(".find-field-tooltip input"));
+    element.click();
+    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+    element.click();
+    element.clear();
+    element.sendKeys(sID_Order);
+    }
+    
     
     
 }
