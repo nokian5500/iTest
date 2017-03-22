@@ -53,6 +53,8 @@ public class _test_all_case extends CustomMethods {
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldCheckBox(driver, sBP, "bMailWithSMS");
+        setFieldFile(driver, sBP, "nFileMail", "src/test/resources/files/test.jpg");
+        
         setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
         setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
         
