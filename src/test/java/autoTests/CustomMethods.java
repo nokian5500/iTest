@@ -374,7 +374,7 @@ public class CustomMethods extends SetupAndTeardown
         select.selectByValue(value);
     }
 
-    public void setFieldAutocomplete( WebDriver driver,String name, String value) {
+    public void setFieldAutocomplete(WebDriver driver,String name, String value) {
         driver.findElement(By.name(name)).click();
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();
@@ -393,7 +393,7 @@ public class CustomMethods extends SetupAndTeardown
     
     public void setFieldCheckBox(WebDriver driver, String serviceName, String cssSelector) {
         WebElement webElement = driver.findElement(By.cssSelector("#" + cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
      
