@@ -375,9 +375,14 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldAutocomplete(WebDriver driver,String name, String value) {
-        driver.findElement(By.name(name)).click();
-        driver.findElement(By.name(name)).sendKeys(value);
-        driver.findElement(By.linkText(value)).click();
+        WebElement webElement = driver.findElement(By.name(name));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        webElement.sendKeys(value);
+//        driver.findElement(By.name(name)).sendKeys(value);
+        WebElement element = driver.findElement(By.linkText(value));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
 
     public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
