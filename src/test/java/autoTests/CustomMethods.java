@@ -504,6 +504,13 @@ public class CustomMethods extends SetupAndTeardown
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
    }
+    
+   public String getNumbersIdOrder() throws Exception {
+            List<String> ID_Order = configVariables.orderId;
+          String sID_Order=ID_Order.get(0);
+          System.out.println("sID_Order= " + sID_Order);
+        return sID_Order;
+         }
    
     public void AuthorizationBySetLoginPassword(WebDriver driver, String serviceName, String loginName, String passwordName) {
         String windowHandler = driver.getWindowHandle();
@@ -532,7 +539,8 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
 
-    public void findOrderByNumber(WebDriver driver, String serviceName, String sID_Order) {
+    public void findOrderByNumber(WebDriver driver, String serviceName) throws Exception {
+        String sID_Order = getNumbersIdOrder();
         WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
@@ -544,10 +552,11 @@ public class CustomMethods extends SetupAndTeardown
         element.click();
     }
     
-    public void getNumbersIdOrder(WebDriver driver, String serviceName, String enumRegionTab) {
-        WebElement element = driver.findElement(By.cssSelector("a .ng-binding"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
+   public void getRegionOrderData() throws Exception{
+       String sID_Order = getNumbersIdOrder();
+       driver.get("https://delta.test.region.igov.org.ua/wf/service/action/task/getTaskData?sID_Order="+
+               sID_Order+"&bIncludeStartForm=true&bIncludeGroups=true");
+   
+   }
     
 }

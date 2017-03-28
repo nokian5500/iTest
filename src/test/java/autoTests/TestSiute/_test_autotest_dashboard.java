@@ -77,15 +77,32 @@ public class _test_autotest_dashboard extends CustomMethods {
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
-                pause(10000000);
+        
         _step("8. Вход по прямому URL на дашборд");
         openURLdashboard(driver, "https://delta.test.region.igov.org.ua");
 
         _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
-        findOrderByNumber(driver, sBP, "");
+        findOrderByNumber(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
+        clickButton(driver, sBP,"Почати опрацювання задачі");
+//        getRegionOrderData();
+        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
+        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
+        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
+        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
+        setFieldCalendar(driver, sBP, "sVarDateDashboard", "2016/03/08");
+        setFieldSelectByText(driver, sBP, "asEnumTypeDashboard", "Значення 2 (на дашборді) для Enum");
+        setFieldCheckBox(driver, sBP, "asEnumTypeCheckboxDashboard");
         
+        setTableCellsInputTypeSelect(driver, sBP, "sTable3","sTables3Field10","0", "-0-0");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field20","0", "2");
+        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sTables3Field30","0", "кілограм|кг");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field40","0","12.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field50","0","12.02020");
+        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field60","0","12.02020");
+        clickButton(driver, sBP,"Опрацювати");
         _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
         
