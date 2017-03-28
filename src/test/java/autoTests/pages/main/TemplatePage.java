@@ -66,7 +66,7 @@ public class TemplatePage {
     @FindBy(xpath = "//a[@ng-click='logout()']")
     public WebElement buttonLogOut;
 
-    @FindBy(xpath = "//button[@ng-hide='bSending(form)']")
+    @FindBy(xpath = "//button[@ng-click='processForm(form, activitiForm.formProperties, false)']")
     public WebElement buttonSendingForm;
 
     @FindBy(xpath = "(//input[@type='file'])")

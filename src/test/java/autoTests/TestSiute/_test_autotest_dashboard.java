@@ -44,7 +44,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldCalendar(driver, sBP, "sVarDate", "2003/01/01");
         setFieldFile(driver, sBP, "nVarFile", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
-        setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
+//        setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
         
          setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
          setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
@@ -68,12 +68,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA","0", "Найменування товару 1");
         setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","0", "src/test/resources/files/test.jpg");
         setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","0", "2017/03/05");
-        addTableRow(driver, sBP, "sTable2");
-        setTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA","1", "Найменування товару 2");
-        setTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB","1", "src/test/resources/files/test.jpg");
-        setTableCellsTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC","1", "2017/03/05");
-        
-
+      
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 
@@ -82,9 +77,20 @@ public class _test_autotest_dashboard extends CustomMethods {
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
+                pause(10000000);
+        _step("8. Вход по прямому URL на дашборд");
+        openURLdashboard(driver, "https://delta.test.region.igov.org.ua");
 
-        _step("8. Нажать кнопку Выйти");
+        _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
+        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+        clickButton(driver, sBP, "Увійти");
+        findOrderByNumber(driver, sBP, "");
+        
+        _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
+        
+        
+        
         
     }
 }

@@ -316,7 +316,7 @@ public class CustomMethods extends SetupAndTeardown
         
         public void openURLdashboard(WebDriver driver, String url){
 		driver.get(url);
-	}
+        }
 
 	public void assertThis(WebDriver driver, WebElement webElement, String textAssert){
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(webElement));
@@ -439,26 +439,7 @@ public class CustomMethods extends SetupAndTeardown
        td.sendKeys(text);
     }
     
-//    public void setTableCellsLong(WebDriver driver,String serviceName, String cssSelector){
-//         Boolean status;
-//        try {
-//            WebElement td = driver.findElement(By.cssSelector(cssSelector)); //By.xpath("//select[@ng-model='selected.slot']")
-//            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
-//            Select select = new Select(td);
-//            select.selectByValue("0");
-//            status= true;
-//        } catch (org.openqa.selenium.NoSuchElementException e) {
-//            status= false;
-//        }
-//        Assert.assertTrue(status, "NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!");
-//        
-//        
-//        
-//        
-//        
-//    }
-    
-    public void setTableCellsInputTypeSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String row) {
+ public void setTableCellsInputTypeSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String row) {
         WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " div[name=" + cellName + NameRow + "]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
@@ -515,18 +496,7 @@ public class CustomMethods extends SetupAndTeardown
         File oFile = new File(sPathFile);
         fileInput.sendKeys(oFile.getAbsolutePath());
         }
-        
-        
-
-        // Wait attach upload
-        //TODO: add counter condition to avoid infinite loop
-//        while (!fileInput.isEnabled()) {
-//                try {
-//                        Thread.sleep(2000);
-//                } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//            }
-//        } 
+      
     }
         
     public void addTableRow(WebDriver driver, String serviceName, String tableName){
@@ -535,31 +505,49 @@ public class CustomMethods extends SetupAndTeardown
         td.click();
    }
    
-    public void authProcessDashboard(WebDriver driver, String serviceName, String loginName, String passwordName){
-    WebElement elementLogin = driver.findElement(By.name("login"));
-    WebElement elementPassword = driver.findElement(By.name("password"));
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
-    elementLogin.click();
-    elementLogin.clear();
-    elementLogin.sendKeys(loginName);
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
-    elementPassword.click();
-    elementPassword.clear();
-    elementPassword.sendKeys(passwordName);
-    WebElement buttonSubmitDashboard = driver.findElement(By.cssSelector("button[type=\"submit\"]"));//findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonSubmitDashboard));
-    buttonSubmitDashboard.click();
+    public void AuthorizationBySetLoginPassword(WebDriver driver, String serviceName, String loginName, String passwordName) {
+        String windowHandler = driver.getWindowHandle();
+        WebElement elementLogin = driver.findElement(By.name("login"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
+        elementLogin.click();
+        elementLogin.clear();
+        elementLogin.sendKeys(loginName);
+        WebElement elementPassword = driver.findElement(By.name("password"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
+        elementPassword.click();
+        elementPassword.clear();
+        elementPassword.sendKeys(passwordName);
     }
-    public void setRegionFindOrder(String sID_Order){
-    WebElement element = driver.findElement(By.cssSelector("input[placeholder='Пошук']"));
-    new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-    element.click();
-    element.clear();
-    element.sendKeys(sID_Order);
-    
-   
+
+    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Order) {
+        WebElement element = driver.findElement(By.cssSelector("table .find-field-tooltip input"));
+        element.click();
+        element.clear();
+        element.sendKeys(sID_Order);
+    }
+
+    public void clickButton(WebDriver driver, String serviceName, String nameButton) {
+        WebElement button = driver.findElement(By.xpath(".//button[contains(text(),'" + nameButton + "')]"));//findElement(By.cssSelector("input[type=\"submit\"]")).click();
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
+    }
+
+    public void findOrderByNumber(WebDriver driver, String serviceName, String sID_Order) {
+        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+    }
+
+    public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) {
+        WebElement element = driver.findElement(By.xpath(".//a[@id='"+enumRegionTab+" ']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
     }
     
-    
+    public void getNumbersIdOrder(WebDriver driver, String serviceName, String enumRegionTab) {
+        WebElement element = driver.findElement(By.cssSelector("a .ng-binding"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+    }
     
 }
