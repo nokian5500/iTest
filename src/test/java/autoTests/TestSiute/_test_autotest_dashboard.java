@@ -44,7 +44,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldCalendar(driver, sBP, "sVarDate", "2003/01/01");
         setFieldFile(driver, sBP, "nVarFile", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"asEnumType","Значення 2 для Enum");
-//        setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
+        setFieldCheckBox(driver, sBP, "asEnumTypeCheckbox");
         
          setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
          setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
@@ -84,25 +84,32 @@ public class _test_autotest_dashboard extends CustomMethods {
         _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
+         
+//        setRegionFindOrder(driver, sBP, "бла-бла");
+        
+//        pause(300000);
         findOrderByNumber(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP,"Почати опрацювання задачі");
 //        getRegionOrderData();
-        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
-        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
-        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
-        setFieldValue(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
-        setFieldCalendar(driver, sBP, "sVarDateDashboard", "2016/03/08");
-        setFieldSelectByText(driver, sBP, "asEnumTypeDashboard", "Значення 2 (на дашборді) для Enum");
-        setFieldCheckBox(driver, sBP, "asEnumTypeCheckboxDashboard");
+        DashboardSetFieldInputTypeString(driver, sBP, "sVarStringDashboard", "Бла-бла-бла-бла-бла-бла-бла");
+        DashboardSetFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard", "Бла-бла-бла-бла-бла-бла-бла");
+        DashboardSetFieldInputTypeLong(driver, sBP, "sVarlongDashboard", "1234567890");
+        DashboardSetFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard", "1234567");
+        DashboardSetFieldInputTypeDate(driver, sBP, "sVarDateDashboard", "2016/03/08");
+        DashboardSetFieldInputTypeFile(driver, sBP, "sVarFileDashboard", "src/test/resources/files/test.jpg");
+        pause(3000000);
+//        setFieldSelectByText(driver, sBP, "asEnumTypeDashboard", "Значення 2 (на дашборді) для Enum");
+//        setFieldCheckBox(driver, sBP, "asEnumTypeCheckboxDashboard");
         
-        setTableCellsInputTypeSelect(driver, sBP, "sTable3","sTables3Field10","0", "-0-0");
-        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field20","0", "2");
-        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sTables3Field30","0", "кілограм|кг");
-        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field40","0","12.02020");
-        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field50","0","12.02020");
-        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field60","0","12.02020");
-        clickButton(driver, sBP,"Опрацювати");
+//        setTableCellsInputTypeSelect(driver, sBP, "sTable3","sTables3Field10","0", "-0-0");
+//        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field20","0", "2");
+//        setTableCellsInputTypeEnum(driver, sBP, "sTable3","sTables3Field30","0", "кілограм|кг");
+//        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field40","0","12.02020");
+//        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field50","0","12.02020");
+//        setTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field60","0","12.02020");
+        pause(3000000);
+//        clickButton(driver, sBP,"Опрацювати");
         _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
         

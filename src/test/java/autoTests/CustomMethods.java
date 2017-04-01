@@ -367,7 +367,7 @@ public class CustomMethods extends SetupAndTeardown
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }
-
+    
     public void setFieldSelectByValue(WebDriver driver,String serviceName, String cssSelector, String value) {
         WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
         Select select = new Select(webElement);
@@ -375,14 +375,9 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldAutocomplete(WebDriver driver,String name, String value) {
-        WebElement webElement = driver.findElement(By.name(name));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.click();
-        webElement.sendKeys(value);
-//        driver.findElement(By.name(name)).sendKeys(value);
-        WebElement element = driver.findElement(By.linkText(value));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        driver.findElement(By.name(name)).click();
+        driver.findElement(By.name(name)).sendKeys(value);
+        driver.findElement(By.linkText(value)).click();
     }
 
     public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
@@ -563,5 +558,59 @@ public class CustomMethods extends SetupAndTeardown
                sID_Order+"&bIncludeStartForm=true&bIncludeGroups=true");
    
    }
-    
-}
+   
+   public void DashboardSetFieldInputTypeString(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+//        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+   public void DashboardSetFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector("textarea[name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+   public void DashboardSetFieldInputTypeLong(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+//        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+   public void DashboardSetFieldInputTypeDouble(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+//        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+   public void DashboardSetFieldInputTypeDate(WebDriver driver,String serviceName, String cssSelector, String date){
+        WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+     ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(date);
+    }
+   public void DashboardSetFieldInputTypeFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.xpath("//form[@name='"+cssSelector+"']/button/input"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathFile);
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        } 
+    }
+ }
