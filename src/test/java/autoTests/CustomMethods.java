@@ -296,7 +296,7 @@ public class CustomMethods extends SetupAndTeardown
 		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
 		webElement.click();
 	}
-
+       
 	public void click(WebDriver driver, String serviceName,String cssSelector){
 		WebElement webElement = driver.findElement(By.cssSelector(serviceName + cssSelector));
 		new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
@@ -429,7 +429,7 @@ public class CustomMethods extends SetupAndTeardown
 
     }
      
-    // Methods for filling the table
+    // Methods for filling the table for central
     
     public void setTableCellsInputTypeString(WebDriver driver,String serviceName, String tableName, String cellName, String NameRow, String text){
         WebElement td = driver.findElement(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]"));
@@ -511,8 +511,9 @@ public class CustomMethods extends SetupAndTeardown
           System.out.println("sID_Order= " + sID_Order);
         return sID_Order;
          }
-   
-    public void AuthorizationBySetLoginPassword(WebDriver driver, String serviceName, String loginName, String passwordName) {
+   // Methods for working with dashboards(Region)
+   //
+    public void AuthorizationBySetLoginPassword(WebDriver driver, String serviceName, String loginName, String passwordName) { //Authorization on region(Dashboards)
         String windowHandler = driver.getWindowHandle();
         WebElement elementLogin = driver.findElement(By.name("login"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
@@ -526,77 +527,78 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
 
-    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Order) {
+    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Order) { // поиск ID_Order
         WebElement element = driver.findElement(By.cssSelector("table .find-field-tooltip input"));
         element.click();
         element.clear();
         element.sendKeys(sID_Order);
     }
 
-    public void clickButton(WebDriver driver, String serviceName, String nameButton) {
-        WebElement button = driver.findElement(By.xpath(".//button[contains(text(),'" + nameButton + "')]"));//findElement(By.cssSelector("input[type=\"submit\"]")).click();
+    public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
+        WebElement button = driver.findElement(By.xpath(".//button[contains(text(),'" + nameButton + "')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
 
-    public void findOrderByNumber(WebDriver driver, String serviceName) throws Exception {
+    public void findOrderByNumber(WebDriver driver, String serviceName) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
         WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 
-    public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) {
+    public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) { // навигация по табам navbar в дашборде
         WebElement element = driver.findElement(By.xpath(".//a[@id='"+enumRegionTab+" ']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
     
-   public void getRegionOrderData() throws Exception{
+   public void getRegionOrderData() throws Exception{ // получение данных по заявке с помощью сервиса /wf/service/action/task/getTaskData. Сервис позволяет получить Ассайнутость, значение в том или ином поле, найденность той или иной заявки (например после поиска) и соответствие искомой.
        String sID_Order = getNumbersIdOrder();
        driver.get("https://delta.test.region.igov.org.ua/wf/service/action/task/getTaskData?sID_Order="+
                sID_Order+"&bIncludeStartForm=true&bIncludeGroups=true");
    
    }
    
-   public void DashboardSetFieldInputTypeString(WebDriver driver,String serviceName, String cssSelector, String value){
+   // Methods for filling the fields for central
+   public void SetRegionFieldInputTypeString(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
 //        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
-   public void DashboardSetFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
+   public void SetRegionFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("textarea[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.click();
+//        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
-   public void DashboardSetFieldInputTypeLong(WebDriver driver,String serviceName, String cssSelector, String value){
+   public void SetRegionFieldInputTypeLong(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
 //        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
-   public void DashboardSetFieldInputTypeDouble(WebDriver driver,String serviceName, String cssSelector, String value){
+   public void SetRegionFieldInputTypeDouble(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
 //        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
-   public void DashboardSetFieldInputTypeDate(WebDriver driver,String serviceName, String cssSelector, String date){
+   public void SetRegionFieldInputTypeDate(WebDriver driver,String serviceName, String cssSelector, String date){
         WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
      ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
-        webElement.click();
+//        webElement.click();
         webElement.clear();
         webElement.sendKeys(date);
     }
-   public void DashboardSetFieldInputTypeFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
-        WebElement oWebElement = driver.findElement(By.xpath("//form[@name='"+cssSelector+"']/button/input"));
+   public void SetRegionFieldInputTypeFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
@@ -612,5 +614,63 @@ public class CustomMethods extends SetupAndTeardown
                         e.printStackTrace();
                 }
         } 
+    }
+   public void SetRegionFieldInputTypeEnum(WebDriver driver,String serviceName, String cssSelector, String value){
+   WebElement webEnum = driver.findElement(By.cssSelector("select[name=" + cssSelector + "]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webEnum));
+        webEnum.click();
+        Select select = new Select(webEnum);
+        select.selectByVisibleText(value);
+   }
+   
+   public void SetRegionFieldInputTypeCheckbox(WebDriver driver,String serviceName, String cssSelector){
+   WebElement checkbox = driver.findElement(By.cssSelector("#" + cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(checkbox));
+        checkbox.click();
+        checkbox.click();
+   }
+   // Methods for filling the fields of table for central //._test_autotest_dashboard_--_sTable3_--_COL_sTables3Field1_--_ROW_0 input
+   public void setRegionTableCellsInputTypeString(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+   WebElement td = driver.findElement(By.cssSelector("."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+        td.click();
+        td.clear();
+       td.sendKeys(text);
+   }
+   
+   public void setRegionTableCellsInputTypeEnum(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+   WebElement td = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" select[name='"+cellName+NameRow+"']"));//ng-scope 
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+        td.click();
+        Select select = new Select(td);
+        select.selectByVisibleText(text);
+   }
+   public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile){
+   WebElement oWebElement = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+nameRow+" button[ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"] input")); //.ng-scope._test_autotest_dashboard_--_sTable4_--_COL_sTables4Field2_--_ROW_0 button[ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"] input
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathFile);
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        } 
+   }
+   public void setRegionTableCellsInputTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) {
+
+        WebElement td = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
+        ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
+        td.click();
+        td.clear();
+        td.sendKeys(date);
+
     }
  }
