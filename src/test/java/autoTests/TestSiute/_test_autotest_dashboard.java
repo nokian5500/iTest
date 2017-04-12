@@ -89,59 +89,90 @@ public class _test_autotest_dashboard extends CustomMethods {
         findOrderByNumber(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
-        SetRegionFieldInputTypeString(driver, sBP, "sVarStringDashboard", "Бла-бла-бла-бла-бла-бла-бла");
-        SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard", "Бла-бла-бла-бла-бла-бла-бла");
+        
+        // Опрацювання [Етап I] 
+        SetRegionFieldInputTypeString(driver, sBP, "sVarStringDashboard", "Тип даних string (на дашборді)");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard", "Тип даних textArea  (на дашборді)");
 
         SetRegionFieldInputTypeLong(driver, sBP, "sVarlongDashboard", "1234567890");
-        SetRegionFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard", "1234567");
+        SetRegionFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard", "1234.56789");
 
-        SetRegionFieldInputTypeDate(driver, sBP, "sVarDateDashboard", "2016/03/08");
+        SetRegionFieldInputTypeDate(driver, sBP, "sVarDateDashboard", "2017/03/20");
 
         SetRegionFieldInputTypeFile(driver, sBP, "nVarFileDashboard", "src/test/resources/files/test.jpg");
         SetRegionFieldInputTypeEnum(driver, sBP, "asEnumTypeDashboard", "Значення 2 (на дашборді) для Enum");
 
         SetRegionFieldInputTypeCheckbox(driver, sBP, "asEnumTypeCheckboxDashboard");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "0", "STRING");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "0", "STRING");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "0", "грам подільних ізотопів|г поділ. Ізотоп");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "0", "123456789");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "1324.5");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "13245");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "0", "STRING");
-
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "0", "STRING");
+        
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "0", "Найменування товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "0", "Код товару (тип string)");
+        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "0", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "0", "1234567890");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "1324.50");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "12345.67");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "0", "Додаткове найменування (тип string)");
+        addTableRow(driver, sBP, "sTable3");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "1", "2. Найменування товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "1", "2. Код товару (тип string)");
+        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "1", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "1", "2134567890");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "1", "21324.50");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "1", "212345.67");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "1", "2. Додаткове найменування (тип string)");
+        
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "0", "Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "0", "2017/03/05");
+        addTableRow(driver, sBP, "sTable3");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "1", "2. Назва документа (тип string)");
+        setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "1", "2017/03/05");
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-// Опрацювання в табі "В роботі"
+
+        // Опрацювання в табі "В роботі"
+        
         findOrderByNumber(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
-        SetRegionFieldInputTypeString(driver, sBP, "sVarStringDashboard", "Бла-бла-бла-бла-бла-бла-бла");
-        SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard", "Бла-бла-бла-бла-бла-бла-бла");
+        
+        // Опрацювання [Етап II] 
+        SetRegionFieldInputTypeString(driver, sBP, "sVarStringDashboard2", "Тип даних string (на дашборді)");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard2", "Тип даних textArea  (на дашборді)");
         pause(300000000);
-        SetRegionFieldInputTypeLong(driver, sBP, "sVarlongDashboard", "1234567890");
-        SetRegionFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard", "1234.567");
+        SetRegionFieldInputTypeLong(driver, sBP, "sVarlongDashboard2", "1234567890");
+        SetRegionFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard2", "1234.567");
+        SetRegionFieldInputTypeDate(driver, sBP, "sVarDateDashboard2", "2016/03/08");
 
-        SetRegionFieldInputTypeDate(driver, sBP, "sVarDateDashboard", "2016/03/08");
-
-        SetRegionFieldInputTypeFile(driver, sBP, "nVarFileDashboard", "src/test/resources/files/test.jpg");
-        SetRegionFieldInputTypeEnum(driver, sBP, "asEnumTypeDashboard", "Значення 2 (на дашборді) для Enum");
+        SetRegionFieldInputTypeFile(driver, sBP, "nVarFileDashboard2", "src/test/resources/files/test.jpg");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asEnumTypeDashboard2", "Значення 2 (на дашборді Етап 2) для Enum");
 
         SetRegionFieldInputTypeCheckbox(driver, sBP, "asEnumTypeCheckboxDashboard");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "0", "STRING");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "0", "STRING");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "0", "грам подільних ізотопів|г поділ. Ізотоп");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "0", "123456789");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "13245");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "13245");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "0", "STRING");
+        
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field1", "0", "Найменування товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field2", "0", "Код товару (тип string)");
+        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable5", "sTables5Field3", "0", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field4", "0", "123456789");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field5", "0", "21324.50");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field6", "0", "212345.67");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field7", "0", "Додаткове найменування (тип string)");
+        addTableRow(driver, sBP, "sTable5");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field1", "1", "2. Найменування товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field2", "1", "2. Код товару (тип string)");
+        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable5", "sTables5Field3", "1", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field4", "1", "2134567890");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field5", "1", "21324.50");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field6", "1", "212345.67");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field7", "1", "2. Додаткове найменування (тип string)");
 
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "0", "STRING");
-        setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
-        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "0", "2017/03/05");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable6", "sTables6Field1", "0", "Назва документа (тип string)");
+        setRegionTableCellsInputTypeFile(driver, sBP, "sTable6", "sTables6Field2", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable6", "sTables6Field3", "0", "2017/03/05");
+        addTableRow(driver, sBP, "sTable6");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable6", "sTables6Field1", "1", "2. Назва документа (тип string)");
+        setRegionTableCellsInputTypeFile(driver, sBP, "sTable6", "sTables6Field2", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable6", "sTables6Field3", "1", "2017/03/05");
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
