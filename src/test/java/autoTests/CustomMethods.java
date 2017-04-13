@@ -527,8 +527,11 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
 
-    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Order) { // поиск ID_Order
-        WebElement element = driver.findElement(By.cssSelector("table .find-field-tooltip input"));
+    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+        String sID_Order = getNumbersIdOrder();
+        WebElement element = driver.findElement(By.cssSelector(".navbar-search table .find-field-tooltip input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element)); // 
+//        element.click();
         element.click();
         element.clear();
         element.sendKeys(sID_Order);
