@@ -2,6 +2,9 @@ package autoTests;
 
 
 
+import java.awt.Desktop;
+import java.awt.Desktop.Action;
+import java.io.BufferedReader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
@@ -10,14 +13,20 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.http.client.HttpClient;
 import org.testng.Assert;
 import org.testng.Reporter;
 import ru.stqa.selenium.factory.WebDriverFactory;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URLEncoder;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpDelete;
+import org.openqa.selenium.interactions.Actions;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -314,9 +323,32 @@ public class CustomMethods extends SetupAndTeardown
 		driver.get(url);
 	}
         
-        public void openURLdashboard(WebDriver driver, String url){
-		driver.get(url);
+       public String getURLdashboard(WebDriver driver, String serviceName) {
+
+        String Url = "";
+        if (configVariables.baseUrl.contains("alpha.test.igov.org.ua")) {
+            Url = "https://alpha.test.region.igov.org.ua";
+        } else if (configVariables.baseUrl.contains("beta.test.igov.org.ua")) {
+            Url = "https://beta.test.region.igov.org.ua";
+        } else if (configVariables.baseUrl.contains("beta-old.test.igov.org.ua")) {
+            Url = "https://beta-old.test.region.igov.org.ua";
+        } else if (configVariables.baseUrl.contains("delta.test.igov.org.ua")) {
+            Url = "https://delta.test.region.igov.org.ua";
+        } else {
+            System.out.println("UrlError");
         }
+
+        String dashbordUrl = Url;
+        System.out.println("dashbordUrl: " + dashbordUrl);
+            return dashbordUrl;
+        
+
+    }
+       public void openURLdashboard(WebDriver driver, String serviceName) {
+       String  dashbordUrl = getURLdashboard(driver, serviceName);
+       driver.get(dashbordUrl);
+       }
+        
 
 	public void assertThis(WebDriver driver, WebElement webElement, String textAssert){
 		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOf(webElement));
@@ -527,14 +559,20 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
 
-    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        String sID_Order = getNumbersIdOrder();
-        WebElement element = driver.findElement(By.cssSelector(".navbar-search table .find-field-tooltip input"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element)); // 
-//        element.click();
+    public void setRegionFindOrder(WebDriver driver, String serviceName, String queryText) throws Exception { // поиск ID_Order
+
+        WebElement element = driver.findElement(By.cssSelector(".searched-text.ng-pristine.ng-valid.ng-empty.ng-touched"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        new Actions(driver).moveToElement(element).perform();
+        WebElement element1 = driver.findElement(By.cssSelector("#navbar-main > ul > li.navbar-search"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element1));
+        element.click();
         element.click();
         element.clear();
-        element.sendKeys(sID_Order);
+        element1.click();
+        
+//        element.sendKeys(queryText + Keys.ENTER);
+        element.sendKeys(queryText);
     }
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
@@ -551,8 +589,9 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) { // навигация по табам navbar в дашборде
-        WebElement element = driver.findElement(By.xpath(".//a[@id='"+enumRegionTab+" ']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        WebElement element = driver.findElement(By.xpath(".//a[contains(text(), 'В роботі')]"));
+        new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
         element.click();
     }
     

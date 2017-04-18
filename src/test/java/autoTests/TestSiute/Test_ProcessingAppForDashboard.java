@@ -8,6 +8,7 @@ package autoTests.TestSiute;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 /**
@@ -24,12 +25,15 @@ public class Test_ProcessingAppForDashboard extends CustomMethods  {
         String email = "autotestbeta@gmail.com";
         
         _step("1. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, "https://delta.test.region.igov.org.ua");
+        openURLdashboard(driver, sBP);
         
         _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
 //        dashboardLogin(driver, sBP, "tester");
 //        dashboardPassword(driver, sBP, "tester");
-//        authProcessDashboard(driver, sBP, "tester", "tester");
-        pause(3000);
+        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+        clickButton(driver, sBP, "Увійти");
+//        setRegionTab(driver, sBP, "Документи");
+        setRegionFindOrder(driver, sBP, "214200904");
+        pause(3000000);
 }
 }

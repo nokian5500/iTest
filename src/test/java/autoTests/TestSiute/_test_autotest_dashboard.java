@@ -72,7 +72,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 //        clickButton(driver, sBP, "Замовити послугу");
-
+//        pause(3000000);
         _step("7. Проверка сообщения о успешной отправке");
         o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
                 "Ваше звернення х-хххххххх успішно зареєстровано\n" +
@@ -80,7 +80,7 @@ public class _test_autotest_dashboard extends CustomMethods {
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
         
         _step("8. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, "https://delta.test.region.igov.org.ua");
+        openURLdashboard(driver, sBP);
 
         _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
