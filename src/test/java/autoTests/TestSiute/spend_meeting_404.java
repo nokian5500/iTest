@@ -80,8 +80,35 @@ public class spend_meeting_404 extends CustomMethods {
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
-        _step("8. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
+
+        _step("8. Вход по прямому URL на дашборд");
+        openURLdashboard(driver, sBP);
+
+        _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
+        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+        clickButton(driver, sBP, "Увійти");
+     // Опрацювання в табі "В необроблені"    
+        findOrderByNumber(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
+        clickButton(driver, sBP, "Почати опрацювання задачі");
+        
+        // Опрацювання [Етап I] 
+        SetRegionFieldInputTypeEnum(driver, sBP, "decision_1", "прийняти до розгляду повідомлення");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "comment_1", "коментар 1");
+
+        clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Підтвердити");
+
+        // Опрацювання в табі "В роботі"
+        
+        findOrderByNumber(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
+        clickButton(driver, sBP, "Почати опрацювання задачі");
+
+        // Опрацювання [Етап II] 
+        SetRegionFieldInputTypeEnum(driver, sBP, "decision_2", "повідомлення прийнято до відома");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "comment_2", "коментар 2");
+
     }
     /*
     public void my_test2() throws Exception {
