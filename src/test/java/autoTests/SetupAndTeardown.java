@@ -45,14 +45,14 @@ public class SetupAndTeardown {
                 case "firefox":
                     /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
                     FirefoxProfile profile = new FirefoxProfile();
-                    profile.setEnableNativeEvents(false);
+                    profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
 
                     /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
                     //   ProfilesIni allProfiles = new ProfilesIni();
                     //   FirefoxProfile profile = allProfiles.getProfile("default");
 
-                    profile.setEnableNativeEvents(false);
+                    profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
                     profile.setAssumeUntrustedCertificateIssuer(true);
                     profile.setPreference("javascript.enabled", true);

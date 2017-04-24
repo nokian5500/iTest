@@ -8,6 +8,7 @@ package autoTests.TestSiute;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
@@ -18,7 +19,7 @@ import org.testng.annotations.Test;
 public class Test_ProcessingAppForDashboard extends CustomMethods  {
     //<editor-fold desc="Тестовый пример загрузки файла">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
-    public void Test_test_tables_other_types() throws Exception {
+    public void Test_ProcessingAppForDashboard() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         String sBP = "_test_autotest_dashboard";
@@ -33,7 +34,11 @@ public class Test_ProcessingAppForDashboard extends CustomMethods  {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
 //        setRegionTab(driver, sBP, "Документи");
+        
+        
         setRegionFindOrder(driver, sBP, "214200904");
-        pause(3000000);
+        
+//        clickButton(driver, sBP, "Взяти в роботу");
+//        clickButton(driver, sBP, "Опрацювати");
 }
 }

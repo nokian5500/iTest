@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 public class _test_autotest_dashboard extends CustomMethods {
 //<editor-fold desc="Тестовый пример загрузки файла">
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
-    public void Test_test_tables_other_types() throws Exception {
+    public void Test_test_autotest_dashboard() throws Exception {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         String sBP = "_test_autotest_dashboard";

@@ -4,6 +4,7 @@ package autoTests;
 
 import java.awt.Desktop;
 import java.awt.Desktop.Action;
+import java.awt.Robot;
 import java.io.BufferedReader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -560,19 +561,34 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String queryText) throws Exception { // поиск ID_Order
-
-        WebElement element = driver.findElement(By.cssSelector(".searched-text.ng-pristine.ng-valid.ng-empty.ng-touched"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        new Actions(driver).moveToElement(element).perform();
-        WebElement element1 = driver.findElement(By.cssSelector("#navbar-main > ul > li.navbar-search"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element1));
-        element.click();
-        element.click();
-        element.clear();
-        element1.click();
-        
-//        element.sendKeys(queryText + Keys.ENTER);
-        element.sendKeys(queryText);
+       
+//        Actions actions = new Actions(driver);
+//        WebElement elementSpan = driver.findElement(By.cssSelector(".find-field-tooltip"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementSpan));
+//        elementSpan.click();
+//        elementSpan.sendKeys(" ");
+////        actions.click(elementSpan).build().perform();
+//        elementSpan.click();
+//        WebElement elementSpan = driver.findElement(By.cssSelector(".searched-text + span"));
+//        
+////        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(elementSpan));
+////        String sScript = "$('.searched-text.ng-pristine.ng-valid.ng-empty.ng-touched').setFocus();";
+////        ((JavascriptExecutor) driver).executeScript(sScript, elementInput);
+////        elementInput.click();
+////        elementInput.click();
+//        elementSpan.click();
+//        WebElement elementInput = driver.findElement(By.cssSelector(".searched-text.ng-touched"));
+//        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(elementInput));
+//        elementInput.click();
+//        elementInput.sendKeys(queryText);
+//        elementSpan.click();
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            WebElement element = (WebElement)js.executeScript("jQuery.find('.searched-text.ng-touched');");
+            element.click();
+            element.sendKeys(queryText + Keys.ENTER);
+            
+            
+   
     }
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
