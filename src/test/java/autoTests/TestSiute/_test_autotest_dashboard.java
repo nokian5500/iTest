@@ -131,16 +131,16 @@ public class _test_autotest_dashboard extends CustomMethods {
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
 
-        // Опрацювання в табі "В роботі"
+        // Опрацювання [Етап II]
         
         findOrderByNumber(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
-        // Опрацювання [Етап II] 
+         
         SetRegionFieldInputTypeString(driver, sBP, "sVarStringDashboard2", "Тип даних string (на дашборді)");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextAreaDashboard2", "Тип даних textArea  (на дашборді)");
-        pause(300000000);
+//        pause(300000000);
         SetRegionFieldInputTypeLong(driver, sBP, "sVarlongDashboard2", "1234567890");
         SetRegionFieldInputTypeDouble(driver, sBP, "sVarDoubleDashboard2", "1234.567");
         SetRegionFieldInputTypeDate(driver, sBP, "sVarDateDashboard2", "2016/03/08");

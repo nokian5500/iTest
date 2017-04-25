@@ -538,6 +538,12 @@ public class CustomMethods extends SetupAndTeardown
         td.click();
    }
     
+    public void addRegionsTableRow(WebDriver driver, String serviceName, String tableName) { // нажатие любой кнопки с указанным тескстом на ней
+        WebElement button = driver.findElement(By.cssSelector("ng-form='"+tableName + " input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
+    }
+    
    public String getNumbersIdOrder() throws Exception {
             List<String> ID_Order = configVariables.orderId;
           String sID_Order=ID_Order.get(0);
@@ -561,35 +567,16 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String queryText) throws Exception { // поиск ID_Order
-       
-//        Actions actions = new Actions(driver);
-//        WebElement elementSpan = driver.findElement(By.cssSelector(".find-field-tooltip"));
-//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementSpan));
-//        elementSpan.click();
-//        elementSpan.sendKeys(" ");
-////        actions.click(elementSpan).build().perform();
-//        elementSpan.click();
-//        WebElement elementSpan = driver.findElement(By.cssSelector(".searched-text + span"));
-//        
-////        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(elementSpan));
-////        String sScript = "$('.searched-text.ng-pristine.ng-valid.ng-empty.ng-touched').setFocus();";
-////        ((JavascriptExecutor) driver).executeScript(sScript, elementInput);
-////        elementInput.click();
-////        elementInput.click();
-//        elementSpan.click();
-//        WebElement elementInput = driver.findElement(By.cssSelector(".searched-text.ng-touched"));
-//        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(elementInput));
-//        elementInput.click();
-//        elementInput.sendKeys(queryText);
-//        elementSpan.click();
-            JavascriptExecutor js = (JavascriptExecutor)driver;
-            WebElement element = (WebElement)js.executeScript("jQuery.find('.searched-text.ng-touched');");
-            element.click();
-            element.sendKeys(queryText + Keys.ENTER);
-            
-            
-   
-    }
+
+          WebElement element = driver.findElement(By.cssSelector(".searched-text"));
+//          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+          String str1 = "$('.searched-text').val("+queryText+")";
+          String str2 = "$('.runner-searching-process').click()";
+          JavascriptExecutor js1 = (JavascriptExecutor)driver;
+          js1.executeScript(str1, element);
+          JavascriptExecutor js2 = (JavascriptExecutor)driver;
+          js1.executeScript(str2, element);
+   }
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath(".//button[contains(text(),'" + nameButton + "')]"));
@@ -604,11 +591,24 @@ public class CustomMethods extends SetupAndTeardown
         element.click();
     }
 
-    public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) { // навигация по табам navbar в дашборде
-        WebElement element = driver.findElement(By.xpath(".//a[contains(text(), 'В роботі')]"));
-        new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-        element.click();
+    public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) throws Exception  { // навигация по табам navbar в дашборде
+         pause(5000);   
+        if (enumRegionTab.contains("Необроблені")) {
+            
+          driver.get("https://delta.test.region.igov.org.ua/tasks/unassigned");  
+        } else if (enumRegionTab.contains("В роботі ")){
+          driver.get("https://delta.test.region.igov.org.ua/tasks/selfAssigned");  
+        } else if (enumRegionTab.contains("Документи")){
+          driver.get("https://delta.test.region.igov.org.ua/tasks/documents");  
+        } else if (enumRegionTab.contains("ЕЦП")){
+          driver.get("https://delta.test.region.igov.org.ua/tasks/ecp");  
+        } else if (enumRegionTab.contains("Мій розклад")){
+          driver.get("https://delta.test.region.igov.org.ua/tasks/tickets");  
+        }
+          else if (enumRegionTab.contains("Історія")){
+          driver.get("https://delta.test.region.igov.org.ua/tasks/finished");  
+        }
+        
     }
     
    public void getRegionOrderData() throws Exception{ // получение данных по заявке с помощью сервиса /wf/service/action/task/getTaskData. Сервис позволяет получить Ассайнутость, значение в том или ином поле, найденность той или иной заявки (например после поиска) и соответствие искомой.
@@ -629,7 +629,7 @@ public class CustomMethods extends SetupAndTeardown
    public void SetRegionFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("textarea[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
-//        webElement.click();
+        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }

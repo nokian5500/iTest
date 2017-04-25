@@ -98,12 +98,13 @@ public class spend_meeting_404 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-
+        clickButton(driver, sBP, "Ok");
         // Опрацювання в табі "В роботі"
         
+        setRegionTab(driver, sBP, "В роботі");
         findOrderByNumber(driver, sBP);
-        clickButton(driver, sBP, "Взяти в роботу");
-        clickButton(driver, sBP, "Почати опрацювання задачі");
+        clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Підтвердити");
 
         // Опрацювання [Етап II] 
         SetRegionFieldInputTypeEnum(driver, sBP, "decision_2", "повідомлення прийнято до відома");
