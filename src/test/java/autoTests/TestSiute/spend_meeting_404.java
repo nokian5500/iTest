@@ -70,7 +70,7 @@ public class spend_meeting_404 extends CustomMethods {
         setFieldValue(driver, sBP, "sPlace_of_Work_1", "Місце роботи (навчання) відповідальної особи 1");
         setFieldSelectByText(driver,sBP,"isRepresentCompany_1","Ні");
         setFieldValue(driver, sBP, "sMailClerk", email);
-
+        pause(10000);
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 

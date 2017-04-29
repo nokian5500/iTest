@@ -592,22 +592,30 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) throws Exception  { // навигация по табам navbar в дашборде
-         pause(5000);   
+         pause(5000);
+         WebElement element = driver.findElement(By.cssSelector(".navbar.navbar-default.navbar-static-top.i-gov-navbar"));
+         JavascriptExecutor js = (JavascriptExecutor)driver;
         if (enumRegionTab.contains("Необроблені")) {
+          js.executeScript("$(\"#unassigned\").click();", element);  
             
-          driver.get("https://delta.test.region.igov.org.ua/tasks/unassigned");  
         } else if (enumRegionTab.contains("В роботі ")){
-          driver.get("https://delta.test.region.igov.org.ua/tasks/selfAssigned");  
+          js.executeScript("$(\"#selfAssigned\").click();", element); 
+//            driver.get("https://delta.test.region.igov.org.ua/tasks/selfAssigned");  
         } else if (enumRegionTab.contains("Документи")){
-          driver.get("https://delta.test.region.igov.org.ua/tasks/documents");  
+            js.executeScript("$(\"#documents\").click();", element); 
+//          driver.get("https://delta.test.region.igov.org.ua/tasks/documents");  
         } else if (enumRegionTab.contains("ЕЦП")){
-          driver.get("https://delta.test.region.igov.org.ua/tasks/ecp");  
+            js.executeScript("$(\"#ecp\").click();", element); 
+//          driver.get("https://delta.test.region.igov.org.ua/tasks/ecp");  
         } else if (enumRegionTab.contains("Мій розклад")){
-          driver.get("https://delta.test.region.igov.org.ua/tasks/tickets");  
+            js.executeScript("$(\"#tickets\").click();", element); 
+//          driver.get("https://delta.test.region.igov.org.ua/tasks/tickets");  
         }
           else if (enumRegionTab.contains("Історія")){
-          driver.get("https://delta.test.region.igov.org.ua/tasks/finished");  
+              js.executeScript("$(\"#finished\").click();", element); 
+//          driver.get("https://delta.test.region.igov.org.ua/tasks/finished");  
         }
+        
         
     }
     

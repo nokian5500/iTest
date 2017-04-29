@@ -34,17 +34,17 @@ public class Test_ProcessingAppForDashboard extends CustomMethods  {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
         pause(3000);
-        setRegionFindOrder(driver, sBP, "202103569");
+//        setRegionFindOrder(driver, sBP, "202103569");
            pause(9000);
-//        setRegionTab(driver, sBP, "Документи");
-//        
-//        setRegionTab(driver, sBP, "Мій розклад");
-//        
-//        
-//        setRegionTab(driver, sBP, "Історія");
-//        
-//        
-//        setRegionTab(driver, sBP, "Документи");
+        setRegionTab(driver, sBP, "Документи");
+        
+        setRegionTab(driver, sBP, "Мій розклад");
+        
+        
+        setRegionTab(driver, sBP, "Історія");
+        
+        
+        setRegionTab(driver, sBP, "Документи");
         
 //        setRegionFindOrder(driver, sBP, "214200904");
         
