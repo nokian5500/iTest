@@ -566,11 +566,22 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
 
-    public void setRegionFindOrder(WebDriver driver, String serviceName, String queryText) throws Exception { // поиск ID_Order
+    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
 
           WebElement element = driver.findElement(By.cssSelector(".searched-text"));
 //          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-          String str1 = "$('.searched-text').val("+queryText+")";
+          String str1 = "$('.searched-text').val("+sID_Oreder+")";
+          String str2 = "$('.runner-searching-process').click()";
+          JavascriptExecutor js1 = (JavascriptExecutor)driver;
+          js1.executeScript(str1, element);
+          JavascriptExecutor js2 = (JavascriptExecutor)driver;
+          js1.executeScript(str2, element);
+   }
+    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+           String sID_Order = getNumbersIdOrder();
+          WebElement element = driver.findElement(By.cssSelector(".searched-text"));
+//          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+          String str1 = "$('.searched-text').val("+sID_Order+")";
           String str2 = "$('.runner-searching-process').click()";
           JavascriptExecutor js1 = (JavascriptExecutor)driver;
           js1.executeScript(str1, element);
@@ -584,8 +595,15 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
 
-    public void findOrderByNumber(WebDriver driver, String serviceName) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
+    public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
+        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+    }
+    
+    public void setRegionTask(WebDriver driver, String serviceName, String sID_Order) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
+//        String sID_Order = getNumbersIdOrder();
         WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
         element.click();

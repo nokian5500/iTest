@@ -86,7 +86,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
      // Опрацювання в табі "В необроблені"    
-        findOrderByNumber(driver, sBP);
+        setRegionTask(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
@@ -133,7 +133,7 @@ public class _test_autotest_dashboard extends CustomMethods {
 
         // Опрацювання [Етап II]
         
-        findOrderByNumber(driver, sBP);
+        setRegionTask(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         

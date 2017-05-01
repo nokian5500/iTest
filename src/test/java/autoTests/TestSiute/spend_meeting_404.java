@@ -88,7 +88,7 @@ public class spend_meeting_404 extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
      // Опрацювання в табі "В необроблені"    
-        findOrderByNumber(driver, sBP);
+        setRegionTask(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
@@ -102,7 +102,7 @@ public class spend_meeting_404 extends CustomMethods {
         // Опрацювання в табі "В роботі"
         
         setRegionTab(driver, sBP, "В роботі");
-        findOrderByNumber(driver, sBP);
+        setRegionTask(driver, sBP);
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
 
