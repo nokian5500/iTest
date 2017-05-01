@@ -566,23 +566,11 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
 
-    public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Order) throws Exception { // поиск ID_Order
+    public void setRegionFindOrder(WebDriver driver, String serviceName, String queryText) throws Exception { // поиск ID_Order
 
           WebElement element = driver.findElement(By.cssSelector(".searched-text"));
 //          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-          String str1 = "$('.searched-text').val("+sID_Order+")";
-          String str2 = "$('.runner-searching-process').click()";
-          JavascriptExecutor js1 = (JavascriptExecutor)driver;
-          js1.executeScript(str1, element);
-          JavascriptExecutor js2 = (JavascriptExecutor)driver;
-          js1.executeScript(str2, element);
-   }
-    
-    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-          String sID_Order = getNumbersIdOrder();
-          WebElement element = driver.findElement(By.cssSelector(".searched-text"));
-//          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-          String str1 = "$('.searched-text').val("+sID_Order+")";
+          String str1 = "$('.searched-text').val("+queryText+")";
           String str2 = "$('.runner-searching-process').click()";
           JavascriptExecutor js1 = (JavascriptExecutor)driver;
           js1.executeScript(str1, element);
@@ -603,11 +591,6 @@ public class CustomMethods extends SetupAndTeardown
         element.click();
     }
 
-    public void findOrderByNumber(WebDriver driver, String serviceName, String sID_Order) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
-        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
-    }
     public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) throws Exception  { // навигация по табам navbar в дашборде
          pause(5000);
          WebElement element = driver.findElement(By.cssSelector(".navbar.navbar-default.navbar-static-top.i-gov-navbar"));
@@ -636,8 +619,8 @@ public class CustomMethods extends SetupAndTeardown
         
     }
     
-   public void getRegionOrderData(String sID_Order) throws Exception{ // получение данных по заявке с помощью сервиса /wf/service/action/task/getTaskData. Сервис позволяет получить Ассайнутость, значение в том или ином поле, найденность той или иной заявки (например после поиска) и соответствие искомой.
-//       String sID_Order = getNumbersIdOrder();
+   public void getRegionOrderData() throws Exception{ // получение данных по заявке с помощью сервиса /wf/service/action/task/getTaskData. Сервис позволяет получить Ассайнутость, значение в том или ином поле, найденность той или иной заявки (например после поиска) и соответствие искомой.
+       String sID_Order = getNumbersIdOrder();
        driver.get("https://delta.test.region.igov.org.ua/wf/service/action/task/getTaskData?sID_Order="+
                sID_Order+"&bIncludeStartForm=true&bIncludeGroups=true");
    
@@ -756,5 +739,4 @@ public class CustomMethods extends SetupAndTeardown
         td.sendKeys(date);
 
     }
-   
  }
