@@ -538,8 +538,8 @@ public class CustomMethods extends SetupAndTeardown
         td.click();
    }
     
-    public void addRegionsTableRow(WebDriver driver, String serviceName, String tableName) { // нажатие любой кнопки с указанным тескстом на ней
-        WebElement button = driver.findElement(By.cssSelector("ng-form='"+tableName + " input"));
+    public void addRegionsTableRow(WebDriver driver, String serviceName, String tableName) { 
+        WebElement button = driver.findElement(By.cssSelector(".add-row-button."+tableName+"_add_row_button"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
@@ -636,7 +636,7 @@ public class CustomMethods extends SetupAndTeardown
     }
    public void SetRegionFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("textarea[name='"+cssSelector+"']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
         webElement.sendKeys(value);

@@ -108,10 +108,10 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "0", "Код товару (тип string)");
         setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "0", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "0", "1234567890");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "1324.50");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "1324,54560");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "12345");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "0", "Додаткове найменування (тип string)");
-        addTableRow(driver, sBP, "sTable3");
+        addRegionsTableRow(driver, sBP, "sTable3");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "1", "2. Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "1", "2. Код товару (тип string)");
         setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "1", "квадратний метр|кв.м");
@@ -123,7 +123,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "0", "Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "0", "2017/03/05");
-        addTableRow(driver, sBP, "sTable3");
+        addRegionsTableRow(driver, sBP, "sTable4");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "1", "2. Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "1", "2017/03/05");
@@ -157,7 +157,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field5", "0", "21324.50");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field6", "0", "212345.67");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field7", "0", "Додаткове найменування (тип string)");
-        addTableRow(driver, sBP, "sTable5");
+        addRegionsTableRow(driver, sBP, "sTable5");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field1", "1", "2. Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field2", "1", "2. Код товару (тип string)");
         setRegionTableCellsInputTypeEnum(driver, sBP, "sTable5", "sTables5Field3", "1", "квадратний метр|кв.м");
@@ -169,7 +169,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTable6", "sTables6Field1", "0", "Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable6", "sTables6Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable6", "sTables6Field3", "0", "2017/03/05");
-        addTableRow(driver, sBP, "sTable6");
+        addRegionsTableRow(driver, sBP, "sTable6");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable6", "sTables6Field1", "1", "2. Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable6", "sTables6Field2", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable6", "sTables6Field3", "1", "2017/03/05");
