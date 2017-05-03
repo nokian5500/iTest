@@ -70,7 +70,7 @@ public class spend_meeting_404 extends CustomMethods {
         setFieldValue(driver, sBP, "sPlace_of_Work_1", "Місце роботи (навчання) відповідальної особи 1");
         setFieldSelectByText(driver,sBP,"isRepresentCompany_1","Ні");
         setFieldValue(driver, sBP, "sMailClerk", email);
-        pause(10000);
+//        pause(10000);
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 
@@ -88,7 +88,7 @@ public class spend_meeting_404 extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
      // Опрацювання в табі "В необроблені"    
-        findOrderByNumber(driver, sBP);
+        setRegionTask(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
@@ -100,15 +100,20 @@ public class spend_meeting_404 extends CustomMethods {
         clickButton(driver, sBP, "Підтвердити");
         clickButton(driver, sBP, "Ok");
         // Опрацювання в табі "В роботі"
-        
-        setRegionTab(driver, sBP, "В роботі");
-        findOrderByNumber(driver, sBP);
+        setRegionFindOrder(driver, email);
+//        setRegionTab(driver, sBP, "В роботі");
+//        setRegionTask(driver, sBP);
+       
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
 
-        // Опрацювання [Етап II] 
-        SetRegionFieldInputTypeEnum(driver, sBP, "decision_2", "повідомлення прийнято до відома");
-        SetRegionFieldInputTypeTextArea(driver, sBP, "comment_2", "коментар 2");
+        // Опрацювання [Етап II]
+        setRegionFindOrder(driver, email);
+        clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Підтвердити");
+//        
+//        SetRegionFieldInputTypeEnum(driver, sBP, "decision_2", "повідомлення прийнято до відома");
+//        SetRegionFieldInputTypeTextArea(driver, sBP, "comment_2", "коментар 2");
 
     }
     /*
