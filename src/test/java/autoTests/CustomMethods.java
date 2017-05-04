@@ -669,7 +669,7 @@ public class CustomMethods extends SetupAndTeardown
    public void SetRegionFieldInputTypeTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("textarea[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.click();
+//        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
@@ -697,6 +697,7 @@ public class CustomMethods extends SetupAndTeardown
     }
    public void SetRegionFieldInputTypeFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
         WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(oWebElement));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
@@ -705,13 +706,13 @@ public class CustomMethods extends SetupAndTeardown
 
         // Wait attach upload
         //TODO: add counter condition to avoid infinite loop
-        while (!oWebElement.isEnabled()) {
-                try {
-                        Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
-        } 
+//        while (!oWebElement.isEnabled()) {
+//                try {
+//                        Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                }
+//        } 
     }
    public void SetFieldInputECPFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
         WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));

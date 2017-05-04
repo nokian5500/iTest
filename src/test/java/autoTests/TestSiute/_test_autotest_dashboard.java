@@ -112,8 +112,8 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "12345");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field7", "0", "Додаткове найменування (тип string)");
         addRegionsTableRow(driver, sBP, "sTable3");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "1", "2. Найменування товару (тип string)");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "1", "2. Код товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "1", "Найменування товару (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "1", "Код товару (тип string)");
         setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "1", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "1", "2134567890");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "1", "21324.50");
@@ -124,7 +124,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "0", "2017/03/05");
         addRegionsTableRow(driver, sBP, "sTable4");
-        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "1", "2. Назва документа (тип string)");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable4", "sTables4Field1", "1", "Назва документа (тип string)");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable4", "sTables4Field2", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable4", "sTables4Field3", "1", "2017/03/05");
 
@@ -133,7 +133,7 @@ public class _test_autotest_dashboard extends CustomMethods {
 
         // Опрацювання [Етап II]
         
-        setRegionTask(driver, sBP);
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
