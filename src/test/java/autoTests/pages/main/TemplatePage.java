@@ -78,9 +78,30 @@ public class TemplatePage {
 
 
     /**
-     * ********************** Метод авторизации *************************
+     * ********************** Методы авторизации *************************
      */
     public void mokAuthorization() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
+        //выбираем Off AuthMock/BankID
+        if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
+            cm.click(driver, buttonAuthMock);
+        }
+            cm.click(driver, buttonBankID);
+            cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
+           
+    }
+    
+    public void testAuthorization() {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
+        cm.click(driver, buttonAuthMock);
+        cm.click(driver, buttonBankID);
+        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
+//        cm.click(driver, buttonECP);
+        
+           
+    }
+    
+    public void testPriva24Authorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         //выбираем Off AuthMock/BankID
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {

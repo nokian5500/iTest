@@ -565,6 +565,20 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.clear();
         elementPassword.sendKeys(passwordName);
     }
+    
+    public void ecpAuthorization(WebDriver driver, String serviceName, String loginName, String passwordName) { //Authorization on region(Dashboards)
+        String windowHandler = driver.getWindowHandle();
+        WebElement elementLogin = driver.findElement(By.name("login"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
+        elementLogin.click();
+        elementLogin.clear();
+        elementLogin.sendKeys(loginName);
+        WebElement elementPassword = driver.findElement(By.name("password"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
+        elementPassword.click();
+        elementPassword.clear();
+        elementPassword.sendKeys(passwordName);
+    }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
 
@@ -682,6 +696,24 @@ public class CustomMethods extends SetupAndTeardown
         webElement.sendKeys(date);
     }
    public void SetRegionFieldInputTypeFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
+        WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathFile);
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        } 
+    }
+   public void SetFieldInputECPFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
         WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
