@@ -91,12 +91,13 @@ public class TemplatePage {
            
     }
     
-    public void testAuthorization() {
+    public void ECPAuthorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
-        cm.click(driver, buttonAuthMock);
+//        cm.click(driver, buttonAuthMock);
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-//        cm.click(driver, buttonECP);
+        cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
+        cm.click(driver, driver.findElement(By.cssSelector("#selectDir")));
         
            
     }

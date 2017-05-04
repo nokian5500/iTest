@@ -22,12 +22,12 @@ public class Test_ecp extends CustomMethods {
         String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
-        openURLservice(driver, CV.baseUrl + "/service/1583/general");
+        openURLservice(driver, CV.baseUrl + "/service/87/general");
         
         _step("3. Выбор области/города");
-        o.selectRegion("Дніпропетровська");
+        o.selectRegion("Донецька");
         
         _step("4. Авторизация Off AuthMock/BankID");
-        o.mokAuthorization();
+        o.ECPAuthorization();
     }
 }
