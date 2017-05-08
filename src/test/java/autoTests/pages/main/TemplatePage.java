@@ -87,7 +87,7 @@ public class TemplatePage {
 
     }
 
-    public void ECPAuthorization() {
+    public void ecpAuthorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
 //        cm.click(driver, buttonAuthMock);
         cm.click(driver, buttonBankID);
@@ -99,7 +99,7 @@ public class TemplatePage {
 
     }
 
-    public void testPriva24Authorization() {
+    public void testPrivat24Authorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
