@@ -1,6 +1,5 @@
 package autoTests.pages.main;
 
-
 import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
 import org.openqa.selenium.By;
@@ -21,6 +20,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertEquals;
 
 public class TemplatePage {
+
     WebDriver driver;
 
     public TemplatePage(WebDriver driver) {
@@ -32,10 +32,8 @@ public class TemplatePage {
 
     /**
      * *************************************
-     * Locators
-     * **************************************************************
+     * Locators **************************************************************
      */
-
     @FindBy(xpath = "//div[@class='service-name ng-binding']")
     public WebElement usluga;
 
@@ -47,7 +45,7 @@ public class TemplatePage {
 
     @FindBy(xpath = ".//*[@id='city']")
     public WebElement openCityList;
-    
+
     @FindBy(xpath = ".//*[@id='bank']")
     public WebElement openBankList;
 
@@ -59,10 +57,10 @@ public class TemplatePage {
 
     @FindBy(xpath = "//button[@ng-click='bankIdClick()']")
     public WebElement buttonBankID;
-    
+
     @FindBy(xpath = "//a[@class='ng-binding']")
     public WebElement bankid_bank_pb;
-    
+
     @FindBy(xpath = "//a[@ng-click='logout()']")
     public WebElement buttonLogOut;
 
@@ -75,8 +73,6 @@ public class TemplatePage {
     @FindBy(xpath = "//a[@class='ng-binding']")
     public WebElement orderID;
 
-
-
     /**
      * ********************** Методы авторизации *************************
      */
@@ -86,42 +82,70 @@ public class TemplatePage {
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
             cm.click(driver, buttonAuthMock);
         }
-            cm.click(driver, buttonBankID);
-            cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-           
+        cm.click(driver, buttonBankID);
+        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
+
     }
-    
+
     public void ECPAuthorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
 //        cm.click(driver, buttonAuthMock);
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
         cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
-        cm.click(driver, driver.findElement(By.cssSelector("#selectDir")));
-        
-           
+        // находим элемент <input type="file">
+        WebElement element = driver.findElement(By.cssSelector(".filePath"));
+        element.sendKeys("src/test/resources/files/Key-6.dat");
+
     }
-    
+
     public void testPriva24Authorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
-        //выбираем Off AuthMock/BankID
-        if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
-            cm.click(driver, buttonAuthMock);
-        }
-            cm.click(driver, buttonBankID);
-            cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-           
+        cm.click(driver, buttonBankID);
+        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
+        cm.clickXpath(driver, ".//*[@id='container']/div/div[2]/div[1]/ul/li[1]/a/span[2]");
+        WebElement privat24Login = driver.findElement(By.xpath(".//*[@id='loginLikePhone']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(privat24Login));
+        privat24Login.clear();
+        privat24Login.sendKeys("+380102030405");
+        WebElement privat24password = driver.findElement(By.xpath(".//*[@id='passwordLikePassword']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(privat24password));
+        privat24password.sendKeys("value");
+        WebElement privat24button = driver.findElement(By.xpath(".//*[@id='signInButton']"));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(privat24button));
+        privat24button.click();
+        cm.pause(3000);
+        //.//*[@id='third-section']
+        WebElement firstSection = driver.findElement(By.xpath(".//*[@id='first-section']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(firstSection));
+        firstSection.clear();
+        firstSection.sendKeys("12");
+        WebElement secondSection = driver.findElement(By.xpath(".//*[@id='second-section']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(secondSection));
+        secondSection.clear();
+        secondSection.sendKeys("34");
+        WebElement thirdSection = driver.findElement(By.xpath(".//*[@id='third-section']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(thirdSection));
+        thirdSection.clear();
+        thirdSection.sendKeys("56");
+        //.//*[@id='confirmButton']
+        WebElement confirmButton = driver.findElement(By.xpath(".//*[@id='confirmButton']"));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
+        confirmButton.click();
+        cm.pause(3000);
     }
 //     Method for selection of Bankid_bank
-    public void selectBank(String bank) { 
+
+    public void selectBank(String bank) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openBankList));
         openBankList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + bank + "')]");
     }
+
     // Method for selection of Region
     public void selectRegion(String region) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openOblList));
-        openOblList.click(); 
+        openOblList.click();
         cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
     }
 
@@ -133,20 +157,19 @@ public class TemplatePage {
     }
 
     public void checkMessageSuccess(String message) throws Exception {
-        configVariables.orderId.add(orderID.getText().substring(2,orderID.getText().length()));
+        configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
         System.out.println(configVariables.orderId);
 
-    	String textForAssert = cm.getText(driver, resultMsgText.get(0));
-    	String firstPart = textForAssert.substring(0, 46);
-    	String secondPart;
-    	if (textForAssert.substring(57, 58).equals(" ")) {
-    		secondPart = textForAssert.substring(58, textForAssert.length());
-    	}
-    	else {
-    		secondPart = textForAssert.substring(59, textForAssert.length());
-    	}
-    	Assert.assertEquals(firstPart,message.substring(0, 46));
-       	Assert.assertEquals(secondPart,message.substring(58, message.length()));
+        String textForAssert = cm.getText(driver, resultMsgText.get(0));
+        String firstPart = textForAssert.substring(0, 46);
+        String secondPart;
+        if (textForAssert.substring(57, 58).equals(" ")) {
+            secondPart = textForAssert.substring(58, textForAssert.length());
+        } else {
+            secondPart = textForAssert.substring(59, textForAssert.length());
+        }
+        Assert.assertEquals(firstPart, message.substring(0, 46));
+        Assert.assertEquals(secondPart, message.substring(58, message.length()));
     }
 
     // Method
@@ -155,5 +178,4 @@ public class TemplatePage {
         driver.findElement(By.name(name)).sendKeys(value);
         driver.findElement(By.linkText(value)).click();
     }
-  }
-
+}

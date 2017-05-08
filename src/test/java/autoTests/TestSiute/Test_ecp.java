@@ -28,6 +28,6 @@ public class Test_ecp extends CustomMethods {
         o.selectRegion("Донецька");
         
         _step("4. Авторизация Off AuthMock/BankID");
-        o.ECPAuthorization();
+        o.testPriva24Authorization();
     }
 }
