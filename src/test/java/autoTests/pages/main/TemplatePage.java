@@ -11,6 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import autoTests.SetupAndTeardown;
 
 import java.util.List;
 import org.openqa.selenium.NoSuchElementException;
@@ -99,7 +100,7 @@ public class TemplatePage {
 
     }
 
-    public void testPrivat24Authorization() {
+    public void testPrivat24Authorization(String URLservice) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
@@ -133,6 +134,7 @@ public class TemplatePage {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
         confirmButton.click();
         cm.pause(3000);
+        cm.openURLservice(driver, configVariables.baseUrl + URLservice);
     }
 //     Method for selection of Bankid_bank
 
