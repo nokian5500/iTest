@@ -81,8 +81,42 @@ public class dnepr_dms_89 extends CustomMethods {
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
-        _step("8. Нажать кнопку Выйти");
+
+        _step("8. Вход по прямому URL на дашборд");
+        openURLdashboard(driver, sBP);
+
+        _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
+        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+        clickButton(driver, sBP, "Увійти");
+
+        // Опрацювання в табі "В необроблені"    
+
+        setRegionTask(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
+        clickButton(driver, sBP, "Почати опрацювання задачі");
+        
+        // Опрацювання [Етап I] 
+
+        SetRegionFieldInputTypeEnum(driver, sBP, "asDecision", "Призначити зустріч у відділенні");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "sDecisionComment", "Коментар до рішення");
+
+
+        clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Підтвердити");
+
+        // Опрацювання [Етап II]
+
+        setRegionFindOrder(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
+        clickButton(driver, sBP, "Почати опрацювання задачі");
+
+        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Громадянин зареєстрований");
+
+        clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Підтвердити");
+        _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
-    }
+        
+     }
     //</editor-fold>
 }
