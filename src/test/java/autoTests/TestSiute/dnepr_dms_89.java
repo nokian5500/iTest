@@ -91,7 +91,7 @@ public class dnepr_dms_89 extends CustomMethods {
 
         // Опрацювання в табі "В необроблені"    
 
-        setRegionTask(driver, sBP);
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         
@@ -103,6 +103,7 @@ public class dnepr_dms_89 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
+        clickButton(driver, sBP, "Ok");
 
         // Опрацювання [Етап II]
 
@@ -114,8 +115,9 @@ public class dnepr_dms_89 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
+        clickButton(driver, sBP, "Ok");
         _step("10. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
+//        click(driver, o.buttonLogOut);
         
      }
     //</editor-fold>
