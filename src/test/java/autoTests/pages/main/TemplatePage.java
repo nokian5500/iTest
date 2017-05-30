@@ -100,7 +100,7 @@ public class TemplatePage {
 
     }
 
-    public void testPrivat24Authorization(String URLservice) {
+    public void testPrivat24Authorization()  {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
@@ -115,7 +115,8 @@ public class TemplatePage {
         WebElement privat24button = driver.findElement(By.xpath(".//*[@id='signInButton']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(privat24button));
         privat24button.click();
-        cm.pause(3000);
+        new WebDriverWait(driver, 10);
+       
         //.//*[@id='third-section']
         WebElement firstSection = driver.findElement(By.xpath(".//*[@id='first-section']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(firstSection));
@@ -133,8 +134,9 @@ public class TemplatePage {
         WebElement confirmButton = driver.findElement(By.xpath(".//*[@id='confirmButton']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
         confirmButton.click();
-        cm.pause(3000);
-        cm.openURLservice(driver, configVariables.baseUrl + URLservice);
+        
+        
+       
     }
 //     Method for selection of Bankid_bank
 
