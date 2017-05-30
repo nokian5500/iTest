@@ -363,6 +363,20 @@ public class CustomMethods extends SetupAndTeardown
         webElement.clear();
         webElement.sendKeys(value);
     }
+    public void setEmail(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+cssSelector+"']/input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+    public void setFieldfieldPhone(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+cssSelector+"']/div/input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
     public void setFieldFile(WebDriver driver,String serviceName, String cssSelector, String sPathFile){
         WebElement oWebElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector+" input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
@@ -397,6 +411,11 @@ public class CustomMethods extends SetupAndTeardown
 
     public void setFieldSelectByText(WebDriver driver,String serviceName, String cssSelector, String text) {
         WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
+        Select select = new Select(webElement);
+        select.selectByVisibleText(text);
+    }
+    public void setFieldSelectByTextNew(WebDriver driver,String serviceName, String cssSelector, String text) {
+        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+serviceName+"']"));
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }
