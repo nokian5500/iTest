@@ -36,6 +36,7 @@ public class Test_ecp extends CustomMethods {
         
          _step("5. Отправка формы");
         clickButton(driver, sBP, "Замовити послугу");
+        clickButtonEcp();
 
 //        _step("6. Проверка сообщения о успешной отправке");
 //        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +

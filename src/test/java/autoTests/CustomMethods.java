@@ -810,4 +810,9 @@ public class CustomMethods extends SetupAndTeardown
         td.sendKeys(date);
 
     }
+   public void clickButtonEcp(){
+       WebElement element = driver.findElement(By.xpath("//button[contains(@onclick,'startClientSign()')]"));
+       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+       element.sendKeys("src/test/resources/files/Key-6.dat");
+   }
  }
