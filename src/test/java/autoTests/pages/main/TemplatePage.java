@@ -95,12 +95,13 @@ public class TemplatePage {
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
         cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
         // находим элемент <input type="file">
-        WebElement element = driver.findElement(By.cssSelector(".filePath"));
+        WebElement element = driver.findElement(By.xpath("//button[contains(@onclick,'startClientSign()')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
         element.sendKeys("src/test/resources/files/Key-6.dat");
-
+        
     }
 
-    public void testPrivat24Authorization()  {
+    public void testPrivat24Authorization() {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
@@ -116,7 +117,7 @@ public class TemplatePage {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(privat24button));
         privat24button.click();
         new WebDriverWait(driver, 10);
-       
+
         //.//*[@id='third-section']
         WebElement firstSection = driver.findElement(By.xpath(".//*[@id='first-section']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(firstSection));
@@ -135,8 +136,6 @@ public class TemplatePage {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
         confirmButton.click();
         
-        
-       
     }
 //     Method for selection of Bankid_bank
 

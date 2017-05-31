@@ -364,14 +364,14 @@ public class CustomMethods extends SetupAndTeardown
         webElement.sendKeys(value);
     }
     public void setEmail(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+cssSelector+"']/input"));
+        WebElement webElement = driver.findElement(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-required."+serviceName+"_--_"+cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
     public void setFieldfieldPhone(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+cssSelector+"']/div/input"));
+        WebElement webElement = driver.findElement(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-tel.ng-valid-required."+serviceName+"_--_"+cssSelector));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
@@ -415,7 +415,8 @@ public class CustomMethods extends SetupAndTeardown
         select.selectByVisibleText(text);
     }
     public void setFieldSelectByTextNew(WebDriver driver,String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.xpath(".//*[@id='"+serviceName+"']"));
+        WebElement webElement = driver.findElement(By.xpath("//select[@name='"+cssSelector+"']"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }

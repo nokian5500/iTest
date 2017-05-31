@@ -37,27 +37,46 @@ public class SetupAndTeardown {
 
     @BeforeMethod(alwaysRun = true)
     public void SetUp() throws IOException {
+        //Save the path of the XPI files as per your saved location
+        String cryptopluginPath = "src/test/resources/files/cryptoplugin_ext_id@privatbank.ua.xpi";
+//        FirefoxProfile profile = new FirefoxProfile();
+//        profile.addExtension(new File(cryptopluginPath));
+//        profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.currentVersion", "9.9.9");
+//        WebDriver driver = new FirefoxDriver(profile);
         if (null == driver) {
 
-            /********* Для локального тестирования  установить  switch ("chrome")  для jenkins switch ("firefox") ***********/
+            /**
+             * ******* Для локального тестирования установить switch ("chrome")
+             * для jenkins switch ("firefox") **********
+             */
             switch ("firefox") {
 
                 case "firefox":
-                    /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
+                    /**
+                     * ******* Закоментить для для запуска на своем профиле и
+                     * откоментить для запуска на дефолтном **********
+                     */
+
                     FirefoxProfile profile = new FirefoxProfile();
+//                    profile.addExtension(new File(cryptopluginPath));
+                    // Pass the XPIs path to the profile
+//                    profile.addExtension(new File(cryptopluginPath));
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
 
-                    /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
+                    /**
+                     * ******* Раскомментить для запуска на своем профиле и
+                     * закоментить для дефолтного **********
+                     */
                     //   ProfilesIni allProfiles = new ProfilesIni();
                     //   FirefoxProfile profile = allProfiles.getProfile("default");
-
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
                     profile.setAssumeUntrustedCertificateIssuer(true);
                     profile.setPreference("javascript.enabled", true);
                     profile.setPreference("geo.enabled", false);
-
+                    profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.ua.currentVersion", "999.999.999");
+                    
                     capabilities = DesiredCapabilities.firefox();
                     capabilities.setCapability(FirefoxDriver.PROFILE, profile);
                     capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
@@ -65,24 +84,26 @@ public class SetupAndTeardown {
                     System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
                     driver = WebDriverFactory.getDriver(capabilities);
 
-                   /********* Для локального тестирования ***********/
+                    /**
+                     * ******* Для локального тестирования **********
+                     */
 //                  case "chrome":
 //                    System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\files\\chromedriver.exe");
-  //                  capabilities = DesiredCapabilities.chrome();
-    //                options = new ChromeOptions();
-      //              System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
-
-        //            break;
-          //      default:
+                    //                  capabilities = DesiredCapabilities.chrome();
+                    //                options = new ChromeOptions();
+                    //              System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
+                    //            break;
+                    //      default:
                     this.driver = new FirefoxDriver();
                     System.out.println("Tests will be run (or rerun) in Firefox...");
                     break;
             }
+            
             driver = WebDriverFactory.getDriver(capabilities);
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
-           
+
         }
     }
 
@@ -97,41 +118,41 @@ public class SetupAndTeardown {
         boolean success = (new File("TestReport/html/Screens/")).mkdirs();
 
         Calendar calendar = new CustomMethods().getCurrentCalendar();
-        String SuccsessLogMessage =
-                "The test - \"" +
-                        result.getMethod().getMethodName().toString() +
-                        "\" was successfully ended" +
-                        "(" +
-                        calendar.get(Calendar.DATE) +
-                        "." +
-                        (calendar.get(Calendar.MONTH) + 1) +
-                        "." +
-                        calendar.get(Calendar.YEAR) +
-                        " " +
-                        calendar.get(Calendar.HOUR_OF_DAY) +
-                        ":" +
-                        calendar.get(Calendar.MINUTE) +
-                        ":" +
-                        calendar.get(Calendar.SECOND) +
-                        ")";
+        String SuccsessLogMessage
+                = "The test - \""
+                + result.getMethod().getMethodName().toString()
+                + "\" was successfully ended"
+                + "("
+                + calendar.get(Calendar.DATE)
+                + "."
+                + (calendar.get(Calendar.MONTH) + 1)
+                + "."
+                + calendar.get(Calendar.YEAR)
+                + " "
+                + calendar.get(Calendar.HOUR_OF_DAY)
+                + ":"
+                + calendar.get(Calendar.MINUTE)
+                + ":"
+                + calendar.get(Calendar.SECOND)
+                + ")";
 
-        String ErrorLogMessage =
-                "The test - \"" +
-                        result.getMethod().getMethodName().toString() +
-                        "\" was failed!" +
-                        "(" +
-                        calendar.get(Calendar.DATE) +
-                        "." +
-                        (calendar.get(Calendar.MONTH) + 1) +
-                        "." +
-                        calendar.get(Calendar.YEAR) +
-                        " " +
-                        calendar.get(Calendar.HOUR_OF_DAY) +
-                        ":" +
-                        calendar.get(Calendar.MINUTE) +
-                        ":" +
-                        calendar.get(Calendar.SECOND) +
-                        ")";
+        String ErrorLogMessage
+                = "The test - \""
+                + result.getMethod().getMethodName().toString()
+                + "\" was failed!"
+                + "("
+                + calendar.get(Calendar.DATE)
+                + "."
+                + (calendar.get(Calendar.MONTH) + 1)
+                + "."
+                + calendar.get(Calendar.YEAR)
+                + " "
+                + calendar.get(Calendar.HOUR_OF_DAY)
+                + ":"
+                + calendar.get(Calendar.MINUTE)
+                + ":"
+                + calendar.get(Calendar.SECOND)
+                + ")";
 
         try {
             if (!result.isSuccess()) {
@@ -143,19 +164,18 @@ public class SetupAndTeardown {
                 }
                 Reporter.log(
                         "<center>Скриншот снят при падении теста "
-                                + result.getMethod().getMethodName() + ".png"
-                                + ", URL = "
-                                + driver.getCurrentUrl()
-                                + "<br><div><a target=\"_blank\" href=\"Screens/"
-                                + result.getMethod().getMethodName()
-                                + ".png\"><img  style=\"height:400px; width: 600px;\"  src=\"" + "Screens/"
-                                + result.getMethod().getMethodName()
-                                + ".png"
-                                + "\"></a></div><center><br><br>",
+                        + result.getMethod().getMethodName() + ".png"
+                        + ", URL = "
+                        + driver.getCurrentUrl()
+                        + "<br><div><a target=\"_blank\" href=\"Screens/"
+                        + result.getMethod().getMethodName()
+                        + ".png\"><img  style=\"height:400px; width: 600px;\"  src=\"" + "Screens/"
+                        + result.getMethod().getMethodName()
+                        + ".png"
+                        + "\"></a></div><center><br><br>",
                         true
                 );
                 System.out.println(ErrorLogMessage);
-                
 
             } else {
                 System.out.println(SuccsessLogMessage);
@@ -171,7 +191,9 @@ public class SetupAndTeardown {
         //Удаляем заявки
         delete.deleteAllOrderId();
         //Убиваем драйвер
-        if (!WebDriverFactory.isEmpty()) WebDriverFactory.dismissAll();
+        if (!WebDriverFactory.isEmpty()) {
+            WebDriverFactory.dismissAll();
+        }
 
         //Удаляем временные папки и файлы...
         File directory = new File("target");
@@ -179,7 +201,6 @@ public class SetupAndTeardown {
 
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
-        
-        
-      }
+
+    }
 }
