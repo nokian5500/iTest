@@ -37,12 +37,11 @@ public class SetupAndTeardown {
 
     @BeforeMethod(alwaysRun = true)
     public void SetUp() throws IOException {
-        //Save the path of the XPI files as per your saved location
-        String cryptopluginPath = "src/test/resources/files/cryptoplugin_ext_id@privatbank.ua.xpi";
-//        FirefoxProfile profile = new FirefoxProfile();
-//        profile.addExtension(new File(cryptopluginPath));
-//        profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.currentVersion", "9.9.9");
-//        WebDriver driver = new FirefoxDriver(profile);
+        
+//        FirefoxProfile profileFF = new FirefoxProfile();
+
+        
+//        driver = new FirefoxDriver(profileFF);
         if (null == driver) {
 
             /**
@@ -56,27 +55,28 @@ public class SetupAndTeardown {
                      * ******* Закоментить для для запуска на своем профиле и
                      * откоментить для запуска на дефолтном **********
                      */
-
+                    //Save the path of the XPI files as per your saved location
+                    String cryptopluginPath = "src/test/resources/files/cryptoplugin_ext_id@privatbank.ua.xpi";
+                    File cryptoplugin = new File(cryptopluginPath);
                     FirefoxProfile profile = new FirefoxProfile();
-//                    profile.addExtension(new File(cryptopluginPath));
-                    // Pass the XPIs path to the profile
-//                    profile.addExtension(new File(cryptopluginPath));
+//                    profile.addExtension(cryptoplugin);
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
-
+//                    profile.addExtension(cryptoplugin);
                     /**
                      * ******* Раскомментить для запуска на своем профиле и
                      * закоментить для дефолтного **********
                      */
                     //   ProfilesIni allProfiles = new ProfilesIni();
                     //   FirefoxProfile profile = allProfiles.getProfile("default");
+                    profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.currentVersion", "9.9.9");
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
                     profile.setAssumeUntrustedCertificateIssuer(true);
                     profile.setPreference("javascript.enabled", true);
                     profile.setPreference("geo.enabled", false);
                     profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.ua.currentVersion", "999.999.999");
-                    
+
                     capabilities = DesiredCapabilities.firefox();
                     capabilities.setCapability(FirefoxDriver.PROFILE, profile);
                     capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
@@ -98,13 +98,14 @@ public class SetupAndTeardown {
                     System.out.println("Tests will be run (or rerun) in Firefox...");
                     break;
             }
-            
+
             driver = WebDriverFactory.getDriver(capabilities);
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
 
         }
+        
     }
 
     @AfterMethod(alwaysRun = true)
