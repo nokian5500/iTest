@@ -81,6 +81,8 @@ public class dnepr_dms_89 extends CustomMethods {
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
+        _step("7-1. Нажать кнопку Выйти");
+        click(driver, o.buttonLogOut);
 
         _step("8. Вход по прямому URL на дашборд");
         openURLdashboard(driver, sBP);
