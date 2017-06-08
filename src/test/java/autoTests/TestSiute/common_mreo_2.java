@@ -45,7 +45,7 @@ public class common_mreo_2 extends CustomMethods {
 
         _step("5. Заполняем форму услуги");
         setFieldValue(driver, sBP, "bankIdbirthDay", "27.05.1985");
-        setFieldValue(driver, sBP, "phone", "+380623155533");
+        setFieldValue(driver, sBP, "phone", "380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldSelectByText(driver,sBP,"reqType","інформація про володіння транспортнними засобами фізичною особою");
         setFieldSelectByText(driver,sBP,"reqPhis","пошук за індивідуальним податковим номером");
