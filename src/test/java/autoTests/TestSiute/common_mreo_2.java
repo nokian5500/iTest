@@ -81,7 +81,8 @@ public class common_mreo_2 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-
+        clickButton(driver, sBP, "Ok");
+        
         _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
         

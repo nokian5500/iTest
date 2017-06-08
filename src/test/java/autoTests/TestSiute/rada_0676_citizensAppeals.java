@@ -86,7 +86,8 @@ public class rada_0676_citizensAppeals extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-
+        clickButton(driver, sBP, "Ok");
+        
         _step("10. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
         
