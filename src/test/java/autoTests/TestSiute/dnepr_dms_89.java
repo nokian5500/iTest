@@ -105,7 +105,8 @@ public class dnepr_dms_89 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-
+        clickButton(driver, sBP, "Ok");
+        
         // Опрацювання [Етап II]
 
         setRegionFindOrder(driver, sBP);
@@ -116,9 +117,8 @@ public class dnepr_dms_89 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-        _step("10. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
-        
+        clickButton(driver, sBP, "Ok");
+      
      }
     //</editor-fold>
 }
