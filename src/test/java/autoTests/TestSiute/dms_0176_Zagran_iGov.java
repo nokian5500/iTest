@@ -77,9 +77,6 @@ public class dms_0176_Zagran_iGov extends CustomMethods {
         clickButton(driver, sBP, "Підтвердити");
         clickButton(driver, sBP, "Ok");
         
-        _step("10. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
-        
     }
     //</editor-fold>
 }

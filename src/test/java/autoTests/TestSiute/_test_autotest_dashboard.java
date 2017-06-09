@@ -133,7 +133,8 @@ public class _test_autotest_dashboard extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-
+        clickButton(driver, sBP, "Ok");
+        
         // Опрацювання [Етап II]
         
         setRegionFindOrder(driver, sBP);
@@ -179,11 +180,7 @@ public class _test_autotest_dashboard extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-        _step("10. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
-        
-        
-        
+        clickButton(driver, sBP, "Ok");
         
     }
 }
