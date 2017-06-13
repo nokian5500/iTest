@@ -754,7 +754,7 @@ public class CustomMethods extends SetupAndTeardown
     }
    public void SetRegionFieldInputTypeEnum(WebDriver driver,String serviceName, String cssSelector, String value){
    WebElement webEnum = driver.findElement(By.cssSelector("select[name=" + cssSelector + "]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webEnum));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webEnum));
         webEnum.click();
         Select select = new Select(webEnum);
         select.selectByVisibleText(value);
@@ -811,8 +811,17 @@ public class CustomMethods extends SetupAndTeardown
 
     }
    public void clickButtonEcp(){
-       WebElement element = driver.findElement(By.xpath("//button[contains(@onclick,'startClientSign()')]"));
-       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-       element.sendKeys("src/test/resources/files/Key-6.dat");
+       WebElement buttonECP = driver.findElement(By.id("filePath"));
+//       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonECP));
+//       buttonECP.click();
+//       WebElement setPath = driver.findElement(By.xpath(".//*[@id='filePath']"));
+//       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(setPath));
+//       buttonECP.sendKeys("src/test/resources/files/Key-6.dat");
+       String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, buttonECP);
+        
+        File oFile = new File("src/test/resources/files/Key-6.dat");
+        buttonECP.sendKeys(oFile.getAbsolutePath());
+       
    }
  }

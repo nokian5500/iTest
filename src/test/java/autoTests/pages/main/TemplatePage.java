@@ -78,7 +78,7 @@ public class TemplatePage {
      * ********************** Методы авторизации *************************
      */
     public void mokAuthorization() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
         //выбираем Off AuthMock/BankID
         if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
             cm.click(driver, buttonAuthMock);
@@ -149,7 +149,7 @@ public class TemplatePage {
     public void selectRegion(String region) {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openOblList));
         openOblList.click();
-        cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]");
+        cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]"); ////input[@id='region']
     }
 
     // Method for selection of City

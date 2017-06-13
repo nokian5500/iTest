@@ -25,7 +25,7 @@ public class Test_ecp extends CustomMethods {
         openURLservice(driver, CV.baseUrl + "/service/87/general");
         
         _step("3. Выбор области/города");
-        o.selectRegion("Донецька");
+        o.selectRegion("Донецька"); 
         
         _step("4. Авторизация Off AuthMock/BankID");
         o.testPrivat24Authorization(); 
@@ -33,10 +33,12 @@ public class Test_ecp extends CustomMethods {
     setFieldSelectByTextNew(driver, sBP, "asSelectFIOCheck", "Так - все вірно");
     setFieldfieldPhone(driver, sBP, "phone", "+380623155533");
     setEmail(driver, sBP, "email", email);
-        
-         _step("5. Отправка формы");
+
+        _step("5. Отправка формы");
         clickButton(driver, sBP, "Замовити послугу");
+        pause(10000);
         clickButtonEcp();
+        pause(10000);
 
 //        _step("6. Проверка сообщения о успешной отправке");
 //        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +

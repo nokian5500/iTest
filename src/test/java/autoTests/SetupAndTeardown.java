@@ -37,45 +37,27 @@ public class SetupAndTeardown {
 
     @BeforeMethod(alwaysRun = true)
     public void SetUp() throws IOException {
-        
-//        FirefoxProfile profileFF = new FirefoxProfile();
-
-        
-//        driver = new FirefoxDriver(profileFF);
         if (null == driver) {
 
-            /**
-             * ******* Для локального тестирования установить switch ("chrome")
-             * для jenkins switch ("firefox") **********
-             */
+            /********* Для локального тестирования  установить  switch ("chrome")  для jenkins switch ("firefox") ***********/
             switch ("firefox") {
 
                 case "firefox":
-                    /**
-                     * ******* Закоментить для для запуска на своем профиле и
-                     * откоментить для запуска на дефолтном **********
-                     */
-                    //Save the path of the XPI files as per your saved location
-                    String cryptopluginPath = "src/test/resources/files/cryptoplugin_ext_id@privatbank.ua.xpi";
-                    File cryptoplugin = new File(cryptopluginPath);
+                    /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
                     FirefoxProfile profile = new FirefoxProfile();
-//                    profile.addExtension(cryptoplugin);
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
-//                    profile.addExtension(cryptoplugin);
-                    /**
-                     * ******* Раскомментить для запуска на своем профиле и
-                     * закоментить для дефолтного **********
-                     */
+
+                    /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
                     //   ProfilesIni allProfiles = new ProfilesIni();
                     //   FirefoxProfile profile = allProfiles.getProfile("default");
-                    profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.currentVersion", "9.9.9");
+
                     profile.setEnableNativeEvents(true);
                     profile.setAcceptUntrustedCertificates(true);
                     profile.setAssumeUntrustedCertificateIssuer(true);
                     profile.setPreference("javascript.enabled", true);
                     profile.setPreference("geo.enabled", false);
-                    profile.setPreference("extensions.cryptoplugin_ext_id@privatbank.ua.currentVersion", "999.999.999");
+                    profile.setPreference("plugin.state.npcryptoplugin", 2);
 
                     capabilities = DesiredCapabilities.firefox();
                     capabilities.setCapability(FirefoxDriver.PROFILE, profile);
@@ -84,28 +66,25 @@ public class SetupAndTeardown {
                     System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
                     driver = WebDriverFactory.getDriver(capabilities);
 
-                    /**
-                     * ******* Для локального тестирования **********
-                     */
+                   /********* Для локального тестирования ***********/
 //                  case "chrome":
 //                    System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\files\\chromedriver.exe");
-                    //                  capabilities = DesiredCapabilities.chrome();
-                    //                options = new ChromeOptions();
-                    //              System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
-                    //            break;
-                    //      default:
+  //                  capabilities = DesiredCapabilities.chrome();
+    //                options = new ChromeOptions();
+      //              System.out.println("Tests will be run (or rerun) in Chrome with custom profile...");
+
+        //            break;
+          //      default:
                     this.driver = new FirefoxDriver();
                     System.out.println("Tests will be run (or rerun) in Firefox...");
                     break;
             }
-
             driver = WebDriverFactory.getDriver(capabilities);
             this.driver.manage().timeouts().implicitlyWait(CV.implicitTimeWait, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
             this.driver.manage().deleteAllCookies();
-
+           
         }
-        
     }
 
     @AfterMethod(alwaysRun = true)
