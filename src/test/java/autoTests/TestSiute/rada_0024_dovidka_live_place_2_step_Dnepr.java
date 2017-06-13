@@ -101,6 +101,7 @@ public class rada_0024_dovidka_live_place_2_step_Dnepr extends CustomMethods {
         clickButton(driver, sBP, "Почати опрацювання задачі");
 
         SetRegionFieldInputTypeEnum(driver, sBP, "asDecision2", "Довідка виготовлена, призначаємо зустріч у відділенні");
+        SetRegionFieldInputTypeTextArea(driver, sBP, "sDecisionComment", "Коментар до рішення");
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
