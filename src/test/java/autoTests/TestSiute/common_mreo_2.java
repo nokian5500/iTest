@@ -33,11 +33,6 @@ public class common_mreo_2 extends CustomMethods {
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/1397/general");
 
-        // 2016-11-23 Убираем проверку на открытие нужной услуги.
-        // Считаем, что мы ее правильно по прямому пути выше 
-        // _step("2. Проверить, что открылась нужная услуга");
-        // assertThis(driver, o.usluga, "Надання дозволу на знесення аварійних будівель");
-
         _step("3. Выбор области/города");
 
         _step("4. Авторизация Off AuthMock/BankID");

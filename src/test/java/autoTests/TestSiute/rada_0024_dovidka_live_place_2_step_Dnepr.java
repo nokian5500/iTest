@@ -20,7 +20,7 @@ import org.apache.tools.ant.taskdefs.Sleep;
 /**
  * Created by Privat24 on 09.09.2016.
  */
-public class dnepr_dms_89 extends CustomMethods {
+public class rada_0024_dovidka_live_place_2_step_Dnepr extends CustomMethods {
 
 
     //<editor-fold desc="Тестовый пример заполнение полей">
@@ -29,13 +29,13 @@ public class dnepr_dms_89 extends CustomMethods {
         /*****************************************объявляем элементы страниц*******************************************/
         TemplatePage o = new TemplatePage(driver);
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
-        String sBP = "dnepr_dms-89";
+        String sBP = "rada_0024_dovidka_live_place_2_step_Dnepr";
         String email = "autotestbeta@gmail.com";
 
         _step("1. Вход по прямому URL на услугу");
-        openURLservice(driver, CV.baseUrl + "/service/29/general");
+        openURLservice(driver, CV.baseUrl + "/service/24/general");
 
-        _step("3. Выбор области/города");
+         _step("3. Выбор области/города");
         o.selectRegion("Дніпропетровська");
         o.selectCity("Дніпро (Дніпропетровськ)");
 
@@ -43,28 +43,20 @@ public class dnepr_dms_89 extends CustomMethods {
         o.mokAuthorization();
 
         _step("5. Заполняем форму услуги");
+        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Соборний (Жовтневий) район");
+        setFieldSelectByText(driver,sBP,"asEnumTypeDocument","Паспорт");
+        setFieldValue(driver, sBP, "sBankIdPassport", "Документ, що посвідчує заявника");
+        setFieldFile(driver, sBP, "nFile_CopyPassportZ", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
-        setFieldSelectByText(driver,sBP,"asPrevName","Ні");
+        setFieldSelectByText(driver,sBP,"asForMySelf","Так, для себе");
+        setFieldSelectByText(driver,sBP,"asTargetGetDovidka","Вперше оформлення паспорта (ID-картки)");
+        setFieldFile(driver, sBP, "nFile_SvidoztvoNarodzennya", "src/test/resources/files/test.jpg");
+        
         setFieldValue(driver, sBP, "sDate_of_birth", "Дата народження");
         setFieldValue(driver, sBP, "sAreabirth", "Місце народження");
+        setFieldValue(driver, sBP, "sRegistrationAddress", "Адреса реєстрації");
         setFieldValue(driver, sBP, "sNationality", "Україна");
-        setFieldValue(driver, sBP, "sRegistrationAddress", "Стара адреса реєстрації");
-        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Соборний (Жовтневий) район");
-        setFieldValue(driver, sBP, "sNewAddress", "Нова адреса реєстрації");
-        setFieldSelectByText(driver,sBP,"asRegistrationType","до власного житлового приміщення");
-        setFieldSelectByText(driver,sBP,"asRegistrationDoc","Ордер");
-        setFieldValue(driver, sBP, "sDocRekv", "Опис документу");        
-        setFieldSelectByText(driver,sBP,"asMilitStatus","Ні");
-        setFieldSelectByText(driver,sBP,"asRegistr","Ні");
-        setFieldValue(driver, sBP, "sWhenCome", "2016-11-28");   
-        setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
-        setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
-//        setFieldSelectSlotDate(driver, sBP, "visitDay"); 
-//        setFieldSelectSlotTime(driver, sBP, "visitDay");
-//        pause(1000000); 
-        setFieldFile(driver, sBP, "nOrder", "src/test/resources/files/test.jpg");
-        setFieldFile(driver, sBP, "nForma3", "src/test/resources/files/test.jpg");
         setFieldValue(driver, sBP, "sMailClerk", email);
 
         _step("6. Отправка формы");
@@ -94,7 +86,7 @@ public class dnepr_dms_89 extends CustomMethods {
         
         // Опрацювання [Етап I] 
 
-        SetRegionFieldInputTypeEnum(driver, sBP, "asDecision", "Призначити зустріч у відділенні");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asDecision", "Дані громадянина вірні, починаємо формування довідки");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sDecisionComment", "Коментар до рішення");
 
 
@@ -108,7 +100,7 @@ public class dnepr_dms_89 extends CustomMethods {
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
 
-        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Громадянин зареєстрований");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asDecision2", "Довідка виготовлена, призначаємо зустріч у відділенні");
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
