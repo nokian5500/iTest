@@ -624,8 +624,8 @@ public class CustomMethods extends SetupAndTeardown
    }
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
-        WebElement button = driver.findElement(By.xpath(".//button[contains(text(),'" + nameButton + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
+        WebElement button = driver.findElement(By.xpath("//button[contains(.,'" + nameButton + "')]")); ////button[contains(.,'Опрацювати')]
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
 
@@ -821,7 +821,7 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript, buttonECP);
         
         File oFile = new File("src/test/resources/files/Key-6.dat");
-        buttonECP.sendKeys(oFile.getAbsolutePath());
+        buttonECP.sendKeys(oFile.getPath());
        
    }
  }
