@@ -33,7 +33,7 @@ public class common_mreo_2 extends CustomMethods {
         _step("1. Вход по прямому URL на услугу");
         openURLservice(driver, CV.baseUrl + "/service/1397/general");
 
-        _step("3. Выбор области/города");
+        // _step("3. Выбор области/города");
 
         _step("4. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
