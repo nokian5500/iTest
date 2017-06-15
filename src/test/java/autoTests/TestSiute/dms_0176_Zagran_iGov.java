@@ -74,6 +74,7 @@ public class dms_0176_Zagran_iGov extends CustomMethods {
         SetRegionFieldInputTypeString(driver, sBP, "sCancelInfo", "Заявка актуальна");
         
         clickButton(driver, sBP, "Опрацювати");
+        clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
         clickButton(driver, sBP, "Ok");
         
