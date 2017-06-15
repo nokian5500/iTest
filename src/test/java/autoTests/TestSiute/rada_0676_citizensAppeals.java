@@ -81,6 +81,7 @@ public class rada_0676_citizensAppeals extends CustomMethods {
         SetRegionFieldInputTypeEnum(driver, sBP, "asChannelAppeals", "Портал iGov.org.ua");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sDocument_Body_UkrDoc", "Відповідь на звернення");
         SetRegionFieldInputTypeEnum(driver, sBP, "asSelectionDepartment", "Департамент економіки, фінансів та міського бюджету");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asSelectionDepartment", "Департамент економіки, фінансів та міського бюджету");
         SetRegionFieldInputTypeEnum(driver, sBP, "decide", "Звернення зареєстровано. Повідомити заявника");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sAnswerExplanation", "Коментар колл-центру");
 

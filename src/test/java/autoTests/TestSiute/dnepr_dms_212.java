@@ -107,6 +107,7 @@ public class dnepr_dms_212 extends CustomMethods {
         clickButton(driver, sBP, "Почати опрацювання задачі");
 
         SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Дитина зареєстрована");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Дитина зареєстрована");
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
