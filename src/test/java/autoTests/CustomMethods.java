@@ -850,11 +850,42 @@ public class CustomMethods extends SetupAndTeardown
         robot.delay(300);
     }
     
-    public void setPaswordForECPKey(){
-    WebElement passwordECP = driver.findElement(By.xpath("//input[@id='password1']"));
-    passwordECP.sendKeys("12345677");
-    WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
-    clickButtonSubmint.click();
+    public void uploadECPKeyFile(String filePath) throws InterruptedException, AWTException {
+        File file = new File(filePath);
+        //
+        WebElement buttonECP = driver.findElement(By.xpath("//button[@id='selectDir']"));
+        buttonECP.click();
+        //
+        setClipboardData(file.getAbsolutePath());
+        //
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(300);
+    }
+    
+    public void setPaswordForECPKey() {
+        WebElement passwordECP = driver.findElement(By.xpath("//input[@id='password1']"));
+        passwordECP.sendKeys("12345677");
+        WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
+        clickButtonSubmint.click();
+    }
+    
+    public void setPaswordForECPKey(String password) {
+        WebElement passwordECP = driver.findElement(By.xpath("//input[@id='password1']"));
+        passwordECP.sendKeys(password);
+        WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
+        clickButtonSubmint.click();
     }
   
  }
