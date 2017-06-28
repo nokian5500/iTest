@@ -2,9 +2,13 @@ package autoTests;
 
 
 
+import java.awt.AWTException;
 import java.awt.Desktop;
 import java.awt.Desktop.Action;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -810,18 +814,47 @@ public class CustomMethods extends SetupAndTeardown
         td.sendKeys(date);
 
     }
-   public void clickButtonEcp(){
-       WebElement buttonECP = driver.findElement(By.id("filePath"));
-//       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonECP));
-//       buttonECP.click();
-//       WebElement setPath = driver.findElement(By.xpath(".//*[@id='filePath']"));
-//       new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(setPath));
-//       buttonECP.sendKeys("src/test/resources/files/Key-6.dat");
-       String sScript = "var element = arguments[0];" + "element.style.display='inline';";
-        ((JavascriptExecutor) driver).executeScript(sScript, buttonECP);
-        
-        File oFile = new File("src/test/resources/files/Key-6.dat");
-        buttonECP.sendKeys(oFile.getPath());
-       
-   }
+//    private static void setClipboardData(String string) {
+//        StringSelection stringSelection = new StringSelection(string);
+//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+//    }
+ 
+   public static void setClipboardData(String string) {
+	StringSelection stringSelection = new StringSelection(string);
+	Toolkit.getDefaultToolkit()
+            .getSystemClipboard()
+            .setContents(stringSelection, null);
+}
+
+    public void uploadECPKeyFile() throws InterruptedException, AWTException {
+        File file = new File("src/test/resources/files/Key-6.dat");
+        //
+        WebElement buttonECP = driver.findElement(By.xpath("//button[@id='selectDir']"));
+        buttonECP.click();
+        //
+        setClipboardData(file.getAbsolutePath());
+        //
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(300);
+    }
+    
+    public void setPaswordForECPKey(){
+    WebElement passwordECP = driver.findElement(By.xpath("//input[@id='password1']"));
+    passwordECP.sendKeys("12345677");
+    WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
+    clickButtonSubmint.click();
+    }
+  
  }

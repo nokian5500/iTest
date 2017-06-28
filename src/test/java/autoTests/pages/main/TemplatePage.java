@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import autoTests.SetupAndTeardown;
+import java.awt.AWTException;
 
 import java.util.List;
 import org.openqa.selenium.NoSuchElementException;
@@ -88,17 +89,16 @@ public class TemplatePage {
 
     }
 
-    public void ecpAuthorization() {
+    public void ecpAuthorization() throws InterruptedException, AWTException {
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
 //        cm.click(driver, buttonAuthMock);
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
         cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
         // находим элемент <input type="file">
-        WebElement element = driver.findElement(By.xpath("//button[contains(@onclick,'startClientSign()')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.sendKeys("src/test/resources/files/Key-6.dat");
-        
+        cm.uploadECPKeyFile();
+        cm.setPaswordForECPKey();
+
     }
 
     public void testPrivat24Authorization() {
@@ -135,7 +135,7 @@ public class TemplatePage {
         WebElement confirmButton = driver.findElement(By.xpath(".//*[@id='confirmButton']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
         confirmButton.click();
-        
+
     }
 //     Method for selection of Bankid_bank
 
@@ -160,17 +160,24 @@ public class TemplatePage {
     }
 
     public void checkMessageSuccess(String message) throws Exception {
+        System.out.println("configVariables.orderId: " + configVariables.orderId);
+//        configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
         configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
         System.out.println(configVariables.orderId);
 
         String textForAssert = cm.getText(driver, resultMsgText.get(0));
+        System.out.println("textForAssert: " + textForAssert);
         String firstPart = textForAssert.substring(0, 46);
-        String secondPart;
+        System.out.println("firstPart: " + firstPart);
+        String secondPart = "";
+        System.out.println("secondPart: " + secondPart);
         if (textForAssert.substring(57, 58).equals(" ")) {
             secondPart = textForAssert.substring(58, textForAssert.length());
         } else {
             secondPart = textForAssert.substring(59, textForAssert.length());
         }
+        System.out.println("secondPart11: " + secondPart);
+        System.out.println("textForAssert1: " + textForAssert);
         Assert.assertEquals(firstPart, message.substring(0, 46));
         Assert.assertEquals(secondPart, message.substring(58, message.length()));
     }

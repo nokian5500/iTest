@@ -36,17 +36,9 @@ public class Test_ecp extends CustomMethods {
 
         _step("5. Отправка формы");
         clickButton(driver, sBP, "Замовити послугу");
-        pause(10000);
-        clickButtonEcp();
+        uploadECPKeyFile();
+        setPaswordForECPKey();
         pause(10000);
 
-//        _step("6. Проверка сообщения о успешной отправке");
-//        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-//                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-//                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
-//                "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
-//
-//        _step("7. Нажать кнопку Выйти");
-//        click(driver, o.buttonLogOut);
     }
 }
