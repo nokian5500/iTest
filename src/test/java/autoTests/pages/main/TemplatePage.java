@@ -95,7 +95,7 @@ public class TemplatePage {
         cm.click(driver, buttonBankID);
         cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
         cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
-        // находим элемент <input type="file">
+        cm.pause(5000);
         cm.uploadECPKeyFile();
         cm.setPaswordForECPKey();
 
