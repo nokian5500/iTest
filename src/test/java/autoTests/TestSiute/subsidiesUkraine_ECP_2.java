@@ -94,7 +94,7 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
 
         _step("6. Отправка формы");
         // click(driver, o.buttonSendingForm);
-        clickButton(driver, sBP, "Замовити послугу");
+        clickButton(driver, sBP, "Замовити послугу з ЕЦП");
         uploadECPKeyFile();
         setPaswordForECPKey();
         pause(10000);        
