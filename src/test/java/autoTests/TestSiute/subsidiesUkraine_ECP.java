@@ -82,24 +82,25 @@ public class subsidiesUkraine_ECP extends CustomMethods {
         setFieldValue(driver, sBP, "garbage_name", "Назва організації, що надає послугу");
         setFieldValue(driver, sBP, "garbage_notice", "Примітки");
         setFieldSelectByText(driver,sBP,"place_type","багатоквартирний будинок");
-        setFieldValue(driver, sBP, "floors", "Кількість поверхів");
-        setFieldValue(driver, sBP, "total_place", "Загальна площа");
+        setFieldValue(driver, sBP, "floors", "2");
+        setFieldValue(driver, sBP, "total_place", "10000000");
         setFieldValue(driver, sBP, "warming_place", "Опалювальна площа (кв. м.)");
         setFieldValue(driver, sBP, "income0", "Ваш вид доходу");
         setFieldFile(driver, sBP, "declaration0", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"other_people","Ні");
         setFieldSelectByText(driver,sBP,"overload","Ні");
-        setFieldSelectByText(driver,sBP,"ECP","без ЕЦП (погоджуєтесь на особистий візит після перевірки правильності даних)");
         setFieldValue(driver, sBP, "org0", "Назва організації, де Ви отримуєте дохід");
+        setFieldSelectByText(driver,sBP,"ECP","без ЕЦП (погоджуєтесь на особистий візит після перевірки правильності даних)");
+//        setFieldValue(driver, sBP, "org0", "Назва організації, де Ви отримуєте дохід");
 
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 
         _step("7. Проверка сообщения о успешной отправке");
-        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
-                "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n"
+                + "Ваше звернення х-ххххххххх успішно зареєстровано\n"
+                + "(номер також відправлено Вам електронною поштою на Ваш e-mail " + email + ") Результати будуть спрямовані також на email.\n"
+                + "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
         _step("7-1. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);

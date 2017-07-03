@@ -82,20 +82,22 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
         setFieldValue(driver, sBP, "garbage_name", "Назва організації, що надає послугу");
         setFieldValue(driver, sBP, "garbage_notice", "Примітки");
         setFieldSelectByText(driver,sBP,"place_type","багатоквартирний будинок");
-        setFieldValue(driver, sBP, "floors", "Кількість поверхів");
-        setFieldValue(driver, sBP, "total_place", "Загальна площа");
+        setFieldValue(driver, sBP, "floors", "2");
+        setFieldValue(driver, sBP, "total_place", "10000000");
         setFieldValue(driver, sBP, "warming_place", "Опалювальна площа (кв. м.)");
         setFieldValue(driver, sBP, "income0", "Ваш вид доходу");
         setFieldFile(driver, sBP, "declaration0", "src/test/resources/files/test.jpg");
         setFieldSelectByText(driver,sBP,"other_people","Ні");
         setFieldSelectByText(driver,sBP,"overload","Ні");
-        setFieldSelectByText(driver,sBP,"ECP","з ЕЦП (для отримання електронної послуги про призначення субсидії)");
         setFieldValue(driver, sBP, "org0", "Назва організації, де Ви отримуєте дохід");
+//        setFieldSelectByTextNew1(driver,sBP,"ECP","з ЕЦП (для отримання електронної послуги про призначення субсидії)");
+        setFieldSelectByText(driver,sBP,"ECP","з ЕЦП (для отримання електронної послуги про призначення субсидії)");
+        
 
-        _step("6. Отправка формы");
+//        _step("6. Отправка формы");
         // click(driver, o.buttonSendingForm);
-        clickButton(driver, sBP, "Замовити послугу з ЕЦП");
-        uploadECPKeyFile();
+        clickButtonECP(driver, sBP, "Замовити послугу з ЕЦП");
+        uploadECPKeyFile("C:\\i\\iTest\\src\\test\\resources\\files\\Key-6.dat");
         setPaswordForECPKey();
         pause(10000);        
 

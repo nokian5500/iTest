@@ -36,7 +36,7 @@ public class Test_ecp extends CustomMethods {
 
         _step("5. Отправка формы");
         clickButton(driver, sBP, "Замовити послугу");
-        uploadECPKeyFile();
+        uploadECPKeyFile("C:/i/iTest/src/test/resources/files/Key-6.dat");
         setPaswordForECPKey();
         pause(10000);
 

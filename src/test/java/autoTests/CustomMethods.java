@@ -418,6 +418,12 @@ public class CustomMethods extends SetupAndTeardown
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
     }
+    
+    public void setFieldSelectByTextNew1(WebDriver driver, String serviceName, String cssSelector, String text) {
+        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
+        webElement.click();
+    }
+    
     public void setFieldSelectByTextNew(WebDriver driver,String serviceName, String cssSelector, String text) {
         WebElement webElement = driver.findElement(By.xpath("//select[@name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
@@ -629,6 +635,12 @@ public class CustomMethods extends SetupAndTeardown
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath("//button[contains(.,'" + nameButton + "')]")); ////button[contains(.,'Опрацювати')]
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
+    }
+    
+    public void clickButtonECP(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
+        WebElement button = driver.findElement(By.xpath("//button[@ng-disable='cantSubmit(form)']")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
