@@ -109,7 +109,7 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
 
         _step("7-1. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
-
+//        pause(5000);
         _step("8. Вход по прямому URL на дашборд");
         openURLdashboard(driver, sBP);
 
@@ -145,7 +145,7 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-        clickButton(driver, sBP, "Ok");
+//        clickButton(driver, sBP, "Ok");
       
      }
     //</editor-fold>

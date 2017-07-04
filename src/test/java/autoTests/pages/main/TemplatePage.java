@@ -160,7 +160,8 @@ public class TemplatePage {
     }
 
     public void checkMessageSuccess(String message) throws Exception {
-        configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
+        
+          configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
         System.out.println(configVariables.orderId);
 
         String textForAssert = cm.getText(driver, resultMsgText.get(0));
@@ -171,8 +172,13 @@ public class TemplatePage {
         } else {
             secondPart = textForAssert.substring(59, textForAssert.length());
         }
-        Assert.assertEquals(firstPart, message.substring(0, 46));
-        Assert.assertEquals(secondPart, message.substring(58, message.length()));
+        try {
+        Assert.assertEquals(firstPart, message.substring(0, textForAssert.length()));
+        Assert.assertEquals(secondPart, message.substring(58, message.length()));  
+        } catch (Exception e) {
+            e.getMessage();
+        }
+        
     }
 
     // Method
