@@ -32,6 +32,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpDelete;
 import org.openqa.selenium.interactions.Actions;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
@@ -898,6 +900,27 @@ public class CustomMethods extends SetupAndTeardown
         passwordECP.sendKeys(password);
         WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
         clickButtonSubmint.click();
+    }
+    
+    public void uploadECPKeyAutoIT() throws IOException, InterruptedException{
+        WebElement buttonECP = driver.findElement(By.xpath("//button[@id='selectDir']"));
+        buttonECP.click();
+        Runtime.getRuntime().exec("src/test/resources/files/UploadKey.exe");
+    }
+   
+    /*****************************methods for new dashboard******************************************************/
+    public void navigateToggleMenu(){
+        WebElement webElement = driver.findElement(By.cssSelector(".igov-hamburger>a"));
+        String sScript = "$('.igov-hamburger>a').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, webElement);
+    
+    }
+    /*****************************navigation on snapDrawer******************************************************/
+    public void snapDrawerButtonMenuTabs(String buttonName){
+        WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
+        String sScript = "$('a:contains(\""+buttonName+"\")').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, button); 
+    
     }
   
  }
