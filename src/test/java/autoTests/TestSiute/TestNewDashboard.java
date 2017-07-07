@@ -31,5 +31,12 @@ public class TestNewDashboard extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
         pause(15000);
+        navigateToggleMenu();
+        navigateToggleMenu();
+        navigateToggleMenu();
+        snapDrawerButtonMenuTabs("Документи");
+        snapDrawerButtonMenuTabs("Звернення");
+        snapDrawerButtonMenuTabs("Документи");
+        snapDrawerButtonMenuTabs("Звернення");
 }
 }

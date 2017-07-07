@@ -922,5 +922,22 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript, button); 
     
     }
-  
+    public void createDocument() {
+        WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
+        String sScript = "$('button:contains('Створити документ')').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, button);
+    }
+    
+    public void navigateMenuList(String listElement) {
+        WebElement menuList = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+        String sScript = "$('#" + listElement + "').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+    }
+    
+   /*****************************Search navigation******************************************************/ 
+    public void searchBoxIdoc(){
+    //$('.form-control.searched-text').val('1344646')
+    
+    
+    }
  }
