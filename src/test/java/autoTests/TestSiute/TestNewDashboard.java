@@ -30,13 +30,12 @@ public class TestNewDashboard extends CustomMethods {
         _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
+        
+        navigateToggleMenu();
+        snapDrawerButtonMenuTabs("Документи");
+        createDocument("15 - Електронний документ без ЕЦП");
+//        clickButton(driver, sBP, "Далі");
+        searchBoxIdoc("123456789");
         pause(15000);
-        navigateToggleMenu();
-        navigateToggleMenu();
-        navigateToggleMenu();
-        snapDrawerButtonMenuTabs("Документи");
-        snapDrawerButtonMenuTabs("Звернення");
-        snapDrawerButtonMenuTabs("Документи");
-        snapDrawerButtonMenuTabs("Звернення");
 }
-}
+    }

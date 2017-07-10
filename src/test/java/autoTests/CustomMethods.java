@@ -922,22 +922,34 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript, button); 
     
     }
-    public void createDocument() {
+    
+    public void createDocument(String nameDocument) { //*
         WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
-        String sScript = "$('button:contains('Створити документ')').click()";
+        String sScript = "$('.btn.btn-default.ng-scope').click()";
         ((JavascriptExecutor) driver).executeScript(sScript, button);
+        WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
+        Element.click();
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + nameDocument + "')]"));
+        listElement.click();
+        WebElement button1 = driver.findElement(By.xpath("$('.btn.btn-info.ng-scope')"));
+        String sScript2 = "$('.btn.btn-info.ng-scope').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript2, button1);
+        
     }
     
-    public void navigateMenuList(String listElement) {
+    public void choiceMenuList(String listElement) {
         WebElement menuList = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
         String sScript = "$('#" + listElement + "').click();";
         ((JavascriptExecutor) driver).executeScript(sScript, menuList);
     }
     
    /*****************************Search navigation******************************************************/ 
-    public void searchBoxIdoc(){
-    //$('.form-control.searched-text').val('1344646')
-    
+    public void searchBoxIdoc(String searchText){
+        WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+        String sScript = "$('.form-control.searched-text').val('" + searchText + "');";
+        ((JavascriptExecutor) driver).executeScript(sScript, search);
+        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript2, search);
     
     }
  }
