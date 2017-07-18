@@ -613,27 +613,43 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
-
-          WebElement element = driver.findElement(By.cssSelector(".searched-text"));
+        if (serviceName.contains("idoc")) {
+            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+            String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
+            ((JavascriptExecutor) driver).executeScript(sScript, search);
+            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+            ((JavascriptExecutor) driver).executeScript(sScript2, search);
+        } else {
+            WebElement element = driver.findElement(By.cssSelector(".searched-text"));
 //          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-          String str1 = "$('.searched-text').val("+sID_Oreder+")";
-          String str2 = "$('.runner-searching-process').click()";
-          JavascriptExecutor js1 = (JavascriptExecutor)driver;
-          js1.executeScript(str1, element);
-          JavascriptExecutor js2 = (JavascriptExecutor)driver;
-          js1.executeScript(str2, element);
-   }
+            String str1 = "$('.searched-text').val(" + sID_Oreder + ")";
+            String str2 = "$('.runner-searching-process').click()";
+            JavascriptExecutor js1 = (JavascriptExecutor) driver;
+            js1.executeScript(str1, element);
+            JavascriptExecutor js2 = (JavascriptExecutor) driver;
+            js1.executeScript(str2, element);
+        }
+    }
     public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-           String sID_Order = getNumbersIdOrder();
-          WebElement element = driver.findElement(By.cssSelector(".searched-text"));
+        String sID_Order = getNumbersIdOrder();
+        if (serviceName.contains("idoc")) {
+            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+            ((JavascriptExecutor) driver).executeScript(sScript, search);
+            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+            ((JavascriptExecutor) driver).executeScript(sScript2, search);
+        } else {
+            WebElement element = driver.findElement(By.cssSelector(".searched-text"));
 //          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-          String str1 = "$('.searched-text').val("+sID_Order+")";
-          String str2 = "$('.runner-searching-process').click()";
-          JavascriptExecutor js1 = (JavascriptExecutor)driver;
-          js1.executeScript(str1, element);
-          JavascriptExecutor js2 = (JavascriptExecutor)driver;
-          js1.executeScript(str2, element);
-   }
+            String str1 = "$('.searched-text').val(" + sID_Order + ")";
+            String str2 = "$('.runner-searching-process').click()";
+            JavascriptExecutor js1 = (JavascriptExecutor) driver;
+            js1.executeScript(str1, element);
+            JavascriptExecutor js2 = (JavascriptExecutor) driver;
+            js1.executeScript(str2, element);
+        }
+
+    }
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath("//button[contains(.,'" + nameButton + "')]")); ////button[contains(.,'Опрацювати')]
@@ -647,23 +663,46 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
 
-    public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
+    public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
-        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        if (serviceName.contains("idoc")) {
+            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+            ((JavascriptExecutor) driver).executeScript(sScript, search);
+            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+            ((JavascriptExecutor) driver).executeScript(sScript2, search);
+        } else {
+            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        }
+
     }
     
     public void setRegionTask(WebDriver driver, String serviceName, String sID_Order) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
 //        String sID_Order = getNumbersIdOrder();
-        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-        element.click();
+        if (serviceName.contains("idoc")) {
+            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+            ((JavascriptExecutor) driver).executeScript(sScript, search);
+            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+            ((JavascriptExecutor) driver).executeScript(sScript2, search);
+        } else {
+            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        }
+
     }
 
     public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) throws Exception  { // навигация по табам navbar в дашборде
          pause(5000);
-         WebElement element = driver.findElement(By.cssSelector(".navbar.navbar-default.navbar-static-top.i-gov-navbar"));
+         if (serviceName.contains("idoc")) {
+           WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
+        String sScript = "$('a:contains(\""+enumRegionTab+"\")').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, button);  
+        } else {
+             WebElement element = driver.findElement(By.cssSelector(".navbar.navbar-default.navbar-static-top.i-gov-navbar"));
          JavascriptExecutor js = (JavascriptExecutor)driver;
         if (enumRegionTab.contains("Необроблені")) {
           js.executeScript("$(\"#unassigned\").click();", element);  
@@ -685,6 +724,8 @@ public class CustomMethods extends SetupAndTeardown
               js.executeScript("$(\"#finished\").click();", element); 
 //          driver.get("https://delta.test.region.igov.org.ua/tasks/finished");  
         }
+        }
+         
         
         
     }
@@ -696,7 +737,7 @@ public class CustomMethods extends SetupAndTeardown
    
    }
    
-   // Methods for filling the fields for central
+   // Methods for filling the fields for regions
    public void SetRegionFieldInputTypeString(WebDriver driver,String serviceName, String cssSelector, String value){
         WebElement webElement = driver.findElement(By.cssSelector("input[name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
@@ -908,7 +949,7 @@ public class CustomMethods extends SetupAndTeardown
         Runtime.getRuntime().exec("src/test/resources/files/UploadKey.exe");
     }
    
-    /*****************************methods for new dashboard******************************************************/
+    /*****************************methods for new dashboard(Idoc)******************************************************/
     public void navigateToggleMenu(){
         WebElement webElement = driver.findElement(By.cssSelector(".igov-hamburger>a"));
         String sScript = "$('.igov-hamburger>a').click()";
@@ -923,19 +964,21 @@ public class CustomMethods extends SetupAndTeardown
     
     }
     
-    public void createDocument(String nameDocument) { //*
+    public void createDocumentOrTask(String nameDocumentOrTask) { //*
         WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
         String sScript = "$('.btn.btn-default.ng-scope').click()";
         ((JavascriptExecutor) driver).executeScript(sScript, button);
         WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
         Element.click();
-        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + nameDocument + "')]"));
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + nameDocumentOrTask + "')]"));
         listElement.click();
-        WebElement button1 = driver.findElement(By.xpath("$('.btn.btn-info.ng-scope')"));
-        String sScript2 = "$('.btn.btn-info.ng-scope').click()";
-        ((JavascriptExecutor) driver).executeScript(sScript2, button1);
+//        WebElement button1 = driver.findElement(By.xpath("$('.btn.btn-info.ng-scope')"));
+//        String sScript2 = "$('.btn.btn-info.ng-scope').click()";
+//        ((JavascriptExecutor) driver).executeScript(sScript2, button1);
         
     }
+    
+    
     
     public void choiceMenuList(String listElement) {
         WebElement menuList = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
