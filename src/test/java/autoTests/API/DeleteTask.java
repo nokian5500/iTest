@@ -69,6 +69,8 @@ public class DeleteTask {
             Url ="https://beta-old.test.region.igov.org.ua";
         }else if(configVariables.baseUrl.contains("delta.test.igov.org.ua")){
             Url ="https://delta.test.region.igov.org.ua";
+        } else if(configVariables.baseUrl.contains("gamma.test.igov.org.ua")){
+            Url ="https://gamma.test.region.igov.org.ua";
         }else{
             throw new Exception("ERROR URL ");
         }

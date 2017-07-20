@@ -349,8 +349,7 @@ public class CustomMethods extends SetupAndTeardown
 
         String dashbordUrl = Url;
         System.out.println("dashbordUrl: " + dashbordUrl);
-            return dashbordUrl;
-        
+        return dashbordUrl;
 
     }
        public void openURLdashboard(WebDriver driver, String serviceName) {
@@ -667,17 +666,17 @@ public class CustomMethods extends SetupAndTeardown
 
     public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
-        if (serviceName.contains("idoc")) {
+//        if (serviceName.contains("idoc")) {
             WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
             String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
             ((JavascriptExecutor) driver).executeScript(sScript, search);
             String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
             ((JavascriptExecutor) driver).executeScript(sScript2, search);
-        } else {
-            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-            element.click();
-        }
+//        } else {
+//            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
+//            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+//            element.click();
+//        }
 
     }
     
