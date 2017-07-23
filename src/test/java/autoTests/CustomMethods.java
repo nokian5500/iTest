@@ -996,4 +996,25 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript2, search);
     
     }
+    
+    public void searchBoxByURL(WebDriver driver, String serviceName, String sID_Order, String buttonName) {
+        if (buttonName.contains("Необроблені")) {
+            String item = "unassigned";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        } else if(buttonName.contains("В роботі")){
+            String item = "selfAssigned";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        }else if(buttonName.contains("Усі")){
+            String item = "all";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        }else if(buttonName.contains("Історія")){
+            String item = "finished";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        }
+
+    }
  }

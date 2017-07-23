@@ -32,11 +32,11 @@ public class TestNewDashboard extends CustomMethods {
         clickButton(driver, sBP, "Увійти");
         
         navigateToggleMenu();
-        snapDrawerButtonMenuTabs("Документи");
-        createDocumentOrTask("15 - Електронний документ без ЕЦП");
-        clickButton(driver, sBP, "Далi");
+//        snapDrawerButtonMenuTabs("Документи");
+//        createDocumentOrTask("15 - Електронний документ без ЕЦП");
+//        clickButton(driver, sBP, "Далi");
 //        clickButton(driver, sBP, "Далі");
-        searchBoxIdoc("123456789");
+        searchBoxByURL(driver, sBP, "34305107", "Необроблені");
         pause(15000);
 }
     }
