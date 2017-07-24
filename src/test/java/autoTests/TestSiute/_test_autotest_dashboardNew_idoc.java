@@ -28,14 +28,14 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         openURLservice(driver, CV.baseUrl + "/service/1584/general");
         
         _step("3. Выбор области/города");
-        o.selectRegion("Вінницька");
-        o.selectCity("Вінниця");
+        o.selectRegion("Дніпропетровська");
+        o.selectCity("Дніпро (Дніпропетровськ)");
         
         _step("4. Авторизация Off AuthMock/BankID");
         o.mokAuthorization();
         
         _step("5. Заполняем форму услуги");
-        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","_test_all_case");
+        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Новокадацький район, КВ «ЖРЕП Ленінського району»");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sVarString", "Тип даних string");
@@ -91,7 +91,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
      // Опрацювання в табі "В необроблені"    
-        setRegionTask(driver, sBP);
+        searchBoxByURL(driver, sBP, "Необроблені");
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         

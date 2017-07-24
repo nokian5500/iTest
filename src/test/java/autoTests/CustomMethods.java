@@ -364,7 +364,7 @@ public class CustomMethods extends SetupAndTeardown
 	}
 
     public void setFieldValue(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
+        WebElement webElement = driver.findElement(By.xpath("//input[@name='" + cssSelector + "']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
         webElement.clear();
@@ -441,9 +441,16 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldAutocomplete(WebDriver driver,String name, String value) {
-        driver.findElement(By.name(name)).click();
-        driver.findElement(By.name(name)).sendKeys(value);
-        driver.findElement(By.linkText(value)).click();
+        WebElement webElement = driver.findElement(By.xpath("//button[contains(@aria-haspopup,'true')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+        webElement.click();
+        WebElement element = driver.findElement(By.xpath("//a[contains(.,'"+ value +"')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+        element.click();
+        element.click();
+//        webElement.sendKeys(value);
+//        webElement.click();
+        
     }
 
     public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
@@ -1002,19 +1009,39 @@ public class CustomMethods extends SetupAndTeardown
             String item = "unassigned";
             WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
             search.click();
-        } else if(buttonName.contains("В роботі")){
+        } else if (buttonName.contains("В роботі")) {
             String item = "selfAssigned";
             WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
             search.click();
-        }else if(buttonName.contains("Усі")){
+        } else if (buttonName.contains("Усі")) {
             String item = "all";
             WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
             search.click();
-        }else if(buttonName.contains("Історія")){
+        } else if (buttonName.contains("Історія")) {
             String item = "finished";
             WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
             search.click();
         }
-
     }
- }
+    
+    public void searchBoxByURL(WebDriver driver, String serviceName,  String buttonName) throws Exception {
+        String sID_Order = getNumbersIdOrder();
+        if (buttonName.contains("Необроблені")) {
+            String item = "unassigned";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        } else if (buttonName.contains("В роботі")) {
+            String item = "selfAssigned";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        } else if (buttonName.contains("Усі")) {
+            String item = "all";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        } else if (buttonName.contains("Історія")) {
+            String item = "finished";
+            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
+            search.click();
+        }
+    }
+}
