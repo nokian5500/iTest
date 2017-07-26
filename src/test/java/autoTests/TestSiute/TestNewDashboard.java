@@ -31,12 +31,13 @@ public class TestNewDashboard extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
         
-        navigateToggleMenu();
-//        snapDrawerButtonMenuTabs("Документи");
+//        navigateToggleMenu();
+////        snapDrawerButtonMenuTabs("Документи");
 //        createDocumentOrTask("15 - Електронний документ без ЕЦП");
-//        clickButton(driver, sBP, "Далi");
-//        clickButton(driver, sBP, "Далі");
-        searchBoxByURL(driver, sBP, "34305107", "Необроблені");
+////        clickButton(driver, sBP, "Далi");
+////        clickButton(driver, sBP, "Далі");
+//        searchBoxByURL(driver, sBP, "34305107", "Необроблені");
+        scrollPageDown();
         pause(15000);
 }
     }
