@@ -1056,8 +1056,8 @@ public class CustomMethods extends SetupAndTeardown
     /**
      * ***************************Navigation for usersMenuNavBarRight*****************************************************
      */
-    public void usersMenuNavBarRight(WebDriver driver, String serviceName, String UserName, String autoSignature, String subMenuItems) {
-        WebElement usersMenu = driver.findElement(By.xpath("//a[contains(.,'" + UserName + "')]"));
+    public void usersMenuNavBarRight(WebDriver driver, String serviceName, String userName, String autoSignature, String subMenuItems) {
+        WebElement usersMenu = driver.findElement(By.xpath("//a[contains(.,'" + userName + "')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(usersMenu));
         usersMenu.click();
         WebElement signature = driver.findElement(By.xpath("//label[contains(.,'  Авто пiдпис ЕЦП')]')]"));
