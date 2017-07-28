@@ -994,14 +994,16 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript, menuList);
     }
     
-   /*****************************Search navigation******************************************************/ 
-    public void searchBoxIdoc(String searchText){
+    /**
+     * ***************************Search navigation*****************************************************
+     */
+    public void searchBoxIdoc(String searchText) {
         WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
         String sScript = "$('.form-control.searched-text').val('" + searchText + "');";
         ((JavascriptExecutor) driver).executeScript(sScript, search);
         String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
         ((JavascriptExecutor) driver).executeScript(sScript2, search);
-    
+
     }
     
     public void searchBoxByURL(WebDriver driver, String serviceName, String sID_Order, String buttonName) {
@@ -1043,5 +1045,34 @@ public class CustomMethods extends SetupAndTeardown
             WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
             search.click();
         }
+    }
+    //((JavascriptExecutor)) .executeScript ("arguments [0] .scrollIntoView (true);", your_WebElement);
+    public void scrollPageDown() {
+        WebElement scrollPage = driver.findElement(By.xpath("//h3[contains(.,'Більше задач не знайдено')]"));
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        jse.executeScript("arguments[0].scrollIntoView(true);", scrollPage);
+    }
+
+    /**
+     * ***************************Navigation for usersMenuNavBarRight*****************************************************
+     */
+    public void usersMenuNavBarRight(WebDriver driver, String serviceName, String UserName, String autoSignature, String subMenuItems) {
+        WebElement usersMenu = driver.findElement(By.xpath("//a[contains(.,'" + UserName + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(usersMenu));
+        usersMenu.click();
+        WebElement signature = driver.findElement(By.xpath("//label[contains(.,'  Авто пiдпис ЕЦП')]')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(signature));
+        usersMenu.click();
+        WebElement chooseSubMenuItems = driver.findElement(By.xpath("//a[contains(.,'" + subMenuItems + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(chooseSubMenuItems));
+        usersMenu.click();
+
+    }
+    
+    public void clickLink(WebDriver driver, String serviceName, String nameLink) {
+        WebElement link = driver.findElement(By.xpath("//span[contains(.,'" + nameLink + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(link));
+        link.click();
+
     }
 }
