@@ -30,14 +30,15 @@ public class TestNewDashboard extends CustomMethods {
         _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
-        
+        usersMenuNavBarRight(driver, sBP, "tester", " Авто пiдпис ЕЦП", "Підписати файл");
+        uploadECPKeyFileIdoc(driver, sBP, "\\resources\\files\\testDocumentForECP.pdf");
 //        navigateToggleMenu();
 ////        snapDrawerButtonMenuTabs("Документи");
 //        createDocumentOrTask("15 - Електронний документ без ЕЦП");
 ////        clickButton(driver, sBP, "Далi");
 ////        clickButton(driver, sBP, "Далі");
 //        searchBoxByURL(driver, sBP, "34305107", "Необроблені");
-        scrollPageDown();
-        pause(15000);
+//        scrollPageDown();
+//        pause(15000);
 }
     }

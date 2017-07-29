@@ -1057,9 +1057,10 @@ public class CustomMethods extends SetupAndTeardown
      * ***************************Navigation for usersMenuNavBarRight*****************************************************
      */
     public void usersMenuNavBarRight(WebDriver driver, String serviceName, String userName, String autoSignature, String subMenuItems) {
-        WebElement usersMenu = driver.findElement(By.xpath("//a[contains(.,'" + userName + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(usersMenu));
-        usersMenu.click();
+        WebElement usersMenu = driver.findElement(By.xpath("//a[contains(.,'tester  ')]"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(usersMenu)); //$('a:contains("tester")').click()
+        String sScript = "$('a:contains(" + userName + ")').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript);
         WebElement signature = driver.findElement(By.xpath("//label[contains(.,'  Авто пiдпис ЕЦП')]')]"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(signature));
         usersMenu.click();
@@ -1074,5 +1075,33 @@ public class CustomMethods extends SetupAndTeardown
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(link));
         link.click();
 
+    }
+    
+    public void uploadECPKeyFileIdoc(WebDriver driver, String serviceName, String sPathDocumentForECP ){
+        WebElement oWebElement = driver.findElement(By.xpath("//input[@type='file']"));
+        String sScript = "var element = arguments[0];" + "element.style.display='inline';";
+        ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
+        
+        File oFile = new File(sPathDocumentForECP); //\\resources\\files\\testDocumentForECP.pdf
+        oWebElement.sendKeys(oFile.getAbsolutePath());
+
+        // Wait attach upload
+        //TODO: add counter condition to avoid infinite loop
+        while (!oWebElement.isEnabled()) {
+                try {
+                        Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+        }
+        
+        WebElement pathECP = driver.findElement(By.xpath("//input[@name='eds']"));
+        pathECP.sendKeys("\\resources\\files\\Key-6.dat");
+        
+        WebElement passwordForECP = driver.findElement(By.xpath("//input[@name='eds-password']"));
+        pathECP.sendKeys("12345677");
+        
+    
+    
     }
 }
