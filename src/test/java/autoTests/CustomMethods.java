@@ -364,9 +364,17 @@ public class CustomMethods extends SetupAndTeardown
 	}
 
     public void setFieldValue(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.xpath("//input[@name='" + cssSelector + "']"));
+        WebElement webElement = driver.findElement(By.xpath("//input[@name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
+        webElement.clear();
+        webElement.sendKeys(value);
+    }
+    
+    public void setFieldTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
+        WebElement webElement = driver.findElement(By.xpath(".//*[@id='field-sBankIdPassport']/textarea"));
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webElement));
+//        webElement.click();
         webElement.clear();
         webElement.sendKeys(value);
     }
@@ -417,9 +425,10 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldSelectByText(WebDriver driver,String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.cssSelector("."+serviceName+"_--_"+cssSelector));
-        Select select = new Select(webElement);
-        select.selectByVisibleText(text);
+        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
+        webElement.click();
+//        Select select = new Select(webElement);
+//        select.selectByVisibleText(text);
     }
     
     public void setFieldSelectByTextNew1(WebDriver driver, String serviceName, String cssSelector, String text) {
@@ -440,18 +449,15 @@ public class CustomMethods extends SetupAndTeardown
         select.selectByValue(value);
     }
 
-    public void setFieldAutocomplete(WebDriver driver,String name, String value) {
-        WebElement webElement = driver.findElement(By.xpath("//button[contains(@aria-haspopup,'true')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
-        webElement.click();
-        WebElement element = driver.findElement(By.xpath("//a[contains(.,'"+ value +"')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+    public void setFieldAutocomplete(WebDriver driver, String name, String value) {
+        WebElement element = driver.findElement(By.xpath("//input[@name='" + name + "']"));
         element.click();
-        element.click();
-//        webElement.sendKeys(value);
-//        webElement.click();
-        
+        element.sendKeys(value);
+//        driver.findElement(By.name(name)).click();
+//        driver.findElement(By.name(name)).sendKeys(value);
+//        driver.findElement(By.linkText(value)).click();
     }
+
 
     public void setFieldCalendar (WebDriver driver,String serviceName, String cssSelector, String data) {
 

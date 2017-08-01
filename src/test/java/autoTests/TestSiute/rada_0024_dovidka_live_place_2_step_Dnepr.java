@@ -44,29 +44,30 @@ public class rada_0024_dovidka_live_place_2_step_Dnepr extends CustomMethods {
 
         _step("5. Заполняем форму услуги");
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Соборний (Жовтневий) район");
-        setFieldSelectByText(driver,sBP,"asEnumTypeDocument","Паспорт");
-        setFieldValue(driver, sBP, "sBankIdPassport", "Документ, що посвідчує заявника");
+        setFieldSelectByText(driver, sBP, "asEnumTypeDocument", "ID-карта (паспорт)");
+        setFieldTextArea(driver, sBP, "sBankIdPassport", "Документ, що посвідчує заявника");
         setFieldFile(driver, sBP, "nFile_CopyPassportZ", "src/test/resources/files/test.jpg");
-        setFieldValue(driver, sBP, "phone", "+380623155533");
+        setFieldValue(driver, sBP, "phone", "+380673155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldSelectByText(driver,sBP,"asForMySelf","Так, для себе");
         setFieldSelectByText(driver,sBP,"asTargetGetDovidka","Вперше оформлення паспорта (ID-картки)");
-        setFieldFile(driver, sBP, "nFile_SvidoztvoNarodzennya", "src/test/resources/files/test.jpg");
         
-        setFieldValue(driver, sBP, "sDate_of_birth", "Дата народження");
+        
+        setFieldValue(driver, sBP, "sDate_of_birth", "9 липня 2000");
         setFieldValue(driver, sBP, "sAreabirth", "Місце народження");
-        setFieldValue(driver, sBP, "sRegistrationAddress", "Адреса реєстрації");
+        setFieldTextArea(driver, sBP, "sRegistrationAddress", "Адреса реєстрації");
         setFieldValue(driver, sBP, "sNationality", "Україна");
         setFieldValue(driver, sBP, "sMailClerk", email);
+//        setFieldFile(driver, sBP, "nFile_SvidoztvoNarodzennya", "src/test/resources/files/test.jpg");
 
         _step("6. Отправка формы");
         click(driver, o.buttonSendingForm);
 
         _step("7. Проверка сообщения о успешной отправке");
-        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
-                "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n"
+                + "Ваше звернення х-хххххххх успішно зареєстровано\n"
+                + "(номер також відправлено Вам електронною поштою на Ваш e-mail " + email + ") Результати будуть спрямовані також на email.\n"
+                + "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
         _step("7-1. Нажать кнопку Выйти");
         click(driver, o.buttonLogOut);
