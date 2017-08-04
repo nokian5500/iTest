@@ -81,7 +81,7 @@ public class rada_0024_dovidka_live_place_2_step_Dnepr extends CustomMethods {
 
         // Опрацювання в табі "В необроблені"    
 
-        setRegionTask(driver, sBP);
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         

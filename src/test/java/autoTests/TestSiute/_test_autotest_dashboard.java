@@ -38,7 +38,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sVarString", "Тип даних string");
-        setFieldValue(driver, sBP, "sVarTextArea", "Тип даних textArea");
+        setFieldTextArea(driver, sBP, "sVarTextArea", "Тип даних textArea");
         setFieldValue(driver, sBP, "sVarlong", "1234567890");
         setFieldValue(driver, sBP, "sVarDouble", "1234.56789");
         setFieldCalendar(driver, sBP, "sVarDate", "2003/01/01");
@@ -79,8 +79,8 @@ public class _test_autotest_dashboard extends CustomMethods {
                 "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
                 "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
         
-        _step("7-1. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
+//        _step("7-1. Нажать кнопку Выйти");
+//        click(driver, o.buttonLogOut);
         
         _step("8. Вход по прямому URL на дашборд");
         openURLdashboard(driver, sBP);
