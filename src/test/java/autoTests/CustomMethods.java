@@ -372,7 +372,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void setFieldTextArea(WebDriver driver,String serviceName, String cssSelector, String value){
-        WebElement webElement = driver.findElement(By.xpath(".//*[@id='field-sBankIdPassport']/textarea"));
+        WebElement webElement = driver.findElement(By.xpath("//textarea[@name='" + cssSelector + "']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webElement));
 //        webElement.click();
         webElement.clear();
@@ -450,12 +450,12 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldAutocomplete(WebDriver driver, String name, String value) {
-        WebElement element = driver.findElement(By.xpath("//input[@name='" + name + "']"));
-        element.click();
-        element.sendKeys(value);
-//        driver.findElement(By.name(name)).click();
-//        driver.findElement(By.name(name)).sendKeys(value);
-//        driver.findElement(By.linkText(value)).click();
+//        WebElement element = driver.findElement(By.xpath("//input[@name='" + name + "']"));
+//        element.click();
+//        element.sendKeys(value);
+        driver.findElement(By.name(name)).click();
+        driver.findElement(By.name(name)).sendKeys(value);
+        driver.findElement(By.linkText(value)).click();
     }
 
 
