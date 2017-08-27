@@ -450,12 +450,17 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldAutocomplete(WebDriver driver, String name, String value) {
-//        WebElement element = driver.findElement(By.xpath("//input[@name='" + name + "']"));
-//        element.click();
-//        element.sendKeys(value);
-        driver.findElement(By.name(name)).click();
-        driver.findElement(By.name(name)).sendKeys(value);
-        driver.findElement(By.linkText(value)).click();
+        /*deprecated*/
+/*        driver.findElement(By.name(name)).click();
+          driver.findElement(By.name(name)).sendKeys(value);
+          driver.findElement(By.linkText(value)).click();
+*/
+        WebElement element = driver.findElement(By.xpath("//input[@name='" + name + "']"));
+        element.click();
+        element.sendKeys(value);
+        WebElement elements = driver.findElement(By.xpath(".//strong[contains(.,'" + value + "')]"));
+        elements.click();
+
     }
 
 
@@ -678,6 +683,7 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
+        pause(10000);
         String sID_Order = getNumbersIdOrder();
 //        if (serviceName.contains("idoc")) {
             WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
@@ -685,6 +691,7 @@ public class CustomMethods extends SetupAndTeardown
             ((JavascriptExecutor) driver).executeScript(sScript, search);
             String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
             ((JavascriptExecutor) driver).executeScript(sScript2, search);
+            pause(20000);
 //        } else {
 //            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
 //            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
@@ -695,6 +702,7 @@ public class CustomMethods extends SetupAndTeardown
     
     public void setRegionTask(WebDriver driver, String serviceName, String sID_Order) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
 //        String sID_Order = getNumbersIdOrder();
+pause(10000);
         if (serviceName.contains("idoc")) {
             WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
             String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";

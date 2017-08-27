@@ -43,7 +43,7 @@ public class dnepr_spravka_o_doxodax extends CustomMethods {
 
         _step("5. Заполняем форму услуги");
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","0463 - Соборний(Жовтневий) р-н, м.Дніпропетровськ");
-        setFieldValue(driver, sBP, "sAddressFactual", "Фактична адреса проживання");
+        setFieldTextArea(driver, sBP, "sAddressFactual", "Фактична адреса проживання");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldCalendar(driver, sBP, "dStart", "2017/01/01");
