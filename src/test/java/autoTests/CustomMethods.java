@@ -425,18 +425,6 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldSelectByText(WebDriver driver,String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
-        webElement.click();
-//        Select select = new Select(webElement);
-//        select.selectByVisibleText(text);
-    }
-    
-    public void setFieldSelectByTextNew1(WebDriver driver, String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
-        webElement.click();
-    }
-    
-    public void setFieldSelectByTextNew(WebDriver driver,String serviceName, String cssSelector, String text) {
         WebElement webElement = driver.findElement(By.xpath("//select[@name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         Select select = new Select(webElement);

@@ -50,7 +50,7 @@ public class socialhelp_kidsUkraine extends CustomMethods {
         setFieldFile(driver, sBP, "nNoHelp", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "inn_scan", "src/test/resources/files/test.jpg");
         setFieldFile(driver, sBP, "birthdocument_scan", "src/test/resources/files/test.jpg");
-        setFieldSelectByTextNew(driver,sBP,"transfer_type","через національного оператора поштового зв'язку");
+        setFieldSelectByText(driver,sBP,"transfer_type","через національного оператора поштового зв'язку");
         setFieldSelectByText(driver,sBP,"ECP","без ЕЦП (погоджуєтесь на особистий візит після перевірки правильності даних)");
         setFieldValue(driver, sBP, "post_office", "12000");
 
