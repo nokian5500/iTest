@@ -30,7 +30,7 @@ public class Test_ecp extends CustomMethods {
         _step("4. Авторизация Off AuthMock/BankID");
         o.testPrivat24Authorization();
         
-    setFieldSelectByTextNew(driver, sBP, "asSelectFIOCheck", "Так - все вірно");
+    setFieldSelectByText(driver, sBP, "asSelectFIOCheck", "Так - все вірно");
     setFieldfieldPhone(driver, sBP, "phone", "+380623155533");
     setEmail(driver, sBP, "email", email);
 

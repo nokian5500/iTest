@@ -35,7 +35,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         o.mokAuthorization();
         
         _step("5. Заполняем форму услуги");
-        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Новокадацький район, КВ «ЖРЕП Ленінського району»");
+       setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","_test_all_case");
         setFieldValue(driver, sBP, "phone", "+380623155533");
         setFieldValue(driver, sBP, "email", email);
         setFieldValue(driver, sBP, "sVarString", "Тип даних string");

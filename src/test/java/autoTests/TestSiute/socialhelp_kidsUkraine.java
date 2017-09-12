@@ -91,14 +91,14 @@ public class socialhelp_kidsUkraine extends CustomMethods {
         
         // Опрацювання [Етап II]
 
-        setRegionFindOrder(driver, sBP);
-        clickButton(driver, sBP, "Взяти в роботу");
+//        setRegionTask(driver, sBP);
+        clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Почати опрацювання задачі");
 
-        SetRegionFieldInputTypeFile(driver, sBP, "document", "src/test/resources/files/test.jpg");
-        SetRegionFieldInputTypeEnum(driver, sBP, "decision_step2", "Рішення отримане, допомогу призначено");
         SetRegionFieldInputTypeTextArea(driver, sBP, "comment2", "Коментар до заяви на етапі 2");
-
+        SetRegionFieldInputTypeEnum(driver, sBP, "decision_step2", "Рішення отримане, допомогу призначено");
+        SetRegionFieldInputTypeFile(driver, sBP, "document", "src/test/resources/files/test.jpg");
+//
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
         clickButton(driver, sBP, "Ok");

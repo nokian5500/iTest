@@ -425,18 +425,6 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setFieldSelectByText(WebDriver driver,String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
-        webElement.click();
-//        Select select = new Select(webElement);
-//        select.selectByVisibleText(text);
-    }
-    
-    public void setFieldSelectByTextNew1(WebDriver driver, String serviceName, String cssSelector, String text) {
-        WebElement webElement = driver.findElement(By.xpath("//option[contains(.,'" + text + "')]"));
-        webElement.click();
-    }
-    
-    public void setFieldSelectByTextNew(WebDriver driver,String serviceName, String cssSelector, String text) {
         WebElement webElement = driver.findElement(By.xpath("//select[@name='"+cssSelector+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
         Select select = new Select(webElement);
@@ -683,15 +671,23 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
-        pause(10000);
+        
         String sID_Order = getNumbersIdOrder();
 //        if (serviceName.contains("idoc")) {
-            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
-            ((JavascriptExecutor) driver).executeScript(sScript, search);
-            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-            ((JavascriptExecutor) driver).executeScript(sScript2, search);
-            pause(20000);
+//            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
+//            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+//            ((JavascriptExecutor) driver).executeScript(sScript, search);
+//            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+//            ((JavascriptExecutor) driver).executeScript(sScript2, search);
+WebElement webElement = driver.findElement(By.xpath(".//*[@id='adv-search']/input"));
+webElement.click();
+webElement.sendKeys(sID_Order);
+////a[contains(@title,' (Задача №40165086')]
+WebElement wElement = driver.findElement(By.xpath("//a[contains(.,'(" + sID_Order + ")')]"));
+new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(wElement));
+WebElement weElement = driver.findElement(By.xpath("//button[@class='btn btn-default idoc-search-button']"));
+weElement.click();
+        
 //        } else {
 //            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
 //            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));

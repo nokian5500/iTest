@@ -47,14 +47,14 @@ public class dnepr_dms_89 extends CustomMethods {
         setFieldValue(driver, sBP, "email", email);
         setFieldSelectByText(driver,sBP,"asPrevName","Ні");
         setFieldValue(driver, sBP, "sDate_of_birth", "Дата народження");
-        setFieldValue(driver, sBP, "sAreabirth", "Місце народження");
+        setFieldTextArea(driver, sBP, "sAreabirth", "Місце народження");
         setFieldValue(driver, sBP, "sNationality", "Україна");
-        setFieldValue(driver, sBP, "sRegistrationAddress", "Стара адреса реєстрації");
+        setFieldTextArea(driver, sBP, "sRegistrationAddress", "Стара адреса реєстрації");
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Соборний (Жовтневий) район");
-        setFieldValue(driver, sBP, "sNewAddress", "Нова адреса реєстрації");
+        setFieldTextArea(driver, sBP, "sNewAddress", "Нова адреса реєстрації");
         setFieldSelectByText(driver,sBP,"asRegistrationType","до власного житлового приміщення");
         setFieldSelectByText(driver,sBP,"asRegistrationDoc","Ордер");
-        setFieldValue(driver, sBP, "sDocRekv", "Опис документу");        
+        setFieldTextArea(driver, sBP, "sDocRekv", "Опис документу");        
         setFieldSelectByText(driver,sBP,"asMilitStatus","Ні");
         setFieldSelectByText(driver,sBP,"asRegistr","Ні");
         setFieldValue(driver, sBP, "sWhenCome", "2016-11-28");   
