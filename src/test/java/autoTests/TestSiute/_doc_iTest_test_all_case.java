@@ -23,9 +23,9 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         _step("2. Авторизация login/BankID на дашборде. login/pass: (iTest_User_0007/iTest_User_0007)");
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0007", "iTest_User_0007");
         clickButton(driver, sBP, "Увійти");
-        pause(6000);
+//        pause(6000);
         navigateToggleMenu();
-        pause(6000);
+//        pause(6000);
         snapDrawerButtonMenuTabs("Документи");
         createDocumentOrTask("001. Тестовий документ (тестування різних типів даних)");
         clickButton(driver, sBP, "Далi");
@@ -36,11 +36,11 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         SetRegionFieldInputTypeLong(driver, sBP, "sVarDouble", "Тип даних Double");
         SetRegionFieldInputTypeDate(driver, sBP, "sVarDate", "27/09/2017");
         SetRegionFieldInputTypeFile(driver, sBP, "", "src/test/resources/files/test.jpg");
-        SetRegionFieldInputTypeEnum(driver, sBP, "asEnumType", "Значення 3 для Enum");
-//        SetRegionFieldInputTypeCheckbox(driver, sBP, "asEnumTypeCheckbox");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asEnumType", "Значення 1 для Enum");
+        SetRegionFieldInputTypeCheckbox(driver, sBP, "asEnumTypeCheckbox");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldA", "0", "1");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB", "0", "1");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable1", "sTables1FieldC", "0", "кілограм|кг");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable1", "sTables1FieldC", "0", "кілограм|кг");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD", "0", "1");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE", "0", "12345");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF", "0", "12345");
@@ -48,7 +48,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         addRegionsTableRow(driver, sBP, "sTable1");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldA", "1", "1");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldB", "1", "1");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable1", "sTables1FieldC", "1", "кілограм|кг");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable1", "sTables1FieldC", "1", "кілограм|кг");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldD", "1", "1");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldE", "1", "12345");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldF", "1", "12345");
@@ -56,10 +56,21 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 
         setRegionTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA", "0", "1");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB", "0", "src/test/resources/files/test.jpg");
-        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldB", "0", "27/09/2017");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC", "0", "27/09/2017");
         addRegionsTableRow(driver, sBP, "sTable2");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA", "1", "1");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB", "1", "src/test/resources/files/test.jpg");
-        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldB", "1", "27/09/2017");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC", "1", "27/09/2017");
+//        SetRegionFieldInputTypeEnum(driver, sBP, "asAttributeApplication", "Заявка ТМЦ");
+//        SetRegionFieldInputTypeString(driver, sBP, "sEnterpriseCustomer", "Автотестування");
+//        SetRegionFieldInputTypeTextArea(driver, sBP, "sPreamble", "В рамках договору на надання послуг прошу організувати та провести тендер з відбору...");
+//        SetRegionFieldInputTypeString(driver, sBP, "sNumberCard", "41885110");
+//        SetRegionFieldInputTypeString(driver, sBP, "sSubgroup", "ЗНайменування продукції");
+        
+//        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "0", "Изыскательские работы для строительства");
+//        setRegionTableCellsInputTypeString(driver, sBP, "sTable_Goods", "sID_Private_Source_Goods0", "0", "1");
+        
+//        addRegionsTableRow(driver, sBP, "sTable_Goods");
+//        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "1", "Изыскательские работы для строительства");
     }
 }

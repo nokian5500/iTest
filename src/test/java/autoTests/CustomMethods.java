@@ -578,8 +578,9 @@ public class CustomMethods extends SetupAndTeardown
    }
     
     public void addRegionsTableRow(WebDriver driver, String serviceName, String tableName) { 
-        WebElement button = driver.findElement(By.cssSelector(".add-row-button."+tableName+"_add_row_button"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(button));
+        WebElement button = driver.findElement(By.xpath("//a[contains(@class,'"+tableName+"_add_row_button')]")); //a[contains(@class,'sTable2_add_row_button')]
+        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
         button.click();
     }
     
@@ -660,7 +661,7 @@ public class CustomMethods extends SetupAndTeardown
 
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath("//button[contains(.,'" + nameButton + "')]")); ////button[contains(.,'Опрацювати')]
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
+        new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
     
@@ -671,47 +672,20 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTask(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
-        
+
         String sID_Order = getNumbersIdOrder();
-//        if (serviceName.contains("idoc")) {
-//            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-//            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
-//            ((JavascriptExecutor) driver).executeScript(sScript, search);
-//            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-//            ((JavascriptExecutor) driver).executeScript(sScript2, search);
-WebElement webElement = driver.findElement(By.xpath(".//*[@id='adv-search']/input"));
-webElement.click();
-webElement.sendKeys(sID_Order);
+        WebElement webElement = driver.findElement(By.xpath(".//*[@id='adv-search']/input"));
+        webElement.click();
+        webElement.sendKeys(sID_Order);
 ////a[contains(@title,' (Задача №40165086')]
-WebElement wElement = driver.findElement(By.xpath("//a[contains(.,'(" + sID_Order + ")')]"));
-new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(wElement));
-WebElement weElement = driver.findElement(By.xpath("//button[@class='btn btn-default idoc-search-button']"));
-weElement.click();
-        
-//        } else {
-//            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-//            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-//            element.click();
-//        }
+        WebElement wElement = driver.findElement(By.xpath("//span[contains(.,'" + sID_Order + "')]"));
+        new WebDriverWait(driver, 70).until(ExpectedConditions.visibilityOf(wElement));
+        WebElement weElement = driver.findElement(By.xpath("//button[@class='btn btn-default idoc-search-button']"));
+        weElement.click();
 
     }
     
-    public void setRegionTask(WebDriver driver, String serviceName, String sID_Order) throws Exception { // посик ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
-//        String sID_Order = getNumbersIdOrder();
-pause(10000);
-        if (serviceName.contains("idoc")) {
-            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
-            ((JavascriptExecutor) driver).executeScript(sScript, search);
-            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-            ((JavascriptExecutor) driver).executeScript(sScript2, search);
-        } else {
-            WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'" + sID_Order + "')]"));
-            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-            element.click();
-        }
 
-    }
 
     public void setRegionTab(WebDriver driver, String serviceName, String enumRegionTab) throws Exception  { // навигация по табам navbar в дашборде
          pause(5000);
@@ -793,8 +767,8 @@ pause(10000);
         webElement.sendKeys(date);
     }
    public void SetRegionFieldInputTypeFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
-        WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
-//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(oWebElement));
+        WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));//ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"
+                                                                //        ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
@@ -830,37 +804,49 @@ pause(10000);
         } 
     }
    public void SetRegionFieldInputTypeEnum(WebDriver driver,String serviceName, String cssSelector, String value){
-   WebElement webEnum = driver.findElement(By.cssSelector("select[name=" + cssSelector + "]"));
+   WebElement webEnum = driver.findElement(By.xpath("//option[@label='"+value+"']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webEnum));
         webEnum.click();
-        Select select = new Select(webEnum);
-        select.selectByVisibleText(value);
+//        Select select = new Select(webEnum);
+//        select.selectByVisibleText(value);
    }
    
    public void SetRegionFieldInputTypeCheckbox(WebDriver driver,String serviceName, String cssSelector){
-   WebElement checkbox = driver.findElement(By.cssSelector("#" + cssSelector)); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
+   WebElement checkbox = driver.findElement(By.xpath("//input[@name='asEnumTypeCheckbox']")); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(checkbox));
         checkbox.click();
         checkbox.click();
    }
    // Methods for filling the fields of table for central //._test_autotest_dashboard_--_sTable3_--_COL_sTables3Field1_--_ROW_0 input
    public void setRegionTableCellsInputTypeString(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
-   WebElement td = driver.findElement(By.cssSelector("."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" input"));
+   WebElement td = driver.findElement(By.xpath("//input[@name='"+cellName+NameRow+"']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         td.clear();
        td.sendKeys(text);
    }
    
-   public void setRegionTableCellsInputTypeEnum(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
-   WebElement td = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" select[name='"+cellName+NameRow+"']"));//ng-scope 
+   public void setRegionTableCellsInputTypeEnumSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+   WebElement td = driver.findElement(By.xpath("//select[@name='"+cellName+NameRow+"']"));//ng-scope 
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         Select select = new Select(td);
         select.selectByVisibleText(text);
    }
-   public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile){
-   WebElement oWebElement = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+nameRow+" button[ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"] input")); //.ng-scope._test_autotest_dashboard_--_sTable4_--_COL_sTables4Field2_--_ROW_0 button[ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"] input
+   
+    public void setRegionTableCellsInputTypeEnumSpan(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+
+        WebElement element1 = driver.findElement(By.xpath("//div[@name=\"sName_Goods0\"]//input[@class=\"form-control ui-select-search ng-pristine ng-valid ng-empty ng-touched ng-hide\"]"));
+//        String sScript = ".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" .btn.btn-default.form-control.ui-select-toggle";
+//        ((JavascriptExecutor) driver).executeScript(sScript, element1);
+//        WebElement element2 = driver.findElement(By.xpath("//span[contains(.,'"+text+"')]"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element2));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element1));
+        element1.click();
+
+    }
+   public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
+   WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_sTable2_--_COL_sTables2FieldB_--_ROW_0')]//button[@class='btn btn-default']//input")); //.ng-scope._test_autotest_dashboard_--_sTable4_--_COL_sTables4Field2_--_ROW_0 button[ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"] input
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
@@ -875,16 +861,19 @@ pause(10000);
                 } catch (InterruptedException e) {
                         e.printStackTrace();
                 }
-        } 
+        }
+        Thread.sleep(1000);
    }
-   public void setRegionTableCellsInputTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) {
+   public void setRegionTableCellsInputTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) throws InterruptedException {
 
-        WebElement td = driver.findElement(By.cssSelector(".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" input"));
+        WebElement td = driver.findElement(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_sTable2_--_COL_sTables2FieldC_--_ROW_0']//input"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
         td.click();
         td.clear();
         td.sendKeys(date);
+        td.click();
+        Thread.sleep(1000);
 
     }
 //    private static void setClipboardData(String string) {
@@ -957,14 +946,19 @@ pause(10000);
     public void setPaswordForECPKey(String password) {
         WebElement passwordECP = driver.findElement(By.xpath("//input[@id='password1']"));
         passwordECP.sendKeys(password);
-        WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']"));
+        WebElement clickButtonSubmint = driver.findElement(By.xpath("//button[@id='open']")); //12345677
         clickButtonSubmint.click();
     }
     
-    public void uploadECPKeyAutoIT() throws IOException, InterruptedException{
+    public void uploadECPKeyAutoIT() throws Exception{
+        
         WebElement buttonECP = driver.findElement(By.xpath("//button[@id='selectDir']"));
         buttonECP.click();
-        Runtime.getRuntime().exec("src/test/resources/files/UploadKey.exe");
+        
+//        String sScript = "$('#selectDir').click";
+//        ((JavascriptExecutor) driver).executeScript(sScript, buttonECP);
+        Runtime.getRuntime().exec("src\\test\\resources\\files\\UploadKey.exe"); //Key-6.dat
+        Thread.sleep(5000);
     }
    
     /*****************************methods for new dashboard(Idoc)******************************************************/
@@ -998,10 +992,27 @@ pause(10000);
     
     
     
-    public void choiceMenuList(String listElement) {
+    public void choiceMenuList(String buttonName) {
         WebElement menuList = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-        String sScript = "$('#" + listElement + "').click();";
+        if (buttonName.contains("Необроблені")) {
+        String sScript = "$('#unassigned').click();";
         ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        } else if (buttonName.contains("В роботі")) {
+        String sScript = "$('#selfAssigned').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        } else if (buttonName.contains("Мій розклад")) {
+        String sScript = "$('#tickets').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        } else if (buttonName.contains("Усі")) {
+        String sScript = "$('#all').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        } else if (buttonName.contains("Історія")) {
+        String sScript = "$('#finished').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        } else if (buttonName.contains("На контролі")) {
+        String sScript = "$('#control').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript, menuList);
+        }
     }
     
     /**
@@ -1087,31 +1098,61 @@ pause(10000);
 
     }
     
-    public void uploadECPKeyFileIdoc(WebDriver driver, String serviceName, String sPathDocumentForECP ){
+    public void uploadECPKeyFileIdoc(WebDriver driver, String serviceName, String sPathDocumentForECP) {
         WebElement oWebElement = driver.findElement(By.xpath("//input[@type='file']"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
-        
+
         File oFile = new File(sPathDocumentForECP); //\\resources\\files\\testDocumentForECP.pdf
         oWebElement.sendKeys(oFile.getAbsolutePath());
 
         // Wait attach upload
         //TODO: add counter condition to avoid infinite loop
         while (!oWebElement.isEnabled()) {
-                try {
-                        Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
-        
+
         WebElement pathECP = driver.findElement(By.xpath("//input[@name='eds']"));
         pathECP.sendKeys("\\resources\\files\\Key-6.dat");
-        
+
         WebElement passwordForECP = driver.findElement(By.xpath("//input[@name='eds-password']"));
         pathECP.sendKeys("12345677");
+
+    }
+    
+    public void navAboutItemLeftMenuOfRegions(WebDriver driver, String serviceName, String NameButton) {
+        if (NameButton.contains("Необроблені")) {
+            
+            //$('#unassigned').click();
+            WebElement element = driver.findElement(By.xpath("//a[@href='/tasks/unassigned']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        } else if (NameButton.contains("В роботі")) {
+            WebElement element = driver.findElement(By.xpath("//a[@href='/tasks/selfAssigned']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        } else if (NameButton.contains("Мій розклад")) {
+            WebElement element = driver.findElement(By.xpath("//a[@href='/tasks/tickets']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        } else if (NameButton.contains("Усі")) {
+            WebElement element = driver.findElement(By.xpath("//a[@href='/tasks/all']"));
+            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
+        }
+
+    }
+    
+    public void openServiceByUrl(WebDriver driver, String serviceName, String serverName, String sID_Order) throws IOException, InterruptedException {
+        driver.manage().window().maximize();
+        driver.get("https://" + serverName + ".test.region.igov.org.ua/wf/service/action/task/getTaskData?sID_Order=" + sID_Order);
+        Runtime.getRuntime().exec("src\\test\\resources\\files\\scriptForWindows PopupAuth.exe");
+        Thread.sleep(5000);
+//        driver.close();
         
-    
-    
     }
 }

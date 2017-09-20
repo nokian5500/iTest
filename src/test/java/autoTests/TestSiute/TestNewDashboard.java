@@ -10,36 +10,35 @@ import autoTests.pages.main.TemplatePage;
 import org.testng.annotations.Test;
 
 /**
- *_step("8. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, sBP);
-
-        _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
-        clickButton(driver, sBP, "Увійти");
+ * _step("8. Вход по прямому URL на дашборд"); openURLdashboard(driver, sBP);
+ *
+ * _step("9. Авторизация login/BankID на дашборде. login/pass:
+ * (tester/tester)"); AuthorizationBySetLoginPassword(driver, sBP, "tester",
+ * "tester"); clickButton(driver, sBP, "Увійти");
+ *
  * @author User
  */
 public class TestNewDashboard extends CustomMethods {
 //<editor-fold desc="Тестовый пример загрузки файла">
+
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
     public void Test_test_autotest_dashboard() throws Exception {
         TemplatePage o = new TemplatePage(driver);
         String sBP = "_test_autotest_dashboard";
         String email = "autotestbeta@gmail.com";
-        _step("1. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, sBP);
-        _step("2. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
-        clickButton(driver, sBP, "Увійти");
-//        usersMenuNavBarRight(driver, sBP);
-        pause(6000);
-//        uploadECPKeyFileIdoc(driver, sBP, "\\resources\\files\\testDocumentForECP.pdf");
+        _step("1. Работа с сервисом + авторизация для работы с сервисом system/system");
+        openServiceByUrl(driver, sBP, "gamma", "405102182");
+//        _step("2. Вход по прямому URL на дашборд");
+//        openURLdashboard(driver, sBP);
+//        _step("3. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
+//        
+//        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+//        clickButton(driver, sBP, "Увійти");
+//
+//        pause(6000);
 //        navigateToggleMenu();
-////        snapDrawerButtonMenuTabs("Документи");
-//        createDocumentOrTask("15 - Електронний документ без ЕЦП");
-////        clickButton(driver, sBP, "Далi");
-////        clickButton(driver, sBP, "Далі");
-//        searchBoxByURL(driver, sBP, "34305107", "Необроблені");
-//        scrollPageDown();
-//        pause(15000);
-}
+//        choiceMenuList("В роботі");
+//        setRegionTask(driver, sBP);
+//        pause(10000);
     }
+}
