@@ -862,17 +862,17 @@ public class CustomMethods extends SetupAndTeardown
                         e.printStackTrace();
                 }
         }
-        Thread.sleep(1000);
+        Thread.sleep(3000);
    }
    public void setRegionTableCellsInputTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) throws InterruptedException {
 
         WebElement td = driver.findElement(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_sTable2_--_COL_sTables2FieldC_--_ROW_0']//input"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
-        td.click();
+//        td.click();
         td.clear();
         td.sendKeys(date);
-        td.click();
+//        td.click();
         Thread.sleep(1000);
 
     }
@@ -977,16 +977,13 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void createDocumentOrTask(String nameDocumentOrTask) { //*
-        WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
+        WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
         String sScript = "$('.btn.btn-default.ng-scope').click()";
         ((JavascriptExecutor) driver).executeScript(sScript, button);
         WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
         Element.click();
-        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + nameDocumentOrTask + "')]"));
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ nameDocumentOrTask +"')]"));
         listElement.click();
-//        WebElement button1 = driver.findElement(By.xpath("$('.btn.btn-info.ng-scope')"));
-//        String sScript2 = "$('.btn.btn-info.ng-scope').click()";
-//        ((JavascriptExecutor) driver).executeScript(sScript2, button1);
         
     }
     
