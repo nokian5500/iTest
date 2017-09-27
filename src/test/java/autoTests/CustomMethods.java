@@ -836,13 +836,15 @@ public class CustomMethods extends SetupAndTeardown
    
     public void setRegionTableCellsInputTypeEnumSpan(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
 
-        WebElement element1 = driver.findElement(By.xpath("//div[@name=\"sName_Goods0\"]//input[@class=\"form-control ui-select-search ng-pristine ng-valid ng-empty ng-touched ng-hide\"]"));
-//        String sScript = ".ng-scope."+serviceName+"_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" .btn.btn-default.form-control.ui-select-toggle";
-//        ((JavascriptExecutor) driver).executeScript(sScript, element1);
-//        WebElement element2 = driver.findElement(By.xpath("//span[contains(.,'"+text+"')]"));
-//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element2));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element1));
-        element1.click();
+        WebElement element1 = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_sTable_Goods_--_COL_sName_Goods_--_ROW_0')]//input"));
+//WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
+        String sScript = "$('.btn.btn-default.form-control.ui-select-toggle').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, element1);
+        WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
+        Element.click();
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ text +"')]"));
+        listElement.click();
+//        element1.sendKeys(text);
 
     }
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
