@@ -111,7 +111,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "0", "Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "0", "Код товару (тип string)");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "0", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable3", "sTables3Field3", "0", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "0", "1234567890");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "0", "1324,54560");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "0", "12345");
@@ -119,7 +119,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         addRegionsTableRow(driver, sBP, "sTable3");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field1", "1", "Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field2", "1", "Код товару (тип string)");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable3", "sTables3Field3", "1", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable3", "sTables3Field3", "1", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field4", "1", "2134567890");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field5", "1", "21324.50");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable3", "sTables3Field6", "1", "212345");
@@ -158,7 +158,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field1", "0", "Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field2", "0", "Код товару (тип string)");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable5", "sTables5Field3", "0", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable5", "sTables5Field3", "0", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field4", "0", "123456789");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field5", "0", "21324.50");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field6", "0", "212345.67");
@@ -166,7 +166,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         addRegionsTableRow(driver, sBP, "sTable5");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field1", "1", "2. Найменування товару (тип string)");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field2", "1", "2. Код товару (тип string)");
-        setRegionTableCellsInputTypeEnum(driver, sBP, "sTable5", "sTables5Field3", "1", "квадратний метр|кв.м");
+        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTable5", "sTables5Field3", "1", "квадратний метр|кв.м");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field4", "1", "2134567890");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field5", "1", "21324.50");
         setRegionTableCellsInputTypeString(driver, sBP, "sTable5", "sTables5Field6", "1", "212345.67");

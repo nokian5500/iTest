@@ -27,6 +27,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         navigateToggleMenu();
 //        pause(6000);
         snapDrawerButtonMenuTabs("Документи");
+        
         createDocumentOrTask("001. Тестовий документ (тестування різних типів даних)");
         clickButton(driver, sBP, "Далi");
 //        pause(6000);
@@ -93,8 +94,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
         
         /*Таблица Узгоджуючі*/
-//        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
-//        addRegionsTableRow(driver, sBP, "sTableAcceptor");
-//        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "керівник підрозділу 2.1");
+        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
+        addRegionsTableRow(driver, sBP, "sTableAcceptor");
+        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "керівник підрозділу 2.1");
     }
 }

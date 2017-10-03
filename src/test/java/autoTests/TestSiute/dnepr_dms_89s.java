@@ -93,17 +93,21 @@ public class dnepr_dms_89s extends CustomMethods {
         clickButton(driver, sBP, "Ok");
         
         // Опрацювання [Етап II]
-
-        setRegionFindOrder(driver, sBP);
+        
+        navigateToggleMenu();
+        choiceMenuList("Необроблені");
+        setRegionTask(driver, sBP);
+        clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
 
-        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Громадянин знятий з реєстрації");
         SetRegionFieldInputTypeString(driver, sBP, "sWhenCome", "Вкажіть дату зняття з реєстрації");
+        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Громадянин знятий з реєстрації");
+        
 
         clickButton(driver, sBP, "Опрацювати");
         clickButton(driver, sBP, "Підтвердити");
-        clickButton(driver, sBP, "Підтвердити");
+//        clickButton(driver, sBP, "Підтвердити");
         clickButton(driver, sBP, "Ok");
       
      }

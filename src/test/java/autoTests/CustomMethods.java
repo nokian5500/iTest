@@ -972,9 +972,8 @@ public class CustomMethods extends SetupAndTeardown
     }
     /*****************************navigation on snapDrawer******************************************************/
     public void snapDrawerButtonMenuTabs(String buttonName){
-        WebElement button = driver.findElement(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
-        String sScript = "$('a:contains(\""+buttonName+"\")').click()";
-        ((JavascriptExecutor) driver).executeScript(sScript, button); 
+        WebElement button = driver.findElement(By.xpath(".//a[contains(.,'" + buttonName + "')]"));
+        button.click();
     
     }
     
@@ -984,9 +983,9 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript, button);
         WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
         Element.click();
-        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ nameDocumentOrTask +"')]"));
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + nameDocumentOrTask + "')]"));
         listElement.click();
-        
+
     }
     
     
