@@ -642,7 +642,7 @@ public class CustomMethods extends SetupAndTeardown
         String sID_Order = getNumbersIdOrder();
         if (serviceName.contains("idoc")) {
             WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-            String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+            String sScript = "$('.form-control.searched-text').val('" + "5-"+sID_Order + "');";
             ((JavascriptExecutor) driver).executeScript(sScript, search);
             String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
             ((JavascriptExecutor) driver).executeScript(sScript2, search);
@@ -848,7 +848,7 @@ public class CustomMethods extends SetupAndTeardown
 
     }
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
-   WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_sTable2_--_COL_sTables2FieldB_--_ROW_0')]//button[@class='btn btn-default']//input")); //.ng-scope._test_autotest_dashboard_--_sTable4_--_COL_sTables4Field2_--_ROW_0 button[ng-class="{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}"] input
+       WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "')]//*[@id=\"upload-button\"]//input")); //.upload-button
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
         
@@ -973,11 +973,12 @@ public class CustomMethods extends SetupAndTeardown
     /*****************************navigation on snapDrawer******************************************************/
     public void snapDrawerButtonMenuTabs(String buttonName){
         WebElement button = driver.findElement(By.xpath(".//a[contains(.,'" + buttonName + "')]"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(button));
         button.click();
     
     }
     
-    public void createDocumentOrTask(String nameDocumentOrTask) { //*
+     public void createDocumentOrTask(String nameDocumentOrTask) { //*
         WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
         String sScript = "$('.btn.btn-default.ng-scope').click()";
         ((JavascriptExecutor) driver).executeScript(sScript, button);
@@ -988,6 +989,12 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
+    public void templateSelect(String templateName) {
+        String sScript = "$('span.btn.btn-default.form-control.ui-select-toggle').click()";
+        ((JavascriptExecutor) driver).executeScript(sScript, "");
+        WebElement element = driver.findElement(By.xpath("//a[contains(.,'" + templateName + "')]"));
+        element.click();
+    }
     
     
     public void choiceMenuList(String buttonName) {
@@ -1125,7 +1132,7 @@ public class CustomMethods extends SetupAndTeardown
     public void navAboutItemLeftMenuOfRegions(WebDriver driver, String serviceName, String NameButton) {
         if (NameButton.contains("Необроблені")) {
             
-            //$('#unassigned').click();
+            //$('#  unassigned').click();
             WebElement element = driver.findElement(By.xpath("//a[@href='/tasks/unassigned']"));
             new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
             element.click();
