@@ -578,10 +578,10 @@ public class CustomMethods extends SetupAndTeardown
    }
     
     public void addRegionsTableRow(WebDriver driver, String serviceName, String tableName) { 
-        WebElement button = driver.findElement(By.xpath("//a[contains(@class,'"+tableName+"_add_row_button')]")); //a[contains(@class,'sTable2_add_row_button')]
+        WebElement button = driver.findElement(By.cssSelector("a."+tableName+"_add_row_button")); //a[contains(@class,'sTable2_add_row_button')]
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
-        button.click();
+//        button.click();
     }
     
    public String getNumbersIdOrder() throws Exception {
@@ -836,15 +836,36 @@ public class CustomMethods extends SetupAndTeardown
    
     public void setRegionTableCellsInputTypeEnumSpan(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
 
-        WebElement element1 = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_sTable_Goods_--_COL_sName_Goods_--_ROW_0')]//input"));
+        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" input"));
 //WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
-        String sScript = "$('.btn.btn-default.form-control.ui-select-toggle').click()";
-        ((JavascriptExecutor) driver).executeScript(sScript, element1);
+//        String sScript = "$('ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "').click()";
+//        ((JavascriptExecutor) driver).executeScript(sScript, element1);
         WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
         Element.click();
         WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ text +"')]"));
         listElement.click();
 //        element1.sendKeys(text);
+
+    }
+    
+    public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+
+        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_sTableAcceptor_--_COL_sName_Acceptor_--_ROW_0 span.btn.btn-default.form-control.ui-select-toggle"));
+//WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
+//        String sScript = "$('.btn.btn-default.form-control.ui-select-toggle').click()";
+//        ((JavascriptExecutor) driver).executeScript(sScript, element1);
+//        WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
+//        Element.click();
+        element1.click();
+       WebElement element2 = driver.findElement(By.cssSelector("input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-valid-parse.ng-empty"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element2));
+        element2.click();
+//        element2.clear();
+        element2.sendKeys("Спі");
+        pause(1000);
+        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ text +"')]"));
+        listElement.click();
+//        element1.sendKeys(text); .ng-scope._doc_iTest_test_all_case_--_sTableAcceptor_--_COL_sName_Acceptor_--_ROW_0
 
     }
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
@@ -868,7 +889,7 @@ public class CustomMethods extends SetupAndTeardown
    }
    public void setRegionTableCellsInputTypeCalendar(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String date) throws InterruptedException {
 
-        WebElement td = driver.findElement(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_sTable2_--_COL_sTables2FieldC_--_ROW_0']//input"));
+        WebElement td = driver.findElement(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+"']//input"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         ((JavascriptExecutor) driver).executeScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
 //        td.click();

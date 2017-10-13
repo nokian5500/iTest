@@ -64,10 +64,10 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC", "0", "27/09/2017");
         
         /*ПРОБЛЕМА ЗАПОЛНЕНИЯ второго ряда Таблица sTable2*/
-//        addRegionsTableRow(driver, sBP, "sTable2");
-//        setRegionTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA", "1", "1");
-//        setRegionTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB", "1", "src/test/resources/files/test.jpg");
-//        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC", "1", "27/09/2017");
+        addRegionsTableRow(driver, sBP, "sTable2");
+        setRegionTableCellsInputTypeString(driver, sBP, "sTable2", "sTables2FieldA", "1", "1");
+        setRegionTableCellsInputTypeFile(driver, sBP, "sTable2", "sTables2FieldB", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeCalendar(driver, sBP, "sTable2", "sTables2FieldC", "1", "27/09/2017");
        
         SetRegionFieldInputTypeEnum(driver, sBP, "asAttributeApplication", "Заявка ТМЦ");
         SetRegionFieldInputTypeString(driver, sBP, "sEnterpriseCustomer", "Автотестування");
@@ -76,8 +76,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         SetRegionFieldInputTypeString(driver, sBP, "sSubgroup", "ЗНайменування продукції");
         
         setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "0", "Изыскательские работы для строительства");
-//        addRegionsTableRow(driver, sBP, "sTable_Goods");
-//        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "1", "Изыскательские работы для строительства");
+        addRegionsTableRow(driver, sBP, "sTable_Goods");
+        setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "1", "Изыскательские работы для строительства");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sTechCharacteristic", "Технічні характеристики, особливі вимоги");
         SetRegionFieldInputTypeEnum(driver, sBP, "asUnit", "кілограм|кг");
         SetRegionFieldInputTypeString(driver, sBP, "sQuantity", "100");
@@ -95,8 +95,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
         
         /*Таблица Узгоджуючі*/
-        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
         addRegionsTableRow(driver, sBP, "sTableAcceptor");
-        setRegionTableCellsInputTypeEnumSelect(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "керівник підрозділу 2.1");
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "1", "керівник підрозділу 2.1");
     }
 }
