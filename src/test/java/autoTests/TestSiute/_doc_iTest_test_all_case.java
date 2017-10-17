@@ -240,6 +240,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickLink(driver, sBP, "Нерозглянуті");
         setRegionFindOrder(driver, sBP, "");
         clickButton(driver, sBP, "Підписати");
-        
+        clickLink(driver, sBP, "секретар І2");
+        clickLink(driver, sBP, "Вийти");
     }
 }
