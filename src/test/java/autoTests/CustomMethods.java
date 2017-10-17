@@ -665,6 +665,12 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
     
+    public void clickLink(WebDriver driver, String serviceName, String nameLink) { // нажатие любой кнопки с указанным тескстом на ней
+        WebElement link = driver.findElement(By.xpath("//a[contains(.,'" + nameLink + "')]")); ////button[contains(.,'Опрацювати')]
+        new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(link));
+        link.click();
+    }
+    
     public void clickButtonECP(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath("//button[@ng-disable='cantSubmit(form)']")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(button));
@@ -848,26 +854,39 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-    public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+    public String getSubString(String text, int beginIndex, int endIndex) {
+        String newtext = text.substring(beginIndex, endIndex);
+        System.out.println(newtext);
+        return newtext;
+    }
 
-        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_sTableAcceptor_--_COL_sName_Acceptor_--_ROW_0 span.btn.btn-default.form-control.ui-select-toggle"));
-//WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
-//        String sScript = "$('.btn.btn-default.form-control.ui-select-toggle').click()";
-//        ((JavascriptExecutor) driver).executeScript(sScript, element1);
-//        WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
-//        Element.click();
-        element1.click();
-       WebElement element2 = driver.findElement(By.cssSelector("input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-valid-parse.ng-empty"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element2));
-        element2.click();
-//        element2.clear();
-        element2.sendKeys("Спі");
-        pause(1000);
-        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'"+ text +"')]"));
-        listElement.click();
-//        element1.sendKeys(text); .ng-scope._doc_iTest_test_all_case_--_sTableAcceptor_--_COL_sName_Acceptor_--_ROW_0
+    public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+        String textNew = getSubString(text, 0, 3);
+        System.out.println(textNew);
+        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_"+tableName+"_--_COL_"+cellName+"_--_ROW_"+NameRow+" span.btn.btn-default.form-control.ui-select-toggle"));
+        String sCript = "$('.ng-scope._doc_iTest_test_all_case_--_sTableAcceptor_--_COL_sName_Acceptor_--_ROW_0 .btn.btn-default.form-control.ui-select-toggle').click()";
+        ((JavascriptExecutor)driver).executeScript(sCript, element1);
+        WebElement element2 = driver.findElement(By.cssSelector("input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-empty"));
+        String sCript2 = "$('input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-empty').click()')";
+        ((JavascriptExecutor)driver).executeScript(sCript2, element2);
+        String sCript3 = "$('input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-empty').val(' "+textNew+"')";
+        ((JavascriptExecutor)driver).executeScript(sCript3, element2);
+//        element1.click();
+//        element1.click();
+//        WebElement element2 = driver.findElement(By.cssSelector("input.form-control.ui-select-search.ng-valid.ng-touched.ng-dirty.ng-valid-parse.ng-empty"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element2));
+//        element2.click();
+//        element2.click();
+//
+//        element2.sendKeys(textNew);
+//        element2.click();
+//        element2.sendKeys(textNew);
+//        pause(1000);
+//        WebElement listElement = driver.findElement(By.xpath("//span[contains(.,'" + text + "')]"));
+//        listElement.click();
 
     }
+    
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
        WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "')]//*[@id=\"upload-button\"]//input")); //.upload-button
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
@@ -1117,12 +1136,12 @@ public class CustomMethods extends SetupAndTeardown
 
     }
     
-    public void clickLink(WebDriver driver, String serviceName, String nameLink) {
-        WebElement link = driver.findElement(By.xpath("//span[contains(.,'" + nameLink + "')]"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(link));
-        link.click();
-
-    }
+//    public void clickLink(WebDriver driver, String serviceName, String nameLink) {
+//        WebElement link = driver.findElement(By.xpath("//span[contains(.,'" + nameLink + "')]"));
+//        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(link));
+//        link.click();
+//
+//    }
     
     public void uploadECPKeyFileIdoc(WebDriver driver, String serviceName, String sPathDocumentForECP) {
         WebElement oWebElement = driver.findElement(By.xpath("//input[@type='file']"));
