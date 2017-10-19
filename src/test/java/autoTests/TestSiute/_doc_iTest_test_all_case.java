@@ -34,12 +34,12 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 //        pause(6000);
         SetRegionFieldInputTypeString(driver, sBP, "sVarString", "Тип даних string");
         SetRegionFieldInputTypeTextArea(driver, sBP, "sVarTextArea", "Тип даних TextArea");
-        SetRegionFieldInputTypeLong(driver, sBP, "sVarlong", "Тип даних long");
-        SetRegionFieldInputTypeLong(driver, sBP, "sVarDouble", "Тип даних Double");
+        SetRegionFieldInputTypeLong(driver, sBP, "sVarlong", "1234567890");
+        SetRegionFieldInputTypeLong(driver, sBP, "sVarDouble", "1234.56789");
         SetRegionFieldInputTypeDate(driver, sBP, "sVarDate", "27/09/2017");
         SetRegionFieldInputTypeFile(driver, sBP, "", "src/test/resources/files/test.jpg");
         SetRegionFieldInputTypeEnum(driver, sBP, "asEnumType", "Значення 1 для Enum");
-        SetRegionFieldInputTypeCheckbox(driver, sBP, "asEnumTypeCheckbox");
+        SetRegionFieldInputTypeCheckbox(driver, sBP, "#asEnumTypeCheckbox");
         
         /*Таблица sTable1*/
         setRegionTableCellsInputTypeString(driver, sBP, "sTable1", "sTables1FieldA", "0", "1");
@@ -113,8 +113,9 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "1", "керівник підрозділу 2.2");
         
         clickButtonCreate(driver, sBP);
-        pause(10000);
-//        clickButton(driver, sBP, "Ok");
+        
+        
+        clickButton(driver, sBP, "Ok");
         clickLink(driver, sBP, "Співробітник2 підрозділу 1.1");
         clickLink(driver, sBP, "Вийти");
         
