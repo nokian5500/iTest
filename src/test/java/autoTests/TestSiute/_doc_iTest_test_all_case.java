@@ -112,8 +112,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         addRegionsTableRow(driver, sBP, "sTableDirect");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "1", "керівник підрозділу 2.2");
         
-        clickButton(driver, sBP, "Створити");
-        pause(1000);
+        clickButtonCreate(driver, sBP);
+        pause(10000);
 //        clickButton(driver, sBP, "Ok");
         clickLink(driver, sBP, "Співробітник2 підрозділу 1.1");
         clickLink(driver, sBP, "Вийти");

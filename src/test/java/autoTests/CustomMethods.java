@@ -661,6 +661,12 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
     
+    public void clickButtonCreate(WebDriver driver, String serviceName) { // нажатие любой кнопки с указанным тескстом на ней
+        WebElement button = driver.findElement(By.xpath("//button[contains(@ng-click,'submitTask(form)')]")); ////button[contains(.,'Опрацювати')]
+        new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(button));
+        button.click();
+    }
+    
     public void clickLink(WebDriver driver, String serviceName, String nameLink) throws Exception{ // нажатие любой кнопки с указанным тескстом на ней
         WebElement link = driver.findElement(By.xpath("//a[contains(.,'" + nameLink + "')]")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(link));
