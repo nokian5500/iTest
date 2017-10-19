@@ -28,14 +28,14 @@ public class TestNewDashboard extends CustomMethods {
         String email = "autotestbeta@gmail.com";
         _step("1. Работа с сервисом + авторизация для работы с сервисом system/system");
         openServiceByUrl(driver, sBP, "gamma", "405102182");
-//        _step("2. Вход по прямому URL на дашборд");
-//        openURLdashboard(driver, sBP);
-//        _step("3. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-//        
-//        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
-//        clickButton(driver, sBP, "Увійти");
-//
-//        pause(6000);
+        _step("2. Вход по прямому URL на дашборд");
+        openURLdashboard(driver, sBP);
+        _step("3. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
+        
+        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
+        clickButton(driver, sBP, "Увійти");
+
+        pause(6000);
 //        navigateToggleMenu();
 //        choiceMenuList("В роботі");
 //        setRegionTask(driver, sBP);

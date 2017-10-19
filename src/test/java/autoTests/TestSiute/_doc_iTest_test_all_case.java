@@ -78,6 +78,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "0", "Изыскательские работы для строительства");
         addRegionsTableRow(driver, sBP, "sTable_Goods");
         setRegionTableCellsInputTypeEnumSpan(driver, sBP, "sTable_Goods", "sName_Goods", "1", "Изыскательские работы для строительства");
+        
         SetRegionFieldInputTypeTextArea(driver, sBP, "sTechCharacteristic", "Технічні характеристики, особливі вимоги");
         SetRegionFieldInputTypeEnum(driver, sBP, "asUnit", "кілограм|кг");
         SetRegionFieldInputTypeString(driver, sBP, "sQuantity", "100");
@@ -94,19 +95,33 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTableFile", "sNameFile", "0", "100");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
         
+        getsID_OrderFromH3element(driver);
+        
         /*Таблица Узгоджуючі*/
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
         addRegionsTableRow(driver, sBP, "sTableAcceptor");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "1", "керівник підрозділу 2.1");
         
+        /*Таблица Узгоджуючі*/
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAgree", "sName_Approver", "0", "Замдиректора Потапченко Василь");
+        
+        
+        
+        /*Таблица Адресат*/
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "0", "керівник П2");
+        addRegionsTableRow(driver, sBP, "sTableDirect");
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "1", "керівник підрозділу 2.2");
+        
         clickButton(driver, sBP, "Створити");
-        clickButton(driver, sBP, "Ok");
+        pause(1000);
+//        clickButton(driver, sBP, "Ok");
         clickLink(driver, sBP, "Співробітник2 підрозділу 1.1");
         clickLink(driver, sBP, "Вийти");
         
         /*Работа на этапе согласования (1 пользователь). Делегирование полномочий*/
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0018", "iTest_User_0018");
         clickButton(driver, sBP, "Увійти");
+        searchBoxIdoc();
         clickButton(driver, sBP, "Інші дії");
         clickButton(driver, sBP, "Делегувати");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник1 підрозділу 1.1");
