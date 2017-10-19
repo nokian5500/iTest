@@ -175,8 +175,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         /*7. Отвечаем на зауваження*/
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0007", "iTest_User_0007");
         clickButton(driver, sBP, "Увійти");
-        clickLink(driver, sBP, "Мої документи");
-        setRegionFindOrder(driver, sBP, "");
+        clickLink(driver, sBP, "Нерозглянутi");
+        setRegionFindOrderForDocument(driver, sBP);
         clickLink(driver, sBP, "dialog"); //
         clickLink(driver, sBP, "Відповісти");
         SetRegionFieldInputTypeString(driver, sBP, "", " Ответ на замечание1");
@@ -190,8 +190,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         /*8. Подписываем дополнительно директором*/
         AuthorizationBySetLoginPassword(driver, sBP, "Test_User_0001", "Test_User_0001");
         clickButton(driver, sBP, "Увійти");
-        clickLink(driver, sBP, "Мої документи");
-        setRegionFindOrder(driver, sBP, "");
+        clickLink(driver, sBP, "Нерозглянутi");
+        setRegionFindOrderForDocument(driver, sBP);
         clickButton(driver, sBP, "Підписати");
         clickLink(driver, sBP, "Директор Гнатушенко Тарас");
         clickLink(driver, sBP, "Вийти");
@@ -200,6 +200,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0011", "iTest_User_0011");
         clickButton(driver, sBP, "Увійти");
         clickLink(driver, sBP, "Нерозглянуті");
+        setRegionFindOrderForDocument(driver, sBP);
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "1", "секретар І2");
         clickButton(driver, sBP, "Додати завдання");
         
@@ -209,6 +210,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0016", "iTest_User_0016");
         clickButton(driver, sBP, "Увійти");
         clickLink(driver, sBP, "Нерозглянуті");
+        setRegionFindOrderForDocument(driver, sBP);
         clickButton(driver, sBP, "Підписати");
         clickLink(driver, sBP, "керівник підрозділу 2.2");
         clickLink(driver, sBP, "Вийти");
@@ -218,7 +220,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickButton(driver, sBP, "Увійти");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink(driver, sBP, "Необроблені");
-        setRegionFindOrder(driver, sBP, "");
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Додати звіт");
         SetRegionFieldInputTypeEnum(driver, sBP, "", "Виконано");
         SetRegionFieldInputTypeFile(driver, sBP, "", "src/test/resources/files/test.jpg");
@@ -231,7 +233,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickButton(driver, sBP, "Увійти");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink(driver, sBP, "Необроблені");
-        setRegionFindOrder(driver, sBP, "");
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Додати звіт");
         SetRegionFieldInputTypeEnum(driver, sBP, "", "неактуально");
         SetRegionFieldInputTypeTextArea(driver, sBP, "", "Звіт не актуальний");
@@ -244,7 +246,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickButton(driver, sBP, "Увійти");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink(driver, sBP, "На контролі");
-        setRegionFindOrder(driver, sBP, "");
+        setRegionFindOrder(driver, sBP);
         clickButton(driver, sBP, "Прийняти завдання");
         clickLink(driver, sBP, "керівник підрозділу 2.1");
         clickLink(driver, sBP, "Вийти");
@@ -253,7 +255,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0012 ", "iTest_User_0012 ");
         clickButton(driver, sBP, "Увійти");
         clickLink(driver, sBP, "Нерозглянуті");
-        setRegionFindOrder(driver, sBP, "");
+        setRegionFindOrderForDocument(driver, sBP);
         clickButton(driver, sBP, "Підписати");
         clickLink(driver, sBP, "секретар І2");
         clickLink(driver, sBP, "Вийти");

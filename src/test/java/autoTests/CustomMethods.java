@@ -621,41 +621,37 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
-        if (serviceName.contains("idoc")) {
-            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-            String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
-            ((JavascriptExecutor) driver).executeScript(sScript, search);
-            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-            ((JavascriptExecutor) driver).executeScript(sScript2, search);
-        } else {
-            WebElement element = driver.findElement(By.cssSelector(".searched-text"));
-//          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-            String str1 = "$('.searched-text').val(" + sID_Oreder + ")";
-            String str2 = "$('.runner-searching-process').click()";
-            JavascriptExecutor js1 = (JavascriptExecutor) driver;
-            js1.executeScript(str1, element);
-            JavascriptExecutor js2 = (JavascriptExecutor) driver;
-            js1.executeScript(str2, element);
-        }
+        WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
+        String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
+        ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
+        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
     }
+    
     public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        String sID_Order = getNumbersIdOrder();
-        if (serviceName.contains("idoc")) {
-            WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-            String sScript = "$('.form-control.searched-text').val('" + "5-"+sID_Order + "');";
-            ((JavascriptExecutor) driver).executeScript(sScript, search);
-            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-            ((JavascriptExecutor) driver).executeScript(sScript2, search);
-        } else {
-            WebElement element = driver.findElement(By.cssSelector(".searched-text"));
-//          new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element));
-            String str1 = "$('.searched-text').val(" + sID_Order + ")";
-            String str2 = "$('.runner-searching-process').click()";
-            JavascriptExecutor js1 = (JavascriptExecutor) driver;
-            js1.executeScript(str1, element);
-            JavascriptExecutor js2 = (JavascriptExecutor) driver;
-            js1.executeScript(str2, element);
-        }
+        String sID_Oreder = getNumbersIdOrder();
+        WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
+        String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
+        ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
+        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
+    }
+    
+    public void setRegionFindOrderForDocument(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
+        WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
+        String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
+        ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
+        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
+    }
+    
+    public void setRegionFindOrderForDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+        String sID_Order = getsID_OrderFromH3element(driver);
+        WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
+        String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
+        ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
+        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
 
     }
 
@@ -665,10 +661,11 @@ public class CustomMethods extends SetupAndTeardown
         button.click();
     }
     
-    public void clickLink(WebDriver driver, String serviceName, String nameLink) { // нажатие любой кнопки с указанным тескстом на ней
+    public void clickLink(WebDriver driver, String serviceName, String nameLink) throws Exception{ // нажатие любой кнопки с указанным тескстом на ней
         WebElement link = driver.findElement(By.xpath("//a[contains(.,'" + nameLink + "')]")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(link));
         link.click();
+        pause(3000);
     }
     
     public void clickButtonECP(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
