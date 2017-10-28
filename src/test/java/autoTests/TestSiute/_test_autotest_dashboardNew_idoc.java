@@ -91,7 +91,7 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
         clickButton(driver, sBP, "Увійти");
      // Опрацювання в табі "В необроблені"    
-        searchBoxByURL(driver, sBP, "Необроблені");
+        searchBoxIdoc();
         clickButton(driver, sBP, "Взяти в роботу");
         clickButton(driver, sBP, "Почати опрацювання задачі");
         

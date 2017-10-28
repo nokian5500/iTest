@@ -628,11 +628,30 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
     }
     
-    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        String sID_Oreder = getNumbersIdOrder();
-        WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
-        String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
-        ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
+    public String getsID_OrderFromH3element(WebDriver driver) throws Exception {
+        WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
+        String sID_OrderWithSymbolNumber = getText(driver, h3Element);
+        System.out.println(sID_OrderWithSymbolNumber);
+        String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+//        System.out.println("sID_Order: "+sID_Order);
+            return sID_OrderWithSymbolNumber;
+            
+    }
+    
+    public String getsID_OrderForDoc() throws Exception {
+        String sID_OrderWithSymbolNumber = getsID_OrderFromH3element(driver);
+        String sID_OrderForDoc = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+        return sID_OrderForDoc;
+
+    }
+    
+   public void setRegionFindOrderByNumberDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+        String sID_OrderForDoc = getsID_OrderForDoc();
+//        String sID_Order = getSubString(sID_OrederNEW, 2, 13);
+        WebElement searchForm = driver.findElement(By.cssSelector("#adv-search input"));
+        searchForm.click();
+        String sScript = "$('#adv-search input').val(" + sID_OrderForDoc + ")";
+        ((JavascriptExecutor) driver).executeScript(sScript, driver.findElement(By.cssSelector("#adv-search input")));
         String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
     }
@@ -645,8 +664,8 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
     }
     
-    public void setRegionFindOrderForDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        String sID_Order = getsID_OrderFromH3element(driver);
+    public void setRegionFindOrder(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+        String sID_Order = getNumbersIdOrder();
         WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
         String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
         ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
@@ -654,15 +673,16 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
 
     }
-
+    
     public void clickButton(WebDriver driver, String serviceName, String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         WebElement button = driver.findElement(By.xpath("//button[contains(.,'" + nameButton + "')]")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
+        pause(1500);
     }
     
     public void clickButtonCreate(WebDriver driver, String serviceName) { // нажатие любой кнопки с указанным тескстом на ней
-        WebElement button = driver.findElement(By.xpath("//button[contains(@ng-click,'submitTask(form)')]")); ////button[contains(.,'Опрацювати')]
+        WebElement button = driver.findElement(By.xpath("//button[@stub='Відпрацювати']")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
@@ -794,77 +814,80 @@ public class CustomMethods extends SetupAndTeardown
 //                }
 //        } 
     }
-   public void SetFieldInputECPFile(WebDriver driver,String serviceName, String xpathSelector, String sPathFile){
+   
+    public void SetFieldInputECPFile(WebDriver driver, String serviceName, String xpathSelector, String sPathFile) {
         WebElement oWebElement = driver.findElement(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         ((JavascriptExecutor) driver).executeScript(sScript, oWebElement);
-        
+
         File oFile = new File(sPathFile);
         oWebElement.sendKeys(oFile.getAbsolutePath());
 
         // Wait attach upload
         //TODO: add counter condition to avoid infinite loop
         while (!oWebElement.isEnabled()) {
-                try {
-                        Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                        e.printStackTrace();
-                }
-        } 
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
-   public void SetRegionFieldInputTypeEnum(WebDriver driver,String serviceName, String cssSelector, String value){
-   WebElement webEnum = driver.findElement(By.xpath("//option[@label='"+value+"']"));
+
+    public void SetRegionFieldInputTypeEnum(WebDriver driver, String serviceName, String cssSelector, String value) {
+        WebElement webEnum = driver.findElement(By.xpath("//option[@label='" + value + "']"));
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(webEnum));
         webEnum.click();
 //        Select select = new Select(webEnum);
 //        select.selectByVisibleText(value);
-   }
-   
-   public void SetRegionFieldInputTypeCheckbox(WebDriver driver,String serviceName, String cssSelector){
-   WebElement checkbox = driver.findElement(By.xpath("//input[@name='asEnumTypeCheckbox']")); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
+    }
+
+    public void SetRegionFieldInputTypeCheckbox(WebDriver driver, String serviceName, String cssSelector) {
+        WebElement checkbox = driver.findElement(By.xpath("//input[@name='asEnumTypeCheckbox']")); // //*[@id="bFavorite11"] //*[@id="field-bWrite"]/div
         new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(checkbox));
         checkbox.click();
-        checkbox.click();
-   }
-   // Methods for filling the fields of table for central //._test_autotest_dashboard_--_sTable3_--_COL_sTables3Field1_--_ROW_0 input
-   public void setRegionTableCellsInputTypeString(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
-   WebElement td = driver.findElement(By.xpath("//input[@name='"+cellName+NameRow+"']"));
+
+    }
+    // Methods for filling the fields of table for central //._test_autotest_dashboard_--_sTable3_--_COL_sTables3Field1_--_ROW_0 input
+
+    public void setRegionTableCellsInputTypeString(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+        WebElement td = driver.findElement(By.xpath("//input[@name='" + cellName + NameRow + "']"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         td.clear();
-       td.sendKeys(text);
-   }
-   
-   public void setRegionTableCellsInputTypeEnumSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
-   WebElement td = driver.findElement(By.xpath("//select[@name='"+cellName+NameRow+"']"));//ng-scope 
+        td.sendKeys(text);
+    }
+
+    public void setRegionTableCellsInputTypeEnumSelect(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
+        WebElement td = driver.findElement(By.xpath("//select[@name='" + cellName + NameRow + "']"));//ng-scope 
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(td));
         td.click();
         Select select = new Select(td);
         select.selectByVisibleText(text);
-   }
-   
+    }
+
     public void setRegionTableCellsInputTypeEnumSpan(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) {
 
         WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle"));
         element1.click();
-//WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
+//        WebElement button = driver.findElement(By.cssSelector(".btn.btn-default.ng-scope"));
 //        String sScript = "$('ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "').click()";
 //        ((JavascriptExecutor) driver).executeScript(sScript, element1);
 //        WebElement Element = driver.findElement(By.xpath("//i[@ng-click='$select.toggle($event)']"));
 //        Element.click();
-        WebElement listElement = driver.findElement(By.xpath("//a[contains(.,'"+ text +"')]"));
+        WebElement listElement = driver.findElement(By.xpath("//a[contains(.,'" + text + "')]"));
         listElement.click();
 //        element1.sendKeys(text);
 
     }
-    
+
     public String getSubString(String text, int beginIndex, int endIndex) {
         String newtext = text.substring(beginIndex, endIndex);
         System.out.println(newtext);
         return newtext;
     }
 
-    public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text)  throws Exception  {
+    public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) throws Exception {
         String textNew = getSubString(text, 0, 3);
         System.out.println(textNew);
         WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle"));
@@ -873,20 +896,22 @@ public class CustomMethods extends SetupAndTeardown
 
         WebElement element2 = driver.findElement(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty"));
         element2.sendKeys(textNew);
-
+        pause(2000);
         WebElement listElement = driver.findElement(By.xpath("//a[contains(.,'" + text + "')]"));
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(listElement));
         listElement.click();
+//        listElement.sendKeys(Keys.DOWN);
     }
     
-    public String getsID_OrderFromH3element(WebDriver driver) throws Exception {
-        WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
-        String sID_OrderWithSymbolNumber = getText(driver, h3Element);
-        System.out.println(sID_OrderWithSymbolNumber);
-        String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
-//        System.out.println("sID_Order: "+sID_Order);
-            return sID_Order;
-    }
+//    public String getsID_OrderFromH3element(WebDriver driver) throws Exception {
+//        WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
+//        String sID_OrderWithSymbolNumber = getText(driver, h3Element);
+//        System.out.println(sID_OrderWithSymbolNumber);
+//        String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+////        System.out.println("sID_Order: "+sID_Order);
+//            return sID_Order;
+//            
+//    } 
     
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
        WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "')]//*[@id=\"upload-button\"]//input")); //.upload-button
@@ -919,11 +944,7 @@ public class CustomMethods extends SetupAndTeardown
         Thread.sleep(1000);
 
     }
-//    private static void setClipboardData(String string) {
-//        StringSelection stringSelection = new StringSelection(string);
-//        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
-//    }
- 
+
    public static void setClipboardData(String string) {
 	StringSelection stringSelection = new StringSelection(string);
 	Toolkit.getDefaultToolkit()
@@ -1074,55 +1095,15 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void searchBoxIdoc() throws Exception {
-        String searchText = getsID_OrderFromH3element(driver);
-        WebElement search = driver.findElement(By.cssSelector(".menu-list.ng-scope"));
-        String sScript = "$('.form-control.searched-text').val('" + searchText + "');";
-        ((JavascriptExecutor) driver).executeScript(sScript, search);
-        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-        ((JavascriptExecutor) driver).executeScript(sScript2, search);
+        String sID_Order = getNumbersIdOrder();
+        WebElement search = driver.findElement(By.xpath(".//*[@id='adv-search']/input"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(search));
+        search.click();
+        search.sendKeys(sID_Order);
+        search.sendKeys(Keys.ENTER);
 
     }
     
-    public void searchBoxByURL(WebDriver driver, String serviceName, String sID_Order, String buttonName) {
-        if (buttonName.contains("Необроблені")) {
-            String item = "unassigned";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("В роботі")) {
-            String item = "selfAssigned";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("Усі")) {
-            String item = "all";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("Історія")) {
-            String item = "finished";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        }
-    }
-    
-    public void searchBoxByURL(WebDriver driver, String serviceName,  String buttonName) throws Exception {
-        String sID_Order = getNumbersIdOrder();
-        if (buttonName.contains("Необроблені")) {
-            String item = "unassigned";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("В роботі")) {
-            String item = "selfAssigned";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("Усі")) {
-            String item = "all";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        } else if (buttonName.contains("Історія")) {
-            String item = "finished";
-            WebElement search = driver.findElement(By.xpath("//a[@href='/tasks/" + item + "/" + sID_Order + "']"));
-            search.click();
-        }
-    }
     //((JavascriptExecutor)) .executeScript ("arguments [0] .scrollIntoView (true);", your_WebElement);
     public void scrollPageDown() {
         WebElement scrollPage = driver.findElement(By.xpath("//h3[contains(.,'Більше задач не знайдено')]"));
