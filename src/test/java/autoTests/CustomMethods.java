@@ -585,7 +585,8 @@ public class CustomMethods extends SetupAndTeardown
     }
     
    public String getNumbersIdOrder() throws Exception {
-            List<String> ID_Order = configVariables.orderId;
+           List<String> ID_Order = configVariables.orderId;
+            System.out.println(ID_Order.size());
           String sID_Order=ID_Order.get(0);
           System.out.println("sID_Order= " + sID_Order);
         return sID_Order;
@@ -628,29 +629,34 @@ public class CustomMethods extends SetupAndTeardown
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
     }
     
-    public String getsID_OrderFromH3element(WebDriver driver) throws Exception {
+    public String getsID_OrderFromH3element() throws Exception {
         WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
         String sID_OrderWithSymbolNumber = getText(driver, h3Element);
-        System.out.println(sID_OrderWithSymbolNumber);
+//        System.out.println("sID_OrderWithSymbolNumber: " + sID_OrderWithSymbolNumber);
+//        System.out.println(sID_OrderWithSymbolNumber);
         String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+//        System.out.println("Полученный sID_Order с sID_OrderWithSymbolNumber: " + sID_Order);
 //        System.out.println("sID_Order: "+sID_Order);
-            return sID_OrderWithSymbolNumber;
+            return sID_Order;
             
     }
     
     public String getsID_OrderForDoc() throws Exception {
-        String sID_OrderWithSymbolNumber = getsID_OrderFromH3element(driver);
-        String sID_OrderForDoc = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+//        String sID_OrderWithSymbolNumber = getsID_OrderFromH3element();
+        String sID_OrderForDoc = getsID_OrderFromH3element();
+        System.out.println("Переданный sID_OrderForDoc с sID_OrderWithSymbolNumber: " + sID_OrderForDoc);
         return sID_OrderForDoc;
 
     }
     
    public void setRegionFindOrderByNumberDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        String sID_OrderForDoc = getsID_OrderForDoc();
+        
 //        String sID_Order = getSubString(sID_OrederNEW, 2, 13);
+        String sID_Order = "";
         WebElement searchForm = driver.findElement(By.cssSelector("#adv-search input"));
         searchForm.click();
-        String sScript = "$('#adv-search input').val(" + sID_OrderForDoc + ")";
+        sID_Order = getsID_OrderForDoc();
+        String sScript = "$('#adv-search input').val(" + sID_Order + ")";
         ((JavascriptExecutor) driver).executeScript(sScript, driver.findElement(By.cssSelector("#adv-search input")));
         String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
         ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
@@ -1192,4 +1198,23 @@ public class CustomMethods extends SetupAndTeardown
 //        driver.close();
         
     }
+    
+    public String getUrlCurrentPage(WebDriver driver){
+    String UrlCurrentPage = driver.getCurrentUrl();
+        System.out.println("UrlCurrentPage: " + driver.getCurrentUrl());
+            return UrlCurrentPage;
+    }
+    
+    public String getsID_OrderFromUrlPage(WebDriver driver, String serviceName) {
+
+        String url = getUrlCurrentPage(driver);
+        
+        int one = url.indexOf("=");
+        int two = url.indexOf("#");
+
+        String sID_Order = url.substring(one+1, two);
+        System.out.println("Полученный sID_Order: " + sID_Order);
+            return sID_Order;
+    }
+    
 }

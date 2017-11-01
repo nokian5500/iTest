@@ -90,13 +90,12 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         SetRegionFieldInputTypeString(driver, sBP, "phone", "+380621122233");
         SetRegionFieldInputTypeEnum(driver, sBP, "asBankGaranty", "Ні");
         SetRegionFieldInputTypeEnum(driver, sBP, "asPersonalResponse", "Не потрібно");
-        
+        getsID_OrderFromH3element();
         /*Таблица Назва додатка*/
         setRegionTableCellsInputTypeString(driver, sBP, "sTableFile", "sNameFile", "0", "100");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
         
-        getsID_OrderFromH3element(driver);
-        
+
         /*Таблица Узгоджуючі*/
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
         addRegionsTableRow(driver, sBP, "sTableAcceptor");
@@ -124,6 +123,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickButton(driver, sBP, "Увійти");
         clickLink(driver, sBP, "Нерозглянутi");
         setRegionFindOrderByNumberDocument(driver, sBP);
+        
         clickButton(driver, sBP, "Інші дії");
         clickButton(driver, sBP, "Делегувати");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник1 підрозділу 1.1");

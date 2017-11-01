@@ -46,7 +46,7 @@ public class ConfigurationVariables
 	public String baseUrl;
 //	public String baseUrl_2;
     public List<String> orderId = new ArrayList<>();
-
+        
 	static
 	{
 		fillMyProperties(configurationData, configFilePath);
