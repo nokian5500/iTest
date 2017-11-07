@@ -90,7 +90,8 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         SetRegionFieldInputTypeString(driver, sBP, "phone", "+380621122233");
         SetRegionFieldInputTypeEnum(driver, sBP, "asBankGaranty", "Ні");
         SetRegionFieldInputTypeEnum(driver, sBP, "asPersonalResponse", "Не потрібно");
-        getsID_OrderFromH3element();
+//        getsID_OrderFromH3element();
+//        getOrderFromUrlCurrentPage();
         /*Таблица Назва додатка*/
         setRegionTableCellsInputTypeString(driver, sBP, "sTableFile", "sNameFile", "0", "100");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
@@ -111,17 +112,18 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         addRegionsTableRow(driver, sBP, "sTableDirect");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "1", "керівник підрозділу 2.2");
         
-        clickButtonCreate(driver, sBP);
-        
-        
-        clickButton(driver, sBP, "Ok");
-        clickLink(driver, sBP, "Співробітник2 підрозділу 1.1  ");
-        clickLink(driver, sBP, "Вийти");
-        
-        /*2 Работа на этапе согласования (1 пользователь). Делегирование полномочий*/
-        AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0018", "iTest_User_0018");
-        clickButton(driver, sBP, "Увійти");
-        clickLink(driver, sBP, "Нерозглянутi");
+        getOrderFromUrlCurrentPage();
+//        clickButtonCreate(driver, sBP);
+//        
+//        
+//        clickButton(driver, sBP, "Ok");
+//        clickLink(driver, sBP, "Співробітник2 підрозділу 1.1  ");
+//        clickLink(driver, sBP, "Вийти");
+//        
+//        /*2 Работа на этапе согласования (1 пользователь). Делегирование полномочий*/
+//        AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0018", "iTest_User_0018");
+//        clickButton(driver, sBP, "Увійти");
+//        clickLink(driver, sBP, "Нерозглянутi");
         setRegionFindOrderByNumberDocument(driver, sBP);
         
         clickButton(driver, sBP, "Інші дії");

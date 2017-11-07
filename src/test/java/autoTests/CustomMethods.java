@@ -474,7 +474,7 @@ public class CustomMethods extends SetupAndTeardown
         Boolean status;
         try {
             WebElement webElement = driver.findElement(By.xpath("//select[@ng-model='selected.date']")); //By.xpath("//select[@ng-model='selected.date']")
-            new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(webElement));
+            new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(webElement));
             Select select = new Select(webElement);
             select.selectByValue("0");
             status= true;
@@ -607,6 +607,20 @@ public class CustomMethods extends SetupAndTeardown
         elementPassword.sendKeys(passwordName);
     }
     
+    public void AuthorizationBySetLoginPassword(WebDriver driver, String loginName, String passwordName) { //Authorization on region(Dashboards)
+        String windowHandler = driver.getWindowHandle();
+        WebElement elementLogin = driver.findElement(By.name("login"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementLogin));
+        elementLogin.click();
+        elementLogin.clear();
+        elementLogin.sendKeys(loginName);
+        WebElement elementPassword = driver.findElement(By.name("password"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(elementPassword));
+        elementPassword.click();
+        elementPassword.clear();
+        elementPassword.sendKeys(passwordName);
+    }
+    
     public void ecpAuthorization(WebDriver driver, String serviceName, String loginName, String passwordName) { //Authorization on region(Dashboards)
         String windowHandler = driver.getWindowHandle();
         WebElement elementLogin = driver.findElement(By.name("login"));
@@ -622,6 +636,7 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionFindOrder(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
+        
         WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
         String sScript = "$('.form-control.searched-text').val('" + sID_Oreder + "');";
         ((JavascriptExecutor) driver).executeScript(sScript, searchForm);
@@ -632,35 +647,21 @@ public class CustomMethods extends SetupAndTeardown
     public String getsID_OrderFromH3element() throws Exception {
         WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
         String sID_OrderWithSymbolNumber = getText(driver, h3Element);
-//        System.out.println("sID_OrderWithSymbolNumber: " + sID_OrderWithSymbolNumber);
-//        System.out.println(sID_OrderWithSymbolNumber);
-        String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
-//        System.out.println("Полученный sID_Order с sID_OrderWithSymbolNumber: " + sID_Order);
-//        System.out.println("sID_Order: "+sID_Order);
-            return sID_Order;
-            
+        String sID_OrderFromH3element = getSubString(sID_OrderWithSymbolNumber, 2, 13);
+        return sID_OrderFromH3element;
+
     }
     
     public String getsID_OrderForDoc() throws Exception {
 //        String sID_OrderWithSymbolNumber = getsID_OrderFromH3element();
-        String sID_OrderForDoc = getsID_OrderFromH3element();
-        System.out.println("Переданный sID_OrderForDoc с sID_OrderWithSymbolNumber: " + sID_OrderForDoc);
-        return sID_OrderForDoc;
+        
+        String sID_Order = getsID_OrderFromH3element().toString();
+        System.out.println("Переданный sID_OrderForDoc с sID_OrderWithSymbolNumber: " + sID_Order);
+        return sID_Order;
 
     }
     
-   public void setRegionFindOrderByNumberDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
-        
-//        String sID_Order = getSubString(sID_OrederNEW, 2, 13);
-        String sID_Order = "";
-        WebElement searchForm = driver.findElement(By.cssSelector("#adv-search input"));
-        searchForm.click();
-        sID_Order = getsID_OrderForDoc();
-        String sScript = "$('#adv-search input').val(" + sID_Order + ")";
-        ((JavascriptExecutor) driver).executeScript(sScript, driver.findElement(By.cssSelector("#adv-search input")));
-        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-        ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
-    }
+    
     
     public void setRegionFindOrderForDocument(WebDriver driver, String serviceName, String sID_Oreder) throws Exception { // поиск ID_Order
         WebElement searchForm = driver.findElement(By.cssSelector(".form-control.searched-text"));
@@ -688,7 +689,7 @@ public class CustomMethods extends SetupAndTeardown
     }
     
     public void clickButtonCreate(WebDriver driver, String serviceName) { // нажатие любой кнопки с указанным тескстом на ней
-        WebElement button = driver.findElement(By.xpath("//button[@stub='Відпрацювати']")); ////button[contains(.,'Опрацювати')]
+        WebElement button = driver.findElement(By.xpath("//button[@ng-click='submitTask(form)']")); ////button[contains(.,'Опрацювати')]
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(button));
         button.click();
     }
@@ -1198,23 +1199,39 @@ public class CustomMethods extends SetupAndTeardown
 //        driver.close();
         
     }
-    
-    public String getUrlCurrentPage(WebDriver driver){
-    String UrlCurrentPage = driver.getCurrentUrl();
-        System.out.println("UrlCurrentPage: " + driver.getCurrentUrl());
-            return UrlCurrentPage;
-    }
-    
-    public String getsID_OrderFromUrlPage(WebDriver driver, String serviceName) {
-
-        String url = getUrlCurrentPage(driver);
+//    String sOrder = "";
+    public String getOrderFromUrlCurrentPage() {
+        String UrlCurrentPage = driver.getCurrentUrl();
+        System.out.println("UrlCurrentPage: " + UrlCurrentPage);
+        String sOrder = UrlCurrentPage.substring(UrlCurrentPage.indexOf("=")+1, UrlCurrentPage.indexOf("#"));
+        System.out.println("Полученный sID_Order: " + sOrder );
+            return sOrder ;
         
-        int one = url.indexOf("=");
-        int two = url.indexOf("#");
-
-        String sID_Order = url.substring(one+1, two);
-        System.out.println("Полученный sID_Order: " + sID_Order);
-            return sID_Order;
     }
     
+    public void setRegionFindOrderByNumberDocument(WebDriver driver, String serviceName) throws Exception { // поиск ID_Order
+        
+            String sID_Order = getOrderFromUrlCurrentPage();
+            clickButtonCreate(driver, "");
+
+            clickButton(driver, "", "Ok");
+            clickLink(driver, "", "Співробітник2 підрозділу 1.1  ");
+            clickLink(driver, "", "Вийти");
+
+            AuthorizationBySetLoginPassword(driver, "", "iTest_User_0018", "iTest_User_0018");
+            clickButton(driver, "", "Увійти");
+            clickLink(driver, "", "Нерозглянутi");
+            WebElement searchForm = driver.findElement(By.cssSelector("#adv-search input"));
+            searchForm.click();
+//        String sID_Order = configVariables.orderId.get(0);
+
+            System.out.println("Вставка sID_Order= " + sID_Order);
+            String sScript = "$('#adv-search input').val('" + sID_Order + "')";
+            ((JavascriptExecutor) driver).executeScript(sScript, driver.findElement(By.cssSelector("#adv-search input")));
+            String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+            ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
+        
+
+    }
+
 }
