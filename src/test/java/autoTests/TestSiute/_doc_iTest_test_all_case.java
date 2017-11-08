@@ -16,7 +16,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 
     @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
     public void Test_doc_iTest_test_all_case() throws Exception {
-        String sBP = "_test_autotest_dashboard";
+        String sBP = "_doc_iTest_test_all_case";
         String email = "autotestbeta@gmail.com";
         _step("1. Вход по прямому URL на дашборд");
         openURLdashboard(driver, sBP);
@@ -96,16 +96,16 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         setRegionTableCellsInputTypeString(driver, sBP, "sTableFile", "sNameFile", "0", "100");
         setRegionTableCellsInputTypeFile(driver, sBP, "sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
         
-
         /*Таблица Узгоджуючі*/
+//        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAgree", "sName_Approver", "0", "Замдиректора Потапченко Василь");
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor1", "sName_Acceptor1", "0", "Співробітник2 підрозділу 2.2");
+        addRegionsTableRow(driver, sBP, "sTableAcceptor1");
+        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor1", "sName_Acceptor1", "1", "керівник підрозділу 2.1");    
+       
+        /*Таблица Затверджуючий*/
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник2 підрозділу 2.2");
         addRegionsTableRow(driver, sBP, "sTableAcceptor");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "1", "керівник підрозділу 2.1");
-        
-        /*Таблица Узгоджуючі*/
-        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAgree", "sName_Approver", "0", "Замдиректора Потапченко Василь");
-        
-        
         
         /*Таблица Адресат*/
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableDirect", "sName_Addressee", "0", "керівник П2");
@@ -125,7 +125,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 //        clickButton(driver, sBP, "Увійти");
 //        clickLink(driver, sBP, "Нерозглянутi");
         setRegionFindOrderByNumberDocument(driver, sBP);
-        
+        pause(5000);
         clickButton(driver, sBP, "Інші дії");
         clickButton(driver, sBP, "Делегувати");
         setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAcceptor", "sName_Acceptor", "0", "Співробітник1 підрозділу 1.1");

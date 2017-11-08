@@ -895,31 +895,27 @@ public class CustomMethods extends SetupAndTeardown
     }
 
     public void setRegionTableCellsInputTypeEnumInput(WebDriver driver, String serviceName, String tableName, String cellName, String NameRow, String text) throws Exception {
-        String textNew = getSubString(text, 0, 3);
+        try {
+           String textNew = getSubString(text, 0, 3);
         System.out.println(textNew);
-        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle"));
+        WebElement element1 = driver.findElement(By.cssSelector(".ng-scope." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle"));
         new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(element1));
         element1.click();
 
         WebElement element2 = driver.findElement(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty"));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(element2));
         element2.sendKeys(textNew);
         pause(2000);
         WebElement listElement = driver.findElement(By.xpath("//a[contains(.,'" + text + "')]"));
         new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOf(listElement));
-        listElement.click();
-//        listElement.sendKeys(Keys.DOWN);
+        listElement.click(); 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
     }
     
-//    public String getsID_OrderFromH3element(WebDriver driver) throws Exception {
-//        WebElement h3Element = driver.findElement(By.xpath("//h3[contains(.,'№ ')]"));
-//        String sID_OrderWithSymbolNumber = getText(driver, h3Element);
-//        System.out.println(sID_OrderWithSymbolNumber);
-//        String sID_Order = getSubString(sID_OrderWithSymbolNumber, 2, 13);
-////        System.out.println("sID_Order: "+sID_Order);
-//            return sID_Order;
-//            
-//    } 
-    
+
    public void setRegionTableCellsInputTypeFile(WebDriver driver, String serviceName, String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException{
        WebElement oWebElement = driver.findElement(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "')]//*[@id=\"upload-button\"]//input")); //.upload-button
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";

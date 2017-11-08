@@ -35,7 +35,7 @@ public class Test_PrivatDoc extends CustomMethods {
         driver.findElement(By.xpath("//h4[contains(.,'Результаты тендера на выполнение работ по повторному обследованию 15-и зданий и сооружений ПАО \"ОГОК\" в 2016 году /на № 8531818, 18365/')]")).click();
         
         driver.findElement(By.xpath("//a[@class='circle print']")).click();
-        driver.findElement(By.xpath(".//*[@id='docFull']")).sendKeys(Keys.CONTROL+"P");
+//        driver.findElement(By.xpath(".//*[@id='docFull']")).sendKeys(Keys.CONTROL+"P");
         pause(10000);
     }
 }
