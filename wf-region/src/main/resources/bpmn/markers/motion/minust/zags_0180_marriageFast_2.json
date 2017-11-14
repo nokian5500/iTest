@@ -1,0 +1,54 @@
+{
+"motion":{
+		"ValuesFieldsOnCondition_1":{
+		    "aField_ID":["sSourceType"],
+		    "asID_Field_sValue":["iGov"],
+		    "asID_Field":{
+		    "sCondit":"bReferent"
+		    },
+		    "sCondition":"[sCondit]=='false'"
+		    },
+		"ValuesFieldsOnCondition_2":{
+		    "aField_ID":["sSourceType"],
+		    "asID_Field_sValue":["MinUst"],
+		    "asID_Field":{
+		    "sCondit":"asSourceType"
+		    },
+		    "sCondition":"[sCondit]=='MinUst'"
+		    },
+		"ValuesFieldsOnCondition_3":{
+		    "aField_ID":["sSourceType"],
+		    "asID_Field_sValue":["Personal"],
+		    "asID_Field":{
+		    "sCondit":"asSourceType"
+		    },
+		    "sCondition":"[sCondit]=='Personal'"
+		    },
+		    "motion": {
+    "ValuesFieldsOnCondition_4": {
+      "aField_ID": [
+        "sCitizenship1"],
+      "asID_Field_sValue": [
+        "Україна"
+      ],
+      "asID_Field": {
+        "sClient": "sWithoutCitizenship1"           
+      },
+      "sCondition": "[sClient] == 'sEnum1'"
+},
+"motion": {
+   "ValuesFieldsOnCondition_5": {
+      "aField_ID": [
+        "sCitizenship2"],
+      "asID_Field_sValue": [
+        "Україна"
+      ],
+      "asID_Field": {
+        "sClient": "sWithoutCitizenship2"           
+      },
+      "sCondition": "[sClient] == 'sEnum1'"
+    }
+  }
+}
+}
+}
