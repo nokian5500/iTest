@@ -1,0 +1,22 @@
+1. TemplatePage класс с локаторы элементов страницы которые не изменяются в зависимоти от услуги
+2. CustomMethods класс с основными методами для работы над страницей.
+3. SetupAndTeardown - запуск и работа с браузером.
+4. TestRunner  - сами тесты (вызов и запуск через анотацию @ Test).
+5. TestSuite - тело тестов (само описание теста).
+6. testng - запуск / многопоточность тестов разделение по группам.
+
+
+Ичпользуем CSS в тестах для методов:
+fillInField(WebDriver driver, String cssSelector, String value)
+selectByVisibleText(WebDriver driver, String cssSelector, String text)
+selectByValue(WebDriver driver, String cssSelector, String value)
+click(WebDriver driver, String cssSelector)
+
+Для начала работы с локаторами (их посика) использовать инструменты addon:
+- FireBug.
+- FirePatch.
+
+
+
+
+
