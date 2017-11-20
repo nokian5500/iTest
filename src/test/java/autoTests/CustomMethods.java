@@ -950,9 +950,8 @@ public class CustomMethods extends SetupAndTeardown
 
    public static void setClipboardData(String string) {
 	StringSelection stringSelection = new StringSelection(string);
-	Toolkit.getDefaultToolkit()
-            .getSystemClipboard()
-            .setContents(stringSelection, null);
+	Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+        
 }
 
     public void uploadECPKeyFile() throws InterruptedException, AWTException {
@@ -1226,8 +1225,67 @@ public class CustomMethods extends SetupAndTeardown
             ((JavascriptExecutor) driver).executeScript(sScript, driver.findElement(By.cssSelector("#adv-search input")));
             String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
             ((JavascriptExecutor) driver).executeScript(sScript2, searchForm);
-        
+        pause(5000);
 
+    }
+   
+    
+    public void getSubstringFromUrlCurrentPage(WebDriver driver, String beginIndex) throws IOException, InterruptedException, AWTException {
+        String UrlCurrentPage = driver.getCurrentUrl();
+        System.out.println("UrlCurrentPage: " + UrlCurrentPage);
+        String SubstringFromUrlCurrentPage = UrlCurrentPage.substring(UrlCurrentPage.indexOf(beginIndex));
+        System.out.println("NameDoc: " + SubstringFromUrlCurrentPage);
+//        return SubstringFromUrlCurrentPage;
+        clickButtonPrintAutoIT();
+        Thread.sleep(500);
+        setClipboardData(SubstringFromUrlCurrentPage);
+        System.out.println("Вставка: " + SubstringFromUrlCurrentPage);
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_V);
+        clickButtonSaveAutoIT();
+    }
+    
+    public void saveDocFromPrivatDoc(WebDriver driver, String serviceName, String docName) {
+//        File file = new File(nameFilePrivatDoc);
+        if (docName.contains("https://")) {
+            pause(5000);
+            openURLservice(driver, docName);
+            
+//        driver.wait(5000);
+            WebElement webElement = driver.findElement(By.xpath(".//*[@id='docFull']"));
+            pause(5000);
+            webElement.sendKeys(Keys.CONTROL, "p");
+        } else {
+            clickButton(driver, serviceName, "Продолжить");
+            clickButton(driver, serviceName, "Неотработанные");
+            driver.findElement(By.xpath("//h4[contains(.,'" + docName + "')]")).click();
+            WebElement buttonPrint = driver.findElement(By.xpath("//a[@class='circle print']"));
+            buttonPrint.click();
+//        driver.wait(5000);
+            WebElement webElement = driver.findElement(By.xpath(".//*[@id='docFull']"));
+            pause(5000);
+            webElement.sendKeys(Keys.CONTROL, "p");
+        }
+
+    }
+    
+     public void clickButtonPrintAutoIT() throws IOException, InterruptedException{
+//    File file = new File("src/test/resources/files/Key-6.dat");
+//        setClipboardData(file.getAbsolutePath());
+        Runtime.getRuntime().exec("src\\test\\resources\\files\\clickButtonPrint.exe"); 
+        Thread.sleep(5000);
+    
+    }
+    
+    public void clickButtonSaveAutoIT() throws IOException, InterruptedException{
+//    File file = new File("src/test/resources/files/Key-6.dat");
+//        setClipboardData(file.getAbsolutePath());
+        Runtime.getRuntime().exec("src\\test\\resources\\files\\clickButtonSave.exe"); 
+        Thread.sleep(5000);
+    
     }
 
 }
