@@ -37,7 +37,9 @@ public class Test_PrivatDoc extends CustomMethods {
         AuthorizationBySetLoginPassword(driver, sBP, "it200687kov", "9379992privat");
         clickButton(driver, sBP, "Продолжить");
 
-        saveDocFromPrivatDoc(driver, sBP, "https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE&doc=7046892&year=2016");
+        
+
+         saveDocFromPrivatDoc(driver, sBP, "https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE&doc=7046892&year=2016");
 
         getSubstringFromUrlCurrentPage(driver, "doc=");
 
