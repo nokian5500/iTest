@@ -20,7 +20,7 @@ import org.testng.annotations.Test;
 
 /**
  *
- * @author User
+ * IDOC архив укрДок
  */
 public class Test_PrivatDoc extends CustomMethods {
 
@@ -29,19 +29,18 @@ public class Test_PrivatDoc extends CustomMethods {
         TemplatePage o = new TemplatePage(driver);
         String sBP = "_test_PrivatDoc";
         String email = "autotestbeta@gmail.com";
-        _step("2. Вход по прямому URL на  https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE");
+      
+        _step("1. Вход по прямому URL на  https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE");
 
         openURLservice(driver, "https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE");
-        _step("3. Авторизация login/BankID на дашборде. login/pass: (it200687kov/9379992privat)");
-
+       
+        _step("2. Авторизация login/BankID на дашборде. login/pass: (it200687kov/9379992privat)");
         AuthorizationBySetLoginPassword(driver, sBP, "it200687kov", "9379992privat");
         clickButton(driver, sBP, "Продолжить");
-
-        
-
-         saveDocFromPrivatDoc(driver, sBP, "https://doc.p-office.com.ua/#/folder=ANOTHER_UNDONE&doc=7046892&year=2016");
-
-        getSubstringFromUrlCurrentPage(driver, "doc=");
+        openDocFromPrivatDoc(driver, sBP, "https://doc.p-office.com.ua/preview.html#/folder=SEARCH&doc=10322628&year=2017");
+        scanDocFromPrivatDoc(driver);
+//        getSubstringFromUrlCurrentPage(driver, "doc=");
+//        getNameSavingFile("d://archiveIGOV//");
 
     }
 }
