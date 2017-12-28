@@ -46,7 +46,7 @@ public class _test_all_case extends CustomMethods {
         o.selectCity("Вінниця");
 
         _step("4. Авторизация Off AuthMock/BankID");
-        o.mokAuthorization();
+        o.testPrivat24Authorization(); 
 
         _step("5. Заполняем форму услуги");
         setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","_test_all_case");
