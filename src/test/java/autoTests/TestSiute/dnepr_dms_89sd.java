@@ -40,7 +40,7 @@ public class dnepr_dms_89sd extends CustomMethods {
         o.selectCity("Дніпро (Дніпропетровськ)");
 
         _step("4. Авторизация Off AuthMock/BankID");
-        o.mokAuthorization();
+        o.testPrivat24Authorization();
 
         _step("5. Заполняем форму услуги");
         setFieldValue(driver,sBP,"sBankIdPassport","Ваш документ");
