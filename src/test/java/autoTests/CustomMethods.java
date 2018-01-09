@@ -373,17 +373,19 @@ public class CustomMethods extends SetupAndTeardown {
     public String getURLdashboard(WebDriver driver, String serviceName) {
 
         String Url = "";
-        if (configVariables.baseUrl.contains("alpha.test.igov.org.ua")) {
-            Url = "https://alpha.test.region.igov.org.ua";
-        } else if (configVariables.baseUrl.contains("beta.test.igov.org.ua")) {
-            Url = "https://beta.test.region.igov.org.ua";
-        } else if (configVariables.baseUrl.contains("beta-old.test.igov.org.ua")) {
-            Url = "https://beta-old.test.region.igov.org.ua";
+        if (configVariables.baseUrl.contains("alpha.test.idoc.com.ua")) {
+            Url = "https://alpha.test.idoc.com.ua";
+        } else if (configVariables.baseUrl.contains("beta.test.idoc.com.ua")) {
+            Url = "https://beta.test.idoc.com.ua";
+        } else if (configVariables.baseUrl.contains("alpha.test.igov.org.ua")) {
+            Url = "https://alpha.test.igov.org.ua";
         } else if (configVariables.baseUrl.contains("delta.test.igov.org.ua")) {
             Url = "https://delta.test.region.igov.org.ua";
+        } else if (configVariables.baseUrl.contains("gamma.test.idoc.com.ua")) {
+            Url = "https://gamma.test.idoc.com.ua";
         } else if (configVariables.baseUrl.contains("gamma.test.igov.org.ua")) {
-            Url = "https://gamma.test.region.igov.org.ua";
-        } else {
+            Url = "https://gamma.test.igov.org.ua";
+        }else {
             System.out.println("UrlError");
         }
 

@@ -27,7 +27,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.List;
 import java.util.Set;
 
-public class SetupAndTeardown {
+
+public class SetupAndTeardown  {
 
     public WebDriver driver;
     DesiredCapabilities capabilities;
@@ -36,7 +37,7 @@ public class SetupAndTeardown {
     ChromeOptions options;
 
     @BeforeMethod(alwaysRun = true)
-    public void SetUp() throws IOException {
+    public void SetUp() throws IOException{
         if (null == driver) {
 
             /********* Для локального тестирования  установить  switch ("chrome")  для jenkins switch ("firefox") ***********/
@@ -45,15 +46,15 @@ public class SetupAndTeardown {
                 case "firefox":
                     /********* Закоментить для  для запуска на своем профиле и откоментить для запуска на дефолтном ***********/
                     FirefoxProfile profile = new FirefoxProfile();
-                    profile.setEnableNativeEvents(true);
-                    profile.setAcceptUntrustedCertificates(true);
-
+                    //profile.setEnableNativeEvents(true);                    
+                    profile.setAcceptUntrustedCertificates(true);                    
+                    
                     /********* Раскомментить для запуска на своем профиле и закоментить для дефолтного ***********/
                     //   ProfilesIni allProfiles = new ProfilesIni();
                     //   FirefoxProfile profile = allProfiles.getProfile("default");
-
-                    profile.setEnableNativeEvents(true);
-                    profile.setAcceptUntrustedCertificates(true);
+                    
+                    //profile.setEnableNativeEvents(true);
+                    //profile.setAcceptUntrustedCertificates(true);
                     profile.setAssumeUntrustedCertificateIssuer(true);
                     profile.setPreference("javascript.enabled", true);
                     profile.setPreference("geo.enabled", false);
@@ -63,7 +64,14 @@ public class SetupAndTeardown {
                     capabilities.setCapability(FirefoxDriver.PROFILE, profile);
                     capabilities.setCapability("unexpectedAlertBehaviour", "ignore");
 
-                    System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");
+                    System.out.println("Tests will be run (or rerun) in Firefox with custom profile...");                    
+                    
+                    /*****************Добавляем GeckoDriver************************/         
+                    System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\files\\geckodriver.exe");                     
+                    System.setProperty("webdriver.firefox.marionette","src\\test\\resources\\files\\geckodriver.exe");
+                    capabilities.setCapability("marionette", true); 
+                    /**************************************************************/ 
+                    
                     driver = WebDriverFactory.getDriver(capabilities);
 
                    /********* Для локального тестирования ***********/

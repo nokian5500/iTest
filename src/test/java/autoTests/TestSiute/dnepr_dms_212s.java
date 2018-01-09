@@ -15,7 +15,6 @@ import ru.stqa.selenium.factory.WebDriverFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import org.apache.tools.ant.taskdefs.Sleep;
 
 /**
  * Created by Privat24 on 09.09.2016.
