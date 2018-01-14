@@ -1,170 +1,98 @@
 package autoTests.pages.main;
 
-import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
+import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import autoTests.SetupAndTeardown;
-import java.awt.AWTException;
-
 import java.util.List;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.support.ui.Select;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertEquals;
+import autoTests.ConfigClass;
 
-public class TemplatePage {
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.ByAll;
 
-    WebDriver driver;
+public class TemplatePage extends CustomMethods {
 
-    public TemplatePage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-    ConfigurationVariables configVariables = ConfigurationVariables.getInstance();
-    CustomMethods cm = new CustomMethods();
-
+    //CustomMethods cm = new CustomMethods();
     /**
      * *************************************
      * Locators **************************************************************
      */
-    @FindBy(xpath = "//div[@class='service-name ng-binding']")
-    public WebElement usluga;
+    public By usluga = By.xpath("//div[@class='service-name ng-binding']");
 
-    @FindBy(xpath = "//div[@class='row no-margin-bottom']//div[@class='text-center ng-scope']")
-    public List<WebElement> resultMsgText;
+    public By resultMsgText = By.xpath("//div[@class='row no-margin-bottom']//div[@class='text-center ng-scope']");
 
-    @FindBy(xpath = ".//*[@id='region']")
-    public WebElement openOblList;
+    public By openOblList = By.xpath(".//*[@id='region']");
 
-    @FindBy(xpath = ".//*[@id='city']")
-    public WebElement openCityList;
+    public By openCityList = By.xpath(".//*[@id='city']");
 
-    @FindBy(xpath = ".//*[@id='bank']")
-    public WebElement openBankList;
+    public By openBankList = By.xpath(".//*[@id='bank']");
 
-    @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
-    public WebElement buttonAuthMock;
+    public By buttonAuthMock = By.xpath("//button[@ng-click='vm.onChange()']");
 
-    @FindBy(xpath = "//button[@ng-click='vm.onChange()']")
-    public WebElement spanAuthMock;
+    public By spanAuthMock = By.xpath("//button[@ng-click='vm.onChange()']");
 
-    @FindBy(xpath = "//button[@ng-click='bankIdClick()']")
-    public WebElement buttonBankID;
+    public By buttonBankID = By.xpath("//button[@ng-click='bankIdClick()']");
 
-    @FindBy(xpath = "//a[@class='ng-binding']")
-    public WebElement bankid_bank_pb;
+    public By bankid_bank_pb = By.xpath("//a[@class='ng-binding']");
 
-    @FindBy(xpath = "//a[@ng-click='logout()']")
-    public WebElement buttonLogOut;
+    public By buttonLogOut = By.xpath("//a[@ng-click='logout()']");
 
-    @FindBy(xpath = "//button[@ng-click='processForm(form, activitiForm.formProperties, false)']")
-    public WebElement buttonSendingForm;
+    public By buttonSendingForm = By.xpath("//button[@ng-click='processForm(form, activitiForm.formProperties, false)']");
 
-    @FindBy(xpath = "(//input[@type='file'])")
-    public WebElement attachDocumentButton;
+    public By attachDocumentButton = By.xpath("(//input[@type='file'])");
 
-    @FindBy(xpath = "//a[@class='ng-binding']")
-    public WebElement orderID;
+    public By orderID = By.xpath("//a[@class='ng-binding']");
 
     /**
      * ********************** Методы авторизации *************************
      */
     public void mokAuthorization() {
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
+        $(buttonAuthMock).waitUntil(visible, 10000);
         //выбираем Off AuthMock/BankID
-        if (spanAuthMock.getText().equalsIgnoreCase("On AuthMock")) {
-            cm.click(driver, buttonAuthMock);
+        if ($(spanAuthMock).getText().equalsIgnoreCase("On AuthMock")) {
+            $(buttonAuthMock).click();
         }
-        cm.click(driver, buttonBankID);
-        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-
-    }
-
-    public void ecpAuthorization() throws InterruptedException, AWTException {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
-//        cm.click(driver, buttonAuthMock);
-        cm.click(driver, buttonBankID);
-        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-        cm.click(driver, driver.findElement(By.xpath(".//legend[text()='ЕЦП']")));
-        cm.pause(5000);
-        cm.uploadECPKeyFile();
-        cm.setPaswordForECPKey();
-
+        $(buttonBankID).click();
+        clickXpath("//li[1]/a//span[contains(.,'ПриватБанк')]");
     }
 
     public void testPrivat24Authorization() {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(buttonAuthMock));
-        cm.click(driver, buttonBankID);
-        cm.clickXpath(driver, "//li[1]/a//span[contains(.,'ПриватБанк')]");
-        cm.clickXpath(driver, ".//*[@id='container']/div/div[2]/div[1]/ul/li[1]/a/span[2]");
-        WebElement privat24Login = driver.findElement(By.xpath(".//*[@id='loginLikePhone']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(privat24Login));
-        privat24Login.clear();
-        privat24Login.sendKeys("+380102030405");
-        WebElement privat24password = driver.findElement(By.xpath(".//*[@id='passwordLikePassword']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(privat24password));
-        privat24password.sendKeys("value");
-        WebElement privat24button = driver.findElement(By.xpath(".//*[@id='signInButton']"));
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(privat24button));
-        privat24button.click();
-        new WebDriverWait(driver, 10);
+        $(By.xpath("//button[@ng-click='bankIdClick()']")).click();
+        $(By.xpath("//li[1]/a//span[contains(.,'ПриватБанк')]")).click();
+        //<span class="ng-binding" ng-bind="::provider.name">ПриватБанк</span>
+        $(By.xpath("//span[contains(.,'ПриватБанк')]")).click();
+        $(By.xpath("//input[@id='inputLogin']")).val("+380102030405");
+        $(By.xpath("//input[@id='inputPassword']")).val("value");
+        $(By.xpath("//button[@class='btn btn-success custom-btn']")).click();
 
-        //.//*[@id='third-section']
-        WebElement firstSection = driver.findElement(By.xpath(".//*[@id='first-section']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(firstSection));
-        firstSection.clear();
-        firstSection.sendKeys("12");
-        WebElement secondSection = driver.findElement(By.xpath(".//*[@id='second-section']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(secondSection));
-        secondSection.clear();
-        secondSection.sendKeys("34");
-        WebElement thirdSection = driver.findElement(By.xpath(".//*[@id='third-section']"));
-        new WebDriverWait(driver, 5).until(ExpectedConditions.elementToBeClickable(thirdSection));
-        thirdSection.clear();
-        thirdSection.sendKeys("56");
-        //.//*[@id='confirmButton']
-        WebElement confirmButton = driver.findElement(By.xpath(".//*[@id='confirmButton']"));
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(confirmButton));
-        confirmButton.click();
-
-    }
-//     Method for selection of Bankid_bank
-
-    public void selectBank(String bank) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openBankList));
-        openBankList.click();
-        cm.clickXpath(driver, "//a[contains(text(),'" + bank + "')]");
+        $(By.xpath("//input[@id='first-section']")).val("12");
+        $(By.xpath("//input[@id='second-section']")).val("34");
+        $(By.xpath("//input[@id='third-section']")).val("56");
+        $(By.xpath("//button[@class='btn btn-success custom-btn-confirm sms']")).click();
     }
 
     // Method for selection of Region
     public void selectRegion(String region) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openOblList));
-        openOblList.click();
-        cm.clickXpath(driver, "//a[contains(text(),'" + region + "')]"); ////input[@id='region']
+        $(openOblList).click();
+        clickXpath("//a[contains(text(),'" + region + "')]");
     }
 
     // Method for selection of City
     public void selectCity(String city) {
-        new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(openCityList));
-        openCityList.click();
-        cm.clickXpath(driver, "//a[contains(text(),'" + city + "')]");
+        $(openCityList).shouldBe(visible).click();
+        clickXpath("//a[contains(text(),'" + city + "')]");
     }
 
     public void checkMessageSuccess(String message) throws Exception {
-        
-          configVariables.orderId.add(orderID.getText().substring(2, orderID.getText().length()));
-        System.out.println(configVariables.orderId);
+        orderId.add($(orderID).getText().substring(2, $(orderID).getText().length()));
+        System.out.println(orderId);
 
-        String textForAssert = cm.getText(driver, resultMsgText.get(0));
+        String textForAssert = $(resultMsgText).getText();
         String firstPart = textForAssert.substring(0, 46);
         String secondPart;
         if (textForAssert.substring(57, 58).equals(" ")) {
@@ -173,18 +101,10 @@ public class TemplatePage {
             secondPart = textForAssert.substring(59, textForAssert.length());
         }
         try {
-        Assert.assertEquals(firstPart, message.substring(0, textForAssert.length()));
-        Assert.assertEquals(secondPart, message.substring(58, message.length()));  
+            Assert.assertEquals(firstPart, message.substring(0, textForAssert.length()));
+            Assert.assertEquals(secondPart, message.substring(58, message.length()));
         } catch (Exception e) {
             e.getMessage();
         }
-        
-    }
-
-    // Method
-    public void selectAutocomplete(String name, String value) {
-        driver.findElement(By.name(name)).click();
-        driver.findElement(By.name(name)).sendKeys(value);
-        driver.findElement(By.linkText(value)).click();
     }
 }

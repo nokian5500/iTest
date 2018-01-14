@@ -12,45 +12,8 @@
         <!--seleniumVersion>2.48.0</seleniumVersion-->
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${seleniumVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.13.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.uncommons</groupId>
-            <artifactId>reportng</artifactId>
-            <version>1.1.4</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.testng</groupId>
-                    <artifactId>testng</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.google.inject</groupId>
-            <artifactId>guice</artifactId>
-            <version>4.1.0</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- log -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.10.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.10.0</version>
-        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -58,28 +21,18 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.4</version>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>4.8</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.itemis.maven.plugins</groupId>
-            <artifactId>unleash-maven-plugin</artifactId>
-            <version>2.7.4</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>ru.stqa.selenium</groupId>
-            <artifactId>webdriver-factory</artifactId>
-            <version>1.1.47</version> 
-        </dependency> 
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>3.8.1</version>
-        </dependency>         
-    </dependencies>
-	
+    </dependencies>  
+    
     <build>
         <pluginManagement>
             <plugins>
@@ -93,8 +46,7 @@
                     </configuration>
                 </plugin>
             </plugins>
-        </pluginManagement>
-		
+        </pluginManagement>		
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -109,25 +61,12 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <reportsDirectory>TestReport</reportsDirectory>
-                    <properties>
-                        <testFailureIgnore>true</testFailureIgnore>
-                        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
-                        <project.reporting.outputEncoding>utf-8</project.reporting.outputEncoding>
-                        <property>
-                            <name>usedefaultlisteners</name>
-                            <value>true</value>
-                        </property>
-                        <property>
-                            <name>listener</name>
-                            <value>org.uncommons.reportng.HTMLReporter</value>
-                        </property>
-                    </properties>
+                    <reportsDirectory>TestReport</reportsDirectory>                    
                     <systemPropertyVariables>
                         <org.uncommons.reportng.escape-output>true</org.uncommons.reportng.escape-output>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>           
 </project>

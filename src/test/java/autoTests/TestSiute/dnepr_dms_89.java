@@ -1,118 +1,94 @@
 package autoTests.TestSiute;
 
-import autoTests.ConfigurationVariables;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.internal.ProfilesIni;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import ru.stqa.selenium.factory.WebDriverFactory;
-
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
+import org.junit.Test;
 
 /**
  * Created by Privat24 on 09.09.2016.
  */
 public class dnepr_dms_89 extends CustomMethods {
 
-
     //<editor-fold desc="Тестовый пример заполнение полей">
-    @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 1)
+    @Test
     public void default_test() throws Exception {
-        /*****************************************объявляем элементы страниц*******************************************/
-        TemplatePage o = new TemplatePage(driver);
+        /**
+         * ***************************************объявляем элементы страниц******************************************
+         */
+        TemplatePage o = new TemplatePage();
         //  Вносим в переменные название услуги начиная с точки ._test_fields_bankid_--_ и до начала названия поля
         String sBP = "dnepr_dms-89";
         String email = "autotestbeta@gmail.com";
 
-        _step("1. Вход по прямому URL на услугу");
-        openURLservice(driver, CV.baseUrl + "/service/29/general");
+        openURLservice(getBaseUrl() + "/service/29/general");
 
-        _step("3. Выбор области/города");
         o.selectRegion("Дніпропетровська");
         o.selectCity("Дніпро (Дніпропетровськ)");
 
-        _step("4. Авторизация Off AuthMock/BankID");
-        o.testPrivat24Authorization(); 
+        o.testPrivat24Authorization();
 
-        _step("5. Заполняем форму услуги");
-        setFieldValue(driver, sBP, "phone", "+380623155533");
-        setFieldValue(driver, sBP, "email", email);
-        setFieldSelectByText(driver,sBP,"asPrevName","Ні");
-        setFieldValue(driver, sBP, "sDate_of_birth", "Дата народження");
-        setFieldTextArea(driver, sBP, "sAreabirth", "Місце народження");
-        setFieldValue(driver, sBP, "sNationality", "Україна");
-        setFieldTextArea(driver, sBP, "sRegistrationAddress", "Стара адреса реєстрації");
-        setFieldAutocomplete(driver,"sID_Public_SubjectOrganJoin","Соборний (Жовтневий) район");
-        setFieldTextArea(driver, sBP, "sNewAddress", "Нова адреса реєстрації");
-        setFieldSelectByText(driver,sBP,"asRegistrationType","до власного житлового приміщення");
-        setFieldSelectByText(driver,sBP,"asRegistrationDoc","Ордер");
-        setFieldTextArea(driver, sBP, "sDocRekv", "Опис документу");        
-        setFieldSelectByText(driver,sBP,"asMilitStatus","Ні");
-        setFieldSelectByText(driver,sBP,"asRegistr","Ні");
-        setFieldValue(driver, sBP, "sWhenCome", "2016-11-28");   
-        setFieldSelectSlotDate(driver, sBP, "."+sBP+"_--_"+"visitDay"); 
-        setFieldSelectSlotTime(driver, sBP, "."+sBP+"_--_"+"visitDay");
+        setFieldValue("phone", "+380623155533");
+        setFieldValue("email", email);
+        setFieldSelectByText("asPrevName", "Ні");
+        setFieldValue("sDate_of_birth", "Дата народження");
+        setFieldTextArea(sBP, "sAreabirth", "Місце народження");
+        setFieldValue("sNationality", "Україна");
+        setFieldTextArea(sBP, "sRegistrationAddress", "Стара адреса реєстрації");
+        setFieldAutocomplete("sID_Public_SubjectOrganJoin", "Соборний (Жовтневий) район");
+        setFieldTextArea(sBP, "sNewAddress", "Нова адреса реєстрації");
+        setFieldSelectByText("asRegistrationType", "до власного житлового приміщення");
+        setFieldSelectByText("asRegistrationDoc", "Ордер");
+        setFieldTextArea(sBP, "sDocRekv", "Опис документу");
+        setFieldSelectByText("asMilitStatus", "Ні");
+        setFieldSelectByText("asRegistr", "Ні");
+        setFieldValue("sWhenCome", "2016-11-28");
+        setFieldSelectSlotDate();
+        setFieldSelectSlotTime();
 //        setFieldSelectSlotDate(driver, sBP, "visitDay"); 
 //        setFieldSelectSlotTime(driver, sBP, "visitDay");
 //        pause(1000000); 
-        setFieldFile(driver, sBP, "nOrder", "src/test/resources/files/test.jpg");
-        setFieldFile(driver, sBP, "nForma3", "src/test/resources/files/test.jpg");
-        setFieldValue(driver, sBP, "sMailClerk", email);
+        setFieldFile(sBP, "nOrder", "src/test/resources/files/test.jpg");
+        setFieldFile(sBP, "nForma3", "src/test/resources/files/test.jpg");
+        setFieldValue("sMailClerk", email);
 
-        _step("6. Отправка формы");
-        click(driver, o.buttonSendingForm);
+        click(o.buttonSendingForm);
 
-        _step("7. Проверка сообщения о успешной отправке");
-        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n" +
-                "Ваше звернення х-хххххххх успішно зареєстровано\n" +
-                "(номер також відправлено Вам електронною поштою на Ваш e-mail "+email+") Результати будуть спрямовані також на email.\n" +
-                "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
+        o.checkMessageSuccess("Шановний(-а) MockUser MockUser!\n"
+                + "Ваше звернення х-хххххххх успішно зареєстровано\n"
+                + "(номер також відправлено Вам електронною поштою на Ваш e-mail " + email + ") Результати будуть спрямовані також на email.\n"
+                + "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
 
-        _step("7-1. Нажать кнопку Выйти");
-        click(driver, o.buttonLogOut);
+        click(o.buttonLogOut);
 
-        _step("8. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, sBP);
+        openURLdashboard(sBP);
 
-        _step("9. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-        AuthorizationBySetLoginPassword(driver, sBP, "tester", "tester");
-        clickButton(driver, sBP, "Увійти");
+        AuthorizationBySetLoginPassword("tester", "tester");
+        clickButton("Увійти");
 
         // Опрацювання в табі "В необроблені"    
+        setRegionTask();
+        clickButton("Взяти в роботу");
+        clickButton("Почати опрацювання задачі");
 
-        setRegionTask(driver, sBP);
-        clickButton(driver, sBP, "Взяти в роботу");
-        clickButton(driver, sBP, "Почати опрацювання задачі");
-        
         // Опрацювання [Етап I] 
+        SetRegionFieldInputTypeEnum("Призначити зустріч у відділенні");
+        SetRegionFieldInputTypeTextArea("sDecisionComment", "Коментар до рішення");
 
-        SetRegionFieldInputTypeEnum(driver, sBP, "asDecision", "Призначити зустріч у відділенні");
-        SetRegionFieldInputTypeTextArea(driver, sBP, "sDecisionComment", "Коментар до рішення");
+        clickButton("Опрацювати");
+        clickButton("Підтвердити");
+        clickButton("Ok");
 
-
-        clickButton(driver, sBP, "Опрацювати");
-        clickButton(driver, sBP, "Підтвердити");
-        clickButton(driver, sBP, "Ok");
-        
         // Опрацювання [Етап II]
+        setRegionFindOrder(sBP);
+        clickButton("Взяти в роботу");
+        clickButton("Почати опрацювання задачі");
 
-        setRegionFindOrder(driver, sBP);
-        clickButton(driver, sBP, "Взяти в роботу");
-        clickButton(driver, sBP, "Почати опрацювання задачі");
+        SetRegionFieldInputTypeEnum("Громадянин зареєстрований");
 
-        SetRegionFieldInputTypeEnum(driver, sBP, "asResult", "Громадянин зареєстрований");
+        clickButton("Опрацювати");
+        clickButton("Підтвердити");
+        clickButton("Ok");
 
-        clickButton(driver, sBP, "Опрацювати");
-        clickButton(driver, sBP, "Підтвердити");
-        clickButton(driver, sBP, "Ok");
-      
-     }
+    }
     //</editor-fold>
 }

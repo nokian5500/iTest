@@ -7,7 +7,7 @@ package autoTests.TestSiute;
 
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
-import org.testng.annotations.Test;
+import org.junit.Test;
 
 /**
  * _step("8. Вход по прямому URL на дашборд"); openURLdashboard(driver, sBP);
@@ -21,27 +21,26 @@ import org.testng.annotations.Test;
 public class TestNewDashboard extends CustomMethods {
 //<editor-fold desc="Тестовый пример загрузки файла">
 
-    @Test(enabled = true, groups = {"Main", "Критический функционал"}, priority = 2)
+    @Test
     public void Test_test_autotest_dashboard() throws Exception {
-        TemplatePage o = new TemplatePage(driver);
+        TemplatePage o = new TemplatePage();
         String sBP = "_test_autotest_dashboard";
         String email = "autotestbeta@gmail.com";
 //        _step("1. Работа с сервисом + авторизация для работы с сервисом system/system");
 //        openServiceByUrl(driver, sBP, "gamma", "405102182");
-        _step("2. Вход по прямому URL на дашборд");
-        openURLdashboard(driver, sBP);
-        _step("3. Авторизация login/BankID на дашборде. login/pass: (tester/tester)");
-        
-        AuthorizationBySetLoginPassword(driver, sBP, "iTest_User_0007", "iTest_User_0007");
-        clickButton(driver, sBP, "Увійти");
+
+        openURLdashboard(getBaseUrl());
+
+        AuthorizationBySetLoginPassword("iTest_User_0007", "iTest_User_0007");
+        clickButton("Увійти");
 
         pause(6000);
         navigateToggleMenu();
 //        clickLink(driver, sBP, "Завдання");
-        clickLink(driver, sBP, "Очiкують мого ЕЦП ");
-        clickLink(driver, sBP, "Нерозглянутi ");
-        
-        setRegionFindOrder(driver, sBP, "5454");
+        clickLink("Очiкують мого ЕЦП ");
+        clickLink("Нерозглянутi ");
+
+        setRegionFindOrder("5454");
         pause(6000);
 //        choiceMenuList("В роботі");
 //        setRegionTask(driver, sBP);
