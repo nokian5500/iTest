@@ -14,7 +14,6 @@ import org.junit.rules.TestRule;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import sun.java2d.cmm.Profile;
 
 public class SetupAndTeardown extends ConfigClass {
 
