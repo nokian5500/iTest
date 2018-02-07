@@ -65,7 +65,7 @@ public class spend_meeting_404 extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

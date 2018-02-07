@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class ConfigClass {
 
-    public List<String> orderId = new ArrayList<>();
+    public static List<String> orderId = new ArrayList<>();
 
     public String getBaseUrl() {
         String DeltaCentral = "https://delta.test.igov.org.ua";

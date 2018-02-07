@@ -26,7 +26,7 @@ public class dnepr_spravka_o_doxodax extends CustomMethods {
 
         o.mokAuthorization();
 
-        setFieldAutocomplete("sID_Public_SubjectOrganJoin", "0463 - Соборний(Жовтневий) р-н, м.Дніпропетровськ");
+        setFieldValue("sID_Public_SubjectOrganJoin", "0463 - Соборний(Жовтневий) р-н, м.Дніпропетровськ");
         setFieldTextArea(sBP, "sAddressFactual", "Фактична адреса проживання");
         setFieldValue("phone", "+380623155533");
         setFieldValue("email", email);
@@ -43,7 +43,7 @@ public class dnepr_spravka_o_doxodax extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

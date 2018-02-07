@@ -1,5 +1,6 @@
 package autoTests;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.junit.Assert;
 import org.openqa.selenium.*;
@@ -139,7 +140,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setFieldValue(String cssSelector, String value) {
-        $(By.xpath("//input[@name='" + cssSelector + "']")).val(value);
+        $(By.xpath("//*[@name='" + cssSelector + "']")).val(value);
     }
 
     public void openTab() {
@@ -216,7 +217,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setFieldCheckBox(String cssSelector) {
-        $(By.cssSelector("#" + cssSelector)).click();
+        $(By.cssSelector("#" + cssSelector)).setSelected(true);
     }
 
     public void setFieldSelectSlotDate() {
@@ -301,7 +302,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public String getNumbersIdOrder() throws Exception {
-        List<String> ID_Order = orderId;
+        List<String> ID_Order = ConfigClass.orderId;
         System.out.println(ID_Order.size());
         String sID_Order = ID_Order.get(0);
         System.out.println("sID_Order= " + sID_Order);
@@ -315,11 +316,12 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setRegionFindOrder(String sID_Order) throws Exception { // поиск ID_Order
-        WebElement searchForm = $(By.cssSelector(".form-control.searched-text"));
+       /* WebElement searchForm = $(By.cssSelector(".form-control.searched-text"));
         String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
         executeJavaScript(sScript, searchForm);
         String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-        executeJavaScript(sScript2, searchForm);
+        executeJavaScript(sScript2, searchForm);*/
+        $(By.cssSelector(".form-control.searched-text")).val(sID_Order).pressEnter();
     }
 
     public String getsID_OrderFromH3element() throws Exception {
@@ -352,14 +354,15 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void clickButtonECP() { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//button[@ng-disable='cantSubmit(form)']")).click(); ////button[contains(.,'Опрацювати')]
+        $(By.xpath("//button[@ng-disabled='cantSubmit(form)']")).click(); ////button[contains(.,'Опрацювати')]
     }
 
     public void setRegionTask() throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
-        $(By.xpath(".//*[@id='adv-search']/input")).sendKeys(sID_Order);
-        $(By.xpath("//span[contains(.,'" + sID_Order + "')]")).shouldBe(visible);
-        $(By.xpath("//button[@class='btn btn-default idoc-search-button']")).click();
+        $(By.xpath("//input[@ng-model='tasksSearch.value']")).val(sID_Order).pressEnter();
+        pause(8000);
+        //$(By.xpath("//span[contains(.,'" + sID_Order + "')]")).shouldBe(visible);
+        //$(By.xpath("//button[@class='btn btn-default idoc-search-button']")).click();
     }
 
     public void setRegionTab(String serviceName, String enumRegionTab) throws Exception { // навигация по табам navbar в дашборде
@@ -441,7 +444,7 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void setRegionTableCellsInputTypeEnumSpan(String tableName, String cellName, String NameRow, String text) {
         $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).click();
-        $(By.xpath("//a[contains(.,'" + text + "')]")).click();
+        $(By.xpath("//*[contains(.,'" + text + "')]")).click();
     }
 
     public String getSubString(String text, int beginIndex, int endIndex) {
@@ -523,7 +526,7 @@ public class CustomMethods extends SetupAndTeardown {
     public void uploadECPKeyFile(String filePath) throws InterruptedException, AWTException {
         File file = new File(filePath);
         //
-        WebElement buttonECP = $(By.xpath("//button[@id='selectDir']"));
+        WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
         buttonECP.click();
         //
         setClipboardData(file.getAbsolutePath());
@@ -545,14 +548,15 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setPaswordForECPKey() {
-        WebElement passwordECP = $(By.xpath("//input[@id='password1']"));
+        WebElement passwordECP = $(By.xpath("//input[@type='password']"));
         passwordECP.sendKeys("12345677");
-        WebElement clickButtonSubmint = $(By.xpath("//button[@id='open']"));
+        WebElement clickButtonSubmint = $(By.xpath("//button[@ng-click='findKeys()']"));
         clickButtonSubmint.click();
+        $(By.xpath("//button[@ng-click='sign()']")).click();
     }
 
     public void uploadECPKeyAutoIT() throws Exception {
-        WebElement buttonECP = $(By.xpath("//button[@id='selectDir']"));
+        WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
         buttonECP.click();
         Runtime.getRuntime().exec("src\\test\\resources\\files\\UploadKey.exe"); //Key-6.dat
         Thread.sleep(5000);
@@ -692,5 +696,99 @@ public class CustomMethods extends SetupAndTeardown {
     public void clickButtonSaveAutoIT() throws IOException, InterruptedException {
         Runtime.getRuntime().exec("src\\test\\resources\\files\\clickButtonSave.exe");
         Thread.sleep(10000);
+    }
+
+
+
+    /**
+     * Создать задание
+     */
+    public void addTask() {
+       //SelenideElement task = $(By.xpath("//button[contains(.,'Додати завдання')]"));
+       $(By.xpath("//button[@ng-click='addIssue()']")).click();
+       pause(5000);
+      // System.out.println(task.getText());
+      // task.click();
+    }
+
+    /**
+     * Назначить контроллирующего
+     * @param name
+     */
+    public void setController(String name) {
+        $(By.xpath("//div[@name='taskController0']")).shouldBe(exist).click();
+        $(By.xpath("//div[@name='taskController0']//input")).val(name);
+       // $(By.xpath("//span[contains(.,'" + name + "')]")).shouldBe(visible).click();
+        ElementsCollection controller = $$x("//span[contains(.,'" + name + "')]");
+        controller.first().click();
+    }
+
+    /**
+     * Назначить исполнителя +/-
+     * @param name
+     */
+    public void setExecutor(String name){
+        ElementsCollection executors =  $$x("//*[@ng-model='executor.value']");
+        int count = executors.size();
+        System.out.println("setExecutor1 " + count);
+        $(By.xpath("//*[@name='taskExecutor"+(count-1)+"']")).click();
+        $(By.xpath("//*[@name='taskExecutor"+(count-1)+"']//input")).val(name);
+        ElementsCollection executor =  $$x("//span[contains(.,'"+name+"')]").excludeWith(attribute("name"));
+        System.out.println("setExecutor2 " + executor.size());
+        executor.first().click();
+        //$(By.xpath("//span[contains(.,'"+name+"')]")).shouldBe(visible).click();
+    }
+
+    /**
+     * Добавить исполнителя -
+     */
+    public void addNewExecutor(String name){
+        //$(By.xpath("//a[@a=ng-click='addNewExecutor($index)']")).click();
+        $(By.xpath("//a[contains(.,'Додати виконавця')]")).click();
+        setExecutor(name);
+    }
+
+    /**
+     * Выбор типа отчета по заданию
+     * @param type
+     */
+    public void setTaskForm(String type) {
+        $(By.xpath("//*[@ng-model='issue.taskForm']")).click();
+        $(By.xpath("//*[@ng-model='issue.taskForm']//option[contains(.,'" + type + "')]")).click();
+    }
+
+    public void setTaskTerm(String type, String term) {
+        $(By.xpath("//*[@name='taskTerm0']")).click();
+        $(By.xpath("//*[@name='taskTerm0']//option[contains(.,'" + type + "')]")).click();
+        if (type.equalsIgnoreCase("Календарна дата")) {
+            $(By.xpath("//*[@id='datetimepicker1']")).shouldBe(exist).sendKeys(term);
+        } else {
+            $(By.xpath("//*[@id='taskDay']")).val(term);
+        }
+    }
+
+
+    public void setMainExecutor(String name){
+        SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
+        $(By.xpath(parent+"//input[@ng-model='executor.isMain']")).click();
+    }
+
+    /**
+     * Присвоить название задаче
+     * @param name
+     */
+    public void setTaskName(String name){
+        $(By.xpath("//input[@ng-model='issue.taskName']")).val(name);
+    }
+
+    /**
+     * Тело задачи
+     * @param content
+     */
+    public void setTaskContents(String content){
+        ElementsCollection body = $$(By.tagName("iframe"));
+        int count = body.size();
+        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).click();
+        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).sendKeys(content);
     }
 }

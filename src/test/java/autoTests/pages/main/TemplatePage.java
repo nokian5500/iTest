@@ -8,6 +8,7 @@ import java.util.List;
 
 import autoTests.ConfigClass;
 
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import org.openqa.selenium.support.FindBy;
@@ -78,7 +79,8 @@ public class TemplatePage extends CustomMethods {
 
     // Method for selection of Region
     public void selectRegion(String region) {
-        $(openOblList).click();
+        pause(10000);
+        $(openOblList).waitUntil(visible, 10000).click();
         clickXpath("//a[contains(text(),'" + region + "')]");
     }
 
@@ -89,8 +91,9 @@ public class TemplatePage extends CustomMethods {
     }
 
     public void checkMessageSuccess(String message) throws Exception {
-        orderId.add($(orderID).getText().substring(2, $(orderID).getText().length()));
-        System.out.println(orderId);
+        pause(10000);
+        ConfigClass.orderId.add($(orderID).waitUntil(exist,90000).getText().substring(2, $(orderID).getText().length()));
+        System.out.println(ConfigClass.orderId);
 
         String textForAssert = $(resultMsgText).getText();
         String firstPart = textForAssert.substring(0, 46);

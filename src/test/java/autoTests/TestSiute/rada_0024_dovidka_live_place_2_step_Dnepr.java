@@ -52,7 +52,7 @@ public class rada_0024_dovidka_live_place_2_step_Dnepr extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(getBaseUrl() + sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

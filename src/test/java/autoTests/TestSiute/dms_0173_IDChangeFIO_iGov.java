@@ -47,7 +47,7 @@ public class dms_0173_IDChangeFIO_iGov extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

@@ -20,7 +20,7 @@ public class Test_doc_iTest_test_small_case extends CustomMethods {
         String sBP = "_doc_iTest_test_small_case";
         String email = "autotestbeta@gmail.com";
 
-        openURLdashboard(getBaseUrl());
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("iTest_User_0007", "iTest_User_0007");
         clickButton("Увійти");

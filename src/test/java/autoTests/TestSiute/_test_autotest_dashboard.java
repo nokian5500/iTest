@@ -78,7 +78,7 @@ public class _test_autotest_dashboard extends CustomMethods {
 
 //        _step("7-1. Нажать кнопку Выйти");
 //        click(driver, o.buttonLogOut);
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

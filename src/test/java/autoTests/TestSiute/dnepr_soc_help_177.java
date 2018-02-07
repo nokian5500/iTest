@@ -32,12 +32,13 @@ public class dnepr_soc_help_177 extends CustomMethods {
 
         setFieldAutocomplete("sID_Public_SubjectOrganJoin", "Бабушкінській район, м.Дніпропетровськ");
 
-        setFieldValue("adress1", "Дніпро");
-        setFieldValue("adress2", "Дніпро");
+        setFieldValue("sAddressRegistered", "Дніпро");
+        setFieldFile(sBP, "nFileScanPassport", "src/test/resources/files/testDocumentForECP.pdf");
+        //setFieldValue("adress2", "Дніпро");
         setFieldValue("phone", "+380622030405");
         setFieldValue("email", "autotestbeta@gmail.com");
-        setFieldSelectByText("subekt", "особисто");
-        setFieldSelectByText("content", "призначення допомоги на дітей одиноким матерям");
+        setFieldSelectByText("asSubekt", "особисто");
+        setFieldSelectByText("asContent", "призначення допомоги на дітей одиноким матерям");
 //         setFieldValue(driver, sBP, "sMailClerk", "autotestbeta@gmail.com");
 
         click(o.buttonSendingForm);

@@ -19,7 +19,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         String sBP = "_idoc_iTest_test_all_case";
         String email = "autotestbeta@gmail.com";
 
-        openURLdashboard(getBaseUrl());
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("iTest_User_0007", "iTest_User_0007");
         clickButton("Увійти");
@@ -42,6 +42,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         SetRegionFieldInputTypeCheckbox();
 
         /*Таблица sTable1*/
+        pause(6000);
         setRegionTableCellsInputTypeString("sTables1FieldA", "0", "1");
         setRegionTableCellsInputTypeString("sTables1FieldB", "0", "1");
         setRegionTableCellsInputTypeEnumSelect("sTables1FieldC", "0", "кілограм|кг");

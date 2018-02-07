@@ -80,8 +80,8 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
 //        _step("6. Отправка формы");
         // click(driver, o.buttonSendingForm);
         clickButtonECP();
-//        uploadECPKeyFile("C:\\i\\iTest\\src\\test\\resources\\files\\Key-6.dat");
-        uploadECPKeyAutoIT();
+        uploadECPKeyFile("src/test/resources/files/Key-6.dat");
+        //uploadECPKeyAutoIT();
         setPaswordForECPKey();
         pause(10000);
 
@@ -93,7 +93,7 @@ public class subsidiesUkraine_ECP_2 extends CustomMethods {
         click(o.buttonLogOut);
 //        pause(5000);
 
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

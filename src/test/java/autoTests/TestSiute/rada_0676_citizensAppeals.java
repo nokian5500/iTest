@@ -48,7 +48,7 @@ public class rada_0676_citizensAppeals extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(getBaseUrl() + sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

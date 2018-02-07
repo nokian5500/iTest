@@ -40,12 +40,13 @@ public class TestSetTableCellFile extends CustomMethods {
         setFieldValue("phone", "+380623155533");
         setFieldValue("sNumberCase", "380623155533");
         setFieldValue("sStatus", "особа, яка зацікавлена в результаті розгляду справи");
+        setFieldSelectByText("sSubekt", "фізична особа або фізична особа-підприємець"); // ENUM
         setFieldValue("sNameFiz", "Іван Іванович");
 
-        setFieldSelectByText("subekt", "фізична особа-підприємець"); // ENUM
-        setFieldValue("fiz_name", "Іван Іванов Іванович");
-        setFieldValue("fiz_adres", " Україна, Дніпропетровська область, м. Дніпро");
-        setFieldValue("fiz_drfo", "1234567899123");
+
+        //setFieldValue("fiz_name", "Іван Іванов Іванович");
+        //setFieldValue("fiz_adres", " Україна, Дніпропетровська область, м. Дніпро");
+        //setFieldValue("fiz_drfo", "1234567899123");
         setTableCellsInputTypeEnum("sTableDoc", "sCategoryDoc", "0", "заява про ознайомлення з матеріалами справи");
         setTableCellsInputTypeFile(sBP, "sTableDoc", "sDoc", "0", "src/test/resources/files/test.jpg");
     }

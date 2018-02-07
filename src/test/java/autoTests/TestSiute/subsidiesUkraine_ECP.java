@@ -86,7 +86,7 @@ public class subsidiesUkraine_ECP extends CustomMethods {
 
         click(o.buttonLogOut);
 
-        openURLdashboard(sBP);
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");

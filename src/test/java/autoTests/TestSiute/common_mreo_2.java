@@ -1,5 +1,6 @@
 package autoTests.TestSiute;
 
+import autoTests.ConfigClass;
 import autoTests.CustomMethods;
 import autoTests.pages.main.TemplatePage;
 import org.junit.Test;
@@ -38,10 +39,10 @@ public class common_mreo_2 extends CustomMethods {
                 + "Ваше звернення х-хххххххх успішно зареєстровано\n"
                 + "(номер також відправлено Вам електронною поштою на Ваш e-mail " + email + ") Результати будуть спрямовані також на email.\n"
                 + "Звертаємо увагу, що Іноді листи потрапляють у спам або у розділ \"Реклама\" (для Gmail).");
-
         click(o.buttonLogOut);
 
-        openURLdashboard(sBP);
+
+        openURLdashboard(getRegionUrl());
 
         AuthorizationBySetLoginPassword("tester", "tester");
         clickButton("Увійти");
@@ -57,7 +58,10 @@ public class common_mreo_2 extends CustomMethods {
 
         clickButton("Опрацювати");
         clickButton("Підтвердити");
-        clickButton("Ok");
+
+        //pause(90000);
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //clickButton("Ok");
 
     }
     //</editor-fold>

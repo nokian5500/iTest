@@ -31,11 +31,11 @@ public class Test_ecp extends CustomMethods {
         o.testPrivat24Authorization();
 
         setFieldSelectByText("asSelectFIOCheck", "Так - все вірно");
-        setFieldfieldPhone(sBP, "phone", "+380623155533");
+        setFieldValue("phone", "+380623155533");
         setEmail(sBP, "email", email);
 
         clickButton("Замовити послугу");
-        uploadECPKeyFile("C:/i/iTest/src/test/resources/files/Key-6.dat");
+        uploadECPKeyFile("src/test/resources/files/Key-6.dat");
 //        uploadECPKey();
         setPaswordForECPKey();
         pause(10000);

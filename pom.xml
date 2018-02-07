@@ -61,7 +61,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <reportsDirectory>TestReport</reportsDirectory>                    
+                    <reportsDirectory>TestReport</reportsDirectory>
                     <systemPropertyVariables>
                         <org.uncommons.reportng.escape-output>true</org.uncommons.reportng.escape-output>
                     </systemPropertyVariables>
