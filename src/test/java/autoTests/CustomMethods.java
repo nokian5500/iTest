@@ -2,6 +2,7 @@ package autoTests;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.commands.ScrollTo;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -716,35 +717,56 @@ public class CustomMethods extends SetupAndTeardown {
      * @param name
      */
     public void setController(String name) {
-        $(By.xpath("//div[@name='taskController0']")).shouldBe(exist).click();
-        $(By.xpath("//div[@name='taskController0']//input")).val(name);
+        ElementsCollection task =  $$x("//div[@ng-model='issue.taskController']");
+        int count = task.size()-1;
+        String xpath = "//div[@name='taskController"+count+"']";
+        $(By.xpath(xpath)).shouldBe(exist).scrollIntoView(true).click();
+        $(By.xpath(xpath+"//input")).val(name);
        // $(By.xpath("//span[contains(.,'" + name + "')]")).shouldBe(visible).click();
-        ElementsCollection controller = $$x("//span[contains(.,'" + name + "')]");
+        ElementsCollection controller = $$x(xpath+"//span[contains(.,'" + name + "')]");
         controller.first().click();
     }
 
+    private int TaskCount(){
+        ElementsCollection task =  $$x("//div[@class='row issue-workers']");
+        task.last();
+        return task.size();
+    }
+
     /**
-     * Назначить исполнителя +/-
+     * Назначить исполнителя
      * @param name
      */
     public void setExecutor(String name){
         ElementsCollection executors =  $$x("//*[@ng-model='executor.value']");
-        int count = executors.size();
-        System.out.println("setExecutor1 " + count);
-        $(By.xpath("//*[@name='taskExecutor"+(count-1)+"']")).click();
-        $(By.xpath("//*[@name='taskExecutor"+(count-1)+"']//input")).val(name);
-        ElementsCollection executor =  $$x("//span[contains(.,'"+name+"')]").excludeWith(attribute("name"));
-        System.out.println("setExecutor2 " + executor.size());
-        executor.first().click();
-        //$(By.xpath("//span[contains(.,'"+name+"')]")).shouldBe(visible).click();
+        //int count = executors.size();
+        System.out.println("executors " + executors.size());
+        SelenideElement currentExecutor = executors.last();
+        String nameCurrent = currentExecutor.attr("name");
+        String xpath = "//*[@name='"+nameCurrent+"']";
+        ElementsCollection executorByXpath =  $$x(xpath);
+        System.out.println(executorByXpath.size());
+
+        int math = executorByXpath.size()-2;
+        executorByXpath.get(math).click();
+        executorByXpath = $$x(xpath+"/input[@ng-model='$select.search']");
+        System.out.println("input " + executorByXpath.size());
+        executorByXpath.last().val(name);
+        $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+
+        /*
+        <span id="textError" class="col-md-12" style="margin-top: 20px; text-align: center; padding: 5px; color: rgb(169, 68, 66);">
+        Користувач не може бути одночасно і контролюючим, і виконавцем!</span>
+         */
     }
 
     /**
-     * Добавить исполнителя -
+     * Добавить исполнителя
+     * @param name
      */
     public void addNewExecutor(String name){
         //$(By.xpath("//a[@a=ng-click='addNewExecutor($index)']")).click();
-        $(By.xpath("//a[contains(.,'Додати виконавця')]")).click();
+        $$(By.xpath("//a[contains(.,'Додати виконавця')]")).last().click();
         setExecutor(name);
     }
 
@@ -753,17 +775,27 @@ public class CustomMethods extends SetupAndTeardown {
      * @param type
      */
     public void setTaskForm(String type) {
-        $(By.xpath("//*[@ng-model='issue.taskForm']")).click();
-        $(By.xpath("//*[@ng-model='issue.taskForm']//option[contains(.,'" + type + "')]")).click();
+        $$(By.xpath("//*[@ng-model='issue.taskForm']")).last().click();
+       //ElementsCollection form = $$(By.xpath("//*[@ng-model='issue.taskForm']"));
+        //form.last().click();
+        $$(By.xpath("//*[@ng-model='issue.taskForm']//option[contains(.,'" + type + "')]")).last().click();
     }
 
+
+
+    /**
+     * Срок задачи
+     * @param type
+     * @param term
+     */
     public void setTaskTerm(String type, String term) {
-        $(By.xpath("//*[@name='taskTerm0']")).click();
-        $(By.xpath("//*[@name='taskTerm0']//option[contains(.,'" + type + "')]")).click();
+        int count = $$(By.xpath("//*[@ng-model='issue.taskTerm.property']")).size()-1;
+        $(By.xpath("//*[@name='taskTerm" + count +"']")).click();
+        $(By.xpath("//*[@name='taskTerm" + count +"']//option[contains(.,'" + type + "')]")).click();
         if (type.equalsIgnoreCase("Календарна дата")) {
-            $(By.xpath("//*[@id='datetimepicker1']")).shouldBe(exist).sendKeys(term);
+            $(By.xpath("//*[@name='taskDate" + count + "']")).shouldBe(exist).sendKeys(term);
         } else {
-            $(By.xpath("//*[@id='taskDay']")).val(term);
+            $(By.xpath("//*[@name='taskDay" + count + "']")).val(term);
         }
     }
 
@@ -778,17 +810,59 @@ public class CustomMethods extends SetupAndTeardown {
      * @param name
      */
     public void setTaskName(String name){
-        $(By.xpath("//input[@ng-model='issue.taskName']")).val(name);
+        $$(By.xpath("//input[@ng-model='issue.taskName']")).last().val(name);
     }
 
     /**
      * Тело задачи
      * @param content
      */
-    public void setTaskContents(String content){
+    public void setContent(String content, boolean isDoc){
         ElementsCollection body = $$(By.tagName("iframe"));
-        int count = body.size();
+        int count;
+        if(isDoc){
+            count = 1;
+        }
+        else {
+            count = body.size();
+        }
         $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).click();
-        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).sendKeys(content);
+        switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
+        $(By.xpath("//body")).val(content);
+        switchTo().defaultContent();
+    }
+
+    public void setDocTitle(String title){
+        $(By.xpath("//*[@id='sTitleDoc']")).val(title);
+    }
+
+    public void setDocContent(String content){
+        setContent(content, true);
+    }
+
+    public void setTaskContent(String content){
+        setContent(content, false);
+    }
+
+    public void setAcceptor(String serviceName, String tableName, String cellName, String NameRow, String text){
+        setParticipant(serviceName, tableName, cellName, NameRow, text);
+    }
+
+    public void setApprover(String serviceName, String tableName, String cellName, String NameRow, String text){
+        setParticipant(serviceName, tableName, cellName, NameRow, text);
+    }
+
+    public void setDirect(String serviceName, String tableName, String cellName, String NameRow, String text){
+        setParticipant(serviceName, tableName, cellName, NameRow, text);
+    }
+
+    private void setParticipant(String serviceName, String tableName, String cellName, String NameRow, String text){
+        $(By.xpath("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']")).scrollIntoView(true).click();
+        $x("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']" +
+                "//input[@aria-label='Select box']").sendKeys(text);
+        //$(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(text);
+        //pause(2000);
+
+        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
     }
 }

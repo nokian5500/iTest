@@ -28,6 +28,6 @@ public class ConfigClass {
         String GammaRegion = "https://gamma.test.idoc.com.ua";
         String AlphaCentral = "https://alpha.test.igov.org.ua";
         String AlphaRegion = "https://alpha.test.idoc.com.ua";
-        return DeltaRegion;
+        return AlphaRegion;
     }
 }

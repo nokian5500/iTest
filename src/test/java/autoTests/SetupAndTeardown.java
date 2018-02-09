@@ -28,16 +28,16 @@ public class SetupAndTeardown extends ConfigClass {
     @Before
     public void setDriver() {
         Configuration.startMaximized = true;
-        //Configuration.browser = "chrome";
+        Configuration.browser = "chrome";
         FirefoxOptions firefoxOptions = new FirefoxOptions();
 
         //ChromeOptions options = new ChromeOptions();
         String path = "src/test/resources/files/cryptoplugin_ext_id@privatbank.ua.xpi";
-        firefoxOptions.addPreference("plugin.state.npcryptoplugin", 2);
+        //firefoxOptions.addPreference("plugin.state.npcryptoplugin", 2);
                 //.addExtensions(new File(path));
     }
 
-    @After
+    //@After
     public void deleteFiles() throws Exception {
         //Удаляем заявки
         delete.deleteAllOrderId();
