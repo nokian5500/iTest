@@ -30,6 +30,8 @@ public class Test_ecp extends CustomMethods {
 
         o.testPrivat24Authorization();
 
+        pause(10000);
+        
         setFieldSelectByText("asSelectFIOCheck", "Так - все вірно");
         setFieldValue("phone", "+380623155533");
         setEmail(sBP, "email", email);

@@ -829,7 +829,10 @@ public class CustomMethods extends SetupAndTeardown {
         $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).click();
         switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
         $(By.xpath("//body")).val(content);
-        switchTo().defaultContent();
+        System.out.println("test1");
+        pause(5000);
+        switchTo().defaultContent(); 
+        System.out.println("test2");
     }
 
     public void setDocTitle(String title){
