@@ -872,19 +872,24 @@ public class CustomMethods extends SetupAndTeardown {
 
         $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
     }
-    private void addAcceptor(String name){
+
+    /**
+     *
+     * @param name
+     */
+    public void addAcceptor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
         addParticipant(xpath, name);
     }
-    private void addDelegate(String name){
+    public void addDelegate(String name){
         String xpath = "//*[ng-if='execCtrlModals.bDelegates']//input";
         addParticipant(xpath, name);
     }
-    private void addViewer(String name){
+    public void addViewer(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
         addParticipant(xpath, name);
     }
-    private void addVisor(String name){
+    public void addVisor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         addParticipant(xpath, name);
     }
@@ -894,6 +899,31 @@ public class CustomMethods extends SetupAndTeardown {
         participant.click();
         participant.val(name);
         $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+    }
+
+    //tasks
+
+    /**
+     *
+     * @param type
+     * @param value
+     */
+    public void addReport(String type, String value) {
+        $x("//select[@id='status']/option[contains(.,'" + type + "')]").click();
+        if (type.equalsIgnoreCase("Не виконане") || type.equalsIgnoreCase("Не актуальне")) {
+            $x("//textarea[@id='reportText']").val(value);
+        } else if (type.equalsIgnoreCase("Виконане")) {
+            if($x("//input[@id='sOrder_1']").exists()){
+                $x("//input[@id='sOrder_1']").val(value);
+            }
+            else if($x("//textarea[@id='reportText']").exists()){
+                $x("//textarea[@id='reportText']").val(value);
+            }
+            else if($x("//button[@id='upload-button']").exists()){
+                File oFile = new File(value);
+                $x("//button[@id='upload-button']/input").sendKeys(oFile.getAbsolutePath());
+            }
+        }
     }
 
 
