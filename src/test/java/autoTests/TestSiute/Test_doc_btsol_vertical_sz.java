@@ -28,13 +28,14 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         createDocumentOrTask("Службова записка");
 //        templateSelect("Тестування службової записки");
         clickButton("Далi");
-        pause(10000);
+        pause(5000);
         
         //SetRegionFieldInputTypeString("sVarString", "Тип даних string");
         setDocContent("Текст службової записки");
+        pause(5000);
 
-        setRegionTableCellsInputTypeString("sNumber", "0", "100");
-        setRegionTableCellsInputTypeString("sNameFile", "0", "name");
+        setRegionTableCellsInputTypeString("sNumber", "0", "1");
+        setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
 
         /*Таблица Узгоджуючі*/
@@ -54,14 +55,16 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
         pause(5000);
+        clickButton("Ok");
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
         
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
         AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
         clickButton("Увійти");
+        pause(10000);
         setRegionFindOrderByNumberDocument();  
-        pause(5000);
+        pause(10000);
         clickButton("Інші дії");
         clickButton("Делегувати");
         setRegionTableCellsInputTypeEnumInput(sBP, "sTableAccept", "sName_Acceptor", "0", "Гуков Юрій Олександрович");
