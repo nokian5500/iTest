@@ -612,21 +612,23 @@ public class CustomMethods extends SetupAndTeardown {
         System.out.println("UrlCurrentPage: " + UrlCurrentPage);
         String sOrder = UrlCurrentPage.substring(UrlCurrentPage.indexOf("=") + 1, UrlCurrentPage.indexOf("#"));
         System.out.println("Полученный sID_Order: " + sOrder);
+        ConfigClass.orderId.add(sOrder);
         return sOrder;
 
     }
 
     public void setRegionFindOrderByNumberDocument() throws Exception { // поиск ID_Order
-        String sID_Order = getOrderFromUrlCurrentPage();
-        clickButtonCreate();
+        //String sID_Order = getOrderFromUrlCurrentPage();
+        //clickButtonCreate();
 
-        clickButton("Ok");
-        clickLink("Співробітник2 підрозділу 1.1  ");
-        clickLink("Вийти");
+        //clickButton("Ok");
+        //clickLink("Співробітник2 підрозділу 1.1  ");
+        //clickLink("Вийти");
 
-        AuthorizationBySetLoginPassword("iTest_User_0018", "iTest_User_0018");
-        clickButton("Увійти");
-        clickLink("Нерозглянутi");
+        //AuthorizationBySetLoginPassword("iTest_User_0018", "iTest_User_0018");
+        //clickButton("Увійти");
+        //clickLink("Нерозглянутi");
+        String sID_Order = ConfigClass.orderId.get(0);
         WebElement searchForm = $(By.cssSelector("#adv-search input"));
         searchForm.click();
         System.out.println("Вставка sID_Order= " + sID_Order);
