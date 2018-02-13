@@ -629,13 +629,15 @@ public class CustomMethods extends SetupAndTeardown {
         //clickButton("Увійти");
         //clickLink("Нерозглянутi");
         String sID_Order = ConfigClass.orderId.get(0);
-        WebElement searchForm = $(By.cssSelector("#adv-search input"));
+        SelenideElement searchForm = $(By.cssSelector("#adv-search input"));
         searchForm.click();
         System.out.println("Вставка sID_Order= " + sID_Order);
-        String sScript = "$('#adv-search input').val('" + sID_Order + "')";
-        executeJavaScript(sScript, $(By.cssSelector("#adv-search input")));
-        String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
-        executeJavaScript(sScript2, searchForm);
+        searchForm.val(sID_Order).pressEnter();
+       // System.out.println("Вставка sID_Order= " + sID_Order);
+        //String sScript = "$('#adv-search input').val('" + sID_Order + "')";
+        //executeJavaScript(sScript, $(By.cssSelector("#adv-search input")));
+        //String sScript2 = "$('.btn.btn-default.idoc-search-button').click();";
+        //executeJavaScript(sScript2, searchForm);
         //pause(5000);
     }
 
@@ -870,4 +872,29 @@ public class CustomMethods extends SetupAndTeardown {
 
         $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
     }
+    private void addAcceptor(String name){
+        String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
+        addParticipant(xpath, name);
+    }
+    private void addDelegate(String name){
+        String xpath = "//*[ng-if='execCtrlModals.bDelegates']//input";
+        addParticipant(xpath, name);
+    }
+    private void addViewer(String name){
+        String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
+        addParticipant(xpath, name);
+    }
+    private void addVisor(String name){
+        String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
+        addParticipant(xpath, name);
+    }
+
+    private void addParticipant(String xpath, String name){
+        SelenideElement participant = $x(xpath);
+        participant.click();
+        participant.val(name);
+        $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+    }
+
+
 }
