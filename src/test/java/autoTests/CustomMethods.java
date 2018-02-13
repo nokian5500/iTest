@@ -467,8 +467,8 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
-    public void setRegionTableCellsInputTypeFile(String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException {
-        WebElement oWebElement = $(By.xpath("//td[contains(@class,'ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "')]//*[@id=\"upload-button\"]//input"));
+    public void setRegionTableCellsInputTypeFile(String sBP,String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException {
+        WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         executeJavaScript(sScript, oWebElement);
 

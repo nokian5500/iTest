@@ -117,11 +117,11 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         setRegionTableCellsInputTypeString("sTables3Field7", "1", "2. Додаткове найменування (тип string)");
 
         setRegionTableCellsInputTypeString("sTables4Field1", "0", "Назва документа (тип string)");
-        setRegionTableCellsInputTypeFile("sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable4", "sTables4Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable4", "sTables4Field3", "0", "2017/03/05");
         addRegionsTableRow("sTable4");
         setRegionTableCellsInputTypeString("sTables4Field1", "1", "Назва документа (тип string)");
-        setRegionTableCellsInputTypeFile("sTable4", "sTables4Field2", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable4", "sTables4Field2", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable4", "sTables4Field3", "1", "2017/03/05");
 
         clickButton("Опрацювати");
@@ -162,11 +162,11 @@ public class _test_autotest_dashboardNew_idoc extends CustomMethods {
         setRegionTableCellsInputTypeString("sTables5Field7", "1", "2. Додаткове найменування (тип string)");
 
         setRegionTableCellsInputTypeString("sTables6Field1", "0", "Назва документа (тип string)");
-        setRegionTableCellsInputTypeFile("sTable6", "sTables6Field2", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable6", "sTables6Field2", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable6", "sTables6Field3", "0", "2017/03/05");
         addRegionsTableRow("sTable6");
         setRegionTableCellsInputTypeString("sTables6Field1", "1", "2. Назва документа (тип string)");
-        setRegionTableCellsInputTypeFile("sTable6", "sTables6Field2", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable6", "sTables6Field2", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable6", "sTables6Field3", "1", "2017/03/05");
 
         clickButton("Опрацювати");

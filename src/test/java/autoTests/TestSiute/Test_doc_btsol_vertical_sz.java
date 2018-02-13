@@ -17,7 +17,7 @@ import org.junit.Test;
 public class Test_doc_btsol_vertical_sz extends CustomMethods {
     @Test
     public void Test_doc_btsol_vertical_sz() throws Exception {
-        String sBP = "Test_doc_btsol_vertical_sz";
+        String sBP = "_doc_btsol_vertical_sz";
         String email = "autotestbeta@gmail.com";
 
         openURLdashboard(getRegionUrl());
@@ -32,6 +32,10 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         
         //SetRegionFieldInputTypeString("sVarString", "Тип даних string");
         setDocContent("Текст службової записки");
+
+        setRegionTableCellsInputTypeString("sNumber", "0", "100");
+        setRegionTableCellsInputTypeString("sNameFile", "0", "name");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
 
         /*Таблица Узгоджуючі*/
 //        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAccept", "sName_Approver", "0", "Замдиректора Потапченко Василь");
@@ -48,6 +52,8 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         setDirect(sBP, "sTableDirect", "sName_Direct", "1", "Літовченко Інна Вадимівна");
 
         getOrderFromUrlCurrentPage();
+        clickButtonCreate();
+        pause(5000);
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
         

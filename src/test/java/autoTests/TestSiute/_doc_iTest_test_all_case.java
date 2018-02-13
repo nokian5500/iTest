@@ -61,12 +61,12 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 
         /*Таблица sTable2*/
         setRegionTableCellsInputTypeString("sTables2FieldA", "0", "1");
-        setRegionTableCellsInputTypeFile("sTable2", "sTables2FieldB", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable2", "sTables2FieldB", "0", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable2", "sTables2FieldC", "0", "27/09/2017");
 
         addRegionsTableRow("sTable2");
         setRegionTableCellsInputTypeString("sTables2FieldA", "1", "1");
-        setRegionTableCellsInputTypeFile("sTable2", "sTables2FieldB", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTable2", "sTables2FieldB", "1", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeCalendar("sTable2", "sTables2FieldC", "1", "27/09/2017");
 
         SetRegionFieldInputTypeEnum("Заявка ТМЦ");
@@ -94,7 +94,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
 //        getOrderFromUrlCurrentPage();
         /*Таблица Назва додатка*/
         setRegionTableCellsInputTypeString("sNameFile", "0", "100");
-        setRegionTableCellsInputTypeFile("sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFileAuthor", "0", "src/test/resources/files/test.jpg");
 
         /*Таблица Узгоджуючі*/
 //        setRegionTableCellsInputTypeEnumInput(driver, sBP, "sTableAgree", "sName_Approver", "0", "Замдиректора Потапченко Василь");
