@@ -880,6 +880,7 @@ public class CustomMethods extends SetupAndTeardown {
     public void addAcceptor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
         addParticipant(xpath, name);
+        closeParticipant();
     }
     public void addDelegate(String name){
         String xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
@@ -888,10 +889,12 @@ public class CustomMethods extends SetupAndTeardown {
     public void addViewer(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
         addParticipant(xpath, name);
+        closeParticipant();
     }
     public void addVisor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         addParticipant(xpath, name);
+        closeParticipant();
     }
 
     private void addParticipant(String xpath, String name){
@@ -907,6 +910,11 @@ public class CustomMethods extends SetupAndTeardown {
 
         $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
         $x("//button[contains(.,'Підтвердити')]").click();
+    }
+
+    private void closeParticipant(){
+        clickButton("Ok");
+        $x("//i[@class='fa fa-times']").click();
     }
 
     //tasks
