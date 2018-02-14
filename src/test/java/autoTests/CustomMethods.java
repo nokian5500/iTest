@@ -905,7 +905,7 @@ public class CustomMethods extends SetupAndTeardown {
         participant = $x(xpath);
         participant.val(name);
 
-        $x("//a/span[contains(.,'"+name+"')]").click();
+        $x("//*[@id='draggable-dialog']/div/div[2]/delegate-document//a/span[contains(.,'"+name+"')]").click();
         $x("//button[contains(.,'Підтвердити')]").click();
     }
 
@@ -932,6 +932,10 @@ public class CustomMethods extends SetupAndTeardown {
                 $x("//button[@id='upload-button']/input").sendKeys(oFile.getAbsolutePath());
             }
         }
+    }
+
+    public void clickButtonSign(){
+        $x("//button[@id='signId']").click();
     }
 
 

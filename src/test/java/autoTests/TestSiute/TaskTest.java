@@ -83,9 +83,10 @@ public class TaskTest extends CustomMethods{
         setRegionFindOrder("5-875451");
         pause(10000);
 
-        clickButton("Інші дії");
-        clickButton("Делегувати");
-        addDelegate("Туренко Ольга Володимирівна");
+        //clickButton("Інші дії");
+        //clickButton("Делегувати");
+       // addDelegate("Туренко Ольга Володимирівна");
+        clickButtonSign();
 
     }
 

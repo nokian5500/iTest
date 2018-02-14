@@ -78,9 +78,8 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         clickButton("Увійти");
         pause(5000);
         setRegionFindOrderByNumberDocument();
-        pause(10000);
-        clickButton("Підписати");
         pause(5000);
+        clickButton("Підписати");
         clickButton("Ok");
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
