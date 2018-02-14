@@ -882,7 +882,7 @@ public class CustomMethods extends SetupAndTeardown {
         addParticipant(xpath, name);
     }
     public void addDelegate(String name){
-        String xpath = "//*[ng-if='execCtrlModals.bDelegates']//input";
+        String xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addParticipant(xpath, name);
     }
     public void addViewer(String name){
@@ -895,7 +895,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     private void addParticipant(String xpath, String name){
-        xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
+        //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         SelenideElement participant = $x(xpath);
         //participant.click();
         xpath = "//div[@placeholder='Введіть від 3-х символів']";
@@ -905,7 +905,7 @@ public class CustomMethods extends SetupAndTeardown {
         participant = $x(xpath);
         participant.val(name);
 
-        $x("//*[@id='draggable-dialog']/div/div[2]/delegate-document//a/span[contains(.,'"+name+"')]").click();
+        $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
         $x("//button[contains(.,'Підтвердити')]").click();
     }
 
