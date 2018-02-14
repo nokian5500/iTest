@@ -895,10 +895,18 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     private void addParticipant(String xpath, String name){
+        xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         SelenideElement participant = $x(xpath);
+        //participant.click();
+        xpath = "//div[@placeholder='Введіть від 3-х символів']";
+        participant = $x(xpath);
         participant.click();
+        xpath = "//input[@placeholder='Введіть від 3-х символів']";
+        participant = $x(xpath);
         participant.val(name);
-        $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+
+        $x("//a/span[contains(.,'"+name+"')]").click();
+        $x("//button[contains(.,'Підтвердити')]").click();
     }
 
     //tasks
