@@ -62,33 +62,38 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
         AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
         clickButton("Увійти");
-        pause(10000);
+        pause(5000);
         setRegionFindOrderByNumberDocument();  
-        pause(10000);
+        pause(5000);
         clickButton("Інші дії");
         clickButton("Делегувати");
-        setRegionTableCellsInputTypeEnumInput(sBP, "sTableAccept", "sName_Acceptor", "0", "Гуков Юрій Олександрович");
-        clickButton("Підтвердити");
+        //pause(5000);
+        addDelegate("Гуков Юрій Олександрович");
+        //pause(5000);
         clickLink("Туренко Ольга Володимирівна");
         clickLink("Вийти");
 
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
         clickButton("Увійти");
+        pause(5000);
         setRegionFindOrderByNumberDocument();
+        pause(10000);
         clickButton("Підписати");
+        pause(5000);
+        clickButton("Ok");
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
         /*4. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
+        pause(5000);
         setRegionFindOrderByNumberDocument();
+        pause(5000);
         clickButton("Інші дії");
         clickButton("Додати підписанта");
-        setRegionTableCellsInputTypeEnumInput(sBP, "sTableAcceptor", "sName_Acceptor", "0", "секретар i1");
-        clickButton("Підтвердити");
-        clickButton("Ok");
+        addAcceptor("Столбова Анна Юріївна");
         clickButton("Інші дії");
         clickButton("Підпис не потрібен");
         setFieldTextArea(sBP, "???", "коментар 1");
