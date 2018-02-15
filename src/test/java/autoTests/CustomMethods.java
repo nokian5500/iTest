@@ -349,6 +349,9 @@ public class CustomMethods extends SetupAndTeardown {
     public void clickButtonCreate() { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[@ng-click='submitTask(form)']")).click(); ////button[contains(.,'Опрацювати')]
     }
+    public void clickButtonCreateTask() { // нажатие любой кнопки с указанным тескстом на ней
+        $(By.xpath("//button[@ng-click='submit(form)']")).click(); ////button[contains(.,'Опрацювати')]
+    }
 
     public void clickLink(String nameLink) throws Exception { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//a[contains(.,'" + nameLink + "')]")).click(); ////button[contains(.,'Опрацювати')]
@@ -803,6 +806,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    public void setTaskTerm(String term) {
+            $(By.xpath("//*[@name='taskDate0']")).shouldBe(exist).sendKeys(term);
+    }
+
 
     public void setMainExecutor(String name){
         SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
@@ -899,15 +906,7 @@ public class CustomMethods extends SetupAndTeardown {
 
     private void addParticipant(String xpath, String name){
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
-        SelenideElement participant = $x(xpath);
-        //participant.click();
-        xpath = "//div[@placeholder='Введіть від 3-х символів']";
-        participant = $x(xpath);
-        participant.click();
-        xpath = "//input[@placeholder='Введіть від 3-х символів']";
-        participant = $x(xpath);
-        participant.val(name);
-
+        addWorker(name);
         $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
         $x("//button[contains(.,'Підтвердити')]").click();
     }
@@ -915,6 +914,17 @@ public class CustomMethods extends SetupAndTeardown {
     private void closeParticipant(){
         clickButton("Ok");
         $x("//i[@class='fa fa-times']").click();
+    }
+
+    private void addWorker(String name){
+        SelenideElement participant;
+        //participant.click();
+        String xpath = "//div[@placeholder='Введіть від 3-х символів']";
+        participant = $x(xpath);
+        participant.click();
+        xpath = "//input[@placeholder='Введіть від 3-х символів']";
+        participant = $x(xpath);
+        participant.val(name);
     }
 
     //tasks
@@ -925,6 +935,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param value
      */
     public void addReport(String type, String value) {
+        clickButton("Додати звіт");
         $x("//select[@id='status']/option[contains(.,'" + type + "')]").click();
         if (type.equalsIgnoreCase("Не виконане") || type.equalsIgnoreCase("Не актуальне")) {
             $x("//textarea[@id='reportText']").val(value);
@@ -940,6 +951,7 @@ public class CustomMethods extends SetupAndTeardown {
                 $x("//button[@id='upload-button']/input").sendKeys(oFile.getAbsolutePath());
             }
         }
+        clickButton("Підтвердити");
     }
 
     public void clickButtonSign(){
@@ -955,6 +967,52 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Відмовити");
         setFieldTextArea(sBP, "askMessage", text);
         $x("//*[ng-if='execCtrlModals.bSignInfo']//button[contains(.,'Відмовити')]").click();
+    }
+
+    public void createTask(String text) throws Exception {
+        clickLink("Завдання");
+        createDocumentOrTask(text);
+    }
+
+    public void delegateTask(String name, String term, String coop){
+        clickButton("Делегувати");
+        addWorker(name);
+        $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
+        $("#soExec").selectOptionByValue(coop);
+        clickButton("Підтвердити");
+    }
+
+    public void askForRescheduleTask(String term, String comment){
+        clickButton("Перенести");
+        $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
+        $x("//textarea[@id='execText']").val(comment);
+        clickButton("Підтвердити");
+    }
+
+    public void openDocFromTask(){
+        clickButton("Відкрити документ");
+    }
+
+    public void rescheduleTask(String term){
+        clickButton("Перенести");
+        $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
+        clickButton("Підтвердити");
+    }
+
+    public void refuseTask(String comment){
+        clickButton("Вiдхилити звiт");
+        $(By.xpath("//textarea[@id='execText']")).val(comment);
+        clickButton("Підтвердити");
+    }
+
+    public void cancelTask(String comment){
+        clickButton("Інші дії");
+        clickButton("Не прийняти");
+    }
+
+    public void notActualTask(String comment){
+        clickButton("Інші дії");
+        clickButton("Неактуально");
     }
 
 

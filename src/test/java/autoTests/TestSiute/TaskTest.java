@@ -80,13 +80,34 @@ public class TaskTest extends CustomMethods{
         AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
         clickButton("Увійти");
         navigateToggleMenu();
-        setRegionFindOrder("5-875451");
+        createTask("Завдання");
+        clickButton("Далi");
+        //setRegionFindOrder("5-875451");
         pause(10000);
+        setExecutor("Павленко Юлія Юріївна");
+        addNewExecutor("Смоктій Вікторія Кирилівна");
+        setTaskTerm("30/05/2018");
+        setTaskName("Theme2");
+        setTaskContent("Content2");
+        setTaskForm("Документ");
+        getOrderFromUrlCurrentPage();
+        clickButtonCreateTask();
+        pause(5000);
+        clickButton("Ok");
+        clickLink("Туренко Ольга Володимирівна");
+        clickLink("Вийти");
+
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        pause(5000);
+        setRegionFindOrderByNumberDocument();
+        delegateTask("Грек Одарка Олексіївна", "30/05/2018", "Без спільного виконання");
+
 
         //clickButton("Інші дії");
         //clickButton("Делегувати");
-       // addDelegate("Туренко Ольга Володимирівна");
-        clickButtonSign();
+       // addDelegate("");
+        //clickButtonSign();
 
     }
 
