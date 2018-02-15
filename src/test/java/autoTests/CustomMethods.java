@@ -946,5 +946,16 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//button[@id='signId']").click();
     }
 
+    public void clickButtonSignNotNeed(String sBP, String text){
+        clickButton("Підпис не потрібен");
+        setFieldTextArea(sBP, "askMessage", text);
+        $x("//*[ng-if='execCtrlModals.bSignInfo']//button[contains(.,'Підпис не потрібен')]").click();
+    }
+    public void clickButtonRefuse(String sBP, String text){
+        clickButton("Відмовити");
+        setFieldTextArea(sBP, "askMessage", text);
+        $x("//*[ng-if='execCtrlModals.bSignInfo']//button[contains(.,'Відмовити')]").click();
+    }
+
 
 }
