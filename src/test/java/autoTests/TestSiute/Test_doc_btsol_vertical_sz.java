@@ -79,8 +79,7 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         pause(5000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
-        clickButton("Підписати");
-        clickButton("Ok");
+        clickButtonSign();
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
@@ -94,37 +93,37 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         clickButton("Додати підписанта");
         addAcceptor("Столбова Анна Юріївна");
         clickButton("Інші дії");
-        clickButton("Підпис не потрібен");
-        setFieldTextArea(sBP, "???", "коментар 1");
-        clickButton("Підпис не потрібен");
+        clickButtonSignNotNeed(sBP, "коментар 1");
         clickButton("Ok");
+        clickLink("Грек Одарка Олексіївна");
+        clickLink("Вийти");
 
         /*5. Работа на этапе согласования (3 пользователь). Подписываем*/
-        AuthorizationBySetLoginPassword("iTest_User_0004", "iTest_User_0004");
+        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянуті");
-        clickButton("Підписати");
+        setRegionFindOrderByNumberDocument();
+        clickButtonSign();
+        clickLink("Столбова Анна Юріївна");
+        clickLink("Вийти");
 
         /*6. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
-        AuthorizationBySetLoginPassword("iTest_User_0002", "iTest_User_0002");
+        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
-        setRegionFindOrder("");
+        setRegionFindOrderByNumberDocument();
         clickButton("Зауваження");
         SetRegionFieldInputTypeString("???", "Зауваження");
         clickButton("Выдправити зауваження");
         clickButton("Інші дії");
-        clickLink("Додадати підписанта");
-        SetRegionFieldInputTypeEnum("Директор Гнатушенко Тарас");
-        clickButton("Підтвердити");
+        clickButton("Додати підписанта");
+        addAcceptor("Грек Одарка Олексіївна");
         clickButton("Ok");
-        clickButton("Підписати");
-        clickLink("Замдиректора Потапченко Василь");
+        clickButtonSign();
+        clickLink("Герман Август Васильович");
         clickLink("Вийти");
 
         /*7. Отвечаем на зауваження*/
-        AuthorizationBySetLoginPassword("iTest_User_0007", "iTest_User_0007");
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянутi");
         setRegionFindOrderByNumberDocument();
         clickLink("dialog"); //
         clickLink("Відповісти");
@@ -133,37 +132,45 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         clickButton("Ok");
         clickButton("Зберегти");
         clickButton("Ok");
-        clickLink("Співробітник2 підрозділу 1.1");
+        clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
 
         /*8. Подписываем дополнительно директором*/
-        AuthorizationBySetLoginPassword("Test_User_0001", "Test_User_0001");
+        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянутi");
         setRegionFindOrderByNumberDocument();
-        clickButton("Підписати");
-        clickLink("Директор Гнатушенко Тарас");
+        clickButtonSign();
+        clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
 
         /*9. Заходим адресатом 1. Добавляем задание 1*/
-        AuthorizationBySetLoginPassword("iTest_User_0011", "iTest_User_0011");
+        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянуті");
         setRegionFindOrderByNumberDocument();
-        setRegionTableCellsInputTypeEnumInput(sBP, "sTableAcceptor", "sName_Acceptor", "1", "секретар І2");
-        clickButton("Додати завдання");
+        addTask();
+        setController("Столбова Анна Юріївна");
+        setExecutor("Смоктій Вікторія Кирилівна");
+        //setTaskForm("Документ");
+        //setTaskForm("Файл");
+        setTaskForm("Текстове повiдомлення");
+        setTaskTerm("Кiлькiсть днiв пiсля", "5");
+        setTaskName("Тестове завдання 1");
+        setTaskContent("Перевірка завдання автотестом");
+        addNewExecutor("Герман Август Васильович");
+        clickButtonSign();
+        clickLink("Столбова Анна Юріївна");
+        clickLink("Вийти");
 
         /*10. Заходим адресатом 2.*/
-        AuthorizationBySetLoginPassword("iTest_User_0016", "iTest_User_0016");
+        AuthorizationBySetLoginPassword("IGOV_230878LIV", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянуті");
         setRegionFindOrderByNumberDocument();
-        clickButton("Підписати");
-        clickLink("керівник підрозділу 2.2");
+        clickButtonSign();
+        clickLink("Літовченко Інна Вадимівна");
         clickLink("Вийти");
 
         /*11. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
-        AuthorizationBySetLoginPassword("iTest_User_0014", "iTest_User_0014");
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("Необроблені");
