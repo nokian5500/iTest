@@ -1026,7 +1026,6 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
-        clickButton("Відправити зауваження");
     }
 
 
