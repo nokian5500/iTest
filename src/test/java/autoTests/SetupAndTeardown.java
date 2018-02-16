@@ -28,8 +28,8 @@ public class SetupAndTeardown extends ConfigClass {
     @Before
     public void setDriver() {
         Configuration.startMaximized = true;
-       // Configuration.browser = "chrome";
-        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        Configuration.browser = "chrome";
+       /* FirefoxOptions firefoxOptions = new FirefoxOptions();
 
         //ChromeOptions options = new ChromeOptions();
         String path = "src/test/resources/files/cryptoplugin_ext_id@ff.xpi";
@@ -38,7 +38,7 @@ public class SetupAndTeardown extends ConfigClass {
 
        FirefoxProfile profile = new FirefoxProfile();
        profile.addExtension(new File(path));
-       firefoxOptions.setProfile(profile);
+       firefoxOptions.setProfile(profile);*/
     }
 
     //@After
