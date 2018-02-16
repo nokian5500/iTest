@@ -67,6 +67,7 @@ public class TemplatePage extends CustomMethods {
         $(By.xpath("//li[1]/a//span[contains(.,'ПриватБанк')]")).click();
         //<span class="ng-binding" ng-bind="::provider.name">ПриватБанк</span>
         $(By.xpath("//span[contains(.,'ПриватБанк')]")).click();
+        pause(5000);
         $(By.xpath("//input[@id='inputLogin']")).val("+380102030405");
         $(By.xpath("//input[@id='inputPassword']")).val("value");
         $(By.xpath("//button[@class='btn btn-success custom-btn']")).click();

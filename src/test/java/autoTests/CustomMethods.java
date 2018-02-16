@@ -3,6 +3,7 @@ package autoTests;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.commands.ScrollTo;
+import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -17,12 +18,13 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CustomMethods extends SetupAndTeardown {
 
-    public void openNewTab(WebDriver driver) {
-        WebElement body = driver.findElement(By.tagName("body"));
+    public void openNewTab() {
+        WebElement body = $(By.tagName("body"));
         body.sendKeys(Keys.CONTROL + "t");
     }
 
@@ -299,7 +301,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void addRegionsTableRow(String tableName) {
-        $(By.cssSelector("a." + tableName + "_add_row_button")).click(); //a[contains(@class,'sTable2_add_row_button')]
+        $(By.cssSelector("a." + tableName + "_add_row_button")).scrollIntoView(true).click(); //a[contains(@class,'sTable2_add_row_button')]
     }
 
     public String getNumbersIdOrder() throws Exception {
@@ -433,21 +435,21 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setRegionTableCellsInputTypeString(String cellName, String NameRow, String text) {
-        WebElement td = $(By.xpath("//input[@name='" + cellName + NameRow + "']")).shouldBe(visible);
+        WebElement td = $(By.xpath("//input[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
         td.click();
         td.clear();
         td.sendKeys(text);
     }
 
     public void setRegionTableCellsInputTypeEnumSelect(String cellName, String NameRow, String text) {
-        WebElement td = $(By.xpath("//select[@name='" + cellName + NameRow + "']")).shouldBe(visible);
+        WebElement td = $(By.xpath("//select[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
         td.click();
         Select select = new Select(td);
         select.selectByVisibleText(text);
     }
 
     public void setRegionTableCellsInputTypeEnumSpan(String tableName, String cellName, String NameRow, String text) {
-        $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).click();
+        $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).scrollIntoView(true).click();
         $(By.xpath("//*[contains(.,'" + text + "')]")).click();
     }
 
@@ -471,7 +473,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setRegionTableCellsInputTypeFile(String sBP,String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException {
-        WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input"));
+        WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input")).scrollIntoView(true);
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         executeJavaScript(sScript, oWebElement);
 
@@ -837,7 +839,7 @@ public class CustomMethods extends SetupAndTeardown {
         else {
             count = body.size();
         }
-        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).click();
+        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).scrollIntoView(true).click();
         switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
         $(By.xpath("//body")).val(content);
         System.out.println("test1");
@@ -847,7 +849,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void setDocTitle(String title){
-        $(By.xpath("//*[@id='sTitleDoc']")).val(title);
+        $(By.xpath("//*[@id='sTitleDoc']")).scrollIntoView(true).val(title);
     }
 
     public void setDocContent(String content){
@@ -920,7 +922,7 @@ public class CustomMethods extends SetupAndTeardown {
         SelenideElement participant;
         //participant.click();
         String xpath = "//div[@placeholder='Введіть від 3-х символів']";
-        participant = $x(xpath);
+        participant = $x(xpath).scrollIntoView(true);
         participant.click();
         xpath = "//input[@placeholder='Введіть від 3-х символів']";
         participant = $x(xpath);
@@ -1022,10 +1024,25 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void answerComment(String comment){
-        $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").click();
+        $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
+    }
+
+    public void installECP() throws AWTException {
+        openURLservice("https://accounts.firefox.com/signin?service=sync&context=fx_desktop_v3&entrypoint=menupanel");
+        $x("//input[@class='email']").val("dnepryanin18@gmail.com");
+        $("#password").val("tester01");
+        $x("//button[@id='submit-btn']").click();
+
+        pause(30000);
+        String plugin = getBaseUrl() + "/wf/VAADIN/themes/activiti/files/cryptoplugin_ext_id@ff.xpi";
+        //openNewTab();
+        openURLservice(plugin);
+        Robot robot = new Robot();
+
+        pause(100000);
     }
 
 

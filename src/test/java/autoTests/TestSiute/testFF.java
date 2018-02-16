@@ -9,25 +9,27 @@ package autoTests.TestSiute;
  *
  * @author User
  */
+import autoTests.CustomMethods;
 import com.codeborne.selenide.junit.TextReport;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 import org.openqa.selenium.By;
 
+import java.awt.*;
+
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
-public class testFF {
+public class testFF extends CustomMethods{
     @Test
-  public void search_selenide_in_google() {
+  public void search_selenide_in_google() throws AWTException {
     open("http://google.com/ncr");
     $(By.name("q")).val("selenide").pressEnter();
-    $$("#ires .g").shouldHave(size(7));
-    $("#ires .g").shouldBe(visible).shouldHave(
-        text("Selenide: concise UI tests in Java"),
-        text("selenide.org"));
+
+
+    installECP();
   }
 }
