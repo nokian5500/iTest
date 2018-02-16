@@ -1015,5 +1015,19 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Неактуально");
     }
 
+    public void addComment(String comment){
+        clickButton("Зауваження");
+        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
+        clickButton("Відправити зауваження");
+    }
+
+    public void answerComment(String comment){
+        $x("//a[@ng-click='showConversation = !showConversation']").click();
+        clickButton("Відповісти");
+        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
+        $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
+        clickButton("Відправити зауваження");
+    }
+
 
 }
