@@ -1022,7 +1022,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void answerComment(String comment){
-        $x("//a[@ng-click='showConversation = !showConversation']").click();
+        $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").click();
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
