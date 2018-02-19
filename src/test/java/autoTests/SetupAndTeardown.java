@@ -29,17 +29,18 @@ public class SetupAndTeardown extends ConfigClass {
     @Before
     public void setDriver() {
         Configuration.startMaximized = true;
+        Configuration.browser = "chrome";
 
-        FirefoxProfile profile = createFirefoxProfileWithExtensions();
+        /*FirefoxProfile profile = createFirefoxProfileWithExtensions();
         WebDriver driver = new FirefoxDriver(new FirefoxOptions().setProfile(profile));
         driver.manage().window().maximize();
-        WebDriverRunner.setWebDriver(driver);
+        WebDriverRunner.setWebDriver(driver);*/
     }
 
-    @After
+    /*@After
     public void closeDriver() throws Exception {
         WebDriverRunner.closeWebDriver();
-    }
+    }*/
 
     //@After
     public void deleteFiles() throws Exception {
