@@ -534,6 +534,7 @@ public class CustomMethods extends SetupAndTeardown {
         //
         WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
         buttonECP.click();
+        pause(5000);
         //
         setClipboardData(file.getAbsolutePath());
         //
@@ -1031,10 +1032,6 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void installECP() throws AWTException {
-        openURLservice("https://accounts.firefox.com/signin?service=sync&context=fx_desktop_v3&entrypoint=menupanel");
-        $x("//input[@class='email']").val("dnepryanin18@gmail.com");
-        $("#password").val("tester01");
-        $x("//button[@id='submit-btn']").click();
 
         pause(30000);
         String plugin = getBaseUrl() + "/wf/VAADIN/themes/activiti/files/cryptoplugin_ext_id@ff.xpi";

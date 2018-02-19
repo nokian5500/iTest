@@ -2,18 +2,19 @@ package autoTests;
 
 import autoTests.API.DeleteTask;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
 import java.io.File;
-import java.util.prefs.Preferences;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SetupAndTeardown extends ConfigClass {
 
@@ -28,17 +29,16 @@ public class SetupAndTeardown extends ConfigClass {
     @Before
     public void setDriver() {
         Configuration.startMaximized = true;
-        Configuration.browser = "chrome";
-       /* FirefoxOptions firefoxOptions = new FirefoxOptions();
 
-        //ChromeOptions options = new ChromeOptions();
-        String path = "src/test/resources/files/cryptoplugin_ext_id@ff.xpi";
-        firefoxOptions.addPreference("plugin.state.npcryptoplugin", 2);
-                //.addExtensions(new File(path));
+        FirefoxProfile profile = createFirefoxProfileWithExtensions();
+        WebDriver driver = new FirefoxDriver(new FirefoxOptions().setProfile(profile));
+        driver.manage().window().maximize();
+        WebDriverRunner.setWebDriver(driver);
+    }
 
-       FirefoxProfile profile = new FirefoxProfile();
-       profile.addExtension(new File(path));
-       firefoxOptions.setProfile(profile);*/
+    @After
+    public void closeDriver() throws Exception {
+        WebDriverRunner.closeWebDriver();
     }
 
     //@After
@@ -50,5 +50,23 @@ public class SetupAndTeardown extends ConfigClass {
         CustomMethods.deleteFileOrDirectory(directory);
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
+    }
+
+    private FirefoxProfile createFirefoxProfileWithExtensions() {
+        System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\files\\geckodriver.exe");
+        //System.setProperty("webdriver.firefox.marionette","src\\test\\resources\\files\\geckodriver.exe");
+
+        String path = "src/test/resources/files/cryptoplugin_ext_id@ff.xpi";
+        FirefoxProfile profile = new FirefoxProfile();
+        profile.setAssumeUntrustedCertificateIssuer(false);
+        profile.addExtension(new File(path));
+        profile.setPreference("plugin.state.npcryptoplugin", 2);
+        profile.setAssumeUntrustedCertificateIssuer(false);
+        profile.setPreference("general.useragent.override", "some UA string");
+        profile.setPreference("xpinstall.signatures.required", false);
+        DesiredCapabilities ff = DesiredCapabilities.firefox();
+        ff.setCapability(FirefoxDriver.PROFILE, profile);
+        ff.setCapability("marionette", true);
+        return profile;
     }
 }

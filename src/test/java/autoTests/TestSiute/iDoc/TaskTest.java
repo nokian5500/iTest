@@ -111,6 +111,16 @@ public class TaskTest extends CustomMethods{
 
     }
 
+    @Test
+    public void SZ3() throws Exception {
+        openURLdashboard(getRegionUrl());
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        pause(100000);
+
+
+    }
+
 
 
 }
