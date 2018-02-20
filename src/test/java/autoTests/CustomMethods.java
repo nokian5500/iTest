@@ -839,6 +839,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
         else {
             count = body.size();
+            if (count == 1){
+                String tag = body.first().attr("id").replaceAll("[^0-9]", "");
+                count = Long.getLong(tag).intValue();
+            }
         }
         $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).scrollIntoView(true).click();
         switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
