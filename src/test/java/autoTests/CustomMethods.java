@@ -840,19 +840,20 @@ public class CustomMethods extends SetupAndTeardown {
         else {
             count = body.size();
             if (count == 1){
-                String tag = body.first().attr("id").replaceAll("[^0-9]", "");
-                System.out.println(tag);
-                System.out.println(body.first().attr("id"));
-                count = Integer.parseInt(tag);
+                String tag = body.first().attr("id");
+                count = countByTag(tag);
             }
         }
         $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).scrollIntoView(true).click();
         switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
         $(By.xpath("//body")).val(content);
-        System.out.println("test1");
         pause(5000);
-        switchTo().defaultContent(); 
-        System.out.println("test2");
+        switchTo().defaultContent();
+    }
+
+    private int countByTag(String tag){
+        tag = tag.replaceAll("[^0-9]", "");
+        return Integer.parseInt(tag);
     }
 
     public void setDocTitle(String title){
@@ -1048,5 +1049,60 @@ public class CustomMethods extends SetupAndTeardown {
         pause(100000);
     }
 
+    public void searchTaskByText(String name){
+        prepareSearchTask();
+        $x("//input[@ng-model='options.searchText']").val(name);
+        searchTask();
+    }
+
+    public void searchTaskByTextAndDateCreate(String name, String date){
+        prepareSearchTask();
+        $x("//input[@ng-model='options.searchText']").val(name);
+        $x("//select[@ng-model='options.dateOption']").click();
+        $x("//option[@value='startTime']").click();
+        $x("//input[@ng-model='options.startDate']").setValue(date);
+        searchTask();
+    }
+    public void searchTaskByTextAndDateExecute(String name, String date){
+        prepareSearchTask();
+        $x("//input[@ng-model='options.searchText']").val(name);
+        $x("//select[@ng-model='options.dateOption']").click();
+        $x("//option[@value='executionTime']").click();
+        $x("//input[@ng-model='options.endDate']").setValue(date);
+        searchTask();
+    }
+    public void searchTaskByDateCreate(String name, String date){
+        prepareSearchTask();
+        $x("//select[@ng-model='options.dateOption']").click();
+        $x("//option[@value='startTime']").click();
+        $x("//input[@ng-model='options.startDate']").setValue(date);
+        searchTask();
+    }
+    public void searchTaskByDateExecute(String name, String date){
+        prepareSearchTask();
+        $x("//select[@ng-model='options.dateOption']").click();
+        $x("//option[@value='executionTime']").click();
+        $x("//input[@ng-model='options.endDate']").setValue(date);
+        searchTask();
+    }
+
+
+    private void prepareSearchTask(){
+        $x("//button[@ng-click='setCurrentTab(sSelectedTask, tabMenu)']").click();
+        $x("//select[@ng-model='options.tabSelect']").click();
+        $x("//option[@value='TaskAll']").click();
+    }
+
+    private void searchTask(){
+        $x("//input[@type='submit']").click();
+        pause(3000);
+        SelenideElement seCounter = $x("//div[@ng-if='searchCounter']//span[contains(.,'Знайдено документів:')]");
+        String tag = seCounter.getText();
+        int counter = countByTag(tag);
+        if (counter == 1){
+            $x("//span[@class='glyphicon glyphicon-remove close-search-box']").click();
+            $x("//a[@ng-click='fillTaskOrderArray()']").click();
+        }
+    }
 
 }
