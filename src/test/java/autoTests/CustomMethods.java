@@ -841,7 +841,9 @@ public class CustomMethods extends SetupAndTeardown {
             count = body.size();
             if (count == 1){
                 String tag = body.first().attr("id").replaceAll("[^0-9]", "");
-                count = Long.getLong(tag).intValue();
+                System.out.println(tag);
+                System.out.println(body.first().attr("id"));
+                count = Integer.parseInt(tag);
             }
         }
         $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).scrollIntoView(true).click();
