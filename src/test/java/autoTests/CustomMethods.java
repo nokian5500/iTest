@@ -23,6 +23,14 @@ import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CustomMethods extends SetupAndTeardown {
 
+    private static char[] chars = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',  'а', 'б', 'в', 'г',
+            'ґ', 'д', 'е', 'є', 'ж', 'з', 'и', 'і', 'ї', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р',
+            'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ю', 'я', 'А', 'Б', 'В', 'Г', 'Ґ',
+            'Д', 'Е', 'Є', 'Ж', 'З', 'И', 'І', 'Ї', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
+            'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ю', 'Я'};
+
+    public static String generateText;
+
     public void openNewTab() {
         WebElement body = $(By.tagName("body"));
         body.sendKeys(Keys.CONTROL + "t");
@@ -945,7 +953,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param value
      */
     public void addReport(String type, String value) {
-        clickButton("Додати звіт");
+        clickButton("Додати звiт");
         $x("//select[@id='status']/option[contains(.,'" + type + "')]").click();
         if (type.equalsIgnoreCase("Не виконане") || type.equalsIgnoreCase("Не актуальне")) {
             $x("//textarea[@id='reportText']").val(value);
@@ -961,7 +969,7 @@ public class CustomMethods extends SetupAndTeardown {
                 $x("//button[@id='upload-button']/input").sendKeys(oFile.getAbsolutePath());
             }
         }
-        clickButton("Підтвердити");
+        clickButton("Пiдтвердити");
     }
 
     public void clickButtonSign(){
@@ -1071,14 +1079,14 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//input[@ng-model='options.endDate']").setValue(date);
         searchTask();
     }
-    public void searchTaskByDateCreate(String name, String date){
+    public void searchTaskByDateCreate(String date){
         prepareSearchTask();
         $x("//select[@ng-model='options.dateOption']").click();
         $x("//option[@value='startTime']").click();
         $x("//input[@ng-model='options.startDate']").setValue(date);
         searchTask();
     }
-    public void searchTaskByDateExecute(String name, String date){
+    public void searchTaskByDateExecute(String date){
         prepareSearchTask();
         $x("//select[@ng-model='options.dateOption']").click();
         $x("//option[@value='executionTime']").click();
@@ -1104,5 +1112,28 @@ public class CustomMethods extends SetupAndTeardown {
             $x("//a[@ng-click='fillTaskOrderArray()']").click();
         }
     }
+
+    public void removeAllSigns(){
+        $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
+    }
+
+    public void removeRow(String table, int row){
+        $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
+    }
+
+
+
+
+    public static String generateText(int length) {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < length; i++) {
+            stringBuilder.append(chars[new Random().nextInt(chars.length)]);
+        }
+        generateText = stringBuilder.toString();
+        return stringBuilder.toString();
+    }
+
+
 
 }
