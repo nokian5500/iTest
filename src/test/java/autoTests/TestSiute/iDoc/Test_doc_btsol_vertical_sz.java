@@ -32,7 +32,7 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         
         //SetRegionFieldInputTypeString("sVarString", "Тип даних string");
         setDocContent("Текст службової записки");
-        pause(5000);
+        //pause(5000);
 
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
@@ -110,12 +110,10 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
-        clickButton("Зауваження");
-        SetRegionFieldInputTypeString("???", "Зауваження");
-        clickButton("Выдправити зауваження");
         clickButton("Інші дії");
         clickButton("Додати підписанта");
         addAcceptor("Грек Одарка Олексіївна");
+        addComment("Тестове зауваження");
         clickButton("Ok");
         clickButtonSign();
         clickLink("Герман Август Васильович");
@@ -125,12 +123,7 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
-        clickLink("dialog"); //
-        clickLink("Відповісти");
-        SetRegionFieldInputTypeString("", " Ответ на замечание1");
-        clickButton("Відповісти");
-        clickButton("Ok");
-        clickButton("Зберегти");
+        answerComment("Відповідь на зауваження");
         clickButton("Ok");
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
@@ -148,15 +141,16 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         addTask();
-        setController("Столбова Анна Юріївна");
-        setExecutor("Смоктій Вікторія Кирилівна");
+        setTaskName(generateText(10));
+        setTaskTerm("Кiлькiсть днiв пiсля", "5");
+        setTaskForm("Текстове повiдомлення");
         //setTaskForm("Документ");
         //setTaskForm("Файл");
-        setTaskForm("Текстове повiдомлення");
-        setTaskTerm("Кiлькiсть днiв пiсля", "5");
-        setTaskName("Тестове завдання 1");
-        setTaskContent("Перевірка завдання автотестом");
+        setController("Столбова Анна Юріївна");
+        setExecutor("Смоктій Вікторія Кирилівна");
         addNewExecutor("Герман Август Васильович");
+        pause(5000);
+        setTaskContent("Перевірка завдання автотестом");
         clickButtonSign();
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
@@ -172,46 +166,42 @@ public class Test_doc_btsol_vertical_sz extends CustomMethods {
         /*11. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
+        pause(5000);
         snapDrawerButtonMenuTabs("Завдання");
-        clickLink("Необроблені");
-        setRegionFindOrder(sBP);
-        clickButton("Додати звіт");
-        SetRegionFieldInputTypeEnum("Виконано");
-        SetRegionFieldInputTypeFile("src/test/resources/files/test.jpg");
-        clickButton("Підтвердити");
-        clickLink("Співробітник1 підрозділу 2.1");
+        clickLink("На виконанні");
+        searchTaskByText(generateText);
+        pause(5000);
+        addReport("Виконане", "Завдання виконане");
+        clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
 
         /*12. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
-        AuthorizationBySetLoginPassword("iTest_User_0015", "iTest_User_0015");
+        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
         snapDrawerButtonMenuTabs("Завдання");
-        clickLink("Необроблені");
-        setRegionFindOrder(sBP);
-        clickButton("Додати звіт");
-        SetRegionFieldInputTypeEnum("неактуально");
-        SetRegionFieldInputTypeTextArea("", "Звіт не актуальний");
-        clickButton("Підтвердити");
-        clickLink("Співробітник2 підрозділу 2.1");
+        clickLink("На виконанні");
+        searchTaskByText(generateText);
+        addReport("Не актуальне", "Не хочу це робити");
+        //clickButton("Ok");
+        clickLink("Герман Август Васильович");
         clickLink("Вийти");
 
         /*13. Заходим контролирующим. Подтверждаем отчет*/
-        AuthorizationBySetLoginPassword("iTest_User_0013", "iTest_User_0013");
+        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На контролі");
-        setRegionFindOrder(sBP);
+        searchTaskByText(generateText);
         clickButton("Прийняти завдання");
-        clickLink("керівник підрозділу 2.1");
+        clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
 
         /*14. Заходим исполнителем. Подписіваем*/
-        AuthorizationBySetLoginPassword("iTest_User_0012 ", "iTest_User_0012 ");
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
-        clickLink("Нерозглянуті");
         setRegionFindOrderByNumberDocument();
-        clickButton("Підписати");
-        clickLink("секретар І2");
+        clickButton("Ознайомлений");
+        clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
     }
 }
