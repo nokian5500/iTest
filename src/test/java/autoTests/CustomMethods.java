@@ -2,8 +2,6 @@ package autoTests;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.commands.ScrollTo;
-import net.bytebuddy.asm.Advice;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -18,7 +16,6 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CustomMethods extends SetupAndTeardown {
@@ -31,11 +28,18 @@ public class CustomMethods extends SetupAndTeardown {
 
     public static String generateText;
 
+    /**
+     * Открыть новое окно
+     */
     public void openNewTab() {
         WebElement body = $(By.tagName("body"));
         body.sendKeys(Keys.CONTROL + "t");
     }
 
+    /**
+     * Получить текущий день календаря
+     * @return
+     */
     public Calendar getCurrentCalendar() {
         // http://docs.oracle.com/javase/6/docs/api/java/util/GregorianCalendar.html
         // get the supported ids for GMT+02:00 ("Среднеевропейское (Центральноевропейское) летнее время")
@@ -53,7 +57,12 @@ public class CustomMethods extends SetupAndTeardown {
         return calendar;
     }
 
-    public static void delete(File file) throws IOException {
+    /**
+     * Удалиение файла/папки
+     * @param file
+     * @throws IOException
+     */
+    private static void delete(File file) throws IOException {
         if (file.isDirectory()) {
             //directory is empty, then delete it
             if (file.list().length == 0) {
@@ -80,6 +89,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Удалить файл или папку
+     * @param directory
+     */
     public static void deleteFileOrDirectory(File directory) {
         //make sure directory exists
         if (!directory.exists()) {
@@ -93,6 +106,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Поставить паузу
+     * @param timeout
+     */
     public void pause(int timeout) {
         try {
             Thread.sleep(timeout);
@@ -101,14 +118,26 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
-    public void click(WebElement webElement) {
-        $(webElement).click();
+    /**
+     * Кликнуть по найденному элементу
+     * @param selenideElement
+     */
+    public void click(SelenideElement selenideElement) {
+        $(selenideElement).click();
     }
 
+    /**
+     * Кликнуть по найденному элементу через xPath
+     * @param xpath
+     */
     public void clickXpath(String xpath) {
         $(By.xpath(xpath)).click();
     }
 
+    /**
+     * Открыть страницу
+     * @param url
+     */
     public void openURLservice(String url) {
         open(url);
     }
@@ -135,41 +164,87 @@ public class CustomMethods extends SetupAndTeardown {
         System.out.println("dashbordUrl: " + dashbordUrl);
         return dashbordUrl;
     }*/
+
+    /**
+     * Открыть страницу
+     * @param serviceName
+     */
     public void openURLdashboard(String serviceName) {
         //String dashbordUrl = getURLdashboard(serviceName);
         open(serviceName);
     }
 
-    public void assertThis(WebElement webElement, String textAssert) {
-        $(webElement).shouldBe(visible);
-        Assert.assertEquals(webElement.getText(), textAssert);
+    /**
+     * Сравнение текста элемента с необходимым
+     * @param selenideElement
+     * @param textAssert
+     */
+    public void assertThis(SelenideElement selenideElement, String textAssert) {
+        $(selenideElement).shouldBe(visible);
+        Assert.assertEquals(selenideElement.getText(), textAssert);
     }
 
+    /**
+     * Сравнение текста элемента с необходимым
+     * @param by
+     * @param textAssert
+     */
     public void assertThis(By by, String textAssert) {
         $(by).shouldBe(visible);
         Assert.assertEquals($(by).getText(), textAssert);
     }
 
+    /**
+     * Добавить значкение текстового поля
+     * @param cssSelector
+     * @param value
+     */
     public void setFieldValue(String cssSelector, String value) {
         $(By.xpath("//*[@name='" + cssSelector + "']")).val(value);
     }
 
+    /**
+     * Открыть меню навигации
+     */
     public void openTab() {
         $(By.xpath("//a[@ng-click='toggleMenu()']")).click();
     }
 
-    public void setFieldTextArea(String serviceName, String cssSelector, String value) {
+    /**
+     * Добавить значкение текстового поля типа textarea
+     * @param cssSelector
+     * @param value
+     */
+    public void setFieldTextArea(String cssSelector, String value) {
         $(By.xpath("//textarea[@name='" + cssSelector + "']")).val(value);
     }
 
+    /**
+     * Добавить значкение поля для емейла
+     * @param serviceName
+     * @param cssSelector
+     * @param value
+     */
     public void setEmail(String serviceName, String cssSelector, String value) {
         $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-required." + serviceName + "_--_" + cssSelector)).val(value);
     }
 
+    /**
+     * Добавить значкение поля для телефона
+     * @param serviceName
+     * @param cssSelector
+     * @param value
+     */
     public void setFieldfieldPhone(String serviceName, String cssSelector, String value) {
         $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-tel.ng-valid-required." + serviceName + "_--_" + cssSelector)).val(value);
     }
 
+    /**
+     *Добавить файл
+     * @param serviceName
+     * @param cssSelector
+     * @param sPathFile
+     */
     public void setFieldFile(String serviceName, String cssSelector, String sPathFile) {
         WebElement oWebElement = $(By.cssSelector("." + serviceName + "_--_" + cssSelector + " input"));
 
@@ -190,7 +265,13 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
-    public String getText(WebElement webElement) throws Exception {
+    /**
+     * Полученик текста элемента
+     * @param webElement
+     * @return
+     * @throws Exception
+     */
+    public String getText(SelenideElement webElement) throws Exception {
         $(webElement).waitUntil(visible, 10000);
         String answer = null;
         try {
@@ -201,17 +282,31 @@ public class CustomMethods extends SetupAndTeardown {
         return answer;
     }
 
+    /**
+     * Клик по объекту
+     * @param by
+     */
     public void click(By by) {
         $(by).click();
     }
 
+    /**
+     * Добавление текста для поля
+     * @param cssSelector
+     * @param text
+     */
     public void setFieldSelectByText(String cssSelector, String text) {
-        WebElement webElement = $(By.xpath("//*[@id=\"field-" + cssSelector + "\"]/select"));
+        SelenideElement webElement = $(By.xpath("//*[@id=\"field-" + cssSelector + "\"]/select"));
         Select select = new Select(webElement);
         select.selectByVisibleText(text);
 
     }
 
+    /**
+     * Добавления текста с автокомплитом
+     * @param name
+     * @param value
+     */
     public void setFieldAutocomplete(String name, String value) {
         SelenideElement elem = $(By.xpath("//input[@name='" + name + "']"));
         elem.sendKeys(value);
@@ -219,6 +314,12 @@ public class CustomMethods extends SetupAndTeardown {
         //$(By.xpath(".//strong[contains(.,'" + value + "')]")).click();               
     }
 
+    /**
+     * Добавить дату
+     * @param serviceName
+     * @param cssSelector
+     * @param data
+     */
     public void setFieldCalendar(String serviceName, String cssSelector, String data) {
         WebElement webElement = $(By.cssSelector("." + serviceName + "_--_" + cssSelector)).shouldBe(visible);
         executeJavaScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
@@ -227,10 +328,17 @@ public class CustomMethods extends SetupAndTeardown {
         webElement.sendKeys(data);
     }
 
+    /**
+     * Выбор чекбокса
+     * @param cssSelector
+     */
     public void setFieldCheckBox(String cssSelector) {
         $(By.cssSelector("#" + cssSelector)).setSelected(true);
     }
 
+    /**
+     * Проверка свободных слотов для даты
+     */
     public void setFieldSelectSlotDate() {
         Boolean status;
         try {
@@ -245,6 +353,9 @@ public class CustomMethods extends SetupAndTeardown {
 
     }
 
+    /**
+     * Проверка свободных слотов для времени
+     */
     public void setFieldSelectSlotTime() {
         Boolean status;
         try {
@@ -259,20 +370,46 @@ public class CustomMethods extends SetupAndTeardown {
 
     }
 
+    /**
+     * Заполнить стринговое поле таблицы
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setTableCellsInputTypeString(String tableName, String cellName, String NameRow, String text) {
         $(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]")).sendKeys(text);
     }
 
+    /**
+     * Заполнить поле таблицы типа селект
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param item
+     */
     public void setTableCellsInputTypeSelect(String tableName, String cellName, String NameRow, String item) {
         $(By.cssSelector("#field-" + tableName + " div[name=" + cellName + NameRow + "]")).click();
         $(By.cssSelector("#ui-select-choices-row" + item + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
     }
 
+    /**
+     * Заполнить поле типа селект
+     * @param cssSelector
+     * @param row
+     */
     public void setFieldTypeSelect(String cssSelector, String row) {
         $(By.cssSelector("#field-" + cssSelector)).click();
         $(By.cssSelector("#ui-select-choices-row" + row + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
     }
 
+    /**
+     * Заполнить поле таблицы типа перечисления
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setTableCellsInputTypeEnum(String tableName, String cellName, String NameRow, String text) {
         WebElement td = $(By.cssSelector("#field-" + tableName + " select[name=" + cellName + NameRow + "]")).shouldBe(visible);
         td.click();
@@ -280,6 +417,13 @@ public class CustomMethods extends SetupAndTeardown {
         select.selectByVisibleText(text);
     }
 
+    /**
+     * Заполнить поле таблицы типа календарь
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param date
+     */
     public void setTableCellsTypeCalendar(String tableName, String cellName, String NameRow, String date) {
         WebElement td = $(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]")).shouldBe(visible);
         executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
@@ -288,6 +432,14 @@ public class CustomMethods extends SetupAndTeardown {
         td.sendKeys(date);
     }
 
+    /**
+     * Заполнить файловое поле таблицы
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param nameRow
+     * @param sPathFile
+     */
     public void setTableCellsInputTypeFile(String serviceName, String tableName, String cellName, String nameRow, String sPathFile) {
         if (nameRow.equals("0")) {
             WebElement fileInput = $(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name=" + cellName + "] input"));
@@ -304,14 +456,27 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Добавить таблице строку iGov
+     * @param tableName
+     */
     public void addTableRow(String tableName) {
         $(By.cssSelector("#field-" + tableName + " a")).click();
     }
 
+    /**
+     * Добавить таблице строку iDoc
+     * @param tableName
+     */
     public void addRegionsTableRow(String tableName) {
         $(By.cssSelector("a." + tableName + "_add_row_button")).scrollIntoView(true).click(); //a[contains(@class,'sTable2_add_row_button')]
     }
 
+    /**
+     * Получение номера дока через урл
+     * @return
+     * @throws Exception
+     */
     public String getNumbersIdOrder() throws Exception {
         List<String> ID_Order = ConfigClass.orderId;
         System.out.println(ID_Order.size());
@@ -320,12 +485,22 @@ public class CustomMethods extends SetupAndTeardown {
         return sID_Order;
     }
 
+    /**
+     * Авторизация
+     * @param loginName
+     * @param passwordName
+     */
     public void AuthorizationBySetLoginPassword(String loginName, String passwordName) {
         $(By.name("login")).val(loginName);
         $(By.name("password")).val(passwordName);
         //.pressEnter();
     }
 
+    /**
+     * Поиск по номеру документа
+     * @param sID_Order
+     * @throws Exception
+     */
     public void setRegionFindOrder(String sID_Order) throws Exception { // поиск ID_Order
        /* WebElement searchForm = $(By.cssSelector(".form-control.searched-text"));
         String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
@@ -335,15 +510,24 @@ public class CustomMethods extends SetupAndTeardown {
         $(By.cssSelector(".form-control.searched-text")).val(sID_Order).pressEnter();
     }
 
+    /**
+     * Получение номера дока через элемент заголовка
+     * @return
+     * @throws Exception
+     */
     public String getsID_OrderFromH3element() throws Exception {
-        WebElement h3Element = $(By.xpath("//h3[contains(.,'№ ')]"));
+        SelenideElement h3Element = $(By.xpath("//h3[contains(.,'№ ')]"));
         String sID_OrderWithSymbolNumber = getText(h3Element);
         String sID_OrderFromH3element = getSubString(sID_OrderWithSymbolNumber, 2, 13);
         return sID_OrderFromH3element;
 
     }
 
-    public void setRegionFindOrder() throws Exception { // поиск ID_Order
+    /**
+     * Поиск по номеру документа
+     * @throws Exception
+     */
+    private void setRegionFindOrder() throws Exception { // поиск ID_Order
         String sID_Order = getNumbersIdOrder();
         WebElement searchForm = $(By.cssSelector(".form-control.searched-text"));
         String sScript = "$('.form-control.searched-text').val('" + sID_Order + "');";
@@ -352,25 +536,48 @@ public class CustomMethods extends SetupAndTeardown {
         executeJavaScript(sScript2, searchForm);
     }
 
+    /**
+     * Нажать на кнопку с тектом
+     * @param nameButton
+     */
     public void clickButton(String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[contains(.,'" + nameButton + "')]")).click(); ////button[contains(.,'Опрацювати')]
     }
 
+    /**
+     * Нажать кнопку создать
+     */
     public void clickButtonCreate() { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[@ng-click='submitTask(form)']")).click(); ////button[contains(.,'Опрацювати')]
     }
+
+    /**
+     * Нажать кнопку создать задачу
+     */
     public void clickButtonCreateTask() { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[@ng-click='submit(form)']")).click(); ////button[contains(.,'Опрацювати')]
     }
 
+    /**
+     * Нажать на ссылку
+     * @param nameLink
+     * @throws Exception
+     */
     public void clickLink(String nameLink) throws Exception { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//a[contains(.,'" + nameLink + "')]")).click(); ////button[contains(.,'Опрацювати')]
     }
 
+    /**
+     * Нажать на кнопку ЕЦП
+     */
     public void clickButtonECP() { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[@ng-disabled='cantSubmit(form)']")).click(); ////button[contains(.,'Опрацювати')]
     }
 
+    /**
+     * Поиск по номеру документа
+     * @throws Exception
+     */
     public void setRegionTask() throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
         $(By.xpath("//input[@ng-model='tasksSearch.value']")).val(sID_Order).pressEnter();
@@ -379,6 +586,12 @@ public class CustomMethods extends SetupAndTeardown {
         //$(By.xpath("//button[@class='btn btn-default idoc-search-button']")).click();
     }
 
+    /**
+     * Выбор вкладки выбора папки документа iGov
+     * @param serviceName
+     * @param enumRegionTab
+     * @throws Exception
+     */
     public void setRegionTab(String serviceName, String enumRegionTab) throws Exception { // навигация по табам navbar в дашборде
         //pause(5000);
         if (serviceName.contains("idoc")) {
@@ -403,22 +616,47 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Заполнить стринговое поле
+     * @param cssSelector
+     * @param value
+     */
     public void SetRegionFieldInputTypeString(String cssSelector, String value) {
         $(By.cssSelector("input[name='" + cssSelector + "']")).sendKeys(value);
     }
 
+    /**
+     * Заполнить поле типа textarea
+     * @param cssSelector
+     * @param value
+     */
     public void SetRegionFieldInputTypeTextArea(String cssSelector, String value) {
         $(By.cssSelector("textarea[name='" + cssSelector + "']")).sendKeys(value);
     }
 
+    /**
+     * Заполнить поле типа Long
+     * @param cssSelector
+     * @param value
+     */
     public void SetRegionFieldInputTypeLong(String cssSelector, String value) {
         $(By.cssSelector("input[name='" + cssSelector + "']")).sendKeys(value);;
     }
 
+    /**
+     * Заполнить поле типа Double
+     * @param cssSelector
+     * @param value
+     */
     public void SetRegionFieldInputTypeDouble(String cssSelector, String value) {
         $(By.cssSelector("input[name='" + cssSelector + "']")).sendKeys(value);
     }
 
+    /**
+     * Заполнить поле типа Date
+     * @param cssSelector
+     * @param date
+     */
     public void SetRegionFieldInputTypeDate(String cssSelector, String date) {
         WebElement webElement = $(By.cssSelector("input[name='" + cssSelector + "']")).shouldBe(visible);
         executeJavaScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
@@ -426,6 +664,10 @@ public class CustomMethods extends SetupAndTeardown {
         webElement.sendKeys(date);
     }
 
+    /**
+     * Выбрать файл
+     * @param sPathFile
+     */
     public void SetRegionFieldInputTypeFile(String sPathFile) {
         WebElement oWebElement = $(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
@@ -434,14 +676,27 @@ public class CustomMethods extends SetupAndTeardown {
         oWebElement.sendKeys(oFile.getAbsolutePath());
     }
 
+    /**
+     * Заполнить поле типа Enum
+     * @param value
+     */
     public void SetRegionFieldInputTypeEnum(String value) {
         $(By.xpath("//option[@label='" + value + "']")).click();
     }
 
+    /**
+     * Заполнить поле типа Checkbox
+     */
     public void SetRegionFieldInputTypeCheckbox() {
         $(By.xpath("//input[@name='asEnumTypeCheckbox']")).click();
     }
 
+    /**
+     * Заполнить табличное поле типа стринг iDoc
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setRegionTableCellsInputTypeString(String cellName, String NameRow, String text) {
         WebElement td = $(By.xpath("//input[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
         td.click();
@@ -449,6 +704,12 @@ public class CustomMethods extends SetupAndTeardown {
         td.sendKeys(text);
     }
 
+    /**
+     * Заполнить табличное поле типа Select iDoc
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setRegionTableCellsInputTypeEnumSelect(String cellName, String NameRow, String text) {
         WebElement td = $(By.xpath("//select[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
         td.click();
@@ -456,17 +717,40 @@ public class CustomMethods extends SetupAndTeardown {
         select.selectByVisibleText(text);
     }
 
+    /**
+     * Заполнить табличное поле типа span iDoc
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setRegionTableCellsInputTypeEnumSpan(String tableName, String cellName, String NameRow, String text) {
         $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).scrollIntoView(true).click();
         $(By.xpath("//*[contains(.,'" + text + "')]")).click();
     }
 
-    public String getSubString(String text, int beginIndex, int endIndex) {
+    /**
+     * Обрезка части текста
+     * @param text
+     * @param beginIndex
+     * @param endIndex
+     * @return
+     */
+    private String getSubString(String text, int beginIndex, int endIndex) {
         String newtext = text.substring(beginIndex, endIndex);
         System.out.println(newtext);
         return newtext;
     }
 
+    /**
+     * Заполнить табличное поле типа enum iDoc
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     * @throws Exception
+     */
     public void setRegionTableCellsInputTypeEnumInput(String serviceName, String tableName, String cellName, String NameRow, String text) throws Exception {
         try {
             String textNew = getSubString(text, 0, 3);
@@ -480,6 +764,15 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Заполнить табличное файловое поле  iDoc
+     * @param sBP
+     * @param tableName
+     * @param cellName
+     * @param nameRow
+     * @param sPathFile
+     * @throws InterruptedException
+     */
     public void setRegionTableCellsInputTypeFile(String sBP,String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException {
         WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input")).scrollIntoView(true);
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
@@ -500,6 +793,14 @@ public class CustomMethods extends SetupAndTeardown {
         Thread.sleep(3000);
     }
 
+    /**
+     * Заполнить табличное поле типа календарь iDoc
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param date
+     * @throws InterruptedException
+     */
     public void setRegionTableCellsInputTypeCalendar(String tableName, String cellName, String NameRow, String date) throws InterruptedException {
         WebElement td = $(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']//input")).shouldBe(visible);
         executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
@@ -508,11 +809,20 @@ public class CustomMethods extends SetupAndTeardown {
         // Thread.sleep(1000);
     }
 
+    /**
+     * Вставить данные с клипборда
+     * @param string
+     */
     public static void setClipboardData(String string) {
         StringSelection stringSelection = new StringSelection(string);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
 
+    /**
+     * Загрузить ЕЦП ключ
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     public void uploadECPKeyFile() throws InterruptedException, AWTException {
         File file = new File("src/test/resources/files/Key-6.dat");
         //
@@ -537,6 +847,12 @@ public class CustomMethods extends SetupAndTeardown {
         robot.delay(300);
     }
 
+    /**
+     * Загрузить ЕЦП ключ
+     * @param filePath
+     * @throws InterruptedException
+     * @throws AWTException
+     */
     public void uploadECPKeyFile(String filePath) throws InterruptedException, AWTException {
         File file = new File(filePath);
         //
@@ -562,6 +878,9 @@ public class CustomMethods extends SetupAndTeardown {
         robot.delay(300);
     }
 
+    /**
+     * Ввести пароль для ЕЦП
+     */
     public void setPaswordForECPKey() {
         WebElement passwordECP = $(By.xpath("//input[@type='password']"));
         passwordECP.sendKeys("12345677");
@@ -570,6 +889,10 @@ public class CustomMethods extends SetupAndTeardown {
         $(By.xpath("//button[@ng-click='sign()']")).click();
     }
 
+    /**
+     * Загрузить ЕЦП ключ скриптом
+     * @throws Exception
+     */
     public void uploadECPKeyAutoIT() throws Exception {
         WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
         buttonECP.click();
@@ -577,16 +900,27 @@ public class CustomMethods extends SetupAndTeardown {
         Thread.sleep(5000);
     }
 
+    /**
+     * Нажать на меню выбора
+     */
     public void navigateToggleMenu() {
         $(By.cssSelector(".igov-hamburger>a")).click();
     }
 
+    /**
+     * Выбор вкладки
+     * @param buttonName
+     */
     public void snapDrawerButtonMenuTabs(String buttonName) {
         WebElement button = $(By.xpath(".//a[contains(.,'" + buttonName + "')]"));
         $(button).waitUntil(visible, 10000);
         button.click();
     }
 
+    /**
+     * Создать документ/задачу
+     * @param nameDocumentOrTask
+     */
     public void createDocumentOrTask(String nameDocumentOrTask) { //*
         $(By.cssSelector(".btn.btn-default.ng-scope")).click();
         WebElement Element = $(By.xpath("//i[@ng-click='$select.toggle($event)']"));
@@ -595,6 +929,10 @@ public class CustomMethods extends SetupAndTeardown {
         listElement.click();
     }
 
+    /**
+     * ВСписок папок задач
+     * @param buttonName
+     */
     public void choiceMenuList(String buttonName) {
         if (buttonName.contains("Необроблені")) {
             $(By.cssSelector("#unassigned")).click();
@@ -611,6 +949,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Поиск по номеру документа/задачи
+     * @throws Exception
+     */
     public void searchBoxIdoc() throws Exception {
         String sID_Order = getNumbersIdOrder();
         WebElement search = $(By.xpath(".//*[@id='adv-search']/input"));
@@ -621,6 +963,10 @@ public class CustomMethods extends SetupAndTeardown {
 
     }
 
+    /**
+     * Получить номнр дока с урла текущей страницы
+     * @return
+     */
     public String getOrderFromUrlCurrentPage() {
         String UrlCurrentPage = url();
         System.out.println("UrlCurrentPage: " + UrlCurrentPage);
@@ -631,6 +977,10 @@ public class CustomMethods extends SetupAndTeardown {
 
     }
 
+    /**
+     * Поиск документа по номеру
+     * @throws Exception
+     */
     public void setRegionFindOrderByNumberDocument() throws Exception { // поиск ID_Order
         //String sID_Order = getOrderFromUrlCurrentPage();
         //clickButtonCreate();
@@ -655,11 +1005,19 @@ public class CustomMethods extends SetupAndTeardown {
         //pause(5000);
     }
 
+    /**
+     * Открыть док с ПриватДока
+     * @param docName
+     */
     public void openDocFromPrivatDoc(String docName) {
         openURLservice(docName);
         pause(10000);
     }
 
+    /**
+     * Просканировать док с ПриватДока
+     * @throws InterruptedException
+     */
     public void scanDocFromPrivatDoc() throws InterruptedException {
         List<SelenideElement> linkList = $$(By.xpath(".//a[@target='_blank']"));
         System.out.println("Count Link on page: " + linkList.size());
@@ -707,17 +1065,29 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Нажать кнопку печати через скрипт
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void clickButtonPrintAutoIT() throws IOException, InterruptedException {
         Runtime.getRuntime().exec("src\\test\\resources\\files\\clickButtonPrint.exe");
         Thread.sleep(5000);
     }
 
+    /**
+     * Нажать кнопку сохранить через скрипт
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void clickButtonSaveAutoIT() throws IOException, InterruptedException {
         Runtime.getRuntime().exec("src\\test\\resources\\files\\clickButtonSave.exe");
         Thread.sleep(10000);
     }
 
-
+    /**
+     * iDoc
+     */
 
     /**
      * Создать задание
@@ -745,6 +1115,10 @@ public class CustomMethods extends SetupAndTeardown {
         controller.first().click();
     }
 
+    /**
+     * Счетчик задач
+     * @return
+     */
     private int TaskCount(){
         ElementsCollection task =  $$x("//div[@class='row issue-workers']");
         task.last();
@@ -753,6 +1127,7 @@ public class CustomMethods extends SetupAndTeardown {
 
     /**
      * Назначить исполнителя
+     * TODO запилить проврку, чтоб низзя было выбрать одновременно контроллером и исполнителем
      * @param name
      */
     public void setExecutor(String name){
@@ -799,8 +1174,6 @@ public class CustomMethods extends SetupAndTeardown {
         $$(By.xpath("//*[@ng-model='issue.taskForm']//option[contains(.,'" + type + "')]")).last().click();
     }
 
-
-
     /**
      * Срок задачи
      * @param type
@@ -817,15 +1190,35 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Выставить срок задаче
+     * @param term
+     */
     public void setTaskTerm(String term) {
             $(By.xpath("//*[@name='taskDate0']")).shouldBe(exist).sendKeys(term);
     }
 
 
+    /**
+     * Выбор главного исполнителя
+     * TODO запилить
+     * @param name
+     */
     public void setMainExecutor(String name){
         SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
         $(By.xpath(parent+"//input[@ng-model='executor.isMain']")).click();
     }
+
+    /**
+     * Удаление исполнителя
+     * TODO запилить
+     * @param name
+     */
+    public void removeExecutor(String name){
+        SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
+        $(By.xpath(parent+"//input[@ng-model='executor.isMain']")).click();
+    }
+
 
     /**
      * Присвоить название задаче
@@ -859,35 +1252,84 @@ public class CustomMethods extends SetupAndTeardown {
         switchTo().defaultContent();
     }
 
+    /**
+     * Вытягивание цифры с текста
+     * @param tag
+     * @return
+     */
     private int countByTag(String tag){
         tag = tag.replaceAll("[^0-9]", "");
         return Integer.parseInt(tag);
     }
 
+    /**
+     * Выставить заголовок дока
+     * @param title
+     */
     public void setDocTitle(String title){
         $(By.xpath("//*[@id='sTitleDoc']")).scrollIntoView(true).val(title);
     }
 
+    /**
+     * Выставить содержимое дока
+     * @param content
+     */
     public void setDocContent(String content){
         setContent(content, true);
     }
 
+    /**
+     * Выставить содержимое задачи
+     * @param content
+     */
     public void setTaskContent(String content){
         setContent(content, false);
     }
 
+    /**
+     * Добавить в таблицу на узгодження
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setAcceptor(String serviceName, String tableName, String cellName, String NameRow, String text){
         setParticipant(serviceName, tableName, cellName, NameRow, text);
     }
 
+    /**
+     * Добавить в таблицу на затвердження
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setApprover(String serviceName, String tableName, String cellName, String NameRow, String text){
         setParticipant(serviceName, tableName, cellName, NameRow, text);
     }
 
+    /**
+     * Добавить в таблицу на адресацію
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     public void setDirect(String serviceName, String tableName, String cellName, String NameRow, String text){
         setParticipant(serviceName, tableName, cellName, NameRow, text);
     }
 
+    /**
+     * Добавить в таблице подписанта
+     * @param serviceName
+     * @param tableName
+     * @param cellName
+     * @param NameRow
+     * @param text
+     */
     private void setParticipant(String serviceName, String tableName, String cellName, String NameRow, String text){
         $(By.xpath("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']")).scrollIntoView(true).click();
         $x("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']" +
@@ -899,7 +1341,7 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     /**
-     *
+     * Добавить на узгодження с кнопки
      * @param name
      */
     public void addAcceptor(String name){
@@ -907,21 +1349,41 @@ public class CustomMethods extends SetupAndTeardown {
         addParticipant(xpath, name);
         closeParticipant();
     }
+
+    /**
+     * Делегировать с кнопки
+     * @param name
+     */
     public void addDelegate(String name){
         String xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addParticipant(xpath, name);
     }
+
+    /**
+     * Добавить на просмотр с кнопки
+     * @param name
+     */
     public void addViewer(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
         addParticipant(xpath, name);
         closeParticipant();
     }
+
+    /**
+     * Добавить подписанта с кнопки
+     * @param name
+     */
     public void addVisor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         addParticipant(xpath, name);
         closeParticipant();
     }
 
+    /**
+     * Добавить подписанта с кнопки
+     * @param xpath
+     * @param name
+     */
     private void addParticipant(String xpath, String name){
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
@@ -929,11 +1391,18 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//button[contains(.,'Підтвердити')]").click();
     }
 
+    /**
+     * Закрыть окно добавления подписанта с кнопки
+     */
     private void closeParticipant(){
         clickButton("Ok");
         $x("//i[@class='fa fa-times']").click();
     }
 
+    /**
+     * Добавление из выпадающего списка пользователя
+     * @param name
+     */
     private void addWorker(String name){
         SelenideElement participant;
         //participant.click();
@@ -945,10 +1414,8 @@ public class CustomMethods extends SetupAndTeardown {
         participant.val(name);
     }
 
-    //tasks
-
     /**
-     *
+     * Выбор отчета по задаче
      * @param type
      * @param value
      */
@@ -972,26 +1439,51 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Пiдтвердити");
     }
 
+    /**
+     * Нажать кнопку подписи дока
+     */
     public void clickButtonSign(){
         $x("//button[@id='signId']").click();
     }
 
+    /**
+     * Нажать кнопку "Підпис не потрібна"
+     * @param sBP
+     * @param text
+     */
     public void clickButtonSignNotNeed(String sBP, String text){
         clickButton("Підпис не потрібен");
-        setFieldTextArea(sBP, "askMessage", text);
+        setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Підпис не потрібен')]").click();
     }
+
+    /**
+     * Нажать кнопку подписи "Відмовити"
+     * @param sBP
+     * @param text
+     */
     public void clickButtonRefuse(String sBP, String text){
         clickButton("Відмовити");
-        setFieldTextArea(sBP, "askMessage", text);
+        setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відмовити')]").click();
     }
 
+    /**
+     * Создать задачу
+     * @param text
+     * @throws Exception
+     */
     public void createTask(String text) throws Exception {
         clickLink("Завдання");
         createDocumentOrTask(text);
     }
 
+    /**
+     * Делегировать задачу
+     * @param name
+     * @param term
+     * @param coop
+     */
     public void delegateTask(String name, String term, String coop){
         clickButton("Делегувати");
         addWorker(name);
@@ -1000,6 +1492,11 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Підтвердити");
     }
 
+    /**
+     * Попросить перенести задачу
+     * @param term
+     * @param comment
+     */
     public void askForRescheduleTask(String term, String comment){
         clickButton("Перенести");
         $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
@@ -1007,38 +1504,65 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Підтвердити");
     }
 
+    /**
+     * Открыть документ с задачи
+     */
     public void openDocFromTask(){
         clickButton("Відкрити документ");
     }
 
+    /**
+     * Перенести задачу
+     * @param term
+     */
     public void rescheduleTask(String term){
         clickButton("Перенести");
         $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
         clickButton("Підтвердити");
     }
 
+    /**
+     * Отклонить отчет
+     * @param comment
+     */
     public void refuseTask(String comment){
         clickButton("Вiдхилити звiт");
         $(By.xpath("//textarea[@id='execText']")).val(comment);
         clickButton("Підтвердити");
     }
 
+    /**
+     * Отказать в приеме задачи
+     * @param comment
+     */
     public void cancelTask(String comment){
         clickButton("Інші дії");
         clickButton("Не прийняти");
     }
 
+    /**
+     * Отчет не актуальный
+     * @param comment
+     */
     public void notActualTask(String comment){
         clickButton("Інші дії");
         clickButton("Неактуально");
     }
 
+    /**
+     * Добавить замечание
+     * @param comment
+     */
     public void addComment(String comment){
         clickButton("Зауваження");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         clickButton("Відправити зауваження");
     }
 
+    /**
+     * Ответить на замечание
+     * @param comment
+     */
     public void answerComment(String comment){
         $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
         clickButton("Відповісти");
@@ -1046,6 +1570,11 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
     }
 
+    /**
+     * Установить ЕЦП плагин
+     * TODO запилить
+     * @throws AWTException
+     */
     public void installECP() throws AWTException {
 
         pause(30000);
@@ -1057,12 +1586,21 @@ public class CustomMethods extends SetupAndTeardown {
         pause(100000);
     }
 
+    /**
+     * Поиск задачи по тексту
+     * @param name
+     */
     public void searchTaskByText(String name){
         prepareSearchTask();
         $x("//input[@ng-model='options.searchText']").val(name);
         searchTask();
     }
 
+    /**
+     * Поиск задачи по тексту и дате создания
+     * @param name
+     * @param date
+     */
     public void searchTaskByTextAndDateCreate(String name, String date){
         prepareSearchTask();
         $x("//input[@ng-model='options.searchText']").val(name);
@@ -1071,6 +1609,12 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//input[@ng-model='options.startDate']").setValue(date);
         searchTask();
     }
+
+    /**
+     * Поиск задачи по тексту и крайней дате исполнения
+     * @param name
+     * @param date
+     */
     public void searchTaskByTextAndDateExecute(String name, String date){
         prepareSearchTask();
         $x("//input[@ng-model='options.searchText']").val(name);
@@ -1079,6 +1623,11 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//input[@ng-model='options.endDate']").setValue(date);
         searchTask();
     }
+
+    /**
+     * Поиск задачи по дате создания
+     * @param date
+     */
     public void searchTaskByDateCreate(String date){
         prepareSearchTask();
         $x("//select[@ng-model='options.dateOption']").click();
@@ -1086,6 +1635,11 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//input[@ng-model='options.startDate']").setValue(date);
         searchTask();
     }
+
+    /**
+     * Поиск задачи крайней дате исполнения
+     * @param date
+     */
     public void searchTaskByDateExecute(String date){
         prepareSearchTask();
         $x("//select[@ng-model='options.dateOption']").click();
@@ -1094,13 +1648,18 @@ public class CustomMethods extends SetupAndTeardown {
         searchTask();
     }
 
-
+    /**
+     * Подготовка фильтра
+     */
     private void prepareSearchTask(){
         $x("//button[@ng-click='setCurrentTab(sSelectedTask, tabMenu)']").click();
         $x("//select[@ng-model='options.tabSelect']").click();
         $x("//option[@value='TaskAll']").click();
     }
 
+    /**
+     * Поиск задачи
+     */
     private void searchTask(){
         $x("//input[@type='submit']").click();
         pause(3000);
@@ -1113,10 +1672,18 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Нажать на чекбокс Снять все подписи
+     */
     public void removeAllSigns(){
         $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
     }
 
+    /**
+     * Удалить строку с таблицы
+     * @param table
+     * @param row
+     */
     public void removeRowFromTable(String table, int row){
         String xpath = "//tbody[@ng-form='" + table + "']/tr";
         $x(xpath).scrollIntoView(true);
@@ -1125,6 +1692,10 @@ public class CustomMethods extends SetupAndTeardown {
         $x(xpath).click();
     }
 
+    /**
+     * Удаление подписанта, добавленного с кнопки
+     * @param position
+     */
     public void removeParticipant(int position){
         String xPath = "//button[@title='Видалити учасника документу']";
         $x(xPath).scrollIntoView(true);
@@ -1134,9 +1705,11 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Ok");
     }
 
-
-
-
+    /**
+     * Автогенерация текста
+     * @param length
+     * @return
+     */
     public static String generateText(int length) {
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -1146,7 +1719,4 @@ public class CustomMethods extends SetupAndTeardown {
         generateText = stringBuilder.toString();
         return stringBuilder.toString();
     }
-
-
-
 }

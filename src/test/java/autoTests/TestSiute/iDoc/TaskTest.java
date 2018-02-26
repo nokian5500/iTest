@@ -7,12 +7,10 @@ package autoTests.TestSiute.iDoc;
 
 import autoTests.CustomMethods;
 
-import static com.codeborne.selenide.Selenide.open;
-
 import org.junit.Test;
 
 /**
- *
+ * На тестах, находящихся тут, я тестирую работоспособность методов, файл перманентный
  * @author Oleksandr Belichenko
  */
 public class TaskTest extends CustomMethods{
@@ -114,13 +112,54 @@ public class TaskTest extends CustomMethods{
     @Test
     public void SZ3() throws Exception {
         openURLdashboard(getRegionUrl());
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
-        pause(100000);
+        /*setRegionFindOrder("5-1752592");
+        addTask();
+        setController("Туренко Ольга Володимирівна");
+        setExecutor("Павленко Юлія Юріївна");
+        //setTaskForm("Документ");
+        //setTaskForm("Файл");
+        setTaskForm("Текстове повiдомлення");
+        setTaskTerm("Кiлькiсть днiв пiсля", "10");
+        setTaskName("Theme1");
+        setTaskContent("Content1");*/
+        ;
+        navigateToggleMenu();
+        snapDrawerButtonMenuTabs("Завдання");
+        clickLink("На виконанні");
 
+        clickButton("Додати звіт");
+        SetRegionFieldInputTypeEnum("Виконано");
 
     }
 
+    @Test
+    public void Test() throws Exception{
+        openURLdashboard("https://alpha.test.idoc.com.ua ");
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        pause(5000);
+        navigateToggleMenu();
+        snapDrawerButtonMenuTabs("Завдання");
+        searchTaskByText("проверка связи");
+        addReport("Виконане", "Завдання виконане");
+
+        pause(5000);
+    }
+
+    @Test
+    public void test() throws Exception {
+        openURLdashboard("https://alpha.test.idoc.com.ua ");
+        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
+        clickButton("Увійти");
+        pause(5000);
+        setRegionFindOrder("№ 5-2858808");
+
+        removeParticipant(2);
+        pause(15000);
+
+    }
 
 
 }
