@@ -27,7 +27,7 @@ public class CustomMethods extends SetupAndTeardown {
             'ґ', 'д', 'е', 'є', 'ж', 'з', 'и', 'і', 'ї', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р',
             'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ю', 'я', 'А', 'Б', 'В', 'Г', 'Ґ',
             'Д', 'Е', 'Є', 'Ж', 'З', 'И', 'І', 'Ї', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С',
-            'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ю', 'Я'};
+            'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ю', 'Я', ' ' };
 
     public static String generateText;
 
@@ -1117,8 +1117,21 @@ public class CustomMethods extends SetupAndTeardown {
         $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
     }
 
-    public void removeRow(String table, int row){
-        $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
+    public void removeRowFromTable(String table, int row){
+        String xpath = "//tbody[@ng-form='" + table + "']/tr";
+        $x(xpath).scrollIntoView(true);
+        //TODO видит Бог, не хотел
+        xpath = xpath + "[" + row + "]/td[4]/a/i";
+        $x(xpath).click();
+    }
+
+    public void removeParticipant(int position){
+        String xPath = "//button[@title='Видалити учасника документу']";
+        $x(xPath).scrollIntoView(true);
+        ElementsCollection participants = $$x(xPath);
+        System.out.println(participants.size());
+        participants.get(position-1).click();
+        clickButton("Ok");
     }
 
 
