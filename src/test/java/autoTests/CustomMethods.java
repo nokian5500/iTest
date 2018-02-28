@@ -1133,17 +1133,14 @@ public class CustomMethods extends SetupAndTeardown {
     public void setExecutor(String name){
         ElementsCollection executors =  $$x("//*[@ng-model='executor.value']");
         //int count = executors.size();
-        System.out.println("executors " + executors.size());
         SelenideElement currentExecutor = executors.last();
         String nameCurrent = currentExecutor.attr("name");
         String xpath = "//*[@name='"+nameCurrent+"']";
         ElementsCollection executorByXpath =  $$x(xpath);
-        System.out.println(executorByXpath.size());
 
         int math = executorByXpath.size()-2;
-        executorByXpath.get(math).click();
+        executorByXpath.get(math).scrollIntoView(true).click();
         executorByXpath = $$x(xpath+"/input[@ng-model='$select.search']");
-        System.out.println("input " + executorByXpath.size());
         executorByXpath.last().val(name);
         $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
 
@@ -1202,11 +1199,15 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Выбор главного исполнителя
      * TODO запилить
-     * @param name
+     * @param nTask
+     * @param nExecutor
      */
-    public void setMainExecutor(String name){
-        SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
-        $(By.xpath(parent+"//input[@ng-model='executor.isMain']")).click();
+    public void setMainExecutor(int nTask, int nExecutor){
+        int taskCounter = TaskCount();
+        System.out.println(taskCounter);
+        System.out.println($$x("//input[@ng-model='executor.isMain']").size());
+        //TODO это место ранит меня
+        $x("//div[@class='row issue-workers']["+ nTask +"]//input[@ng-model='executor.isMain']["+ nExecutor +"]").click();
     }
 
     /**

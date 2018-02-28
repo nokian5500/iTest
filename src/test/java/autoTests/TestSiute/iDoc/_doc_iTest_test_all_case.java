@@ -149,7 +149,7 @@ public class _doc_iTest_test_all_case extends CustomMethods {
         clickButton("Ok");
         clickButton("Інші дії");
         clickButton("Підпис не потрібен");
-        setFieldTextArea(sBP, "???", "коментар 1");
+        setFieldTextArea( "???", "коментар 1");
         clickButton("Підпис не потрібен");
         clickButton("Ok");
 

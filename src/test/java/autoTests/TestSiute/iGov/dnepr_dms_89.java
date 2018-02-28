@@ -31,14 +31,14 @@ public class dnepr_dms_89 extends CustomMethods {
         setFieldValue("email", email);
         setFieldSelectByText("asPrevName", "Ні");
         setFieldValue("sDate_of_birth", "Дата народження");
-        setFieldTextArea(sBP, "sAreabirth", "Місце народження");
+        setFieldTextArea( "sAreabirth", "Місце народження");
         setFieldValue("sNationality", "Україна");
-        setFieldTextArea(sBP, "sRegistrationAddress", "Стара адреса реєстрації");
+        setFieldTextArea( "sRegistrationAddress", "Стара адреса реєстрації");
         setFieldAutocomplete("sID_Public_SubjectOrganJoin", "Соборний (Жовтневий) район");
-        setFieldTextArea(sBP, "sNewAddress", "Нова адреса реєстрації");
+        setFieldTextArea( "sNewAddress", "Нова адреса реєстрації");
         setFieldSelectByText("asRegistrationType", "до власного житлового приміщення");
         setFieldSelectByText("asRegistrationDoc", "Ордер");
-        setFieldTextArea(sBP, "sDocRekv", "Опис документу");
+        setFieldTextArea( "sDocRekv", "Опис документу");
         setFieldSelectByText("asMilitStatus", "Ні");
         setFieldSelectByText("asRegistr", "Ні");
         setFieldValue("sWhenCome", "2016-11-28");

@@ -136,7 +136,7 @@ public class TaskTest extends CustomMethods{
 
     @Test
     public void Test() throws Exception{
-        openURLdashboard("https://alpha.test.idoc.com.ua ");
+        openURLdashboard("https://alpha.test.idoc.com.ua");
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
         pause(5000);
@@ -150,13 +150,18 @@ public class TaskTest extends CustomMethods{
 
     @Test
     public void test() throws Exception {
-        openURLdashboard("https://alpha.test.idoc.com.ua ");
-        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
+        openURLdashboard("https://beta.test.idoc.com.ua");
+        AuthorizationBySetLoginPassword("IGOV_301082BOY", " ");
         clickButton("Увійти");
         pause(5000);
-        setRegionFindOrder("№ 5-2858808");
+        setRegionFindOrder("№ 15-7604458");
+        pause(5000);
 
-        removeParticipant(2);
+        addTask();
+        setExecutor("Гуков Юрій Олександрович");
+        addNewExecutor("Грек Одарка Олексіївна");
+        setMainExecutor(0,1);
+
         pause(15000);
 
     }

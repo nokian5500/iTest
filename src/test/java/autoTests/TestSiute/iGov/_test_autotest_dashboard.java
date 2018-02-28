@@ -36,7 +36,7 @@ public class _test_autotest_dashboard extends CustomMethods {
         setFieldValue("phone", "+380623155533");
         setFieldValue("email", email);
         setFieldValue("sVarString", "Тип даних string");
-        setFieldTextArea(sBP, "sVarTextArea", "Тип даних textArea");
+        setFieldTextArea( "sVarTextArea", "Тип даних textArea");
         setFieldValue("sVarlong", "1234567890");
         setFieldValue("sVarDouble", "1234.56789");
         setFieldCalendar(sBP, "sVarDate", "2003/01/01");
