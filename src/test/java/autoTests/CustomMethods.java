@@ -1197,29 +1197,34 @@ public class CustomMethods extends SetupAndTeardown {
 
 
     /**
-     * Выбор главного исполнителя
-     * TODO запилить
-     * @param nTask
+     * Выбор главного исполнителя по порядковому номеру
      * @param nExecutor
      */
-    public void setMainExecutor(int nTask, int nExecutor){
-        int taskCounter = TaskCount();
-        System.out.println(taskCounter);
-        System.out.println($$x("//input[@ng-model='executor.isMain']").size());
-        //TODO это место ранит меня
-        $x("//div[@class='row issue-workers']["+ nTask +"]//input[@ng-model='executor.isMain']["+ nExecutor +"]").click();
+    public void setMainExecutor(int nExecutor){
+        $$x("//input[@ng-model='executor.isMain']").get(nExecutor-1).click();
     }
 
     /**
-     * Удаление исполнителя
-     * TODO запилить
-     * @param name
+     * Выбор последнего исполнителя главным
      */
-    public void removeExecutor(String name){
-        SelenideElement parent = $(By.xpath("//span[@title='"+ name+"']")).parent().parent().parent().parent().parent().parent();
-        $(By.xpath(parent+"//input[@ng-model='executor.isMain']")).click();
+    public void setLastExecutorAsMain(){
+        $$x("//input[@ng-model='executor.isMain']").last().click();
     }
 
+    /**
+     * Удаление исполнителя по порядковому номеру
+     * @param nExecutor
+     */
+    public void removeExecutor(int nExecutor){
+        $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").get(nExecutor-1).click();
+    }
+
+    /**
+     * Удаление последнего исполнителя
+     */
+    public void removeLastExecutor(){
+        $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").last().click();
+    }
 
     /**
      * Присвоить название задаче

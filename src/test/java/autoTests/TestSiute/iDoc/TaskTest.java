@@ -158,9 +158,31 @@ public class TaskTest extends CustomMethods{
         pause(5000);
 
         addTask();
+        setController("Туренко Ольга Володимирівна");
+        setExecutor("Павленко Юлія Юріївна");
+        //setTaskForm("Документ");
+        //setTaskForm("Файл");
+        setTaskForm("Текстове повiдомлення");
+        setTaskTerm("Кiлькiсть днiв пiсля", "10");
+        setTaskName("Theme1");
+        setTaskContent("Content1");
+        addNewExecutor("Смоктій Вікторія Кирилівна");
+        //setMainExecutor("Смоктій Вікторія Кирилівна");
+
+
+        addTask();
+        setController("Туренко Ольга Володимирівна");
         setExecutor("Гуков Юрій Олександрович");
+        setTaskForm("Документ");
+        //setTaskForm("Файл");
+        //setTaskForm("Текстове повiдомлення");
+        setTaskTerm("Календарна дата", "30/05/2018");
+        setTaskName("Theme2");
+        setTaskContent("Content2");
         addNewExecutor("Грек Одарка Олексіївна");
-        setMainExecutor(0,1);
+        //setMainExecutor("Смоктій Вікторія Кирилівна");
+        setLastExecutorAsMain();
+        removeLastExecutor();
 
         pause(15000);
 
