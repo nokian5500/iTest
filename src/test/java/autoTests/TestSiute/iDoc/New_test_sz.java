@@ -91,10 +91,7 @@ public class New_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         setRegionFindOrderByNumberDocument();
-        clickButton("Зняти підпис");
-        SetRegionFieldInputTypeTextArea("askMessage", "Перевірка зняття підпису");
-        clickButton("Зняти підпис");
-        clickButton("Ok");
+        cancelSign("Перевірка зняття підпису");
         clickLink("Павленко Юлія Юріївна");
         clickLink("Вийти");
         

@@ -996,6 +996,7 @@ public class CustomMethods extends SetupAndTeardown {
         SelenideElement searchForm = $(By.cssSelector("#adv-search input"));
         searchForm.click();
         System.out.println("Вставка sID_Order= " + sID_Order);
+        pause(2000);
         searchForm.val(sID_Order).pressEnter();
        // System.out.println("Вставка sID_Order= " + sID_Order);
         //String sScript = "$('#adv-search input').val('" + sID_Order + "')";
@@ -1217,6 +1218,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void removeExecutor(int nExecutor){
         $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").get(nExecutor-1).click();
+
     }
 
     /**
@@ -1724,5 +1726,16 @@ public class CustomMethods extends SetupAndTeardown {
         }
         generateText = stringBuilder.toString();
         return stringBuilder.toString();
+    }
+
+    public void cancelSign(String text){
+        clickButton("Зняти підпис");
+        SetRegionFieldInputTypeTextArea("askMessage", text);
+        $x("//button[@ng-click='cancelDocumentSubmit()']").click();
+        pause(5000);
+        $x("//strong[contains(.,'Зауваження додано')]").waitUntil(visible, 5000);
+        clickButton("Ok");
+        $x("//strong[contains(.,'Підпис знято')]").waitUntil(visible, 5000);
+        clickButton("Ок");
     }
 }
