@@ -85,17 +85,19 @@ public class New_test_sz extends CustomMethods {
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
-        /*3.1. Подписываем и снимаем подпись*/
+        /*4 Подписываем и снимаем подпись*/
         AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
+        pause(5000);
         setRegionFindOrderByNumberDocument();
+        pause(5000);
         cancelSign("Перевірка зняття підпису");
         clickLink("Павленко Юлія Юріївна");
         clickLink("Вийти");
         
-        /*4. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
+        /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
         pause(5000);
@@ -110,7 +112,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
 
-        /*5. Работа на этапе согласования (3 пользователь). Подписываем*/
+        /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
@@ -118,7 +120,18 @@ public class New_test_sz extends CustomMethods {
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
 
-        /*6. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
+        /*7. Удаляем подписанта который снял подпись*/
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        clickButton("Редагувати");
+        pause(5000);
+        removeRowFromTable("sTableAccept", 2);
+        clickButtonSign();
+        clickLink("Смоктій Вікторія Кирилівна");
+        clickLink("Вийти");
+
+        /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
@@ -131,39 +144,38 @@ public class New_test_sz extends CustomMethods {
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
 
-        /*7. Отвечаем на зауваження*/
+        /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
-        answerComment("Відповідь на зауваження");
-        clickButton("Ok");
-        removeRowFromTable("sTableAccept", 2);
+        clickButton("Редагувати");
+        pause(5000);
         removeAllSigns();
         setFieldCheckBox("eReturnDocument");
+        answerComment("Відповідь на зауваження");
+        clickButton("Ok");
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
         
-        /*8. Работа на этапе согласования (1 пользователь). Подписываем*/
+        /*10. Работа на этапе согласования (1 пользователь). Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
         clickButton("Увійти");
         pause(5000);
         setRegionFindOrderByNumberDocument();
-        pause(5000);
         clickButtonSign();
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
-        /*9. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
+        /*11. Работа на этапе согласования (2 пользователь). Подписываем”*/
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
-        pause(5000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
         clickButtonSign();
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
 
-        /*10. Работа на этапе согласования (3 пользователь). Подписываем*/
+        /*12. Работа на этапе согласования (3 пользователь). Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
@@ -171,7 +183,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
 
-        /*11. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
+        /*13. Работа на этапе утверждения. Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
@@ -179,7 +191,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
 
-        /*12. Подписываем дополнительно директором*/
+        /*14. Подписываем дополнительнымм утверждающим*/
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
