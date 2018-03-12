@@ -1218,7 +1218,6 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void removeExecutor(int nExecutor){
         $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").get(nExecutor-1).click();
-
     }
 
     /**
@@ -1728,7 +1727,11 @@ public class CustomMethods extends SetupAndTeardown {
         return stringBuilder.toString();
     }
 
-    public void cancelSign(String text){
+    /**
+     * Снять подпись с кнопки
+     * @param text
+     */
+    public void cancelSign(String text) {
         clickButton("Зняти підпис");
         SetRegionFieldInputTypeTextArea("askMessage", text);
         $x("//button[@ng-click='cancelDocumentSubmit()']").click();
@@ -1737,5 +1740,20 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Ok");
         $x("//strong[contains(.,'Підпис знято')]").waitUntil(visible, 5000);
         clickButton("Ок");
+    }
+
+    /**
+     * Увімкнути референтність
+     * @param sFIO
+     */
+    public void turnReferent(String sFIO) {
+        $x("//a[@id='accountId']").click();
+        ElementsCollection referents = $$x("//label[@ng-click='setsLoginPrincipal(referent.sLogin)']");
+        for (SelenideElement referent : referents){
+            if (sFIO.equalsIgnoreCase(referent.getText())){
+                referent.click();
+                break;
+            }
+        }
     }
 }

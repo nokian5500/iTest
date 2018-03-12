@@ -188,5 +188,14 @@ public class TaskTest extends CustomMethods{
 
     }
 
+    @Test
+    public void test2() throws Exception {
+        openURLdashboard("https://beta.test.idoc.com.ua");
+        AuthorizationBySetLoginPassword("IGOV_301082BOY", " ");
+        clickButton("Увійти");
+        pause(5000);
+        turnReferent("Белявцев В. В.");
+    }
+
 
 }
