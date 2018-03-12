@@ -246,7 +246,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param sPathFile
      */
     public void setFieldFile(String serviceName, String cssSelector, String sPathFile) {
-        WebElement oWebElement = $(By.cssSelector("." + serviceName + "_--_" + cssSelector + " input"));
+        SelenideElement oWebElement = $x("//*[@name='"+ cssSelector + "']//input");
 
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         executeJavaScript(sScript, oWebElement);
@@ -255,8 +255,7 @@ public class CustomMethods extends SetupAndTeardown {
         oWebElement.sendKeys(oFile.getAbsolutePath());
 
         // Wait attach upload
-        //TODO: add counter condition to avoid infinite loop
-        while (!oWebElement.isEnabled()) {
+        if (!oWebElement.isEnabled()) {
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
