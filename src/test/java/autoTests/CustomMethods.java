@@ -853,6 +853,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @throws AWTException
      */
     public void uploadECPKeyFile(String filePath) throws InterruptedException, AWTException {
+        pause(3000);
         File file = new File(filePath);
         //
         WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
@@ -1755,4 +1756,5 @@ public class CustomMethods extends SetupAndTeardown {
             }
         }
     }
+
 }

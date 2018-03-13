@@ -10,6 +10,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.TestRule;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -37,15 +38,15 @@ public class SetupAndTeardown extends ConfigClass {
         WebDriverRunner.setWebDriver(driver);*/
     }
 
-    /*@After
+    @After
     public void closeDriver() throws Exception {
         WebDriverRunner.closeWebDriver();
-    }*/
+    }
 
-    //@After
+    @After
     public void deleteFiles() throws Exception {
         //Удаляем заявки
-        delete.deleteAllOrderId();
+        //delete.deleteAllOrderId();
         //Удаляем временные папки и файлы...
         File directory = new File("target");
         CustomMethods.deleteFileOrDirectory(directory);
@@ -61,11 +62,10 @@ public class SetupAndTeardown extends ConfigClass {
         FirefoxProfile profile = new FirefoxProfile();
         profile.setAssumeUntrustedCertificateIssuer(false);
         profile.addExtension(new File(path));
-        profile.setPreference("plugin.state.npcryptoplugin", 2);
-        profile.setAssumeUntrustedCertificateIssuer(false);
-        profile.setPreference("general.useragent.override", "some UA string");
+        //profile.setPreference("plugin.state.npcryptoplugin", 2);
         profile.setPreference("xpinstall.signatures.required", false);
         DesiredCapabilities ff = DesiredCapabilities.firefox();
+        ff.setAcceptInsecureCerts(true);
         ff.setCapability(FirefoxDriver.PROFILE, profile);
         ff.setCapability("marionette", true);
         return profile;
