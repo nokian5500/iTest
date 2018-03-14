@@ -2,6 +2,7 @@ package autoTests;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
@@ -536,11 +538,12 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     /**
-     * Нажать на кнопку с тектом
+     * Нажать на кнопку с указанным текстом
      * @param nameButton
      */
     public void clickButton(String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).click(); ////button[contains(.,'Опрацювати')]
+        //$(By.xpath("//button[contains(.,'" + nameButton + "')]")).click(); ////button[contains(.,'Опрацювати')]
+        $x("//button").should(text(nameButton)).click();
     }
 
     /**
@@ -1253,10 +1256,10 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     /**
-     * Тело задачи
+     * Тело задачи или дока
      * @param content
      */
-    public void setContent(String content, boolean isDoc){
+    private void setContent(String content, boolean isDoc){
         ElementsCollection body = $$(By.tagName("iframe"));
         int count;
         if(isDoc){
@@ -1588,7 +1591,9 @@ public class CustomMethods extends SetupAndTeardown {
      * @param comment
      */
     public void answerComment(String comment){
+        boolean isAwait=true;
         $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
+        if(isAwait){}
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
@@ -1774,4 +1779,62 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * метод для определения существует ли и отображается кнопка
+     * @param name
+     * @return
+     */
+    private boolean isExistButton(String name){
+        return  $x("//button[contains(.,'" + name + "')]").isDisplayed();
+    }
+
+    /**
+     * Метод проверки существует ли кнопка когда она нужна, и отсутствует ли когда должна
+     * @param name
+     * @param isAwait
+     */
+    public void isExistButton(String name, boolean isAwait){
+        boolean isExist = isExistButton(name);
+        if(isAwait && !isExist){
+            throw new ElementNotVisibleException("Кнопка \""+name+"\" має бути");
+        }
+        if (!isAwait && isExist){
+            throw new NoSuchElementException("Кнопки \""+name+"\" не повинно бути");
+        }
+    }
+
+    /**
+     * Получение из sID_Order snID_ProcessActiviti (без номера сервиса, префикса и последней цифры)
+     * @param sID_Order
+     * @return
+     */
+    private String getProcessInstanse(String sID_Order){
+        String snID_ProcessActiviti = "";
+        if (sID_Order != null && sID_Order.contains("-")) {
+            long nID_Process_Protected = Long.valueOf(sID_Order.split("-")[1]);
+            snID_ProcessActiviti = String.valueOf(nID_Process_Protected / 10);
+        }
+        return snID_ProcessActiviti;
+    }
+
+    /**
+     * Полное кудаление документа
+     * TODO сделать после подсказки Вани
+     */
+    public void totallyDeleteProcess(){
+        String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
+    }
+
+    /**
+     * Проверка удаленного дока под админом
+     * TODO сделать после totallyDeleteProcess
+     */
+    public void checkDeletedDoc(){}
+
+    /**
+     * Проверка последний ли док в списке
+     */
+    public boolean isLastDoc(){
+        return $x("//button[@title='Наступний документ/завдання']").is(disabled);
+    }
 }

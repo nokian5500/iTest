@@ -193,8 +193,9 @@ public class TaskTest extends CustomMethods{
         openURLdashboard("https://beta.test.idoc.com.ua");
         AuthorizationBySetLoginPassword("IGOV_301082BOY", " ");
         clickButton("Увійти");
+        setRegionFindOrder("№ 15-375014");
         pause(5000);
-        turnReferent("Белявцев В. В.");
+        setDocContent("fdfdffdfd");
     }
 
 
