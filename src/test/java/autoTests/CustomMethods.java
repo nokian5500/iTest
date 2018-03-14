@@ -855,6 +855,18 @@ public class CustomMethods extends SetupAndTeardown {
     public void uploadECPKeyFile(String filePath) throws InterruptedException, AWTException {
         pause(3000);
         File file = new File(filePath);
+        /*String path = file.getAbsolutePath();
+        String sScript = "$(\"input[name='eds']\").attr(\"readonly\", false)";
+        executeJavaScript(sScript, $x("//input[@name='eds']"));
+        sScript = "$(\"input[name='eds']\").attr(\"type\", 'file')";
+        executeJavaScript(sScript, $x("//input[@name='eds']"));
+        $x("//input[@name='eds']").uploadFile(file);
+        //$x("//input[@name='eds']").sendKeys(path);
+        sScript = "$(\"input[name='eds']\").attr(\"readonly\", true)";
+        executeJavaScript(sScript, $x("//input[@name='eds']"));
+        sScript = "$(\"input[name='eds']\").removeAttr(\"type\")";
+        executeJavaScript(sScript, $x("//input[@name='eds']"));*/
+
         //
         WebElement buttonECP = $(By.xpath("//button[@ng-click='chooseEDSFile()']"));
         buttonECP.click();
@@ -862,20 +874,23 @@ public class CustomMethods extends SetupAndTeardown {
         //
         setClipboardData(file.getAbsolutePath());
         //
+
+
+
         Robot robot = new Robot();
-        robot.delay(1000);
+        robot.setAutoDelay(300);
         robot.keyPress(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.setAutoDelay(300);
         robot.keyPress(KeyEvent.VK_V);
-        robot.delay(300);
+        robot.setAutoDelay(300);
         robot.keyRelease(KeyEvent.VK_V);
-        robot.delay(300);
+        robot.setAutoDelay(300);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
+        robot.setAutoDelay(300);
         robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
+        robot.setAutoDelay(300);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
+        robot.setAutoDelay(300);
     }
 
     /**
@@ -884,7 +899,9 @@ public class CustomMethods extends SetupAndTeardown {
     public void setPaswordForECPKey() {
         WebElement passwordECP = $(By.xpath("//input[@type='password']"));
         passwordECP.sendKeys("12345677");
+        pause(10000);
         WebElement clickButtonSubmint = $(By.xpath("//button[@ng-click='findKeys()']"));
+        pause(3000);
         clickButtonSubmint.click();
         $(By.xpath("//button[@ng-click='sign()']")).click();
     }
