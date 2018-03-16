@@ -1729,7 +1729,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param position
      */
     public void removeParticipant(int position){
-        String xPath = "//button[@title='Видалити учасника документу']";
+        String xPath = "//button[@ng-click='removeUserFromDoc(users, true)']";
         $x(xPath).scrollIntoView(true);
         ElementsCollection participants = $$x(xPath);
         System.out.println(participants.size());
