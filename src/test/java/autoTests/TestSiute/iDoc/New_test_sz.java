@@ -171,8 +171,7 @@ public class New_test_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(5000);
-        clickButton("Підпис не потрібен");
-        clickButton("Ok");
+        clickButtonSign();
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
 
