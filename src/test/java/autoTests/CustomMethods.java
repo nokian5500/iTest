@@ -1373,6 +1373,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void addAcceptor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
+        clickButton("Додати підписанта");
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1403,6 +1404,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void addVisor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
+        clickButton("Ознайомити");
         addParticipant(xpath, name);
         closeParticipant();
     }
