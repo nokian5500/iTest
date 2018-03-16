@@ -1372,7 +1372,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param name
      */
     public void addAcceptor(String name){
-        String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']";
+        String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1391,7 +1391,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param name
      */
     public void addViewer(String name){
-        String xpath = "//*[ng-if='execCtrlModals.bAddViewer']";
+        String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
+        clickButton("Додати на перегляд");
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1401,7 +1402,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param name
      */
     public void addVisor(String name){
-        String xpath = "//*[ng-if='execCtrlModals.bAddVisor']";
+        String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1413,7 +1414,6 @@ public class CustomMethods extends SetupAndTeardown {
      */
     private void addParticipant(String xpath, String name){
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
-        $x(xpath).click();
         addWorker(name);
         $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
         $x("//button[contains(.,'Підтвердити')]").click();
