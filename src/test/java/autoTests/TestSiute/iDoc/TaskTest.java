@@ -190,12 +190,13 @@ public class TaskTest extends CustomMethods{
 
     @Test
     public void test2() throws Exception {
-        openURLdashboard("https://beta.test.idoc.com.ua");
-        AuthorizationBySetLoginPassword("IGOV_301082BOY", " ");
-        clickButton("Увійти");
-        setRegionFindOrder("№ 15-375014");
+        System.out.println(orderId);
+        openURLdashboard("https://gamma.test.idoc.com.ua");
+        clickButton("dfdfdsfdfsdfdffdsfds");
+        //totallyDeleteProcess("IGOV_270907SVK", "IGOV_270907SVK");
+        checkDeletedDoc("5-875235");
         pause(5000);
-        setDocContent("fdfdffdfd");
+
     }
 
 

@@ -1824,15 +1824,25 @@ public class CustomMethods extends SetupAndTeardown {
      * Полное кудаление документа
      * TODO сделать после подсказки Вани
      */
-    public void totallyDeleteProcess(){
+    public void totallyDeleteProcess(String login, String referent){
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
+        String sUrl = getRegionUrl();
+        String request = sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent=" + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
+        openNewTab();
+        open(request);
+        openTab();
     }
 
     /**
      * Проверка удаленного дока под админом
-     * TODO сделать после totallyDeleteProcess
+     * @param sID_Order
      */
-    public void checkDeletedDoc(){}
+    public void checkDeletedDoc(String sID_Order) throws Exception {
+        AuthorizationBySetLoginPassword("tester", " ");
+        clickButton("Увійти");
+        ConfigClass.orderId.add(sID_Order);
+        setRegionFindOrderByNumberDocument();
+    }
 
     /**
      * Проверка последний ли док в списке
