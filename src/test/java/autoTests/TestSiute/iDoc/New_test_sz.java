@@ -115,7 +115,6 @@ public class New_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         pause(5000);
         clickButton("Інші дії");
-        clickButton("Додати підписанта");
         addAcceptor("Столбова Анна Юріївна");
         clickButton("Інші дії");
         clickButtonSignNotNeed(sBP, "коментар 1");
@@ -147,7 +146,6 @@ public class New_test_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         clickButton("Інші дії");
-        clickButton("Додати підписанта");
         addAcceptor("Грек Одарка Олексіївна");
         pause(5000);
         addComment("Тестове зауваження");
@@ -288,7 +286,7 @@ public class New_test_sz extends CustomMethods {
         addViewer("Бондарь Ольга Євгенієвна");
         clickButton("Інші дії");
         addViewer("Павленко Юлія Юріївна");
-        removeParticipant(2);
+        removeParticipant(2,true);
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
     }
