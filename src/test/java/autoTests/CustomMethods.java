@@ -18,6 +18,7 @@ import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CustomMethods extends SetupAndTeardown {
@@ -1739,8 +1740,15 @@ public class CustomMethods extends SetupAndTeardown {
      * Удаление подписанта, добавленного с кнопки
      * @param position
      */
-    public void removeParticipant(int position){
+    public void removeParticipant(int position, boolean isAwait){
         String xPath = "//button[@ng-click='removeUserFromDoc(users, true)']";
+        boolean isExist = $x(xPath).isDisplayed();
+        if(isAwait && !isExist){
+            throw new ElementNotVisibleException("Має бути можливість вилучити підписанта");
+        }
+        if (!isAwait && isExist){
+            throw new NoSuchElementException("Можливості вилучити підписанта не має бути");
+        }
         $x(xPath).scrollIntoView(true);
         ElementsCollection participants = $$x(xPath);
         System.out.println(participants.size());
@@ -1832,16 +1840,17 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     /**
-     * Полное кудаление документа
-     * TODO сделать после подсказки Вани
+     * Удаление документа через запрос, если нема кнопки (например из истории)
      */
-    public void totallyDeleteProcess(String login, String referent){
+    public void deleteProcess(String login, String referent){
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
         String sUrl = getRegionUrl();
-        String request = sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent=" + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
+        String request = sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent="
+                + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
         openNewTab();
+        switchTo().window(1);
         open(request);
-        openTab();
+        switchTo().window(0);
     }
 
     /**
