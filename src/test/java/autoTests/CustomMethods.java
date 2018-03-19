@@ -1452,7 +1452,7 @@ public class CustomMethods extends SetupAndTeardown {
         participant = $$x(xpath).last().scrollIntoView(true);
         participant.click();
         xpath = "//input[@placeholder='Введіть від 3-х символів']";
-        participant = $x(xpath);
+        participant = $$x(xpath).last();
         participant.val(name);
     }
 
