@@ -1879,4 +1879,14 @@ public class CustomMethods extends SetupAndTeardown {
         $x(selector).click();
         pause(5000);
     }
+
+    public void isError() {
+        String xpath = "//div[@window-class='modal-danger']//div[@class='modal-content']";
+        pause(3000);
+        if($x(xpath).isDisplayed()){
+            xpath = xpath + "//strong";
+            String error = $x(xpath).getText();
+            throw new NoSuchElementException(error);
+        }
+    }
 }
