@@ -1357,7 +1357,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param NameRow
      * @param text
      */
-    private void setParticipant(String serviceName, String tableName, String cellName, String NameRow, String text){
+    public void setParticipant(String serviceName, String tableName, String cellName, String NameRow, String text){
         $(By.xpath("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']")).scrollIntoView(true).click();
         $x("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']" +
                 "//input[@aria-label='Select box']").sendKeys(text);
