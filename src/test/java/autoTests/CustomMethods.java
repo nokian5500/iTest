@@ -1306,6 +1306,17 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     /**
+     * Добавить еще одно содержимое дока
+     * false отправляем, так как логика та же, что и для задачи в документе,
+     * просто для красоты теста лучше такой метод юзать для тела дока,
+     * чем setTaskContent
+     * @param content
+     */
+    public void addDocContent(String content){
+        setContent(content, false);
+    }
+
+    /**
      * Выставить содержимое задачи
      * @param content
      */
@@ -1835,7 +1846,6 @@ public class CustomMethods extends SetupAndTeardown {
 
     /**
      * Проверка удаленного дока под админом
-     * @param sID_Order
      */
     public void checkDeletedDoc() throws Exception {
         AuthorizationBySetLoginPassword("tester", " ");
