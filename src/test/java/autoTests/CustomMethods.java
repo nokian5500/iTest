@@ -1373,6 +1373,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void addAcceptor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
+        clickButton("Додати підписанта");
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1403,6 +1404,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void addVisor(String name){
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
+        clickButton("Ознайомити");
         addParticipant(xpath, name);
         closeParticipant();
     }
@@ -1727,7 +1729,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param position
      */
     public void removeParticipant(int position){
-        String xPath = "//button[@title='Видалити учасника документу']";
+        String xPath = "//button[@ng-click='removeUserFromDoc(users, true)']";
         $x(xPath).scrollIntoView(true);
         ElementsCollection participants = $$x(xPath);
         System.out.println(participants.size());
@@ -1822,15 +1824,25 @@ public class CustomMethods extends SetupAndTeardown {
      * Полное кудаление документа
      * TODO сделать после подсказки Вани
      */
-    public void totallyDeleteProcess(){
+    public void totallyDeleteProcess(String login, String referent){
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
+        String sUrl = getRegionUrl();
+        String request = sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent=" + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
+        openNewTab();
+        open(request);
+        openTab();
     }
 
     /**
      * Проверка удаленного дока под админом
-     * TODO сделать после totallyDeleteProcess
+     * @param sID_Order
      */
-    public void checkDeletedDoc(){}
+    public void checkDeletedDoc(String sID_Order) throws Exception {
+        AuthorizationBySetLoginPassword("tester", " ");
+        clickButton("Увійти");
+        ConfigClass.orderId.add(sID_Order);
+        setRegionFindOrderByNumberDocument();
+    }
 
     /**
      * Проверка последний ли док в списке

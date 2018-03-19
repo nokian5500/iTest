@@ -2,6 +2,7 @@ package autoTests;
 
 import autoTests.API.DeleteTask;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverProvider;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.junit.ScreenShooter;
 import com.codeborne.selenide.junit.TextReport;
@@ -31,6 +32,7 @@ public class SetupAndTeardown extends ConfigClass {
     public void setDriver() {
         Configuration.startMaximized = true;
         Configuration.browser = "chrome";
+        Configuration.timeout = 10000;
 
         /*FirefoxProfile profile = createFirefoxProfileWithExtensions();
         WebDriver driver = new FirefoxDriver(new FirefoxOptions().setProfile(profile));
