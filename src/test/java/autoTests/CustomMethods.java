@@ -1850,4 +1850,15 @@ public class CustomMethods extends SetupAndTeardown {
     public boolean isLastDoc(){
         return $x("//button[@title='Наступний документ/завдання']").is(disabled);
     }
+
+    public void setSelect(String sBP, String sSelect, String sText){
+        String base = "//div[@class='task-form-property row ng-scope " + sBP +"_--_" + sSelect + "']";
+        String selector = base + "//span[@class='ui-select-placeholder text-muted ng-binding']";
+        $x(selector).scrollIntoView(true).click();
+        selector = base + "//input";
+        $x(selector).val(sText);
+        selector = base + "//a/span[contains(.,'"+sText+"')]";
+        $x(selector).click();
+        pause(5000);
+    }
 }

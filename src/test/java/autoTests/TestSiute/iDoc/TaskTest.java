@@ -190,12 +190,14 @@ public class TaskTest extends CustomMethods{
 
     @Test
     public void test2() throws Exception {
-        System.out.println(orderId);
         openURLdashboard("https://gamma.test.idoc.com.ua");
-        clickButton("dfdfdsfdfsdfdffdsfds");
-        //totallyDeleteProcess("IGOV_270907SVK", "IGOV_270907SVK");
-        checkDeletedDoc("5-875235");
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        navigateToggleMenu();
+        createDocumentOrTask("Протокол оперативної наради");
+        clickButton("Далi");
         pause(5000);
+        setSelect("_doc_btsol_protocol_meeting", "sTable_Chairperson", "Бондарь Ольга Євгенієвна");
 
     }
 
