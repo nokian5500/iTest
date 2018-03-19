@@ -1449,7 +1449,7 @@ public class CustomMethods extends SetupAndTeardown {
         SelenideElement participant;
         //participant.click();
         String xpath = "//div[@placeholder='Введіть від 3-х символів']";
-        participant = $x(xpath).scrollIntoView(true);
+        participant = $$x(xpath).last().scrollIntoView(true);
         participant.click();
         xpath = "//input[@placeholder='Введіть від 3-х символів']";
         participant = $x(xpath);
