@@ -9,6 +9,7 @@ import autoTests.CustomMethods;
 import static autoTests.CustomMethods.generateText;
 
 import static com.codeborne.selenide.Selenide.open;
+import org.junit.Ignore;
 
 import org.junit.Test;
 /**
@@ -23,11 +24,11 @@ public class Test_ManyVoids_SZ extends CustomMethods {
     @Test
     
     public void CreateDoc() throws Exception {
-        /*Создание документа*/
+        /*1. Создание документа*/
         openURLdashboard(getRegionUrl());
-
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
+        pause(2000);
         navigateToggleMenu();
         createDocumentOrTask("Службова записка");
         clickButton("Далi");
@@ -59,27 +60,28 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
     }
-    
+    @Test
     public void DelegeteDoc() throws Exception {
-        /*2 Делегируем согласование первым подписантом на другого сотрудника*/
+        /*2. Делегируем согласование первым подписантом на другого сотрудника*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
         clickButton("Увійти");
-        pause(5000);
+        pause(2000);
         setRegionFindOrderByNumberDocument();  
-        pause(5000);
         clickButton("Інші дії");
         clickButton("Делегувати");
         addDelegate("Гуков Юрій Олександрович");
-        pause(5000);
         clickLink("Туренко Ольга Володимирівна");
         clickLink("Вийти");
     }
+    @Test
     public void FirstAccept() throws Exception {
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
-        pause(5000);
         /*Проверяем наличие/отсутствие кнопок на шаге*/
         clickButton("Інші дії");
         isExistButton("Пiдписати",true);
@@ -99,28 +101,28 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
     }
-        
+    @Test 
     public void CancelSign() throws Exception {    
-        /*4 Подписываем и снимаем подпись*/
+        /*4. Подписываем и снимаем подпись*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
-        pause(5000);
         setRegionFindOrderByNumberDocument();
-        pause(5000);
         cancelSign("Перевірка зняття підпису");
         clickLink("Павленко Юлія Юріївна");
         clickLink("Вийти");
     }
-    
+    @Test
     public void AddAcceptor_SignNotNeed() throws Exception {
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
-        pause(5000);
+        pause(2000);
         setRegionFindOrderByNumberDocument();
-        pause(5000);
         clickButton("Інші дії");
         addAcceptor("Столбова Анна Юріївна");
         clickButton("Інші дії");
@@ -129,21 +131,25 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
     }
-    
+    @Test
     public void Accept_3_user() throws Exception {
         /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
     }   
-    
+    @Test
     public void AddNewApprover_and_AskQuestion() throws Exception {
-        /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
+        /*7. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButton("Інші дії");
         addAcceptor("Грек Одарка Олексіївна");
@@ -153,11 +159,13 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
     }    
-    
+    @Test
     public void AuthorEdit() throws Exception {
-        /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
+        /*8. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButton("Редагувати");
         removeAllSigns();
@@ -167,52 +175,62 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickButtonSign();
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
-    }    
-    
+    }
+    @Test
     public void Accept_1_user() throws Exception {
-        /*10. Работа на этапе согласования (1 пользователь). Подписываем*/
+        /*9. Работа на этапе согласования (1 пользователь). Подписываем*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Павленко Юлія Юріївна");
         clickLink("Вийти");
     }    
-    
+    @Test
     public void Accept_2_user() throws Exception {
-        /*11. Работа на этапе согласования (2 пользователь). Подписываем”*/
+        /*10. Работа на этапе согласования (2 пользователь). Подписываем”*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Approve_1_user() throws Exception {
-        /*13. Работа на этапе утверждения. Подписываем*/
+        /*11. Работа на этапе утверждения. Подписываем*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
     }
-    
+    @Test
     public void Approve_2_user() throws Exception {
-        /*14. Подписываем дополнительнымм утверждающим*/
+        /*12. Подписываем дополнительнымм утверждающим*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Direct_1_user_AddTask() throws Exception {
         /*13. Заходим адресатом 1. Добавляем задание 1*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         addTask();
         setTaskName(generateText(10));/*Генерируем название задания*/
@@ -228,21 +246,25 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Direct_2_user() throws Exception {
         /*14. Заходим адресатом 2.*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_230878LIV", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButtonSign();
         clickLink("Літовченко Інна Вадимівна");
         clickLink("Вийти");
     }
-    
+    @Test
     public void Executor_1_user() throws Exception {
         /*15. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
+        pause(2000);
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
@@ -250,11 +272,13 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Executor_2_user() throws Exception {
         /*16. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
+        pause(2000);
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
@@ -262,11 +286,13 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Controller() throws Exception {
         /*17. Заходим контролирующим. Подтверждаем отчет*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
         clickButton("Увійти");
+        pause(2000);
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На контролі");
         searchTaskByText(generateText);
@@ -274,11 +300,13 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
     }    
-
+    @Test
     public void Author_add_and_removeViwer() throws Exception {
         /*18. Заходим автором. Подписываем*/
+        openURLdashboard(getRegionUrl());
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         clickButton("Ознайомлений");
         setRegionFindOrderByNumberDocument();
