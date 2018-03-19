@@ -1837,10 +1837,9 @@ public class CustomMethods extends SetupAndTeardown {
      * Проверка удаленного дока под админом
      * @param sID_Order
      */
-    public void checkDeletedDoc(String sID_Order) throws Exception {
+    public void checkDeletedDoc() throws Exception {
         AuthorizationBySetLoginPassword("tester", " ");
         clickButton("Увійти");
-        ConfigClass.orderId.add(sID_Order);
         setRegionFindOrderByNumberDocument();
     }
 
