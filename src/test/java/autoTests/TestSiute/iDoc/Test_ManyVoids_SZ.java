@@ -101,7 +101,7 @@ public class Test_ManyVoids_SZ extends CustomMethods {
         clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
     }
-    @Test 
+    @Test
     public void CancelSign() throws Exception {    
         /*4. Подписываем и снимаем подпись*/
         openURLdashboard(getRegionUrl());
