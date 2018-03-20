@@ -33,7 +33,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         
         //Создание
         getCurrentCalendar();
-        isExistButton("Зберегти",true);
+        //isExistButton("Зберегти",true);
         
         setDocTitle("Автотест протокола");
         
@@ -184,24 +184,38 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         //Подписываем (Утверждение)      
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
         clickButton("Увійти");
-        pause(5000);
         setRegionFindOrderByNumberDocument();
-        pause(5000);
+        pause(2000);
+        clickButton("Інші дії");
+        addVisor("Павленко Юлія Юріївна");
         clickButtonSign();
         pause(5000);
         clickLink("Герман Август Васильович");
         clickLink("Вийти");
         
+        //Ознакомление
+        AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
+        clickButton("Увійти");
+        pause(5000);
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        clickButton("Ознайомлений");
+        pause(5000);
+        clickLink("Павленко Юлія Юріївна");
+        clickLink("Вийти");
+        
         //Ознакомление Автором
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
-        pause(5000);
+        pause(2000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
         clickButton("Ознайомлений");
         pause(5000);
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");
+        
+        
     }
 }
         
