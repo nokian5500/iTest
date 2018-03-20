@@ -1019,6 +1019,7 @@ public class CustomMethods extends SetupAndTeardown {
         System.out.println("Вставка sID_Order= " + sID_Order);
         pause(2000);
         searchForm.val(sID_Order).pressEnter();
+        pause(5000);
        // System.out.println("Вставка sID_Order= " + sID_Order);
         //String sScript = "$('#adv-search input').val('" + sID_Order + "')";
         //executeJavaScript(sScript, $(By.cssSelector("#adv-search input")));
@@ -1807,7 +1808,12 @@ public class CustomMethods extends SetupAndTeardown {
      * @return
      */
     private boolean isExistButton(String name){
-        return  $x("//button[contains(.,'" + name + "')]").isDisplayed();
+        ElementsCollection buttons = $$x("//button[contains(.,'" + name + "')]");
+        if (buttons.size() > 1){
+            screenshot(generateText(10));
+            throw new ElementNotVisibleException("Кнопкок з назвою \""+name+"\" - "+ buttons.size() + " штук замість однієї");
+        }
+        return  buttons.get(0).isDisplayed();
     }
 
     /**
@@ -1818,9 +1824,11 @@ public class CustomMethods extends SetupAndTeardown {
     public void isExistButton(String name, boolean isAwait){
         boolean isExist = isExistButton(name);
         if(isAwait && !isExist){
+            screenshot(generateText(10));
             throw new ElementNotVisibleException("Кнопка \""+name+"\" має бути");
         }
         if (!isAwait && isExist){
+            screenshot(generateText(10));
             throw new NoSuchElementException("Кнопки \""+name+"\" не повинно бути");
         }
     }
@@ -1886,6 +1894,7 @@ public class CustomMethods extends SetupAndTeardown {
         if($x(xpath).isDisplayed()){
             xpath = xpath + "//strong";
             String error = $x(xpath).getText();
+            screenshot(generateText(10));
             throw new NoSuchElementException(error);
         }
     }
