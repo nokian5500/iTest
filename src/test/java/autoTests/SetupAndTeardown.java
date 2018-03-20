@@ -18,6 +18,8 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import static com.codeborne.selenide.Selenide.close;
+
 public class SetupAndTeardown extends ConfigClass {
 
     DeleteTask delete = new DeleteTask();
@@ -33,6 +35,7 @@ public class SetupAndTeardown extends ConfigClass {
         Configuration.startMaximized = true;
         Configuration.browser = "chrome";
         Configuration.timeout = 10000;
+        Configuration.collectionsTimeout = 10000;
 
         /*FirefoxProfile profile = createFirefoxProfileWithExtensions();
         WebDriver driver = new FirefoxDriver(new FirefoxOptions().setProfile(profile));
@@ -43,6 +46,7 @@ public class SetupAndTeardown extends ConfigClass {
     @After
     public void closeDriver() throws Exception {
         WebDriverRunner.closeWebDriver();
+        close();
     }
 
     @After
@@ -54,11 +58,22 @@ public class SetupAndTeardown extends ConfigClass {
         CustomMethods.deleteFileOrDirectory(directory);
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
+        directory = new File("build");
+        CustomMethods.deleteFileOrDirectory(directory);
     }
 
     private FirefoxProfile createFirefoxProfileWithExtensions() {
         System.setProperty("webdriver.gecko.driver", "src\\test\\resources\\files\\geckodriver.exe");
         //System.setProperty("webdriver.firefox.marionette","src\\test\\resources\\files\\geckodriver.exe");
+
+        /*хрень для deleteProcess чтоб чрез урл авторизироваться
+        myProfile.setPreference("network.automatic-ntlm-auth.trusted-uris", "http://,https://");
+        myProfile.setPreference("network.automatic-ntlm-auth.allow-non-fqdn", true);
+        myProfile.setPreference("network.negotiate-auth.delegation-uris", "http://,https://");
+        myProfile.setPreference("network.negotiate-auth.trusted-uris", "http://,https://");
+        myProfile.setPreference("network.http.phishy-userpass-length", 255);
+        myProfile.setPreference("security.csp.enable", false);
+         */
 
         String path = "src/test/resources/files/cryptoplugin_ext_id@ff.xpi";
         FirefoxProfile profile = new FirefoxProfile();

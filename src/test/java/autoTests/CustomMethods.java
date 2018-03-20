@@ -3,6 +3,7 @@ package autoTests;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
+import javafx.scene.control.Alert;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
@@ -34,9 +35,18 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Открыть новое окно
      */
-    public void openNewTab() {
-        WebElement body = $(By.tagName("body"));
-        body.sendKeys(Keys.CONTROL + "t");
+    public void openNewTab() throws AWTException {
+        //WebElement body = $(By.tagName("body"));
+        //body.sendKeys(Keys.CONTROL + "t");
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_T);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_T);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
     }
 
     /**
@@ -1850,25 +1860,43 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Удаление документа через запрос, если нема кнопки (например из истории)
      */
-    public void deleteProcess(String login, String referent){
+    public void deleteProcess(String login, String referent) throws AWTException {
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
         String sUrl = getRegionUrl();
-        String request = sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent="
+        sUrl = sUrl.substring(8);
+        String token = "system";
+        String auth = "http://" + token +":" + token +"@";
+        String request = auth + sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent="
                 + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
-        openNewTab();
-        switchTo().window(1);
         open(request);
-        switchTo().window(0);
     }
 
     /**
      * Проверка удаленного дока под админом
      */
-    public void checkDeletedDoc() throws Exception {
-        AuthorizationBySetLoginPassword("tester", " ");
+    public void checkDeletedDocByAdmin() throws Exception {
+       checkDeletedDocImpl("tester", "tester");
+    }
+    /**
+     * Проверка удаленного дока
+     */
+    public void checkDeletedDoc(String sLogin, String sFIO) throws Exception {
+        checkDeletedDocImpl(sLogin, sFIO);
+    }
+    /**
+     * Проверка удаленного дока
+     */
+    private void checkDeletedDocImpl(String sLogin, String sFIO) throws Exception {
+        AuthorizationBySetLoginPassword(sLogin, " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
+        if(!isError()){
+            clickLink(sFIO);
+            clickLink("Вийти");
+        }
     }
+
+
 
     /**
      * Проверка последний ли док в списке
@@ -1888,7 +1916,7 @@ public class CustomMethods extends SetupAndTeardown {
         pause(5000);
     }
 
-    public void isError() {
+    public boolean isError() {
         String xpath = "//div[@window-class='modal-danger']//div[@class='modal-content']";
         pause(3000);
         if($x(xpath).isDisplayed()){
@@ -1897,5 +1925,6 @@ public class CustomMethods extends SetupAndTeardown {
             screenshot(generateText(10));
             throw new NoSuchElementException(error);
         }
+        else return false;
     }
 }
