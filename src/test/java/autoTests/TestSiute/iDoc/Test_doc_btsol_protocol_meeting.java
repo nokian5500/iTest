@@ -27,12 +27,13 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         navigateToggleMenu();
         createDocumentOrTask("Протокол оперативної наради");
-//        templateSelect("");
+        //templateSelect("");
         clickButton("Далi");
         pause(5000);
         
         //Создание
         getCurrentCalendar();
+        isExistButton("Зберегти",true);
         
         setDocTitle("Автотест протокола");
         
@@ -53,6 +54,18 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
+        
+        //Додати завдання
+        addTask();
+        setTaskName(generateText(10));
+        setTaskTerm("Кiлькiсть днiв пiсля", "3");
+        setTaskForm("Текстове повiдомлення");
+        SetRegionFieldInputTypeLong("sAmtDecisions", "3");
+        setController("Смоктій Вікторія Кирилівна");
+        setExecutor("Столбова Анна Юріївна");
+        addNewExecutor("Літовченко Інна Вадимівна");
+        pause(5000);
+        setTaskContent("Перевірка завдання автотестом");
         
         /*Таблица Узгоджуючі*/
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", "Туренко Ольга Володимирівна");
@@ -84,6 +97,8 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(5000);
+        addComment("Тестове зауваження");
+        clickButton("Ok");
         clickButton("Інші дії");
         clickButton("Делегувати");
         addDelegate("Гуков Юрій Олександрович");
@@ -91,28 +106,79 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickLink("Туренко Ольга Володимирівна");
         clickLink("Вийти");
                
+        //Автору, ответить на замечание и редактировать
+        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        clickButton("Редагувати");
+        pause(5000);
+        //answerComment("Відповідь на зауваження");
+        //clickButton("Ok");
+        //pause(5000);
+        
+        clickButtonSign();
+        clickLink("Смоктій Вікторія Кирилівна");
+        clickLink("Вийти");
+        
+        
+        
+        
         //Второй подписант(С делегирования)
         AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(5000);
         isExistButton("Пiдписати",true);
-        isExistButton("Зберегти",true);
-        isExistButton("Роздрукувати",true);
-        isExistButton("Зауваження",true);
-        isExistButton("Інші дії",true);
-        clickButton("Інші дії");
-        isExistButton("Додати на перегляд",true);
-        isExistButton("Ознайомити",true);
-        isExistButton("Додати підписанта",true);
-        isExistButton("Делегувати",true);
-        isExistButton("Відмовити",true);
-        isExistButton("Підпис не потрібен",true);
-        isExistButton("Додати завдання",false);
-        isExistButton("Редагувати завдання",false);
+        //isExistButton("Зберегти",true);
+        //isExistButton("Роздрукувати",true);
+        //isExistButton("Зауваження",true);
+        //isExistButton("Інші дії",true);
+        //clickButton("Інші дії");
+        //isExistButton("Додати на перегляд",true);
+        //isExistButton("Ознайомити",true);
+        //isExistButton("Додати підписанта",true);
+        //isExistButton("Делегувати",true);
+        //isExistButton("Відмовити",true);
+        //isExistButton("Підпис не потрібен",true);
+        //isExistButton("Додати завдання",false);
+        //isExistButton("Редагувати завдання",false);
         clickButtonSign();
         pause(5000);
         clickLink("Гуков Юрій Олександрович");
+        clickLink("Вийти");
+        
+        //Подписи исполнителей задачи
+        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        clickButton("Інші дії");
+        addAcceptor("Грек Одарка Олексіївна");
+        clickButtonSign();
+        pause(5000);
+        clickLink("Столбова Анна Юріївна");
+        clickLink("Вийти");
+        
+        AuthorizationBySetLoginPassword("IGOV_230878LIV", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        clickButton("Інші дії");
+        clickButtonSignNotNeed(sBP, "Подпись не нужна");
+        clickButton("Ok");
+        
+        clickLink("Літовченко Інна Вадимівна");
+        clickLink("Вийти");
+        
+        //подпись еще одним исполнителем
+        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        clickButton("Інші дії");
+        clickButtonRefuse(sBP, "Отказать");
+        clickButton("Ok");
+        clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
         
         //Подписываем (Утверждение)      
