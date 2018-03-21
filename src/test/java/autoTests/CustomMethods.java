@@ -553,7 +553,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nameButton
      */
     public void clickButton(String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).click(); ////button[contains(.,'Опрацювати')]
+        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).scrollIntoView(true).click(); ////button[contains(.,'Опрацювати')]
         //$x("//button").shouldHave(text(nameButton)).click();
     }
 
