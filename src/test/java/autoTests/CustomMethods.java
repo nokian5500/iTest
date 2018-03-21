@@ -1795,10 +1795,6 @@ public class CustomMethods extends SetupAndTeardown {
         SetRegionFieldInputTypeTextArea("askMessage", text);
         $x("//button[@ng-click='cancelDocumentSubmit()']").click();
         pause(5000);
-        $x("//strong[contains(.,'Зауваження додано')]").waitUntil(visible, 5000);
-        clickButton("Ok");
-        $x("//strong[contains(.,'Підпис знято')]").waitUntil(visible, 5000);
-        clickButton("Ок");
     }
 
     /**
