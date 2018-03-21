@@ -58,8 +58,8 @@ public class SetupAndTeardown extends ConfigClass {
         CustomMethods.deleteFileOrDirectory(directory);
         directory = new File("surefire");
         CustomMethods.deleteFileOrDirectory(directory);
-        directory = new File("build");
-        CustomMethods.deleteFileOrDirectory(directory);
+       // directory = new File("build");
+        //CustomMethods.deleteFileOrDirectory(directory);
     }
 
     private FirefoxProfile createFirefoxProfileWithExtensions() {

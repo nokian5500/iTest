@@ -1505,9 +1505,11 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void clickButtonSignNotNeed(String sBP, String text){
+        clickButton("Інші дії");
         clickButton("Підпис не потрібен");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Підпис не потрібен')]").click();
+        clickButton("Ok");
     }
 
     /**
@@ -1516,9 +1518,11 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void clickButtonRefuse(String sBP, String text){
+        clickButton("Інші дії");
         clickButton("Відмовити");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відмовити')]").click();
+        clickButton("Ok");
     }
 
     /**
@@ -1818,7 +1822,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @return
      */
     private boolean isExistButton(String name){
-        ElementsCollection buttons = $$x("//button[contains(.,'" + name + "')]");
+        ElementsCollection buttons = $$x("//button").filterBy(text(name)).filterBy(visible);
         if (buttons.size() > 1){
             screenshot(generateText(10));
             throw new ElementNotVisibleException("Кнопкок з назвою \""+name+"\" - "+ buttons.size() + " штук замість однієї");
