@@ -1625,7 +1625,7 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
         if(isAwait){}
         clickButton("Відповісти");
-        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
+        $(By.xpath("//textarea[@id='askMessage']")).scrollIntoView(true).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
     }
 
