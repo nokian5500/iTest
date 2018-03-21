@@ -51,7 +51,6 @@ public class New_test_sz extends CustomMethods {
 
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
-        //clickButton("Ok");
         isError();
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");

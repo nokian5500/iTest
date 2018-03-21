@@ -1509,7 +1509,6 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Підпис не потрібен");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Підпис не потрібен')]").click();
-        clickButton("Ok");
     }
 
     /**
