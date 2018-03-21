@@ -1448,7 +1448,6 @@ public class CustomMethods extends SetupAndTeardown {
      * Закрыть окно добавления подписанта с кнопки
      */
     private void closeParticipant(){
-        clickButton("Ok");
         $x("//i[@class='fa fa-times']").click();
     }
 
