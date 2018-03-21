@@ -553,7 +553,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nameButton
      */
     public void clickButton(String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).click(); ////button[contains(.,'Опрацювати')]
+        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).scrollIntoView(true).click(); ////button[contains(.,'Опрацювати')]
         //$x("//button").shouldHave(text(nameButton)).click();
     }
 
@@ -1625,7 +1625,7 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
         if(isAwait){}
         clickButton("Відповісти");
-        $(By.xpath("//textarea[@id='askMessage']")).scrollIntoView(true).val(comment);
+        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
     }
 
