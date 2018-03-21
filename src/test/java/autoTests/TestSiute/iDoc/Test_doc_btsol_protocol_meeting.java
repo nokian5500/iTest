@@ -66,10 +66,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         /*Таблица Затверджуючий*/
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", "Герман Август Васильович");
        
-        //Добавляем на просмотр
-        clickButton("Інші дії");
-        addViewer("Літовченко Інна Вадимівна");
-        pause(2000);
+        
         //Проверка наличия кнопок
         isExistButton("Зберегти",true);
         isExistButton("Роздрукувати",true);
@@ -85,6 +82,12 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         isExistButton("Відмовити",false);
         isExistButton("Підпис не потрібен",false);
         isExistButton("Редагувати завдання",false);
+        
+        //Добавляем на просмотр
+        //clickButton("Інші дії");
+        addViewer("Літовченко Інна Вадимівна");
+        
+        pause(1000);
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
