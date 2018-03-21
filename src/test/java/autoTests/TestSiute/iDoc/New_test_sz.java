@@ -62,14 +62,14 @@ public class New_test_sz extends CustomMethods {
         pause(2000);
         clickButton("Інші дії");
         clickButton("Делегувати");
-        addDelegate("Гуков Юрій Олександрович");
+        addDelegate("Смоктій Оксана Данилівна");
         isError();
         pause(2000);
         clickLink("Туренко Ольга Володимирівна");
         clickLink("Вийти");
 
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
+        AuthorizationBySetLoginPassword("IGOV_160582SOD", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
@@ -90,7 +90,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Гуков Юрій Олександрович");
+        clickLink("Смоктій Оксана Данилівна");
         clickLink("Вийти");
         
         /*4 Подписываем и снимаем подпись*/
@@ -149,7 +149,6 @@ public class New_test_sz extends CustomMethods {
         clickButton("Інші дії");
         addAcceptor("Грек Одарка Олексіївна");
         addComment("Тестове зауваження");
-        clickButton("Ok");
         clickButtonSign();
         isError();
         pause(2000);
@@ -164,8 +163,8 @@ public class New_test_sz extends CustomMethods {
         clickButton("Редагувати");
         removeAllSigns();
         setFieldCheckBox("eReturnDocument");
-        answerComment("Відповідь на зауваження");
-        clickButton("Ok");
+        //answerComment("Відповідь на зауваження");
+        //clickButton("Ok");
         clickButtonSign();
         isError();
         pause(2000);
