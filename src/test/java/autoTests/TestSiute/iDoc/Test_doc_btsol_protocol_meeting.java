@@ -35,7 +35,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         setDocContent("Автотест протокола");
         SetRegionFieldInputTypeDate("sDateMeeting", "19.03.2018");
         SetRegionFieldInputTypeLong("sAmtDecisions", "2");
-        setSelect("_doc_btsol_protocol_meeting", "sTable_Chairperson", "Смоктій Вікторія Кирилівна");
+        setSelect("_doc_btsol_protocol_meeting", "sName_Chairperson", "Смоктій Вікторія Кирилівна");
         setParticipant(sBP, "sTable_listener", "sName_isExecute", "0", "Туренко Ольга Володимирівна");
         addRegionsTableRow("sTable_listener");
         setParticipant(sBP, "sTable_listener", "sName_isExecute", "1", "Смоктій Вікторія Кирилівна");
@@ -44,17 +44,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
         
-        //Додати завдання
-        addTask();
-        setTaskName(generateText(10));
-        setTaskTerm("Кiлькiсть днiв пiсля", "3");
-        setTaskForm("Текстове повiдомлення");
-        SetRegionFieldInputTypeLong("sAmtDecisions", "3");
-        setController("Смоктій Вікторія Кирилівна");
-        setExecutor("Столбова Анна Юріївна");
-        addNewExecutor("Літовченко Інна Вадимівна");  
-        pause(5000);
-        setTaskContent("Перевірка завдання автотестом");
+        
         
         /*Таблица Узгоджуючі*/
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", "Туренко Ольга Володимирівна");
@@ -65,9 +55,23 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         
         /*Таблица Затверджуючий*/
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", "Герман Август Васильович");
-       
         
-        //Проверка наличия кнопок
+        //Додати завдання (Работает)
+        addTask();
+        setTaskName(generateText(10));
+        setTaskTerm("Кiлькiсть днiв пiсля", "3");
+        setTaskForm("Текстове повiдомлення");
+        SetRegionFieldInputTypeLong("sAmtDecisions", "3");
+        setController("Смоктій Вікторія Кирилівна");
+        setExecutor("Столбова Анна Юріївна");
+        addNewExecutor("Літовченко Інна Вадимівна");  
+        pause(5000);
+        setTaskContent("Перевірка завдання автотестом");
+       
+        //Добавляем на просмотр
+        clickButton("Інші дії");
+        addViewer("Літовченко Інна Вадимівна");
+        //Проверка наличия кнопок (Работает)
         isExistButton("Зберегти",true);
 //        isExistButton("Роздрукувати",true);
 //        isExistButton("Додати завдання",true);
@@ -83,16 +87,13 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
 //        isExistButton("Підпис не потрібен",false);
 //        isExistButton("Редагувати завдання",false);
         
-        //Добавляем на просмотр
-        clickButton("Інші дії");
-        addViewer("Літовченко Інна Вадимівна");
+        
         //clickCross();
 //        pause(5000);
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
-        pause(5000);
-        //clickButton("Ok");
+        isError();
         clickLink("Смоктій Вікторія Кирилівна");
         clickLink("Вийти");        
 
@@ -102,41 +103,17 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(5000);
-        isError();
-        addComment("Тестове зауваження");
-        //clickButton("Ok");       
+//        isError();
+//        addComment("Тестове зауваження");
+        //clickButton("Ok"); 
+        clickButton("Інші дії");
+        addViewer("Смоктій Оксана Данилівна");
         clickButton("Інші дії");
         clickButton("Делегувати");
-        addDelegate("Гуков Юрій Олександрович");
+        addDelegate("Грек Одарка Олексіївна");
+        isError();
         pause(2000);
         clickLink("Туренко Ольга Володимирівна");
-        clickLink("Вийти");
-         
-        //Второй подписант(С делегирования)
-        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
-        clickButton("Увійти");
-        setRegionFindOrderByNumberDocument();
-        pause(5000);
-        isExistButton("Пiдписати",true);
-        isExistButton("Зберегти",true);
-        isExistButton("Роздрукувати",true);
-        isExistButton("Зауваження",true);
-        isExistButton("Інші дії",true);
-        clickButton("Інші дії");
-        isExistButton("Додати на перегляд",true);
-        isExistButton("Ознайомити",true);
-        isExistButton("Додати підписанта",true);
-        isExistButton("Делегувати",true);
-        isExistButton("Відмовити",true);
-        isExistButton("Підпис не потрібен",true);
-        isExistButton("Додати завдання",false);
-        isExistButton("Редагувати завдання",false);
-        //clickButton("Інші дії");
-        addAcceptor("Грек Одарка Олексіївна");
-
-        clickButtonSign();
-        pause(5000);
-        clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
         //подпись еще одним исполнителем (с добавить на согласования)
@@ -144,28 +121,44 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        clickButton("Інші дії");
+        addAcceptor("Гуков Юрій Олександрович");
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
         clickLink("Грек Одарка Олексіївна");
         clickLink("Вийти");
         
-        //Снять подпись 
-        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
+        //Второй подписант(С делегирования)
+        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
-        cancelSign("Перевірка зняття підпису");
-        clickLink("Грек Одарка Олексіївна");
+        pause(2000);
+        clickButtonSign();
+        pause(5000);
+        clickLink("Гуков Юрій Олександрович");
         clickLink("Вийти");
         
-        //Удалить подписанта
-        //AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
-        //clickButton("Увійти");
-        //setRegionFindOrderByNumberDocument();
-        //pause(5000);
-        //removeParticipant(1, true);
-        //clickButtonSign();
-        //pause(5000);
-        //clickLink("Гуков Юрій Олександрович");
-        //clickLink("Вийти");
+        //Снять подпись 
+        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
+        clickButton("Увійти");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        cancelSign("Перевірка зняття підпису");
+        pause(5000);
+        clickButtonSign();
+        pause(5000);
+        clickLink("Гуков Юрій Олександрович");
+        clickLink("Вийти");
+        
+//        //Удалить подписанта
+//        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
+//        clickButton("Увійти");
+//        setRegionFindOrderByNumberDocument();
+//        pause(5000);
+//        removeParticipant(2, true);
+//        clickButtonSign();
+//        pause(5000);
+//        clickLink("рек Одарка Олексіївна");
+//        clickLink("Вийти");
         
         
                 //-----Редактирование-----
@@ -174,6 +167,9 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
+        answerComment("Відповідь на зауваження");
+        pause(5000);
+//        clickButton("Ok");
         clickButton("Редагувати");
         pause(5000);
         //Проверка наличия кнопок
@@ -191,15 +187,11 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         //isExistButton("Додати підписанта",false);
         //isExistButton("Делегувати",false);
         //isExistButton("Відмовити",false);
-  
-        //answerComment("Відповідь на зауваження");
-        //pause(1500);
-        //clickButton("Ok");
+        
         //Редактирование задачи
         clickButton("Інші дії");
         clickButton("Редагувати завдання");
-        SetRegionFieldInputTypeLong("sAmtDecisions", "3");      
-        
+        SetRegionFieldInputTypeLong("sAmtDecisions", "5");      
         clickButtonSign();
         pause(5000);
         clickLink("Смоктій Вікторія Кирилівна");
@@ -220,7 +212,8 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        clickButtonSignNotNeed(sBP, "Подпись не нужна");  
+        clickButtonSign();
+        pause(5000); 
         clickLink("Літовченко Інна Вадимівна");
         clickLink("Вийти");
         
