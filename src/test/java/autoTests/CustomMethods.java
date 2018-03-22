@@ -935,7 +935,8 @@ public class CustomMethods extends SetupAndTeardown {
      * Нажать на меню выбора
      */
     public void navigateToggleMenu() {
-        $(By.cssSelector(".igov-hamburger>a")).click();
+        //$(By.cssSelector(".igov-hamburger>a")).click();
+        $x("//div[@class='igov-hamburger']").scrollIntoView(true).click();
     }
 
     /**
@@ -1520,7 +1521,6 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Відмовити");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відмовити')]").click();
-        clickButton("Ok");
     }
 
     /**
