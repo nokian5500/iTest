@@ -511,10 +511,9 @@ public class CustomMethods extends SetupAndTeardown {
 
     /**
      * Выход из учетки
-     * @param loginName
      */
-    public void logout(String loginName) throws Exception {
-        clickLink(loginName);
+    public void logout() throws Exception {
+        $("#accountId").click();
         clickLink("Вийти");
         //.pressEnter();
     }
