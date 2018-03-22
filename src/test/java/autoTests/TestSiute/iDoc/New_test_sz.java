@@ -48,7 +48,7 @@ public class New_test_sz extends CustomMethods {
         setDirect(sBP, "sTableDirect", "sName_Direct", "0", "Столбова Анна Юріївна");
         addRegionsTableRow("sTableDirect");
         setDirect(sBP, "sTableDirect", "sName_Direct", "1", "Літовченко Інна Вадимівна");
-
+        
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
         isError();
@@ -73,20 +73,24 @@ public class New_test_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        /*Наличие кнопок*/
+        clickButton("Інші дії");
         isExistButton("Пiдписати",true);
         isExistButton("Зберегти",true);
         isExistButton("Роздрукувати",true);
         isExistButton("Зауваження",true);
-        isExistButton("Інші дії",true);
-        clickButton("Інші дії");
         isExistButton("Додати на перегляд",true);
         isExistButton("Ознайомити",true);
         isExistButton("Додати підписанта",true);
         isExistButton("Делегувати",true);
         isExistButton("Відмовити",true);
         isExistButton("Підпис не потрібен",true);
+        isExistButton("Коментар",true);
+        /*Отсутствие кнопок*/
+        isExistButton("Ознайомлен",false);
         isExistButton("Додати завдання",false);
         isExistButton("Редагувати завдання",false);
+        isExistButton("Видалити",false);
         clickButtonSign();
         isError();
         pause(2000);
@@ -161,6 +165,25 @@ public class New_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Редагувати");
+        clickButton("Інші дії");
+        /*Наличие кнопок*/
+        isExistButton("Пiдписати",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Коментар",true);
+        isExistButton("Видалити",true);
+        isExistButton("Додати на перегляд",true);
+        /*Отсутствие кнопок*/
+        isExistButton("Зауваження",false);
+        isExistButton("Ознайомити",false);
+        isExistButton("Додати підписанта",false);
+        isExistButton("Делегувати",false);
+        isExistButton("Відмовити",false);
+        isExistButton("Підпис не потрібен",false);
+        isExistButton("Ознайомлен",false);
+        isExistButton("Додати завдання",false);
+        isExistButton("Редагувати завдання",false);
+        
         removeAllSigns();
         setFieldCheckBox("eReturnDocument");
         //answerComment("Відповідь на зауваження");
@@ -198,6 +221,24 @@ public class New_test_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        clickButton("Інші дії");
+        /*Наличие кнопок*/
+        isExistButton("Пiдписати",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Зауваження",true);
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Ознайомити",true);
+        isExistButton("Додати підписанта",true);
+        isExistButton("Делегувати",true);
+        isExistButton("Відмовити",true);
+        isExistButton("Коментар",true);
+        /*Отсутствие кнопок*/
+        isExistButton("Ознайомлен",false);
+        isExistButton("Підпис не потрібен",false);
+        isExistButton("Додати завдання",false);
+        isExistButton("Редагувати завдання",false);
+        isExistButton("Видалити",false);
         clickButtonSign();
         isError();
         pause(2000);
@@ -241,6 +282,24 @@ public class New_test_sz extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        clickButton("Інші дії");
+        /*Наличие кнопок*/
+        isExistButton("Пiдписати",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Зауваження",true);
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Ознайомити",true);
+        isExistButton("Ознайомлен",true);
+        isExistButton("Делегувати",true);
+        isExistButton("Відмовити",true);
+        isExistButton("Коментар",true);
+        isExistButton("Підпис не потрібен",true);
+        isExistButton("Додати завдання",true);
+        /*Отсутствие кнопок*/
+        isExistButton("Додати підписанта",false);
+        isExistButton("Редагувати завдання",false);
+        isExistButton("Видалити",false);
         clickButtonSign();
         isError();
         pause(2000);
@@ -253,6 +312,14 @@ public class New_test_sz extends CustomMethods {
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
+        /*Наличие кнопок*/
+        clickButton("Інші дії");
+        isExistButton("Відкрити документ",true);
+        isExistButton("Перенести",true);
+        isExistButton("Додати звіт",true);
+        isExistButton("Делегувати",true);
+        isExistButton("Коментар",true);
+        isExistButton("Редагувати завдання",true);
         addReport("Виконане", "Завдання виконане");
         isError();
         pause(2000);
