@@ -149,7 +149,7 @@ public class New_test_sz extends CustomMethods {
         clickButton("Інші дії");
         addAcceptor("Грек Одарка Олексіївна");
         addComment("Тестове зауваження");
-        clickButtonSign();
+        //clickButtonSign();
         isError();
         pause(2000);
         clickLink("Герман Август Васильович");
@@ -182,7 +182,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Павленко Юлія Юріївна");
         clickLink("Вийти");
         
-        /*11. Работа на этапе согласования (2 пользователь). Подписываем”*/
+        /*11. Работа на этапе согласования (2 пользователь). Подписываем”
         AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
@@ -191,7 +191,7 @@ public class New_test_sz extends CustomMethods {
         isError();
         pause(2000);
         clickLink("Грек Одарка Олексіївна");
-        clickLink("Вийти");
+        clickLink("Вийти");*/
 
         /*12. Работа на этапе утверждения (1 пользователь. Подписываем*/
         AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
