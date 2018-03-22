@@ -1509,6 +1509,7 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Підпис не потрібен");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Підпис не потрібен')]").click();
+        pause(3000);
     }
 
     /**
@@ -1521,6 +1522,7 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Відмовити");
         setFieldTextArea("askMessage", text);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відмовити')]").click();
+        pause(3000);
     }
 
     /**
@@ -1545,6 +1547,7 @@ public class CustomMethods extends SetupAndTeardown {
         $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
         $("#soExec").selectOptionByValue(coop);
         clickButton("Підтвердити");
+        pause(3000);
     }
 
     /**
@@ -1574,6 +1577,7 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Перенести");
         $(By.xpath("//*[@name='execDate']")).shouldBe(exist).sendKeys(term);
         clickButton("Підтвердити");
+        pause(3000);
     }
 
     /**
@@ -1584,6 +1588,7 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Вiдхилити звiт");
         $(By.xpath("//textarea[@id='execText']")).val(comment);
         clickButton("Підтвердити");
+        pause(3000);
     }
 
     /**
