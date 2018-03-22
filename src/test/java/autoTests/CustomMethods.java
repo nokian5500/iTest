@@ -1925,4 +1925,8 @@ public class CustomMethods extends SetupAndTeardown {
         }
         else return false;
     }
+
+    public void clickCross(){
+        $x("//div[@ng-click='closeModalByButton()']//i[@class='fa fa-times']").click();
+    }
 }
