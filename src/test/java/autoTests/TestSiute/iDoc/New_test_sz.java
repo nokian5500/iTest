@@ -22,8 +22,7 @@ public class New_test_sz extends CustomMethods {
 
         openURLdashboard(getRegionUrl());
 
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         navigateToggleMenu();
         createDocumentOrTask("Службова записка");
         clickButton("Далi");
@@ -56,8 +55,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
         
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
-        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
-        clickButton("Увійти");
+        login("IGOV_200687TOV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -69,8 +67,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_160582SOD", " ");
-        clickButton("Увійти");
+        login("IGOV_160582SOD", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         /*Наличие кнопок*/
@@ -98,8 +95,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
         
         /*4 Подписываем и снимаем подпись*/
-        AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
-        clickButton("Увійти");
+        login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -111,8 +107,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
         
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
-        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
-        clickButton("Увійти");
+        login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -124,8 +119,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
         
         /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
-        clickButton("Увійти");
+        login("IGOV_260185SAU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -135,8 +129,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*7 Подписываем и снимаем подпись*/
-        AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
-        clickButton("Увійти");
+        login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -146,8 +139,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
-        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
-        clickButton("Увійти");
+        login("IGOV_110771GAV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -160,8 +152,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Редагувати");
@@ -195,8 +186,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
-        AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
-        clickButton("Увійти");
+        login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -206,8 +196,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
         
         /*11. Работа на этапе согласования (2 пользователь). Подписываем”
-        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
-        clickButton("Увійти");
+        login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -217,8 +206,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");*/
 
         /*12. Работа на этапе утверждения (1 пользователь. Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
-        clickButton("Увійти");
+        login("IGOV_110771GAV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -246,8 +234,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*13. Подписываем дополнительнымм утверждающим (2 пользователь). Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
-        clickButton("Увійти");
+        login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -257,8 +244,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*14. Заходим адресатом 1. Добавляем задание 1*/
-        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
-        clickButton("Увійти");
+        login("IGOV_260185SAU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         addTask();
@@ -278,8 +264,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*15. Заходим адресатом 2.*/
-        AuthorizationBySetLoginPassword("IGOV_230878LIV", " ");
-        clickButton("Увійти");
+        login("IGOV_230878LIV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -307,8 +292,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*16. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
@@ -327,8 +311,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*17. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
-        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
-        clickButton("Увійти");
+        login("IGOV_110771GAV", " ");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
@@ -339,8 +322,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*18. Заходим контролирующим. Подтверждаем отчет*/
-        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
-        clickButton("Увійти");
+        login("IGOV_260185SAU", " ");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На контролі");
         searchTaskByText(generateText);
@@ -351,8 +333,7 @@ public class New_test_sz extends CustomMethods {
         clickLink("Вийти");
 
         /*19. Заходим автором. Подписываем*/
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         setRegionFindOrderByNumberDocument();
         clickButton("Ознайомлений");
         setRegionFindOrderByNumberDocument();

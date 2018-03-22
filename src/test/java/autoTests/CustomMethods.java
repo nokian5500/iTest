@@ -502,9 +502,33 @@ public class CustomMethods extends SetupAndTeardown {
      * @param loginName
      * @param passwordName
      */
+    public void login(String loginName, String passwordName) {
+        $(By.name("login")).val(loginName);
+        $(By.name("password")).val(passwordName);
+        clickButton("Увійти");
+        //.pressEnter();
+    }
+
+    /**
+     * Выход из учетки
+     * @param loginName
+     */
+    public void logout(String loginName) throws Exception {
+        clickLink(loginName);
+        clickLink("Вийти");
+        //.pressEnter();
+    }
+
+
+    /**
+     * Авторизация
+     * @param loginName
+     * @param passwordName
+     */
     public void AuthorizationBySetLoginPassword(String loginName, String passwordName) {
         $(By.name("login")).val(loginName);
         $(By.name("password")).val(passwordName);
+        clickButton("Увійти");
         //.pressEnter();
     }
 
@@ -1021,7 +1045,7 @@ public class CustomMethods extends SetupAndTeardown {
         //clickLink("Співробітник2 підрозділу 1.1  ");
         //clickLink("Вийти");
 
-        //AuthorizationBySetLoginPassword("iTest_User_0018", "iTest_User_0018");
+        //login("iTest_User_0018", "iTest_User_0018");
         //clickButton("Увійти");
         //clickLink("Нерозглянутi");
         String sID_Order = ConfigClass.orderId.get(0);
@@ -1729,8 +1753,11 @@ public class CustomMethods extends SetupAndTeardown {
         String tag = seCounter.getText();
         int counter = countByTag(tag);
         if (counter == 1){
-            $x("//span[@class='glyphicon glyphicon-remove close-search-box']").click();
+            //$x("//span[@class='glyphicon glyphicon-remove close-search-box']").click();
             $x("//a[@ng-click='fillTaskOrderArray()']").click();
+        }
+        else{
+            throw new NoSuchElementException("Було знайдено " + counter + "задач замість однієї");
         }
     }
 
@@ -1890,7 +1917,7 @@ public class CustomMethods extends SetupAndTeardown {
      * Проверка удаленного дока
      */
     private void checkDeletedDocImpl(String sLogin, String sFIO) throws Exception {
-        AuthorizationBySetLoginPassword(sLogin, " ");
+        login(sLogin, " ");
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         if(!isError()){

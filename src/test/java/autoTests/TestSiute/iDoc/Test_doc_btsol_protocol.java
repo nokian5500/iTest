@@ -24,8 +24,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         openURLdashboard(getRegionUrl());
         
         //Авторизация
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         navigateToggleMenu();
         createDocumentOrTask("Протокол оперативної наради");
         clickButton("Далi");
@@ -100,8 +99,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
 
             //----Подписываем (Согласование)----
         //Первый подписант
-        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
-        clickButton("Увійти");
+        login("IGOV_200687TOV", " ");
         setRegionFindOrderByNumberDocument();
         pause(5000);
 //        isError();
@@ -118,8 +116,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //подпись еще одним исполнителем (с добавить на согласования)
-        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
-        clickButton("Увійти");
+        login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -130,8 +127,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //Второй подписант(С делегирования)
-        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
-        clickButton("Увійти");
+        login("IGOV_151071GUO", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -140,8 +136,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //Снять подпись 
-        AuthorizationBySetLoginPassword("IGOV_151071GUO", " ");
-        clickButton("Увійти");
+        login("IGOV_151071GUO", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         cancelSign("Перевірка зняття підпису");
@@ -152,8 +147,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
 //        //Удалить подписанта
-//        AuthorizationBySetLoginPassword("IGOV_130384GOA", " ");
-//        clickButton("Увійти");
+//        login("IGOV_130384GOA", " ");
 //        setRegionFindOrderByNumberDocument();
 //        pause(5000);
 //        removeParticipant(2, true);
@@ -166,8 +160,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
                 //-----Редактирование-----
         //Автору, ответить на замечание и редактировать
         //Проверка наличия кнопок
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         setRegionFindOrderByNumberDocument();
         answerComment("Відповідь на зауваження");
         pause(5000);
@@ -200,8 +193,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //Подписи исполнителей задачи
-        AuthorizationBySetLoginPassword("IGOV_260185SAU", " ");
-        clickButton("Увійти");
+        login("IGOV_260185SAU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonRefuse(sBP, "Отказать");
@@ -210,8 +202,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Столбова Анна Юріївна");
         clickLink("Вийти");
         
-        AuthorizationBySetLoginPassword("IGOV_230878LIV", " ");
-        clickButton("Увійти");
+        login("IGOV_230878LIV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
@@ -224,8 +215,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         
         
         //Подписываем (Утверждение)      
-        AuthorizationBySetLoginPassword("IGOV_110771GAV", " ");
-        clickButton("Увійти");
+        login("IGOV_110771GAV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
@@ -236,8 +226,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //Ознакомление
-        AuthorizationBySetLoginPassword("IGOV_220290PUU", " ");
-        clickButton("Увійти");
+        login("IGOV_220290PUU", " ");
         pause(5000);
         setRegionFindOrderByNumberDocument();
         pause(2000);
@@ -247,8 +236,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickLink("Вийти");
         
         //Ознакомление Автором
-        AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
-        clickButton("Увійти");
+        login("IGOV_270907SVK", " ");
         pause(2000);
         setRegionFindOrderByNumberDocument();
         pause(5000);

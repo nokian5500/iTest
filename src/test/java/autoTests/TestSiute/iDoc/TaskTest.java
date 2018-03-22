@@ -193,11 +193,12 @@ public class TaskTest extends CustomMethods{
         openURLdashboard("https://gamma.test.idoc.com.ua");
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
-        setRegionFindOrder("№ 5-850236");
-        pause(5000);
-        getOrderFromUrlCurrentPage();
-        System.out.println(orderId);
-        deleteProcess("IGOV_270907SVK", "IGOV_270907SVK");
-        pause(5000);
+        pause(3000);
+        navigateToggleMenu();
+        snapDrawerButtonMenuTabs("Завдання");
+        searchTaskByText("зЯАТ92нЯФМ");
+        addReport("Виконане", "Завдання виконане");
+
+       pause(5000);
     }
 }
