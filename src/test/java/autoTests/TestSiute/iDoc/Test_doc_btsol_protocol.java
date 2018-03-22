@@ -6,6 +6,7 @@
 package autoTests.TestSiute.iDoc;
 
 import autoTests.CustomMethods;
+import static autoTests.CustomMethods.generateText;
 
 import static com.codeborne.selenide.Selenide.open;
 
@@ -14,9 +15,9 @@ import org.junit.Test;
  *
  * @author User
  */
-public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
+public class Test_doc_btsol_protocol  extends CustomMethods {
     @Test
-    public void Test_doc_btsol_protocol_meeting() throws Exception {
+    public void Test_doc_btsol_protocol() throws Exception {
         String sBP = "_doc_btsol_protocol_meeting";
         String email = "autotestbeta@gmail.com";
 
