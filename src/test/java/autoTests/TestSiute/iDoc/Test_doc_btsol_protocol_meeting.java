@@ -35,7 +35,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         setDocContent("Автотест протокола");
         SetRegionFieldInputTypeDate("sDateMeeting", "19.03.2018");
         SetRegionFieldInputTypeLong("sAmtDecisions", "2");
-        setSelect("_doc_btsol_protocol_meeting", "sName_Chairperson", "Смоктій Вікторія Кирилівна");
+        setSelect("_doc_btsol_protocol_meeting", "sTable_Chairperson", "Смоктій Вікторія Кирилівна");
         setParticipant(sBP, "sTable_listener", "sName_isExecute", "0", "Туренко Ольга Володимирівна");
         addRegionsTableRow("sTable_listener");
         setParticipant(sBP, "sTable_listener", "sName_isExecute", "1", "Смоктій Вікторія Кирилівна");
@@ -69,25 +69,25 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         
         //Проверка наличия кнопок
         isExistButton("Зберегти",true);
-        isExistButton("Роздрукувати",true);
-        isExistButton("Додати завдання",true);
-        isExistButton("Інші дії",true);
-        clickButton("Інші дії");
-        isExistButton("Додати на перегляд",true);
-        isExistButton("Видалити",true);
-        isExistButton("Зауваження",false);
-        isExistButton("Ознайомити",false);
-        isExistButton("Додати підписанта",false);
-        isExistButton("Делегувати",false);
-        isExistButton("Відмовити",false);
-        isExistButton("Підпис не потрібен",false);
-        isExistButton("Редагувати завдання",false);
+//        isExistButton("Роздрукувати",true);
+//        isExistButton("Додати завдання",true);
+//        isExistButton("Інші дії",true);
+//        clickButton("Інші дії");
+//        isExistButton("Додати на перегляд",true);
+//        isExistButton("Видалити",true);
+//        isExistButton("Зауваження",false);
+//        isExistButton("Ознайомити",false);
+//        isExistButton("Додати підписанта",false);
+//        isExistButton("Делегувати",false);
+//        isExistButton("Відмовити",false);
+//        isExistButton("Підпис не потрібен",false);
+//        isExistButton("Редагувати завдання",false);
         
         //Добавляем на просмотр
-        //clickButton("Інші дії");
+        clickButton("Інші дії");
         addViewer("Літовченко Інна Вадимівна");
-        
-        pause(1000);
+        //clickCross();
+//        pause(5000);
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
@@ -102,6 +102,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         clickButton("Увійти");
         setRegionFindOrderByNumberDocument();
         pause(5000);
+        isError();
         addComment("Тестове зауваження");
         //clickButton("Ok");       
         clickButton("Інші дії");
