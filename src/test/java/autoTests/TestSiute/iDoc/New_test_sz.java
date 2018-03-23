@@ -51,8 +51,7 @@ public class New_test_sz extends CustomMethods {
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
         isError();
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
         
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
         login("IGOV_200687TOV", " ");
@@ -63,8 +62,7 @@ public class New_test_sz extends CustomMethods {
         addDelegate("Смоктій Оксана Данилівна");
         isError();
         pause(2000);
-        clickLink("Туренко Ольга Володимирівна");
-        clickLink("Вийти");
+        logout();
 
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
         login("IGOV_160582SOD", " ");
@@ -91,8 +89,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Смоктій Оксана Данилівна");
-        clickLink("Вийти");
+        logout();
         
         /*4 Подписываем и снимаем подпись*/
         login("IGOV_220290PUU", " ");
@@ -103,8 +100,7 @@ public class New_test_sz extends CustomMethods {
         cancelSign("Перевірка зняття підпису");
         isError();
         pause(2000);
-        clickLink("Павленко Юлія Юріївна");
-        clickLink("Вийти");
+        logout();
         
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
         login("IGOV_130384GOA", " ");
@@ -115,8 +111,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSignNotNeed(sBP, "коментар 1");
         isError();
         pause(2000);
-        clickLink("Грек Одарка Олексіївна");
-        clickLink("Вийти");
+        logout();
         
         /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
         login("IGOV_260185SAU", " ");
@@ -125,8 +120,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Столбова Анна Юріївна");
-        clickLink("Вийти");
+        logout();
 
         /*7 Подписываем и снимаем подпись*/
         login("IGOV_220290PUU", " ");
@@ -135,8 +129,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Павленко Юлія Юріївна");
-        clickLink("Вийти");
+        logout();
 
         /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
         login("IGOV_110771GAV", " ");
@@ -148,8 +141,7 @@ public class New_test_sz extends CustomMethods {
         //clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Герман Август Васильович");
-        clickLink("Вийти");
+        logout();
 
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
         login("IGOV_270907SVK", " ");
@@ -182,8 +174,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
 
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
         login("IGOV_220290PUU", " ");
@@ -192,8 +183,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Павленко Юлія Юріївна");
-        clickLink("Вийти");
+        logout();
         
         /*11. Работа на этапе согласования (2 пользователь). Подписываем”
         login("IGOV_130384GOA", " ");
@@ -230,8 +220,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Герман Август Васильович");
-        clickLink("Вийти");
+        logout();
 
         /*13. Подписываем дополнительнымм утверждающим (2 пользователь). Подписываем*/
         login("IGOV_130384GOA", " ");
@@ -240,8 +229,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Грек Одарка Олексіївна");
-        clickLink("Вийти");
+        logout();
 
         /*14. Заходим адресатом 1. Добавляем задание 1*/
         login("IGOV_260185SAU", " ");
@@ -260,8 +248,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Столбова Анна Юріївна");
-        clickLink("Вийти");
+        logout();
 
         /*15. Заходим адресатом 2.*/
         login("IGOV_230878LIV", " ");
@@ -288,8 +275,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        clickLink("Літовченко Інна Вадимівна");
-        clickLink("Вийти");
+        logout();
 
         /*16. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
         login("IGOV_270907SVK", " ");
@@ -300,15 +286,14 @@ public class New_test_sz extends CustomMethods {
         clickButton("Інші дії");
         isExistButton("Відкрити документ",true);
         isExistButton("Перенести",true);
-        isExistButton("Додати звіт",true);
+        isExistButton("Додати звiт",true);
         isExistButton("Делегувати",true);
         isExistButton("Коментар",true);
         isExistButton("Редагувати завдання",true);
         addReport("Виконане", "Завдання виконане");
         isError();
         pause(2000);
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
 
         /*17. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
         login("IGOV_110771GAV", " ");
@@ -318,8 +303,7 @@ public class New_test_sz extends CustomMethods {
         addReport("Не актуальне", "Не хочу це робити");
         isError();
         pause(2000);
-        clickLink("Герман Август Васильович");
-        clickLink("Вийти");
+        logout();
 
         /*18. Заходим контролирующим. Подтверждаем отчет*/
         login("IGOV_260185SAU", " ");
@@ -329,8 +313,7 @@ public class New_test_sz extends CustomMethods {
         clickButton("Прийняти завдання");
         isError();
         pause(2000);
-        clickLink("Столбова Анна Юріївна");
-        clickLink("Вийти");
+        logout();
 
         /*19. Заходим автором. Подписываем*/
         login("IGOV_270907SVK", " ");
@@ -344,8 +327,7 @@ public class New_test_sz extends CustomMethods {
         removeParticipant(2,true);
         isError();
         pause(2000);
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
     }
     
     
