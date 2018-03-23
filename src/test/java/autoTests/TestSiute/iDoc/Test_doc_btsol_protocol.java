@@ -73,19 +73,19 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         addViewer("Літовченко Інна Вадимівна");
         //Проверка наличия кнопок (Работает)
         isExistButton("Зберегти",true);
-//        isExistButton("Роздрукувати",true);
-//        isExistButton("Додати завдання",true);
-//        isExistButton("Інші дії",true);
-//        clickButton("Інші дії");
-//        isExistButton("Додати на перегляд",true);
-//        isExistButton("Видалити",true);
-//        isExistButton("Зауваження",false);
-//        isExistButton("Ознайомити",false);
-//        isExistButton("Додати підписанта",false);
-//        isExistButton("Делегувати",false);
-//        isExistButton("Відмовити",false);
-//        isExistButton("Підпис не потрібен",false);
-//        isExistButton("Редагувати завдання",false);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Додати завдання",true);
+        isExistButton("Інші дії",true);
+        clickButton("Інші дії");
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Видалити",true);
+        isExistButton("Зауваження",false);
+        isExistButton("Ознайомити",false);
+        isExistButton("Додати підписанта",false);
+        isExistButton("Делегувати",false);
+        isExistButton("Відмовити",false);
+        isExistButton("Підпис не потрібен",false);
+        isExistButton("Редагувати завдання",false);
            
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
@@ -114,8 +114,27 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        
+        isExistButton("Пiдписати",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Зауваження",true); 
+        isExistButton("Інші дії",true);
         clickButton("Інші дії");
+        isExistButton("Коментар",true);
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Ознайомити",true);
+        isExistButton("Додати підписанта",true);
+        isExistButton("Делегувати",true);
+        isExistButton("Відмовити",true);
+        isExistButton("Підпис не потрібен",true);
+        isExistButton("Редагувати завдання",false);
+        isExistButton("Видалити",false);
+        isExistButton("Додати завдання",false);
+        //----
+        //clickButton("Інші дії");
         addAcceptor("Гуков Юрій Олександрович");
+
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
         pause(5000);
         logout();
@@ -160,23 +179,23 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickButton("Редагувати");
         pause(5000);
         //Проверка наличия кнопок
-        //isExistButton("Пiдписати",true);
-        //isExistButton("Зберегти",true);
-        //isExistButton("Роздрукувати",true);
-        //isExistButton("Додати завдання",false);
-        //isExistButton("Інші дії",true);
-        //clickButton("Інші дії");
-        //isExistButton("Додати на перегляд",true);
-        //isExistButton("Видалити",true);
-        //isExistButton("Редагувати завдання",true);
-        //isExistButton("Зауваження",false);
-        //isExistButton("Ознайомити",false);
-        //isExistButton("Додати підписанта",false);
-        //isExistButton("Делегувати",false);
-        //isExistButton("Відмовити",false);
+        isExistButton("Пiдписати",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Додати завдання",false);
+        isExistButton("Інші дії",true);
+        clickButton("Інші дії");
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Видалити",true);
+        isExistButton("Редагувати завдання",true);
+        isExistButton("Зауваження",false);
+        isExistButton("Ознайомити",false);
+        isExistButton("Додати підписанта",false);
+        isExistButton("Делегувати",false);
+        isExistButton("Відмовити",false);
         
         //Редактирование задачи
-        clickButton("Інші дії");
+        //clickButton("Інші дії");
         clickButton("Редагувати завдання");
         SetRegionFieldInputTypeLong("sAmtDecisions", "5");      
         clickButtonSign();
@@ -213,7 +232,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         login("IGOV_220290PUU", " ");
         pause(5000);
         setRegionFindOrderByNumberDocument();
-        pause(2000);
+        pause(5000);
         clickButton("Ознайомлений");
         pause(5000);
         logout();
@@ -223,6 +242,23 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(2000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
+         //Проверка наличия кнопок
+        isExistButton("Ознайомлений",true);
+        isExistButton("Зберегти",true);
+        isExistButton("Роздрукувати",true);
+        isExistButton("Інші дії",true);
+        clickButton("Інші дії");
+        isExistButton("Коментар",true);
+        isExistButton("Додати на перегляд",true);
+        isExistButton("Ознайомити",false);
+        isExistButton("Видалити",false);
+        isExistButton("Додати завдання",false);
+        isExistButton("Редагувати завдання",false);
+        isExistButton("Зауваження",false);
+        isExistButton("Ознайомити",false);
+        isExistButton("Додати підписанта",false);
+        isExistButton("Делегувати",false);
+        isExistButton("Відмовити",false);
         clickButton("Ознайомлений");
         pause(5000);
         logout();
@@ -239,7 +275,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         isExistButton("Додати",true);
         isExistButton("Делегувати",true);
         isExistButton("Інші дії",true);
-        clickLink("Інші дії");
+        clickButton("Інші дії");
         isExistButton("Коментар",true);
         //--
         addReport("Виконане", "Завдання виконане");
@@ -269,9 +305,9 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         isExistButton("Відкрити документ",true);
         isExistButton("Прийняти завдання",true);
         isExistButton("Перенести",true);
-        isExistButton("Відхилити звіт",true);
+        isExistButton("Вiдхилити звiт",true);
         isExistButton("Інші дії",true);
-        clickLink("Інші дії");
+        clickButton("Інші дії");
         isExistButton("Коментар",true);
         isExistButton("Редагувати завдання",true);
         isExistButton("Не прийняти",true);
