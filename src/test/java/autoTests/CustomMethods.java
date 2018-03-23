@@ -514,6 +514,7 @@ public class CustomMethods extends SetupAndTeardown {
      * Выход из учетки
      */
     public void logout() throws Exception {
+        pause (2000);
         $("#accountId").click();
         clickLink("Вийти");
         //.pressEnter();

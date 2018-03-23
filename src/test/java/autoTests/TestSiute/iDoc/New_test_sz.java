@@ -289,7 +289,7 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Додати звiт",true);
         isExistButton("Делегувати",true);
         isExistButton("Коментар",true);
-        isExistButton("Редагувати завдання",true);
+        isExistButton("Редагувати завдання",false);
         addReport("Виконане", "Завдання виконане");
         isError();
         pause(2000);
