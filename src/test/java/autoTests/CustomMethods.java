@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
@@ -1959,5 +1960,9 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void clickCross(){
         $x("//div[@ng-click='closeModalByButton()']//i[@class='fa fa-times']").click();
+    }
+
+    public void scrollTo(String sText){
+        $(byText(sText)).scrollIntoView(true);
     }
 }
