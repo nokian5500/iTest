@@ -72,7 +72,7 @@ public class Test_doc_btsol_protocol_meeting  extends CustomMethods {
         addViewer("Літовченко Інна Вадимівна");
         //Проверка наличия кнопок (Работает)
         isExistButton("Зберегти",true);
-//        isExistButton("Роздрукувати",true);
+       isExistButton("Роздрукувати",true);
 //        isExistButton("Додати завдання",true);
 //        isExistButton("Інші дії",true);
 //        clickButton("Інші дії");

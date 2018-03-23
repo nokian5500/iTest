@@ -86,16 +86,11 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
 //        isExistButton("Відмовити",false);
 //        isExistButton("Підпис не потрібен",false);
 //        isExistButton("Редагувати завдання",false);
-        
-        
-        //clickCross();
-//        pause(5000);
-        
+           
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
         isError();
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");        
+        logout();       
 
             //----Подписываем (Согласование)----
         //Первый подписант
@@ -103,8 +98,9 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         pause(5000);
 //        isError();
-//        addComment("Тестове зауваження");
+       // addComment("Тестове зауваження");
         //clickButton("Ok"); 
+        scrollTo("Затвердження");
         clickButton("Інші дії");
         addViewer("Смоктій Оксана Данилівна");
         clickButton("Інші дії");
@@ -112,8 +108,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         addDelegate("Грек Одарка Олексіївна");
         isError();
         pause(2000);
-        clickLink("Туренко Ольга Володимирівна");
-        clickLink("Вийти");
+        logout();
         
         //подпись еще одним исполнителем (с добавить на согласования)
         login("IGOV_130384GOA", " ");
@@ -123,8 +118,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         addAcceptor("Гуков Юрій Олександрович");
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
         pause(5000);
-        clickLink("Грек Одарка Олексіївна");
-        clickLink("Вийти");
+        logout();
         
         //Второй подписант(С делегирования)
         login("IGOV_151071GUO", " ");
@@ -132,8 +126,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(2000);
         clickButtonSign();
         pause(5000);
-        clickLink("Гуков Юрій Олександрович");
-        clickLink("Вийти");
+        logout();
         
         //Снять подпись 
         login("IGOV_151071GUO", " ");
@@ -143,8 +136,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(5000);
         clickButtonSign();
         pause(5000);
-        clickLink("Гуков Юрій Олександрович");
-        clickLink("Вийти");
+        logout();
         
 //        //Удалить подписанта
 //        login("IGOV_130384GOA", " ");
@@ -189,8 +181,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         SetRegionFieldInputTypeLong("sAmtDecisions", "5");      
         clickButtonSign();
         pause(5000);
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
         
         //Подписи исполнителей задачи
         login("IGOV_260185SAU", " ");
@@ -199,20 +190,14 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickButtonRefuse(sBP, "Отказать");
         //clickButtonSign();
         pause(5000);
-        clickLink("Столбова Анна Юріївна");
-        clickLink("Вийти");
+        logout();
         
         login("IGOV_230878LIV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
         pause(5000); 
-        clickLink("Літовченко Інна Вадимівна");
-        clickLink("Вийти");
-        
-        
-        
-        
+        logout();
         
         //Подписываем (Утверждение)      
         login("IGOV_110771GAV", " ");
@@ -222,8 +207,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         addVisor("Павленко Юлія Юріївна");
         clickButtonSign();
         pause(5000);
-        clickLink("Герман Август Васильович");
-        clickLink("Вийти");
+        logout();
         
         //Ознакомление
         login("IGOV_220290PUU", " ");
@@ -232,8 +216,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(2000);
         clickButton("Ознайомлений");
         pause(5000);
-        clickLink("Павленко Юлія Юріївна");
-        clickLink("Вийти");
+        logout();
         
         //Ознакомление Автором
         login("IGOV_270907SVK", " ");
@@ -242,10 +225,65 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(5000);
         clickButton("Ознайомлений");
         pause(5000);
-        clickLink("Смоктій Вікторія Кирилівна");
-        clickLink("Вийти");
+        logout();
         
-        //Работа с задачей
+            //-----Работа с задачей------
+        //Первый исполнитель
+        login("IGOV_260185SAU", " ");
+        snapDrawerButtonMenuTabs("Завдання");
+        clickLink("На виконанні");
+        searchTaskByText(generateText);
+        //Проверка наличия кнопок
+        isExistButton("Відкрити документ",true); 
+        isExistButton("Перенести",true);
+        isExistButton("Додати",true);
+        isExistButton("Делегувати",true);
+        isExistButton("Інші дії",true);
+        clickLink("Інші дії");
+        isExistButton("Коментар",true);
+        //--
+        addReport("Виконане", "Завдання виконане");
+        isError();
+        pause(2000);
+        logout();
+        
+        
+        //Второй исполнитель
+        login("IGOV_230878LIV", " ");
+        snapDrawerButtonMenuTabs("Завдання");
+        clickLink("На виконанні");
+        searchTaskByText(generateText);
+        /*Наличие кнопок*/
+        addReport("Виконане", "Завдання виконане");
+        isError();
+        pause(2000);
+        logout();
+        
+  
+        //Контролирующий
+        login("IGOV_270907SVK", " ");
+        snapDrawerButtonMenuTabs("Завдання");
+        clickLink("На контролі");
+        searchTaskByText(generateText);
+        //Проверка наличия кнопок
+        isExistButton("Відкрити документ",true);
+        isExistButton("Прийняти завдання",true);
+        isExistButton("Перенести",true);
+        isExistButton("Відхилити звіт",true);
+        isExistButton("Інші дії",true);
+        clickLink("Інші дії");
+        isExistButton("Коментар",true);
+        isExistButton("Редагувати завдання",true);
+        isExistButton("Не прийняти",true);
+        isExistButton("Неактуально",true);
+        //--
+        clickButton("Прийняти завдання");
+        pause(2000);
+        clickButton("Відкрити документ");
+        pause(5000);
+        scrollTo("Коментарі");
+        pause(10000);
+        logout();
     }
 }
         

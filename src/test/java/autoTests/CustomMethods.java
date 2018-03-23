@@ -1680,6 +1680,7 @@ public class CustomMethods extends SetupAndTeardown {
         prepareSearchTask();
         $x("//input[@ng-model='options.searchText']").val(name);
         searchTask();
+        
     }
 
     /**
@@ -1755,6 +1756,7 @@ public class CustomMethods extends SetupAndTeardown {
         if (counter == 1){
             //$x("//span[@class='glyphicon glyphicon-remove close-search-box']").click();
             $x("//a[@ng-click='fillTaskOrderArray()']").click();
+            pause(5000);
         }
         else{
             throw new NoSuchElementException("Було знайдено " + counter + "задач замість однієї");
