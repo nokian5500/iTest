@@ -1801,7 +1801,6 @@ public class CustomMethods extends SetupAndTeardown {
         ElementsCollection participants = $$x(xPath);
         System.out.println(participants.size());
         participants.get(position-1).click();
-        clickButton("Ok");
     }
 
     /**
