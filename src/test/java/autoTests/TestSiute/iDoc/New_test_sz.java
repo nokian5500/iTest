@@ -24,8 +24,10 @@ public class New_test_sz extends CustomMethods {
 
         login("IGOV_270907SVK", " ");
         navigateToggleMenu();
+        counterBefore();
         createDocumentOrTask("Службова записка");
         clickButton("Далi");
+        counterAfter("createDoc");
         
         setDocContent("Текст службової записки");
 
@@ -56,17 +58,22 @@ public class New_test_sz extends CustomMethods {
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
         login("IGOV_200687TOV", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButton("Інші дії");
         clickButton("Делегувати");
+        pause(2000);
         addDelegate("Смоктій Оксана Данилівна");
+        pause(2000);
         isError();
+        counterAfter("sign");
         pause(2000);
         logout();
 
         /*3. Работа на этапе согласования (1 пользователь). Подписываем*/
         login("IGOV_160582SOD", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         /*Наличие кнопок*/
         clickButton("Інші дії");
@@ -88,12 +95,14 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Видалити",false);
         clickButtonSign();
         isError();
+        counterAfter("sign");
         pause(2000);
         logout();
         
         /*4 Подписываем и снимаем подпись*/
         login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         setRegionFindOrderByNumberDocument();
@@ -105,6 +114,7 @@ public class New_test_sz extends CustomMethods {
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
         login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButton("Інші дії");
         addAcceptor("Столбова Анна Юріївна");
@@ -115,7 +125,9 @@ public class New_test_sz extends CustomMethods {
         
         /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
         login("IGOV_260185SAU", " ");
+
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -125,6 +137,7 @@ public class New_test_sz extends CustomMethods {
         /*7 Подписываем и снимаем подпись*/
         login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -134,6 +147,7 @@ public class New_test_sz extends CustomMethods {
         /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
         login("IGOV_110771GAV", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButton("Інші дії");
         addAcceptor("Грек Одарка Олексіївна");
@@ -146,6 +160,7 @@ public class New_test_sz extends CustomMethods {
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
         login("IGOV_270907SVK", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButton("Редагувати");
         clickButton("Інші дії");
@@ -179,6 +194,7 @@ public class New_test_sz extends CustomMethods {
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
         login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -199,6 +215,7 @@ public class New_test_sz extends CustomMethods {
         login("IGOV_110771GAV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        counterBefore();
         clickButton("Інші дії");
         /*Наличие кнопок*/
         isExistButton("Пiдписати",true);
@@ -226,6 +243,7 @@ public class New_test_sz extends CustomMethods {
         login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        counterBefore();
         clickButtonSign();
         isError();
         pause(2000);
@@ -235,6 +253,7 @@ public class New_test_sz extends CustomMethods {
         login("IGOV_260185SAU", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        counterBefore();
         addTask();
         setTaskName(generateText(10));
         setTaskTerm("Кiлькiсть днiв пiсля", "5");
@@ -254,6 +273,7 @@ public class New_test_sz extends CustomMethods {
         login("IGOV_230878LIV", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
+        counterBefore();
         clickButton("Інші дії");
         /*Наличие кнопок*/
         isExistButton("Пiдписати",true);
@@ -318,6 +338,7 @@ public class New_test_sz extends CustomMethods {
         /*19. Заходим автором. Подписываем*/
         login("IGOV_270907SVK", " ");
         setRegionFindOrderByNumberDocument();
+        counterBefore();
         clickButton("Ознайомлений");
         setRegionFindOrderByNumberDocument();
         clickButton("Інші дії");
