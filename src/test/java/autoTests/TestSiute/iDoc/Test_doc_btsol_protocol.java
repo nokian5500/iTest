@@ -250,12 +250,11 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         clickButton("Інші дії");
         isExistButton("Коментар",true);
         isExistButton("Додати на перегляд",true);
-        isExistButton("Ознайомити",false);
+        isExistButton("Ознайомити",true);
         isExistButton("Видалити",false);
         isExistButton("Додати завдання",false);
         isExistButton("Редагувати завдання",false);
         isExistButton("Зауваження",false);
-        isExistButton("Ознайомити",false);
         isExistButton("Додати підписанта",false);
         isExistButton("Делегувати",false);
         isExistButton("Відмовити",false);
