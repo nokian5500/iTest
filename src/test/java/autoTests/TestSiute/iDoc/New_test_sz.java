@@ -66,7 +66,7 @@ public class New_test_sz extends CustomMethods {
         addDelegate("Смоктій Оксана Данилівна");
         pause(2000);
         isError();
-        counterAfter("sign");
+        //counterAfter("sign");
         pause(2000);
         logout();
 
@@ -95,8 +95,8 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Видалити",false);
         clickButtonSign();
         isError();
-        counterAfter("sign");
         pause(2000);
+        counterAfter("sign");
         logout();
         
         /*4 Подписываем и снимаем подпись*/
@@ -105,10 +105,13 @@ public class New_test_sz extends CustomMethods {
         counterBefore();
         pause(2000);
         clickButtonSign();
+        counterAfter("sign");
+        counterBefore();
         setRegionFindOrderByNumberDocument();
         cancelSign("Перевірка зняття підпису");
         isError();
         pause(2000);
+        counterAfter("backToWork");
         logout();
         
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
@@ -121,6 +124,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSignNotNeed(sBP, "коментар 1");
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
         
         /*6. Работа на этапе согласования (3 пользователь). Подписываем*/
@@ -132,9 +136,10 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
-        /*7 Подписываем и снимаем подпись*/
+        /*7 Подписываем*/
         login("IGOV_220290PUU", " ");
         setRegionFindOrderByNumberDocument();
         counterBefore();
@@ -142,6 +147,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
@@ -155,6 +161,7 @@ public class New_test_sz extends CustomMethods {
         //clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
@@ -181,7 +188,6 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Ознайомлен",false);
         isExistButton("Додати завдання",false);
         isExistButton("Редагувати завдання",false);
-        
         removeAllSigns();
         setFieldCheckBox("eReturnDocument");
         //answerComment("Відповідь на зауваження");
@@ -189,6 +195,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("editDoc");
         logout();
 
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
@@ -199,6 +206,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
         
         /*11. Работа на этапе согласования (2 пользователь). Подписываем”
@@ -235,8 +243,10 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Редагувати завдання",false);
         isExistButton("Видалити",false);
         clickButtonSign();
+        pause(2000);
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*13. Подписываем дополнительнымм утверждающим (2 пользователь). Подписываем*/
@@ -247,6 +257,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*14. Заходим адресатом 1. Добавляем задание 1*/
@@ -267,6 +278,7 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*15. Заходим адресатом 2.*/
@@ -295,11 +307,13 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
+        counterAfter("sign");
         logout();
 
         /*16. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
         login("IGOV_270907SVK", " ");
         snapDrawerButtonMenuTabs("Завдання");
+        counterBefore();
         clickLink("На виконанні");
         searchTaskByText(generateText);
         /*Наличие кнопок*/
@@ -313,26 +327,31 @@ public class New_test_sz extends CustomMethods {
         addReport("Виконане", "Завдання виконане");
         isError();
         pause(2000);
+        counterAfter("reportTask");
         logout();
 
         /*17. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
         login("IGOV_110771GAV", " ");
         snapDrawerButtonMenuTabs("Завдання");
+        counterBefore();
         clickLink("На виконанні");
         searchTaskByText(generateText);
         addReport("Не актуальне", "Не хочу це робити");
         isError();
         pause(2000);
+        counterAfter("reportTask");
         logout();
 
         /*18. Заходим контролирующим. Подтверждаем отчет*/
         login("IGOV_260185SAU", " ");
         snapDrawerButtonMenuTabs("Завдання");
+        counterBefore();
         clickLink("На контролі");
         searchTaskByText(generateText);
         clickButton("Прийняти завдання");
         isError();
         pause(2000);
+        counterAfter("finishTask");
         logout();
 
         /*19. Заходим автором. Подписываем*/
@@ -340,6 +359,8 @@ public class New_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         counterBefore();
         clickButton("Ознайомлений");
+        pause(2000);
+        counterAfter("deleteDoc");
         setRegionFindOrderByNumberDocument();
         clickButton("Інші дії");
         addViewer("Бондарь Ольга Євгенієвна");
