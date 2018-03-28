@@ -131,7 +131,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         //clickButton("Інші дії");
         addAcceptor("Гуков Юрій Олександрович");
         
-        removeParticipant(1, true);
+        removeParticipant(3, true);
                 isError();
         addAcceptor("Гуков Юрій Олександрович");
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
