@@ -23,14 +23,13 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
 
         openURLdashboard(getRegionUrl());
         
+        //----Создание---- 
         //Авторизация
         login("IGOV_270907SVK", " ");
         navigateToggleMenu();
         createDocumentOrTask("Протокол оперативної наради");
         clickButton("Далi");
-        pause(5000);
-        
-            //----Создание---- 
+        pause(5000); 
         setDocTitle("Автотест протокола"); 
         setDocContent("Автотест протокола");
         SetRegionFieldInputTypeDate("sDateMeeting", "19.03.2018");
@@ -43,9 +42,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
-        
-        
-        
+              
         /*Таблица Узгоджуючі*/
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", "Туренко Ольга Володимирівна");
         /*addRegionsTableRow("sTableAccept");
@@ -56,7 +53,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         /*Таблица Затверджуючий*/
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", "Герман Август Васильович");
         
-        //Додати завдання (Работает)
+        //Додати завдання
         addTask();
         setTaskName(generateText(10));
         setTaskTerm("Кiлькiсть днiв пiсля", "3");
@@ -71,6 +68,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         //Добавляем на просмотр
         clickButton("Інші дії");
         addViewer("Літовченко Інна Вадимівна");
+        
         //Проверка наличия кнопок (Работает)
         isExistButton("Зберегти",true);
         isExistButton("Роздрукувати",true);
@@ -93,13 +91,11 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         logout();       
 
             //----Подписываем (Согласование)----
-        //Первый подписант
+            
+        //Первый подписант с таблицы (На просмотр + Делегирование)
         login("IGOV_200687TOV", " ");
         setRegionFindOrderByNumberDocument();
         pause(5000);
-//        isError();
-       // addComment("Тестове зауваження");
-        //clickButton("Ok"); 
         scrollTo("Затвердження");
         clickButton("Інші дії");
         addViewer("Смоктій Оксана Данилівна");
@@ -110,11 +106,11 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(2000);
         logout();
         
-        //подпись еще одним исполнителем (с добавить на согласования)
+        //Подписант с делегирования
         login("IGOV_130384GOA", " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        
+        //Проверка наличия кнопок
         isExistButton("Пiдписати",true);
         isExistButton("Зберегти",true);
         isExistButton("Роздрукувати",true);
@@ -131,29 +127,14 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         isExistButton("Редагувати завдання",false);
         isExistButton("Видалити",false);
         isExistButton("Додати завдання",false);
-        //----
+
         //clickButton("Інші дії");
         addAcceptor("Гуков Юрій Олександрович");
-
+        
+        removeParticipant(1, true);
+                isError();
+        addAcceptor("Гуков Юрій Олександрович");
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
-        pause(5000);
-        logout();
-        
-        //Второй подписант(С делегирования)
-        login("IGOV_151071GUO", " ");
-        setRegionFindOrderByNumberDocument();
-        pause(2000);
-        clickButtonSign();
-        pause(5000);
-        logout();
-        
-        //Снять подпись 
-        login("IGOV_151071GUO", " ");
-        setRegionFindOrderByNumberDocument();
-        pause(2000);
-        cancelSign("Перевірка зняття підпису");
-        pause(5000);
-        clickButtonSign();
         pause(5000);
         logout();
         
@@ -166,7 +147,23 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
 //        pause(5000);
 //        clickLink("рек Одарка Олексіївна");
 //        clickLink("Вийти");
-        
+
+        //Третий подписант с (Додати підписанта)
+        login("IGOV_151071GUO", " ");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        clickButtonSign();
+        pause(5000);
+        logout();
+        //Проверка снятия подписи
+        login("IGOV_151071GUO", " ");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        cancelSign("Перевірка зняття підпису");
+        pause(5000);
+        clickButtonSign();
+        pause(5000);
+        logout();                  
         
                 //-----Редактирование-----
         //Автору, ответить на замечание и редактировать
@@ -202,14 +199,16 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         pause(5000);
         logout();
         
-        //Подписи исполнителей задачи
+        
+        //Подписи исполнителей задачи (Согласование)
         login("IGOV_260185SAU", " ");
-        setRegionFindOrderByNumberDocument();
-        pause(2000);
+        setRegionFindOrderByNumberDocument();  
         clickButtonRefuse(sBP, "Отказать");
         //clickButtonSign();
         pause(5000);
         logout();
+        
+
         
         login("IGOV_230878LIV", " ");
         setRegionFindOrderByNumberDocument();
