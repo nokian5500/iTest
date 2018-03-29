@@ -2034,8 +2034,9 @@ public class CustomMethods extends SetupAndTeardown {
      * @param position
      */
     public void removeParticipant(int position, boolean isAwait){
-        String xPath = "//button[@ng-click='removeUserFromDoc(users, true)']";
-        boolean isExist = $x(xPath).isDisplayed();
+        pause(3000);
+        String xPath = "//button[@ng-click='removeUserFromDoc(users)']";
+        boolean isExist = $x(xPath).scrollIntoView(true).isDisplayed();
         if(isAwait && !isExist){
             throw new ElementNotVisibleException("Має бути можливість вилучити підписанта");
         }
