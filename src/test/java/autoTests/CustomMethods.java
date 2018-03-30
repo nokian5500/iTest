@@ -759,7 +759,7 @@ public class CustomMethods extends SetupAndTeardown {
      * Выход из учетки
      */
     public void logout() throws Exception {
-        pause (2000);
+        pause (2300);
         $("#accountId").click();
         clickLink("Вийти");
         //.pressEnter();
@@ -2036,7 +2036,18 @@ public class CustomMethods extends SetupAndTeardown {
     public void removeParticipant(int position, boolean isAwait){
         pause(3000);
         String xPath = "//button[@ng-click='removeUserFromDoc(users)']";
-        boolean isExist = $x(xPath).scrollIntoView(true).isDisplayed();
+        String xPath2 = "//button[@ng-click='removeUserFromDoc(users, true)']";
+
+        boolean isExist;
+
+        try {
+            isExist = $x(xPath).scrollIntoView(true).isDisplayed();
+        }
+        catch (ElementNotVisibleException | ElementNotFound ex){
+            isExist = $x(xPath2).scrollIntoView(true).isDisplayed();
+            xPath = xPath2;
+        }
+
         if(isAwait && !isExist){
             throw new ElementNotVisibleException("Має бути можливість вилучити підписанта");
         }

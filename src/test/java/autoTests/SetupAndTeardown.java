@@ -33,7 +33,7 @@ public class SetupAndTeardown extends ConfigClass {
     @Before
     public void setDriver() {
         Configuration.startMaximized = true;
-        Configuration.browser = "chrome";
+        //Configuration.browser = "chrome";
         Configuration.timeout = 10000;
         Configuration.collectionsTimeout = 10000;
 
