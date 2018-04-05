@@ -27,6 +27,7 @@ public class New_test_sz extends CustomMethods {
         counterBefore();
         createDocumentOrTask("Службова записка");
         clickButton("Далi");
+        pause(5000);
         counterAfter("createDoc");
         
         setDocContent("Текст службової записки");

@@ -31,6 +31,6 @@ public class ConfigClass {
         String BetaCentral = "https://beta.test.igov.org.ua";
         String BetaRegion = "https://beta.test.idoc.com.ua";
         String CoorgGamma = "https://coorg-gamma.test.idoc.com.ua";
-        return GammaRegion;
+        return BetaRegion;
     }
 }
