@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 
+import javax.swing.*;
+import javax.xml.bind.Element;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
@@ -1460,7 +1462,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void addNewExecutor(String name){
         //$(By.xpath("//a[@a=ng-click='addNewExecutor($index)']")).click();
-        $$(By.xpath("//a[contains(.,'Додати виконавця')]")).last().click();
+        $$(By.xpath("//a[contains(.,'Додати виконавця')]")).last().scrollIntoView(true).click();
         setExecutor(name);
     }
 
@@ -1469,7 +1471,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param type
      */
     public void setTaskForm(String type) {
-        $$(By.xpath("//*[@ng-model='issue.taskForm']")).last().click();
+        $$(By.xpath("//*[@ng-model='issue.taskForm']")).last().scrollIntoView(true).click();
        //ElementsCollection form = $$(By.xpath("//*[@ng-model='issue.taskForm']"));
         //form.last().click();
         $$(By.xpath("//*[@ng-model='issue.taskForm']//option[contains(.,'" + type + "')]")).last().click();
@@ -1482,7 +1484,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void setTaskTerm(String type, String term) {
         int count = $$(By.xpath("//*[@ng-model='issue.taskTerm.property']")).size()-1;
-        $(By.xpath("//*[@name='taskTerm" + count +"']")).click();
+        $(By.xpath("//*[@name='taskTerm" + count +"']")).scrollIntoView(true).click();
         $(By.xpath("//*[@name='taskTerm" + count +"']//option[contains(.,'" + type + "')]")).click();
         if (type.equalsIgnoreCase("Календарна дата")) {
             $(By.xpath("//*[@name='taskDate" + count + "']")).shouldBe(exist).sendKeys(term);
@@ -1496,7 +1498,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param term
      */
     public void setTaskTerm(String term) {
-            $(By.xpath("//*[@name='taskDate0']")).shouldBe(exist).sendKeys(term);
+            $(By.xpath("//*[@name='taskDate0']")).scrollIntoView(true).shouldBe(exist).sendKeys(term);
     }
 
 
@@ -2224,6 +2226,58 @@ public class CustomMethods extends SetupAndTeardown {
     public void scrollTo(String sText){
         $(byText(sText)).scrollIntoView(true);
     }
+
+    public void checkAllAttachmentsFromHTML(){
+        ElementsCollection links = $$x("//span[@d='sTextForm']//a");
+        for(SelenideElement link : links){
+            String attach = link.attr("href");
+            attach = parseHref(attach);
+            if(!isExistButton(attach)){
+                screenshot(generateText(10));
+                throw new ElementNotVisibleException("Додатка" + attach +" у таблиці нема");
+            }
+        }
+    }
+
+    public String parseHref(String href){
+
+        String sAttach = "";
+        String[] list;
+
+        if(href.contains("/attachment/Mongo/")){
+            list = href.split("/");
+            System.out.println("len " + list.length);
+            System.out.println("list + " + list.toString());
+            for(int i = 0; i <= list.length; i++){
+                if(list[i].equalsIgnoreCase("Mongo")){
+                    sAttach = list[++i];
+                    break;
+                }
+            }
+        }
+        return sAttach;
+    }
+    public void openLink(String sForm) {
+        SelenideElement elem = $x("//span[@id='" + sForm +"']//a");
+       // Action action = new Action();
+        //button[@role='presentation']/i[@class='mce-ico mce-i-link']
+        if(elem.scrollIntoView(true).isDisplayed()){
+            elem.click();
+        }else {
+            screenshot(generateText(10));
+            throw new NoSuchElementException("Посилання відсутнє");
+        }
+    }
+    //href="api/tasks/download/0787b4d3-95f0-415e-8007-8450d5c74e71/attachment/Mongo/coverage-error.log/server/alpha.test.idoc.com.ua"
+
+    public void backPage(){
+        back();
+    }
+
+    public void forwardPage(){
+        forward();
+    }
+
 
 
 }
