@@ -1926,7 +1926,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void searchTaskByText(String name){
         prepareSearchTask();
-        $x("//input[@ng-model='options.searchText']").val(name);
+        $x("//input[@ng-model='options.sFind']").val(name);
         searchTask();
         
     }
@@ -1938,10 +1938,9 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void searchTaskByTextAndDateCreate(String name, String date){
         prepareSearchTask();
-        $x("//input[@ng-model='options.searchText']").val(name);
-        $x("//select[@ng-model='options.dateOption']").click();
-        $x("//option[@value='startTime']").click();
-        $x("//input[@ng-model='options.startDate']").setValue(date);
+        $x("//input[@ng-model='options.sFind']").val(name);
+        $x("//select[@ng-model='options.sDateType']").selectOption("Період створення");
+        $x("//input[@ng-model='options.sDateFrom']").setValue(date);
         searchTask();
     }
 
@@ -1952,10 +1951,9 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void searchTaskByTextAndDateExecute(String name, String date){
         prepareSearchTask();
-        $x("//input[@ng-model='options.searchText']").val(name);
-        $x("//select[@ng-model='options.dateOption']").click();
-        $x("//option[@value='executionTime']").click();
-        $x("//input[@ng-model='options.endDate']").setValue(date);
+        $x("//input[@ng-model='options.sFind']").val(name);
+        $x("//select[@ng-model='options.sDateType']").selectOption("Період створення");
+        $x("//input[@ng-model='options.sDateTo']").setValue(date);
         searchTask();
     }
 
@@ -1965,9 +1963,9 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void searchTaskByDateCreate(String date){
         prepareSearchTask();
-        $x("//select[@ng-model='options.dateOption']").click();
+        $x("//select[@ng-model='options.sDateType']").selectOption("Період створення");
         $x("//option[@value='startTime']").click();
-        $x("//input[@ng-model='options.startDate']").setValue(date);
+        $x("//input[@ng-model='options.sDateFrom']").setValue(date);
         searchTask();
     }
 
@@ -1977,9 +1975,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void searchTaskByDateExecute(String date){
         prepareSearchTask();
-        $x("//select[@ng-model='options.dateOption']").click();
-        $x("//option[@value='executionTime']").click();
-        $x("//input[@ng-model='options.endDate']").setValue(date);
+        $x("//select[@ng-model='options.sDateType']").selectOption("Період створення");
+        $x("//input[@ng-model='options.sDateTo']").setValue(date);
         searchTask();
     }
 
@@ -1988,8 +1985,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     private void prepareSearchTask(){
         $x("//button[@ng-click='setCurrentTab(sSelectedTask, tabMenu)']").click();
-        $x("//select[@ng-model='options.tabSelect']").click();
-        $x("//option[@value='TaskAll']").click();
+        $x("//div[@placeholder='Оберіть вкладку...']/span[@ng-click='$select.activate()']").click();
+        $x("//ul[@repeat='item in tabsObject | tabsFilter: {tabMenu}']//div[contains(.,'Усі завдання')]").click();
     }
 
     /**
@@ -1998,7 +1995,7 @@ public class CustomMethods extends SetupAndTeardown {
     private void searchTask(){
         $x("//input[@type='submit']").click();
         pause(3000);
-        SelenideElement seCounter = $x("//div[@ng-if='searchCounter']//span[contains(.,'Знайдено документів:')]");
+        SelenideElement seCounter = $x("//div[@ng-if='paramsForFilter']//span[contains(.,'Знайдено документів:')]");
         String tag = seCounter.getText();
         int counter = countByTag(tag);
         if (counter == 1){
