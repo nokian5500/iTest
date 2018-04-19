@@ -63,6 +63,8 @@ public class New_test_sz extends CustomMethods {
         String Name8 = "Туренко Ольга Володимирівна";
         String Login9 = "IGOV_220290PUU";
         String Name9 = "Павленко Юлія Юріївна";
+        String Login10 = "IGOV_151071GUO";
+        String Name10 = "Гуков Юрій Олександрович";
         
 
         openURLdashboard(getRegionUrl());
@@ -73,7 +75,7 @@ public class New_test_sz extends CustomMethods {
         createDocumentOrTask("Службова записка");
         clickButton("Далi");
         pause(5000);
-        counterAfter("createDoc");
+        //counterAfter("createDoc");
         
         setDocContent("Текст службової записки");
 
@@ -99,6 +101,7 @@ public class New_test_sz extends CustomMethods {
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
         isError();
+        pause(2000);
         logout();
         
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
@@ -142,18 +145,18 @@ public class New_test_sz extends CustomMethods {
         clickButtonSign();
         isError();
         pause(2000);
-        counterAfter("sign");
+        //counterAfter("sign");
         logout();
         
         /*4 Подписываем и снимаем подпись*/
         login(Login2, " ");
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         pause(2000);
         //counterAfter("sign");
-        //counterBefore();
+        counterBefore();
         setRegionFindOrderByNumberDocument();
         cancelSign("Перевірка зняття підпису");
         isError();
@@ -164,7 +167,7 @@ public class New_test_sz extends CustomMethods {
         /*5. Работа на этапе согласования (2 пользователь). Добавляем подписанта и вібираем “Підпис не потрібен”*/
         login(Login3, " ");
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButton("Інші дії");
         addAcceptor(Name5);
@@ -178,7 +181,7 @@ public class New_test_sz extends CustomMethods {
         login(Login5, " ");
 
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -189,7 +192,7 @@ public class New_test_sz extends CustomMethods {
         /*7 Подписываем*/
         login(Login2, " ");
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -200,7 +203,7 @@ public class New_test_sz extends CustomMethods {
         /*8. Работа на этапе утверждения. Добавляем замечания и нового подписанта*/
         login(Login4, " ");
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButton("Інші дії");
         addAcceptor(Name3);
@@ -213,6 +216,10 @@ public class New_test_sz extends CustomMethods {
 
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
         login(LoginAuthor, " ");
+        setRegionFindOrderByNumberDocument();
+        pause(2000);
+        answerComment("Відповідь на зауваження");
+        clickLink("Нерозглянутi");
         setRegionFindOrderByNumberDocument();
         //counterBefore();
         pause(2000);
@@ -237,8 +244,6 @@ public class New_test_sz extends CustomMethods {
         isExistButton("Редагувати завдання",false);
         removeAllSigns();
         setFieldCheckBox("eReturnDocument");
-        //answerComment("Відповідь на зауваження");
-        //clickButton("Ok");
         clickButtonSign();
         isError();
         pause(2000);
@@ -248,7 +253,7 @@ public class New_test_sz extends CustomMethods {
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
         login(Login2, " ");
         setRegionFindOrderByNumberDocument();
-        //counterBefore();
+        counterBefore();
         pause(2000);
         clickButtonSign();
         isError();
@@ -270,7 +275,7 @@ public class New_test_sz extends CustomMethods {
         login(Login4, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        //counterBefore();
+        counterBefore();
         clickButton("Інші дії");
         /*Наличие кнопок*/
         isExistButton("Пiдписати",true);
@@ -300,7 +305,7 @@ public class New_test_sz extends CustomMethods {
         login(Login3, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        //counterBefore();
+        counterBefore();
         clickButtonSign();
         isError();
         pause(2000);
@@ -311,7 +316,7 @@ public class New_test_sz extends CustomMethods {
         login(Login5, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        //counterBefore();
+        counterBefore();
         addTask();
         setTaskName(generateText(10));
         setTaskTerm("Кiлькiсть днiв пiсля", "5");
@@ -332,7 +337,7 @@ public class New_test_sz extends CustomMethods {
         login(Login6, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
-        //counterBefore();
+        counterBefore();
         clickButton("Інші дії");
         /*Наличие кнопок*/
         isExistButton("Пiдписати",true);
@@ -410,9 +415,9 @@ public class New_test_sz extends CustomMethods {
         //counterAfter("deleteDoc");
         setRegionFindOrderByNumberDocument();
         clickButton("Інші дії");
-        addViewer(Name8);
-        clickButton("Інші дії");
         addViewer(Name9);
+        clickButton("Інші дії");
+        addViewer(Name10);
         removeParticipant(2,true);
         isError();
         pause(2000);
