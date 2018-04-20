@@ -41,17 +41,17 @@ public class CustomMethods extends SetupAndTeardown {
     private static Integer myDocs;
     private static Integer ecp;
     private static Integer watched;
-    private static Integer history;
+    //private static Integer history;
     private static Integer control;
     private static Integer execution;
-    private static Integer controlled;
-    private static Integer executed;
-    private static Integer untreated;
-    private static Integer inwork;
-    private static Integer shedule;
+    //private static Integer controlled;
+    //private static Integer executed;
+    //private static Integer untreated;
+    //private static Integer inwork;
+    //private static Integer shedule;
 
     /**
-     * Первые данные со счетчика
+    Первые данные со счетчика
      */
     public void counterBefore(){
         counter(true, null);
@@ -62,16 +62,17 @@ public class CustomMethods extends SetupAndTeardown {
      * Фильтр может принимать следующие значения:
      * createDoc: Мої документи + 1
      * sign: Нерозглянуті - 1, Переглянуті + 1
-     * finishDoc: Мої документи не меняются, Історія + 1
+     * finishDoc: Мої документи не меняются
      * backToWork: Переглянуті - 1, Нерозглянуті + 1
-     * deleteDoc: Мої документи - 1, Історія + 1
+     * deleteDoc: Мої документи - 1
      * editDoc: ничего не должно поменяться
-     * signToHistory: Нерозглянуті - 1, Історія + 1
-     *
+     * signToHistory: Нерозглянуті - 1
+     * <p>
      * createTask: На контролі + 1
-     * finishTask: На контролі - 1, Проконтрольовані + 1
+     * finishTask: На контролі - 1
      * reportTask: ничего не должно поменяться
      * answerTask: ничего не должно поменяться
+     *
      * @param filter
      */
     public void counterAfter(String filter){
@@ -92,59 +93,46 @@ public class CustomMethods extends SetupAndTeardown {
         Integer myDocsTemp = 0;
         Integer ecpTemp = 0;
         Integer watchedTemp = 0;
-        Integer historyTemp = 0;
         Integer controlTemp = 0;
         Integer executionTemp = 0;
-        Integer controlledTemp = 0;
-        Integer executedTemp = 0;
-        Integer untreatedTemp = 0;
-        Integer inworkTemp = 0;
-        Integer sheduleTemp = 0;
+
 
         //булевое значение, тру если разница не ноль
         boolean unwatchedResult;
         boolean myDocsResult;
         boolean ecpResult;
         boolean watchedResult;
-        boolean historyResult;
         boolean controlResult;
         boolean executionResult;
-        boolean controlledResult;
-        boolean executedResult;
-        boolean untreatedResult;
-        boolean inworkResult;
-        boolean sheduleResult;
+
 
         if("Документи".equalsIgnoreCase(tab)){
             unwatchedTemp = Integer.valueOf($x("//a[@id='documents']/span").getText());
             myDocsTemp = Integer.valueOf($x("//a[@id='myDocuments']/span").getText());
             ecpTemp = Integer.valueOf($x("//a[@id='ecp']/span").getText());
             watchedTemp = Integer.valueOf($x("//a[@id='viewed']/span").getText());
-            historyTemp = Integer.valueOf($x("//a[@id='docHistory']/span").getText());
+            //historyTemp = Integer.valueOf($x("//a[@id='docHistory']/span").getText());
             System.out.println(unwatchedTemp);
             System.out.println(myDocsTemp);
             System.out.println(ecpTemp);
             System.out.println(watchedTemp);
-            System.out.println(historyTemp);
             if (isBefore) {
                 unwatched = unwatchedTemp;
                 myDocs = myDocsTemp;
                 ecp = ecpTemp;
                 watched = watchedTemp;
-                history = historyTemp;
             }
             unwatchedResult = unwatchedTemp - unwatched == 0? false : true;
             myDocsResult = myDocsTemp - myDocs == 0? false : true;
             ecpResult = ecpTemp - ecp == 0? false : true;
             watchedResult = watchedTemp - watched == 0? false : true;
-            historyResult = historyTemp - history == 0? false : true;
 
             if("createDoc".equalsIgnoreCase(filter)){
                 if(myDocsTemp != (myDocs + 1)){
                     screenshot(generateText(10));
                     throw new RuntimeException("Мої документи повинні мати " + (myDocs + 1) + " документів, натомість мають - " + myDocsTemp);
                 }
-                if(unwatchedResult || ecpResult || watchedResult || historyResult){
+                if(unwatchedResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
@@ -157,15 +145,11 @@ public class CustomMethods extends SetupAndTeardown {
                     screenshot(generateText(10));
                     throw new RuntimeException("Переглянуті  повинні мати " + (watched + 1) + " документів, натомість мають - " + watchedTemp);
                 }
-                if(myDocsResult || ecpResult || historyResult){
+                if(myDocsResult || ecpResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
             }else if("finishDoc".equalsIgnoreCase(filter)){
-                if(historyTemp != (history + 1)){
-                    screenshot(generateText(10));
-                    throw new RuntimeException("Історія повинна мати " + (history + 1) + " документів, натомість має - " + historyTemp);
-                }
                 if(unwatchedResult || myDocsResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
@@ -179,7 +163,7 @@ public class CustomMethods extends SetupAndTeardown {
                     screenshot(generateText(10));
                     throw new RuntimeException("Переглянуті  повинні мати " + (watched - 1) + " документів, натомість мають - " + watchedTemp);
                 }
-                if(myDocsResult || ecpResult || historyResult){
+                if(myDocsResult || ecpResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
@@ -188,19 +172,11 @@ public class CustomMethods extends SetupAndTeardown {
                     screenshot(generateText(10));
                     throw new RuntimeException("Мої документи повинні мати " + (myDocs - 1) + " документів, натомість мають - " + myDocsTemp);
                 }
-                if(historyTemp != (history + 1)){
-                    screenshot(generateText(10));
-                    throw new RuntimeException("Історія повинна мати " + (history + 1) + " документів, натомість має - " + historyTemp);
-                }
                 if(unwatchedResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
             }else if ("signToHistory".equalsIgnoreCase(filter)) {
-                if (historyTemp != (history + 1)) {
-                    screenshot(generateText(10));
-                    throw new RuntimeException("Історія повинна мати " + (history + 1) + " документів, натомість має - " + historyTemp);
-                }
                 if (unwatchedTemp != (unwatched - 1)) {
                     screenshot(generateText(10));
                     throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched - 1) + " документів, натомість мають - " + unwatchedTemp);
@@ -210,7 +186,7 @@ public class CustomMethods extends SetupAndTeardown {
                     throw new RuntimeException("Інший лічильник змінився");
                 }
             }else if ("editDoc".equalsIgnoreCase(filter)) {
-                if(unwatchedResult || myDocsResult || ecpResult || watchedResult || historyResult){
+                if(unwatchedResult || myDocsResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
@@ -219,38 +195,18 @@ public class CustomMethods extends SetupAndTeardown {
         else if("Завдання".equalsIgnoreCase(tab)){
             controlTemp = Integer.valueOf($x("//a[@id='control']/span").getText());
             executionTemp = Integer.valueOf($x("//a[@id='execution']/span").getText());
-            controlledTemp = Integer.valueOf($x("//a[@id='controled']/span").getText());
-            executedTemp = Integer.valueOf($x("//a[@id='executed']/span").getText());
-            untreatedTemp = Integer.valueOf($x("//a[@id='unassigned']/span").getText());
-            inworkTemp = Integer.valueOf($x("//a[@id='selfAssigned']/span").getText());
-            sheduleTemp = Integer.valueOf($x("//a[@id='tickets']/span").getText());
             System.out.println(controlTemp);
             System.out.println(executionTemp);
-            System.out.println(controlledTemp);
-            System.out.println(executedTemp);
-            System.out.println(untreatedTemp);
-            System.out.println(inworkTemp);
-            System.out.println(sheduleTemp);
+
             if (isBefore) {
                 control = controlTemp;
                 execution = executionTemp;
-                controlled = controlledTemp;
-                executed = executedTemp;
-                untreated = untreatedTemp;
-                inwork = inworkTemp;
-                shedule = sheduleTemp;
             }
             controlResult = controlTemp - control == 0? false : true;
             executionResult = executionTemp - execution == 0? false : true;
-            controlledResult = controlledTemp - controlled == 0? false : true;
-            executedResult = executedTemp - executed == 0? false : true;
-            untreatedResult = untreatedTemp - untreated == 0? false : true;
-            inworkResult = inworkTemp - inwork == 0? false : true;
-            sheduleResult = sheduleTemp - shedule == 0? false : true;
 
             if ("reportTask".equalsIgnoreCase(filter) || "answerTask".equalsIgnoreCase(filter)) {
-                if(controlResult || controlledResult || executionResult
-                        || controlledResult || executedResult || untreatedResult || inworkResult || sheduleResult){
+                if(controlResult || executionResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
@@ -259,7 +215,7 @@ public class CustomMethods extends SetupAndTeardown {
                     screenshot(generateText(10));
                     throw new RuntimeException("На контролі повинна бути " + (control + 1) + " задач, натомість - " + controlTemp);
                 }
-                if(executionResult || controlledResult || executedResult || untreatedResult || inworkResult || sheduleResult){
+                if(executionResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
@@ -268,11 +224,7 @@ public class CustomMethods extends SetupAndTeardown {
                     screenshot(generateText(10));
                     throw new RuntimeException("На контролі повинна бути " + (control - 1) + " задач, натомість - " + controlTemp);
                 }
-                if (controlledTemp != (controlled + 1)) {
-                    screenshot(generateText(10));
-                    throw new RuntimeException("Проконтрольовано має бути " + (controlled + 1) + " задач, натомість - " + controlledTemp);
-                }
-                if(executionResult || executedResult || untreatedResult || inworkResult || sheduleResult){
+                if(executionResult){
                     screenshot(generateText(10));
                     throw new RuntimeException("Інший лічильник змінився");
                 }
