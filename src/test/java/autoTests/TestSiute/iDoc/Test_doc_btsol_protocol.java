@@ -20,12 +20,57 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
     public void Test_doc_btsol_protocol() throws Exception {
         String sBP = "_doc_btsol_protocol_meeting";
         String email = "autotestbeta@gmail.com";
+        
+        //Используемые в документе логины для Альфы/Гаммы
+        /*String LoginAuthor = "IGOV_270907SVK";
+        String NameAuthor = "Смоктій Вікторія Кирилівна";
+        String Login1 = "IGOV_200687TOV";
+        String Name1 = "Туренко Ольга Володимирівна";
+        String Login2 = "IGOV_220290PUU";
+        String Name2 = "Павленко Юлія Юріївна";
+        String Login3 = "IGOV_130384GOA";
+        String Name3 = "Грек Одарка Олексіївна";
+        String Login4 = "IGOV_110771GAV";
+        String Name4 = "Герман Август Васильович";
+        String Login5 = "IGOV_260185SAU";
+        String Name5 = "Столбова Анна Юріївна";
+        String Login6 = "IGOV_230878LIV";
+        String Name6 = "Літовченко Інна Вадимівна";
+        String Login7 = "IGOV_151071GUO";
+        String Name7 = "Гуков Юрій Олександрович";
+        String Login8 = "IGOV_301082BOY";
+        String Name8 = "Бондарь Ольга Євгенієвна";
+        String Login9 = "IGOV_310780BVV";
+        String Name9 = "Белявцев Володимир Володимирович";*/
+        
+        //Используемые в документе логины для Беты
+        String LoginAuthor = "IGOV_301082BOY";
+        String NameAuthor = "Бондарь Ольга Євгенієвна";
+        String Login1 = "IGOV_160582SOD";
+        String Name1 = "Смоктій Оксана Данилівна";
+        String Login2 = "IGOV_310780BVV";
+        String Name2 = "Белявцев Володимир Володимирович";
+        String Login3 = "IGOV_180488PUG";
+        String Name3 = "Продан Юлія Георгіївна";
+        String Login4 = "IGOV_100982SOV";
+        String Name4 = "Смірнова Олена Володимирівна";
+        String Login5 = "IGOV_210961SMU";
+        String Name5 = "Соколова Марина Юріївна";
+        String Login6 = "IGOV_311288BUD";
+        String Name6 = "Біла Юлія Данилівна";
+        String Login7 = "IGOV_180277SMV";
+        String Name7 = "Свідрань Максим Володимирович";
+        String Login8 = "IGOV_200687TOV";
+        String Name8 = "Туренко Ольга Володимирівна";
+        String Login9 = "IGOV_220290PUU";
+        String Name9 = "Павленко Юлія Юріївна";
+
 
         openURLdashboard(getRegionUrl());
         
         //----Создание---- 
         //Авторизация
-        login("IGOV_270907SVK", " ");
+        login(LoginAuthor, " ");
         navigateToggleMenu();
         createDocumentOrTask("Протокол оперативної наради");
         clickButton("Далi");
@@ -34,24 +79,24 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         setDocContent("Автотест протокола");
         SetRegionFieldInputTypeDate("sDateMeeting", "19.03.2018");
         SetRegionFieldInputTypeLong("sAmtDecisions", "2");
-        setSelect("_doc_btsol_protocol_meeting", "sName_Chairperson", "Смоктій Вікторія Кирилівна");
-        setParticipant(sBP, "sTable_listener", "sName_isExecute", "0", "Туренко Ольга Володимирівна");
+        setSelect("_doc_btsol_protocol_meeting", "sName_Chairperson", NameAuthor);
+        setParticipant(sBP, "sTable_listener", "sName_isExecute", "0", Name1);
         addRegionsTableRow("sTable_listener");
-        setParticipant(sBP, "sTable_listener", "sName_isExecute", "1", "Смоктій Вікторія Кирилівна");
+        setParticipant(sBP, "sTable_listener", "sName_isExecute", "1", NameAuthor);
         setTaskContent("Запустить автотест протокола");
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
               
         /*Таблица Узгоджуючі*/
-        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", "Туренко Ольга Володимирівна");
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", Name1);
         /*addRegionsTableRow("sTableAccept");
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "1", "Грек Одарка Олексіївна");
         addRegionsTableRow("sTableAccept");
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "2", "Столбова Анна Юріївна");*/
         
         /*Таблица Затверджуючий*/
-        setApprover(sBP, "sTableAgree", "sName_Approver", "0", "Герман Август Васильович");
+        setApprover(sBP, "sTableAgree", "sName_Approver", "0", Name2);
         
         //Додати завдання
         addTask();
@@ -59,8 +104,8 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         setTaskTerm("Кiлькiсть днiв пiсля", "3");
         setTaskForm("Текстове повiдомлення");
         SetRegionFieldInputTypeLong("sAmtDecisions", "3");
-        setController("Смоктій Вікторія Кирилівна");
-        setExecutor("Столбова Анна Юріївна");
+        setController(NameAuthor);
+        setExecutor(Name4);
         addNewExecutor("Літовченко Інна Вадимівна");  
         pause(5000);
         setTaskContent("Перевірка завдання автотестом");
@@ -87,27 +132,29 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
            
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
+        pause(5000); 
         isError();
         logout();       
 
             //----Подписываем (Согласование)----
             
         //Первый подписант с таблицы (На просмотр + Делегирование)
-        login("IGOV_200687TOV", " ");
+        login(Login1, " ");
         setRegionFindOrderByNumberDocument();
         pause(5000);
         scrollTo("Затвердження");
         clickButton("Інші дії");
-        addViewer("Смоктій Оксана Данилівна");
+        addViewer(Name9);
+        pause(2000);
         clickButton("Інші дії");
         clickButton("Делегувати");
-        addDelegate("Грек Одарка Олексіївна");
+        addDelegate(Name6);
         isError();
         pause(2000);
         logout();
         
         //Подписант с делегирования
-        login("IGOV_130384GOA", " ");
+        login(Login6, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         //Проверка наличия кнопок
@@ -129,11 +176,13 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         isExistButton("Додати завдання",false);
 
         //clickButton("Інші дії");
-        addAcceptor("Гуков Юрій Олександрович");
+        addAcceptor(Name7);
         
-        removeParticipant(3, true);
-                isError();
-        addAcceptor("Гуков Юрій Олександрович");
+        removeParticipant(1, true);
+        pause(5000);
+        
+        clickButton("Інші дії");        
+        addAcceptor(Name7);
         clickButtonSignNotNeed(sBP, "Подпись не нужна");
         pause(5000);
         logout();
@@ -149,14 +198,14 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
 //        clickLink("Вийти");
 
         //Третий подписант с (Додати підписанта)
-        login("IGOV_151071GUO", " ");
+        login(Login7, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButtonSign();
         pause(5000);
         logout();
         //Проверка снятия подписи
-        login("IGOV_151071GUO", " ");
+        login(Login7, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         cancelSign("Перевірка зняття підпису");
@@ -168,7 +217,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
                 //-----Редактирование-----
         //Автору, ответить на замечание и редактировать
         //Проверка наличия кнопок
-        login("IGOV_270907SVK", " ");
+        login(LoginAuthor, " ");
         setRegionFindOrderByNumberDocument();
         answerComment("Відповідь на зауваження");
         pause(5000);
@@ -192,7 +241,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         isExistButton("Відмовити",false);
         
         //Редактирование задачи
-        //clickButton("Інші дії");
+        clickButton("Інші дії");
         clickButton("Редагувати завдання");
         SetRegionFieldInputTypeLong("sAmtDecisions", "5");      
         clickButtonSign();
@@ -201,7 +250,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         
         
         //Подписи исполнителей задачи (Согласование)
-        login("IGOV_260185SAU", " ");
+        login(Login4, " ");
         setRegionFindOrderByNumberDocument();  
         clickButtonRefuse(sBP, "Отказать");
         //clickButtonSign();
@@ -218,17 +267,17 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         logout();
         
         //Подписываем (Утверждение)      
-        login("IGOV_110771GAV", " ");
+        login(Login2, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
         clickButton("Інші дії");
-        addVisor("Павленко Юлія Юріївна");
+        addVisor(Name7);
         clickButtonSign();
         pause(5000);
         logout();
         
         //Ознакомление
-        login("IGOV_220290PUU", " ");
+        login(Login7, " ");
         pause(5000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
@@ -237,7 +286,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         logout();
         
         //Ознакомление Автором
-        login("IGOV_270907SVK", " ");
+        login(LoginAuthor, " ");
         pause(2000);
         setRegionFindOrderByNumberDocument();
         pause(5000);
@@ -263,12 +312,12 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         
             //-----Работа с задачей------
         //Первый исполнитель
-        login("IGOV_260185SAU", " ");
+        login(Login4, " ");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На виконанні");
         searchTaskByText(generateText);
         //Проверка наличия кнопок
-        isExistButton("Відкрити документ",true); 
+        isExistButton("Відкрити документ",true);
         isExistButton("Перенести",true);
         isExistButton("Додати",true);
         isExistButton("Делегувати",true);
@@ -295,7 +344,7 @@ public class Test_doc_btsol_protocol  extends CustomMethods {
         
   
         //Контролирующий
-        login("IGOV_270907SVK", " ");
+        login(LoginAuthor, " ");
         snapDrawerButtonMenuTabs("Завдання");
         clickLink("На контролі");
         searchTaskByText(generateText);
