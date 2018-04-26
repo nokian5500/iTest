@@ -15,6 +15,8 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -2227,6 +2229,12 @@ public class CustomMethods extends SetupAndTeardown {
         forward();
     }
 
-
-
+    public String getDate(int amount) throws ParseException {
+        Date today = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        calendar.add(Calendar.DATE, amount);
+        return format.format(calendar.getTime());
+    }
 }
