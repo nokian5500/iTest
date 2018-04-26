@@ -49,6 +49,13 @@ public class Task_s_knopki extends CustomMethods {
         clickButton("Далi");
         pause(5000);
         setTaskName(generateText(10));
+        setTaskTerm("Календарна дата", getDate(5));
+        
+        
+        setExecutor(Name4);
+        addNewExecutor(Name5);
+        setTaskContent("Перевірка завдання автотестом, задача 3 кнопки");
+        pause(10000);
         
         
     
