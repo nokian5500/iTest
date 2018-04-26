@@ -1437,7 +1437,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @param term
      */
     public void setTaskTerm(String type, String term) {
-        int count = $$(By.xpath("//*[@ng-model='issue.taskTerm.property']")).size()-1;
+        int count = $$(By.xpath("//*[@ng-model='issue.taskTerm.value']")).size()-1;
         $(By.xpath("//*[@name='taskTerm" + count +"']")).scrollIntoView(true).click();
         $(By.xpath("//*[@name='taskTerm" + count +"']//option[contains(.,'" + type + "')]")).click();
         if (type.equalsIgnoreCase("Календарна дата")) {
@@ -2230,11 +2230,22 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public String getDate(int amount) throws ParseException {
-        Date today = new Date();
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(today);
+        calendar.setTime(new Date());
         calendar.add(Calendar.DATE, amount);
+        return format.format(calendar.getTime());
+    }
+
+    public String getTime(Integer amount) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        int hours = calendar.get(Calendar.HOUR_OF_DAY);
+        if(hours + amount >= 24){
+            amount = 23 - hours;
+        }
+        calendar.add(Calendar.HOUR_OF_DAY, amount);
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         return format.format(calendar.getTime());
     }
 }
