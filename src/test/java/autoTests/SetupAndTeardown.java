@@ -37,10 +37,10 @@ public class SetupAndTeardown extends ConfigClass {
         Configuration.timeout = 10000;
         Configuration.collectionsTimeout = 10000;
 
-        /*FirefoxProfile profile = createFirefoxProfileWithExtensions();
+        FirefoxProfile profile = createFirefoxProfileWithExtensions();
         WebDriver driver = new FirefoxDriver(new FirefoxOptions().setProfile(profile));
         driver.manage().window().maximize();
-        WebDriverRunner.setWebDriver(driver);*/
+        WebDriverRunner.setWebDriver(driver);
     }
 
     @After
