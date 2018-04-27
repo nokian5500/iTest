@@ -2229,7 +2229,7 @@ public class CustomMethods extends SetupAndTeardown {
         forward();
     }
 
-    public String getDate(int amount) throws ParseException {
+    public String getDate(int amount)  {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -2247,5 +2247,72 @@ public class CustomMethods extends SetupAndTeardown {
         calendar.add(Calendar.HOUR_OF_DAY, amount);
         SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
         return format.format(calendar.getTime());
+    }
+
+    public void loadFileToHTML(String text, String attach) throws AWTException {
+        File oFile = new File(attach);
+        attach = oFile.getAbsolutePath();
+        setClipboardData(attach);
+        //switchToBody(true);
+        $x("//button[@role='presentation']/i[@class='mce-ico mce-i-link']").scrollIntoView(true).click();
+        pause(3000);
+        Robot robot = new Robot();
+        robot.delay(1000);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(300);
+        //////
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_A);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_A);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_DELETE);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_DELETE);
+        robot.delay(300);
+        //////////////
+        setClipboardData(text);
+        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_V);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_CONTROL);
+        //////////////
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(300);
+        /*robot.keyPress(KeyEvent.VK_TAB);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.delay(300);*/
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.delay(300);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+        robot.delay(300);
+        pause(5000);
     }
 }
