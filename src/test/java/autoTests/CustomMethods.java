@@ -1441,7 +1441,7 @@ public class CustomMethods extends SetupAndTeardown {
         $(By.xpath("//*[@name='taskTerm" + count +"']")).scrollIntoView(true).click();
         $(By.xpath("//*[@name='taskTerm" + count +"']//option[contains(.,'" + type + "')]")).click();
         if (type.equalsIgnoreCase("Календарна дата")) {
-            $(By.xpath("//*[@name='taskDate" + count + "']")).shouldBe(exist).sendKeys(term);
+            $(By.xpath("//*[@name='taskDate" + count + "']")).shouldBe(exist).setValue(term);
         } else {
             $(By.xpath("//*[@name='taskDay" + count + "']")).val(term);
         }
@@ -2314,5 +2314,17 @@ public class CustomMethods extends SetupAndTeardown {
         robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(300);
         pause(5000);
+    }
+
+    public void setTaskTime(String term) {
+        $(By.xpath("//input[@id='datetimepicker2']")).val(term);
+    }
+
+    public void closePrintform(){
+        $x("//div[@ng-click='hideModal()']").click();
+    }
+
+    public void closeDoc(){
+        $x("//button[@ng-click='historyBack()']").click();
     }
 }
