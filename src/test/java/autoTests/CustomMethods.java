@@ -1664,11 +1664,14 @@ public class CustomMethods extends SetupAndTeardown {
      * @param xpath
      * @param name
      */
-    private void addParticipant(String xpath, String name){
+    private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
-        $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
+        $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
+
+        //if(&)
         $x("//button[contains(.,'Підтвердити')]").click();
+
     }
 
     /**
@@ -2326,5 +2329,25 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void closeDoc(){
         $x("//button[@ng-click='historyBack()']").click();
+    }
+
+    public void addParticipant(String filter, String fio, boolean isAwait) throws ElementClickInterceptedException {
+        try {
+            if ("delegate".equalsIgnoreCase(filter)) {
+                addDelegate(fio);
+            } else if ("accept".equalsIgnoreCase(filter)) {
+                addAcceptor(fio);
+            } else if ("view".equalsIgnoreCase(filter)) {
+                addViewer(fio);
+            } else if ("visor".equalsIgnoreCase(filter)) {
+                addVisor(fio);
+            }
+        } catch (ElementClickInterceptedException ex){
+            if(!isAwait){
+                System.out.println("We ate error");
+            } else {
+                throw new ElementClickInterceptedException(ex.getMessage());
+            }
+        }
     }
 }
