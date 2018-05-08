@@ -46,6 +46,7 @@ public class CustomMethods extends SetupAndTeardown {
     //private static Integer history;
     private static Integer control;
     private static Integer execution;
+    private static boolean isWaitError = false;
     //private static Integer controlled;
     //private static Integer executed;
     //private static Integer untreated;
@@ -1669,7 +1670,20 @@ public class CustomMethods extends SetupAndTeardown {
         addWorker(name);
         $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
 
-        //if(&)
+        if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
+                $x("//strong[contains(.,'ПІБ вже існує на цьому кроці')]").exists()) {
+            if (isWaitError) {
+                xpath = "//button[@class='button.classes']";
+                if ($x(xpath).exists()) {
+                    $x(xpath).click();
+                } else {
+                    closeParticipant();
+                }
+            } else {
+                throw new RuntimeException("На себе дало можливість делегувати");
+            }
+        }
+        /*<span style="color: darkred" ng-if="duplicateUser" class="ng-scope"></span>*/
         $x("//button[contains(.,'Підтвердити')]").click();
 
     }
@@ -2332,22 +2346,15 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void addParticipant(String filter, String fio, boolean isAwait) throws ElementClickInterceptedException {
-        try {
-            if ("delegate".equalsIgnoreCase(filter)) {
-                addDelegate(fio);
-            } else if ("accept".equalsIgnoreCase(filter)) {
-                addAcceptor(fio);
-            } else if ("view".equalsIgnoreCase(filter)) {
-                addViewer(fio);
-            } else if ("visor".equalsIgnoreCase(filter)) {
-                addVisor(fio);
-            }
-        } catch (ElementClickInterceptedException ex){
-            if(!isAwait){
-                System.out.println("We ate error");
-            } else {
-                throw new ElementClickInterceptedException(ex.getMessage());
-            }
+        isWaitError = isAwait;
+        if ("delegate".equalsIgnoreCase(filter)) {
+            addDelegate(fio);
+        } else if ("accept".equalsIgnoreCase(filter)) {
+            addAcceptor(fio);
+        } else if ("view".equalsIgnoreCase(filter)) {
+            addViewer(fio);
+        } else if ("visor".equalsIgnoreCase(filter)) {
+            addVisor(fio);
         }
     }
 }
