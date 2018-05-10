@@ -112,7 +112,9 @@ public class Collective_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         //counterBefore();
         pause(2000);
-        addParticipant("delegate", NameAuthor, true);
+        clickButton("Інші дії");
+        clickButton("Делегувати");
+        addParticipant("delegate", Name1, true);
         clickButton("Інші дії");
         clickButton("Делегувати");
         pause(2000);
