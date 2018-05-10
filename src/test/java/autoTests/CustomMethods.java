@@ -1679,6 +1679,7 @@ public class CustomMethods extends SetupAndTeardown {
                 } else {
                     closeParticipant();
                 }
+                return;
             } else {
                 throw new RuntimeException("На себе дало можливість делегувати");
             }
