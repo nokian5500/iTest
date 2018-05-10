@@ -31,7 +31,7 @@ public class ConfigClass {
         String BetaCentral = "https://beta.test.igov.org.ua";
         String BetaRegion = "https://beta.test.idoc.com.ua";
         String CoorgGamma = "https://coorg-gamma.test.idoc.com.ua";
-        return AlphaRegion;
+        return BetaRegion;
     }
 
     public String getCollectiveURL() {
@@ -39,6 +39,6 @@ public class ConfigClass {
         String AlphaRegion = "https://alpha.test.idoc.com.ua";
         String BetaRegion = "https://beta.test.idoc.com.ua";
         String CoorgGamma = "https://coorg-gamma.test.idoc.com.ua";
-        return BetaRegion;
+        return AlphaRegion;
     }
 }

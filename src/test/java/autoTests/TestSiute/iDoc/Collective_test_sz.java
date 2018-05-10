@@ -14,15 +14,39 @@ import org.junit.Test;
  *
  * @author User
  */
-public class New_test_sz extends CustomMethods {
+public class Collective_test_sz extends CustomMethods {
     @Test
     public void Test_doc_btsol_vertical_sz() throws Exception {
         String sBP = "_doc_btsol_vertical_sz";
         String email = "autotestbeta@gmail.com";
         
         //Используемые в документе логины для Альфы/Гаммы
-        /*String LoginAuthor = "IGOV_270907SVK";
-        String NameAuthor = "Смоктій Вікторія Кирилівна";
+        /*String LoginAuthor = "IGOV_200687TOV";
+        String NameAuthor = "Туренко Ольга Володимирівна";
+        String Login1 = "IGOV_160582SOD";
+        String Name1 = "Смоктій Оксана Данилівна";
+        String Login2 = "IGOV_301082BOY";
+        String Name2 = "Бондарь Ольга Євгенієвна";
+        String Login3 = "IGOV_310780BVV";
+        String Name3 = "Белявцев Володимир Володимирович";
+        String Login4 = "IGOV_180488PUG";
+        String Name4 = "Продан Юлія Георгіївна";
+        String Login5 = "IGOV_100982SOV";
+        String Name5 = "Смірнова Олена Володимирівна";
+        String Login6 = "IGOV_210961SMU";
+        String Name6 = "Соколова Марина Юріївна";
+        String Login7 = "IGOV_311288BUD";
+        String Name7 = "Біла Юлія Данилівна";
+        String Login8 = "IGOV_180277SMV";
+        String Name8 = "Свідрань Максим Володимирович";
+        String Login9 = "ttuzhylkina";
+        String Name9 = "Тужилкіна Тетяна Анатоліївна";
+        String Login10 = "oturevska";
+        String Name10 = "Туревська Олена Анатоліївна";*/
+        
+        //Используемые в документе логины для Коллективки (Основной УРЛ - Бета, Коллективный - Альфа)
+        String LoginAuthor = "IGOV_310780BVV";//Пользователь Беты
+        String NameAuthor = "Белявцев Володимир Володимирович";
         String Login1 = "IGOV_200687TOV";
         String Name1 = "Туренко Ольга Володимирівна";
         String Login2 = "IGOV_220290PUU";
@@ -37,34 +61,12 @@ public class New_test_sz extends CustomMethods {
         String Name6 = "Літовченко Інна Вадимівна";
         String Login7 = "IGOV_151071GUO";
         String Name7 = "Гуков Юрій Олександрович";
-        String Login8 = "IGOV_301082BOY";
-        String Name8 = "Бондарь Ольга Євгенієвна";
-        String Login9 = "IGOV_310780BVV";
-        String Name9 = "Белявцев Володимир Володимирович";*/
-        
-        //Используемые в документе логины для Беты
-        String LoginAuthor = "IGOV_310780BVV";
-        String NameAuthor = "Белявцев Володимир Володимирович";
-        String Login1 = "IGOV_160582SOD";
-        String Name1 = "Смоктій Оксана Данилівна";
-        String Login2 = "IGOV_301082BOY";
-        String Name2 = "Бондарь Ольга Євгенієвна";
-        String Login3 = "IGOV_180488PUG";
-        String Name3 = "Продан Юлія Георгіївна";
-        String Login4 = "IGOV_100982SOV";
-        String Name4 = "Смірнова Олена Володимирівна";
-        String Login5 = "IGOV_210961SMU";
-        String Name5 = "Соколова Марина Юріївна";
-        String Login6 = "IGOV_311288BUD";
-        String Name6 = "Біла Юлія Данилівна";
-        String Login7 = "IGOV_180277SMV";
-        String Name7 = "Свідрань Максим Володимирович";
-        String Login8 = "IGOV_200687TOV";
-        String Name8 = "Туренко Ольга Володимирівна";
-        String Login9 = "IGOV_220290PUU";
-        String Name9 = "Павленко Юлія Юріївна";
-        String Login10 = "IGOV_151071GUO";
-        String Name10 = "Гуков Юрій Олександрович";
+        String Login8 = "IGOV_270907SVK";
+        String Name8 = "Смоктій Вікторія Кирилівна";
+        String Login9 = "tshapoval";
+        String Name9 = "Шаповал Тетяна Юріївна";
+        String Login10 = "kshust";
+        String Name10 = "Шуст Костянтин Анатолійович";
         
 
         openURLdashboard(getRegionUrl());
@@ -105,6 +107,7 @@ public class New_test_sz extends CustomMethods {
         logout();
         
         /*2 Делегируем согласование первым подписантом на другого сотрудника*/
+        openURLdashboard(getCollectiveURL());
         login(Login1, " ");
         setRegionFindOrderByNumberDocument();
         //counterBefore();
@@ -216,6 +219,7 @@ public class New_test_sz extends CustomMethods {
         logout();
 
         /*9. Отвечаем на зауваження, снимаем подписи и возвращаем на согласование*/
+        openURLdashboard(getRegionUrl());
         login(LoginAuthor, " ");
         setRegionFindOrderByNumberDocument();
         pause(2000);
@@ -252,6 +256,7 @@ public class New_test_sz extends CustomMethods {
         logout();
 
         /*10. Работа на этапе согласования (1 пользователь). Подписываем”*/
+        openURLdashboard(getCollectiveURL());
         login(Login2, " ");
         setRegionFindOrderByNumberDocument();
         //counterBefore();
@@ -364,6 +369,7 @@ public class New_test_sz extends CustomMethods {
         logout();
 
         /*16. Заходим исполнителем 1. Обработка задания. Добавляем отчет 1*/
+        openURLdashboard(getRegionUrl());
         login(LoginAuthor, " ");
         snapDrawerButtonMenuTabs("Завдання");
         //counterBefore();
@@ -384,6 +390,7 @@ public class New_test_sz extends CustomMethods {
         logout();
 
         /*17. Заходим исполнителем 2. Обработка задания. Добавляем отчет 2*/
+        openURLdashboard(getCollectiveURL());
         login(Login4, " ");
         snapDrawerButtonMenuTabs("Завдання");
         //counterBefore();
@@ -408,6 +415,7 @@ public class New_test_sz extends CustomMethods {
         logout();
 
         /*19. Заходим автором. Подписываем*/
+        openURLdashboard(getRegionUrl());
         login(LoginAuthor, " ");
         setRegionFindOrderByNumberDocument();
         //counterBefore();
