@@ -46,6 +46,7 @@ public class CustomMethods extends SetupAndTeardown {
     //private static Integer history;
     private static Integer control;
     private static Integer execution;
+    private static boolean isWaitError = false;
     //private static Integer controlled;
     //private static Integer executed;
     //private static Integer untreated;
@@ -1664,11 +1665,28 @@ public class CustomMethods extends SetupAndTeardown {
      * @param xpath
      * @param name
      */
-    private void addParticipant(String xpath, String name){
+    private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
-        $x("//*[@id='draggable-dialog']//a/span[contains(.,'"+name+"')]").click();
+        $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
+
+        if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
+                $x("//strong[contains(.,'ПІБ вже існує на цьому кроці')]").exists()) {
+            if (isWaitError) {
+                xpath = "//button[@class='button.classes']";
+                if ($x(xpath).exists()) {
+                    $x(xpath).click();
+                } else {
+                    closeParticipant();
+                }
+                return;
+            } else {
+                throw new RuntimeException("На себе дало можливість делегувати");
+            }
+        }
+        /*<span style="color: darkred" ng-if="duplicateUser" class="ng-scope"></span>*/
         $x("//button[contains(.,'Підтвердити')]").click();
+
     }
 
     /**
@@ -2326,5 +2344,18 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void closeDoc(){
         $x("//button[@ng-click='historyBack()']").click();
+    }
+
+    public void addParticipant(String filter, String fio, boolean isAwait) throws ElementClickInterceptedException {
+        isWaitError = isAwait;
+        if ("delegate".equalsIgnoreCase(filter)) {
+            addDelegate(fio);
+        } else if ("accept".equalsIgnoreCase(filter)) {
+            addAcceptor(fio);
+        } else if ("view".equalsIgnoreCase(filter)) {
+            addViewer(fio);
+        } else if ("visor".equalsIgnoreCase(filter)) {
+            addVisor(fio);
+        }
     }
 }
