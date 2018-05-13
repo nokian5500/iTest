@@ -25,6 +25,7 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.source;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class CustomMethods extends SetupAndTeardown {
@@ -1456,6 +1457,10 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[@name='taskDate0']";
         $x(xpath).scrollIntoView(true).shouldBe(exist).clear();
         executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
+        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepicker')");
+        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepickeroptions')");
+        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('required')");
+        System.out.println($x(xpath).getValue());
     }
 
 
