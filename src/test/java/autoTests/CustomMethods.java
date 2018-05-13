@@ -1453,7 +1453,9 @@ public class CustomMethods extends SetupAndTeardown {
      * @param term
      */
     public void setTaskTerm(String term) {
-            $(By.xpath("//*[@name='taskDate0']")).scrollIntoView(true).shouldBe(exist).sendKeys(term);
+        String xpath = "//*[@name='taskDate0']";
+        $x(xpath).scrollIntoView(true).shouldBe(exist).clear();
+        executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
     }
 
 
@@ -2334,8 +2336,11 @@ public class CustomMethods extends SetupAndTeardown {
         pause(5000);
     }
 
-    public void setTaskTime(String term) {
-        $(By.xpath("//input[@id='datetimepicker2']")).val(term);
+
+    public void setTaskTime(String term) throws AWTException {
+        String xpath = "//input[@id='datetimepicker2']";
+        $x(xpath).scrollIntoView(true).clear();
+        executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
     }
 
     public void closePrintform(){
@@ -2357,5 +2362,19 @@ public class CustomMethods extends SetupAndTeardown {
         } else if ("visor".equalsIgnoreCase(filter)) {
             addVisor(fio);
         }
+    }
+
+    private String getUserInitials(String sFIO) {
+        String sInitial = "";
+        try {
+            String[] aFIO = sFIO.split(" ");
+            String sSurname = aFIO[0];
+            String sFirstInitial = aFIO[1].substring(0, 1);
+            String sMiddleInitial = aFIO[2].substring(0, 1);
+            sInitial = sSurname + " " + sFirstInitial + ". " + sMiddleInitial + ".";
+        } catch (Exception e) {
+            System.out.println("Error in getUserInitials");
+        }
+        return sInitial;
     }
 }
