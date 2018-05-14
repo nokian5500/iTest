@@ -1456,11 +1456,12 @@ public class CustomMethods extends SetupAndTeardown {
     public void setTaskTerm(String term) {
         String xpath = "//*[@name='taskDate0']";
         $x(xpath).scrollIntoView(true).shouldBe(exist).clear();
-        executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
+        $x(xpath).setValue(term);
+        /*executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
         executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepicker')");
         executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepickeroptions')");
         executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('required')");
-        System.out.println($x(xpath).getValue());
+        System.out.println($x(xpath).getValue());*/
     }
 
 
@@ -2345,7 +2346,8 @@ public class CustomMethods extends SetupAndTeardown {
     public void setTaskTime(String term) throws AWTException {
         String xpath = "//input[@id='datetimepicker2']";
         $x(xpath).scrollIntoView(true).clear();
-        executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
+        $x(xpath).setValue(term);
+        //executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
     }
 
     public void closePrintform(){
