@@ -797,6 +797,9 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void clickButtonCreateTask() { // нажатие любой кнопки с указанным тескстом на ней
         $(By.xpath("//button[@ng-click='submit(form)']")).click(); ////button[contains(.,'Опрацювати')]
+        $x("//*[@name='taskDate0']").click();
+        $x("//input[@id='datetimepicker2']").click();
+        $(By.xpath("//button[@ng-click='submit(form)']")).click();
     }
 
     /**
@@ -1456,12 +1459,13 @@ public class CustomMethods extends SetupAndTeardown {
     public void setTaskTerm(String term) {
         String xpath = "//*[@name='taskDate0']";
         $x(xpath).scrollIntoView(true).shouldBe(exist).clear();
-        $x(xpath).setValue(term);
-        /*executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
-        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepicker')");
+        //$x(xpath).setValue(term);
+        executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
+        /*executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepicker')");
         executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepickeroptions')");
-        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('required')");
-        System.out.println($x(xpath).getValue());*/
+        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('required')");*/
+        $x(xpath).click();
+        System.out.println($x(xpath).getValue());
     }
 
 
@@ -1520,11 +1524,7 @@ public class CustomMethods extends SetupAndTeardown {
                 count = countByTag(tag);
             }
         }
-        $(By.xpath("//*[@id='ui-tinymce-"+count+"_ifr']")).scrollIntoView(true).click();
-        switchTo().innerFrame("ui-tinymce-"+count+"_ifr");
-        $(By.xpath("//body")).val(content);
-        pause(5000);
-        switchTo().defaultContent();
+        switchFrame("ui-tinymce-" + count + "_ifr", content);
     }
 
     /**
@@ -1727,14 +1727,15 @@ public class CustomMethods extends SetupAndTeardown {
     public void addReport(String type, String value) {
         clickButton("Додати звiт");
         $x("//select[@id='status']/option[contains(.,'" + type + "')]").click();
+        String frame = $x("//iframe").attr("id");
         if (type.equalsIgnoreCase("Не виконане") || type.equalsIgnoreCase("Не актуальне")) {
-            $x("//textarea[@id='reportText']").val(value);
+            switchFrame(frame, value);
+            //$x("//textarea[@id='reportText']").val(value);
         } else if (type.equalsIgnoreCase("Виконане")) {
             if($x("//input[@id='sOrder_1']").exists()){
                 $x("//input[@id='sOrder_1']").val(value);
-            }
-            else if($x("//textarea[@id='reportText']").exists()){
-                $x("//textarea[@id='reportText']").val(value);
+            } else if ($x("//*[@id='" + frame + "']").exists()) {
+                switchFrame(frame, value);
             }
             else if($x("//button[@id='upload-button']").exists()){
                 File oFile = new File(value);
@@ -1742,6 +1743,14 @@ public class CustomMethods extends SetupAndTeardown {
             }
         }
         clickButton("Пiдтвердити");
+    }
+
+    private void switchFrame(String frame, String value){
+        $(By.xpath("//*[@id='" + frame + "']")).scrollIntoView(true).click();
+        switchTo().innerFrame(frame);
+        $(By.xpath("//body")).val(value);
+        pause(5000);
+        switchTo().defaultContent();
     }
 
     /**
@@ -2346,8 +2355,8 @@ public class CustomMethods extends SetupAndTeardown {
     public void setTaskTime(String term) throws AWTException {
         String xpath = "//input[@id='datetimepicker2']";
         $x(xpath).scrollIntoView(true).clear();
-        $x(xpath).setValue(term);
-        //executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
+        //$x(xpath).setValue(term);
+        executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
     }
 
     public void closePrintform(){

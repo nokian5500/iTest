@@ -7,6 +7,10 @@ package autoTests.TestSiute.iDoc;
 
 import autoTests.CustomMethods;
 import org.junit.Test;
+import org.openqa.selenium.By;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 /**
  *
@@ -66,8 +70,8 @@ public class Task_s_knopki extends CustomMethods {
         clickButton("Далi");
         pause(5000);
         setTaskName(generateText(10));
-//        setTaskTerm(getDate(5));
-        setTaskTerm("15/05/2018");
+        setTaskTerm(getDate(5));
+        //setTaskTerm("15/05/2018");
         setTaskTime(getTime(17));
         setTaskForm("Текстове повiдомлення");
         
@@ -164,7 +168,7 @@ public class Task_s_knopki extends CustomMethods {
         isExistButton("Вiдхилити звiт",true);
         isExistButton("Делегувати",false);
         isExistButton("Відкрити документ",false);
-        isExistButton("Прийняти завдання",false);
+        isExistButton("Прийняти завдання",true);
         isExistButton("Інші дії",true);
         clickButton("Інші дії");
         isExistButton("Коментар",true);
