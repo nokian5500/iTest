@@ -54,6 +54,9 @@ public class CustomMethods extends SetupAndTeardown {
     //private static Integer inwork;
     //private static Integer shedule;
 
+    //variable to save names of attachments
+    private static ArrayList<String> attachments = new ArrayList<>();
+
     /**
     Первые данные со счетчика
      */
@@ -134,7 +137,8 @@ public class CustomMethods extends SetupAndTeardown {
             if("createDoc".equalsIgnoreCase(filter)){
                 if(myDocsTemp != (myDocs + 1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Мої документи повинні мати " + (myDocs + 1) + " документів, натомість мають - " + myDocsTemp);
+                    throw new RuntimeException("Мої документи повинні мати " + (myDocs + 1) +
+                            " документів, натомість мають - " + myDocsTemp);
                 }
                 if(unwatchedResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
@@ -143,11 +147,13 @@ public class CustomMethods extends SetupAndTeardown {
             }else if("sign".equalsIgnoreCase(filter)){
                 if(unwatchedTemp != (unwatched - 1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched - 1) + " документів, натомість мають - " + unwatchedTemp);
+                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched - 1) +
+                            " документів, натомість мають - " + unwatchedTemp);
                 }
                 if(watchedTemp != (watched +1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Переглянуті  повинні мати " + (watched + 1) + " документів, натомість мають - " + watchedTemp);
+                    throw new RuntimeException("Переглянуті  повинні мати " + (watched + 1) +
+                            " документів, натомість мають - " + watchedTemp);
                 }
                 if(myDocsResult || ecpResult){
                     screenshot(generateText(10));
@@ -161,11 +167,13 @@ public class CustomMethods extends SetupAndTeardown {
             }else if("backToWork".equalsIgnoreCase(filter)){
                 if(unwatchedTemp != (unwatched + 1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched + 1) + " документів, натомість мають - " + unwatchedTemp);
+                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched + 1) +
+                            " документів, натомість мають - " + unwatchedTemp);
                 }
                 if(watchedTemp != (watched - 1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Переглянуті  повинні мати " + (watched - 1) + " документів, натомість мають - " + watchedTemp);
+                    throw new RuntimeException("Переглянуті  повинні мати " + (watched - 1) +
+                            " документів, натомість мають - " + watchedTemp);
                 }
                 if(myDocsResult || ecpResult){
                     screenshot(generateText(10));
@@ -174,7 +182,8 @@ public class CustomMethods extends SetupAndTeardown {
             }else if("deleteDoc".equalsIgnoreCase(filter)){
                 if(myDocsTemp != (myDocs - 1)){
                     screenshot(generateText(10));
-                    throw new RuntimeException("Мої документи повинні мати " + (myDocs - 1) + " документів, натомість мають - " + myDocsTemp);
+                    throw new RuntimeException("Мої документи повинні мати " + (myDocs - 1) +
+                            " документів, натомість мають - " + myDocsTemp);
                 }
                 if(unwatchedResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
@@ -183,7 +192,8 @@ public class CustomMethods extends SetupAndTeardown {
             }else if ("signToHistory".equalsIgnoreCase(filter)) {
                 if (unwatchedTemp != (unwatched - 1)) {
                     screenshot(generateText(10));
-                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched - 1) + " документів, натомість мають - " + unwatchedTemp);
+                    throw new RuntimeException("Нерозглянуті  повинні мати " + (unwatched - 1) +
+                            " документів, натомість мають - " + unwatchedTemp);
                 }
                 if(myDocsResult || ecpResult || watchedResult){
                     screenshot(generateText(10));
@@ -217,7 +227,8 @@ public class CustomMethods extends SetupAndTeardown {
             }  else if ("createTask".equalsIgnoreCase(filter)) {
                 if (controlTemp != (control + 1)) {
                     screenshot(generateText(10));
-                    throw new RuntimeException("На контролі повинна бути " + (control + 1) + " задач, натомість - " + controlTemp);
+                    throw new RuntimeException("На контролі повинна бути " + (control + 1) +
+                            " задач, натомість - " + controlTemp);
                 }
                 if(executionResult){
                     screenshot(generateText(10));
@@ -226,7 +237,8 @@ public class CustomMethods extends SetupAndTeardown {
             } else if ("finishTask".equalsIgnoreCase(filter)) {
                 if (controlTemp != (control - 1)) {
                     screenshot(generateText(10));
-                    throw new RuntimeException("На контролі повинна бути " + (control - 1) + " задач, натомість - " + controlTemp);
+                    throw new RuntimeException("На контролі повинна бути " + (control - 1) +
+                            " задач, натомість - " + controlTemp);
                 }
                 if(executionResult){
                     screenshot(generateText(10));
@@ -443,7 +455,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param value
      */
     public void setEmail(String serviceName, String cssSelector, String value) {
-        $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-required." + serviceName + "_--_" + cssSelector)).val(value);
+        $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-required." +
+                serviceName + "_--_" + cssSelector)).val(value);
     }
 
     /**
@@ -453,7 +466,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param value
      */
     public void setFieldfieldPhone(String serviceName, String cssSelector, String value) {
-        $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-tel.ng-valid-required." + serviceName + "_--_" + cssSelector)).val(value);
+        $(By.cssSelector(".form-control.ng-pristine.ng-untouched.ng-scope.ng-invalid.ng-invalid-tel.ng-valid-required."
+                + serviceName + "_--_" + cssSelector)).val(value);
     }
 
     /**
@@ -538,7 +552,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void setFieldCalendar(String serviceName, String cssSelector, String data) {
         WebElement webElement = $(By.cssSelector("." + serviceName + "_--_" + cssSelector)).shouldBe(visible);
-        executeJavaScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
+        executeJavaScript("angular.element(document.getElementsByName('" +
+                cssSelector + "')[0]).removeAttr('readonly');");
         webElement.click();
         webElement.clear();
         webElement.sendKeys(data);
@@ -565,7 +580,8 @@ public class CustomMethods extends SetupAndTeardown {
         } catch (org.openqa.selenium.NoSuchElementException e) {
             status = false;
         }
-        Assert.assertTrue("NO AVAILABLE SLOTS DATE!, NO AVAILABLE SLOTS DATE =!, NO AVAILABLE SLOTS DATE!", status);
+        Assert.assertTrue("NO AVAILABLE SLOTS DATE!, NO AVAILABLE SLOTS DATE =!, NO AVAILABLE SLOTS DATE!",
+                status);
 
     }
 
@@ -575,14 +591,16 @@ public class CustomMethods extends SetupAndTeardown {
     public void setFieldSelectSlotTime() {
         Boolean status;
         try {
-            WebElement webElement = $(By.xpath("//select[@ng-model='selected.slot']")).shouldBe(visible); //By.xpath("//select[@ng-model='selected.slot']")
+            WebElement webElement = $(By.xpath("//select[@ng-model='selected.slot']")).shouldBe(visible);
+            //By.xpath("//select[@ng-model='selected.slot']")
             Select select = new Select(webElement);
             select.selectByValue("0"); // выбор первого значения времени из списка
             status = true;
         } catch (org.openqa.selenium.NoSuchElementException e) {
             status = false;
         }
-        Assert.assertTrue("NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!", status);
+        Assert.assertTrue("NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!, NO AVAILABLE SLOTS TIME!",
+                status);
 
     }
 
@@ -606,7 +624,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void setTableCellsInputTypeSelect(String tableName, String cellName, String NameRow, String item) {
         $(By.cssSelector("#field-" + tableName + " div[name=" + cellName + NameRow + "]")).click();
-        $(By.cssSelector("#ui-select-choices-row" + item + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
+        $(By.cssSelector("#ui-select-choices-row" + item + " > a")).click();
+        //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
     }
 
     /**
@@ -616,7 +635,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void setFieldTypeSelect(String cssSelector, String row) {
         $(By.cssSelector("#field-" + cssSelector)).click();
-        $(By.cssSelector("#ui-select-choices-row" + row + " > a")).click(); //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
+        $(By.cssSelector("#ui-select-choices-row" + row + " > a")).click();
+        //#ui-select-choices-row-1-1 > a #ui-select-choices-row-7-1 > a
     }
 
     /**
@@ -627,7 +647,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void setTableCellsInputTypeEnum(String tableName, String cellName, String NameRow, String text) {
-        WebElement td = $(By.cssSelector("#field-" + tableName + " select[name=" + cellName + NameRow + "]")).shouldBe(visible);
+        WebElement td = $(By.cssSelector("#field-" + tableName + " select[name=" + cellName + NameRow + "]"))
+                .shouldBe(visible);
         td.click();
         Select select = new Select(td);
         select.selectByVisibleText(text);
@@ -641,8 +662,10 @@ public class CustomMethods extends SetupAndTeardown {
      * @param date
      */
     public void setTableCellsTypeCalendar(String tableName, String cellName, String NameRow, String date) {
-        WebElement td = $(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]")).shouldBe(visible);
-        executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
+        WebElement td = $(By.cssSelector("#field-" + tableName + " input[name=" + cellName + NameRow + "]"))
+                .shouldBe(visible);
+        executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow +
+                "')[0]).removeAttr('readonly');");
         td.click();
         td.clear();
         td.sendKeys(date);
@@ -656,15 +679,18 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nameRow
      * @param sPathFile
      */
-    public void setTableCellsInputTypeFile(String serviceName, String tableName, String cellName, String nameRow, String sPathFile) {
+    public void setTableCellsInputTypeFile(String serviceName, String tableName, String cellName, String nameRow,
+                                           String sPathFile) {
         if (nameRow.equals("0")) {
-            WebElement fileInput = $(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name=" + cellName + "] input"));
+            WebElement fileInput = $(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName +
+                    "_--_ROW_" + nameRow + " p[name=" + cellName + "] input"));
             String sScript = "var element = arguments[0];" + "element.style.display='inline';";
             executeJavaScript(sScript, fileInput);
             File oFile = new File(sPathFile);
             fileInput.sendKeys(oFile.getAbsolutePath());
         } else {
-            WebElement fileInput = $(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + " p[name=" + cellName + "_" + nameRow + "] input"));
+            WebElement fileInput = $(By.cssSelector("." + serviceName + "_--_" + tableName + "_--_COL_" + cellName +
+                    "_--_ROW_" + nameRow + " p[name=" + cellName + "_" + nameRow + "] input"));
             String sScript = "var element = arguments[0];" + "element.style.display='inline';";
             executeJavaScript(sScript, fileInput);
             File oFile = new File(sPathFile);
@@ -685,7 +711,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param tableName
      */
     public void addRegionsTableRow(String tableName) {
-        $(By.cssSelector("a." + tableName + "_add_row_button")).scrollIntoView(true).click(); //a[contains(@class,'sTable2_add_row_button')]
+        $(By.cssSelector("a." + tableName + "_add_row_button")).scrollIntoView(true).click();
+        //a[contains(@class,'sTable2_add_row_button')]
     }
 
     /**
@@ -781,7 +808,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nameButton
      */
     public void clickButton(String nameButton) { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).scrollIntoView(true).click(); ////button[contains(.,'Опрацювати')]
+        $(By.xpath("//button[contains(.,'" + nameButton + "')]")).scrollIntoView(true).click();
+        ////button[contains(.,'Опрацювати')]
         //$x("//button").shouldHave(text(nameButton)).click();
     }
 
@@ -822,7 +850,8 @@ public class CustomMethods extends SetupAndTeardown {
      * Поиск по номеру документа
      * @throws Exception
      */
-    public void setRegionTask() throws Exception { // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
+    public void setRegionTask() throws Exception {
+        // поиск ID_Order  в списке с заявками (согласно пребывания на конкретном табе дашборда)
         String sID_Order = getNumbersIdOrder();
         $(By.xpath("//input[@ng-model='tasksSearch.value']")).val(sID_Order).pressEnter();
         pause(8000);
@@ -836,7 +865,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param enumRegionTab
      * @throws Exception
      */
-    public void setRegionTab(String serviceName, String enumRegionTab) throws Exception { // навигация по табам navbar в дашборде
+    public void setRegionTab(String serviceName, String enumRegionTab) throws Exception {
+        // навигация по табам navbar в дашборде
         //pause(5000);
         if (serviceName.contains("idoc")) {
             WebElement button = $(By.cssSelector(".btn-group.menu-tabs.ng-scope"));
@@ -903,7 +933,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void SetRegionFieldInputTypeDate(String cssSelector, String date) {
         WebElement webElement = $(By.cssSelector("input[name='" + cssSelector + "']")).shouldBe(visible);
-        executeJavaScript("angular.element(document.getElementsByName('" + cssSelector + "')[0]).removeAttr('readonly');");
+        executeJavaScript("angular.element(document.getElementsByName('" + cssSelector +
+                "')[0]).removeAttr('readonly');");
         webElement.clear();
         webElement.sendKeys(date);
     }
@@ -913,7 +944,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param sPathFile
      */
     public void SetRegionFieldInputTypeFile(String sPathFile) {
-        WebElement oWebElement = $(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, 'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
+        WebElement oWebElement = $(By.xpath(".//button[@ng-class=\"{'btn-igov':field && field.value, " +
+                "'btn-link attach-btn':!field, 'btn-default':field && !field.value}\"]//input"));
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         executeJavaScript(sScript, oWebElement);
         File oFile = new File(sPathFile);
@@ -942,7 +974,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void setRegionTableCellsInputTypeString(String cellName, String NameRow, String text) {
-        WebElement td = $(By.xpath("//input[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
+        WebElement td = $(By.xpath("//input[@name='" + cellName + NameRow + "']")).scrollIntoView(true)
+                .shouldBe(visible);
         td.click();
         td.clear();
         td.sendKeys(text);
@@ -955,7 +988,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void setRegionTableCellsInputTypeEnumSelect(String cellName, String NameRow, String text) {
-        WebElement td = $(By.xpath("//select[@name='" + cellName + NameRow + "']")).scrollIntoView(true).shouldBe(visible);
+        WebElement td = $(By.xpath("//select[@name='" + cellName + NameRow + "']")).scrollIntoView(true)
+                .shouldBe(visible);
         td.click();
         Select select = new Select(td);
         select.selectByVisibleText(text);
@@ -969,7 +1003,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void setRegionTableCellsInputTypeEnumSpan(String tableName, String cellName, String NameRow, String text) {
-        $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).scrollIntoView(true).click();
+        $(By.cssSelector(".ng-scope._doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" +
+                NameRow + " .btn.btn-default.form-control.ui-select-toggle")).scrollIntoView(true).click();
         $(By.xpath("//*[contains(.,'" + text + "')]")).click();
     }
 
@@ -995,12 +1030,15 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      * @throws Exception
      */
-    public void setRegionTableCellsInputTypeEnumInput(String serviceName, String tableName, String cellName, String NameRow, String text) throws Exception {
+    public void setRegionTableCellsInputTypeEnumInput(String serviceName, String tableName, String cellName,
+                                                      String NameRow, String text) throws Exception {
         try {
             String textNew = getSubString(text, 0, 3);
             System.out.println(textNew);
-            $(By.cssSelector(".ng-scope." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + " .btn.btn-default.form-control.ui-select-toggle")).click();
-            $(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(textNew);
+            $(By.cssSelector(".ng-scope." + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" +
+                    NameRow + " .btn.btn-default.form-control.ui-select-toggle")).click();
+            $(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty"))
+                    .sendKeys(textNew);
             //pause(2000);
             $(By.xpath("//a[contains(.,'" + text + "')]")).click();
         } catch (Exception e) {
@@ -1017,8 +1055,10 @@ public class CustomMethods extends SetupAndTeardown {
      * @param sPathFile
      * @throws InterruptedException
      */
-    public void setRegionTableCellsInputTypeFile(String sBP,String tableName, String cellName, String nameRow, String sPathFile) throws InterruptedException {
-        WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input")).scrollIntoView(true);
+    public void setRegionTableCellsInputTypeFile(String sBP,String tableName, String cellName, String nameRow,
+                                                 String sPathFile) throws InterruptedException {
+        WebElement oWebElement = $(By.xpath("//td[@class='ng-scope "+ sBP +"_--_" + tableName + "_--_COL_" + cellName +
+                "_--_ROW_" + nameRow + "']//*[@id='upload-button']//input")).scrollIntoView(true);
         String sScript = "var element = arguments[0];" + "element.style.display='inline';";
         executeJavaScript(sScript, oWebElement);
 
@@ -1045,9 +1085,12 @@ public class CustomMethods extends SetupAndTeardown {
      * @param date
      * @throws InterruptedException
      */
-    public void setRegionTableCellsInputTypeCalendar(String tableName, String cellName, String NameRow, String date) throws InterruptedException {
-        WebElement td = $(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']//input")).shouldBe(visible);
-        executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow + "')[0]).removeAttr('readonly');");
+    public void setRegionTableCellsInputTypeCalendar(String tableName, String cellName, String NameRow, String date)
+            throws InterruptedException {
+        WebElement td = $(By.xpath("//td[@class='ng-scope _doc_iTest_test_all_case_--_" + tableName + "_--_COL_" +
+                cellName + "_--_ROW_" + NameRow + "']//input")).shouldBe(visible);
+        executeJavaScript("angular.element(document.getElementsByName('" + cellName + NameRow +
+                "')[0]).removeAttr('readonly');");
         td.clear();
         td.sendKeys(date);
         // Thread.sleep(1000);
@@ -1410,7 +1453,8 @@ public class CustomMethods extends SetupAndTeardown {
         $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
 
         /*
-        <span id="textError" class="col-md-12" style="margin-top: 20px; text-align: center; padding: 5px; color: rgb(169, 68, 66);">
+        <span id="textError" class="col-md-12" style="margin-top: 20px; text-align:
+        center; padding: 5px; color: rgb(169, 68, 66);">
         Користувач не може бути одночасно і контролюючим, і виконавцем!</span>
          */
     }
@@ -1462,7 +1506,6 @@ public class CustomMethods extends SetupAndTeardown {
         //$x(xpath).setValue(term);
         executeJavaScript("document.getElementsByName('taskDate0')[0].value='" + term + "'");
         /*executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepicker')");
-        executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('datetimepickeroptions')");
         executeJavaScript("angular.element(document.getElementsByName('taskDate0')[0]).removeAttr('required')");*/
         $x(xpath).click();
         System.out.println($x(xpath).getValue());
@@ -1474,7 +1517,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nExecutor
      */
     public void setMainExecutor(int nExecutor){
-        $$x("//input[@ng-model='executor.isMain']").get(nExecutor-1).click();
+        $$x("//input[@ng-model='executor.isMain']").
+                get(nExecutor-1).click();
     }
 
     /**
@@ -1489,7 +1533,8 @@ public class CustomMethods extends SetupAndTeardown {
      * @param nExecutor
      */
     public void removeExecutor(int nExecutor){
-        $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").get(nExecutor-1).click();
+        $$x("//span[@ng-click='removeExecutor($parent.$parent.$index, $parent.$index)']").
+                get(nExecutor-1).click();
     }
 
     /**
@@ -1617,8 +1662,10 @@ public class CustomMethods extends SetupAndTeardown {
      * @param text
      */
     public void setParticipant(String serviceName, String tableName, String cellName, String NameRow, String text){
-        $(By.xpath("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']")).scrollIntoView(true).click();
-        $x("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" + NameRow + "']" +
+        $(By.xpath("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName + "_--_ROW_" +
+                NameRow + "']")).scrollIntoView(true).click();
+        $x("//*[@class='ng-scope " + serviceName + "_--_" + tableName + "_--_COL_" + cellName +
+                "_--_ROW_" + NameRow + "']" +
                 "//input[@aria-label='Select box']").sendKeys(text);
         //$(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(text);
         //pause(2000);
@@ -1886,7 +1933,8 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void answerComment(String comment){
         boolean isAwait=true;
-        $x("//a[@ng-click='showConversation = !showConversation']/i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
+        $x("//a[@ng-click='showConversation = !showConversation']/" +
+                "i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
         if(isAwait){}
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
@@ -1975,7 +2023,8 @@ public class CustomMethods extends SetupAndTeardown {
     private void prepareSearchTask(){
         $x("//button[@ng-click='setCurrentTab(sSelectedTask, tabMenu)']").click();
         $x("//div[@placeholder='Оберіть вкладку...']/span[@ng-click='$select.activate()']").click();
-        $x("//ul[@repeat='item in tabsObject | tabsFilter: {tabMenu}']//div[contains(.,'Усі завдання')]").click();
+        $x("//ul[@repeat='item in tabsObject | tabsFilter: {tabMenu}']//div[contains(.,'Усі завдання')]")
+                .click();
     }
 
     /**
@@ -1984,7 +2033,8 @@ public class CustomMethods extends SetupAndTeardown {
     private void searchTask(){
         $x("//input[@type='submit']").click();
         pause(3000);
-        SelenideElement seCounter = $x("//div[@ng-if='paramsForFilter']//span[contains(.,'Знайдено документів:')]");
+        SelenideElement seCounter = $x("//div[@ng-if='paramsForFilter']//" +
+                "span[contains(.,'Знайдено документів:')]");
         String tag = seCounter.getText();
         int counter = countByTag(tag);
         if (counter == 1){
@@ -2001,7 +2051,8 @@ public class CustomMethods extends SetupAndTeardown {
      * Нажать на чекбокс Снять все подписи
      */
     public void removeAllSigns(){
-        $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).setSelected(true);
+        $("#eRemoveSignes").scrollIntoView(true).shouldNotBe(checked).
+                setSelected(true);
     }
 
     /**
@@ -2098,7 +2149,8 @@ public class CustomMethods extends SetupAndTeardown {
         ElementsCollection buttons = $$x("//button").filterBy(text(name)).filterBy(visible);
         if (buttons.size() > 1){
             screenshot(generateText(10));
-            throw new ElementNotVisibleException("Кнопкок з назвою \""+name+"\" - "+ buttons.size() + " штук замість однієї");
+            throw new ElementNotVisibleException("Кнопкок з назвою \""+name+"\" - "+ buttons.size() +
+                    " штук замість однієї");
         }
         return  buttons.get(0).isDisplayed();
     }
@@ -2143,7 +2195,8 @@ public class CustomMethods extends SetupAndTeardown {
         sUrl = sUrl.substring(8);
         String token = "system";
         String auth = "http://" + token +":" + token +"@";
-        String request = auth + sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +"&sLoginReferent="
+        String request = auth + sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +
+                "&sLoginReferent="
                 + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
         open(request);
     }
@@ -2206,7 +2259,8 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void clickCross(){
-        $x("//div[@ng-click='closeModalByButton()']//i[@class='fa fa-times']").click();
+        $x("//div[@ng-click='closeModalByButton()']//i[@class='fa fa-times']").
+                click();
     }
 
     public void scrollTo(String sText){
@@ -2254,7 +2308,8 @@ public class CustomMethods extends SetupAndTeardown {
             throw new NoSuchElementException("Посилання відсутнє");
         }
     }
-    //href="api/tasks/download/0787b4d3-95f0-415e-8007-8450d5c74e71/attachment/Mongo/coverage-error.log/server/alpha.test.idoc.com.ua"
+    //href="api/tasks/download/0787b4d3-95f0-415e-8007-8450d5c74e71/attachment/Mongo/coverage-error.log/server/
+    // alpha.test.idoc.com.ua"
 
     public void backPage(){
         back();
@@ -2393,4 +2448,26 @@ public class CustomMethods extends SetupAndTeardown {
         }
         return sInitial;
     }
+
+    public void checkAttachments(boolean isUpdate){
+        if (attachments.isEmpty() || isUpdate) {
+            this.attachments.addAll(getAttachments());
+        }
+
+        ArrayList<String> attachments = getAttachments();
+        if (!attachments.equals(this.attachments)) {
+            throw new RuntimeException("Додатки не збігаються");
+        }
+    }
+
+    private ArrayList<String> getAttachments(){
+        ArrayList<String> result = new ArrayList<>();
+        ElementsCollection attachments =
+                $$x("//button[@class='btn btn-default dropdown-toggle ng-binding ng-scope']");
+        for (SelenideElement attachment : attachments){
+            result.add(attachment.getValue());
+        }
+        return result;
+    }
+
 }
