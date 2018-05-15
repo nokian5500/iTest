@@ -2449,13 +2449,25 @@ public class CustomMethods extends SetupAndTeardown {
         return sInitial;
     }
 
-    public void checkAttachments(boolean isUpdate){
-        if (attachments.isEmpty() || isUpdate) {
-            this.attachments.addAll(getAttachments());
+    public void checkAttachments(int changes){
+        if (attachments.isEmpty()) {
+            attachments.addAll(getAttachments());
         }
+        compareAttachments(changes);
+        ArrayList<String> temp;
+        if (changes > 0){
+            ArrayList<String> attachments = getAttachments();
+            attachments.removeAll(this.attachments);
+            System.out.println(attachments);
+            this.attachments.addAll(attachments);
+            compareAttachments(changes);
+        }
+    }
 
+    private void compareAttachments(int changes){
         ArrayList<String> attachments = getAttachments();
-        if (!attachments.equals(this.attachments)) {
+        if ((!attachments.equals(this.attachments) && changes == 0) ||
+                (attachments.equals(this.attachments) && changes > 0)) {
             throw new RuntimeException("Додатки не збігаються");
         }
     }
