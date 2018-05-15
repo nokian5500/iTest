@@ -2454,14 +2454,23 @@ public class CustomMethods extends SetupAndTeardown {
             attachments.addAll(getAttachments());
         }
         compareAttachments(changes);
+        ArrayList<String> attachments = getAttachments();
         ArrayList<String> temp;
-        if (changes > 0){
-            ArrayList<String> attachments = getAttachments();
-            attachments.removeAll(this.attachments);
-            System.out.println(attachments);
-            this.attachments.addAll(attachments);
+        if(changes != 0){
+            if (changes > 0){
+                temp = attachments;
+                temp.removeAll(this.attachments);
+                System.out.println(temp);
+                this.attachments.addAll(temp);
+            } else if (changes < 0) {
+                temp = this.attachments;
+                temp.removeAll(attachments);
+                System.out.println(temp);
+                this.attachments.removeAll(temp);
+            }
             compareAttachments(changes);
         }
+
     }
 
     private void compareAttachments(int changes){
