@@ -1,6 +1,7 @@
 package autoTests;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementNotFound;
 import javafx.scene.control.Alert;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -23,6 +25,7 @@ import java.util.NoSuchElementException;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.source;
@@ -2451,10 +2454,10 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void checkAttachments(int changes){
         if (attachments.isEmpty()) {
-            attachments.addAll(getAttachments());
+            attachments.addAll(getAttachmentsText());
         }
         compareAttachments(changes);
-        ArrayList<String> attachments = getAttachments();
+        ArrayList<String> attachments = getAttachmentsText();
         ArrayList<String> temp;
         if(changes != 0){
             if (changes > 0){
@@ -2474,21 +2477,42 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     private void compareAttachments(int changes){
-        ArrayList<String> attachments = getAttachments();
+        ArrayList<String> attachments = getAttachmentsText();
         if ((!attachments.equals(this.attachments) && changes == 0) ||
                 (attachments.equals(this.attachments) && changes > 0)) {
             throw new RuntimeException("Додатки не збігаються");
         }
     }
 
-    private ArrayList<String> getAttachments(){
+    private ArrayList<String> getAttachmentsText(){
         ArrayList<String> result = new ArrayList<>();
-        ElementsCollection attachments =
-                $$x("//button[@class='btn btn-default dropdown-toggle ng-binding ng-scope']");
+        ElementsCollection attachments = getAttachments();
         for (SelenideElement attachment : attachments){
-            result.add(attachment.getValue());
+            result.add(attachment.getText());
         }
         return result;
     }
 
+    private ElementsCollection getAttachments(){
+        return $$x("//button[@class='btn btn-default dropdown-toggle ng-binding ng-scope']");
+    }
+
+    public void downloadAttach(String attachName) throws FileNotFoundException {
+        if(this.attachments.contains(attachName)){
+            ElementsCollection attachments = getAttachments();
+            for (SelenideElement attach : attachments){
+                if(attach.getText().equals(attachName)){
+                    attach.click();
+                    File file = $x("//a").shouldHave(text(attachName)).download();
+                    String fileName = file.getName();
+                    deleteFileOrDirectory(file);
+                    if (!fileName.equals(attachName)){
+                        throw new RuntimeException("Завантажено інший файл");
+                    }
+                }
+            }
+        } else {
+            throw new RuntimeException("Цей файл не знайдено");
+        }
+    }
 }
