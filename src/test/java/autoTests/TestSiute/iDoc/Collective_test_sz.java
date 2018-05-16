@@ -80,10 +80,12 @@ public class Collective_test_sz extends CustomMethods {
         //counterAfter("createDoc");
         
         setDocContent("Текст службової записки");
+        loadFileToHTML(" Картинка 1","Lighthouse.jpg");
+        loadFileToHTML(" Картинка 2","test.jpg");
 
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/Koala.jpg");
 
         /*Таблица Узгоджуючі*/
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", Name1);
@@ -112,6 +114,11 @@ public class Collective_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         //counterBefore();
         pause(2000);
+        checkAttachments(0);
+        openLink(" Картинка 1");
+        openLink(" Картинка 2");
+        //downloadAttach("Lighthouse.jpg");
+        //downloadAttach("test.jpg");
         clickButton("Інші дії");
         clickButton("Делегувати");
         addParticipant("delegate", Name1, true);
@@ -226,7 +233,9 @@ public class Collective_test_sz extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         pause(2000);
         answerComment("Відповідь на зауваження");
-        clickLink("Нерозглянутi");
+        pause(5000);
+        navigateToggleMenu();
+        clickLink("Нерозглянуті");
         setRegionFindOrderByNumberDocument();
         //counterBefore();
         pause(2000);
