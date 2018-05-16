@@ -1934,11 +1934,15 @@ public class CustomMethods extends SetupAndTeardown {
      * Ответить на замечание
      * @param comment
      */
-    public void answerComment(String comment){
-        boolean isAwait=true;
-        $x("//a[@ng-click='showConversation = !showConversation']/" +
-                "i[@ng-if='user.sLogin === item.sKeyGroup_Author']").scrollIntoView(true).click();
-        if(isAwait){}
+    public void answerComment(String fio, String comment){
+
+        ElementsCollection chats = $$x("//a[@ng-click='showConversation = !showConversation']/" +
+                "i[@ng-if='user.sLogin === item.sKeyGroup_Author']");
+
+        for (SelenideElement chat : chats) {
+
+        }
+
         clickButton("Відповісти");
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         $x("//*[@id='draggable-dialog']/div/div[2]//button[contains(.,'Відповісти')]").click();
