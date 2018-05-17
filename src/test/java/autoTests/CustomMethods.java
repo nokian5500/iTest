@@ -2502,16 +2502,24 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void downloadAttach(String attachName) throws FileNotFoundException {
+        compareAttachments(0);
         if(this.attachments.contains(attachName)){
             ElementsCollection attachments = getAttachments();
             for (SelenideElement attach : attachments){
                 if(attach.getText().equals(attachName)){
                     attach.click();
-                    File file = $x("//a").shouldHave(text(attachName)).download();
-                    String fileName = file.getName();
-                    deleteFileOrDirectory(file);
-                    if (!fileName.equals(attachName)){
-                        throw new RuntimeException("Завантажено інший файл");
+                    ElementsCollection links = $$x("//a");
+                    for (SelenideElement link : links){
+                        if(link.getText().equals(attachName)){
+                            File file = link.download();
+                            String fileName = file.getName();
+                            deleteFileOrDirectory(file);
+                            if (!fileName.equals(attachName)){
+                                throw new RuntimeException("Завантажено інший файл");
+                            }
+                        } else {
+                            throw new RuntimeException("Нічого не завантажено");
+                        }
                     }
                 }
             }
