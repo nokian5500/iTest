@@ -2503,6 +2503,7 @@ public class CustomMethods extends SetupAndTeardown {
 
     public void downloadAttach(String attachName) throws FileNotFoundException {
         compareAttachments(0);
+        String fileName = "";
         if(this.attachments.contains(attachName)){
             ElementsCollection attachments = getAttachments();
             for (SelenideElement attach : attachments){
@@ -2512,14 +2513,15 @@ public class CustomMethods extends SetupAndTeardown {
                     for (SelenideElement link : links){
                         if(link.getText().equals(attachName)){
                             File file = link.download();
-                            String fileName = file.getName();
+                            fileName = file.getName();
                             deleteFileOrDirectory(file);
-                            if (!fileName.equals(attachName)){
+                            if (!fileName.equals(attachName)) {
                                 throw new RuntimeException("Завантажено інший файл");
                             }
-                        } else {
-                            throw new RuntimeException("Нічого не завантажено");
                         }
+                    }
+                    if (fileName.isEmpty()){
+                        throw new RuntimeException("Нічого не завантажено");
                     }
                 }
             }
