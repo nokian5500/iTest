@@ -1934,7 +1934,7 @@ public class CustomMethods extends SetupAndTeardown {
      * Ответить на замечание
      * @param comment
      */
-    public void answerComment(String fio, String comment){
+    public void answerComment(String comment){
 
         ElementsCollection chats = $$x("//a[@ng-click='showConversation = !showConversation']/" +
                 "i[@ng-if='user.sLogin === item.sKeyGroup_Author']");
