@@ -80,12 +80,16 @@ public class Collective_test_sz extends CustomMethods {
         //counterAfter("createDoc");
         
         setDocContent("Текст службової записки");
-        loadFileToHTML(" Картинка 1","Lighthouse.jpg");
-        loadFileToHTML(" Картинка 2","test.jpg");
+        //loadFileToHTML(" Картинка 1","Lighthouse.jpg");
+        //loadFileToHTML(" Картинка 2","test.jpg");
 
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
-        setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
+        setRegionTableCellsInputTypeString("sNameFile", "0", "Картинка 1");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/Koala.jpg");
+        addRegionsTableRow("sTableFile");
+        setRegionTableCellsInputTypeString("sNumber", "1", "2");
+        setRegionTableCellsInputTypeString("sNameFile", "1", "Картинка 2");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "1", "src/test/resources/files/test.jpg");
 
         /*Таблица Узгоджуючі*/
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", Name1);
@@ -115,10 +119,10 @@ public class Collective_test_sz extends CustomMethods {
         //counterBefore();
         pause(2000);
         checkAttachments(0);
-        openLink(" Картинка 1");
-        openLink(" Картинка 2");
-        //downloadAttach("Lighthouse.jpg");
-        //downloadAttach("test.jpg");
+        //openLink("Koala.jpg");
+        //openLink("test.jpg");
+        downloadAttach("Koala.jpg");
+        downloadAttach("test.jpg");
         clickButton("Інші дії");
         clickButton("Делегувати");
         addParticipant("delegate", Name1, true);
