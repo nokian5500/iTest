@@ -9,6 +9,9 @@ import autoTests.CustomMethods;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * На тестах, находящихся тут, я тестирую работоспособность методов, файл перманентный
  * @author Oleksandr Belichenko
@@ -200,5 +203,27 @@ public class TaskTest extends CustomMethods{
         addReport("Виконане", "Завдання виконане");
 
        pause(5000);
+    }
+
+    @Test
+    public void testHistory() throws Exception {
+        openURLdashboard("https://alpha.test.idoc.com.ua");
+        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
+        //clickButton("Увійти");
+        pause(3000);
+
+        navigateToggleMenu();
+        setRegionFindOrder("№ 15-1795070");
+        enterInHistory();
+        searchInHistory("EditComment","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", "переглядача ");
+    }
+
+    @Test
+    public void testBool(){
+        Map<String, Object> mBody = new HashMap<>();
+        mBody.put("123",false);
+        boolean boolean2 = (Boolean) mBody.get("123");
+
+        System.out.println(boolean2);
     }
 }

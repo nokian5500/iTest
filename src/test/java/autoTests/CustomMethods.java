@@ -1,5 +1,6 @@
 package autoTests;
 
+import autoTests.TestSiute.HistoryEventType;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
@@ -22,6 +23,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
@@ -1280,6 +1283,11 @@ public class CustomMethods extends SetupAndTeardown {
         String UrlCurrentPage = url();
         System.out.println("UrlCurrentPage: " + UrlCurrentPage);
         String sOrder = UrlCurrentPage.substring(UrlCurrentPage.indexOf("=") + 1, UrlCurrentPage.indexOf("#"));
+        Pattern pattern = Pattern.compile("[\\d]+[-]+[\\d]+");
+        Matcher matcher = pattern.matcher(sOrder);
+        while (matcher.find()) {
+            sOrder = matcher.group(0);
+        }
         System.out.println("Полученный sID_Order: " + sOrder);
         ConfigClass.orderId.add(sOrder);
         return sOrder;
@@ -2529,4 +2537,124 @@ public class CustomMethods extends SetupAndTeardown {
             throw new RuntimeException("Цей файл не знайдено");
         }
     }
+
+    public void enterInHistory() {
+        $x("//span[contains(.,'Iсторiя документу')]").scrollIntoView(true).click();
+    }
+
+    public void searchInHistory(String filter, String sFIO, String sFIOReferent, String sComment,String sNameHuman, String sRole) {
+        String sCurrentFIO = getUserInitials(sFIO);
+        String sCurrentFIOReferent = getUserInitials(sFIOReferent);
+        String sNameHumanFIO = getUserInitials(sNameHuman);
+        pause(5000);
+        String historyDocumentType = "";
+        if (("CreateDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.CREATE_DOCUMENT;
+            historyDocumentType = historyDocumentType.replace("[sID_OrderURL]", getOrderFromUrlCurrentPage());
+
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() != 1) {
+                throw new RuntimeException("Найдено " + events.size() + " записей о создании документа");
+            }
+        }
+        if (("EditDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.EDIT_DOCUMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей об редактировании документа");
+            }
+        }
+        if (("ChangeDocStatus").equals(filter)) {
+            historyDocumentType = HistoryEventType.STATUS_DOCUMENT;
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("не найдено записей о смене статуса документа");
+            }
+        }
+        if (("AddComment").equals(filter)) {
+            historyDocumentType = HistoryEventType.ADD_COMMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о добавлении коммента");
+            }
+        }
+        if (("EditComment").equals(filter)) {
+            historyDocumentType = HistoryEventType.EDIT_COMMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о редактировании коммента");
+            }
+        }
+        if (("DeleteComment").equals(filter)) {
+            historyDocumentType = HistoryEventType.DELETE_COMMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей об удалении коммента");
+            }
+        }
+        if (("AddHuman").equals(filter)) {
+            historyDocumentType = HistoryEventType.ADD_HUMAN;
+            historyDocumentType = historyDocumentType.replace("[sID_OrderURL]", getOrderFromUrlCurrentPage());
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sNameHuman]", sNameHumanFIO);
+            historyDocumentType = historyDocumentType.replace("[sRole]", sRole);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о добавлении человека");
+            }
+        }
+        if (("ApprovedDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.DOCUMENT_APPROVED;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о согласовании документа");
+            }
+        }
+        if (("DeleteHuman").equals(filter)) {
+            historyDocumentType = HistoryEventType.DELETE_HUMAN;
+            historyDocumentType = historyDocumentType.replace("[sNameHuman]", sNameHumanFIO);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей об удалении человека");
+            }
+        }
+        if (("FirstSeen").equals(filter)) {
+            historyDocumentType = HistoryEventType.FIRST_SEEN;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о первом просмотре документа");
+            }
+        }
+    }
+
+    private ElementsCollection findAllEvents(String type) {
+        return $$x("//p[contains(.,'" + type + "')]");
+    }
+
+
+
 }
