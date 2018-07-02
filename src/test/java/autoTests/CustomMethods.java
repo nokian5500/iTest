@@ -2542,7 +2542,7 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//span[contains(.,'Iсторiя документу')]").scrollIntoView(true).click();
     }
 
-    public void searchInHistory(String filter, String sFIO, String sFIOReferent, String sComment,String sNameHuman, String sRole) {
+    public void searchInHistory(String filter, String sFIO, String sFIOReferent, String sComment,String sNameHuman, String sRole, String sNameDelegate, String sStatus) {
         String sCurrentFIO = getUserInitials(sFIO);
         String sCurrentFIOReferent = getUserInitials(sFIOReferent);
         String sNameHumanFIO = getUserInitials(sNameHuman);
@@ -2570,10 +2570,15 @@ public class CustomMethods extends SetupAndTeardown {
         if (("ChangeDocStatus").equals(filter)) {
             historyDocumentType = HistoryEventType.STATUS_DOCUMENT;
             ElementsCollection events = findAllEvents(historyDocumentType);
+            historyDocumentType = historyDocumentType.replace("[sStatus]", sStatus);
             if (events.size() == 0) {
                 throw new RuntimeException("не найдено записей о смене статуса документа");
             }
+            if ( ("документ закрито").equals(sStatus) && events.size()>1){
+                throw new RuntimeException("Должна быть только одна запись о закрытии документа");
+            }
         }
+
         if (("AddComment").equals(filter)) {
             historyDocumentType = HistoryEventType.ADD_COMMENT;
             historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
@@ -2649,6 +2654,37 @@ public class CustomMethods extends SetupAndTeardown {
                 throw new RuntimeException("Не найдено записей о первом просмотре документа");
             }
         }
+        if (("DelegateDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.DELEGATE;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sID_OrderURL]", getOrderFromUrlCurrentPage());
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sNameDelegate]", sNameDelegate);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о делегировании документа");
+            }
+        }
+        if (("SigneDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.SIGNE_DOCUMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о визировании документа");
+            }
+        }
+        if (("CloseDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.CLOSE_DOCUMENT;
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей закрытии документа");
+            }
+        }
+
     }
 
     private ElementsCollection findAllEvents(String type) {
