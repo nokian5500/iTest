@@ -12,6 +12,9 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryRoleType.*;
+import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryStatusType.*;
+
 /**
  * На тестах, находящихся тут, я тестирую работоспособность методов, файл перманентный
  * @author Oleksandr Belichenko
@@ -208,14 +211,13 @@ public class TaskTest extends CustomMethods{
     @Test
     public void testHistory() throws Exception {
         openURLdashboard("https://alpha.test.idoc.com.ua");
-        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
-        //clickButton("Увійти");
+        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");//IGOV_270907SVK  Смоктій Вікторія Кирилівна
         pause(3000);
 
         navigateToggleMenu();
-        setRegionFindOrder("№ 15-1795070");
+        setRegionFindOrder("№ 15-4229401");
         enterInHistory();
-        searchInHistory("EditComment","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", "переглядача ");
+        searchInHistory("DelegateDoc","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
     }
 
     @Test
