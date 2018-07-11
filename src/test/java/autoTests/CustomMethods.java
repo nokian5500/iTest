@@ -2691,6 +2691,17 @@ public class CustomMethods extends SetupAndTeardown {
         return $$x("//p[contains(.,'" + type + "')]");
     }
 
+    public void clickUrgentStatusAllButton() {
+        ElementsCollection urgents = $$x("//input[@title='Позначити увесь крок як екстрений/зняти екстреність з усього кроку']");
+        for (SelenideElement urgent : urgents) {
+            urgent.scrollIntoView(true).click();
+            pause(7000);
+        }
+    }
 
+    public void clickUrgentStatusSingleButton(Integer id) {
+        $$x("//input[@type='checkbox']").get(id).scrollIntoView(true).click();
+        System.out.println($$x("//input[@type='checkbox']").get(id));
+    }
 
 }
