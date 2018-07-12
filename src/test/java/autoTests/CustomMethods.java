@@ -2704,4 +2704,17 @@ public class CustomMethods extends SetupAndTeardown {
         System.out.println($$x("//input[@type='checkbox']").get(id));
     }
 
+    public void checkUrgentDoc() {
+        ElementsCollection documentsType = $$x("//div[@class='idoc-menus-list selected-menu-list']");
+        if (documentsType.size() != 1) {
+            throw new RuntimeException("Должна быть одна вкладка документов, пинайте фронтов, они что-то поломали");
+        }
+
+        ElementsCollection urgents = $$x("//a[@class='list-group-item igov-tasks-list task urgent_  urgent']");
+        int countUD = Integer.valueOf($x("//span[@ng-if='menu.showCount']").getText());
+        if (urgents.size() != countUD) {
+            throw new RuntimeException("Должно быть " + countUD + " элементов");
+        }
+    }
+
 }
