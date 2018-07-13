@@ -1734,7 +1734,7 @@ public class CustomMethods extends SetupAndTeardown {
     private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
-        $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
+        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]").click();
 
         if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
                 $x("//strong[contains(.,'ПІБ вже існує на цьому кроці')]").exists()) {
@@ -2717,4 +2717,16 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    public void checkDelegate() {
+        boolean flag = false;
+        if ($x("//span[contains(.,'Не можна делегувати на себе')]").exists() && $x("//button[@disabled='disabled']").exists()) {
+            flag = true;
+            if (flag == false) {
+                throw new RuntimeException("На себя нельзя делегировать");
+            }
+
+        }
+    }
 }
+
+
