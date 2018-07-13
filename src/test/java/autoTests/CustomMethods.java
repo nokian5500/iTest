@@ -1681,7 +1681,7 @@ public class CustomMethods extends SetupAndTeardown {
         //$(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(text);
         //pause(2000);
 
-        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
+        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//span/span[contains(.,'" + text + "')]")).click();
     }
 
     /**
