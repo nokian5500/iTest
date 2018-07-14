@@ -1681,7 +1681,7 @@ public class CustomMethods extends SetupAndTeardown {
         //$(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(text);
         //pause(2000);
 
-        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
+        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//span/span[contains(.,'" + text + "')]")).click();
     }
 
     /**
@@ -1734,7 +1734,7 @@ public class CustomMethods extends SetupAndTeardown {
     private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
-        $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
+        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]").click();
 
         if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
                 $x("//strong[contains(.,'ПІБ вже існує на цьому кроці')]").exists()) {
@@ -2691,6 +2691,42 @@ public class CustomMethods extends SetupAndTeardown {
         return $$x("//p[contains(.,'" + type + "')]");
     }
 
+    public void clickUrgentStatusAllButton() {
+        ElementsCollection urgents = $$x("//input[@title='Позначити увесь крок як екстрений/зняти екстреність з усього кроку']");
+        for (SelenideElement urgent : urgents) {
+            urgent.scrollIntoView(true).click();
+            pause(7000);
+        }
+    }
 
+    public void clickUrgentStatusSingleButton(Integer id) {
+        $$x("//input[@type='checkbox']").get(id).scrollIntoView(true).click();
+        System.out.println($$x("//input[@type='checkbox']").get(id));
+    }
 
+    public void checkUrgentDoc() {
+        ElementsCollection documentsType = $$x("//div[@class='idoc-menus-list selected-menu-list']");
+        if (documentsType.size() != 1) {
+            throw new RuntimeException("Должна быть одна вкладка документов, пинайте фронтов, они что-то поломали");
+        }
+
+        ElementsCollection urgents = $$x("//a[@class='list-group-item igov-tasks-list task urgent_  urgent']");
+        int countUD = Integer.valueOf($x("//span[@ng-if='menu.showCount']").getText());
+        if (urgents.size() != countUD) {
+            throw new RuntimeException("Должно быть " + countUD + " элементов");
+        }
+    }
+
+    public void checkDelegate() {
+        boolean flag = false;
+        if ($x("//span[contains(.,'Не можна делегувати на себе')]").exists() && $x("//button[@disabled='disabled']").exists()) {
+            flag = true;
+            if (flag == false) {
+                throw new RuntimeException("На себя нельзя делегировать");
+            }
+
+        }
+    }
 }
+
+
