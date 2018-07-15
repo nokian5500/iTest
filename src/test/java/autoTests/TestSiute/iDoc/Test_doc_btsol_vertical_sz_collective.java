@@ -54,10 +54,10 @@ public class Test_doc_btsol_vertical_sz_collective extends CustomMethods {
         pause(5000);
         setDocTitle("Автотест колективної роботи");
         setDocContent("Текст службової записки при колективній роботі");
-        loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
+        //loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        //setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "D");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "D");
         
         
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);  
@@ -74,7 +74,14 @@ public class Test_doc_btsol_vertical_sz_collective extends CustomMethods {
         
         login(LoginCollective1, " ");
         setRegionFindOrderByNumberDocument();
-        
+        checkAttachments(1);
+        downloadAttach("test.jpg");
+        addAcceptor(Name1);
+        addVisor(Name2);
+        addViewer(Name3);
+        removeParticipant(1, true);
+        removeParticipant(2, true);
+        removeParticipant(3, true);
         
     }
 }
