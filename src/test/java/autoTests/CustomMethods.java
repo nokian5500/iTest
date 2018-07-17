@@ -2204,15 +2204,30 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Удаление документа через запрос, если нема кнопки (например из истории)
      */
-    public void deleteProcess(String login, String referent) throws AWTException {
+    public void deleteProcess(String login, String referent) {
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
+        String request = "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +
+                "&sLoginReferent="
+                + referent + "&snID_Process_Activiti=" + snID_ProcessActiviti;
+        openApi(request);
+    }
+
+    /**
+     * Запускание эскалации вручную
+     * @param nID
+     */
+    public void runEscalationRule(int nID) {
+        String request = "/wf/service/action/escalation/runEscalationRule?nID=" + nID;
+        openApi(request);
+    }
+
+    private void openApi(String url) {
         String sUrl = getRegionUrl();
         sUrl = sUrl.substring(8);
         String token = "system";
-        String auth = "http://" + token +":" + token +"@";
-        String request = auth + sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +
-                "&sLoginReferent="
-                + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
+        String auth = "http://" + token + ":" + token + "@";
+        String request = auth + sUrl;
+        request = request.concat(url);
         open(request);
     }
 
@@ -2720,6 +2735,37 @@ public class CustomMethods extends SetupAndTeardown {
     public void checkDelegate() {
         boolean flag = false;
         if ($x("//span[contains(.,'Не можна делегувати на себе')]").exists() && $x("//button[@disabled='disabled']").exists()) {
+            flag = true;
+            if (flag == false) {
+                throw new RuntimeException("На себя нельзя делегировать");
+            }
+
+        }
+    }
+    public void removeTask(){
+        WebElement button = $(By.xpath(".//a[contains(.,'Інші дії')]"));
+        $(button).waitUntil(visible, 10000);
+        button.click();
+        clickButton("Редагувати завдання");
+        pause(3000);
+        $x("//a[@ng-click='remove($index)']").scrollIntoView(true).click();
+
+    }
+    public void editComment(String comment){
+        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-pencil ng-scope']").click();
+        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
+        clickButton("Зберегти зміни");
+
+    }
+    public void deleteComment(){
+        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-trash']").click();
+        clickButton("Підтвердити");
+    }
+    public void checkDelegateDoc() {
+        boolean flag = false;
+        if ($x("//span[contains(.,'Користувач не може бути одночасно і контролюючим і виконавцем!')]").exists() && $x("//button[@disabled='disabled']").exists()) {
             flag = true;
             if (flag == false) {
                 throw new RuntimeException("На себя нельзя делегировать");
