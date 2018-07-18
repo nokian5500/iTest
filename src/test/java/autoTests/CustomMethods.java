@@ -1461,7 +1461,7 @@ public class CustomMethods extends SetupAndTeardown {
         executorByXpath.get(math).scrollIntoView(true).click();
         executorByXpath = $$x(xpath+"/input[@ng-model='$select.search']");
         executorByXpath.last().val(name);
-        $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+        $x(xpath + "//span[contains(.,'"+name+"')]").click();
 
         /*
         <span id="textError" class="col-md-12" style="margin-top: 20px; text-align:
@@ -2763,15 +2763,25 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//i[@class='glyphicon glyphicon-trash']").click();
         clickButton("Підтвердити");
     }
-    public void checkDelegateDoc() {
-        boolean flag = false;
+    public void checkDelegateTaskDoc() {
+        boolean flag = true;
         if ($x("//span[contains(.,'Користувач не може бути одночасно і контролюючим і виконавцем!')]").exists() && $x("//button[@disabled='disabled']").exists()) {
-            flag = true;
+            flag = false;
             if (flag == false) {
                 throw new RuntimeException("На себя нельзя делегировать");
             }
 
         }
+    }
+
+    public void checkScrollForEmptyFields() {
+        pause(3000);
+        if (!$(By.xpath("//span[contains(.,'Необхідно заповнити.')]")).has(focused)) {
+            throw new RuntimeException("Не прокрутилось до пустого поля");
+        }
+    }
+    public void checkPositionNotNull(){
+      ElementsCollection se =  $$x("//input[@type='checkbox']");
     }
 }
 
