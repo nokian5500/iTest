@@ -62,18 +62,48 @@ public class Test_doc_btsol_vertical_sz__part_2_urgent extends CustomMethods {
 
         //заходим под первым подписантом
         login(Login1, " ");
-        navigateToggleMenu();
+        pause(5000);
         checkUrgentDoc();
         pause(2000);
         setRegionFindOrderByNumberDocument();
-
-
-
-
-
-
-
-
+        addComment("Тест замечания екстренности");
         pause(5000);
+        clickLink("Переглянутi ");
+        isLastDoc();
+        pause(2000);
+        logout();
+
+        //заходим автором
+        login(LoginAuthor, " ");
+        pause(5000);
+        checkUrgentDoc();
+        setRegionFindOrderByNumberDocument();
+        clickButton("Редагувати");
+        pause(5000);
+        setDocTitle(" + Отредактировано!");
+        clickButtonSign();
+        pause(2000);
+        logout();
+
+        //Заходим 2ым исполнителем
+        login(Login2, " ");
+        pause(5000);
+        checkUrgentDoc();
+        setRegionFindOrderByNumberDocument();
+        clickButton("Інші дії");
+        clickButton("Делегувати");
+        addDelegate(Name5);
+        pause(2000);
+        clickLink("Переглянутi ");
+        isLastDoc();
+        pause(2000);
+        logout();
+
+        //со стороны делеганта
+        login(Login5, " ");
+        pause(2000);
+        clickLink("Нерозглянутi ");
+        isLastDoc();
+        pause(2000);
     }
 }
