@@ -58,7 +58,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         //loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "D");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
         
         
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);  
@@ -67,7 +67,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
-        pause(2000);
+        pause(4000);
         logout();
         pause(2000);
         

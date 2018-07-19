@@ -2483,7 +2483,9 @@ public class CustomMethods extends SetupAndTeardown {
         if (attachments.isEmpty()) {
             attachments.addAll(getAttachmentsText());
         }
-        compareAttachments(changes);
+        if (changes ==0){
+            compareAttachments(changes);
+        }
         ArrayList<String> attachments = getAttachmentsText();
         ArrayList<String> temp;
         if(changes != 0){
@@ -2492,11 +2494,13 @@ public class CustomMethods extends SetupAndTeardown {
                 temp.removeAll(this.attachments);
                 System.out.println(temp);
                 this.attachments.addAll(temp);
+                changes = 0;
             } else if (changes < 0) {
                 temp = this.attachments;
                 temp.removeAll(attachments);
                 System.out.println(temp);
                 this.attachments.removeAll(temp);
+                changes = 0;
             }
             compareAttachments(changes);
         }
