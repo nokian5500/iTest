@@ -2720,9 +2720,10 @@ public class CustomMethods extends SetupAndTeardown {
     }
 
     public void checkUrgentDoc() {
+        pause(5000);
         ElementsCollection documentsType = $$x("//div[@class='idoc-menus-list selected-menu-list']");
         if (documentsType.size() != 1) {
-            throw new RuntimeException("Должна быть одна вкладка документов, пинайте фронтов, они что-то поломали");
+            throw new RuntimeException("Должна быть одна вкладка документов");
         }
 
         ElementsCollection urgents = $$x("//a[@class='list-group-item igov-tasks-list task urgent_  urgent']");
