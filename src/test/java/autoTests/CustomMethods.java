@@ -2072,12 +2072,16 @@ public class CustomMethods extends SetupAndTeardown {
      * @param table
      * @param row
      */
-    public void removeRowFromTable(String table, int row){
+    public void removeRowFromTable(String table, int row, boolean accept){
+        if (accept){
         String xpath = "//tbody[@ng-form='" + table + "']/tr";
         $x(xpath).scrollIntoView(true);
         //TODO видит Бог, не хотел
         xpath = xpath + "[" + row + "]/td[4]/a/i";
-        $x(xpath).click();
+        $x(xpath).click();}
+        else {
+            System.out.println("Нельзя удалить таблицу (чтобы это не значило)");
+        }
     }
 
     /**
