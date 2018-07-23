@@ -16,6 +16,8 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         String NameCollective1 = "Смоктій Оксана Данилівна";
         String LoginCollective2 = "IGOV_310780BVV";
         String NameCollective2 = "Белявцев Володимир Володимирович";
+        String LoginCollective3 = "IGOV_301082BOY";
+        String NameCollective3 = "Бондарь Ольга Євгенієвна";
         String LoginCollective4 = "IGOV_100982SOV";
         String NameCollective4 = "Смірнова Олена Володимирівна";
         String LoginCollective5 = "IGOV_210961SMU";
@@ -24,8 +26,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         String NameCollective6 = "Біла Юлія Данилівна";
         String LoginCollective7 = "IGOV_180277SMV";
         String NameCollective7 = "Свідрань Максим Володимирович";
-        String LoginCollective8 = "IGOV_301082BOY";
-        String NameCollective8 = "Бондарь Ольга Євгенієвна";
+
         
         //logins beta-autotest
         String LoginAuthor = "ZCPK_310767TVV";
@@ -63,7 +64,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);  
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);        
-        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective4);
+        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
@@ -75,11 +76,17 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         
         login(LoginCollective1, " ");
         setRegionFindOrderByNumberDocument();
-        checkAttachments(1);
+        checkAttachments(0);
         downloadAttach("test.jpg");
+        clickButton("Інші дії");
         addAcceptor(Name1);
+        closeParticipant();
+        clickButton("Інші дії");
         addVisor(Name2);
+        closeParticipant();
+        clickButton("Інші дії");
         addViewer(Name3);
+        closeParticipant();
         removeParticipant(1, true);
         removeParticipant(2, true);
         removeParticipant(3, true);
