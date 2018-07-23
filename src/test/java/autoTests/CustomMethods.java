@@ -1692,7 +1692,6 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
         clickButton("Додати підписанта");
         addParticipant(xpath, name);
-        closeParticipant();
     }
 
     /**
@@ -1712,7 +1711,6 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
         clickButton("Додати на перегляд");
         addParticipant(xpath, name);
-        closeParticipant();
     }
 
     /**
@@ -1723,7 +1721,6 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         clickButton("Ознайомити");
         addParticipant(xpath, name);
-        closeParticipant();
     }
 
     /**
@@ -1758,7 +1755,7 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Закрыть окно добавления подписанта с кнопки
      */
-    private void closeParticipant(){
+    public void closeParticipant(){
         $x("//i[@class='fa fa-times']").click();
     }
 
@@ -2785,8 +2782,16 @@ public class CustomMethods extends SetupAndTeardown {
             throw new RuntimeException("Не прокрутилось до пустого поля");
         }
     }
-    public void checkPositionNotNull(){
-      ElementsCollection se =  $$x("//input[@type='checkbox']");
+    public void prostoMetodSchaUdoly(String name){
+        addWorker(name);
+        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]");
+    }
+    public void checkPositionNotNull() {
+        ElementsCollection position = $$("//span[@class='ui-select-choices-row-inner']");
+        if (!$x("//strong[@class='ng-binding']").exists()) {
+            throw new RuntimeException("Не хватает предприятия");
+        }
+
     }
 }
 
