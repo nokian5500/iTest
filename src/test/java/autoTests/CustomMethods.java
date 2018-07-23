@@ -1722,6 +1722,10 @@ public class CustomMethods extends SetupAndTeardown {
         clickButton("Ознайомити");
         addParticipant(xpath, name);
     }
+    public void addFIO(String name){
+        String xpath = "";
+        addParticipant(xpath, name);
+    }
 
     /**
      * Добавить подписанта с кнопки
@@ -2080,7 +2084,11 @@ public class CustomMethods extends SetupAndTeardown {
         xpath = xpath + "[" + row + "]/td[4]/a/i";
         $x(xpath).click();}
         else {
-            System.out.println("Нельзя удалить таблицу (чтобы это не значило)");
+            String xpath = "//tbody[@ng-form='" + table + "']/tr";
+            $x(xpath).scrollIntoView(true);
+            xpath = xpath + "[" + row + "]/td[4]/a/i";
+            if($x(xpath).exists())
+               throw new RuntimeException("Кнопка не должна существовать");
         }
     }
 
