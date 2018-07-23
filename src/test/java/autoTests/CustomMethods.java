@@ -2537,7 +2537,7 @@ public class CustomMethods extends SetupAndTeardown {
             for (SelenideElement attach : attachments){
                 if(attach.getText().equals(attachName)){
                     attach.click();
-                    ElementsCollection links = $$x("//a");
+                    ElementsCollection links = $$x("//a[contains(.,'"+attachName+"')]");
                     for (SelenideElement link : links){
                         if(link.getText().equals(attachName)){
                             File file = link.download();
