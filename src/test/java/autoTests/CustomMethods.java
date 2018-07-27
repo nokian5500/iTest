@@ -2760,6 +2760,29 @@ public class CustomMethods extends SetupAndTeardown {
                 throw new RuntimeException("Не найдено записей закрытии документа");
             }
         }
+        if (("RemoveHuman").equals(filter)) {
+            historyDocumentType = HistoryEventType.REMOVE_HUMAN;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sID_OrderURL]", getOrderFromUrlCurrentPage());
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sNameHuman]", sNameHumanFIO);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей об удалении человека с документа");
+            }
+        }
+        if (("RemoveSign").equals(filter)) {
+            historyDocumentType = HistoryEventType.REMOVE_SIGN;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей об удалении человека с документа");
+            }
+        }
+
 
     }
 
