@@ -11,34 +11,25 @@ public class ConfigClass {
 
     public static List<String> orderId = new ArrayList<>();
 
+    private static String DELTA_CENTRAL = "https://delta.test.igov.org.ua";
+    private static String DELTA_REGION = "https://delta.test.region.igov.org.ua";
+    private static String GAMMA_CENTRAL = "https://gamma.test.igov.org.ua";
+    private static String GAMMA_REGION = "https://gamma.test.idoc.com.ua";
+    private static String ALPHA_CENTRAL = "https://alpha.test.igov.org.ua";
+    private static String ALPHA_REGION = "https://alpha.test.idoc.com.ua";
+    private static String BETA_REGION = "https://beta.test.idoc.com.ua";
+    private static String COORG_GAMMA_REGION = "https://coorg-gamma.test.idoc.com.ua";
+    private static String BETA_AUTOTEST = "https://beta-autotest.test.idoc.com.ua";
+
     public String getBaseUrl() {
-        String DeltaCentral = "https://delta.test.igov.org.ua";
-        String DeltaRegion = "https://delta.test.region.igov.org.ua";
-        String GammaCentral = "https://gamma.test.igov.org.ua";
-        String GammaRegion = "https://gamma.test.idoc.com.ua";
-        String AlphaCentral = "https://alpha.test.igov.org.ua";
-        String AlphaRegion = "https://alpha.test.idoc.com.ua";
-        return DeltaCentral;
+        return DELTA_CENTRAL;
     }
 
     public String getRegionUrl() {
-        String DeltaCentral = "https://delta.test.igov.org.ua";
-        String DeltaRegion = "https://delta.test.region.igov.org.ua";
-        String GammaCentral = "https://gamma.test.igov.org.ua";
-        String GammaRegion = "https://gamma.test.idoc.com.ua";
-        String AlphaCentral = "https://alpha.test.igov.org.ua";
-        String AlphaRegion = "https://alpha.test.idoc.com.ua";
-        String BetaCentral = "https://beta.test.igov.org.ua";
-        String BetaRegion = "https://beta.test.idoc.com.ua";
-        String CoorgGamma = "https://coorg-gamma.test.idoc.com.ua";
-        return BetaRegion;
+        return BETA_AUTOTEST;
     }
 
     public String getCollectiveURL() {
-        String GammaRegion = "https://gamma.test.idoc.com.ua";
-        String AlphaRegion = "https://alpha.test.idoc.com.ua";
-        String BetaRegion = "https://beta.test.idoc.com.ua";
-        String CoorgGamma = "https://coorg-gamma.test.idoc.com.ua";
-        return AlphaRegion;
+        return BETA_REGION;
     }
 }

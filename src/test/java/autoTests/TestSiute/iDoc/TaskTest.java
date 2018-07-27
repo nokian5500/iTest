@@ -12,6 +12,9 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
+import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryRoleType.*;
+import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryStatusType.*;
+
 /**
  * На тестах, находящихся тут, я тестирую работоспособность методов, файл перманентный
  * @author Oleksandr Belichenko
@@ -208,14 +211,13 @@ public class TaskTest extends CustomMethods{
     @Test
     public void testHistory() throws Exception {
         openURLdashboard("https://alpha.test.idoc.com.ua");
-        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");
-        //clickButton("Увійти");
+        AuthorizationBySetLoginPassword("IGOV_200687TOV", " ");//IGOV_270907SVK  Смоктій Вікторія Кирилівна
         pause(3000);
 
         navigateToggleMenu();
-        setRegionFindOrder("№ 15-1795070");
+        setRegionFindOrder("№ 15-4229401");
         enterInHistory();
-        searchInHistory("EditComment","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", "переглядача ");
+        searchInHistory("DelegateDoc","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
     }
 
     @Test
@@ -226,4 +228,46 @@ public class TaskTest extends CustomMethods{
 
         System.out.println(boolean2);
     }
+
+    @Test
+    public void testUrgentButton() throws Exception {
+        String LoginCollective1 = "IGOV_160582SOD";
+        String NameCollective1 = "Смоктій Оксана Данилівна";
+        String LoginCollective2 = "IGOV_310780BVV";
+        String NameCollective2 = "Белявцев Володимир Володимирович";
+        String LoginCollective4 = "IGOV_100982SOV";
+        String NameCollective4 = "Смірнова Олена Володимирівна";
+        String sBP = "_doc_btsol_vertical_sz";
+        openURLdashboard(getRegionUrl());
+        AuthorizationBySetLoginPassword("ZCPK_031260SVM", " ");
+        pause(3000);
+        navigateToggleMenu();
+        setRegionFindOrder("14-35973250");
+        pause(4000);
+        clickButton("Інші дії");
+        pause(1000);
+        clickButton("Додати на перегляд");
+       pause(1000);
+       prostoMetodSchaUdoly("Давидчак Ярослав Романович");
+        pause(1000);
+        checkPositionNotNull();
+        pause(8000);
+    }
 }
+    /*String LoginAuthor = "ZCPK_310767TVV";
+    String NameAuthor = "Терентьєв Володимир Володимирович";
+    String Login1 = "ZCPK_020379CDP";
+    String Name1 = "Чмихал Дмитро Павлович";
+    String Login2 = "ZCPK_150960POV";
+    String Name2 = "Пітула Олександр Володимирович";
+    String Login3 = "ZCPK_050991BSO";
+    String Name3 = "Будай Coломія Олексіївна";
+    String Login4 = "ZCPK_280562DGI";
+    String Name4 = "Долінська Галина Йосипівна";
+    String Login5 = "ZCPK_220185NSV";
+    String Name5 = "Норов Станіслав Валентинович";
+    String Login6 = "ZCPK_230161DYR";
+    String Name6 = "Давидчак Ярослав Романович";
+    String Login7 = "ZCPK_031260SVM";
+    String Name7 = "Стефанів Василь Михайлович";*/
+

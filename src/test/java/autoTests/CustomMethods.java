@@ -1461,7 +1461,7 @@ public class CustomMethods extends SetupAndTeardown {
         executorByXpath.get(math).scrollIntoView(true).click();
         executorByXpath = $$x(xpath+"/input[@ng-model='$select.search']");
         executorByXpath.last().val(name);
-        $x(xpath + "//a/span[contains(.,'"+name+"')]").click();
+        $x(xpath + "//span[contains(.,'"+name+"')]").click();
 
         /*
         <span id="textError" class="col-md-12" style="margin-top: 20px; text-align:
@@ -1681,7 +1681,7 @@ public class CustomMethods extends SetupAndTeardown {
         //$(By.cssSelector(".form-control.ui-select-search.ng-pristine.ng-untouched.ng-valid.ng-empty")).sendKeys(text);
         //pause(2000);
 
-        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//a[contains(.,'" + text + "')]")).click();
+        $(By.xpath("//div[@class='ui-select-choices-row ng-scope active']//span/span[contains(.,'" + text + "')]")).click();
     }
 
     /**
@@ -1692,7 +1692,6 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddAcceptor']//input";
         clickButton("Додати підписанта");
         addParticipant(xpath, name);
-        closeParticipant();
     }
 
     /**
@@ -1712,7 +1711,6 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddViewer']//input";
         clickButton("Додати на перегляд");
         addParticipant(xpath, name);
-        closeParticipant();
     }
 
     /**
@@ -1723,7 +1721,10 @@ public class CustomMethods extends SetupAndTeardown {
         String xpath = "//*[ng-if='execCtrlModals.bAddVisor']//input";
         clickButton("Ознайомити");
         addParticipant(xpath, name);
-        closeParticipant();
+    }
+    public void addFIO(String name){
+        String xpath = "";
+        addParticipant(xpath, name);
     }
 
     /**
@@ -1734,7 +1735,7 @@ public class CustomMethods extends SetupAndTeardown {
     private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         addWorker(name);
-        $x("//*[@id='draggable-dialog']//a/span[contains(.,'" + name + "')]").click();
+        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]").click();
 
         if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
                 $x("//strong[contains(.,'ПІБ вже існує на цьому кроці')]").exists()) {
@@ -1758,7 +1759,7 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Закрыть окно добавления подписанта с кнопки
      */
-    private void closeParticipant(){
+    public void closeParticipant(){
         $x("//i[@class='fa fa-times']").click();
     }
 
@@ -2075,12 +2076,20 @@ public class CustomMethods extends SetupAndTeardown {
      * @param table
      * @param row
      */
-    public void removeRowFromTable(String table, int row){
+    public void removeRowFromTable(String table, int row, boolean accept){
+        if (accept){
         String xpath = "//tbody[@ng-form='" + table + "']/tr";
         $x(xpath).scrollIntoView(true);
         //TODO видит Бог, не хотел
         xpath = xpath + "[" + row + "]/td[4]/a/i";
-        $x(xpath).click();
+        $x(xpath).click();}
+        else {
+            String xpath = "//tbody[@ng-form='" + table + "']/tr";
+            $x(xpath).scrollIntoView(true);
+            xpath = xpath + "[" + row + "]/td[4]/a/i";
+            if($x(xpath).exists())
+               throw new RuntimeException("Кнопка не должна существовать");
+        }
     }
 
     /**
@@ -2204,15 +2213,30 @@ public class CustomMethods extends SetupAndTeardown {
     /**
      * Удаление документа через запрос, если нема кнопки (например из истории)
      */
-    public void deleteProcess(String login, String referent) throws AWTException {
+    public void deleteProcess(String login, String referent) {
         String snID_ProcessActiviti = getProcessInstanse(ConfigClass.orderId.get(0));
+        String request = "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +
+                "&sLoginReferent="
+                + referent + "&snID_Process_Activiti=" + snID_ProcessActiviti;
+        openApi(request);
+    }
+
+    /**
+     * Запускание эскалации вручную
+     * @param nID
+     */
+    public void runEscalationRule(int nID) {
+        String request = "/wf/service/action/escalation/runEscalationRule?nID=" + nID;
+        openApi(request);
+    }
+
+    private void openApi(String url) {
         String sUrl = getRegionUrl();
         sUrl = sUrl.substring(8);
         String token = "system";
-        String auth = "http://" + token +":" + token +"@";
-        String request = auth + sUrl + "/wf/service/common/document/removeDocumentSteps?sLogin=" + login +
-                "&sLoginReferent="
-                + referent +"&snID_Process_Activiti=" + snID_ProcessActiviti;
+        String auth = "http://" + token + ":" + token + "@";
+        String request = auth + sUrl;
+        request = request.concat(url);
         open(request);
     }
 
@@ -2468,7 +2492,9 @@ public class CustomMethods extends SetupAndTeardown {
         if (attachments.isEmpty()) {
             attachments.addAll(getAttachmentsText());
         }
-        compareAttachments(changes);
+        if (changes ==0){
+            compareAttachments(changes);
+        }
         ArrayList<String> attachments = getAttachmentsText();
         ArrayList<String> temp;
         if(changes != 0){
@@ -2477,11 +2503,13 @@ public class CustomMethods extends SetupAndTeardown {
                 temp.removeAll(this.attachments);
                 System.out.println(temp);
                 this.attachments.addAll(temp);
+                changes = 0;
             } else if (changes < 0) {
                 temp = this.attachments;
                 temp.removeAll(attachments);
                 System.out.println(temp);
                 this.attachments.removeAll(temp);
+                changes = 0;
             }
             compareAttachments(changes);
         }
@@ -2517,7 +2545,7 @@ public class CustomMethods extends SetupAndTeardown {
             for (SelenideElement attach : attachments){
                 if(attach.getText().equals(attachName)){
                     attach.click();
-                    ElementsCollection links = $$x("//a");
+                    ElementsCollection links = $$x("//a[contains(.,'"+attachName+"')]");
                     for (SelenideElement link : links){
                         if(link.getText().equals(attachName)){
                             File file = link.download();
@@ -2542,7 +2570,7 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//span[contains(.,'Iсторiя документу')]").scrollIntoView(true).click();
     }
 
-    public void searchInHistory(String filter, String sFIO, String sFIOReferent, String sComment,String sNameHuman, String sRole) {
+    public void searchInHistory(String filter, String sFIO, String sFIOReferent, String sComment,String sNameHuman, String sRole, String sNameDelegate, String sStatus) {
         String sCurrentFIO = getUserInitials(sFIO);
         String sCurrentFIOReferent = getUserInitials(sFIOReferent);
         String sNameHumanFIO = getUserInitials(sNameHuman);
@@ -2570,10 +2598,15 @@ public class CustomMethods extends SetupAndTeardown {
         if (("ChangeDocStatus").equals(filter)) {
             historyDocumentType = HistoryEventType.STATUS_DOCUMENT;
             ElementsCollection events = findAllEvents(historyDocumentType);
+            historyDocumentType = historyDocumentType.replace("[sStatus]", sStatus);
             if (events.size() == 0) {
                 throw new RuntimeException("не найдено записей о смене статуса документа");
             }
+            if ( ("документ закрито").equals(sStatus) && events.size()>1){
+                throw new RuntimeException("Должна быть только одна запись о закрытии документа");
+            }
         }
+
         if (("AddComment").equals(filter)) {
             historyDocumentType = HistoryEventType.ADD_COMMENT;
             historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
@@ -2697,12 +2730,129 @@ public class CustomMethods extends SetupAndTeardown {
             }
 
         }
+        if (("DelegateDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.DELEGATE;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sID_OrderURL]", getOrderFromUrlCurrentPage());
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            historyDocumentType = historyDocumentType.replace("[sNameDelegate]", sNameDelegate);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о делегировании документа");
+            }
+        }
+        if (("SigneDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.SIGNE_DOCUMENT;
+            historyDocumentType = historyDocumentType.replace("[sName]", sCurrentFIO);
+            historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей о визировании документа");
+            }
+        }
+        if (("CloseDoc").equals(filter)) {
+            historyDocumentType = HistoryEventType.CLOSE_DOCUMENT;
+            System.out.println(historyDocumentType);
+            ElementsCollection events = findAllEvents(historyDocumentType);
+            if (events.size() == 0) {
+                throw new RuntimeException("Не найдено записей закрытии документа");
+            }
+        }
+
     }
 
     private ElementsCollection findAllEvents(String type) {
         return $$x("//p[contains(.,'" + type + "')]");
     }
 
+    public void clickUrgentStatusAllButton() {
+        ElementsCollection urgents = $$x("//input[@title='Позначити увесь крок як екстрений/зняти екстреність з усього кроку']");
+        for (SelenideElement urgent : urgents) {
+            urgent.scrollIntoView(true).click();
+            pause(7000);
+        }
+    }
 
+    public void clickUrgentStatusSingleButton(Integer id) {
+        $$x("//input[@type='checkbox']").get(id).scrollIntoView(true).click();
+        System.out.println($$x("//input[@type='checkbox']").get(id));
+    }
 
+    public void checkUrgentDoc() {
+        pause(5000);
+        ElementsCollection documentsType = $$x("//div[@class='idoc-menus-list selected-menu-list']");
+        if (documentsType.size() != 1) {
+            throw new RuntimeException("Должна быть одна вкладка документов");
+        }
+
+        ElementsCollection urgents = $$x("//a[@class='list-group-item igov-tasks-list task urgent_  urgent']");
+        int countUD = Integer.valueOf($x("//span[@ng-if='menu.showCount']").getText());
+        if (urgents.size() != countUD) {
+            throw new RuntimeException("Должно быть " + countUD + " элементов");
+        }
+    }
+
+    public void checkDelegate() {
+        boolean flag = false;
+        if ($x("//span[contains(.,'Не можна делегувати на себе')]").exists() && $x("//button[@disabled='disabled']").exists()) {
+            flag = true;
+            if (flag == false) {
+                throw new RuntimeException("На себя нельзя делегировать");
+            }
+
+        }
+    }
+    public void removeTask(){
+        WebElement button = $(By.xpath(".//a[contains(.,'Інші дії')]"));
+        $(button).waitUntil(visible, 10000);
+        button.click();
+        clickButton("Редагувати завдання");
+        pause(3000);
+        $x("//a[@ng-click='remove($index)']").scrollIntoView(true).click();
+
+    }
+    public void editComment(String comment){
+        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-pencil ng-scope']").click();
+        $(By.xpath("//textarea[@id='askMessage']")).val(comment);
+        clickButton("Зберегти зміни");
+
+    }
+    public void deleteComment(){
+        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-trash']").click();
+        clickButton("Підтвердити");
+    }
+    public void checkDelegateTaskDoc() {
+        boolean flag = true;
+        if ($x("//span[contains(.,'Користувач не може бути одночасно і контролюючим і виконавцем!')]").exists() && $x("//button[@disabled='disabled']").exists()) {
+            flag = false;
+            if (flag == false) {
+                throw new RuntimeException("На себя нельзя делегировать");
+            }
+
+        }
+    }
+
+    public void checkScrollForEmptyFields() {
+        pause(3000);
+        if (!$(By.xpath("//span[contains(.,'Необхідно заповнити.')]")).has(focused)) {
+            throw new RuntimeException("Не прокрутилось до пустого поля");
+        }
+    }
+    public void prostoMetodSchaUdoly(String name){
+        addWorker(name);
+        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]");
+    }
+    public void checkPositionNotNull() {
+        ElementsCollection position = $$("//span[@class='ui-select-choices-row-inner']");
+        if (!$x("//strong[@class='ng-binding']").exists()) {
+            throw new RuntimeException("Не хватает предприятия");
+        }
+
+    }
 }
+
+
