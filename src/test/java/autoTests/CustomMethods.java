@@ -2336,6 +2336,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
         return sAttach;
     }
+
+    /**
+     * Метод для открытия ссылок
+     */
     public void openLink(String sForm) {
         SelenideElement elem = $x("//span[@id='" + sForm +"']//a");
        // Action action = new Action();
@@ -2350,14 +2354,23 @@ public class CustomMethods extends SetupAndTeardown {
     //href="api/tasks/download/0787b4d3-95f0-415e-8007-8450d5c74e71/attachment/Mongo/coverage-error.log/server/
     // alpha.test.idoc.com.ua"
 
+    /**
+     * Метод для нажатия кнопки "Предыдущая страница"
+     */
     public void backPage(){
         back();
     }
 
+    /**
+     * Метод для нажатия кнопки "Следующая страница"
+     */
     public void forwardPage(){
         forward();
     }
 
+    /**
+     * Метод для получения даты
+     */
     public String getDate(int amount)  {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();
@@ -2366,6 +2379,9 @@ public class CustomMethods extends SetupAndTeardown {
         return format.format(calendar.getTime());
     }
 
+    /**
+     * Метод для получения времени
+     */
     public String getTime(Integer amount) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
@@ -2378,6 +2394,9 @@ public class CustomMethods extends SetupAndTeardown {
         return format.format(calendar.getTime());
     }
 
+    /**
+     * Метод для загрузки айлов в ХТМЛ
+     */
     public void loadFileToHTML(String text, String attach) throws AWTException {
         File oFile = new File(attach);
         attach = oFile.getAbsolutePath();
@@ -2445,7 +2464,9 @@ public class CustomMethods extends SetupAndTeardown {
         pause(5000);
     }
 
-
+    /**
+     * Метод для установки времени выполнения для задач
+     */
     public void setTaskTime(String term) throws AWTException {
         String xpath = "//input[@id='datetimepicker2']";
         $x(xpath).scrollIntoView(true).clear();
@@ -2453,14 +2474,23 @@ public class CustomMethods extends SetupAndTeardown {
         executeJavaScript("document.getElementById('datetimepicker2').value='" + term + "'");
     }
 
+    /**
+     * Метод для закрытия принтформы
+     */
     public void closePrintform(){
         $x("//div[@ng-click='hideModal()']").click();
     }
 
+    /**
+     * Метод для закрытия документа
+     */
     public void closeDoc(){
         $x("//button[@ng-click='historyBack()']").click();
     }
 
+    /**
+     * Метод для добавления сотрудников на разные роли в документе
+     */
     public void addParticipant(String filter, String fio, boolean isAwait) throws ElementClickInterceptedException {
         isWaitError = isAwait;
         if ("delegate".equalsIgnoreCase(filter)) {
@@ -2487,7 +2517,10 @@ public class CustomMethods extends SetupAndTeardown {
         }
         return sInitial;
     }
-
+    /**
+     * Проверка количества файлов для загрузки
+     * @param changes количество изменений
+     */
     public void checkAttachments(int changes){
         if (attachments.isEmpty()) {
             attachments.addAll(getAttachmentsText());
@@ -2537,6 +2570,10 @@ public class CustomMethods extends SetupAndTeardown {
         return $$x("//button[@class='btn btn-default dropdown-toggle ng-binding ng-scope']");
     }
 
+    /**
+     * Метод для загрузки файла
+     * @param attachName название файла
+     */
     public void downloadAttach(String attachName) throws FileNotFoundException {
         compareAttachments(0);
         String fileName = "";
@@ -2566,6 +2603,9 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Метод для входа в историю(вкладка с историей документа)
+     */
     public void enterInHistory() {
         $x("//span[contains(.,'Iсторiя документу')]").scrollIntoView(true).click();
     }
@@ -2719,6 +2759,9 @@ public class CustomMethods extends SetupAndTeardown {
         return $$x("//p[contains(.,'" + type + "')]");
     }
 
+    /**
+     * Метод для проставления экстренности всего блока
+     */
     public void clickUrgentStatusAllButton() {
         ElementsCollection urgents = $$x("//input[@title='Позначити увесь крок як екстрений/зняти екстреність з усього кроку']");
         for (SelenideElement urgent : urgents) {
@@ -2732,6 +2775,9 @@ public class CustomMethods extends SetupAndTeardown {
         System.out.println($$x("//input[@type='checkbox']").get(id));
     }
 
+    /**
+     * Проверка наличия экстренных документов
+     */
     public void checkUrgentDoc() {
         pause(5000);
         ElementsCollection documentsType = $$x("//div[@class='idoc-menus-list selected-menu-list']");
@@ -2746,6 +2792,9 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Проверка делегирования на самого себя по кнопке
+     */
     public void checkDelegate() {
         boolean flag = false;
         if ($x("//span[contains(.,'Не можна делегувати на себе')]").exists() && $x("//button[@disabled='disabled']").exists()) {
@@ -2756,7 +2805,11 @@ public class CustomMethods extends SetupAndTeardown {
 
         }
     }
-    public void removeTask(){
+
+    /**
+     * Метод для удаления задачи из документа
+     */
+    public void removeTask() {
         WebElement button = $(By.xpath(".//a[contains(.,'Інші дії')]"));
         $(button).waitUntil(visible, 10000);
         button.click();
@@ -2765,18 +2818,31 @@ public class CustomMethods extends SetupAndTeardown {
         $x("//a[@ng-click='remove($index)']").scrollIntoView(true).click();
 
     }
-    public void editComment(String comment){
+
+    /**
+     * Метод редактирования комментария в документе по кнопке
+     * @param comment - комментарий на который нужно заменить
+     */
+    public void editComment(String comment) {
         $x("//i[@class='glyphicon glyphicon-comment']").click();
         $x("//i[@class='glyphicon glyphicon-pencil ng-scope']").click();
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         clickButton("Зберегти зміни");
 
     }
-    public void deleteComment(){
+
+    /**
+     * Метод удаления комментария в документе
+     */
+    public void deleteComment() {
         $x("//i[@class='glyphicon glyphicon-comment']").click();
         $x("//i[@class='glyphicon glyphicon-trash']").click();
         clickButton("Підтвердити");
     }
+
+    /**
+     * Проверка делегирования на самого себя по кнопке в задаче и документе
+     */
     public void checkDelegateTaskDoc() {
         boolean flag = true;
         if ($x("//span[contains(.,'Користувач не може бути одночасно і контролюючим і виконавцем!')]").exists() && $x("//button[@disabled='disabled']").exists()) {
@@ -2788,20 +2854,28 @@ public class CustomMethods extends SetupAndTeardown {
         }
     }
 
+    /**
+     * Проверка прокрутки до незаполненных полей
+     */
     public void checkScrollForEmptyFields() {
         pause(3000);
         if (!$(By.xpath("//span[contains(.,'Необхідно заповнити.')]")).has(focused)) {
             throw new RuntimeException("Не прокрутилось до пустого поля");
         }
     }
-    public void prostoMetodSchaUdoly(String name){
-        addWorker(name);
-        $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]");
-    }
+
+
+    /**
+     * Проверка наличия должности и предприятия у человека в выпадающем окошке
+     */
     public void checkPositionNotNull() {
-        ElementsCollection position = $$("//span[@class='ui-select-choices-row-inner']");
-        if (!$x("//strong[@class='ng-binding']").exists()) {
+        SelenideElement position = $x("//i[@class='ng-binding']");
+        SelenideElement organ = $x("//strong[@class='ng-binding']");
+        if (organ.getText().isEmpty()) {
             throw new RuntimeException("Не хватает предприятия");
+        }
+        if (position.getText().isEmpty()) {
+            throw new RuntimeException("Не хватает должности");
         }
 
     }
