@@ -14,7 +14,8 @@ public enum HistorySignType {
     SECOND_AGREE_DOC("погоджено"),
     SIGN_DOC("підписано"),
     CONSIDEATION_ADD_DOC("розглянуто адресатом"),
-    VISA_DOC("завізовано");
+    VISA_DOC("завізовано"),
+    CLOSE_DOC("закрито");
     private String sSign;
 
     private HistorySignType(String sSign) {

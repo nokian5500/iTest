@@ -2738,7 +2738,7 @@ public class CustomMethods extends SetupAndTeardown {
             historyDocumentType = HistoryEventType.ADD_REMARK;
             historyDocumentType = historyDocumentType.replace("[sName]",sCurrentFIO);
             historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
-            historyDocumentType = historyDocumentType.replace("[sComment]", sComment);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
             System.out.println(historyDocumentType);
             ElementsCollection events = findAllEvents(historyDocumentType);
             if (events.size() == 0) {
@@ -2750,7 +2750,7 @@ public class CustomMethods extends SetupAndTeardown {
             historyDocumentType = HistoryEventType.EDIT_REMARK;
             historyDocumentType = historyDocumentType.replace("[sName]",sCurrentFIO);
             historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
-            historyDocumentType = historyDocumentType.replace("[sComment]", sComment);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
             System.out.println(historyDocumentType);
             ElementsCollection events = findAllEvents(historyDocumentType);
             if (events.size() == 0) {
@@ -2762,7 +2762,7 @@ public class CustomMethods extends SetupAndTeardown {
             historyDocumentType = HistoryEventType.DELETE_REMARK;
             historyDocumentType = historyDocumentType.replace("[sName]",sCurrentFIO);
             historyDocumentType = historyDocumentType.replace("[sNameReferent]", sCurrentFIOReferent);
-            historyDocumentType = historyDocumentType.replace("[sComment]", sComment);
+            historyDocumentType = historyDocumentType.replace("[sCommentary]", sComment);
             System.out.println(historyDocumentType);
             ElementsCollection events = findAllEvents(historyDocumentType);
             if (events.size() == 0) {

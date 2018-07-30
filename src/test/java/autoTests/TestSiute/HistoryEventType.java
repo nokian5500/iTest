@@ -12,9 +12,9 @@ public class HistoryEventType {
     public static final String DELETE_HUMAN = "Учасника документа [sNameHuman] було видалено";
     public static final String FIRST_SEEN = "[sName]([sNameReferent]) - документ переглянутий вперше";
     public static final String STATUS_CANCEL = "[sName]([sNameReferent]) Відмова по документу № [sID_OrderURL].";
-    public static final String ADD_REMARK = "[sName]([sNameReferent]) Винесено зауваження: [sComment]";
-    public static final String EDIT_REMARK = "[sName]([sNameReferent]) Відредаговано зауваження: [sComment]";
-    public static final String DELETE_REMARK = "[sName]([sNameReferent]) Видалено зауваження: [sComment]";
+    public static final String ADD_REMARK = "[sName]([sNameReferent]) Винесено зауваження: [sCommentary]";
+    public static final String EDIT_REMARK = "[sName]([sNameReferent]) Відредаговано зауваження: [sCommentary]";
+    public static final String DELETE_REMARK = "[sName]([sNameReferent]) Видалено зауваження: [sCommentary]";
     public static final String DELEGATE = "[sName]([sNameReferent]) делеговано права на документ № [sID_OrderURL] [sNameDelegate]";
     public static final String SIGNE_DOCUMENT = "[sName]([sNameReferent]) - документ завізовано";
     public static final String CLOSE_DOCUMENT = "Документ перміщено до архіву";
