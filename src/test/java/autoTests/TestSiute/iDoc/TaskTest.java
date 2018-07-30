@@ -7,6 +7,7 @@ package autoTests.TestSiute.iDoc;
 
 import autoTests.CustomMethods;
 
+import autoTests.TestSiute.iDoc.HistoryEnums.HistoryFilterType;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -20,7 +21,7 @@ import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryStatusType.*;
  * @author Oleksandr Belichenko
  */
 public class TaskTest extends CustomMethods{
-    
+
     @Test
     public void SZ() throws Exception {
         String sBP = "_doc_btsol_vertical_sz";
@@ -242,14 +243,13 @@ public class TaskTest extends CustomMethods{
         AuthorizationBySetLoginPassword("ZCPK_031260SVM", " ");
         pause(3000);
         navigateToggleMenu();
-        setRegionFindOrder("14-35973250");
+        setRegionFindOrder("14-36013103");
         pause(4000);
         clickButton("Інші дії");
         pause(1000);
         clickButton("Додати на перегляд");
-       pause(1000);
-       prostoMetodSchaUdoly("Давидчак Ярослав Романович");
         pause(1000);
+        searchInHistory(HistoryFilterType.DeleteHuman.getsFilter(),"","","","","","","");
         checkPositionNotNull();
         pause(8000);
     }

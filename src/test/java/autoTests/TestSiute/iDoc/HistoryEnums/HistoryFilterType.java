@@ -11,9 +11,15 @@ public enum HistoryFilterType {
     ApprovedDoc("ApprovedDoc"),
     DeleteHuman("DeleteHuman"),
     FirstSeen("FirstSeen"),
+    CancelDoc("CancelDoc"),
+    AddRemark("AddRemark"),
+    EditRemark("EditRemark"),
+    DeleteRemark("DeleteRemark"),
     DelegateDoc("DelegateDoc"),
     SigneDoc("SigneDoc"),
-    CloseDoc("CloseDoc");
+    CloseDoc("CloseDoc"),
+    RemoveHuman("RemoveHuman"),
+    RemoveSign("RemoveSign");
     private String sFilter;
 
     HistoryFilterType(String sFilter) {
