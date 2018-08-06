@@ -28,6 +28,22 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         String Login7 = "ZCPK_031260SVM";
         String Name7 = "Стефанів Василь Михайлович";
 
+        //logins beta for wiev and delete
+        String LoginCollective1 = "IGOV_160582SOD";
+        String NameCollective1 = "Смоктій Оксана Данилівна";
+        String LoginCollective2 = "IGOV_310780BVV";
+        String NameCollective2 = "Белявцев Володимир Володимирович";
+        String LoginCollective3 = "IGOV_301082BOY";
+        String NameCollective3 = "Бондарь Ольга Євгенієвна";
+        String LoginCollective4 = "IGOV_100982SOV";
+        String NameCollective4 = "Смірнова Олена Володимирівна";
+        String LoginCollective5 = "IGOV_210961SMU";
+        String NameCollective5 = "Соколова Марина Юріївна";
+        String LoginCollective6 = "IGOV_311288BUD";
+        String NameCollective6 = "Біла Юлія Данилівна";
+        String LoginCollective7 = "IGOV_180277SMV";
+        String NameCollective7 = "Свідрань Максим Володимирович";
+
         openURLdashboard(getRegionUrl());
 
         login(LoginAuthor, " ");
@@ -38,7 +54,45 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
 
         setDocTitle("Тест подписантов");
         setDocContent("Тест служебной записки , подписанты");
-        addViewer("");
+
+        //добавить подписантов (в таблицу)
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
+        addRegionsTableRow("sTableAccept");
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "1", Name1);
+        setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
+        addRegionsTableRow("sTableAgree");
+        setApprover(sBP, "sTableAgree", "sName_Approver", "1", Name2);
+        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
+        addRegionsTableRow("sTableDirect");
+        setDirect(sBP, "sTableDirect", "sName_Direct", "1", Name3);
+
+        getOrderFromUrlCurrentPage();
+        clickButtonCreate();
+        pause(4000);
+        logout();
+
+        //заходим под подписантом Name1
+        login(Login1, " ");
+        setRegionFindOrderByNumberDocument();
+        clickButton("Інші дії");
+
+        //добавить на просмотр
+        addViewer(NameCollective4);
+        closeParticipant();
+        //добавить на ознакомление
+        addVisor(Name4);
+        closeParticipant();
+        //добавить на подпись
+        addAcceptor(Name5);
+        closeParticipant();
+        //Делегирование себе
+        addDelegate(LoginAuthor);
+        pause(10000);
+
+
+
+
 
     }
+
 }
