@@ -58,10 +58,14 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         //добавить подписантов (в таблицу)
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
         addRegionsTableRow("sTableAccept");
-        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "1", Name1);
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "1", NameCollective2);
+        addRegionsTableRow("sTableAccept");
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "2", Name1);
+
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
         addRegionsTableRow("sTableAgree");
         setApprover(sBP, "sTableAgree", "sName_Approver", "1", Name2);
+
         setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
         addRegionsTableRow("sTableDirect");
         setDirect(sBP, "sTableDirect", "sName_Direct", "1", Name3);
@@ -74,23 +78,33 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         //заходим под подписантом Name1
         login(Login1, " ");
         setRegionFindOrderByNumberDocument();
-        clickButton("Інші дії");
+
 
         //добавить на просмотр
+        clickButton("Інші дії");
         addViewer(NameCollective4);
+        addFIO(NameCollective5);
+        pause(10000);
         closeParticipant();
         //добавить на ознакомление
+        clickButton("Інші дії");
         addVisor(Name4);
+        addFIO(Name5);
         closeParticipant();
         //добавить на подпись
-        addAcceptor(Name5);
+        clickButton("Інші дії");
+        addAcceptor(Name6);
+        addFIO(Name7);
         closeParticipant();
         //Делегирование себе
-        addDelegate(LoginAuthor);
+//        clickButton("Інші дії");
+//        clickButton("Делегувати");
+//        addDelegate(Name1);
+
+
+        //Удалить пописантов с кнопок
+
         pause(10000);
-
-
-
 
 
     }
