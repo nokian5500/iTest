@@ -232,25 +232,16 @@ public class TaskTest extends CustomMethods{
 
     @Test
     public void testUrgentButton() throws Exception {
-        String LoginCollective1 = "IGOV_160582SOD";
-        String NameCollective1 = "Смоктій Оксана Данилівна";
-        String LoginCollective2 = "IGOV_310780BVV";
-        String NameCollective2 = "Белявцев Володимир Володимирович";
-        String LoginCollective4 = "IGOV_100982SOV";
-        String NameCollective4 = "Смірнова Олена Володимирівна";
-        String sBP = "_doc_btsol_vertical_sz";
         openURLdashboard(getRegionUrl());
-        AuthorizationBySetLoginPassword("ZCPK_031260SVM", " ");
+        AuthorizationBySetLoginPassword("ZCPK_020379CDP", " ");
         pause(3000);
         navigateToggleMenu();
-        setRegionFindOrder("14-36013103");
+        setRegionFindOrder("14-36102817");
         pause(4000);
-        clickButton("Інші дії");
+       // addAcceptor("Терентьєв Володимир Володимирович");
+        setAcceptor("_doc_btsol_vertical_sz", "sTableAccept", "sName_Acceptor", "0", "Терентьєв Володимир Володимирович");
         pause(1000);
-        clickButton("Додати на перегляд");
-        pause(1000);
-        searchInHistory(HistoryFilterType.DeleteHuman.getsFilter(),"","","","","","","");
-        checkPositionNotNull();
+        setApprover("_doc_btsol_vertical_sz", "sTableAgree", "sName_Approver", "0", "Пітула Олександр Володимирович");
         pause(8000);
     }
 }
