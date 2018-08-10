@@ -54,7 +54,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         clickButton("Далi");
         pause(5000);
 
-        setDocTitle("Автотест колективної роботи");
+        setDocTitle("Текст службової записки, колективна робота");
         setDocContent("Текст службової записки при колективній роботі");
         //loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
@@ -68,28 +68,53 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
+        setRegionFindOrderByNumberDocument();
+        closeDoc();
         pause(4000);
         logout();
         pause(2000);
         
         openURLdashboard(getCollectiveURL());
-        
+
+        //Заходим на бету под подписантом
         login(LoginCollective1, " ");
         setRegionFindOrderByNumberDocument();
         checkAttachments(0);
         downloadAttach("test.jpg");
+        scrollTo("Затвердження");
         clickButton("Інші дії");
         addAcceptor(Name1);
+        pause(2000);
         closeParticipant();
         clickButton("Інші дії");
         addVisor(Name2);
+        pause(2000);
         closeParticipant();
         clickButton("Інші дії");
         addViewer(Name3);
+        pause(2000);
         closeParticipant();
-        removeParticipant(1, true);
-        removeParticipant(2, true);
-        removeParticipant(3, true);
-        
+
+        pause(2000);
+//        removeParticipant(1, true);
+//        removeParticipant(2, true);
+//        removeParticipant(2, true);
+
+        clickButtonSign();
+        logout();
+
+        //Заходим на бету-автотест автором
+        openURLdashboard(getRegionUrl());
+        login(LoginAuthor, " ");
+        setRegionFindOrderByNumberDocument();
+
+        clickButton("Редагувати");
+        removeRowFromTable("sTableAgree", 0, true);
+        removeRowFromTable("sTableDirect", 0, true);
+        clickButtonSign();
+        logout();
+
+
+
     }
 }
