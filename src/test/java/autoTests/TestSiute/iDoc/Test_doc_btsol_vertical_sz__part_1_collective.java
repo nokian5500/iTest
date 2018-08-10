@@ -109,6 +109,7 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         setRegionFindOrderByNumberDocument();
 
         clickButton("Редагувати");
+        removeRowFromTable("sTableAccept", 0, false);
         removeRowFromTable("sTableAgree", 0, true);
         removeRowFromTable("sTableDirect", 0, true);
         clickButtonSign();

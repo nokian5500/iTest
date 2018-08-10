@@ -55,14 +55,15 @@ public class Test_doc_btsol_vertical_sz__part_3_1_file extends CustomMethods {
         setDocTitle("Тест файлов");
         setDocContent("Тест служебной записки , файлы");
 
+
         loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
         setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/$(№.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
         addRegionsTableRow("sTableFile");
         setRegionTableCellsInputTypeString("sNumber", "1", "2");
         setRegionTableCellsInputTypeString("sNameFile", "1", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "1", "src/test/resources/files/test.jpg");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "1", "src/test/resources/files/$(№.jpg");
 
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", Name1);
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", Name2);
@@ -70,13 +71,13 @@ public class Test_doc_btsol_vertical_sz__part_3_1_file extends CustomMethods {
 
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
-        pause(3000);
+        pause(5000);
         logout();
 
         //Первый подписант
         login(Login1, " ");
         setRegionFindOrderByNumberDocument();
-
+        pause(5000);
         downloadAttach("test.jpg");
         clickButtonSign();
         pause(3000);
@@ -85,6 +86,7 @@ public class Test_doc_btsol_vertical_sz__part_3_1_file extends CustomMethods {
         //второй подписант
         login(Login2, " ");
         setRegionFindOrderByNumberDocument();
+        pause(5000);
         clickButtonSign();
         pause(3000);
         logout();
@@ -92,6 +94,7 @@ public class Test_doc_btsol_vertical_sz__part_3_1_file extends CustomMethods {
         //третий подписант
         login(Login3, " ");
         setRegionFindOrderByNumberDocument();
+        pause(5000);
         clickButtonSign();
         pause(3000);
         logout();
@@ -99,11 +102,13 @@ public class Test_doc_btsol_vertical_sz__part_3_1_file extends CustomMethods {
         //ознакомление
         login(LoginAuthor, " ");
         setRegionFindOrderByNumberDocument();
-        clickButtonSign();
+        pause(5000);
+        clickButton("Ознайомлений");
         pause(3000);
 
         clickLink("Історія");
         setRegionFindOrderByNumberDocument();
+        pause(5000);
         downloadAttach("test.jpg");
         pause(3000);
         logout();

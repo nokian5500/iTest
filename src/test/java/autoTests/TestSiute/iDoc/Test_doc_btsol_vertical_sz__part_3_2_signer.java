@@ -56,6 +56,8 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         setDocTitle("Тест подписантов");
         setDocContent("Тест служебной записки , подписанты");
 
+        clickButtonCreate();
+        checkScrollForEmptyFields();
         //добавить подписантов (в таблицу)
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
         addRegionsTableRow("sTableAccept");
@@ -80,17 +82,18 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         clickButton("Інші дії");
         addViewer(NameCollective4);
         addFIO(NameCollective5);
-        pause(10000);
+        pause(2000);
         closeParticipant();
         //добавить на ознакомление
         clickButton("Інші дії");
         addVisor(Name4);
-        addFIO(Name5);
+        pause(2000);
+        //addFIO(Name5);
         closeParticipant();
         //добавить на подпись
         clickButton("Інші дії");
         addAcceptor(Name6);
-        addFIO(Name7);
+        //addFIO(Name7);
         closeParticipant();
         //Делегирование себе
 //        clickButton("Інші дії");
@@ -99,10 +102,10 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
 
 
         //Делегирование
-        clickButton("Інші дії");
-        clickButton("Делегувати");
-        addDelegate(Name7);
-        pause(3000);
+//        clickButton("Інші дії");
+//        clickButton("Делегувати");
+//        addDelegate(Name5);
+//        pause(3000);
         //Удалить пописантов с кнопок
 
 //        removeParticipant(1, true);
@@ -110,8 +113,23 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
 //        removeParticipant(1, true);
 //        removeParticipant(1, true);
 //        removeParticipant(1, true);
+        logout();
 
-        pause(10000);
+        //авторизация подписанта с кнопки Name6
+        login(Login6, " ");
+        setRegionFindOrderByNumberDocument();
+        pause(3000);
+        addComment("Тест замечания");
+        closeDoc();
+        setRegionFindOrderByNumberDocument();
+        pause(3000);
+        editComment("Тест редактирования замечания");
+        deleteComment();
+        addComment("Тест замечания 2");
+        logout();
+
+
+
 
 
         //авторизация Автора
@@ -119,11 +137,9 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         clickButton("Редагувати");
         pause(5000);
-        removeRowFromTable("sTableAccept", 0, true);
-        removeRowFromTable("sTableAccept", 1, true);
-        removeRowFromTable("sTableAccept", 2, false);
-
-
+//        removeRowFromTable("sTableAccept", 0, true);
+//        removeRowFromTable("sTableAccept", 1, true);
+//        removeRowFromTable("sTableAccept", 2, true);
 
 
 
