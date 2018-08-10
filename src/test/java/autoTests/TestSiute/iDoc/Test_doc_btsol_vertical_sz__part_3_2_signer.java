@@ -46,6 +46,7 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
 
         openURLdashboard(getRegionUrl());
 
+        //авторизация Автора
         login(LoginAuthor, " ");
         navigateToggleMenu();
         createDocumentOrTask("Службова записка");
@@ -62,13 +63,9 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         addRegionsTableRow("sTableAccept");
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "2", Name1);
 
-        setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
-        addRegionsTableRow("sTableAgree");
-        setApprover(sBP, "sTableAgree", "sName_Approver", "1", Name2);
+        setApprover(sBP, "sTableAgree", "sName_Approver", "0", Name2);
 
-        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
-        addRegionsTableRow("sTableDirect");
-        setDirect(sBP, "sTableDirect", "sName_Direct", "1", Name3);
+        setDirect(sBP, "sTableDirect", "sName_Direct", "0", Name3);
 
         getOrderFromUrlCurrentPage();
         clickButtonCreate();
@@ -78,7 +75,6 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         //заходим под подписантом Name1
         login(Login1, " ");
         setRegionFindOrderByNumberDocument();
-
 
         //добавить на просмотр
         clickButton("Інші дії");
@@ -102,9 +98,34 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
 //        addDelegate(Name1);
 
 
+        //Делегирование
+        clickButton("Інші дії");
+        clickButton("Делегувати");
+        addDelegate(Name7);
+        pause(3000);
         //Удалить пописантов с кнопок
 
+//        removeParticipant(1, true);
+//        removeParticipant(1, true);
+//        removeParticipant(1, true);
+//        removeParticipant(1, true);
+//        removeParticipant(1, true);
+
         pause(10000);
+
+
+        //авторизация Автора
+        login(LoginAuthor, " ");
+        setRegionFindOrderByNumberDocument();
+        clickButton("Редагувати");
+        pause(5000);
+        removeRowFromTable("sTableAccept", 0, true);
+        removeRowFromTable("sTableAccept", 1, true);
+        removeRowFromTable("sTableAccept", 2, false);
+
+
+
+
 
 
     }
