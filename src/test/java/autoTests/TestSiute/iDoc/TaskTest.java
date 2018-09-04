@@ -244,6 +244,41 @@ public class TaskTest extends CustomMethods{
         setApprover("_doc_btsol_vertical_sz", "sTableAgree", "sName_Approver", "0", "Пітула Олександр Володимирович");
         pause(8000);
     }
+
+    @Test
+    public void testLoadfile() throws Exception{
+        String sBP = "_doc_btsol_vertical_sz";
+        String LoginCollective1 = "IGOV_160582SOD";
+        String NameCollective1 = "Смоктій Оксана Данилівна";
+        String LoginCollective2 = "IGOV_310780BVV";
+        String NameCollective2 = "Белявцев Володимир Володимирович";
+        String LoginCollective3 = "IGOV_301082BOY";
+        String NameCollective3 = "Бондарь Ольга Євгенієвна";
+
+        openURLdashboard(getRegionUrl());
+
+        login("ZCPK_310767TVV", " ");
+        navigateToggleMenu();
+        createDocumentOrTask("Службова записка");
+        clickButton("Далi");
+        pause(5000);
+
+        setDocTitle("Тестируем тестики эвридей");
+        setDocContent("Текст службової записки при колективній роботі");
+        loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
+        /*setRegionTableCellsInputTypeString("sNumber", "0", "1");
+        setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
+
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
+        setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
+        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
+
+        getOrderFromUrlCurrentPage();
+        clickButtonCreate();
+        setRegionFindOrderByNumberDocument();*/
+        pause(10000);
+    }
 }
     /*String LoginAuthor = "ZCPK_310767TVV";
     String NameAuthor = "Терентьєв Володимир Володимирович";

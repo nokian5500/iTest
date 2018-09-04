@@ -14,6 +14,7 @@ import javax.swing.*;
 import javax.xml.bind.Element;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -2403,6 +2404,7 @@ public class CustomMethods extends SetupAndTeardown {
         //switchToBody(true);
         $x("//button[@role='presentation']/i[@class='mce-ico mce-i-link']").scrollIntoView(true).click();
         pause(3000);
+        $x("//button//i[@class='mce-ico mce-i-browse']").click();
         Robot robot = new Robot();
         robot.delay(1000);
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -2413,28 +2415,18 @@ public class CustomMethods extends SetupAndTeardown {
         robot.delay(300);
         robot.keyRelease(KeyEvent.VK_CONTROL);
         robot.delay(300);
-        robot.keyPress(KeyEvent.VK_TAB);
+        robot.keyPress(KeyEvent.VK_ENTER);
         robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_TAB);
+        pause(1000);
+        robot.keyRelease(KeyEvent.VK_ENTER);
         robot.delay(300);
-        robot.keyPress(KeyEvent.VK_TAB);
+        robot.mouseMove(800, 550);
         robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_TAB);
+        robot.mousePress(InputEvent.BUTTON1_MASK);
         robot.delay(300);
-        //////
-        robot.keyPress(KeyEvent.VK_CONTROL);
+        robot.mouseRelease(InputEvent.BUTTON1_MASK);
         robot.delay(300);
-        robot.keyPress(KeyEvent.VK_A);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_A);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_CONTROL);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_DELETE);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_DELETE);
-        robot.delay(300);
-        //////////////
+
         setClipboardData(text);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.delay(300);
@@ -2443,24 +2435,9 @@ public class CustomMethods extends SetupAndTeardown {
         robot.keyRelease(KeyEvent.VK_V);
         robot.delay(300);
         robot.keyRelease(KeyEvent.VK_CONTROL);
-        //////////////
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_TAB);
-        robot.delay(300);
-        robot.keyPress(KeyEvent.VK_TAB);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_TAB);
-        robot.delay(300);
-        /*robot.keyPress(KeyEvent.VK_TAB);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_TAB);
-        robot.delay(300);*/
-        robot.keyPress(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(300);
-        pause(5000);
+        pause(1000);
+        clickButton("Ok");
+        pause(1000);
     }
 
     /**
@@ -2529,23 +2506,26 @@ public class CustomMethods extends SetupAndTeardown {
         }
         ArrayList<String> attachments = getAttachmentsText();
         ArrayList<String> temp;
-        if(changes != 0){
-            if (changes > 0){
-                temp = attachments;
-                temp.removeAll(this.attachments);
-                System.out.println(temp);
-                this.attachments.addAll(temp);
-                changes = 0;
+        if (changes != 0) {
+            if (changes > 0) {
+                for (int i = changes; i > 0; i--) {
+                    temp = attachments;
+                    temp.removeAll(this.attachments);
+                    System.out.println(temp);
+                    this.attachments.addAll(temp);
+                    changes--;
+                }
             } else if (changes < 0) {
-                temp = this.attachments;
-                temp.removeAll(attachments);
-                System.out.println(temp);
-                this.attachments.removeAll(temp);
-                changes = 0;
+                for (int i = changes; i < 0; i++) {
+                    temp = this.attachments;
+                    temp.removeAll(attachments);
+                    System.out.println(temp);
+                    this.attachments.removeAll(temp);
+                    changes++;
+                }
             }
             compareAttachments(changes);
         }
-
     }
 
     private void compareAttachments(int changes){

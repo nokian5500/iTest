@@ -2,6 +2,7 @@ package autoTests.TestSiute.iDoc;
 
 import autoTests.CustomMethods;
 
+import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.open;
 import org.junit.Test;
 
@@ -56,10 +57,11 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
 
         setDocTitle("Текст службової записки, колективна робота");
         setDocContent("Текст службової записки при колективній роботі");
-        //loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
-        setRegionTableCellsInputTypeString("sNumber", "0", "1");
-        setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
+        loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
+        clickLink("+ Додати рядок");
+        setRegionTableCellsInputTypeString("sNumber", "1", "1");
+        setRegionTableCellsInputTypeString("sNameFile", "1", "Тестовий додаток");
+        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "1", "src/test/resources/files/test.jpg");
         
         
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);  
@@ -114,8 +116,6 @@ public class Test_doc_btsol_vertical_sz__part_1_collective extends CustomMethods
         removeRowFromTable("sTableDirect", 0, true);
         clickButtonSign();
         logout();
-
-
 
     }
 }
