@@ -259,13 +259,10 @@ public class TaskTest extends CustomMethods{
 
         login("ZCPK_310767TVV", " ");
         navigateToggleMenu();
-        createDocumentOrTask("Службова записка");
-        clickButton("Далi");
-        pause(5000);
-
-        setDocTitle("Тестируем тестики эвридей");
-        setDocContent("Текст службової записки при колективній роботі");
-        loadFileToHTML("Файл ХТМЛ", "src/test/resources/files/test.jpg");
+        setRegionFindOrder("14-36306562");
+        pause(3000);
+        checkAttachments(2);
+        downloadAttach("Koala.jpg");
         /*setRegionTableCellsInputTypeString("sNumber", "0", "1");
         setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
         setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
