@@ -218,7 +218,8 @@ public class TaskTest extends CustomMethods{
         navigateToggleMenu();
         setRegionFindOrder("№ 15-4229401");
         enterInHistory();
-        searchInHistory("DelegateDoc","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
+        searchInHistory("DelegateDoc","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О",
+                VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
     }
 
     @Test
@@ -275,6 +276,55 @@ public class TaskTest extends CustomMethods{
         clickButtonCreate();
         setRegionFindOrderByNumberDocument();*/
         pause(10000);
+    }
+
+    @Test
+    public void testRemoveParticipant() throws Exception {
+        openURLdashboard(getRegionUrl());
+        login("ZCPK_310767TVV", " ");
+        navigateToggleMenu();
+
+        pause(2000);
+        setRegionFindOrder("14-36306562");
+        pause(1000);
+        removeParticipant(2, true);
+        pause(5000);
+    }
+
+    @Test
+    public void testDeleteRowFromTable() throws Exception {
+        String sBP = "_doc_btsol_vertical_sz";
+        String LoginCollective1 = "IGOV_160582SOD";
+        String NameCollective1 = "Смоктій Оксана Данилівна";
+        String LoginCollective2 = "IGOV_310780BVV";
+        String NameCollective2 = "Белявцев Володимир Володимирович";
+        String LoginCollective3 = "IGOV_301082BOY";
+        String NameCollective3 = "Бондарь Ольга Євгенієвна";
+
+        openURLdashboard(getRegionUrl());
+        login("ZCPK_310767TVV", " ");
+        navigateToggleMenu();
+        setRegionFindOrder("14-36318997");
+        pause(2000);
+        /*createDocumentOrTask("Службова записка");
+        clickButton("Далi");
+        pause(5000);
+
+        setDocTitle("Текст службової записки, удаляем строки");
+        setDocContent("Текст службової записки при удален");
+
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
+        setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
+        setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
+
+        getOrderFromUrlCurrentPage();
+        clickButtonCreate();
+        setRegionFindOrderByNumberDocument();*/
+       // clickButton("Редагувати");
+        removeRowFromTable("sTableAccept", 0, false);
+        removeRowFromTable("sTableAgree", 0, true);
+        removeRowFromTable("sTableDirect", 0, true);
+        pause(5000);
     }
 }
     /*String LoginAuthor = "ZCPK_310767TVV";
