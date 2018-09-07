@@ -18,9 +18,10 @@ import static autoTests.TestSiute.iDoc.HistoryEnums.HistoryStatusType.*;
 
 /**
  * На тестах, находящихся тут, я тестирую работоспособность методов, файл перманентный
+ *
  * @author Oleksandr Belichenko
  */
-public class TaskTest extends CustomMethods{
+public class TaskTest extends CustomMethods {
 
     @Test
     public void SZ() throws Exception {
@@ -111,7 +112,7 @@ public class TaskTest extends CustomMethods{
 
         //clickButton("Інші дії");
         //clickButton("Делегувати");
-       // addDelegate("");
+        // addDelegate("");
         //clickButtonSign();
 
     }
@@ -142,7 +143,7 @@ public class TaskTest extends CustomMethods{
     }
 
     @Test
-    public void Test() throws Exception{
+    public void Test() throws Exception {
         openURLdashboard("https://alpha.test.idoc.com.ua");
         AuthorizationBySetLoginPassword("IGOV_270907SVK", " ");
         clickButton("Увійти");
@@ -206,7 +207,7 @@ public class TaskTest extends CustomMethods{
         searchTaskByText("зЯАТ92нЯФМ");
         addReport("Виконане", "Завдання виконане");
 
-       pause(5000);
+        pause(5000);
     }
 
     @Test
@@ -218,13 +219,13 @@ public class TaskTest extends CustomMethods{
         navigateToggleMenu();
         setRegionFindOrder("№ 15-4229401");
         enterInHistory();
-        searchInHistory("DelegateDoc","Туренко Ольга Володимирівна" , "Туренко Ольга Володимирівна", "привет", "Грек О О", VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
+        searchInHistory("DelegateDoc", "Туренко Ольга Володимирівна", "Туренко Ольга Володимирівна", "привет", "Грек О О", VISOR.getsRole(), "Белявцев В. В.", AGREE.getsStatus());
     }
 
     @Test
-    public void testBool(){
+    public void testBool() {
         Map<String, Object> mBody = new HashMap<>();
-        mBody.put("123",false);
+        mBody.put("123", false);
         boolean boolean2 = (Boolean) mBody.get("123");
 
         System.out.println(boolean2);
@@ -238,7 +239,7 @@ public class TaskTest extends CustomMethods{
         navigateToggleMenu();
         setRegionFindOrder("14-36102817");
         pause(4000);
-       // addAcceptor("Терентьєв Володимир Володимирович");
+        // addAcceptor("Терентьєв Володимир Володимирович");
         setAcceptor("_doc_btsol_vertical_sz", "sTableAccept", "sName_Acceptor", "0", "Терентьєв Володимир Володимирович");
         pause(1000);
         setApprover("_doc_btsol_vertical_sz", "sTableAgree", "sName_Approver", "0", "Пітула Олександр Володимирович");
@@ -246,7 +247,7 @@ public class TaskTest extends CustomMethods{
     }
 
     @Test
-    public void testLoadfile() throws Exception{
+    public void testLoadfile() throws Exception {
         String sBP = "_doc_btsol_vertical_sz";
         String LoginCollective1 = "IGOV_160582SOD";
         String NameCollective1 = "Смоктій Оксана Данилівна";
@@ -259,22 +260,23 @@ public class TaskTest extends CustomMethods{
 
         login("ZCPK_310767TVV", " ");
         navigateToggleMenu();
-        setRegionFindOrder("14-36306562");
-        pause(3000);
-        checkAttachments(2);
-        downloadAttach("Koala.jpg");
-        /*setRegionTableCellsInputTypeString("sNumber", "0", "1");
-        setRegionTableCellsInputTypeString("sNameFile", "0", "Тестовий додаток");
-        setRegionTableCellsInputTypeFile(sBP,"sTableFile", "sFile", "0", "src/test/resources/files/test.jpg");
+        createDocumentOrTask("Службова записка");
+        clickButton("Далi");
+        pause(5000);
 
+        setDocTitle("Текст службової записки, проверка дублей");
+        setDocContent("Дубля дубля где же ты");
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
+        addRegionsTableRow("sTableAccept");
+        pause(1000);
+        setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "1", NameCollective1);
         setApprover(sBP, "sTableAgree", "sName_Approver", "0", NameCollective2);
         setDirect(sBP, "sTableDirect", "sName_Direct", "0", NameCollective3);
-
-        getOrderFromUrlCurrentPage();
         clickButtonCreate();
-        setRegionFindOrderByNumberDocument();*/
-        pause(10000);
+        pause(2000);
+        checkDuplicateInTheRow();
+        pause(5000);
+
     }
 }
     /*String LoginAuthor = "ZCPK_310767TVV";

@@ -843,7 +843,7 @@ public class CustomMethods extends SetupAndTeardown {
      * @throws Exception
      */
     public void clickLink(String nameLink) throws Exception { // нажатие любой кнопки с указанным тескстом на ней
-        $(By.xpath("//a[contains(.,'" + nameLink + "')]")).click(); ////button[contains(.,'Опрацювати')]
+        $(By.xpath("//a[contains(.,'" + nameLink + "')]")).scrollIntoView(true).click(); ////button[contains(.,'Опрацювати')]
     }
 
     /**
@@ -1734,6 +1734,7 @@ public class CustomMethods extends SetupAndTeardown {
      */
     private void addParticipant(String xpath, String name) {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
+        isWaitError = true;
         addWorker(name);
         $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]").click();
 
@@ -2874,10 +2875,11 @@ public class CustomMethods extends SetupAndTeardown {
      * @param comment - комментарий на который нужно заменить
      */
     public void editComment(String comment) {
-        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-comment ng-scope']").scrollIntoView(true).click();
         $x("//i[@class='glyphicon glyphicon-pencil ng-scope']").click();
         $(By.xpath("//textarea[@id='askMessage']")).val(comment);
         clickButton("Зберегти зміни");
+        $x("//i[@class='glyphicon glyphicon-comment ng-scope']").click();
 
     }
 
@@ -2885,7 +2887,7 @@ public class CustomMethods extends SetupAndTeardown {
      * Метод удаления комментария в документе
      */
     public void deleteComment() {
-        $x("//i[@class='glyphicon glyphicon-comment']").click();
+        $x("//i[@class='glyphicon glyphicon-comment ng-scope']").click();
         $x("//i[@class='glyphicon glyphicon-trash']").click();
         clickButton("Підтвердити");
     }
@@ -2928,6 +2930,16 @@ public class CustomMethods extends SetupAndTeardown {
             throw new RuntimeException("Не хватает должности");
         }
 
+    }
+
+    /**
+     * Проверка дублирующихся записей в таблице
+     */
+
+    public void checkDuplicateInTheRow() {
+        if ($x("//span[@ng-message='duplicationError']").scrollIntoView(true).exists()) {
+            throw new RuntimeException("Нельзя дублировать записи таблице");
+        }
     }
 }
 

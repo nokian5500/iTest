@@ -57,7 +57,7 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         setDocContent("Тест служебной записки , подписанты");
 
         clickButtonCreate();
-        checkScrollForEmptyFields();
+       // checkScrollForEmptyFields();
         //добавить подписантов (в таблицу)
         setAcceptor(sBP, "sTableAccept", "sName_Acceptor", "0", NameCollective1);
         addRegionsTableRow("sTableAccept");
@@ -124,7 +124,9 @@ public class Test_doc_btsol_vertical_sz__part_3_2_signer extends CustomMethods {
         setRegionFindOrderByNumberDocument();
         pause(3000);
         editComment("Тест редактирования замечания");
+        pause(1000);
         deleteComment();
+        pause(1000);
         addComment("Тест замечания 2");
         logout();
 
