@@ -1736,6 +1736,7 @@ public class CustomMethods extends SetupAndTeardown {
         //xpath = "//*[@id='draggable-dialog']/div/div[2]/delegate-document";
         isWaitError = true;
         addWorker(name);
+        isWaitError = true;
         $x("//*[@id='draggable-dialog']//span/span[contains(.,'"+name+"')]").click();
 
         if($x("//span[contains(.,'Не можна делегувати на себе')]").exists() ||
@@ -2079,17 +2080,20 @@ public class CustomMethods extends SetupAndTeardown {
      */
     public void removeRowFromTable(String table, int row, boolean accept){
         if (accept){
-        String xpath = "//tbody[@ng-form='" + table + "']/tr";
-        $x(xpath).scrollIntoView(true);
-        //TODO видит Бог, не хотел
-        xpath = xpath + "[" + row + "]/td[4]/a/i";
-        $x(xpath).click();}
-        else {
+           /* String xpath = "//tbody[@ng-form='" + table + "']/tr";
+            $x(xpath).scrollIntoView(true);
+            //TODO видит Бог, не хотел
+            xpath = xpath + "[" + row + "]/td[4]/a/i";*/
+           String xpath = "//tbody[@ng-form='" + table + "']//i[@class='glyphicon glyphicon-remove']";
+           SelenideElement elem = $x("//tbody[@ng-form='" + table + "']//i[@class='glyphicon glyphicon-remove']");
+            System.out.println(elem);
+            $x(xpath).click();
+        } else {
             String xpath = "//tbody[@ng-form='" + table + "']/tr";
             $x(xpath).scrollIntoView(true);
             xpath = xpath + "[" + row + "]/td[4]/a/i";
-            if($x(xpath).exists())
-               throw new RuntimeException("Кнопка не должна существовать");
+            if ($x(xpath).exists())
+                throw new RuntimeException("Кнопка не должна существовать");
         }
     }
 
@@ -2103,23 +2107,23 @@ public class CustomMethods extends SetupAndTeardown {
         String xPath2 = "//button[@ng-click='removeUserFromDoc(users, true)']";
 
         boolean isExist;
-
+/*
         try {
             isExist = $x(xPath).scrollIntoView(true).isDisplayed();
         }
         catch (ElementNotVisibleException | ElementNotFound ex){
             isExist = $x(xPath2).scrollIntoView(true).isDisplayed();
             xPath = xPath2;
-        }
-
+        }*/
+        isExist = $x(xPath2).scrollIntoView(true).isDisplayed();
         if(isAwait && !isExist){
             throw new ElementNotVisibleException("Має бути можливість вилучити підписанта");
         }
         if (!isAwait && isExist){
             throw new NoSuchElementException("Можливості вилучити підписанта не має бути");
         }
-        $x(xPath).scrollIntoView(true);
-        ElementsCollection participants = $$x(xPath);
+        $x(xPath2).scrollIntoView(true);
+        ElementsCollection participants = $$x(xPath2);
         System.out.println(participants.size());
         participants.get(position-1).click();
     }
